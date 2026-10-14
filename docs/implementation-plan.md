@@ -9,96 +9,112 @@
 
 ## 1. Executive Summary
 
-Build a local engine that accepts natural-language questions about an RDF knowledge graph, retrieves semantically relevant entities and SHACL shapes, and checks results using exact SPARQL queries and explicitly supported SHACL constraints. The initial release will use EmbeddingGemma 2 and a text-only index of verbalized RDF neighborhoods. Subsequent experiments will align a relational graph encoder, initially CompGCN with R-GCN as a comparator, to the text model's 256-dimensional embedding space. A constrained query planner will later support compositional questions involving joins, counts, filters, and comparisons.
+Build **Graph Verity**, a local-first Rust engine for natural-language exploration and verifiable question answering over RDF knowledge graphs. The MVP combines multilingual hybrid retrieval, ontology-aware semantic parsing, deterministic typed-IR-to-SPARQL compilation, and evidence from the actual graph.
 
-**Core principle:** embeddings estimate relevance; RDF/SPARQL/SHACL supply verifiable evidence. A high similarity score is not a truth claim. Searching only the top-*k* vector hits is not an exhaustive answer to a structured query.
+The two main user-facing operations are:
 
-**Decision gates:** ship a valuable text-only engine first; add CompGCN only if it improves relational-question Recall@10 by at least **10 absolute percentage points** against the frozen-text baseline, without unacceptable latency, memory, or maintenance costs.
+1. **Find:** EmbeddingGemma 2 + BM25 locate entities, classes, predicates and SHACL shapes. An optional local cross-encoder improves ranking where it is worth the CPU cost. Exact checks can verify requested facts about candidates.
+2. **Ask:** Retrieve a bounded set of actual RDF vocabulary terms; a small **local generative semantic parser** produces grammar-constrained JSON describing a query plan; Rust validates the typed IR against the schema, ontology, permissions and graph scope; a deterministic compiler produces read-only SPARQL for Oxigraph.
+
+**Separation of responsibilities:** embeddings/rerankers estimate relevance; grammar constrains *output syntax, not semantic correctness*; typed IR validation constrains legal operations and references; SPARQL/SHACL provide verifiable evidence within the selected graph snapshot and semantics.
+
+**MVP decisions:** start with two Rust crates, reuse SHACL libraries before building custom validation, prioritize the semantic parser, and benchmark optional reranking. **Defer CompGCN/R-GCN to post-MVP research.** Performance claims and success probabilities from architecture reviews are hypotheses, not guarantees. The proposed schedule is gate-driven and must be revised against real engineering capacity.
 
 ## 2. Goals, Scope, and Non-Goals
 
 ### 2.1 Product goals
 
-1. Support Norwegian questions against RDF datasets containing English and/or Norwegian labels and descriptions.
-2. Find entities, SHACL shapes, and, when enabled, ontology classes and predicates from a local index.
-3. Support two execution modes:
-   - **Retrieval mode:** rank relevant objects, then verify requested facts about those candidates.
-   - **Structured question mode:** create a restricted, inspectable query plan and execute it over the graph, without restricting completeness to vector top-*k*.
-4. Return resource IRIs, result type, named-graph provenance, and the graph facts or constraint reports supporting each result.
-5. Run inference locally through ONNX Runtime in a Rust process; keep Python limited to offline preprocessing, training, evaluation, and model export.
-6. Track reproducible model, graph, shapes, preprocessing, and index versions.
+1. Understand Norwegian questions over RDF data with English and/or Norwegian labels and descriptions.
+2. Retrieve entities, classes, predicates, and SHACL shapes while preserving direction, RDF datatypes, named graphs and provenance.
+3. Support **retrieval mode** for ranked discovery and **structured question mode** for supported complete-within-scope graph answers.
+4. Return resolved RDF IRIs, graph snapshot, query-plan summary, formal result status and inspectable supporting triples/constraint reports.
+5. Run locally in a Rust process with Oxigraph and ONNX Runtime, plus a local quantized generative semantic parser backend; never require a hosted AI API.
+6. Pin and validate model, tokenizer, grammar, IR schema, vocabulary, index, graph and SHACL-semantic versions.
 
 ### 2.2 MVP boundary
 
-- One well-defined enterprise or public-sector RDF domain, with 10,000–100,000 searchable resources.
-- A bounded subset of SHACL Core: simple predicate paths, `sh:minCount`, `sh:maxCount`, `sh:datatype`, and `sh:class`; extend only after conformance tests pass.
-- Exact structured plans for a controlled set of question templates: type lookup, a one-/two-hop join, conjunction, numeric/date filter, and `COUNT(DISTINCT ...)` with `HAVING`.
-- One supported CPU hardware profile, defined and benchmarked before accepting latency claims.
+- One well-defined RDF domain, initially 10,000–100,000 indexed resources and a fixed target CPU.
+- **Controlled** question families: entity/class lookup, direct/two-hop traversal, conjunction, numeric/date comparisons, `COUNT(DISTINCT ...)` / `HAVING`, shape lookup, and violations in a supported SHACL subset.
+- A versioned, typed JSON IR with explicit direction, scope, variables and typed values. The generator may select *only retrieved/authorized ontology IDs*; it may not invent RDF terms or raw SPARQL.
+- Evaluate a maintained Rust SHACL implementation (Rudof/`shacl`) first. If needed, implement an explicit **2017 SHACL Core subset**: simple predicate paths, `sh:minCount`, `sh:maxCount`, `sh:datatype` and `sh:class`, tested against a reference validator.
+- Text/BM25 retrieval baseline first, optional cross-encoder reranking after benchmark; no required GNN research for pilot release.
+- Declare a graph-completeness/entailment policy and separate accuracy, latency and memory gates for retrieval, parsing, compiled queries and validation.
 
-### 2.3 Explicit non-goals for the first release
+### 2.3 Explicit non-goals for first release
 
-- Arbitrary natural-language-to-SPARQL generation with unrestricted SPARQL execution.
-- Full SHACL 1.2 Core/advanced features, OWL entailment, or universal closed-world reasoning.
-- Real-time GNN inference for every user request.
-- Guaranteed exhaustive results from top-*k* vector retrieval.
-- Mandatory packaging of the model weights, vector index, and graph database *inside* the Rust executable. A single deployable process with versioned local artifacts is sufficient.
+- Unrestricted natural-language-to-SPARQL or arbitrary questions with guaranteed correctness.
+- Assuming a schema-valid JSON plan is semantically correct; the parser may still choose the wrong operator or predicate.
+- Full SHACL 1.2/advanced constraints, arbitrary OWL entailment, or custom full-featured SHACL parsing/validation.
+- Unrestricted SPARQL, write operations, remote `SERVICE`, or implicitly treating absence of a triple as evidence of falsity.
+- Top-*k* vector retrieval presented as exhaustive graph query results.
+- CompGCN/R-GCN and two-hop graph-embedding freshness machinery in the 20-week MVP schedule.
+- Putting the entire dataset, models and indexes into a single executable; one offline-capable process with versioned local artifacts suffices.
 
 ## 3. Reference Architecture
 
-```text
-                          Offline build / training
-RDF + shapes + source metadata ──> normalized graph + ontology catalog
-             │                          │
-             ├──> entity/shape verbalization ──> document embeddings ──┐
-             │                                                         │
-             ├──> train/validation/test pairs                          ├──> versioned index bundle
-             │                                                         │
-             └──> relational graph ──> CompGCN/R-GCN ──> graph vectors ┘
+~~~text
+                      Offline ingestion / index preparation
+RDF dataset + SHACL shapes + named graphs
+             |
+             +--> Oxigraph snapshot + provenance + ontology vocabulary catalog
+             +--> resource/shape verbalization --> EmbeddingGemma --> vector index
+             +--> resource/shape labels/IDs --------------------------> BM25
+             +--> SHACL parser/library --> validated shape AST / cached templates
+             |
+             +--> compatible, versioned release bundle
 
-                              Online Rust runtime
-Norwegian question
-      │
-      v
-Tokenizer + EmbeddingGemma 2 ONNX (query embedding)
-      │
-      v
-Intent/router: retrieval | structured query | shape lookup | unsupported
-      │                                 │
-      v                                 v
-Vector + lexical retrieval         Restricted query-plan builder
-      │                                 │
-      v                                 v
-Candidate ranking + filters       Schema/entity/predicate resolution
-      │                                 │
-      └───────────────┬─────────────────┘
-                      v
-             Oxigraph/SPARQL execution
-                      │
-                      v
-          Supported SHACL validation (when needed)
-                      │
-                      v
-           Verified results + provenance + status
-```
+                           Online Rust process
+Natural-language question
+             |
+             +--> EmbeddingGemma + BM25 --> candidate entities/predicates/classes
+             |                                   |
+             |                           optional cross-encoder reranker
+             |
+             +--> intent router: find | ask | validate | unsupported
+                         |                    |
+                       find                  ask
+                         |                    |
+                  candidate checks    ontology-aware context
+                                              |
+                                   small local constrained generator
+                                              |
+                                       typed JSON IR
+                                              |
+                              schema + ontology + auth validation
+                                              |
+                               deterministic SPARQL compilation
+                                              |
+                                           Oxigraph
+                         |                    |
+                         +--------------------+
+                                              |
+                          result / evidence / scope / provenance /
+                             SHACL report / explicit status
+~~~
 
-**Important separation:** the planner is a separate component, not an assumed capability of EmbeddingGemma or CompGCN. The retriever suggests relevant RDF terms and candidates; the planner constructs formal operations; Oxigraph executes them.
+**No raw generated SPARQL:** the parser's JSON grammar limits structure, but a separate validator must verify selected class/predicate/entity IDs, edge direction, variable binding, datatype, operator semantics, authorized named graphs and resource limits. Unsupported or ambiguous plans abstain.
+
+**No completeness from top-k:** for questions requiring all matching entities, vocabulary retrieval is allowed to *ground the query*, but SPARQL must evaluate all matching entities in the requested data scope. GNN experiments are separate post-MVP work, not part of this serving flow.
 
 ## 4. Technology Decisions
 
-| Layer | Initial choice | Rationale / alternative |
+| Layer | MVP choice | Rationale / validation |
 |---|---|---|
-| Language embedding | EmbeddingGemma 2, text-only weights | Multilingual, native 256-dimensional truncation, offline CPU inference; benchmark Qwen3-Embedding-0.6B separately if needed. |
-| Text embedding geometry | First 256 dimensions of native 768-dimensional output; L2-renormalize | Preserve the pretrained representation for v1. |
-| Graph modeling | CompGCN, two message-passing layers, built with PyTorch Geometric primitives or a reviewed implementation | Relational node/message encoding; compare with R-GCN under the same data and training budget. |
-| Training | Python, PyTorch, PyTorch Geometric, Sentence Transformers | Offline experiments and reproducibility. |
-| Runtime | Rust, `ort`, Hugging Face `tokenizers` | Local inference and integration with the RDF runtime. |
-| RDF store | Oxigraph `Store` | In-process RDF quads and SPARQL; choose `Store::new()` for ephemeral in-memory or `Store::open(...)` for persistent RocksDB-backed storage. |
-| Vector index | FP32 flat matrix + `memmap2`, SIMD dot products | Simple, transparent exact nearest-neighbor search at MVP scale. |
-| Keyword search | Rust lexical/BM25 index, e.g. Tantivy | Preserve exact IRIs, codes, and distinctive names missed by embeddings. |
-| Validation oracle during development | pySHACL / W3C SHACL test cases | Differential-test any Rust-side SHACL compiler; not required as an online Python service. |
-| API / CLI | Rust HTTP service and local CLI | Keep API, model execution, and graph access inside one process. |
+| Text retrieval | EmbeddingGemma 2 text encoder; 768→256 MRL truncation and L2 normalization | Multilingual and compact; benchmark on Norwegian↔English RDF questions, not only generic embedding leaderboards. |
+| Lexical retrieval | Rust BM25 index, e.g. Tantivy | Exact names, codes, datatype terms, IRIs and rare labels. |
+| Retrieval fusion | BM25 + vector search using rank fusion | Measure first-stage Recall@50 independently of reranking. |
+| Reranking | **Optional** multilingual local cross-encoder | Evaluate top 10/20/50 candidates; measure uplift against B2 and real p95/RAM on target hardware. |
+| Semantic parser | **Small local quantized instruction model** with grammar/JSON-constrained output, initially benchmark ~1.5B class | Integrate behind a Rust interface; evaluate llama.cpp first. Smaller/larger models and ONNX are possible, but constrained decoding is an additional requirement. |
+| Query planning | Versioned typed JSON IR + deterministic Rust IR-to-SPARQL compiler | Controlled operators, bindings, scope and ontology IDs; no generated arbitrary SPARQL. |
+| RDF execution | Oxigraph (`Store::new` / persistent store as appropriate) | In-process quad store and scoped read-only SPARQL. |
+| SHACL | Evaluate Rudof/`shacl` first; SPARQL SELECT templates for *bounded supported subset* if needed | Pin 2017 SHACL semantics, test with pySHACL and relevant W3C fixtures; compile/cache templates on shape update. |
+| Serving | `verity_core` Rust library + `verity_cli` binary (two crates) | Internal Rust modules and `pub(crate)` initially; split more only with a demonstrated need. |
+| ML development | Python, PyTorch, ONNX export where needed | Offline indexing/evaluation; Python not required by the serving engine. |
+| Graph ML | **Post-MVP research:** CompGCN vs R-GCN | Require quality gain over the strongest production baseline, including any adopted reranker. |
 
-**Model-specific precautions:** use the correct query/document prefixes; keep pooling and truncation identical in Python and Rust; re-normalize after 256-dimensional truncation; avoid FP16 for EmbeddingGemma 2 unless upstream guidance changes. Quantized ONNX exports must pass quality and numerical-parity tests before deployment.
+**Numerical precautions:** correct query/document prompt formatting; identical Python/Rust tokenizer and pooling; truncate native embedding to 256 and re-normalize; reject non-finite values; verify quantized ONNX parity; treat FP16 cautiously per the model card.
+
+**Do not hard-code claimed speedups:** 100,000 × 256 × 4 bytes = **102.4 MB decimal** of raw FP32 vectors, but memory mapping does not guarantee a cold scan under 3 ms, and full query latency includes tokenization, inference, semantic parsing, SPARQL and evidence generation. Benchmark those separately.
 
 ## 5. Data Model, Ingestion, and Provenance
 
@@ -109,15 +125,16 @@ Candidate ranking + filters       Schema/entity/predicate resolution
 3. Preserve IRIs, language tags, literal datatypes, predicate direction, named graph identifiers, and source provenance.
 4. Load data quads into Oxigraph. Keep the shapes graph logically separate and versioned, even if stored in a dedicated named graph.
 5. Generate a deterministic RDF snapshot ID from canonicalized release inputs plus import configuration, not from nondeterministic insertion order.
-6. Extract a vocabulary catalog: classes, predicates, human-readable labels, domain/range hints where available, and example usages.
+6. Extract a **versioned ontology vocabulary catalog**: classes, predicates, human-readable labels, direction, datatype/domain/range hints, authorized scope and examples, with stable candidate IDs for the semantic parser.
 7. Create a searchable resource registry: entity IDs, shape IDs, optional class and predicate IDs, and associated metadata.
 
 ### 5.2 Blank nodes and SHACL lists
 
 - Do not assume blank-node labels remain stable across imports.
-- Resolve RDF lists and nested shape structures into a **typed shape abstract syntax tree (AST)** that preserves ordering, conjunction, disjunction, negation, and path operators.
+- Prefer a maintained RDF/SHACL parser (evaluate Rust Rudof first); preserve RDF lists and nested shape logic in a **typed shape AST** with operator, path, cardinality and ordering semantics intact.
 - For ML verbalization only, derive deterministic synthetic identifiers/edges from that AST. Keep original RDF for formal evaluation.
 - Avoid silently converting a list such as `sh:or` into unrelated bag-of-words properties.
+- If using a custom bounded validator, compile supported shape AST nodes to **cached SELECT violation templates during ingestion/shape updates**, keyed to the pinned SHACL semantics, graph scope and shapes version.
 
 ### 5.3 Entity document format
 
@@ -163,8 +180,8 @@ Limit and deterministically order n-hop neighborhoods. Give rare predicates and 
 ### 6.2 Search implementation
 
 - Combine lexical BM25 matches and cosine scores using a simple rank-fusion method (for example reciprocal rank fusion) before experimenting with learned weighting.
-- Support type, named-graph, and language filtering; only apply a filter when the caller requests it or the intent parser supports it reliably.
-- Produce candidate lists at configurable `k` (10, 20, 50, 100, 500) and track Recall@k for each.
+- Support type, named-graph, and language filtering; only apply a filter when requested or semantically justified by a validated plan. Enforce **authorization** before exposing vocabulary or candidate text to the local parser.
+- Produce candidate lists at configurable `k` (10, 20, 50, 100, 500) and track Recall@k, **especially pre-rerank Recall@50**, separately from any reranking gains.
 - Use vector similarity only for discovery/ranking; a vector hit alone is never marked “verified.”
 - Record search diagnostics (without storing confidential raw questions by default): stage latencies, index version, candidate count, and reason for no result.
 
@@ -180,62 +197,78 @@ At 100,000 resources, `100000 × 256 × 4 = 102,400,000` bytes of raw vectors (1
 
 ### 7.1 Formal semantics contract
 
-- Search relevance is distinct from SHACL conformance, support for a factual claim, and completeness of an answer set.
-- Validate only against the explicit graph snapshot and entailment regime selected for the release.
-- Absence of an RDF triple is **not** proof of a false-world claim. Require an explicit completeness policy for negative answers such as “has not submitted a report.”
-- Separate `verified`, `nonconformant`, `unknown`, `unsupported`, and `execution_error` in responses.
-- A node that violates a shape can still be a highly relevant search result for a data-quality question.
+- Relevance, factual verification, SHACL conformance, and exhaustive answer-set completeness are different claims.
+- Pin **W3C SHACL Recommendation (2017)**, snapshot, graph scope, and class/entailment semantics. SHACL 1.2 is a separate future version, not silently assumed stable.
+- RDF is commonly open-world. A missing triple alone cannot justify “does not have” unless a scoped completeness policy explicitly allows it.
+- Return explicit statuses, e.g. `verified`, `nonconformant`, `unknown`, `unsupported`, `needs_clarification` and `execution_error`.
+- A node failing a shape can be highly relevant to a question about violations.
+- Formal verification of a handful of candidates does **not** prove that every matching node was found.
 
-### 7.2 Bounded SHACL compiler
+### 7.2 Reuse, then optimize a supported subset
 
-1. Parse supported shapes into a typed AST.
-2. Implement exact evaluation of simple paths and the selected constraint types.
-3. Compile applicable validation tests into SPARQL or an equivalent exact evaluation over Oxigraph.
-4. Return structured validation details: focus node, shape ID, path, offending or missing value, severity, source graph, and status.
-5. Reject/mark unsupported constructs rather than assuming they pass; do not label this subset compiler a full SHACL processor.
-6. Differential-test against pySHACL and relevant W3C fixtures, including class/subclass behavior and ill-typed literals.
+1. Assess the Rust Rudof/`shacl` implementation first for shape parsing, validation, reporting and integration with Oxigraph. Do not build a full custom SHACL parser or traversal engine by default.
+2. Pin a reference pySHACL version and the relevant W3C fixture suite. Define a supported-constraint matrix and explicit unsupported statuses.
+3. If library integration is not viable or a fast path is justified, retain typed SHACL ASTs and **compile supported shapes into cached, parameterized/safely bound SPARQL SELECT violation queries** during shape ingestion/change.
+4. `sh:minCount` and `sh:maxCount` require the correct distinct focus/value-node counting under the declared graph scope.
+5. `sh:class` must correctly handle subclass membership; a query path equivalent to `rdf:type/rdfs:subClassOf*` is appropriate **where the chosen entailment policy and available triples permit it**. Test against reference semantics.
+6. `sh:datatype` must handle literal-vs-resource distinctions, datatype matching and ill-typed lexical values under the selected SHACL semantics; simply comparing datatype IRIs is not always enough.
+7. Return structured reports: focus node, shape, path, offending/missing value when applicable, constraint, source graph, severity and snapshot; unsupported constructs must never be silently marked conformant.
 
-In retrieval mode, perform validation on the selected candidates. In structured mode, execute the query over the intended graph scope before selecting results; do not infer exhaustiveness from top-20 reranking.
+**Acceptance:** 100% differential parity on a **pinned and documented supported test subset** (not a claim of full SHACL conformance), including subclass, datatype, named-graph, blank-node and cardinality edge cases. Benchmark runtime on real CPU; avoid promises of microsecond checks or halved implementation time.
 
-**Acceptance:** 100% agreement with the pinned reference implementation on the explicitly supported conformance test suite, with documented exclusions for unsupported features.
+For complete structured questions, execute the formal graph plan across the authorized graph scope; do not use top-*k* candidate sets as an implicit query filter.
 
-## 8. Structured Question Planner
+## 8. Ontology-Aware Semantic Parser and Structured Question Planner
 
-### 8.1 Release design
+**This is the critical MVP component missing from a retrieval-only design.** EmbeddingGemma ranks relevant terms but cannot itself parse arbitrary Norwegian word order, logical precedence, numbers and relational conditions into a query AST.
 
-Implement a deterministic **intermediate query representation (IR)** first. The IR is an inspectable data structure, not a free-form SPARQL string generated by an embedding model.
+### 8.1 Typed intermediate representation (IR)
 
-Suggested IR operators:
+Build the versioned JSON IR **and deterministic compiler before model integration**. Restrict operators and validate all inputs:
 
-- `ResolveEntity`, `ResolveClass`, `ResolvePredicate`
-- `Traverse(subject, predicate, direction, object)`
-- `And`, `Or`, scoped `NotExists`
-- `FilterNumeric`, `FilterDate`, `FilterDatatype`
-- `CountDistinct`, `GroupBy`, `Having`
-- `Project`, `OrderBy`, `Limit`
-- `GraphScope`, `ProvenanceRequirement`
+- `ResolveEntity`, `ResolveClass`, `ResolvePredicate` (references must resolve to IDs in the versioned vocabulary catalog)
+- `Traverse(subject, predicate_id, direction, object)`, `And` and bounded `Or`
+- `FilterNumeric`, `FilterDate`, `FilterDatatype`, `CountDistinct`, `GroupBy` and `Having`
+- `Project`, `OrderBy`, `Limit`, `GraphScope` and `ProvenanceRequirement`
+- `NotExists` **only** if the dataset's completeness policy justifies the negative interpretation
 
-Use the retriever to rank candidate IRIs for labels such as “owned by” or “active contract”; verify schema compatibility, edge direction, and graph scope before compiling the plan. The exact compiler must parameterize or safely construct RDF terms and restrict predicates/operators to an approved vocabulary. Run only read-only, bounded queries for normal users.
+Illustrative IR (a conceptual sketch, **not the final JSON Schema**; catalog IDs are resolved before execution):
 
-### 8.2 First supported question families
+~~~json
+{
+  "ir_version": 1,
+  "root_type_id": "catalog:Company",
+  "graph_scope_id": "scope:contracts",
+  "bindings": [
+    {"op": "Traverse", "from": "supplier", "predicate_id": "catalog:hasContract", "direction": "out", "to": "contract"},
+    {"op": "Traverse", "from": "contract", "predicate_id": "catalog:customer", "direction": "out", "to_entity_id": "catalog:OsloMunicipality"},
+    {"op": "Traverse", "from": "contract", "predicate_id": "catalog:status", "direction": "out", "to_entity_id": "catalog:Active"}
+  ],
+  "aggregate": {"op": "CountDistinct", "variable": "contract", "as": "active_count"},
+  "having": {"variable": "active_count", "comparison": ">=", "value": 3},
+  "project": ["supplier", "active_count"]
+}
+~~~
 
-1. Entity or concept lookup.
-2. Find all entities of a resolved class.
-3. Follow one directed relation to a known entity.
-4. Combine two conditions with `AND`.
-5. Follow a two-hop relation chain.
-6. Compare typed numeric or date values.
-7. Count distinct related objects and require a minimum/maximum.
-8. Retrieve SHACL shapes relevant to a property or class.
-9. Identify nodes that fail a supported SHACL constraint.
+### 8.2 Semantic parsing pipeline
 
-If the planner cannot resolve an essential predicate, direction, scope, or negation policy, return an explicit `needs_clarification` or `unsupported` status instead of inventing an answer.
+1. **Route:** determine whether to retrieve, answer a supported structured question, validate, request clarification, or reject an unsupported question.
+2. **Ground:** retrieve a small, authorized set of candidate entities, predicates, classes, datatype hints, direction and named graph scopes using BM25 + EmbeddingGemma. Context comes from the current vocabulary catalog, not a free-floating language-model guess.
+3. **Generate:** a local, quantized instruction model (evaluate a roughly 1.5B-class model first) selects from these terms and produces **grammar-constrained JSON IR** through a backend such as llama.cpp. ONNX is an alternative only when constrained decoding is implemented. **No raw SPARQL from the model.**
+4. **Validate:** check JSON Schema, IR version, permitted operators, authorized catalog IDs, edge direction, class–predicate compatibility, variable binding, datatype/comparison correctness, graph permissions, max path depth, complexity and query scope.
+5. **Abstain on uncertainty:** invalid/missing IDs, ambiguous direction, unsupported negation, unidentified operator precedence or unresolved scope produce `needs_clarification` / `unsupported`. Do not repair guesses by silently choosing a likely relation.
+6. **Compile and execute:** deterministic Rust compiler emits controlled read-only SPARQL with validated/bound RDF terms, time/row/resource limits and no remote `SERVICE` or arbitrary updates; Oxigraph evaluates it.
+7. **Explain:** return resolved term IDs, plan summary, result scope and provenance, evidence, query snapshot and honest completeness status.
 
-### 8.3 Illustrative structured query
+**Critical limitation:** grammar-constrained output guarantees at most structural JSON correctness; a well-formed plan can still express the wrong meaning. Measure **semantic IR accuracy** and **answer-set accuracy** independently.
 
-This is an **example ontology**, not an assertion about the user's actual RDF vocabulary:
+### 8.3 Supported question families
 
-```sparql
+Start with entity/class lookup, one directed relation, conjunction, two-hop paths, numeric/date comparison, distinct counts with bounded `HAVING`, shape search, and supported SHACL violations. Add families only after passing gold regression tests.
+
+Illustrative gold SPARQL for a made-up ontology (the compiler must resolve *actual* RDF terms rather than hard-code these IRIs):
+
+~~~sparql
 PREFIX ex: <https://example.org/ontology/>
 SELECT ?supplier (COUNT(DISTINCT ?contract) AS ?activeCount)
 WHERE {
@@ -245,11 +278,15 @@ WHERE {
 }
 GROUP BY ?supplier
 HAVING (COUNT(DISTINCT ?contract) >= 3)
-```
+~~~
 
-The ontology resolver must discover the real class and predicate IRIs; the plan compiler should not hard-code the example names. The result can be exhaustive relative to the selected RDF graph and query semantics even when no vector search over supplier entities was used.
+For structured questions, the retriever supplies likely *ontology terms*, not a limited list of answer rows. A complete result is possible only **relative to a declared graph scope, semantics and successfully executed query**.
 
-**Acceptance:** compare compiled query results to expert-authored gold SPARQL queries over the same frozen snapshot. Evaluate both exact answer-set F1 and whether the returned provenance supports each answer.
+### 8.4 Planner test and promotion gate
+
+Compare generated IR with expert-authored reference IR/SPARQL over frozen snapshots. Hold out Norwegian paraphrases, reversed predicates, dates, “more than” vs “at least,” scoped negation, nested constraints and graph changes. Include ambiguity, missing evidence, unsupported logic and malicious prompt text inside RDF labels.
+
+Measure: schema-valid vs actually correct IR, exact operator/predicate/direction/value/scope accuracy, execution success, gold answer precision/recall/F1, abstention quality, and full parser CPU p95/RAM. **Define numeric release thresholds in Phase 0** from the target dataset and device; do not infer them from general LLM benchmarks.
 
 ## 9. Graph Encoder Experiments (Optional Upgrade)
 
