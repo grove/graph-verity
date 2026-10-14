@@ -288,231 +288,197 @@ Compare generated IR with expert-authored reference IR/SPARQL over frozen snapsh
 
 Measure: schema-valid vs actually correct IR, exact operator/predicate/direction/value/scope accuracy, execution success, gold answer precision/recall/F1, abstention quality, and full parser CPU p95/RAM. **Define numeric release thresholds in Phase 0** from the target dataset and device; do not infer them from general LLM benchmarks.
 
-## 9. Graph Encoder Experiments (Optional Upgrade)
+## 9. Optional MVP Enhancement: Local Cross-Encoder Reranking
 
-### 9.1 Default alignment strategy
+The default MVP retriever is **B2 = BM25 + EmbeddingGemma 2 rank fusion**. After measuring it, evaluate **B3 = B2 + a local multilingual cross-encoder reranker**, which jointly reads the question and each candidate's concise direction-aware RDF description.
 
-**Start with a frozen EmbeddingGemma 2 encoder and its native 256-dimensional truncated search space.** Train the graph encoder plus a graph projection head to map node/shape representations into that space. This minimizes runtime changes and keeps temporary text embeddings for new nodes meaningfully comparable, subject to calibration tests.
+1. Review locally runnable multilingual rerankers, including BGE-family and smaller alternatives; compare license, CPU inference runtime, quantization and actual Norwegian-directional ranking performance.
+2. Feed the top **10, 20 and 50** B2 candidates to the reranker; preserve predicate and edge direction in the text.
+3. Track **initial Recall@50** and reranked Recall@10, MRR and nDCG@10 separately. A reranker **cannot** recover a correct object absent from the initial candidates.
+4. Benchmark full p50/p95/p99 CPU latency, resident memory, batching, cold/warm startup and question/context lengths on the chosen hardware. The suggested 40–80 ms for 50 pairs is not established and is **not a performance promise**.
+5. If first-stage Recall@50 is poor, improve vocabulary resolution, document verbalization, BM25/vector fusion and candidate selection *before* expecting reranking to help.
+6. Promote the reranker only if measured quality gain justifies memory/latency cost for the MVP. Maintain a B2-only fallback.
 
-Do not independently compare two 256-dimensional vector spaces without alignment. If later training introduces a learned text projection, export **the exact same projection** for online Rust inference; the default document-text fallback must pass through the matching representation path.
-
-### 9.2 CompGCN implementation
-
-1. Construct directed typed edges from resource-to-resource RDF triples, adding inverse relation IDs and self-loops.
-2. Initialize node features from frozen embeddings of node identity/description views, augmented with carefully encoded categorical attributes; avoid solely learned ID vectors.
-3. Initialize relation features from labels/descriptions or trainable embeddings; maintain stable predicate IDs.
-4. Use two CompGCN message-passing layers with a tunable composition function (multiplication/subtraction/correlation) and normalization.
-5. Use relation-stratified neighbor sampling (initial experiment: up to 15 edges per relation and direction per layer), with safeguards for rare or required edges.
-6. Apply a 256-dimensional output projection and L2-normalize.
-7. Compare with an R-GCN baseline under identical train/validation/test splits and compute budgets.
-8. Cache graph embeddings offline; **no GNN execution on the online query path**.
-
-### 9.3 Training data
-
-Store one row per natural-language-to-target link, with at least:
-
-`text`, `target_id`, `target_type`, `language`, `source`, `source_uri`, `named_graph`, `graph_snapshot_id`, `shape_snapshot_id`, `split`, `positive_group_id`, and `generation_template_version`.
-
-Sources: labels/definitions, directed triple verbalizations, natural question templates, reviewed user questions, SHACL explanations, and sourced document passages. Include meaningful Norwegian/English pairs. Tag the target role explicitly for a path description: start node, end node, predicate, shape, or another declared type.
-
-Build **multi-positive** text↔graph contrastive training masks to avoid treating several correct resources for one question as negatives. In-batch negatives must exclude known positives and ambiguous cases. Add hard negatives from verified structural distinctions (including same-class, different-predicate cases), but never assume an absent triple proves falsity under the open-world assumption.
-
-Suggested objective: multi-positive contrastive retrieval loss, with modest optional auxiliary losses for relation/type or link prediction. Tune temperature on validation data; retain training-time temperature and calibration settings in the model manifest.
-
-### 9.4 Training and evaluation protocol
-
-- Keep separate held-out query formulations for ordinary retrieval quality.
-- Add named-graph, domain, time-based, and new-node holdouts for transfer and graph-drift evaluation.
-- Prevent leaked future edges or unseen test nodes from entering graph message passing in an inductive test.
-- Use early stopping on retrieval metrics rather than training loss.
-- Run ablations: remove relation types, reverse edge directions, remove hard negatives, remove SHACL-generated data, and remove node initial text features.
-- Monitor modal collapse, oversmoothing, per-dimension variance, high-degree-node errors, and performance on unseen entities.
-
-### 9.5 Graph encoder promotion gate
-
-Promote CompGCN only if, on a locked independent relational-question test set:
-
-- Recall@10 improves by **at least 10 absolute percentage points** over the text-only baseline.
-- MRR/nDCG and cross-lingual performance do not show unacceptable regressions.
-- Improvements persist across three random seeds and at least one held-out domain/time/new-node evaluation.
-- The expanded build, refresh, and operational cost is justified by the gain.
-
-If the gate fails, retain the text-plus-lexical-plus-SPARQL architecture, and evaluate a targeted reranker or R-GCN before further GNN complexity.
+**Gate:** Define a quality-and-p95 budget in Phase 0 and make the B2 vs B3 decision from held-out relational and cross-lingual questions; do not assume an 8–15 percentage-point improvement.
 
 ## 10. Rust Runtime and Interface Contracts
 
-### 10.1 Core modules
+### 10.1 Two-crate workspace
 
-| Module | Responsibilities |
+Avoid eleven independent Rust crates for a new project with rapidly changing interfaces. Start with **two crates** (or even a single Cargo package containing lib and bin targets if simpler):
+
+| Crate | Responsibility |
 |---|---|
-| `rdf_store` | Oxigraph store lifecycle, named-graph selection, snapshot access, safe SPARQL execution. |
-| `text_encoder` | Tokenization, ONNX invocation, pooling, MRL truncation, L2 normalization. |
-| `vector_index` | Memory mapping, manifest verification, SIMD scan, top-k selection. |
-| `lexical_index` | Exact-term and BM25 lookup. |
-| `registry` | Object IDs, IRIs, type/class/language metadata, provenance. |
-| `retrieval` | Candidate fusion and filtering. |
-| `planner` | Intent detection, IR creation, vocabulary resolution, plan validation. |
-| `sparql_compiler` | Restricted IR-to-SPARQL compilation. |
-| `shape_validator` | Supported SHACL subset, traceable validation results. |
-| `api` | HTTP/CLI input/output, error handling, metrics. |
-| `bundle_manager` | Model/index/graph version checks and atomic activation. |
+| `verity_core` | Engine library with normal internal modules for RDF, registry, embeddings, lexical and vector search, fusion/reranking, ontology resolver, parser adapter, IR, SPARQL compiler, SHACL integration, bundles and shared API types. |
+| `verity_cli` | Thin binary for CLI commands and an optional HTTP server, delegating all domain behavior to the core. |
 
-### 10.2 Suggested API
+Use `pub(crate)`, private modules, traits and tests to express boundaries. Split a module into its own crate **only after** APIs stabilize and a real independent-reuse/build/dependency need appears.
 
-- `POST /v1/search`: ranked relevant RDF objects; `k`, object types, named graphs, and optional validation requested.
-- `POST /v1/ask`: ask a supported structured question; return rows, query-plan summary, answer-set scope, and evidence.
-- `POST /v1/validate`: validate specified focus nodes against specified supported shapes.
-- `GET /v1/status`: active snapshot, model/index versions, supported features, health.
-- Administrative CLI commands: `ingest`, `index-build`, `verify-bundle`, `activate-bundle`, `benchmark`.
+### 10.2 Proposed API and execution contracts
 
-Illustrative answer envelope:
+- `POST /v1/search`: rank entities, classes, predicates and shapes with authorized named-graph/type filters; may request reranking and supported fact checks.
+- `POST /v1/ask`: question → scoped ontology candidates → grammar-constrained JSON IR → deterministic type/authorization checks → compiled SPARQL → results/evidence.
+- `POST /v1/validate`: check explicitly supported SHACL constraints on selected focus nodes, with a coverage report.
+- `GET /v1/status`: active graph/shapes/model/vocabulary/IR schema/parser grammar versions, supported question families, freshness and health.
+- CLI: `ingest`, `index-build`, `verify-bundle`, `activate-bundle`, `evaluate` and `benchmark`.
 
-```json
+Illustrative response envelope (**not an implemented API**):
+
+~~~json
 {
   "status": "verified",
   "mode": "structured",
-  "graph_snapshot_id": "graph-2026-10-14-a",
-  "model_id": "embeddinggemma2-text-256-v1",
+  "graph_snapshot_id": "example-graph-v1",
+  "parser_grammar_id": "query-ir-v1",
+  "ir_schema_version": 1,
   "results": [{"rdf_term": "https://example.org/company/123", "evidence": []}],
   "complete_within_scope": true,
   "scope": {"named_graphs": ["https://example.org/source/registry"]},
-  "plan_id": "plan-7f23"
+  "plan_id": "example-plan"
 }
-```
+~~~
 
-`complete_within_scope` must be `false` or omitted for finite top-*k* candidate retrieval; only a successfully executed exhaustive formal plan may claim it within the explicitly stated graph scope and semantics.
+In production, `verified` and `complete_within_scope` can be asserted **only** if the answer's SPARQL plan ran successfully over the declared scope and its required evidence is available. Ranked top-*k* retrieval can never set `complete_within_scope` to true.
 
-### 10.3 Index read safety and scoring
+### 10.3 Index and query safety
 
-- Verify checksums, dimensions, row count, endianness, finiteness, normalization tolerances, and registry alignment before serving queries.
-- Use SIMD dot products for normalized vectors; test against a scalar reference implementation.
-- Benchmark cold and warm memory mapping separately. Mapping a file does not guarantee that its pages are resident or that first-query latency is zero.
-- Track exact per-stage p50/p95/p99 latency rather than only vector scan time.
+- Verify file checksums, dimensions, row count, endian format, finiteness, row-to-ID registry hashes, normalization tolerance and model/prompt compatibility.
+- Compare SIMD dot-product ranking with a scalar reference. Memory mapping is inexpensive but a cold mapping does not prefetch every page.
+- Track per-stage and end-to-end p50/p95/p99 including embeddings, BM25/vector scan, reranking, ontology retrieval, local generation, plan validation, SPARQL and evidence.
+- Compile a strict, read-only IR and reject unsupported complexity, scope and SPARQL operations before calling Oxigraph.
 
 ## 11. Updates, Versioning, and Refresh
 
-Use a two-tier index lifecycle:
+The MVP does **not** need a graph-neural representation index. Use a two-tier **text index** lifecycle:
 
-1. **Immutable base bundle:** graph snapshot, embeddings, registry, tokenizer, model, and shapes manifest.
-2. **Mutable delta index:** new/changed node text embeddings and a tombstone set for removed objects, with provenance and a clear update watermark.
-3. **Serving snapshot:** Oxigraph read view pinned for each request. The response identifies which graph version was checked and whether any graph-based embeddings were computed on an older snapshot.
+1. **Immutable base bundle:** RDF data snapshot, SHACL snapshot, ontology registry, text embedding matrix, lexical index, tokenizer, embedding-model identity and preprocessing.
+2. **Delta index:** new/changed node **document embeddings** (same text prompt, truncation and normalization as the base), changed lexical documents and tombstones for deletions. Never directly compare embeddings produced by incompatible model/projection spaces.
+3. **Serving view:** pin an Oxigraph read view to a specific graph snapshot; publish retrieval index watermarks/freshness. Revalidate resolved ontology IDs against the executing snapshot, especially after schema changes.
+4. **Parser assets:** pin generative model+quantization digest, tokenizer/runtime, grammar/JSON Schema, **typed-IR schema version**, ontology-catalog hash, compiler revision and supported operations.
+5. **SHACL assets:** pin the SHACL target semantics, validator/compiler version, shapes snapshot, graph-scope policy and cached shape templates where used.
 
-When graph edges change, two-hop CompGCN embeddings for neighboring nodes may become stale. Track changed nodes and the affected neighborhood; prefer a periodic rebuild or an explicit `structural_index_stale` status over claiming perfect freshness. Do not silently mix embeddings from incompatible **model/projection spaces**.
+Publish a candidate bundle, run canary answers and index/grammar/IR compatibility tests, and **atomically** switch the active release pointer with a rollback path.
 
-Build a replacement bundle, verify parity and regression suites, and atomically switch the active bundle pointer. Retain the prior bundle for rollback. Document the policy for partial imports, failed builds, deleted resources, and backward-incompatible ontology revisions.
+Changes to RDF edges can make verbalized neighborhood descriptions stale; schedule the relevant document/delta rebuilds. Do not silently claim fresh retrieval on a stale index or exhaustive matches from an approximate index.
 
-**Acceptance:** crash and rollback tests show that a request never sees a mismatched registry/vector pair or an unacknowledged change of model space.
+**CompGCN two-hop structural invalidation belongs to post-MVP R&D**, not Phase 6. If graph embeddings are introduced later, version and refresh them separately.
+
+**Acceptance:** crash, partial-import, schema-upgrade and rollback tests demonstrate that no request silently mixes incompatible vocabulary, graph, parser, index or SHACL versions.
 
 ## 12. Testing and Evaluation
 
-### 12.1 Test dataset
+### 12.1 Frozen benchmark
 
-Prepare a frozen gold set with **all valid answers known where feasible**, sourced from expert-authored SPARQL, reviewed user questions, and verified graph snapshots. Cover:
+Build a gold set of Norwegian user questions with **all correct result bindings known where feasible**, expert-authored SPARQL, IR examples and explicit selected RDF snapshots. Keep held-out paraphrases and a domain/time/named-graph holdout where appropriate.
 
-- Entity/concept lookup; exact IRI or identifier lookup.
-- One-hop relations with direction changes and near-identical labels.
-- Two-hop and multi-constraint relations.
-- SHACL shape retrieval and data-quality violations.
-- Counts, comparison operators, dates, conjunction, and scoped negation.
-- Norwegian questions over English-labeled graphs.
-- New/changed nodes, partial/contradictory sources, high-degree hubs, rare classes.
-- Questions with no supported answer, unknown answer, or unsupported operations.
+Test: entity/term lookup; inverse and similarly named relations; one/two hops; joins and conjunction; numeric/date filters; counting with `HAVING`; multilingual Norwegian→English; SHACL shape relevance and violations; subclasses, ill-typed literals, blank nodes and named-graph scope; missing/conflicting data; new/deleted nodes; ambiguous or unsupported questions; and prompt-injection text hidden in RDF labels.
 
 ### 12.2 Comparison matrix
 
-| System | Retrieval | Structured execution |
+| System | Retrieval stage | Structured question evaluation |
 |---|---|---|
-| B0: lexical BM25 | Baseline | No, unless explicit template resolves. |
-| B1: EmbeddingGemma text only | Baseline | Supported templates. |
-| B2: lexical + embedding + RDF filtering | Expected initial production candidate | Supported templates. |
-| B3: B2 + reranker | Optional quality alternative | Supported templates. |
-| B4: B2 + R-GCN alignment | Controlled GNN alternative | Supported templates. |
-| B5: B2 + CompGCN alignment | Experimental proposed architecture | Supported templates. |
+| B0: lexical | BM25 only | Fixed deterministic templates only. |
+| B1: text vectors | EmbeddingGemma only | Fixed deterministic templates only. |
+| **B2: MVP baseline** | BM25 + EmbeddingGemma hybrid | Parser uses B2 ontology candidates; same IR/compiler. |
+| **B3: optional** | B2 + reranker | Same parser/IR/compiler, evaluate the effect of better ranking. |
+| **Q0: compiler oracle** | Gold resolved ontology + expert IR | Measures compiler and executor independently of ML. |
+| **Q1: end-to-end** | B2/B3 + local constrained parser | Measures natural language → IR → verified result set. |
 
-### 12.3 Metrics and proposed gates
+CompGCN and R-GCN are **not MVP benchmarks**. After release, compare them against the **strongest approved production baseline**, including B3 if adopted.
 
-| Metric | Use / initial gate |
+### 12.3 Metrics and promotion gates
+
+| Metric | Required interpretation |
 |---|---|
-| Recall@1/10/20/100, MRR, nDCG@10 | Retrieval quality by query family and language. |
-| Absolute Recall@10 gain on relational queries | **≥10 percentage points** for CompGCN promotion. |
-| Exact-result precision/recall/F1 | Measure structured-answer correctness against gold SPARQL. |
-| Planner intent/IR accuracy | Track separately from retrieval and SPARQL execution. |
-| Constraint agreement | **100%** on the specifically supported and pinned SHACL test suite. |
-| Evidence coverage | Every `verified` answer must carry a reproducible graph-derived justification. |
-| Latency | Per-stage p50/p95/p99 on a declared CPU, question length, dataset, and cache state. |
-| RAM/size/startup | Record full resident memory (including ONNX session), on-disk artifacts, and cold/warm startup. |
-| Freshness/regressions | Run fixed canary questions on every graph import and model release. |
+| Initial Recall@10/20/**50**/100, MRR, nDCG@10 | Measure term/candidate coverage separately from reranker gain. |
+| Reranked Recall@10, directional accuracy, p95/RAM | Promote B3 only with meaningful benefit and acceptable cost. |
+| JSON Schema conformance | A syntactically invalid plan must never execute; this does **not** measure semantic correctness. |
+| Typed IR correctness | Correct operators, direction, comparisons, entity/predicate IDs, variable binding, graph scope and aggregation. |
+| Exact answer-set precision/recall/F1 | Compare to gold SPARQL; track query execution errors and unsupported questions. |
+| Ambiguity/unsupported abstention | Test that uncertain interpretations stop rather than produce confident false answers. |
+| SHACL differential parity | **100% on the pinned supported-fixture subset**, with documented exclusions. |
+| Evidence coverage | Every claimed verified answer traces back to graph facts, constraints and snapshot. |
+| Full CPU p50/p95/p99, resident RAM and cold/warm boot | Include local generation and reranking; no speculative 5–15 ms whole-pipeline target. |
+| Freshness and rollback | Fixed canaries on every data/model/parser/grammar release. |
 
-**Performance targets (hypotheses, not guaranteed specifications):** start by measuring typical short-query p95, long-query p95, cold vs warm indexing, and aggregate queries under load. Define release latency budgets after the first target-hardware benchmark rather than promising 5–15 ms full-query latency in advance.
+**Set numerical thresholds in Phase 0** using the actual graph, target CPU, question mix and domain tolerance for false positives. A grammar can achieve high JSON validity and still have poor execution accuracy; track both separately.
+
+### 12.4 Isolation and security tests
+
+- **IR compiler:** expert IR → expected SPARQL semantics → gold graph result sets, without a model.
+- **Vocabulary resolver:** Norwegian phrases → correct class/property/entity IDs and direction.
+- **Parser:** known catalog choices + paraphrases → valid and semantically correct IR, or safe abstention.
+- **Complete engine:** natural question → retrieval → constrained parser → validated plan → SPARQL → evidence.
+- **Operations:** corrupted bundles, inaccessible graphs, stale text documents, cancelled inference, timeouts and runtime fallback.
 
 ## 13. Security and Reliability
 
-- Default to read-only SPARQL for user-facing requests; prevent arbitrary SPARQL update and unrestricted remote-service clauses.
-- Enforce named-graph permissions before retrieval, plan construction, and evidence rendering—not only after the final result is produced.
-- Put limits on query timeout, join expansion, path depth, returned rows, and memory; reject pathological plans.
-- Validate and sanitize RDF terms and user-controlled filters using a typed AST rather than naive string interpolation.
-- Avoid storing raw confidential user questions in logs by default; document retention and deletion behavior.
-- Capture structured errors for ambiguity, no evidence, unsupported constraint, stale index, timeout, and corrupt bundle.
-- Test reproducibility, rollbacks, filesystem permissions, local/offline operation, and third-party binary/model license obligations.
-- Document the model license and any separate acceptable-use requirements for the chosen model release.
+- **Graph text is untrusted input.** RDF labels/comments and linked document snippets may contain prompt-injection attempts; never elevate them from data into instructions for the generator.
+- Grammar-constrained JSON is a serialization control, **not** a semantic or authorization boundary. Every output passes deterministic typed-IR checks and catalog/scope authorization.
+- Keep allowed operators, predicate IDs, classes, graph scopes, datatype comparisons, path depths and aggregation types on a strict allowlist; the model cannot issue raw SPARQL or updates.
+- Compile typed and validated RDF terms safely; avoid user-text interpolation and disable remote `SERVICE` and unbounded property-path operations by default.
+- Restrict local generation tokens, candidate context size, graph-query time, path expansion, row count, output size and memory; allow cancellation and explicit failure statuses.
+- Enforce named-graph access **before** retrieval, ontology-context generation, execution and evidence rendering—not merely at the output layer.
+- Do not retain sensitive raw user questions by default; use opt-in diagnostic traces with appropriate access and retention policy.
+- Validate model weights, local native inference dependencies, quantization, tokenizer/grammar, bundled data and third-party licenses during release.
+- Include regressions for wrong-direction relations, illicit scopes, malformed IR, injection attempts and incomplete data.
 
 ## 14. Proposed Delivery Phases
 
-**Indicative schedule:** 16–20 engineering weeks for a small team (one Rust engineer, one ML engineer, one RDF/semantic engineer, with part-time domain review). This is a planning estimate, not a commitment; graph quality and ontology complexity can change the duration substantially.
+**Indicative schedule: about 20 engineering weeks, gated by test results**, with a Rust engineer and periodic RDF/domain/ML support. This is not a promise that a small local model will solve all Norwegian paraphrases within three weeks. Scope and dates must adapt to benchmark results and available people.
 
-| Phase | Timing (indicative) | Work | Exit artifact / gate |
+| Phase | Indicative timing | Deliverables | Exit criterion |
 |---|---|---|---|
-| 0. Requirements and benchmark | Weeks 1–2 | Choose ontology, dataset, exact question families, semantics contract, target CPU, gold set. | Signed-off scope and frozen benchmark definition. |
-| 1. Ingestion and vocabulary | Weeks 3–4 | Oxigraph ingestion, named graphs, IDs, shape AST, provenance, verbalization. | Reproducible dataset and resource registry. |
-| 2. Baseline runtime | Weeks 5–7 | EmbeddingGemma ONNX export, Rust parity, index, BM25, search API. | Working local Norwegian→English search. |
-| 3. Formal checking | Weeks 8–10 | SHACL subset, validation traces, SPARQL integration and reference tests. | Verified candidate search with scoped evidence. |
-| 4. Structured planner | Weeks 11–13 | Intent routing, typed IR, safe SPARQL compiler, counts/joins/filters. | Controlled multi-condition question answering. |
-| 5. GNN experiment | Weeks 14–16 | PyG R-GCN and CompGCN, multi-positive training, ablations, holdouts. | Promotion/rejection report against +10 pp gate. |
-| 6. Hardening and pilot | Weeks 17–20 | Delta indexing, bundle activation, regression suite, latency/security tests. | Pilot release with monitored quality and rollback. |
+| **0. Benchmarks and contracts** | Weeks 1–2 | Frozen graph, gold answers, supported question families, typed IR/JSON Schema, scopes, target CPU and release gates. | Expert-reviewed benchmark and IR spec. |
+| **1. RDF ingestion and vocabulary** | Weeks 3–4 | Oxigraph, deterministic graph/named graphs, ontology catalog, verbalization, SHACL library assessment. | Reproducible import and vocabulary ID tests. |
+| **2. Hybrid search** | Weeks 5–7 | EmbeddingGemma ONNX, Rust parity, flat vector index, BM25, `/v1/search`. | B2 retrieval quality, pre-rerank Recall@50 and CPU measurements. |
+| **3. RDF/SHACL verification** | Weeks 8–10 | Existing validator integration or bounded cached SPARQL constraint templates; evidence. | Differential parity for supported SHACL fixtures. |
+| **4. Semantic parser + IR compiler** | Weeks 11–15 | Local constrained generator, ontology-scoped prompts, IR validator, safe SPARQL compiler and `/v1/ask`. | Supported Norwegian query families pass gold answer and safe-abstention gates. |
+| **5. Optional reranker + error analysis** | Weeks 16–17 | B3 comparison on 10/20/50 candidates, latency/RAM, retrieval failure analysis. | Explicit adopt/reject decision vs B2. |
+| **6. Hardening and pilot** | Weeks 18–20 | Compatible bundle activation, delta updates, permissions, offline packaging, load/rollback tests. | Pilot definition of done. |
+
+**Deferred:** CompGCN/R-GCN training, relational vector refresh, and model alignment **after** the MVP. Preserve the experimental recipe in Appendix A without committing MVP weeks to it.
 
 ### 14.1 Phase-by-phase checklists
 
-**Phase 0 — foundations**
-- [ ] Freeze example RDF/SHACL datasets and expected-answer queries.
-- [ ] Declare graph scope and entailment rules.
-- [ ] Specify which questions require exhaustive results.
-- [ ] Record the target CPU/RAM and latency measurement methodology.
+**Phase 0 — specification**
+- [ ] Freeze ontology, source data, named-graph/entailment semantics, Norwegian questions and expert gold SPARQL.
+- [ ] Define IR operators/JSON Schema and which question patterns are in-scope.
+- [ ] Set answer-set/abstention accuracy gates and full CPU/RAM budgets.
 
-**Phase 1 — data ingestion**
-- [ ] Make imports deterministic and preserve named graphs.
-- [ ] Implement stable object registry and shape AST.
-- [ ] Generate traceable multilingual resource verbalizations.
-- [ ] Add data-quality checks and import reports.
+**Phase 1 — ingestion**
+- [ ] Preserve graph provenance, RDF literals, language tags, predicate direction and stable resource IDs.
+- [ ] Build catalog of actual class, predicate and entity IDs plus type/domain/range hints.
+- [ ] Evaluate Rudof/`shacl` against the required subset and Oxigraph integration.
+- [ ] Reuse shape parsing; cache reviewed validation plans on shape update where needed.
 
-**Phase 2 — searchable baseline**
-- [ ] Validate Python↔Rust embedding parity.
-- [ ] Build flat index and lexical index with integrity checks.
-- [ ] Implement search and object metadata APIs.
-- [ ] Establish baseline Recall@k and runtime measurements.
+**Phase 2 — retrieval**
+- [ ] Match Python and Rust query/document embedding behavior and ONNX quantization.
+- [ ] Implement vector + BM25 fusion; support authorized scope filters.
+- [ ] Measure pre-rerank Recall@50/100 and relational/cross-language errors.
+- [ ] Ship a genuinely usable `/v1/search` without a GNN.
 
-**Phase 3 — exact validation**
-- [ ] Define a supported SHACL constraint matrix.
-- [ ] Implement typed AST compilation and per-focus-node reports.
-- [ ] Differential-test against a reference validator.
-- [ ] Return explicit unsupported/unknown statuses.
+**Phase 3 — exact semantics**
+- [ ] Pin supported SHACL 2017 constraints and class/entailment policy.
+- [ ] Differential-test subclass, datatype, counts, blank nodes and graph scope.
+- [ ] Expose trustworthy evidence and unsupported/nonconformant statuses.
 
-**Phase 4 — question planner**
-- [ ] Add intent routing and schema/predicate resolution.
-- [ ] Implement restricted query IR and safe compiler.
-- [ ] Test joins, counts, comparisons, and source scope.
-- [ ] Prevent top-*k* search from masquerading as an exhaustive answer.
+**Phase 4 — local semantic parser**
+- [ ] Test deterministic IR→SPARQL execution from expert IR first.
+- [ ] Retrieve ontology terms into an authorized, constrained generator context.
+- [ ] Benchmark a small local parser on Norwegian paraphrase and operator tests.
+- [ ] Enforce typed/authorized IR and safe SPARQL limits; return clarification/unsupported instead of guessing.
+- [ ] Establish end-to-end answer precision/recall/F1, abstention and p95 numbers.
 
-**Phase 5 — graph ML**
-- [ ] Freeze text embeddings and build multi-positive pairs.
-- [ ] Train R-GCN and CompGCN under matched conditions.
-- [ ] Run leakage-safe relational and cross-lingual evaluation.
-- [ ] Promote CompGCN only after the agreed uplift gate.
+**Phase 5 — optional reranking**
+- [ ] Compare B2 vs B3 on Recall@10, MRR, nDCG, CPU p95 and RAM.
+- [ ] Test top-10/20/50 reranking and B2 fallback.
+- [ ] Reject reranking if it adds latency without meaningful quality improvement.
 
-**Phase 6 — release engineering**
-- [ ] Implement base+delta lifecycle and atomic version activation.
-- [ ] Run canary queries on every import or release.
-- [ ] Benchmark cold/warm p95 and p99 on the real CPU.
-- [ ] Test permission boundaries, timeouts, failures, and rollback.
+**Phase 6 — production**
+- [ ] Atomically activate and rollback compatible graph/index/ontology/parser bundles.
+- [ ] Build updated document embeddings and lexical deltas for changed/new nodes.
+- [ ] Test access controls, malicious graph text, timeouts, offline operation and regression canaries.
 
 ## 15. Repository and Artifacts
 
@@ -628,3 +594,54 @@ The implementation decisions above combine the supplied architecture notes with 
 - [pySHACL reference validator](https://github.com/RDFLib/pySHACL)
 
 **Standards policy:** use the 2017 W3C SHACL Recommendation as the first production validation contract. SHACL 1.2 Core remained a Working Draft in October 2026 and should be evaluated/versioned separately rather than silently treated as stable.
+
+## Appendix A. Post-MVP Graph Encoder Research
+
+### A.1 Default alignment strategy
+
+**Start with a frozen EmbeddingGemma 2 encoder and its native 256-dimensional truncated search space.** Train the graph encoder plus a graph projection head to map node/shape representations into that space. This minimizes runtime changes and keeps temporary text embeddings for new nodes meaningfully comparable, subject to calibration tests.
+
+Do not independently compare two 256-dimensional vector spaces without alignment. If later training introduces a learned text projection, export **the exact same projection** for online Rust inference; the default document-text fallback must pass through the matching representation path.
+
+### A.2 CompGCN implementation
+
+1. Construct directed typed edges from resource-to-resource RDF triples, adding inverse relation IDs and self-loops.
+2. Initialize node features from frozen embeddings of node identity/description views, augmented with carefully encoded categorical attributes; avoid solely learned ID vectors.
+3. Initialize relation features from labels/descriptions or trainable embeddings; maintain stable predicate IDs.
+4. Use two CompGCN message-passing layers with a tunable composition function (multiplication/subtraction/correlation) and normalization.
+5. Use relation-stratified neighbor sampling (initial experiment: up to 15 edges per relation and direction per layer), with safeguards for rare or required edges.
+6. Apply a 256-dimensional output projection and L2-normalize.
+7. Compare with an R-GCN baseline under identical train/validation/test splits and compute budgets.
+8. Cache graph embeddings offline; **no GNN execution on the online query path**.
+
+### A.3 Training data
+
+Store one row per natural-language-to-target link, with at least:
+
+`text`, `target_id`, `target_type`, `language`, `source`, `source_uri`, `named_graph`, `graph_snapshot_id`, `shape_snapshot_id`, `split`, `positive_group_id`, and `generation_template_version`.
+
+Sources: labels/definitions, directed triple verbalizations, natural question templates, reviewed user questions, SHACL explanations, and sourced document passages. Include meaningful Norwegian/English pairs. Tag the target role explicitly for a path description: start node, end node, predicate, shape, or another declared type.
+
+Build **multi-positive** text↔graph contrastive training masks to avoid treating several correct resources for one question as negatives. In-batch negatives must exclude known positives and ambiguous cases. Add hard negatives from verified structural distinctions (including same-class, different-predicate cases), but never assume an absent triple proves falsity under the open-world assumption.
+
+Suggested objective: multi-positive contrastive retrieval loss, with modest optional auxiliary losses for relation/type or link prediction. Tune temperature on validation data; retain training-time temperature and calibration settings in the model manifest.
+
+### A.4 Training and evaluation protocol
+
+- Keep separate held-out query formulations for ordinary retrieval quality.
+- Add named-graph, domain, time-based, and new-node holdouts for transfer and graph-drift evaluation.
+- Prevent leaked future edges or unseen test nodes from entering graph message passing in an inductive test.
+- Use early stopping on retrieval metrics rather than training loss.
+- Run ablations: remove relation types, reverse edge directions, remove hard negatives, remove SHACL-generated data, and remove node initial text features.
+- Monitor modal collapse, oversmoothing, per-dimension variance, high-degree-node errors, and performance on unseen entities.
+
+### A.5 Graph encoder promotion gate
+
+Consider a *separate post-MVP promotion* only if, on a locked independent relational-question test set:
+
+- Recall@10 improves by **at least 10 absolute percentage points** over the **strongest approved production retrieval baseline** (including a reranker if enabled).
+- MRR/nDCG and cross-lingual performance do not show unacceptable regressions.
+- Improvements persist across three random seeds and at least one held-out domain/time/new-node evaluation.
+- The expanded build, refresh, and operational cost is justified by the gain.
+
+If the gate fails, keep the MVP text/lexical/reranking + SPARQL architecture rather than introducing graph-vector lifecycle costs.
