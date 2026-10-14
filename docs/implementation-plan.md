@@ -1,8 +1,8 @@
-# RDF-Native Semantic Retrieval and Query Engine
-## Detailed Implementation Plan
+# Graph Verity — RDF Semantic Retrieval & Question Answering
+## Detailed Implementation Plan, Revised MVP
 
-**Document date:** 14 October 2026  
-**Status:** Proposed engineering plan  
+**Revised:** 14 October 2026  
+**Status:** Proposed engineering plan; implementation not yet started  
 **Initial scale:** 10,000–100,000 searchable RDF resources  
 **Primary languages:** Norwegian questions; Norwegian and English graph labels  
 **Runtime:** Local Rust process, without an external database or hosted AI inference service
@@ -331,7 +331,7 @@ Illustrative response envelope (**not an implemented API**):
   "graph_snapshot_id": "example-graph-v1",
   "parser_grammar_id": "query-ir-v1",
   "ir_schema_version": 1,
-  "results": [{"rdf_term": "https://example.org/company/123", "evidence": []}],
+  "results": [{"rdf_term": "https://example.org/company/123", "evidence": [{"source_graph": "https://example.org/source/registry", "statement": "illustrative checked RDF fact"}]}],
   "complete_within_scope": true,
   "scope": {"named_graphs": ["https://example.org/source/registry"]},
   "plan_id": "example-plan"
@@ -482,120 +482,144 @@ CompGCN and R-GCN are **not MVP benchmarks**. After release, compare them agains
 
 ## 15. Repository and Artifacts
 
-```text
-rdf-query-engine/
-  Cargo.toml
+**Proposed code layout: two crates, not eleven.** The following directories are *planned*, not already implemented.
+
+~~~text
+graph-verity/
+  README.md
+  LICENSE
+  Cargo.toml                        # Rust workspace (future)
   crates/
-    api/
-    rdf_store/
-    registry/
-    text_encoder/
-    lexical_index/
-    vector_index/
-    retrieval/
-    planner/
-    sparql_compiler/
-    shape_validator/
-    bundle_manager/
+    verity_core/
+      src/
+        lib.rs
+        rdf/
+        registry/
+        embeddings/
+        lexical/
+        retrieval/
+        reranking/
+        planner/                   # ontology context, constrained parser, IR
+        sparql/                    # safe compiler and executor
+        shacl/
+        bundles/
+        api_types/
+    verity_cli/
+      src/main.rs                  # CLI and optional HTTP server
   ml/
-    data_build/
-    encoders/
-    compgcn/
-    rgcn/
-    losses/
-    train/
-    export/
     evaluation/
+    export/
+    post_mvp_gnn_research/
   tests/
     fixtures/rdf/
     fixtures/shacl/
-    gold_queries/
-    rust_python_parity/
+    golden_sparql/
+    golden_ir/
+    norwegian_paraphrases/
+    parser/
+    compiler/
     regression/
+    authorization/
+    rust_python_parity/
   configs/
     dataset.yaml
     inference.yaml
     evaluation.yaml
-  artifacts/                 # generated, normally not committed
+  artifacts/                      # generated, typically not committed
     releases/<release_id>/
       graph_snapshot/
       registry.parquet
+      ontology_catalog.json
       shapes_ast.json
+      cached_shape_queries/
       vectors.bin
       nodes.index
-      text_model.onnx
-      tokenizer.json
-      model_manifest.json
+      bm25_index/
+      embedding_model.onnx
+      embedding_tokenizer.json
+      parser_model/
+      parser_grammar.json
+      ir_schema.json
       index_manifest.json
+      bundle_manifest.json
       checksums.sha256
   docs/
-    architecture.md
-    semantic_contract.md
-    supported_shacl.md
-    api.md
-    benchmark_methodology.md
-    deployment.md
-```
+    implementation-plan.md
+~~~
 
-**Version-controlled:** source code, pinned dependencies, configurations, schemas, reproducible data-preparation rules, test fixtures, evaluation definitions.  
-**Versioned external artifacts:** original RDF release, large trained weights, graph snapshot, vector files, model exports, manifests, and benchmark reports.
+**Keep in Git:** schemas, code, test fixtures, configurations, reproducible preprocessing rules, reference queries and evaluation methods. **Keep as versioned release artifacts:** large model weights, indexes, full graph snapshots, benchmark outputs and derived bundles.
+
+When a module needs a stronger boundary, use ordinary Rust visibility/traits first; split into a new crate only if build/reuse/dependency constraints justify it.
 
 ## 16. Primary Risks and Mitigations
 
-| Risk | Likely consequence | Mitigation |
+| Risk | Consequence | Mitigation |
 |---|---|---|
-| CompGCN adds little beyond rich textual neighborhoods | High training cost without retrieval uplift | Strong text+lexical baseline and explicit 10 pp gate. |
-| False negatives from incomplete RDF | Misleading alignment and weak recall | Multi-positive masks and verified structural negatives. |
-| Retrieval top-*k* misses valid entities | Incomplete structured answers | Use graph-first exhaustive SPARQL for structured mode. |
-| Relations are directionally ambiguous | Incorrect plans and explanations | Typed predicate resolution and direction tests. |
-| SHACL AST flattening changes logic | Incorrect validation | Preserve semantics in AST; differential validation. |
-| New nodes use uncalibrated text vectors | Ranking anomalies | Frozen common space, score calibration, delta index tests. |
-| Graph changes stale two-hop embeddings | Missed or misranked results | Track affected neighborhoods, expose freshness, rebuild. |
-| ONNX conversion changes representations | Silent retrieval regression | Python↔Rust parity, finite-value checks, model checksum. |
-| Complex graph queries consume resources | Slowdowns or denial of service | Restricted IR, limits, deadlines, read-only execution. |
-| License or binary packaging issues | Blocked deployment | Verify model/license obligations and runtime packaging early. |
+| Generative parser emits valid JSON but wrong relation, operator, direction or number | False structured answers despite constrained grammar | Ontology-scoped candidates, deterministic typed checks, gold Norwegian paraphrases, IR scoring and safe abstention. |
+| Relevant ontology predicate absent from retrieved context | Parser cannot form a correct plan | Measure predicate/entity candidate recall; improve lexical+vector retrieval and controlled candidate expansion before adding parser complexity. |
+| Missing triples are interpreted as negatives | Incorrect compliance and data-quality claims | Explicit graph completeness/entailment contract and abstention for unsupported negation. |
+| Tiny parser model lacks Norwegian competence | Incorrect IR, poor acceptance rate or high latency | Benchmark multiple local model sizes and phrasing families on target hardware before selecting one. |
+| Reranker fails to improve Recall@10 or exceeds CPU budget | Added latency and RAM without value | Compare B2/B3 at top 10/20/50, track Recall@50 and retain B2 fallback. |
+| Existing SHACL library integration is incomplete | Divergent reports or delayed Phase 3 | Test Rudof/`shacl` early; use a bounded, cached SPARQL subset if needed, with pinned differential tests. |
+| Subclass/datatype/named-graph semantics diverge | False SHACL conformance claims | Test `rdf:type/rdfs:subClassOf*` where relevant, ill-typed literals and graph scope against reference fixtures. |
+| Prompt injection in RDF labels or source documents | Model-induced unauthorized or misleading plans | Treat retrieved text as data; grammar, IR allowlist, ontology/permission validation and read-only compiler are mandatory. |
+| Model, IR schema, vocabulary or graph version drift | Incompatible embeddings and unsafe plans | Hashed manifests, atomic bundle swaps, canary tests and rollback. |
+| Incorrect top-*k* completeness claims | Partial result sets presented as exhaustive | Retrieval is candidate discovery; only exhaustive formal queries may claim complete-within-scope answers. |
+| Eleven premature crates slow changes | Extra dependency/struct/error-conversion overhead | Two-crate workspace, internal modules, split only once interfaces stabilize. |
+| CPU timing guesses treated as guarantees | Missed operational targets | Benchmark complete pipeline p50/p95/p99 and peak RAM; define budgets from actual device. |
+| CompGCN brings marginal benefit and stale structural embeddings | Unnecessary training and refresh complexity | Move GNN to post-MVP research and require gain over strongest production retrieval. |
 
 ## 17. Definition of Done
 
-Release the pilot only when the following are all true:
+The first pilot is ready only when:
 
-- [ ] A clean offline installation starts one Rust process with a local model, index, and Oxigraph dataset.
-- [ ] Norwegian questions can retrieve English-described graph objects with measured, documented Recall@k.
-- [ ] All accepted results identify the relevant RDF terms and graph snapshot; any `verified` claim includes checkable evidence.
-- [ ] The explicitly supported SHACL subset passes pinned reference tests; unsupported shapes are marked as such.
-- [ ] Supported structured question families produce answer sets that match expert-authored gold SPARQL within the chosen graph scope.
-- [ ] Users can distinguish approximate retrieval results from exhaustive formal answers.
-- [ ] Python→ONNX→Rust embedding parity and index/registry consistency tests pass.
-- [ ] Bundle mismatches, stale embeddings, and failures are surfaced rather than hidden.
-- [ ] The system meets performance and memory targets measured on the nominated target machine.
-- [ ] There is a documented rollback procedure and a fixed regression suite for every dataset/model change.
-- [ ] CompGCN is used in production **only if** its independent evaluation crosses the agreed improvement threshold.
+- [ ] A local/offline Rust process runs with Oxigraph, an embedding model, compatible indexes and a pinned local semantic-parser runtime.
+- [ ] Norwegian↔English RDF retrieval and **pre-rerank Recall@50** are measured on the frozen benchmark; B2 works without GNNs or reranking.
+- [ ] An ontology-scoped small local generator produces *candidate* typed IR; **no** invalid, unauthorized or unsupported IR can reach SPARQL execution.
+- [ ] Supported Norwegian compositional questions achieve the pre-agreed **gold answer-set F1 / accuracy** and safe-abstention criteria, not merely valid JSON.
+- [ ] Typed IR compilation uses resolved RDF terms, correct relation direction, typed filters, bounded aggregation, graph scopes and read-only operations.
+- [ ] The documented supported SHACL subset passes its pinned differential reference suite; unsupported constraints are explicitly reported.
+- [ ] Verified results have reproducible evidence; exhaustive-within-scope is asserted only after exhaustive graph execution over declared data/semantics.
+- [ ] Wrong-direction, dates, amounts, more-than/at-least, blank-node, subtype, graph-scope, missing-data and prompt-injection tests pass.
+- [ ] Python/ONNX/Rust embedding parity, model/grammar/IR/ontology/index compatibility, changed-node deltas and rollback tests pass.
+- [ ] Target-device end-to-end p95 latency and resident-memory budgets (including parser and enabled reranker) meet **Phase 0** thresholds.
+- [ ] B3 is deployed only if its measured value justifies CPU/RAM cost; otherwise B2 remains the retrieval path.
+- [ ] No CompGCN/R-GCN implementation, special structural-index freshness service or related promotion gate is required to finish MVP.
 
 ## 18. Final Recommendation
 
-Deliver the product in **two independently useful layers**:
+Develop **Graph Verity** as a practical, local-first RDF question-answering engine:
 
-1. **RDF-aware retrieval and verification:** EmbeddingGemma 2, lexical search, Oxigraph, provenance, and a bounded SHACL evaluator. This should be the first production-quality milestone.
-2. **Compositional question answering:** a typed query planner resolving RDF entities/predicates into SPARQL joins, counts, filters, and constraints. This is the most important extension for exact multi-condition questions.
+1. **Dependable retrieval:** EmbeddingGemma 2 + BM25 to find real RDF terms with documented recall and provenance.
+2. **Controlled understanding:** a compact local generative semantic parser grounded in the ontology catalog, producing JSON for a **typed query IR**, with an explicit abstention path.
+3. **Verifiable execution:** deterministic IR validation and SPARQL compilation, Oxigraph, and a maintained/validated SHACL implementation or a reviewed bounded SPARQL subset.
+4. **Measured ranking improvements:** try a multilingual cross-encoder on actual candidate descriptions; adopt it only if held-out gains justify CPU/RAM cost.
+5. **Research later:** test CompGCN/R-GCN only after the MVP, and only against the strongest working retrieval baseline.
 
-Treat **CompGCN as a measurable enhancement, not a foundational dependency**. It may improve candidate ranking, but it does not remove the need for explicit query planning or exact graph semantics.
+The differentiator is not a new GNN. It is the combination of natural-language interpretation, **ontology-aware planning**, exact graph execution, and reproducible evidence in a self-hosted Rust service.
 
 ## 19. Reference Documentation
 
-The implementation decisions above combine the supplied architecture notes with these technical references:
+The architecture extends the original graph/text alignment proposal while reprioritizing the implementation:
 
-- [Google: EmbeddingGemma 2 model card](https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2)
-- [Google: EmbeddingGemma 2 with Sentence Transformers](https://ai.google.dev/gemma/docs/embeddinggemma/inference-embeddinggemma-with-sentence-transformers)
-- [Oxigraph Rust `Store` API](https://docs.rs/oxigraph/latest/oxigraph/store/struct.Store.html)
-- [ONNX Runtime `ort` Rust API](https://docs.rs/ort/latest/ort/)
-- [PyTorch Geometric R-GCN operator](https://pytorch-geometric.readthedocs.io/en/latest/_modules/torch_geometric/nn/conv/rgcn_conv.html)
-- [W3C SHACL Recommendation (2017)](https://www.w3.org/TR/shacl/)
-- [W3C SHACL 1.2 Core Working Draft (2026)](https://www.w3.org/TR/shacl12-core/)
-- [pySHACL reference validator](https://github.com/RDFLib/pySHACL)
+- [EmbeddingGemma 2 model card](https://ai.google.dev/gemma/docs/embeddinggemma/model_card_2) — tokenizer, numerical format, multilingual embeddings and Matryoshka truncation.
+- [EmbeddingGemma with Sentence Transformers](https://ai.google.dev/gemma/docs/embeddinggemma/inference-embeddinggemma-with-sentence-transformers) — query/document encoding conventions.
+- [Oxigraph Rust Store](https://docs.rs/oxigraph/latest/oxigraph/store/struct.Store.html) — embedded RDF quad store and SPARQL.
+- [ONNX Runtime, Rust `ort`](https://docs.rs/ort/latest/ort/) — text encoder inference.
+- [llama.cpp](https://github.com/ggml-org/llama.cpp) — evaluate local small-model inference with grammar/schema-constrained decoding.
+- [Rudof](https://github.com/rudof-project/rudof) and [Rust `shacl` crate](https://crates.io/crates/shacl) — evaluate existing parsing/validation before custom implementation.
+- [W3C SHACL Recommendation (2017)](https://www.w3.org/TR/shacl/) — initial validation semantics contract.
+- [W3C SHACL 1.2 Core](https://www.w3.org/TR/shacl12-core/) — separate future/versioned semantics target.
+- [pySHACL](https://github.com/RDFLib/pySHACL) — pinned differential/reference testing.
+- [PyTorch Geometric R-GCN](https://pytorch-geometric.readthedocs.io/en/latest/_modules/torch_geometric/nn/conv/rgcn_conv.html) — post-MVP GNN comparator.
 
-**Standards policy:** use the 2017 W3C SHACL Recommendation as the first production validation contract. SHACL 1.2 Core remained a Working Draft in October 2026 and should be evaluated/versioned separately rather than silently treated as stable.
+**Standards policy:** pin the **2017 SHACL Recommendation** and a documented entailment/graph scope for MVP validation. Do not treat SHACL 1.2 features as automatically supported.
+
+**Model policy:** model choices and suggested size ranges are starting hypotheses. Confirm license, Norwegian semantic-parsing accuracy, ONNX/native runtime availability, RAM and full CPU latency in Phase 0 before locking them in.
 
 ## Appendix A. Post-MVP Graph Encoder Research
+
+**Not scheduled for the MVP.** The following is preserved as a future experiment specification. Its promotion test uses the strongest deployed B2/B3 baseline, not a weaker text-only baseline.
 
 ### A.1 Default alignment strategy
 
