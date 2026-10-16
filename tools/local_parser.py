@@ -315,14 +315,17 @@ def summarize(report):
             "semantic_accuracy_claim": "AI-reference agreement; variable-sensitive structural equality; no independent expert gold"}
 
 
-def evaluate(cfg, out, dataset, split, memory):
+def evaluate(cfg, out, dataset, split, memory, *, benchmark_path=None):
     out.mkdir()
-    benchmark = json.loads((ROOT / f"benchmarks/{dataset}.json").read_text())
+    require((dataset, split) in DATASETS, "Only pinned public development datasets are enabled")
+    benchmark_path = benchmark_path or ROOT / f"benchmarks/{dataset}.json"
+    benchmark = json.loads(benchmark_path.read_text())
     cases = {(c["question"], tuple(sorted(c["scope"]))): c for c in benchmark["cases"] if c["split"] == split}
     require(len(cases) == sum(c["split"] == split for c in benchmark["cases"]), "Ambiguous benchmark request identity")
     command = [str(ROOT / "target/debug/verity"), "evaluate-local", f"data/{dataset}/snapshot.nq",
-               "nquads", f"data/{dataset}/policy.json", f"benchmarks/{dataset}.json", split,
+               "nquads", f"data/{dataset}/policy.json", str(benchmark_path), split,
                f"{cfg['model']}@{cfg['model_revision']}:{cfg['model_sha256']}"]
+    timings = {}
     with Server(cfg, out) as server, (out / "rust.stderr.log").open("w") as errors:
         rust_started = time.monotonic()
         process = subprocess.Popen(command, cwd=ROOT, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
@@ -348,17 +351,24 @@ def evaluate(cfg, out, dataset, split, memory):
                 case_out = out / case["id"]
                 case_out.mkdir()
                 dump(case_out / "request.json", request)
+                selection_start = time.monotonic()
                 context = oracle_context(request, case)
+                selection_ms = (time.monotonic() - selection_start) * 1000
                 dump(case_out / "oracle-context.json", context)
                 prompt = chat(cfg, context)
                 (case_out / "prompt.txt").write_text(prompt)
                 generated = None
+                runtime_start = time.monotonic()
                 try:
                     generated = server.generate(prompt)
                     dump(case_out / "runtime-response.json", generated)
                     # Preserve raw text even for truncation. Rust independently rejects invalid JSON/IR.
                     (case_out / "proposal.json").write_text(generated["content"])
                     reply = {"response": generated["content"]}
+                    timings[case["id"]] = {"vocabulary_selection_ms": selection_ms,
+                                           "model_roundtrip_ms": (time.monotonic() - runtime_start) * 1000,
+                                           "runtime_prompt_ms": generated.get("timings", {}).get("prompt_ms"),
+                                           "runtime_predicted_ms": generated.get("timings", {}).get("predicted_ms")}
                 except (OSError, ValueError, urllib.error.URLError) as error:
                     reply = {"error": str(error)}
                     dump(case_out / "failure.json", reply)
@@ -384,6 +394,8 @@ def evaluate(cfg, out, dataset, split, memory):
             process.stdout.close()
             if not process.stdin.closed:
                 process.stdin.close()
+        for case in report["cases"]:
+            case.update(timings.get(case["id"], {}))
         dump(out / "report.json", report)
         summary = summarize(report)
         summary["server_startup_ms"] = server.startup_seconds * 1000
@@ -393,8 +405,19 @@ def evaluate(cfg, out, dataset, split, memory):
         return summary
 
 
+def process_tree_rss(table, roots):
+    rows = [tuple(map(int, line.split())) for line in table.splitlines() if line.strip()]
+    selected = set(roots)
+    while True:
+        children = {pid for pid, parent, _ in rows if parent in selected}
+        if children <= selected:
+            break
+        selected.update(children)
+    return sum(rss for pid, _, rss in rows if pid in selected)
+
+
 class Memory:
-    """Sample aggregate runner + server + Rust RSS; shared pages may be counted twice."""
+    """Sample runner descendants including startup; shared pages may be counted twice."""
     def __init__(self):
         self.pids, self.peak_kib, self.samples = [os.getpid()], 0, 0
         self.error = None
@@ -404,9 +427,9 @@ class Memory:
     def sample(self):
         try:
             while not self.done.is_set():
-                result = subprocess.run(["ps", "-o", "rss=", "-p", ",".join(map(str, self.pids))],
+                result = subprocess.run(["ps", "-axo", "pid=,ppid=,rss="],
                                         capture_output=True, text=True, check=True, timeout=5)
-                rss = sum(int(v) for v in result.stdout.split())
+                rss = process_tree_rss(result.stdout, self.pids)
                 self.peak_kib = max(self.peak_kib, rss)
                 self.samples += 1
                 self.done.wait(.2)
@@ -418,7 +441,8 @@ def run(cfg, out):
     require(not out.exists(), "Choose a fresh output directory; previous failures are preserved")
     out.mkdir(parents=True)
     state = {"status": "running", "config": cfg, "platform": platform.platform(),
-             "logical_cpus": os.cpu_count(), "python": sys.version,
+             "logical_cpus": os.cpu_count(), "architecture": platform.machine(), "accelerator": "none",
+             "measurement_cpu_role": "public_development_not_designated_deployment_target", "python": sys.version,
              "holdout_evaluated": False, "retries": 0, "build_flags": BUILD_FLAGS,
              "cache_condition": f"new server per dataset; OS page cache not evicted; cache_prompt={cfg['cache_prompt']}",
              "measurement_scope": "four CPU threads; case includes catalog, stdio/prompt, tokenization, generation, Rust validation, query and evidence; excludes independent reference query; cold adds server startup; warm excludes first case",
@@ -480,10 +504,13 @@ def run(cfg, out):
         state["sampled_aggregate_peak_rss_kib"] = memory.peak_kib
         state["rss_samples"] = memory.samples
         state["rss_error"] = memory.error
-        state["rss_limitations"] = "200ms samples may miss spikes; sum double-counts shared pages; also record OS child lifetime high-water mark"
+        state["rss_limitations"] = "200ms descendant samples include startup and ps overhead, may miss spikes and double-count shared pages; OS child high-water mark is separate"
         peak = resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss
         state["child_lifetime_peak_rss_kib"] = peak / 1024 if platform.system() == "Darwin" else peak
         dump(out / "run.json", state)
+        # Import only after the runner finishes; phase0 reuses the runner's pinned helpers.
+        from phase0 import archive_inference
+        archive_inference(out, state)
 
 
 def main():

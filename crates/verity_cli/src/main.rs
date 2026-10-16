@@ -124,6 +124,12 @@ fn run() -> Result<()> {
             print_json(&graph.run_parser(&fixture, question.trim(), &scope, &policy)?)
         }
         ("evaluate", 7) => {
+            if !matches!(args[5].as_str(), "dev" | "transfer_dev") {
+                return Err(reject(
+                    "locked_evaluation",
+                    "Private evaluation is disabled in the public CLI",
+                ));
+            }
             let benchmark: Benchmark = serde_json::from_value(json(&args[4])?)?;
             let report = graph.evaluate(&benchmark, &args[5], &policy, None)?;
             fs::create_dir_all(&args[6])?;

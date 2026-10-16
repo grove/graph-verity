@@ -48,6 +48,6 @@ For the owner's resource-constrained Phase 0 *development* milestone, the delive
 
 **Not permitted to claim yet:** Phase 0 `GO` for reliable Norwegian question answering, independently verified semantic accuracy, effective prompt-injection resistance, a measured transfer gap, production readiness or real-world truth.
 
-The numerical [Phase 0 thresholds](../configs/phase-0-gates.proposed.json) remain *proposed*, target model hardware is still unconfirmed, and the measured model metrics are unknown. Issue #8 must finalize the engineering budgets and report any waivers *before* testing the private candidate holdout. Issue #10's decision must distinguish `proceed with an experimental prototype` from `feasibility demonstrated`.
+The numerical [Phase 0 thresholds](../configs/phase-0-gates.proposed.json) remain *proposed*, target model hardware is still unconfirmed, and no deployment-target measurements are available. Public development metrics are now recorded by [PR #20](../reports/local-parser-development/README.md) and assessed by [the issue #8 framework](phase-0-evaluation.md); they show poor semantic agreement. Issue #8 must finalize the engineering budgets and report any waivers *before* testing the private candidate holdout. Issue #10's decision must distinguish `proceed with an experimental prototype` from `feasibility demonstrated`.
 
 This waiver may be revisited if volunteer review becomes available later; it should not block an honest, clearly limited prototype.

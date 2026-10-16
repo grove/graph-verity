@@ -683,3 +683,180 @@ fn local_origin_and_independent_model_output_rejections() {
         assert!(g.run_parser(&MockModel(bytes.to_vec()), "test", &scope, &policy()).is_err());
     }
 }
+
+fn evaluation_fixture(g: &Snapshot, gold: Plan) -> Benchmark {
+    let bindings = g
+        .execute(&gold, &policy(), PlanOrigin::Fixture)
+        .unwrap()
+        .bindings;
+    Benchmark {
+        version: 1,
+        name: "synthetic-evaluator-regression".into(),
+        snapshot_id: g.id().into(),
+        cases: vec![Case {
+            id: "regression".into(), question: "synthetic regression".into(),
+            interpretation: "explicit fixture".into(), family: "test".into(), split: "dev".into(),
+            review_status: "synthetic_not_expert_review".into(), provenance: "Apache-2.0 fixture".into(),
+            scope: vec![PUBLIC.into()], expected_status: "executed".into(), gold: Some(gold),
+            reference_sparql: Some("SELECT DISTINCT ?company WHERE { GRAPH <https://example.org/public> { ?company a <https://example.org/Company> } }".into()),
+            expected_bindings: Some(bindings),
+        }],
+    }
+}
+
+fn score_response(g: &Snapshot, b: &Benchmark, bytes: Vec<u8>) -> verity_core::evaluation::Report {
+    let mut fixture = FixtureParser::default();
+    let request = g
+        .parser_request(&b.cases[0].question, &b.cases[0].scope, &policy())
+        .unwrap();
+    fixture.insert(&request, bytes).unwrap();
+    g.evaluate(b, "dev", &policy(), Some(&fixture)).unwrap()
+}
+
+#[test]
+fn evaluator_same_answers_different_ir_and_empty_results_are_not_truth_claims() {
+    let g = graph();
+    let b = evaluation_fixture(&g, base(&g));
+    let mut plan = base(&g);
+    plan.limit = 99;
+    let bytes = serde_json::to_vec(&ParserResponse {
+        version: 1,
+        proposal: Proposal::Candidate { plan },
+    })
+    .unwrap();
+    let report = score_response(&g, &b, bytes);
+    let c = &report.cases[0];
+    assert_eq!(c.structural_ir_exact, Some(false));
+    assert_eq!(c.exact_result_set, Some(true));
+    assert!(c.wrong_plan_successful_execution);
+    assert!(!c.passed);
+    let result = c.execution.as_ref().unwrap();
+    assert_eq!(result.interpretation_correctness, "not_assessed");
+    assert_eq!(result.real_world_truth, "not_established");
+    assert!(c.catalog_ms.is_some());
+    assert!(c.validation_compile_ms.is_some());
+
+    let mut plan = base(&g);
+    plan.patterns[0].direction = Direction::Reverse;
+    let bytes = serde_json::to_vec(&ParserResponse {
+        version: 1,
+        proposal: Proposal::Candidate { plan },
+    })
+    .unwrap();
+    let report = score_response(&g, &b, bytes);
+    let c = &report.cases[0];
+    assert!(c.execution.as_ref().unwrap().bindings.is_empty());
+    assert_eq!(
+        c.result_classification,
+        "empty_query_result_not_real_world_false"
+    );
+    assert_eq!(
+        c.missing_fact_status,
+        "unknown_completeness_no_independent_missing_fact_evidence"
+    );
+    assert!(c.wrong_plan_successful_execution);
+}
+
+#[test]
+fn evaluator_reports_schema_validation_and_abstention_failures_independently() {
+    let g = graph();
+    let b = evaluation_fixture(&g, base(&g));
+    for (bytes, stage, valid_json) in [
+        ("{", "json_generation", false),
+        (
+            "{\"version\":1,\"proposal\":{\"status\":\"candidate\"}}",
+            "response_schema",
+            true,
+        ),
+        (
+            "{\"version\":1,\"proposal\":{\"status\":\"unsupported\",\"reason\":\"synthetic\"}}",
+            "abstention",
+            true,
+        ),
+    ] {
+        let report = score_response(&g, &b, bytes.as_bytes().to_vec());
+        let c = &report.cases[0];
+        assert_eq!(c.stage, stage);
+        assert_eq!(c.json_valid, Some(valid_json));
+        assert!(!c.passed);
+        assert!(c.execution.is_none());
+    }
+    for (mutation, code) in [
+        ("scope", "scope"),
+        ("snapshot", "snapshot"),
+        ("identifier", "unknown_identifier"),
+    ] {
+        let mut plan = base(&g);
+        match mutation {
+            "scope" => plan.scope = vec![PRIVATE.into()],
+            "snapshot" => plan.snapshot_id = "wrong".into(),
+            "identifier" => plan.patterns[0].to = id("unknown"),
+            _ => unreachable!(),
+        }
+        let bytes = serde_json::to_vec(&ParserResponse {
+            version: 1,
+            proposal: Proposal::Candidate { plan },
+        })
+        .unwrap();
+        let report = score_response(&g, &b, bytes);
+        let c = &report.cases[0];
+        assert_eq!(c.error_code.as_deref(), Some(code));
+        assert_eq!(c.safety_valid, Some(false));
+        assert!(c.execution.is_none());
+    }
+    let mut unsupported = b;
+    unsupported.cases[0].expected_status = "unsupported".into();
+    unsupported.cases[0].gold = None;
+    unsupported.cases[0].expected_bindings = None;
+    unsupported.cases[0].reference_sparql = None;
+    let bytes = serde_json::to_vec(&ParserResponse {
+        version: 1,
+        proposal: Proposal::Candidate { plan: base(&g) },
+    })
+    .unwrap();
+    let report = score_response(&g, &unsupported, bytes);
+    assert!(!report.cases[0].passed);
+    assert!(report.cases[0].wrong_plan_successful_execution);
+    assert!(report.cases[0].detail.contains("expected to abstain"));
+    for split in ["locked_holdout", "transfer_test", "review_candidate"] {
+        assert!(g.evaluate(&unsupported, split, &policy(), None).is_err());
+    }
+}
+
+#[test]
+fn component_diagnostics_detect_operands_counts_grouping_having_and_variables() {
+    use verity_core::evaluation::plan_components;
+    let g = graph();
+    let gold = numeric_plan(&g, Compare::Ge);
+    let mut p = gold.clone();
+    p.filters[0].op = Compare::Gt;
+    assert!(!plan_components(&p, &gold)["operator"]);
+    p = gold.clone();
+    p.filters[0].value.lexical = "52".into();
+    assert!(!plan_components(&p, &gold)["number"]);
+    p.filters[0].value = value("2025-01-01", "date");
+    let date_gold = p.clone();
+    p.filters[0].value.lexical = "2025-01-02".into();
+    assert!(!plan_components(&p, &date_gold)["date_operand"]);
+    p = gold.clone();
+    p.patterns[0].from = var("renamed");
+    assert!(!plan_components(&p, &gold)["variables"]);
+    let gold = count(&g);
+    let mut p = gold.clone();
+    p.group_by.clear();
+    assert!(!plan_components(&p, &gold)["group_by"]);
+    assert!(g.compile(&p, &policy()).is_err());
+    p = gold.clone();
+    p.having[0].value = 3;
+    assert!(!plan_components(&p, &gold)["having"]);
+    p = gold.clone();
+    p.projection[1] = Projection::CountDistinct {
+        variable: "company".into(),
+        alias: "count".into(),
+    };
+    assert!(!plan_components(&p, &gold)["aggregation"]);
+    let invalid = serde_json::to_string(&gold)
+        .unwrap()
+        .replace("count_distinct", "count");
+    assert!(decode_plan(invalid.as_bytes()).is_err());
+}

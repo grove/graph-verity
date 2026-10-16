@@ -1,7 +1,7 @@
 //! Oracle and parser runs share scoring. Fixture correctness is never reported as model accuracy.
 use crate::{
     catalog::Policy,
-    execution::{PlanOrigin, Row},
+    execution::{Execution, PlanOrigin, Row},
     ir::Plan,
     parser::{decode_response, Proposal, SemanticParser},
     reject, snapshot_id, Result, Snapshot,
@@ -43,6 +43,16 @@ pub struct Benchmark {
 pub struct CaseScore {
     pub id: String,
     pub family: String,
+    pub split: String,
+    pub provenance: String,
+    pub review_status: String,
+    pub error_code: Option<String>,
+    pub catalog_ms: Option<f64>,
+    pub validation_compile_ms: Option<f64>,
+    pub execution: Option<Execution>,
+    pub result_classification: String,
+    pub missing_fact_status: &'static str,
+    pub user_facing_false_confidence: &'static str,
     pub passed: bool,
     pub stage: String,
     pub detail: String,
@@ -69,6 +79,16 @@ impl CaseScore {
         Self {
             id: case.id.clone(),
             family: case.family.clone(),
+            split: case.split.clone(),
+            provenance: case.provenance.clone(),
+            review_status: case.review_status.clone(),
+            error_code: None,
+            catalog_ms: None,
+            validation_compile_ms: None,
+            execution: None,
+            result_classification: "not_executed".into(),
+            missing_fact_status: "unknown_completeness_no_independent_missing_fact_evidence",
+            user_facing_false_confidence: "not_measured_no_complete_user_interface",
             passed: false,
             stage: "not_run".into(),
             detail: String::new(),
@@ -156,6 +176,36 @@ pub fn plan_components(actual: &Plan, gold: &Plan) -> BTreeMap<String, bool> {
                     having.iter().map(|h| &h["value"]).collect::<Vec<_>>()
                 ]),
             ),
+            (
+                "date_operand".into(),
+                serde_json::json!(values
+                    .iter()
+                    .filter(|v| v["datatype"]
+                        .as_str()
+                        .is_some_and(|d| d.ends_with("#date") || d.ends_with("#dateTime")))
+                    .map(|v| &v["lexical"])
+                    .collect::<Vec<_>>()),
+            ),
+            (
+                "variables".into(),
+                serde_json::json!([
+                    patterns
+                        .iter()
+                        .map(|e| [&e["from"]["name"], &e["to"]["name"]])
+                        .collect::<Vec<_>>(),
+                    filters.iter().map(|f| &f["variable"]).collect::<Vec<_>>()
+                ]),
+            ),
+            (
+                "aggregation".into(),
+                serde_json::json!(p["projection"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .filter(|v| v["kind"] != "variable")
+                    .collect::<Vec<_>>()),
+            ),
+            ("having".into(), p["having"].clone()),
             ("literal".into(), serde_json::json!(values)),
             (
                 "scope".into(),
@@ -270,6 +320,13 @@ impl Snapshot {
         policy: &Policy,
         parser: Option<&dyn SemanticParser>,
     ) -> Result<Report> {
+        // Locked/private evaluation requires an isolated operator workflow, never this public runner.
+        if !matches!(split, "dev" | "transfer_dev") {
+            return Err(reject(
+                "locked_evaluation",
+                "Only public development splits are enabled",
+            ));
+        }
         if benchmark.version != 1
             || benchmark.snapshot_id != self.id
             || benchmark.cases.len() > 1000
@@ -313,7 +370,12 @@ impl Snapshot {
                 policy.authorize(&case.scope)?;
                 score.stage = "proposal".into();
                 let proposal = if let Some(parser) = parser {
-                    let request = self.parser_request(&case.question, &case.scope, policy)?;
+                    score.stage = "catalog".into();
+                    let catalog_start = Instant::now();
+                    let request = self.parser_request(&case.question, &case.scope, policy);
+                    score.catalog_ms = Some(catalog_start.elapsed().as_secs_f64() * 1000.0);
+                    let request = request?;
+                    score.stage = "generation".into();
                     let generation_start = Instant::now();
                     let generated = parser.propose(&request);
                     score.generation_ms = Some(generation_start.elapsed().as_secs_f64() * 1000.0);
@@ -322,6 +384,12 @@ impl Snapshot {
                     score.json_valid =
                         Some(serde_json::from_slice::<serde_json::Value>(&raw).is_ok());
                     score.contract_valid = Some(false);
+                    score.stage = if score.json_valid == Some(true) {
+                        "response_schema"
+                    } else {
+                        "json_generation"
+                    }
+                    .into();
                     let decoded = decode_response(&raw)?;
                     score.contract_valid = Some(true);
                     decoded.proposal
@@ -344,6 +412,7 @@ impl Snapshot {
                     }
                     .into(),
                 );
+                score.stage = "abstention".into();
                 let plan = match proposal {
                     Proposal::Candidate { plan } => plan,
                     Proposal::NeedsClarification { .. } => {
@@ -373,7 +442,11 @@ impl Snapshot {
                         "Proposal changes the question's requested scope",
                     ));
                 }
-                self.compile(&plan, policy)?;
+                let validation_start = Instant::now();
+                let compiled = self.compile(&plan, policy);
+                score.validation_compile_ms =
+                    Some(validation_start.elapsed().as_secs_f64() * 1000.0);
+                compiled?;
                 score.safety_valid = Some(true);
                 score.stage = "execution".into();
                 let origin = parser.map_or(PlanOrigin::Fixture, SemanticParser::origin);
@@ -382,6 +455,14 @@ impl Snapshot {
                 score.pipeline_ms =
                     Some(result.validation_ms + result.query_ms + result.evidence_ms);
                 score.wrong_plan_successful_execution = score.structural_ir_exact == Some(false);
+                score.result_classification = if result.bindings.is_empty() {
+                    "empty_query_result_not_real_world_false"
+                } else {
+                    "nonempty_query_result"
+                }
+                .into();
+                score.execution = Some(result);
+                let result = score.execution.as_ref().expect("stored execution");
                 if case.expected_status != "executed" {
                     score.detail = "Executed a plan for a question expected to abstain".into();
                     return Ok(());
@@ -411,6 +492,15 @@ impl Snapshot {
                 Ok(())
             })();
             if let Err(error) = scored {
+                score.error_code = Some(match &error {
+                    crate::Error::Rejected { code, .. } => (*code).into(),
+                    crate::Error::Json(_) => "json_contract".into(),
+                    crate::Error::Store(_) => "store".into(),
+                    crate::Error::Io(_) => "io".into(),
+                });
+                if score.error_code.as_deref() == Some("compiled_query") {
+                    score.stage = "compiler".into();
+                }
                 score.detail = error.to_string();
             }
             if score.end_to_end_ms == 0.0 {

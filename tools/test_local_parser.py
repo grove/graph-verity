@@ -92,3 +92,14 @@ class LocalParserTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class ProcessTreeTests(unittest.TestCase):
+    def test_memory_includes_descendants_and_ignores_unrelated_processes(self):
+        from local_parser import process_tree_rss
+        self.assertEqual(process_tree_rss("10 1 100\n11 10 200\n12 11 300\n20 1 900", [10]), 600)
+
+    def test_dataset_guard_runs_before_benchmark_access(self):
+        from local_parser import evaluate
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaises(ValueError):
+                evaluate({}, Path(directory) / "rejected", "private", "locked_holdout", None)
