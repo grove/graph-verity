@@ -136,9 +136,15 @@ class AIAuditTests(unittest.TestCase):
         reviews = json.loads((ROOT / "benchmarks/reviews.json").read_text())
         manifest = json.loads((ROOT / "benchmarks/split-manifest.json").read_text())
         summary = review_summary(self.benchmark, manifest, reviews)
-        self.assertFalse(summary["initial_ready"])
-        self.assertFalse(summary["final_ready"])
-        self.assertEqual(summary["decisions"], {"pending": 130})
+        # Currently zero human approvals. Do not block legitimate future reviewers.
+        if not reviews["records"]:
+            self.assertFalse(summary["initial_ready"])
+            self.assertFalse(summary["final_ready"])
+            self.assertEqual(summary["decisions"], {"pending": 130})
+        else:
+            for record in reviews["records"]:
+                self.assertNotIn("ChatGPT", record["reviewer"])
+                self.assertNotIn("GPT-6", record["reviewer"])
         for case in self.cases.values():
             if case["expected_status"] == "executed":
                 self.assertNotIn("Execute exactly the supplied directed plan", case["interpretation"])
