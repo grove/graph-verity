@@ -1,25 +1,51 @@
 //! Bounded SELECT execution and explicit, separately bounded supporting statements.
-use crate::{catalog::{graph_id, Policy}, ir::Plan, reject, Error, Result, Snapshot};
-use oxigraph::{model::Term, sparql::{CancellationToken, QueryResults, SparqlEvaluator}, store::Store};
+use crate::{
+    catalog::{graph_id, Policy},
+    ir::Plan,
+    reject, Error, Result, Snapshot,
+};
+use oxigraph::{
+    model::Term,
+    sparql::{CancellationToken, QueryResults, SparqlEvaluator},
+    store::Store,
+};
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
-use std::{collections::BTreeMap, sync::mpsc, thread, time::{Duration, Instant}};
+use std::{
+    collections::BTreeMap,
+    sync::mpsc,
+    thread,
+    time::{Duration, Instant},
+};
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, Deserialize, JsonSchema)]
 #[serde(tag = "kind", rename_all = "snake_case", deny_unknown_fields)]
 pub enum RdfTerm {
-    Iri { value: String },
-    BlankNode { value: String },
-    Literal { value: String, datatype: String, language: Option<String> },
+    Iri {
+        value: String,
+    },
+    BlankNode {
+        value: String,
+    },
+    Literal {
+        value: String,
+        datatype: String,
+        language: Option<String>,
+    },
 }
 
 impl From<&Term> for RdfTerm {
     fn from(term: &Term) -> Self {
         match term {
-            Term::NamedNode(node) => Self::Iri { value: node.as_str().into() },
-            Term::BlankNode(node) => Self::BlankNode { value: node.as_str().into() },
+            Term::NamedNode(node) => Self::Iri {
+                value: node.as_str().into(),
+            },
+            Term::BlankNode(node) => Self::BlankNode {
+                value: node.as_str().into(),
+            },
             Term::Literal(literal) => Self::Literal {
-                value: literal.value().into(), datatype: literal.datatype().as_str().into(),
+                value: literal.value().into(),
+                datatype: literal.datatype().as_str().into(),
                 language: literal.language().map(str::to_owned),
             },
         }
@@ -30,7 +56,10 @@ pub type Row = BTreeMap<String, RdfTerm>;
 
 #[derive(Clone, Copy, Debug, Serialize, Deserialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
-pub enum PlanOrigin { Manual, Fixture }
+pub enum PlanOrigin {
+    Manual,
+    Fixture,
+}
 
 #[derive(Debug, Serialize)]
 pub struct Statement {
@@ -77,28 +106,49 @@ impl Deadline {
         let (send, receive) = mpsc::channel();
         let duration = Duration::from_millis(milliseconds);
         let worker = thread::spawn(move || {
-            if receive.recv_timeout(duration).is_err() { other.cancel(); }
+            if receive.recv_timeout(duration).is_err() {
+                other.cancel();
+            }
         });
-        Self { token, done: Some(send), worker: Some(worker), start: Instant::now(), duration }
+        Self {
+            token,
+            done: Some(send),
+            worker: Some(worker),
+            start: Instant::now(),
+            duration,
+        }
     }
     fn check(&self) -> Result<()> {
         if self.start.elapsed() >= self.duration {
-            Err(reject("timeout", "Execution deadline exceeded; no complete result is asserted"))
-        } else { Ok(()) }
+            Err(reject(
+                "timeout",
+                "Execution deadline exceeded; no complete result is asserted",
+            ))
+        } else {
+            Ok(())
+        }
     }
 }
 impl Drop for Deadline {
     fn drop(&mut self) {
-        if let Some(done) = self.done.take() { let _ = done.send(()); }
-        if let Some(worker) = self.worker.take() { let _ = worker.join(); }
+        if let Some(done) = self.done.take() {
+            let _ = done.send(());
+        }
+        if let Some(worker) = self.worker.take() {
+            let _ = worker.join();
+        }
     }
 }
 
 fn select(store: &Store, query: &str, cap: usize, deadline: &Deadline) -> Result<Vec<Row>> {
     deadline.check()?;
-    let result = SparqlEvaluator::new().with_cancellation_token(deadline.token.clone())
-        .parse_query(query).map_err(|e| reject("compiled_query", e.to_string()))?
-        .on_store(store).execute().map_err(|e| reject("execution", e.to_string()))?;
+    let result = SparqlEvaluator::new()
+        .with_cancellation_token(deadline.token.clone())
+        .parse_query(query)
+        .map_err(|e| reject("compiled_query", e.to_string()))?
+        .on_store(store)
+        .execute()
+        .map_err(|e| reject("execution", e.to_string()))?;
     let QueryResults::Solutions(solutions) = result else {
         return Err(reject("execution", "Only SELECT results are accepted"));
     };
@@ -106,8 +156,18 @@ fn select(store: &Store, query: &str, cap: usize, deadline: &Deadline) -> Result
     for solution in solutions {
         deadline.check()?;
         let solution = solution.map_err(|e| reject("execution", e.to_string()))?;
-        rows.push(solution.iter().map(|(name, term)| (name.as_str().into(), RdfTerm::from(term))).collect());
-        if rows.len() > cap { return Err(reject("row_limit", "Reference query exceeds the evaluation row bound")); }
+        rows.push(
+            solution
+                .iter()
+                .map(|(name, term)| (name.as_str().into(), RdfTerm::from(term)))
+                .collect(),
+        );
+        if rows.len() > cap {
+            return Err(reject(
+                "row_limit",
+                "Reference query exceeds the evaluation row bound",
+            ));
+        }
     }
     deadline.check()?;
     Ok(rows)
@@ -120,20 +180,35 @@ impl Snapshot {
         let validation_ms = start.elapsed().as_secs_f64() * 1000.0;
         let deadline = Deadline::new(policy.timeout_ms);
         let start = Instant::now();
-        let mut bindings = select(&self.store, &compiled.query, plan.limit as usize + 1, &deadline)?;
+        let mut bindings = select(
+            &self.store,
+            &compiled.query,
+            plan.limit as usize + 1,
+            &deadline,
+        )?;
         let complete = bindings.len() <= plan.limit as usize;
         bindings.truncate(plan.limit as usize);
         let query_ms = start.elapsed().as_secs_f64() * 1000.0;
         let start = Instant::now();
-        let mut witnesses = select(&self.store, &compiled.evidence_query, policy.max_evidence as usize + 1, &deadline)?;
+        let mut witnesses = select(
+            &self.store,
+            &compiled.evidence_query,
+            policy.max_evidence as usize + 1,
+            &deadline,
+        )?;
         let evidence_complete = witnesses.len() <= policy.max_evidence as usize;
         witnesses.truncate(policy.max_evidence as usize);
         let mut evidence = Vec::new();
         for mut row in witnesses {
-            let mut take = |key: &str| row.remove(key).ok_or_else(|| reject("evidence", "Unbound witness term"));
+            let mut take = |key: &str| {
+                row.remove(key)
+                    .ok_or_else(|| reject("evidence", "Unbound witness term"))
+            };
             evidence.push(Statement {
-                subject: take("__s")?, predicate: take("__p")?,
-                object: take("__o")?, source_graph: take("__g")?,
+                subject: take("__s")?,
+                predicate: take("__p")?,
+                object: take("__o")?,
+                source_graph: take("__g")?,
             });
         }
         let execution = Execution {
@@ -155,16 +230,30 @@ impl Snapshot {
 
     /// Evaluation-only path. The reference sees a physically isolated authorized store.
     /// No public raw-query execution API is exposed by the CLI or library.
-    pub(crate) fn reference(&self, query: &str, scope: &[String], policy: &Policy) -> Result<Vec<Row>> {
+    pub(crate) fn reference(
+        &self,
+        query: &str,
+        scope: &[String],
+        policy: &Policy,
+    ) -> Result<Vec<Row>> {
         policy.authorize(scope)?;
-        if query.len() > 65_536 { return Err(reject("input_limit", "Reference exceeds 64 KiB")); }
+        if query.len() > 65_536 {
+            return Err(reject("input_limit", "Reference exceeds 64 KiB"));
+        }
         let scoped = Store::new().map_err(|e| Error::Store(e.to_string()))?;
         for quad in self.store.iter() {
             let quad = quad.map_err(|e| Error::Store(e.to_string()))?;
             if graph_id(&quad.graph_name).is_some_and(|g| scope.iter().any(|s| s == g)) {
-                scoped.insert(quad.as_ref()).map_err(|e| Error::Store(e.to_string()))?;
+                scoped
+                    .insert(quad.as_ref())
+                    .map_err(|e| Error::Store(e.to_string()))?;
             }
         }
-        select(&scoped, query, policy.max_rows as usize, &Deadline::new(policy.timeout_ms))
+        select(
+            &scoped,
+            query,
+            policy.max_rows as usize,
+            &Deadline::new(policy.timeout_ms),
+        )
     }
 }

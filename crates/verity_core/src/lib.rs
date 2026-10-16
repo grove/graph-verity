@@ -30,14 +30,22 @@ pub enum Error {
 }
 
 pub fn reject(code: &'static str, message: impl Into<String>) -> Error {
-    Error::Rejected { code, message: message.into() }
+    Error::Rejected {
+        code,
+        message: message.into(),
+    }
 }
 
 pub fn read_limited(path: impl AsRef<Path>, max_bytes: usize) -> Result<Vec<u8>> {
     let file = File::open(path)?;
     let mut bytes = Vec::new();
     file.take(max_bytes as u64 + 1).read_to_end(&mut bytes)?;
-    if bytes.len() > max_bytes { return Err(reject("input_limit", "Input file exceeds the command's byte limit")); }
+    if bytes.len() > max_bytes {
+        return Err(reject(
+            "input_limit",
+            "Input file exceeds the command's byte limit",
+        ));
+    }
     Ok(bytes)
 }
 
@@ -45,7 +53,9 @@ pub fn read_limited(path: impl AsRef<Path>, max_bytes: usize) -> Result<Vec<u8>>
 pub fn snapshot_id(bytes: &[u8], format: &str) -> String {
     let mut hash = Sha256::new();
     hash.update(b"graph-verity-snapshot-v1\0");
-    hash.update(format.as_bytes()); hash.update([0]); hash.update(bytes);
+    hash.update(format.as_bytes());
+    hash.update([0]);
+    hash.update(bytes);
     format!("sha256:{:x}", hash.finalize())
 }
 
@@ -63,31 +73,49 @@ pub struct SnapshotInfo {
 }
 
 impl Snapshot {
-    pub fn id(&self) -> &str { &self.id }
+    pub fn id(&self) -> &str {
+        &self.id
+    }
 
     pub fn from_bytes(bytes: &[u8], format: &str) -> Result<Self> {
-        if bytes.len() > 16 * 1024 * 1024 { return Err(reject("input_limit", "RDF input exceeds 16 MiB")); }
+        if bytes.len() > 16 * 1024 * 1024 {
+            return Err(reject("input_limit", "RDF input exceeds 16 MiB"));
+        }
         let rdf_format = match format {
-            "trig" => RdfFormat::TriG, "nquads" => RdfFormat::NQuads, "turtle" => RdfFormat::Turtle,
+            "trig" => RdfFormat::TriG,
+            "nquads" => RdfFormat::NQuads,
+            "turtle" => RdfFormat::Turtle,
             _ => return Err(reject("format", "Use trig, nquads, or turtle")),
         };
         let store = Store::new().map_err(|e| Error::Store(e.to_string()))?;
-        store.load_from_reader(rdf_format, bytes).map_err(|e| Error::Store(e.to_string()))?;
+        store
+            .load_from_reader(rdf_format, bytes)
+            .map_err(|e| Error::Store(e.to_string()))?;
         if store.len().map_err(|e| Error::Store(e.to_string()))? > 100_000 {
             return Err(reject("quad_limit", "Snapshot exceeds 100,000 quads"));
         }
-        Ok(Self { store, id: snapshot_id(bytes, format) })
+        Ok(Self {
+            store,
+            id: snapshot_id(bytes, format),
+        })
     }
 
     /// Administrative inspection, not an authorization-filtered end-user endpoint.
     pub fn info(&self) -> Result<SnapshotInfo> {
-        let mut graphs = self.store.named_graphs().map(|g| {
-            g.map(|g| g.to_string()).map_err(|e| Error::Store(e.to_string()))
-        }).collect::<Result<Vec<_>>>()?;
+        let mut graphs = self
+            .store
+            .named_graphs()
+            .map(|g| {
+                g.map(|g| g.to_string())
+                    .map_err(|e| Error::Store(e.to_string()))
+            })
+            .collect::<Result<Vec<_>>>()?;
         graphs.sort();
         Ok(SnapshotInfo {
-            snapshot_id: self.id.clone(), quad_count: self.store.len().map_err(|e| Error::Store(e.to_string()))?,
-            named_graphs: graphs, entailment: "explicit_quads_only_open_world",
+            snapshot_id: self.id.clone(),
+            quad_count: self.store.len().map_err(|e| Error::Store(e.to_string()))?,
+            named_graphs: graphs,
+            entailment: "explicit_quads_only_open_world",
         })
     }
 
@@ -95,12 +123,16 @@ impl Snapshot {
     pub fn smoke_count(&self) -> Result<String> {
         let result = SparqlEvaluator::new()
             .parse_query("SELECT (COUNT(*) AS ?count) WHERE { GRAPH ?g { ?s ?p ?o } }")
-            .map_err(|e| Error::Store(e.to_string()))?.on_store(&self.store).execute()
+            .map_err(|e| Error::Store(e.to_string()))?
+            .on_store(&self.store)
+            .execute()
             .map_err(|e| Error::Store(e.to_string()))?;
         if let QueryResults::Solutions(mut rows) = result {
             if let Some(row) = rows.next() {
                 let row = row.map_err(|e| Error::Store(e.to_string()))?;
-                if let Some(value) = row.get("count") { return Ok(value.to_string()); }
+                if let Some(value) = row.get("count") {
+                    return Ok(value.to_string());
+                }
             }
         }
         Err(Error::Store("Expected a count binding".into()))
@@ -127,7 +159,10 @@ mod tests {
         let graph = Snapshot::from_bytes(FIXTURE, "trig").unwrap();
         assert_eq!(graph.info().unwrap().quad_count, 14);
         assert_eq!(graph.info().unwrap().named_graphs.len(), 2);
-        assert_eq!(graph.smoke_count().unwrap(), "\"14\"^^<http://www.w3.org/2001/XMLSchema#integer>");
+        assert_eq!(
+            graph.smoke_count().unwrap(),
+            "\"14\"^^<http://www.w3.org/2001/XMLSchema#integer>"
+        );
     }
     #[test]
     fn reproducible_snapshot_and_explicit_format() {

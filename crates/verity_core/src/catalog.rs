@@ -1,5 +1,8 @@
 //! Catalogs are constructed only after authorization, from the requested named graphs.
-use crate::{ir::{iri, Value, RDF_TYPE}, reject, snapshot_id, Error, Result, Snapshot};
+use crate::{
+    ir::{iri, Value, RDF_TYPE},
+    reject, snapshot_id, Error, Result, Snapshot,
+};
 use oxigraph::model::{GraphName, NamedOrBlankNode, Term};
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
@@ -17,15 +20,25 @@ pub struct Policy {
 
 impl Policy {
     pub(crate) fn authorize(&self, scope: &[String]) -> Result<()> {
-        if self.version != 1 || self.max_rows == 0 || self.max_rows > 1000
-            || self.max_evidence > 10_000 || self.timeout_ms == 0 || self.timeout_ms > 30_000 {
+        if self.version != 1
+            || self.max_rows == 0
+            || self.max_rows > 1000
+            || self.max_evidence > 10_000
+            || self.timeout_ms == 0
+            || self.timeout_ms > 30_000
+        {
             return Err(reject("policy", "Invalid operator-supplied policy"));
         }
-        if scope.is_empty() || scope.len() > 8 || scope.iter().collect::<BTreeSet<_>>().len() != scope.len()
-            || scope.iter().any(|g| !self.graphs.contains(g)) {
+        if scope.is_empty()
+            || scope.len() > 8
+            || scope.iter().collect::<BTreeSet<_>>().len() != scope.len()
+            || scope.iter().any(|g| !self.graphs.contains(g))
+        {
             return Err(reject("scope", "Scope is not authorized"));
         }
-        for graph in scope { iri(graph)?; }
+        for graph in scope {
+            iri(graph)?;
+        }
         Ok(())
     }
 }
@@ -38,7 +51,11 @@ pub struct Entry {
 }
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, JsonSchema)]
-pub struct Label { pub text: String, pub language: Option<String>, pub datatype: String }
+pub struct Label {
+    pub text: String,
+    pub language: Option<String>,
+    pub datatype: String,
+}
 
 #[derive(Clone, Debug, Default, Serialize, JsonSchema)]
 pub struct Profile {
@@ -59,14 +76,26 @@ impl Catalog {
     /// Exact IRI or case-folded exact label only. This is not semantic retrieval.
     pub fn resolve(&self, text: &str, role: &str) -> Result<String> {
         let folded = text.to_lowercase();
-        let candidates: Vec<_> = self.entries.iter().filter(|(id, entry)| {
-            entry.roles.contains(role) && (id.as_str() == text
-                || entry.labels.iter().any(|l| l.text.to_lowercase() == folded))
-        }).map(|(id, _)| id.clone()).collect();
+        let candidates: Vec<_> = self
+            .entries
+            .iter()
+            .filter(|(id, entry)| {
+                entry.roles.contains(role)
+                    && (id.as_str() == text
+                        || entry.labels.iter().any(|l| l.text.to_lowercase() == folded))
+            })
+            .map(|(id, _)| id.clone())
+            .collect();
         match candidates.as_slice() {
             [id] => Ok(id.clone()),
-            [] => Err(reject("unknown_identifier", "No authorized exact identifier or label match")),
-            _ => Err(reject("needs_clarification", "Several authorized identifiers share this label")),
+            [] => Err(reject(
+                "unknown_identifier",
+                "No authorized exact identifier or label match",
+            )),
+            _ => Err(reject(
+                "needs_clarification",
+                "Several authorized identifiers share this label",
+            )),
         }
     }
 }
@@ -78,7 +107,11 @@ fn record(entries: &mut BTreeMap<String, Entry>, id: &str, role: &str, graph: &s
 }
 
 pub(crate) fn graph_id(graph: &GraphName) -> Option<&str> {
-    if let GraphName::NamedNode(node) = graph { Some(node.as_str()) } else { None }
+    if let GraphName::NamedNode(node) = graph {
+        Some(node.as_str())
+    } else {
+        None
+    }
 }
 
 impl Snapshot {
@@ -89,34 +122,53 @@ impl Snapshot {
         let mut labels: BTreeMap<String, BTreeSet<Label>> = BTreeMap::new();
         for quad in self.store.iter() {
             let quad = quad.map_err(|e| Error::Store(e.to_string()))?;
-            let Some(graph) = graph_id(&quad.graph_name) else { continue; };
-            if !scope.iter().any(|g| g == graph) { continue; }
+            let Some(graph) = graph_id(&quad.graph_name) else {
+                continue;
+            };
+            if !scope.iter().any(|g| g == graph) {
+                continue;
+            }
             let predicate = quad.predicate.as_str();
             record(&mut entries, predicate, "predicate", graph);
             if let NamedOrBlankNode::NamedNode(node) = &quad.subject {
                 record(&mut entries, node.as_str(), "entity", graph);
-                if matches!(predicate,
-                    "http://www.w3.org/2000/01/rdf-schema#label" |
-                    "http://www.w3.org/2004/02/skos/core#altLabel") {
+                if matches!(
+                    predicate,
+                    "http://www.w3.org/2000/01/rdf-schema#label"
+                        | "http://www.w3.org/2004/02/skos/core#altLabel"
+                ) {
                     if let Term::Literal(literal) = &quad.object {
-                        labels.entry(node.as_str().into()).or_default().insert(Label {
-                            text: literal.value().into(),
-                            language: literal.language().map(str::to_owned),
-                            datatype: literal.datatype().as_str().into(),
-                        });
+                        labels
+                            .entry(node.as_str().into())
+                            .or_default()
+                            .insert(Label {
+                                text: literal.value().into(),
+                                language: literal.language().map(str::to_owned),
+                                datatype: literal.datatype().as_str().into(),
+                            });
                     }
                 }
             }
-            let profile = profiles.entry(graph.into()).or_default().entry(predicate.into()).or_default();
+            let profile = profiles
+                .entry(graph.into())
+                .or_default()
+                .entry(predicate.into())
+                .or_default();
             match &quad.object {
                 Term::NamedNode(node) => {
                     record(&mut entries, node.as_str(), "entity", graph);
-                    if predicate == RDF_TYPE { record(&mut entries, node.as_str(), "class", graph); }
+                    if predicate == RDF_TYPE {
+                        record(&mut entries, node.as_str(), "class", graph);
+                    }
                     profile.object_types.insert("resource".into());
                 }
-                Term::BlankNode(_) => { profile.object_types.insert("resource".into()); }
+                Term::BlankNode(_) => {
+                    profile.object_types.insert("resource".into());
+                }
                 Term::Literal(literal) => {
-                    profile.object_types.insert(literal.datatype().as_str().into());
+                    profile
+                        .object_types
+                        .insert(literal.datatype().as_str().into());
                     let value = Value {
                         lexical: literal.value().into(),
                         datatype: literal.datatype().as_str().into(),
@@ -126,10 +178,18 @@ impl Snapshot {
                 }
             }
         }
-        for (id, value) in labels { entries.entry(id).or_default().labels = value; }
+        for (id, value) in labels {
+            entries.entry(id).or_default().labels = value;
+        }
         let mut scope = scope.to_vec();
         scope.sort();
-        let mut catalog = Catalog { snapshot_id: self.id.clone(), scope, entries, profiles, digest: String::new() };
+        let mut catalog = Catalog {
+            snapshot_id: self.id.clone(),
+            scope,
+            entries,
+            profiles,
+            digest: String::new(),
+        };
         catalog.digest = snapshot_id(&serde_json::to_vec(&catalog)?, "catalog-v1");
         Ok(catalog)
     }
