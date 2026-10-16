@@ -1,65 +1,49 @@
-# Issue #5 — independent AI semantic audit (not human gold approval)
+# Issue #5 — independent AI semantic audit and corrections (not human approval)
 
-**Date:** 16 October 2026  
-**Reviewer:** ChatGPT / OpenAI GPT-6 (**AI system, not a human, domain expert, or independent human annotator**)  
-**Inputs:** `benchmarks/wikidata.json`, `data/wikidata/snapshot.nq`, `data/wikidata/manifest.json` and the already frozen reference queries and bindings.  
-**Machine-readable case-bound record:** [`benchmarks/ai-semantic-audit.json`](../benchmarks/ai-semantic-audit.json).  
-**Review ledger:** [`benchmarks/reviews.json`](../benchmarks/reviews.json) is deliberately unchanged and contains **zero human approvals**.
+**AI reviewer:** ChatGPT / OpenAI GPT-6, 16 October 2026. This is **not** a human domain expert, a human annotation, or independent human adjudication.  
+**Source:** versioned `benchmarks/wikidata.json`, frozen `data/wikidata/snapshot.nq` and the source/license manifest.  
+**Individual case records:** [`benchmarks/ai-semantic-audit.json`](../benchmarks/ai-semantic-audit.json) (130 case-and-snapshot SHA-256 digests, original/current questions, separately stated meanings, expected plan signatures and caveats).  
+**Human review ledger:** [`benchmarks/reviews.json`](../benchmarks/reviews.json) remains **empty**. No human approval has been asserted.
 
-## What was actually examined
+## Scope of work
 
-Every one of the 130 case IDs is represented by its exact review-tool-compatible SHA-256 case-and-snapshot digest, original Norwegian question, independently formulated statement of the intended graph operation, explicit manually specified plan signature, and a risk/decision field. In particular:
+I examined each of the 130 question entries against its expressed Norwegian semantics, named graph, predicates, directions, joins, filters, grouping/aggregation, expected status and actual retained RDF facts. The 38 executable development cases were individually checked against explicitly authored intent signatures, plus eight plausible clarification/unsupported cases. The other 76 entries are not fresh questions: each is a fixed prefix attached to one of those 38 development questions with exactly the same plan, reference SPARQL and result bindings. The eight Stockholm/Sweden entries use the same Wikidata ontology.
 
-- 38 executable **development** cases: separately checked question-family meaning against direction, actual predicate identifiers, typed comparison operands, numeric strictness, projections, `COUNT(DISTINCT)`, grouping/HAVING and named-graph scope. Eight additional development cases request clarification/unsupported status instead of a gold query.
-- 76 **review candidates**: verified as *two simple introductory prefixes of each of the 38 development questions with exactly the same gold IR, reference SPARQL and bindings*. These are not independent gold examples.
-- Eight **geographic-transfer candidates**: checked against their same-ontology Stockholm/Sweden graph, with material semantic caveats below. The transfer graph is not a different ontology or independently authored locked holdout.
+This is not proof of semantic correctness or an empirical question-answering accuracy result. The existing independent-RDFLib-vs-Oxigraph oracle checks mechanical result agreement; this supplementary AI audit checks wording versus intended query structure. No Graph Verity model inference ran and no human expert reviewed or signed off the corpus.
 
-The source snapshot contains 600 quads of selected direct statements. The existing Rust/Oxigraph oracle and separately evaluated RDFLib reference queries have mechanically matched the 38 executable development results; this AI audit adds a question-to-plan inspection. A syntactically valid IR or identical result set is **not** human confirmation of user intent or factual truth.
+## Findings and corrections made
 
-## Findings and case dispositions
+The audit found **17 material question/plan interpretation concerns**, involving three distinct problem categories. The candidate corpus was revised with **only wording and intended-meaning changes**: all raw RDF, gold IR, reference SPARQL and frozen expected bindings were preserved. The benchmark checksum and every affected case hash were repinned. All changed entries retain machine authorship and human-review-pending status.
 
-| Count | Disposition | What it means |
+| Finding | Affected entries | AI adjudication applied |
+|---|---|---|
+| Wikidata `Q25416` denotes the **municipality** of Stavanger, while the original questions named undifferentiated “Stavanger” | Development `wd-dev-016`–`020` and templated `wd-review-031`–`040` (15 records) | Questions now explicitly say “Stavanger kommune”. The Q25416 plan and its results remain unchanged. A human may instead choose to create a *separate city-entity* test in a later dataset revision. |
+| “Hvilke elementer finnes **bare** i den valgte overføringsgrafen?” could imply exclusive membership, which the formal plan did not prove | `wd-transfer_candidate-006` | Reworded to request Wikidata items **recorded in the selected transfer graph**. The scope-only query is preserved; no negative/exclusion claim remains. |
+| A question requesting “**land** og hovedsteder” was answered by a bare `P36` relation without checking that the subject is a country | `wd-transfer_candidate-008` | Reworded to ask for subjects with an **explicit capital relationship** and their pointed-to capitals, which matches the existing formal plan. No unsupported subject-type guarantee remains. |
+
+The frozen data directly contains `Q25416 wdt:P31 Q755707`; [Wikidata Q25416](https://www.wikidata.org/wiki/Q25416) is the Stavanger municipality and [Q755707](https://www.wikidata.org/wiki/Q755707) denotes a Norwegian municipality. A distinct [Stavanger urban-settlement item Q26772333](https://www.wikidata.org/wiki/Q26772333) exists but is **not** substituted into this small data capture. The audited graph also contains `Q20 wdt:P17 Q20` (Norway's self-referential country statement); some population/grouping questions therefore include the country itself. This is declared data semantics, not proof of real-world identity or correctness.
+
+The 122 previously *circular* intended-meaning strings (“Execute exactly the supplied directed plan ...”) were replaced by explicit query-specific intent descriptions prepared during the AI audit. They state direction, property, operands and/or grouping, with the limitation that the graph is open-world and results are statements of the selected snapshot. All interpretations still need separate independent human adjudication before gold promotion.
+
+## Current AI-only dispositions
+
+| Count | Assessment | Meaning |
 |---:|---|---|
-| 105 | `provisionally_consistent_ai_only` | The restricted operation appears to match the specific Norwegian wording; all remain subject to human adjudication and gold review. |
-| 17 | `needs_question_or_plan_adjudication` | Material ambiguity or an unstated condition needs explicit correction or expert decision. |
-| 8 | `expected_abstention_is_plausible_ai_only` | Proposed clarification/unsupported status fits the question; **no model abstention has been tested**. |
+| 122 | `provisionally_consistent_ai_only` | After the explicit wording corrections, the recorded restricted graph plan matches the AI-assessed intended operation. **Not human expert-approved.** |
+| 8 | `expected_abstention_is_plausible_ai_only` | Ambiguous or unsupported questions have plausible no-plan statuses. **No model abstention was measured.** |
 
-There are **zero detected structural mismatches** between the explicitly authored intent signatures and the recorded IR on these 130 cases. This is a scoped AI audit, not an accuracy estimate: the 76 derived templates are correlated and the cases were designed against the same restricted graph.
+The audit did **not** find any structural mismatch with the manually authored intent signatures after corrections, but this is not an unbiased parser accuracy estimate. All 76 development-template paraphrases are exposed and correlated; the eight geographic candidates are the same ontology; no independent locked transfer/holdout exists.
 
-### 1. Stavanger's referent is a municipality — 15 case records
+## Remaining data-quality warnings
 
-The five original development cases `wd-dev-016`–`wd-dev-020` and their ten templated copies `wd-review-031`–`wd-review-040` use `wd:Q25416` while asking simply about *Stavanger*. In the pinned RDF, `Q25416 wdt:P31 Q755707`; [Q25416](https://www.wikidata.org/wiki/Q25416) describes the **Stavanger municipality**, and [Q755707](https://www.wikidata.org/wiki/Q755707) denotes a Norwegian municipality. The Nynorsk label explicitly reads *Stavanger kommune*. The entity also has a recorded `P36` capital relationship, rather than simply representing the city itself.
+- The source includes multiple `P571` inception dates for Norway. These questions deliberately check whether a recorded date *exists* in a range; do not infer a uniquely true historical founding date, provenance-complete temporal claim, or current-world state.
+- The Oslo labels captured in the development subset include an English-only label for the particular item; this is not a demonstrated Norwegian-language parser success.
+- Inverse relations returning no rows (e.g., a capital relation with Bergen) mean only that the pinned selected graph does not contain the requested statement, not that the statement is false in the world.
+- The capture of 600 quads is intentionally small, not adequate procurement-domain or pilot-scale coverage. The retained earlier Oslo revision produced unchanged selected graph bytes, so it is not meaningful temporal transfer.
+- A true locked holdout must contain **new, independently authored and adjudicated** question families, paraphrases, gold and reference queries with group separation and restricted access to answer keys. Publicly exposed 76 template variants or eight same-ontology geographic candidates must not simply be renamed into holdout or cross-ontology test splits.
+- Review quality must not be inferred from agreement between generated IR and generated gold. The benchmark's human review ledger remains empty. A private locked test process with real independent reviewers is still missing.
 
-**Required adjudication:** if the intent is to query this municipality, specify “Stavanger kommune (Wikidata Q25416)” in question and interpretation, and then regenerate and rereview all changed hashes. If the intent is Stavanger city, select the correct distinct entity and freeze an appropriate new RDF snapshot/gold. Do not silently treat municipality and urban settlement as identical.
-
-### 2. `wd-transfer_candidate-006` implies exclusivity without proving it
-
-“Hvilke elementer finnes **bare** i den valgte overføringsgrafen?” can mean *only exist in* the transfer graph, while the gold plan merely enumerates `rdf:type wikibase:Item` **within** that graph. It performs no negative comparison with any other named graph.
-
-**Required correction:** reword to “Hvilke Wikidata-elementer er oppført i den valgte overføringsgrafen?” if scope-only membership is intended. Do not add unrestricted `NOT EXISTS` to the currently restricted IR, or infer absence from an open-world graph.
-
-### 3. `wd-transfer_candidate-008` has no country-type constraint
-
-“Hvilke **land** og hovedsteder er uttrykkelig oppført i overføringsgrafen?” is compiled as `?country wdt:P36 ?capital`. This yields the expected Sweden–Stockholm pair for the tiny capture but does **not** require `?country` to actually be a country. The result alone does not establish semantic equivalence of the natural-language type restriction.
-
-**Required correction:** independently validate and add a supported country-type restriction (e.g. `P31` to an observed country class where available), or rephrase the question to “Hvilke ressurser har en eksplisitt hovedstadsrelasjon, og hva peker den til?” Record new gold, source evidence, and a new case hash.
-
-### 4. Cross-cutting interpretation and graph-quality limits
-
-- All 122 executable candidates currently use essentially the same generic interpretation (“Execute exactly the supplied directed plan ...”). This is **circular** as a gold *intended meaning* annotation: it refers back to the plan instead of independently describing what the question means. The AI audit supplies explicit per-case statements, but a human reviewer must confirm or correct those statements before promoting gold.
-- The selected graph includes `Q20 wdt:P17 Q20` (Norway points to itself as country). Consequently some population and country-grouping results include the country itself. This is a snapshot statement, not a model bug; a reviewer must decide whether the question wording intends that inclusion.
-- `Q20` has **multiple** selected `P571` inception values, including historical dates. Questions carefully using “oppgitt etableringsdato” may be evaluated existentially over these records; do not turn them into a unique historical founding date or current real-world claim.
-- The Oslo label example returns only the selected English label. Norwegian queries over English labels are useful, but this tiny lexical capture does not itself establish multilingual parser performance.
-- Empty inverse-capital results (for example Bergen and Trondheim) mean no matching statements in the named graph snapshot, **not** that some global-world negative fact has been proven.
-- Eight development questions with no gold plan are plausible ambiguity/unsupported examples only. Until a real model runs, safe abstention, calibration and false-abstention rates are all unknown.
-
-### 5. No independently locked test or qualifying transfer set exists yet
-
-The 76 templated candidates and the eight Stockholm/Sweden candidates reuse exposed question structures and the **same Wikidata ontology**. The previous Oslo entity revision retained by the repository produced identical selected graph bytes, not a different coherent dataset snapshot. Thus no existing candidate group should be relabeled as an independent `locked_holdout` or `transfer_test`. The `exposed_groups` guard in the split manifest is correct and must remain in place.
-
-For a decision-quality test, commission or author *genuinely new* questions and interpretations, prevent prompt/model development access to their answers, version the split/graph/source and ensure no lineage/template sibling crosses splits. Use a genuinely distinct ontology or coherently changed temporal snapshot for transfer. A publicly checked-in gold benchmark should not be described as secret from agents able to read that public repository.
-
-## Reproduce
+## Verification
 
 ```sh
 python3 -m venv .venv
@@ -70,10 +54,10 @@ python3 -m venv .venv
 .venv/bin/python tools/benchmark.py review --require-reviewed initial
 ```
 
-The final command **must currently fail**: all 130 review records are pending human approval. The read-only unit tests ensure the AI audit remains bound to exact cases, original questions, expected plan signatures and source facts. They must not upgrade the source of reviewer identity or modify the human ledger.
+The last command **must presently fail**, because the zero-approval human-review gate is deliberately unsatisfied. The tests ensure each AI assessment refers to the exact pinned question, snapshot, intended plan signature and source facts; case edits without renewed assessment fail.
 
-## What prevents closing issue #5
+## Why issue #5 cannot yet be closed
 
-This artifact is an **independent AI review**, not the required human expert review. The 130 questions were machine-authored, no human has signed or adjudicated the 17 flagged cases, and no independent locked holdout/second-ontology (or coherent temporal) transfer set has been created or protected. The existing review infrastructure's `initial_ready` and `final_ready` checks must remain false.
+An AI model cannot truthfully be a human expert, supply human identity or independently sign 100–200 gold cases. This audit does not fulfill the issue's specifically **human-reviewed** acceptance condition. There is also no genuinely independent locked evaluation partition or qualifying different-ontology/coherent-temporal transfer set, and all present candidates are exposed. The `initial_ready` and `final_ready` human review gates must stay false.
 
-The project owner may use this audit to speed up human expert review; they must not record it as a human approval, fabricate reviewer identity, or close #5 by weakening its acceptance criteria. The next legitimate step is source-aware independent human adjudication followed by new isolated test material and the approved benchmark freeze.
+To close #5 legitimately: recruit an independent domain/RDF reviewer to validate/adjudicate the corrected case meanings and answer sets, record their real approvals in the append-only ledger, produce independent inaccessible-to-development holdout plus valid transfer material, and freeze the approved split/hash manifest before final evaluation. Do not bypass these steps by relabeling an AI review as human or relaxing the existing acceptance criteria after the fact.
