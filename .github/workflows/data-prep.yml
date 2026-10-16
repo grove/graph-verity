@@ -1,0 +1,40 @@
+name: One-time real data and benchmark capture
+on:
+  push:
+    branches: [feat/pre-llm-benchmark]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    if: github.repository == 'grove/graph-verity'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/pre-llm-benchmark
+      - run: rustup install
+      - run: python3 -m venv .venv && .venv/bin/pip install -r tools/requirements.txt
+      - name: Capture real RDF and freeze candidate gold
+        run: |
+          .venv/bin/python tools/dataset.py capture
+          .venv/bin/python tools/benchmark.py create
+          mkdir -p schemas
+          cargo run --locked -p verity_cli -- schema > schemas/contracts-v1.json
+      - name: Commit only reviewed-scope data assets and generated contract
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/wikidata benchmarks examples schemas
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: freeze real Wikidata source revisions and machine-checked Norwegian candidate gold'
+            git push origin HEAD:feat/pre-llm-benchmark
+          fi
+      - run: .venv/bin/python tools/dataset.py verify && .venv/bin/python tools/benchmark.py verify
+      - run: cargo fmt --all --check && cargo clippy --workspace --all-targets --locked -- -D warnings && cargo test --workspace --locked
+      - name: Execute real-data oracle
+        run: cargo run --locked -p verity_cli -- evaluate data/wikidata/snapshot.nq nquads data/wikidata/policy.json benchmarks/wikidata.json dev artifacts/oracle
+      - name: Execute manual and fixture plans
+        run: |
+          cargo run --locked -p verity_cli -- run data/wikidata/snapshot.nq nquads data/wikidata/policy.json examples/manual-plan.json
+          cargo run --locked -p verity_cli -- replay data/wikidata/snapshot.nq nquads data/wikidata/policy.json data/wikidata/scope.json examples/question.txt examples/fixture-response.json
