@@ -42,9 +42,11 @@ fn bind(types: &mut BTreeMap<String, Types>, node: &Node, allowed: &Types) -> Re
 fn known(node: &Node, catalog: &Catalog, graph: &str) -> Result<()> {
     if let Node::Iri { iri: id } = node {
         iri(id)?;
-        if !catalog.entries.get(id).is_some_and(|entry| {
-            entry.roles.contains("entity") && entry.graphs.contains(graph)
-        }) {
+        if !catalog
+            .entries
+            .get(id)
+            .is_some_and(|entry| entry.roles.contains("entity") && entry.graphs.contains(graph))
+        {
             return Err(reject(
                 "unknown_identifier",
                 "IRI is not an observed entity in the pattern graph",
@@ -132,9 +134,7 @@ impl Snapshot {
                     }
                 }
             }
-            if matches!(object, Node::Iri { .. })
-                && !profile.object_types.contains("resource")
-            {
+            if matches!(object, Node::Iri { .. }) && !profile.object_types.contains("resource") {
                 return Err(reject(
                     "datatype",
                     "IRI object is incompatible with the scoped predicate range",

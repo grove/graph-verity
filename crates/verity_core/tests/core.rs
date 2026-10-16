@@ -385,11 +385,8 @@ fn constants_must_be_graph_local_entities_with_compatible_ranges() {
 
     // Predicate profiles for literal-only objects reject IRI constants.
     let mut p = base(&g);
-    p.patterns.push(edge(
-        var("company"),
-        "employees",
-        id("company"),
-    ));
+    p.patterns
+        .push(edge(var("company"), "employees", id("company")));
     assert!(g.compile(&p, &policy()).is_err());
 
     // A shared entity observed in both graphs remains valid.
@@ -414,7 +411,9 @@ fn constants_must_be_graph_local_entities_with_compatible_ranges() {
 #[test]
 fn execution_evidence_is_explicitly_snapshot_verified() {
     let g = graph();
-    let result = g.execute(&base(&g), &policy(), PlanOrigin::Fixture).unwrap();
+    let result = g
+        .execute(&base(&g), &policy(), PlanOrigin::Fixture)
+        .unwrap();
     assert_eq!(result.evidence_verification, "verified_against_snapshot");
     assert_eq!(result.interpretation_correctness, "not_assessed");
     assert_eq!(result.real_world_truth, "not_established");
