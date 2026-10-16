@@ -200,6 +200,14 @@ class Phase0Tests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Do not aggregate"):
                 build_report(evidence, evidence / "never-written")
 
+    def test_archived_public_reports_and_repeat_evidence_checksums(self):
+        for name in ["phase-0-baseline", "phase-0-development-repeat"]:
+            payload = verify_manifest(ROOT / f"reports/{name}/manifest.json")
+            self.assertFalse(payload["holdout_accessed"])
+        folder = ROOT / "reports/phase-0-development-repeat"
+        expected = (folder / "evidence.sha256").read_text().split()[0]
+        self.assertEqual(sha(folder / "evidence.tar.gz"), expected)
+
     def test_approved_freeze_is_immutable_versioned_and_requires_change_reason(self):
         approved = {**self.approved(), "revision": 1}
         original_sha = sha

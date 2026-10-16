@@ -16,7 +16,7 @@ To also verify the original source inputs, use `--check-inputs` in a checkout of
 
 Both datasets have 0 strict IR matches (0/38 and 0/35); answer binding agreement is
 3/38 and 0/35; correct expected abstentions are 0/8 and 0/5. Historical M1 Pro warm
-p95 is 28.06/26.59 seconds, above the proposed 10-second budget. These are AI-reference
+p95 is 28.06/26.59 seconds, above the proposed 10-second budget. The 7.9 percentage-point public answer-agreement gap reflects two poor scores, not successful independent transfer. These are AI-reference
 agreement measurements, not independent expert semantic accuracy.
 
 Formal decision: **NOT READY**. Thresholds, protocol/sample budgets and deployment CPU

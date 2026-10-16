@@ -1,0 +1,309 @@
+{
+  "status": "completed_measurement_not_a_feasibility_pass",
+  "config": {
+    "version": 1,
+    "model": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+    "model_revision": "91cad51170dc346986eccefdc2dd33a9da36ead9",
+    "model_file": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+    "model_sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+    "model_license": "Apache-2.0",
+    "model_license_sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+    "runtime_revision": "74d4f5b041ad837153b0e90fc864b8290e01d8d5",
+    "runtime_tag": "b5046",
+    "runtime_archive_sha256": "8dd9fcc7c17f972673960ffdcc7521f52de5a9ec594aa6acebd9dfd8c17c0a5c",
+    "cpu_threads": 4,
+    "context_tokens": 8192,
+    "max_output_tokens": 1024,
+    "cache_prompt": true,
+    "timeout_seconds": 120,
+    "seed": 7,
+    "temperature": 0,
+    "prompt_file": "configs/local-parser.prompt.txt",
+    "prompt_sha256": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5",
+    "grammar_file": "configs/local-parser.gbnf",
+    "grammar_sha256": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+    "schema_sha256": "988b32e4a0b5369ed035bfd561c07e3f0944bacd1b6f0bc54ba5927d839838d2",
+    "vocabulary": "oracle_gold_identifiers_only; abstentions_get_authorized_predicates_classes_and_word_boundary_label_mentions; at_most_four_labels_per_id",
+    "chat_template": "<|im_start|>system\n{system}<|im_end|>\n<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n",
+    "evaluation": "public_development_AI_reference_agreement_only"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "logical_cpus": 10,
+  "architecture": "arm64",
+  "accelerator": "none",
+  "measurement_cpu_role": "public_development_not_designated_deployment_target",
+  "python": "3.12.14 (main, Aug 14 2026, 15:24:41) [Clang 22.1.3 ]",
+  "holdout_evaluated": false,
+  "retries": 0,
+  "build_flags": [
+    "-DGGML_METAL=OFF",
+    "-DGGML_BLAS=OFF",
+    "-DGGML_ACCELERATE=OFF",
+    "-DLLAMA_CURL=OFF",
+    "-DLLAMA_BUILD_TESTS=OFF",
+    "-DCMAKE_BUILD_TYPE=Release",
+    "-DBUILD_SHARED_LIBS=OFF"
+  ],
+  "cache_condition": "new server per dataset; OS page cache not evicted; cache_prompt=True",
+  "measurement_scope": "four CPU threads; case includes catalog, stdio/prompt, tokenization, generation, Rust validation, query and evidence; excludes independent reference query; cold adds server startup; warm excludes first case",
+  "results": {
+    "wikidata": {
+      "questions": 46,
+      "supported": 38,
+      "expected_abstentions": 8,
+      "json_valid": 41,
+      "contract_valid": 41,
+      "invalid_contract": 5,
+      "backend_failures": 0,
+      "safety_rejected": 22,
+      "abstained_without_execution": 0,
+      "correct_status_abstentions": 0,
+      "false_abstentions": 0,
+      "structural_AI_reference_matches": 0,
+      "exact_answer_AI_reference_matches": 3,
+      "wrong_plan_successful_executions": 19,
+      "wrong_but_contract_valid_candidates": 41,
+      "per_family": {
+        "ambiguous": [
+          0,
+          2
+        ],
+        "conjunction_distinct_count": [
+          0,
+          1
+        ],
+        "conjunction_numeric_date": [
+          0,
+          1
+        ],
+        "date_comparison": [
+          0,
+          4
+        ],
+        "date_lookup": [
+          0,
+          4
+        ],
+        "direct_relation": [
+          0,
+          4
+        ],
+        "distinct_count": [
+          0,
+          2
+        ],
+        "entity_labels": [
+          0,
+          4
+        ],
+        "grouping": [
+          0,
+          1
+        ],
+        "having": [
+          0,
+          2
+        ],
+        "inverse_relation": [
+          0,
+          4
+        ],
+        "named_graph_scope": [
+          0,
+          1
+        ],
+        "numeric_comparison": [
+          0,
+          6
+        ],
+        "two_hop": [
+          0,
+          4
+        ],
+        "unsupported": [
+          0,
+          6
+        ]
+      },
+      "components_exact": {
+        "aggregation": 29,
+        "datatype": 28,
+        "date_operand": 33,
+        "direction": 29,
+        "entity": 7,
+        "group_by": 28,
+        "having": 30,
+        "limit": 35,
+        "literal": 28,
+        "number": 25,
+        "operator": 16,
+        "predicate": 24,
+        "projection": 0,
+        "scope": 33,
+        "snapshot": 35,
+        "variables": 0
+      },
+      "warm_end_to_end_ms": {
+        "p50": 9612.649583999999,
+        "p95": 26039.330959000003,
+        "p99": 32521.308458999996
+      },
+      "generation_ms": {
+        "p50": 9595.811042,
+        "p95": 26028.816124999998,
+        "p99": 32515.438375
+      },
+      "cold_first_answer_ms_page_cache_not_evicted": 16800.91829219809,
+      "semantic_accuracy_claim": "AI-reference agreement; variable-sensitive structural equality; no independent expert gold",
+      "server_startup_ms": 445.97754208371043,
+      "rust_startup_ms": 26.781625114381313
+    },
+    "worldcities-transfer": {
+      "questions": 40,
+      "supported": 35,
+      "expected_abstentions": 5,
+      "json_valid": 32,
+      "contract_valid": 32,
+      "invalid_contract": 8,
+      "backend_failures": 0,
+      "safety_rejected": 24,
+      "abstained_without_execution": 0,
+      "correct_status_abstentions": 0,
+      "false_abstentions": 0,
+      "structural_AI_reference_matches": 0,
+      "exact_answer_AI_reference_matches": 0,
+      "wrong_plan_successful_executions": 8,
+      "wrong_but_contract_valid_candidates": 32,
+      "per_family": {
+        "ambiguous_largest": [
+          0,
+          1
+        ],
+        "direct_region": [
+          0,
+          5
+        ],
+        "distinct_city_count": [
+          0,
+          5
+        ],
+        "group_having": [
+          0,
+          5
+        ],
+        "identity_label": [
+          0,
+          5
+        ],
+        "inverse_region": [
+          0,
+          5
+        ],
+        "missing_ownership_domain": [
+          0,
+          1
+        ],
+        "missing_population": [
+          0,
+          1
+        ],
+        "numeric_identifier": [
+          0,
+          5
+        ],
+        "open_world_negation": [
+          0,
+          1
+        ],
+        "subjective_criterion": [
+          0,
+          1
+        ],
+        "two_hop_country": [
+          0,
+          5
+        ]
+      },
+      "components_exact": {
+        "aggregation": 22,
+        "datatype": 27,
+        "date_operand": 27,
+        "direction": 8,
+        "entity": 2,
+        "group_by": 23,
+        "having": 24,
+        "limit": 0,
+        "literal": 27,
+        "number": 24,
+        "operator": 16,
+        "predicate": 6,
+        "projection": 7,
+        "scope": 13,
+        "snapshot": 27,
+        "variables": 0
+      },
+      "warm_end_to_end_ms": {
+        "p50": 9346.818292,
+        "p95": 23280.955250000003,
+        "p99": 23376.896167000003
+      },
+      "generation_ms": {
+        "p50": 9338.583875,
+        "p95": 23207.349125,
+        "p99": 23374.071042
+      },
+      "cold_first_answer_ms_page_cache_not_evicted": 16722.118292018302,
+      "semantic_accuracy_claim": "AI-reference agreement; variable-sensitive structural equality; no independent expert gold",
+      "server_startup_ms": 434.6997910179198,
+      "rust_startup_ms": 49.55866700038314
+    }
+  },
+  "artifact_sha256": {
+    "configs/local-parser.json": "144bf5437190da22d46e0ea2f894b641bc0a69320e0e75a6459fc5a98687debe",
+    "configs/local-parser.prompt.txt": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5",
+    "configs/local-parser.gbnf": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+    "tools/local_parser.py": "fb076966aafd0ca253c810ee01c5cdb564b9caddaae5a6491232fd9042f3fe32",
+    "artifacts/local-parser/assets/build/bin/llama-server": "4353db648294cf6558050f5ddeadc3942b6d219d752697cbea72e8cde12de08f",
+    "artifacts/local-parser/assets/build/bin/llama-gbnf-validator": "49e54f7054e02c3a366e173e5b42e5005c915bd4a38df07dfb85270ea4c30a3c",
+    "target/debug/verity": "7e771238fbcd98319af8fe6945eaa81edf58a0d1e43d2c2a2e8bace40f80dd2e",
+    "Cargo.lock": "b86b68fc472e2178f4815cfc86a3477713bd3ad74c6872bd70dfbfcbff3cf5d0",
+    "rust-toolchain.toml": "f715f440167e20fd8ea9afa0498c3d1ab80174cfcb8cbc895f106a34d907a1e1",
+    "crates/verity_cli/src/main.rs": "55dde6905a4fe47359742a9435958b61afd85e30517090b3b6ad3cea54c7c79d",
+    "benchmarks/wikidata.json": "e648323dc0a084e992dee106d8431b55c785c65937571c1903825187c9262c7e",
+    "benchmarks/worldcities-transfer.json": "1949d6844d827b6c320753572ee3d05a1982f5ef04eca65fce5fa99a74bec6fc",
+    "data/wikidata/snapshot.nq": "9e75055676e095fcc387f1fd93146c37b47a448b8e08c5a806ab9be4016ccc6f",
+    "data/wikidata/policy.json": "90afa6af857c2e046bc6f71ebf7354a1a0f9c4583a38001d8176af46a05df9de",
+    "data/worldcities-transfer/snapshot.nq": "2ee4af13fb312c006c126f9239bdbb25b2e4be10b40bff3adc5d67076f068f13",
+    "data/worldcities-transfer/policy.json": "971ffb18bc723903daba6defc96723c8fdf212cafb6ba79692a66a306ba66f51"
+  },
+  "build_receipt": {
+    "runtime_archive_sha256": "8dd9fcc7c17f972673960ffdcc7521f52de5a9ec594aa6acebd9dfd8c17c0a5c",
+    "build_flags": [
+      "-DGGML_METAL=OFF",
+      "-DGGML_BLAS=OFF",
+      "-DGGML_ACCELERATE=OFF",
+      "-DLLAMA_CURL=OFF",
+      "-DLLAMA_BUILD_TESTS=OFF",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DBUILD_SHARED_LIBS=OFF"
+    ],
+    "generated_build_info_sha256": "9073c527052e2fbb7762c750eb5417ae7da458b913226186311beb0ac9b0069d",
+    "cmake": "cmake version 4.4.4\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+    "binaries": {
+      "llama-server": "4353db648294cf6558050f5ddeadc3942b6d219d752697cbea72e8cde12de08f",
+      "llama-gbnf-validator": "49e54f7054e02c3a366e173e5b42e5005c915bd4a38df07dfb85270ea4c30a3c"
+    }
+  },
+  "rustc": "rustc 1.99.0 (b940084d7 2026-09-28) (Homebrew)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: aarch64-apple-darwin\nrelease: 1.99.0\nLLVM version: 23.1.2\n",
+  "base_git_commit": "dfc6c66004dd9858e4e14cfb7d4a735d043c0ced",
+  "machdep.cpu.brand_string": "Apple M1 Pro",
+  "hw.memsize": "34359738368",
+  "hw.logicalcpu": "10",
+  "grammar_probes_passed": true,
+  "sampled_aggregate_peak_rss_kib": 1529616,
+  "rss_samples": 4572,
+  "rss_error": null,
+  "rss_limitations": "200ms descendant samples include startup and ps overhead, may miss spikes and double-count shared pages; OS child high-water mark is separate",
+  "child_lifetime_peak_rss_kib": 1487696.0
+}
