@@ -13,21 +13,40 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: feat/pre-llm-benchmark
+      - name: Correct reference dataset ownership and record source fix
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('tools/benchmark.py')
+          s = p.read_text()
+          s = s.replace('    return Dataset().parse(data=(DATA / "snapshot.nq").read_bytes(), format="nquads")', '    graph = Dataset()\n    graph.parse(data=(DATA / "snapshot.nq").read_bytes(), format="nquads")\n    return graph')
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add tools/benchmark.py
+          if ! git diff --cached --quiet; then
+            git commit -m 'fix: retain RDFLib Dataset rather than parse return graph'
+            git push origin HEAD:feat/pre-llm-benchmark
+          fi
       - run: rustup install
       - run: python3 -m venv .venv && .venv/bin/pip install -r tools/requirements.txt
-      - name: Capture real RDF and freeze candidate gold
+      - name: Capture and immediately freeze real RDF sources
         run: |
           .venv/bin/python tools/dataset.py capture
+          git add data/wikidata
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: freeze revision-addressed original Wikidata RDF and source manifest'
+            git push origin HEAD:feat/pre-llm-benchmark
+          fi
+      - name: Freeze candidate gold and generated contracts
+        run: |
           .venv/bin/python tools/benchmark.py create
           mkdir -p schemas
           cargo run --locked -p verity_cli -- schema > schemas/contracts-v1.json
-      - name: Commit only reviewed-scope data assets and generated contract
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add data/wikidata benchmarks examples schemas
           if ! git diff --cached --quiet; then
-            git commit -m 'data: freeze real Wikidata source revisions and machine-checked Norwegian candidate gold'
+            git commit -m 'test: freeze independently computed Norwegian candidate gold and contracts'
             git push origin HEAD:feat/pre-llm-benchmark
           fi
       - run: .venv/bin/python tools/dataset.py verify && .venv/bin/python tools/benchmark.py verify
