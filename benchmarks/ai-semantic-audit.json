@@ -10,7 +10,7 @@
   },
   "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
   "source": "benchmarks/wikidata.json and data/wikidata/snapshot.nq",
-  "coverage": "All 130 cases: 46 dev, 76 prefixed development-template copies and 8 same-ontology geographic transfer candidates",
+  "coverage": "All 130 version-2 candidate cases, including explicit AI wording clarifications to 17 cases; all human review remains pending.",
   "truth_contract": "Passing linguistic/IR consistency here does not establish an independently expert-reviewed benchmark, real-world truth, model performance or leak-free holdout.",
   "source_assertions": {
     "stavanger_q25416_p31_municipality_q755707": true,
@@ -20,7 +20,7 @@
   "cases": [
     {
       "id": "wd-dev-001",
-      "case_sha256": "82961e775a47ae7ce9b06b32e1de01e06be2d4bf8cf776b7ac861755b0bdf445",
+      "case_sha256": "fb9ef9df27e2a046eee997931848827f91cfca5f2abc1c8cec6d38390272cc29",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke navn er oppført for Oslo i utvalget?",
@@ -48,14 +48,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "oslo_single_english_label_in_frozen_subset",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "oslo_single_english_label_in_frozen_subset"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-002",
-      "case_sha256": "ee84b6fcc68be4fa6e91c20dfa872762d18b755645cd6058c5d1fc9df4d1d97e",
+      "case_sha256": "38d2d0d9b93fc536912e61edc2efe72241e05e188bdb31b21e4f3084f2809675",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilket land er Oslo knyttet til i grafen?",
@@ -82,14 +81,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-003",
-      "case_sha256": "9244d03d6660cb8f62a55761edc3d1c536ccdb7b66929713673c7bc784e6a040",
+      "case_sha256": "34a281d3d86e51ef9a3ca5d4e6f1041537dd616e99db213b760c1d52d1babaa9",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke land i utvalget har Oslo som hovedstad?",
@@ -116,14 +113,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-004",
-      "case_sha256": "7dfe6a4b4b2ade801f6494b5bde56bbbb34df13df0dda620db795dbe97e56f08",
+      "case_sha256": "f7bfd9ae4e641ef26f7a366d334be991b8ca5f9740c1f93b318acd5f5123a62e",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hva er hovedstaden i landet som Oslo er knyttet til?",
@@ -156,14 +151,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-005",
-      "case_sha256": "a81fc33e3d9732b999cd762bbd17f3b5bdecf218b25fddf729051626404eaba3",
+      "case_sha256": "442e4fbecafcbee92b833da13799bf06740fb9d9c12bc0bfff8c383758d09a41",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke etableringsdatoer er oppført for Oslo i grafutvalget?",
@@ -190,14 +183,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-006",
-      "case_sha256": "fd2df6ad8c4ab551741629ffcc82f7a95360978828a2afa644b147766f786368",
+      "case_sha256": "eef2e551e5b58bba6c8fb81900acbc48593c7e05edbe105e22a8b9e7ca6d9af0",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke navn er oppført for Bergen i utvalget?",
@@ -224,14 +215,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-007",
-      "case_sha256": "b929e38a6c131f10330b8831a60a639c27cd5c5a1b89fdfea62463b9571847b7",
+      "case_sha256": "37e50fffc9ea233b24d33a0dd8dfd25d8aeb4d5a2456b037b8d34a97e022b96c",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilket land er Bergen knyttet til i grafen?",
@@ -258,14 +247,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-008",
-      "case_sha256": "7979c151bcec992456cd8ac464cfa396bd259e53d422ef39d1e99a63e7309b64",
+      "case_sha256": "40f327eb0c225b89bf9419abe63c63faed00403d58a8ae9b2b47523ec325344d",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke land i utvalget har Bergen som hovedstad?",
@@ -292,14 +279,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-009",
-      "case_sha256": "0c1643ebae35436234d778d285ab5e878db9a6cb61273ebba02e67a0e6c7a765",
+      "case_sha256": "89083364b3fac9d44d78f92b956c768f3feea3cd4fea305d2469e782e163850d",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hva er hovedstaden i landet som Bergen er knyttet til?",
@@ -332,14 +317,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-010",
-      "case_sha256": "03d038a67bbb18d86352e6c4e3f1073ee19f43034a70b85ce66981b6924ddc88",
+      "case_sha256": "12dc1f3f8b49d80accd3b999031f81d8623345c024f168b0b4120f5e111ad6eb",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke etableringsdatoer er oppført for Bergen i grafutvalget?",
@@ -366,14 +349,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-011",
-      "case_sha256": "4ded41abebed2a27cefa1c0c8ac21a4cc07bbaf547818aa469679db9e5cf1a9d",
+      "case_sha256": "a640f78f5e48c48dc6d57384e44618c8561f95e1f04e7e2f30df9c71e40dd78b",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke navn er oppført for Trondheim i utvalget?",
@@ -400,14 +381,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-012",
-      "case_sha256": "b08e4ba31dedb127f7582ec11ef7e4f76a827ecd7b158d50ff10241daa6a411b",
+      "case_sha256": "9dd46c027adaa975d486b6c2f3efe30897256e97f8ef1227ad2a95c2668a37bf",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilket land er Trondheim knyttet til i grafen?",
@@ -434,14 +413,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-013",
-      "case_sha256": "58db68e2f222bfb8eacc1040392f35ca637e6733ce8dfbf79901458c135df5e6",
+      "case_sha256": "5a317d2e654a6b3dde50493ff28032ced1f00a4bcfd388cabb33125080842b53",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke land i utvalget har Trondheim som hovedstad?",
@@ -468,14 +445,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-014",
-      "case_sha256": "cb88a1fa4438638f9d5f0cedd81f29f7eeac2367ef5e683f43fea7075f29464c",
+      "case_sha256": "4741fcca930df49c02029d934ec496d55566dedd735701a5001245afd790e611",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hva er hovedstaden i landet som Trondheim er knyttet til?",
@@ -508,14 +483,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-015",
-      "case_sha256": "bc61b975a212787469c308c4f43ac73b7d898b530c91616f1af51194e0d8a7b7",
+      "case_sha256": "9ce2d178345edb4b73976a772fe0f8be51ede9d52140fc5f16f87ee2d190b6a2",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke etableringsdatoer er oppført for Trondheim i grafutvalget?",
@@ -542,17 +515,15 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-016",
-      "case_sha256": "a88b2e8093ff2d36823fa81571304db0cd3eba520193d1ea892a3cdbb7d6b10a",
+      "case_sha256": "b540c4c0ac61c6e6c56f3b4494cd8c9c44c2568e661a6650a3ba235722738ed6",
       "split": "dev",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Hvilke navn er oppført for Stavanger i utvalget?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke navn er oppført for Stavanger kommune i utvalget?",
       "independently_stated_intent": "Return RDF labels of wd:Q25416 within the selected graph, preserving language tags.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -577,17 +548,16 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-017",
-      "case_sha256": "3c72f1fe157c63652e0e1f6503ad77a962ff579146219f9155817d76f2b3bef5",
+      "case_sha256": "72a33638f21f46311f0bf3a98a3a0e5440a4343c02827677d0002e92282006ba",
       "split": "dev",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Hvilket land er Stavanger knyttet til i grafen?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilket land er Stavanger kommune knyttet til i grafen?",
       "independently_stated_intent": "Return objects of wd:Q25416 → P17 (country) in the selected named graph.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -612,17 +582,16 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-018",
-      "case_sha256": "31a4c58884fcf5341f33a18840b6b1c3eac64c3329a283b4b65d2a93e6fed910",
+      "case_sha256": "8a49c12e1bb1cbf1ba366c0e7c3729f8836cf274dfbb8e25b0c7bf21b29953a9",
       "split": "dev",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Hvilke land i utvalget har Stavanger som hovedstad?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke land i utvalget har Stavanger kommune som hovedstad?",
       "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q25416; direction is reversed.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -647,17 +616,16 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-019",
-      "case_sha256": "4e3999d7be3c5e2232847ec2616f74fb6e403f9d12ad7a491ea3c9cf92b13c6f",
+      "case_sha256": "1da6ba4152573937f94d8103bc4133014437f42f5ad74f4ef9f0882cf38c99c9",
       "split": "dev",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Hva er hovedstaden i landet som Stavanger er knyttet til?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hva er hovedstaden i landet som Stavanger kommune er knyttet til?",
       "independently_stated_intent": "Traverse wd:Q25416 → P17 → country → P36 → capital; require both edges.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -688,17 +656,16 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-020",
-      "case_sha256": "00733379c1f81b0dcbb0b926ce93911080a3beaec9ec195250ec668c1e423e74",
+      "case_sha256": "6d2d633ca7d3bf23ea98bbc0bd5e37b3d0537dc37c42b36ab40b8dd7313fc124",
       "split": "dev",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Hvilke etableringsdatoer er oppført for Stavanger i grafutvalget?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke etableringsdatoer er oppført for Stavanger kommune i grafutvalget?",
       "independently_stated_intent": "Return all selected P571 inception values of wd:Q25416, not an asserted single true founding date.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -723,14 +690,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-021",
-      "case_sha256": "ac537070c13097f623816688e5e51a5a0555dccdba48af484a54554db6604718",
+      "case_sha256": "a1c0079a127e96ac6e7448604517672ed86f83da9fb17393f5445bd341d0a741",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 100000 i utvalget?",
@@ -771,14 +737,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-022",
-      "case_sha256": "b74f1115c2207fd235787f623861edb240d414cab0a64eed02cd06c8ac912cfc",
+      "case_sha256": "75f5590935c0386c28c2558a3fce10249358de47e83cc190b80df1b33719e7f0",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 200000 i utvalget?",
@@ -819,14 +784,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-023",
-      "case_sha256": "88e0dc0bef22ff00229941cec9a63476c8582480e434acb9f0d98822fcd3a650",
+      "case_sha256": "e58fa983841588d8046ce72566083f0eb00a7ace5f68d176a2def2e9676ad1bd",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på under 1000000 i utvalget?",
@@ -867,14 +831,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-024",
-      "case_sha256": "09d0ee64b126f643c4cd48d3beb62e66ab4aa948833687c496a1800c7df3d155",
+      "case_sha256": "cee368313a38889b87f5a4c6ce6b0ca64bd869bc7f7a2d7c53e216dd38f6c76b",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på høyst 500000 i utvalget?",
@@ -915,14 +878,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-025",
-      "case_sha256": "231870d804d629b78d25be725e82096daa74212a113575eac4cec4b602f97108",
+      "case_sha256": "f8b2eff276cd0c9231d4cc67489626e710acc4d3b54d8683bc3674ccabe8bff4",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 717710 i utvalget?",
@@ -963,14 +925,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-026",
-      "case_sha256": "d45436e27939df9bd7708c0b743f986a5f1345cc27778568d909a9372c5e759e",
+      "case_sha256": "b60df38660101ff5ad8f1de7f89fb862242f6d5e7bdc6f0f37e21590dee8fc07",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 717710 i utvalget?",
@@ -1011,14 +972,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-027",
-      "case_sha256": "f5cba55c1e867016a300ef48f5da8033de0a97fddba1130023f02379073d621e",
+      "case_sha256": "84ef9d127e51eb0a3d965f2048ab4f4c059d28ecebd8dfa81d7c42b1892932f4",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke ressurser har en oppgitt etableringsdato før 1100 i grafutvalget?",
@@ -1053,14 +1013,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "P571_multiple_inception_dates_and_open_world",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "P571_multiple_inception_dates_and_open_world"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-028",
-      "case_sha256": "26568e3b9c05b579f5360aa461205862a1e0fa9e688100cdff895d0c35a71ac8",
+      "case_sha256": "f7039976444daebeb4eb9bcb67cd8f7d8c6551a944d7c9d382adc66bb49765b8",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke ressurser har en oppgitt etableringsdato senest 1. januar 1200 i grafutvalget?",
@@ -1095,14 +1054,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "P571_multiple_inception_dates_and_open_world",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "P571_multiple_inception_dates_and_open_world"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-029",
-      "case_sha256": "f66d68cea839bc77dd10d9f9d7c1d8075b54626005fa565f18968b39f5002882",
+      "case_sha256": "78c3387ea077e2f72e4feb1490022ae03ce4de0e0015ee5f0ec00feb2b4d1ff7",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke ressurser har en oppgitt etableringsdato fra og med 1. januar 1000 i grafutvalget?",
@@ -1137,14 +1095,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "P571_multiple_inception_dates_and_open_world",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "P571_multiple_inception_dates_and_open_world"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-030",
-      "case_sha256": "154365567e927e13ff4aecfd016239a9833d9fa39534c1a6b9e39cd825dced0c",
+      "case_sha256": "e513c949c6756bee2c91ffee59e8443a7abf940b1c8905a73f06cfcd87c367c8",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke ressurser har en oppgitt etableringsdato etter 1. januar 1500 i grafutvalget?",
@@ -1179,14 +1136,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "P571_multiple_inception_dates_and_open_world",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "P571_multiple_inception_dates_and_open_world"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-031",
-      "case_sha256": "f90008fd5bc21f9fa99b9d381957ffbaac8918c3336895b3dd56a73362ca1229",
+      "case_sha256": "c1987ee5d6ee6ad757b1fc9c9ac08e3c75912d26001f85385bc3913478cbb700",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvor mange ulike Wikidata-elementer finnes i utviklingsutvalget?",
@@ -1213,14 +1169,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-032",
-      "case_sha256": "540647216b2c1667c78c12f382fb0eb527cca104907a600f832dde3d67c9dcdc",
+      "case_sha256": "99482438b7e9cd30cd79a0c50a6f1621609662fdfe9b098414408009f6aa204b",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvor mange ulike land peker land-relasjonene i utviklingsutvalget til?",
@@ -1247,14 +1201,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-033",
-      "case_sha256": "abfe1a40efa407e747e04d7d681ab53bfda48446f5ed9279abfb780f42f35a19",
+      "case_sha256": "70f160a29226ccb39ae344a963a45106dd098cec60b11e415cd2f62579d56051",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvor mange ulike ressurser i utvalget er knyttet til hvert land?",
@@ -1285,14 +1237,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-034",
-      "case_sha256": "e2d1e3770b852c6e249aefed99824057bc7a8fb0a2f63cb6515d6ebba66aba58",
+      "case_sha256": "f7285300718d0b79f30d22a5da5cf5e66af4a5e113765fe38c9a68c474647345",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke land har minst 2 ulike tilknyttede ressurser i utvalget, og hvor mange?",
@@ -1329,14 +1280,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-035",
-      "case_sha256": "8e7a5062e79fcc4bbd0fbcea6142f1e1334cb6d2b1a06c49c929dd7cf3028a0d",
+      "case_sha256": "533a3ce5696cd6616228f0873c26351815bccee1e7c85c29cdb2440afac9a7d0",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke land har minst 5 ulike tilknyttede ressurser i utvalget, og hvor mange?",
@@ -1373,14 +1323,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-036",
-      "case_sha256": "12113567fe2e6ddabe2fbff707225e6fca54ca85816e2fd7551be8d7e213c099",
+      "case_sha256": "fb0b443d8ccaf4a9e49adf3cd801d4aec30374c73f1e8873709b4e77fb3739a7",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke elementer i utvalget har minst to ulike oppførte klassifiseringer, og hvor mange?",
@@ -1422,14 +1371,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-037",
-      "case_sha256": "7f6dfeeee77b16ae0c1daaa13cf41fb7434b217d5a5ec4efff001d97579b105d",
+      "case_sha256": "a32d2ef5bff83deb507b3ceccb393ce3b4f25e96829e76ed1a7ac94c37368636",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke Wikidata-elementer finnes innenfor den valgte utviklingsgrafen?",
@@ -1456,14 +1403,12 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
       "id": "wd-dev-038",
-      "case_sha256": "584dee50384172dc694ff90672d34702ba85c864d66adc8e8130e71c878d8e25",
+      "case_sha256": "e68010c52d9f1cc2d6e44b025074a04b82db58ea78037f8edfe01a029a961813",
       "split": "dev",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke ressurser har både oppgitt folketall over 200000 og en etableringsdato før 1100?",
@@ -1509,9 +1454,7 @@
       },
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
-      "flags": [
-        "generic_circular_intent_metadata_replace_before_gold_approval"
-      ],
+      "flags": [],
       "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
     },
     {
@@ -1520,7 +1463,7 @@
       "split": "dev",
       "assessment": "expected_abstention_is_plausible_ai_only",
       "reviewed_question": "Hva er hovedstaden?",
-      "independently_stated_intent": "Reject or ask clarification: the question lacks a specified referent/measure or requests unsupported truth, negation, ownership, unbounded coverage, or temporal reconstruction.",
+      "independently_stated_intent": "Country and intended scope are unspecified",
       "expected_status": "needs_clarification",
       "expected_plan_signature": null,
       "observed_plan_matches_intent_signature": true,
@@ -1534,7 +1477,7 @@
       "split": "dev",
       "assessment": "expected_abstention_is_plausible_ai_only",
       "reviewed_question": "Hvilken by er størst?",
-      "independently_stated_intent": "Reject or ask clarification: the question lacks a specified referent/measure or requests unsupported truth, negation, ownership, unbounded coverage, or temporal reconstruction.",
+      "independently_stated_intent": "Largest could mean area, population or another measure",
       "expected_status": "needs_clarification",
       "expected_plan_signature": null,
       "observed_plan_matches_intent_signature": true,
@@ -1548,7 +1491,7 @@
       "split": "dev",
       "assessment": "expected_abstention_is_plausible_ai_only",
       "reviewed_question": "Hvor mange innbyggere har Oslo akkurat nå?",
-      "independently_stated_intent": "Reject or ask clarification: the question lacks a specified referent/measure or requests unsupported truth, negation, ownership, unbounded coverage, or temporal reconstruction.",
+      "independently_stated_intent": "Current-world/time-qualified population is not established by this direct-statement capture",
       "expected_status": "unsupported",
       "expected_plan_signature": null,
       "observed_plan_matches_intent_signature": true,
@@ -1562,7 +1505,7 @@
       "split": "dev",
       "assessment": "expected_abstention_is_plausible_ai_only",
       "reviewed_question": "Hvilke byer har ikke noen etableringsdato?",
-      "independently_stated_intent": "Reject or ask clarification: the question lacks a specified referent/measure or requests unsupported truth, negation, ownership, unbounded coverage, or temporal reconstruction.",
+      "independently_stated_intent": "Negation and closed-world absence inference are unsupported",
       "expected_status": "unsupported",
       "expected_plan_signature": null,
       "observed_plan_matches_intent_signature": true,
@@ -1576,7 +1519,7 @@
       "split": "dev",
       "assessment": "expected_abstention_is_plausible_ai_only",
       "reviewed_question": "Hvilke selskaper eier Oslo kommune?",
-      "independently_stated_intent": "Reject or ask clarification: the question lacks a specified referent/measure or requests unsupported truth, negation, ownership, unbounded coverage, or temporal reconstruction.",
+      "independently_stated_intent": "Ownership and municipal corporate entities are outside the selected vocabulary/data",
       "expected_status": "unsupported",
       "expected_plan_signature": null,
       "observed_plan_matches_intent_signature": true,
@@ -1590,7 +1533,7 @@
       "split": "dev",
       "assessment": "expected_abstention_is_plausible_ai_only",
       "reviewed_question": "Hvor mye vokste Bergen fra 2020 til 2025?",
-      "independently_stated_intent": "Reject or ask clarification: the question lacks a specified referent/measure or requests unsupported truth, negation, ownership, unbounded coverage, or temporal reconstruction.",
+      "independently_stated_intent": "Time-qualified observations and temporal arithmetic are not supported",
       "expected_status": "unsupported",
       "expected_plan_signature": null,
       "observed_plan_matches_intent_signature": true,
@@ -1604,7 +1547,7 @@
       "split": "dev",
       "assessment": "expected_abstention_is_plausible_ai_only",
       "reviewed_question": "Vis alle kommuner i Norge.",
-      "independently_stated_intent": "Reject or ask clarification: the question lacks a specified referent/measure or requests unsupported truth, negation, ownership, unbounded coverage, or temporal reconstruction.",
+      "independently_stated_intent": "Selected city entities do not form a complete municipality registry",
       "expected_status": "unsupported",
       "expected_plan_signature": null,
       "observed_plan_matches_intent_signature": true,
@@ -1618,7 +1561,7 @@
       "split": "dev",
       "assessment": "expected_abstention_is_plausible_ai_only",
       "reviewed_question": "Vis aktive kontrakter for Trondheim.",
-      "independently_stated_intent": "Reject or ask clarification: the question lacks a specified referent/measure or requests unsupported truth, negation, ownership, unbounded coverage, or temporal reconstruction.",
+      "independently_stated_intent": "No contract/status domain is included",
       "expected_status": "unsupported",
       "expected_plan_signature": null,
       "observed_plan_matches_intent_signature": true,
@@ -1628,7 +1571,7 @@
     },
     {
       "id": "wd-review-001",
-      "case_sha256": "59db3b3aae55e63f3a1fe083e1c572c467ff41cb08957bd3d67c3cf47739aa8d",
+      "case_sha256": "522af65f79ad3ead6ce402706be2c9e7f30a3963206045a05ef767d3c2f601dd",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Oslo i utvalget?",
@@ -1657,14 +1600,13 @@
       "source_template_id": "wd-dev-001",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "oslo_single_english_label_in_frozen_subset",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "oslo_single_english_label_in_frozen_subset"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-002",
-      "case_sha256": "d58fa7bd9feafbd5eaaaf6d345a77fa550db3738c4b3b9bf65b6853e32dda496",
+      "case_sha256": "feee1959f30720128021f989fcc9cd5e51e523a394258026b7d3b2cf34df945d",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Oslo i utvalget?",
@@ -1693,14 +1635,13 @@
       "source_template_id": "wd-dev-001",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "oslo_single_english_label_in_frozen_subset",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "oslo_single_english_label_in_frozen_subset"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-003",
-      "case_sha256": "8069dc4bcbfe2a383a9bdcb8189e3b9da2354caa1be8dd5ca689b1405b29af3b",
+      "case_sha256": "9c7cba85f8a5fa2f9feb7a1229fd99c884cd72f857eabd1e1c4b4516d18e6d8c",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Oslo knyttet til i grafen?",
@@ -1728,14 +1669,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-002",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-004",
-      "case_sha256": "347853572e5fe7bd38707057b90132ecdbd6dc00b8ea24082ac21fc4f2cfa630",
+      "case_sha256": "a1f69bb178bed9ec22f645b644654d829f5817392432e15e9785c866ef8a4167",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Oslo knyttet til i grafen?",
@@ -1763,14 +1703,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-002",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-005",
-      "case_sha256": "36c1562efad682d327d823bbc878e28d9b5c8daa4305e0aec4e967bba6a7ca2b",
+      "case_sha256": "dd9f4525475c7f9c4e5c1ecbd87ce531a6a16629b2397d6712eb95d28f989216",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Oslo som hovedstad?",
@@ -1798,14 +1737,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-003",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-006",
-      "case_sha256": "6f9518989a301a05edcd7836dd0d5a081c6e2c5caafb559101f54c0a313b1593",
+      "case_sha256": "62abaf80ae64fffb5e02c029db93d784f2f2fe3d3bb43bf8d92aa6528e68ca25",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Oslo som hovedstad?",
@@ -1833,14 +1771,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-003",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-007",
-      "case_sha256": "e7b7142e24848dc371dba6975914974ba0b365287c95fcc66537f1ea91baf018",
+      "case_sha256": "7721ba4f64ec1a7ba9e8d3f9b130c4c2c940acb4cac675543f095cd58b282f19",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Oslo er knyttet til?",
@@ -1874,14 +1811,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-004",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-008",
-      "case_sha256": "cbbd067f82f7414b6e282976ada51c538ee13d7102702324617e9f30e358cce0",
+      "case_sha256": "075004f8d31a879e8a8b7699f3bcfe65c1ecee8071d88537350427a14ba606a0",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Oslo er knyttet til?",
@@ -1915,14 +1851,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-004",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-009",
-      "case_sha256": "a121a984d214371fb660160d2fd800a3d8209292d660257d1d888706a6025f61",
+      "case_sha256": "dd24d388e34ab82675e003efb81375eb069cc7e98524dba358f1f2258c084073",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Oslo i grafutvalget?",
@@ -1950,14 +1885,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-005",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-010",
-      "case_sha256": "16414eeafc497d70dc251f0c760f42942a5cb42e95d629a76ff603d8bd64142f",
+      "case_sha256": "20c448501e7a618cf36be91a5eacba341c90d51a215eed978bf7a16b440bc60a",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Oslo i grafutvalget?",
@@ -1985,14 +1919,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-005",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-011",
-      "case_sha256": "1d286c3263a0ab500d84a0ba8ca52d4bbea221b4a77ca88ad799ac234da6596c",
+      "case_sha256": "874a7da11233b388070feab7fef48b470052e91811e8a44c436e59da13efaabf",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Bergen i utvalget?",
@@ -2020,14 +1953,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-006",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-012",
-      "case_sha256": "5a44627729c4e9713fd46981c53ca3e1c946dc94b40df24fbb5d525449744cf3",
+      "case_sha256": "3ff07a4ff8ca75f798d0d8734613b13797ab92a11eca0660b17098b87ddc5aa2",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Bergen i utvalget?",
@@ -2055,14 +1987,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-006",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-013",
-      "case_sha256": "f5ed42cdec615f120e45a1cf01511ec112af84a6cc38d5c291bbe33fe8bbcb6e",
+      "case_sha256": "db3599fbb0b4b38eb66c7c7dabcac41b970c28fe6653fd435a7194ded9e50ef0",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Bergen knyttet til i grafen?",
@@ -2090,14 +2021,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-007",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-014",
-      "case_sha256": "6cdeb6e3b79c2753c4d795120b70385eb42969ae245e3bfdd4d65c3a5ff396b9",
+      "case_sha256": "c60f719d1713de89669d8681838ba5b08673e365be48168215ba08bb1cfd4e47",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Bergen knyttet til i grafen?",
@@ -2125,14 +2055,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-007",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-015",
-      "case_sha256": "5c3ba15bcf63138bb373865daf82ff24593a6e4ce3bd5c385bc5945df06b2168",
+      "case_sha256": "e11cbab9a4084090407081fef3b19adf0420563ffb00d13740e30a81040af594",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Bergen som hovedstad?",
@@ -2160,14 +2089,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-008",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-016",
-      "case_sha256": "69eb8293efd983edf5167fa9e0418fc66e1dc2c98eaa452260086b4dc4c7edba",
+      "case_sha256": "d61bb64177d1f021505791713244fdf12634640bffcc975df4c1c4df5e47947d",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Bergen som hovedstad?",
@@ -2195,14 +2123,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-008",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-017",
-      "case_sha256": "a5c351cee3be1610555855054b6d2b310ec0e53b6f031a225d5f05677721db79",
+      "case_sha256": "0a380160f407b161ecff36c337d7a6179c4e11fe1791a39cfdde2bd65c7dfbfe",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Bergen er knyttet til?",
@@ -2236,14 +2163,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-009",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-018",
-      "case_sha256": "03a4dac9683394ce14b3f50670aafae88e56fec43b70ab36b9d2d5652f32af9f",
+      "case_sha256": "cde7dad2ec4287045df9d9caae8f18f6083d6884b733701ddeccc31b06e1d2fc",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Bergen er knyttet til?",
@@ -2277,14 +2203,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-009",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-019",
-      "case_sha256": "2ac1901e89e309ee4806d98f1959f68c04bed93cdd1b8065a6ecbeb76349e7f4",
+      "case_sha256": "a51cbaa8f101ec86eee56558e2d2f08fa3729a21c813caeab2b957d1d790dcad",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Bergen i grafutvalget?",
@@ -2312,14 +2237,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-010",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-020",
-      "case_sha256": "96accbdc49edd3a92311ee47f9cca82e78efe15aeb5c7ff56d03a30a61d78e38",
+      "case_sha256": "9a1ea75604c04fbc36b128f3c119694e3275b987bdb58438db5697108004734b",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Bergen i grafutvalget?",
@@ -2347,14 +2271,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-010",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-021",
-      "case_sha256": "4fb392ea81e9709dfc2de9c44d661c555c62eb88a3109015efb932200c2e027c",
+      "case_sha256": "5c009302948f8c2c9e007b48ba7e8432d6d32ba2a547809bf2e3c54861ee8463",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Trondheim i utvalget?",
@@ -2382,14 +2305,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-011",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-022",
-      "case_sha256": "63599b83235f48cb577b9341ab836fe079339ccfe5edceeab271c4a4c13d42b4",
+      "case_sha256": "2af7a1198ce2760d83c0ae031f054a0121a05aa674c2c0ff01b1c6ded5e1d611",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Trondheim i utvalget?",
@@ -2417,14 +2339,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-011",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-023",
-      "case_sha256": "4e465d75022a6860535ce405d5a4030f1204e5ba1980763eb430b4888c129530",
+      "case_sha256": "3e7287c4b4756a48ef05543c165ffe50881d6d8d87eae174a8bbbd21c2742a8f",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Trondheim knyttet til i grafen?",
@@ -2452,14 +2373,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-012",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-024",
-      "case_sha256": "2f13b4e500fe93f8206ce72f84f1ab0683c84090a519b8d3b05f66a155ae6386",
+      "case_sha256": "a7c4bb61df72c5be2d459c53a7244a20b85f48c7684811d46a857b7d6babd2ab",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Trondheim knyttet til i grafen?",
@@ -2487,14 +2407,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-012",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-025",
-      "case_sha256": "8f452e6e55b029133838a107962ad37c0c9ebe896f3160181749f82369b26714",
+      "case_sha256": "5c4d7864e2cb0606a1f5f0dbc033696bbf5a373004f8e319f6ca67155fad217d",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Trondheim som hovedstad?",
@@ -2522,14 +2441,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-013",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-026",
-      "case_sha256": "01e7b33d3096df58f79a3608ab686ccf05c3ffe19130fd251288017ab5557d9d",
+      "case_sha256": "2caa4a45d8141d914673599d4ddf6eb2d349f75510b4c873e8565df1a2bf4f5d",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Trondheim som hovedstad?",
@@ -2557,14 +2475,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-013",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-027",
-      "case_sha256": "3d7f5b862bf5b5dd910e34f56bc08b262a99cf931025378959489303b299cd1e",
+      "case_sha256": "e1d37a209482a246ec1a47560178f5f3ce24bd22a38fbc4e1aa0ccc7a84060fd",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Trondheim er knyttet til?",
@@ -2598,14 +2515,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-014",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-028",
-      "case_sha256": "66499926f2e8f40dd9ff1d1714964428499b0a2842670db0d84ead1771cbbd0c",
+      "case_sha256": "91c274b444629e5a4c6f99cf65aeb8a38f160a1e3c98391ca79514a435942677",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Trondheim er knyttet til?",
@@ -2639,14 +2555,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-014",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-029",
-      "case_sha256": "a8d354067d33bf1f42eea06de3c1729576bc4db417b982be64a28757522be4c0",
+      "case_sha256": "bb9efccf6a708e9c7e44c4ec8046eaa408ba463019ae809233d9ce59d96c3cd8",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Trondheim i grafutvalget?",
@@ -2674,14 +2589,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-015",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-030",
-      "case_sha256": "ede6000ef34f44330e7655c998278f803ec7abd70effef6c92f566dc1dc6c6e6",
+      "case_sha256": "488bc521348802659dbe1d9ee8054d26e7bbff38010688b51a274f236aa6869b",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Trondheim i grafutvalget?",
@@ -2709,17 +2623,16 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-015",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-031",
-      "case_sha256": "fb5b7e19fa8f6f6b3f76cacac7b948d2253044113af043f39c360d87ea941488",
+      "case_sha256": "0b057e9f871dca4996bf5a4d6bc9eea9c5e406a82d1a561d960ce568e8805be8",
       "split": "review_candidate",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Stavanger i utvalget?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Stavanger kommune i utvalget?",
       "independently_stated_intent": "Return RDF labels of wd:Q25416 within the selected graph, preserving language tags.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -2745,17 +2658,16 @@
       "source_template_id": "wd-dev-016",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-032",
-      "case_sha256": "6f1b4201e1f805508a575cbce516b902bec506e94ed02e918cd8769a4fdd376e",
+      "case_sha256": "b1733eb741205e31537ccbd93480a3a76b902d2d8f3b0f62a4bbe9affd0af43f",
       "split": "review_candidate",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Stavanger i utvalget?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Stavanger kommune i utvalget?",
       "independently_stated_intent": "Return RDF labels of wd:Q25416 within the selected graph, preserving language tags.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -2781,17 +2693,16 @@
       "source_template_id": "wd-dev-016",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-033",
-      "case_sha256": "18a10cc53903c791f27fc045d1a871bcfa150ccde1e0f086195446a2f9dfc456",
+      "case_sha256": "c88081f95e191d3f75be65011d3c30b78c4a5c07dfcc41143c458018190b0f7f",
       "split": "review_candidate",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Stavanger knyttet til i grafen?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Stavanger kommune knyttet til i grafen?",
       "independently_stated_intent": "Return objects of wd:Q25416 → P17 (country) in the selected named graph.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -2817,17 +2728,16 @@
       "source_template_id": "wd-dev-017",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-034",
-      "case_sha256": "229165aa3285002cb6044b4cdebbe46c4ca08da35f65f25a060d48377373297d",
+      "case_sha256": "6fe4f728df2f9073cd09f3912739721d9637d23abeb6879f9cfdf102e3fde9b1",
       "split": "review_candidate",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Stavanger knyttet til i grafen?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Stavanger kommune knyttet til i grafen?",
       "independently_stated_intent": "Return objects of wd:Q25416 → P17 (country) in the selected named graph.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -2853,17 +2763,16 @@
       "source_template_id": "wd-dev-017",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-035",
-      "case_sha256": "f4978bb11e1f72a2216cfef8b34369f555d71f72e70436967ac5c9e815efa11b",
+      "case_sha256": "2d0830275492acff546184fb33454c4c133efac177424d5c2887b06667a3e67a",
       "split": "review_candidate",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Stavanger som hovedstad?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Stavanger kommune som hovedstad?",
       "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q25416; direction is reversed.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -2889,17 +2798,16 @@
       "source_template_id": "wd-dev-018",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-036",
-      "case_sha256": "fbfde58adf15c3e3e88cd1c0cdb3e5e3eca1703565079d94eb8c8a457bcdd2f0",
+      "case_sha256": "9ba952b8ffd47da187352202d4da9727dfec161e2b63294f0fe5dbef0279c3c7",
       "split": "review_candidate",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Stavanger som hovedstad?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Stavanger kommune som hovedstad?",
       "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q25416; direction is reversed.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -2925,17 +2833,16 @@
       "source_template_id": "wd-dev-018",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-037",
-      "case_sha256": "f9f25ad96c5502d70912afc8576746e1c18969f8a01f444d51b67485fc380f73",
+      "case_sha256": "33963ec5c6d69c26029fa2a7070f1e9384b5420a676a6d9dbc1c93065acfddc2",
       "split": "review_candidate",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Stavanger er knyttet til?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Stavanger kommune er knyttet til?",
       "independently_stated_intent": "Traverse wd:Q25416 → P17 → country → P36 → capital; require both edges.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -2967,17 +2874,16 @@
       "source_template_id": "wd-dev-019",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-038",
-      "case_sha256": "fcce39bd0b92bc3e8ae4af7fde79b3d90409ebf8b8d02e68935adf22f146b32f",
+      "case_sha256": "d45eeeacd3976a6e8a2e37433c9a0b049124724681c1e5fd0005885a681d206d",
       "split": "review_candidate",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Stavanger er knyttet til?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Stavanger kommune er knyttet til?",
       "independently_stated_intent": "Traverse wd:Q25416 → P17 → country → P36 → capital; require both edges.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -3009,17 +2915,16 @@
       "source_template_id": "wd-dev-019",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-039",
-      "case_sha256": "b66478e54b4912a57fa7c3d5e62c7ac606cd9e0b15ac8566daffb51b5ac21521",
+      "case_sha256": "64b4975293f113422382f007adf712ad9c78ceaf987f499fdf23495e5f466386",
       "split": "review_candidate",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Stavanger i grafutvalget?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Stavanger kommune i grafutvalget?",
       "independently_stated_intent": "Return all selected P571 inception values of wd:Q25416, not an asserted single true founding date.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -3045,17 +2950,16 @@
       "source_template_id": "wd-dev-020",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-040",
-      "case_sha256": "ff4386241229ab33bb82319894c88feb324f62adf59b4b13c2476084401d0929",
+      "case_sha256": "542a52f96c7d18517e308e99bfeb417382b842d4aa8fcc0c69c56e1dad8a012a",
       "split": "review_candidate",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Stavanger i grafutvalget?",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Stavanger kommune i grafutvalget?",
       "independently_stated_intent": "Return all selected P571 inception values of wd:Q25416, not an asserted single true founding date.",
       "expected_status": "executed",
       "expected_plan_signature": {
@@ -3081,14 +2985,13 @@
       "source_template_id": "wd-dev-020",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "stavanger_q25416_municipality_vs_place_ambiguity",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "municipality_entity_q25416_now_explicit_in_question"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-041",
-      "case_sha256": "8ac2fdaa83d466f3523404b2673041a782b3bd1c8730267ec1f681b45b0f7bf7",
+      "case_sha256": "581bda6f62cda4ee89b1b09e758f3f74d6ab4f1ff9f76c65c4e8eaca7c991a3c",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 100000 i utvalget?",
@@ -3130,14 +3033,13 @@
       "source_template_id": "wd-dev-021",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-042",
-      "case_sha256": "c293be0ee70aef7303f2b06b6d0185044c2a18ca52a95f35787b5dd8cac74092",
+      "case_sha256": "95a21712c7e3a5b721c410d019db13c134f8eb2d4f81d284bce556ac89420aff",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 100000 i utvalget?",
@@ -3179,14 +3081,13 @@
       "source_template_id": "wd-dev-021",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-043",
-      "case_sha256": "d6b4f992dd2280ac66040eda0ce67bfa63ab2e33a8fd736af52b3cbe00fd2de8",
+      "case_sha256": "97c0fdd6c41a409b86124252d1fec880455f930c2bd2405329cbda93233698bd",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 200000 i utvalget?",
@@ -3228,14 +3129,13 @@
       "source_template_id": "wd-dev-022",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-044",
-      "case_sha256": "0806d0439e39cafe7813ae332d235c4ceab670ef779e38f6a244abb77bdfd878",
+      "case_sha256": "d0be4f63fbc8943aa8eb34af16521c9066cccd01500b61c58620f7f8941049db",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 200000 i utvalget?",
@@ -3277,14 +3177,13 @@
       "source_template_id": "wd-dev-022",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-045",
-      "case_sha256": "c97f0b3ed2151d446937b0e8fff1874b6ed65b073fe15ebaf2ceff6aeaac43a8",
+      "case_sha256": "d0eccc4e92516af0ff0875fe081570cb347b01fa2047a1d9ed0fbc73dd5d9f1e",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på under 1000000 i utvalget?",
@@ -3326,14 +3225,13 @@
       "source_template_id": "wd-dev-023",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-046",
-      "case_sha256": "0f2e075aebce8f8f84a6a1a0239076021f6db11fb014740fc3002b74bd245bf3",
+      "case_sha256": "d8b483c7400f927de37ddba0d1c8f52559b920634d05c436534e171d7649c0f9",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på under 1000000 i utvalget?",
@@ -3375,14 +3273,13 @@
       "source_template_id": "wd-dev-023",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-047",
-      "case_sha256": "58110e448506315e2f4a523c2f56a25659c092d718789f2cedbd2d4421881a19",
+      "case_sha256": "2ac36359d9a02d39daa9f1ac118157bc120e22fb3712641d365a6cf02916d381",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på høyst 500000 i utvalget?",
@@ -3424,14 +3321,13 @@
       "source_template_id": "wd-dev-024",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-048",
-      "case_sha256": "00b68e920d91b2291dc2e07d017c442b1700bccd3629316fd890bec651dcd29a",
+      "case_sha256": "fd782e8406115ae94c3642576a0d3a0b2e57288449d52c8dd885f2b97174f800",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på høyst 500000 i utvalget?",
@@ -3473,14 +3369,13 @@
       "source_template_id": "wd-dev-024",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-049",
-      "case_sha256": "b63ad559a67c83c579a251a075727a755575f48e5d339822d731a550d61d604e",
+      "case_sha256": "b012119d3336042b3b59baca43e43dd846f07736786395db52f9c647ae9b45bb",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 717710 i utvalget?",
@@ -3522,14 +3417,13 @@
       "source_template_id": "wd-dev-025",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-050",
-      "case_sha256": "7b157102c1f123a7185c9f823eff4e3d62f50a46baf6a0d81317ccbf61b3d8cc",
+      "case_sha256": "178a82b764b70c5c43b8c6bcc0b2ab6269b2bbb965ae93af4406065818c2e996",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 717710 i utvalget?",
@@ -3571,14 +3465,13 @@
       "source_template_id": "wd-dev-025",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-051",
-      "case_sha256": "0fc91395cf74184f82d6411dde49d8be5ade0cfaa90a21fc993b6d17e2fc8794",
+      "case_sha256": "21e228facf088c670c7fd44886f0b500b5ad7e9bae8cdef2f21346e16fbb762e",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 717710 i utvalget?",
@@ -3620,14 +3513,13 @@
       "source_template_id": "wd-dev-026",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-052",
-      "case_sha256": "e2256fd1971d6247035ba185e62f56e6d5500617e30f91857933cbe426ca40cc",
+      "case_sha256": "8ddf0424d41a83d08daac29d2e5dd3aa568af1663ef91c92efde9292e5c7731c",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 717710 i utvalget?",
@@ -3669,14 +3561,13 @@
       "source_template_id": "wd-dev-026",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-053",
-      "case_sha256": "8a23cb0ff4d70a992d623ae36d62640691a18a27e5ab1269844dd48ffc8bf0d4",
+      "case_sha256": "42380489a4d053bfed3f0742ca52e8729a20023e5cb8329da42c30f855b08e90",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har en oppgitt etableringsdato før 1100 i grafutvalget?",
@@ -3712,14 +3603,13 @@
       "source_template_id": "wd-dev-027",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "P571_multiple_inception_dates_and_open_world",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "P571_multiple_inception_dates_and_open_world"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-054",
-      "case_sha256": "935043fa9a88c89ecdd6418bbad3cad4e0c65941b638e9d5aa3c727e09ceb861",
+      "case_sha256": "0c2ceffc50b0cc3a6206d7e30cbd84dae042665d1e9d05d18dddca5a09e2c97e",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har en oppgitt etableringsdato før 1100 i grafutvalget?",
@@ -3755,14 +3645,13 @@
       "source_template_id": "wd-dev-027",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "P571_multiple_inception_dates_and_open_world",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "P571_multiple_inception_dates_and_open_world"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-055",
-      "case_sha256": "face9b5d8de0359877927204bde88e4a00619065febb23aaf12f88f7c55308e8",
+      "case_sha256": "82558db5af053d07c75eca13e1c560fbf221c560a831812afddbafcc3c1209c4",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har en oppgitt etableringsdato senest 1. januar 1200 i grafutvalget?",
@@ -3798,14 +3687,13 @@
       "source_template_id": "wd-dev-028",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "P571_multiple_inception_dates_and_open_world",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "P571_multiple_inception_dates_and_open_world"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-056",
-      "case_sha256": "9bdc721866d67bb34efcf30aa5da2e3727110ac155916b4489bd3a64668b09d8",
+      "case_sha256": "177cba667596297aeb4dcf95806822e73fd04dbb92c1a862bd56096228fd10ee",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har en oppgitt etableringsdato senest 1. januar 1200 i grafutvalget?",
@@ -3841,14 +3729,13 @@
       "source_template_id": "wd-dev-028",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "P571_multiple_inception_dates_and_open_world",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "P571_multiple_inception_dates_and_open_world"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-057",
-      "case_sha256": "d31e56c396b25658d0884e2b7a6e3f598f04527400fe870bff6ca984dbdfb31f",
+      "case_sha256": "16aa5f38d195d3f9df77c221ecb838bea8d61f9d971ba2e22c10c02533241593",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har en oppgitt etableringsdato fra og med 1. januar 1000 i grafutvalget?",
@@ -3884,14 +3771,13 @@
       "source_template_id": "wd-dev-029",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "P571_multiple_inception_dates_and_open_world",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "P571_multiple_inception_dates_and_open_world"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-058",
-      "case_sha256": "8e992d0c3e09835302cd5a47df0c0fe316e2f40a7454eb02b9540f1a6db90f97",
+      "case_sha256": "1010f798295b99d1393764c584edf4536635220c998384266116d3ca23e59cfc",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har en oppgitt etableringsdato fra og med 1. januar 1000 i grafutvalget?",
@@ -3927,14 +3813,13 @@
       "source_template_id": "wd-dev-029",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "P571_multiple_inception_dates_and_open_world",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "P571_multiple_inception_dates_and_open_world"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-059",
-      "case_sha256": "66745a6056f2bdb1b7a95fa2930d286f4ea4f7e27515b5b72b942e66f3029882",
+      "case_sha256": "2aa9e20b0d1b5a3aa9820a7f22bc305c29a598234a4d1a49e12292862fecb119",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har en oppgitt etableringsdato etter 1. januar 1500 i grafutvalget?",
@@ -3970,14 +3855,13 @@
       "source_template_id": "wd-dev-030",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "P571_multiple_inception_dates_and_open_world",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "P571_multiple_inception_dates_and_open_world"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-060",
-      "case_sha256": "1ae455952e0298ed5fd927a0e5528c333a6774b13693c1c554f6e498841276f4",
+      "case_sha256": "879a34a326185fe69d37b75f02afd933079267a41d273ea76018bbecb9e61801",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har en oppgitt etableringsdato etter 1. januar 1500 i grafutvalget?",
@@ -4013,14 +3897,13 @@
       "source_template_id": "wd-dev-030",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "P571_multiple_inception_dates_and_open_world",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "P571_multiple_inception_dates_and_open_world"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-061",
-      "case_sha256": "6e1042fd1884ff8520d69202ea0c3bd667d7f914a0f06171b271b19f869a3398",
+      "case_sha256": "979a91fc059c39ba9439bb6b02a4f98b7641962f7a282f35b25ca7f33bbd2350",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvor mange ulike Wikidata-elementer finnes i utviklingsutvalget?",
@@ -4048,14 +3931,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-031",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-062",
-      "case_sha256": "b3056ca6912cea521318367d34dbc6400767cebc9280d96f9fff7e1d7d45ee00",
+      "case_sha256": "07cc56fb1d640016084cde45c06504ebac50f3a400a734ac94ecf69a05e9ad9e",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvor mange ulike Wikidata-elementer finnes i utviklingsutvalget?",
@@ -4083,14 +3965,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-031",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-063",
-      "case_sha256": "e905b8955189565ad062fc22e4147822811296c36c0257ddde705647a7fd0314",
+      "case_sha256": "94b0b77657c3ccbec000a5d1fd47315fffbe5a3cd185c3ab1f242fbb52c5b994",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvor mange ulike land peker land-relasjonene i utviklingsutvalget til?",
@@ -4118,14 +3999,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-032",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-064",
-      "case_sha256": "b82fc8476ef0c2da7c85f68c5610e070890d42ecd1f82fdaf52e329187fa528a",
+      "case_sha256": "3bec30db83634f5e52257518e13f3fe7ef733d0bd7593c734b6539a4637636a4",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvor mange ulike land peker land-relasjonene i utviklingsutvalget til?",
@@ -4153,14 +4033,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-032",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-065",
-      "case_sha256": "f83431603589ec27ea7e0b74c6440d9f25303d0e85beb0f833cbe91762f355c7",
+      "case_sha256": "f03018afe7185bfd237e32e40398bbe0b59a9e7f2f59af6096e71aaaec0518f5",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvor mange ulike ressurser i utvalget er knyttet til hvert land?",
@@ -4192,14 +4071,13 @@
       "source_template_id": "wd-dev-033",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-066",
-      "case_sha256": "89472283f50eb9bcd15c4105fbf14c3989788b2455f45958400ed8c17fcbc004",
+      "case_sha256": "f908884ab5315e317f1fc1d4562293a72e3a851bc2a3722e8b91aad8c85e2e83",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvor mange ulike ressurser i utvalget er knyttet til hvert land?",
@@ -4231,14 +4109,13 @@
       "source_template_id": "wd-dev-033",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-067",
-      "case_sha256": "a1889ca9c1e90dc077fbe26e9e90bdb8bd9da5711a72125e9c8d5132ac6e82b4",
+      "case_sha256": "04f65dd569e2fe8433dc399c1e467f4c03bf1c8f041a8f85d21526f854106474",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land har minst 2 ulike tilknyttede ressurser i utvalget, og hvor mange?",
@@ -4276,14 +4153,13 @@
       "source_template_id": "wd-dev-034",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-068",
-      "case_sha256": "02eebd432f6a7f7c2f10993ea560a5e5b3f745d9cedb9fcedc4ace1b58ccb862",
+      "case_sha256": "71b887ce1eca92e66687915fec524a1f64343df2d330cf11fee5d7b44af7ce23",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land har minst 2 ulike tilknyttede ressurser i utvalget, og hvor mange?",
@@ -4321,14 +4197,13 @@
       "source_template_id": "wd-dev-034",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-069",
-      "case_sha256": "19b160eab8fd0eb002b79782e12e95d374a953a2bdc2933ac03c6a0e778e2662",
+      "case_sha256": "24defa0c95b70e60fb28a067b2a9627d2ae024b6f951431cc6b2129b3079efa1",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land har minst 5 ulike tilknyttede ressurser i utvalget, og hvor mange?",
@@ -4366,14 +4241,13 @@
       "source_template_id": "wd-dev-035",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-070",
-      "case_sha256": "3c42929c2845e94ec888bbca8d11b7a5ba364af11ef155246e92281e20f01cd8",
+      "case_sha256": "3ae7c8e09646a1fa6f8d9e518ca7517831ecfbfe9c58ad1a708568e5d4a790b0",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land har minst 5 ulike tilknyttede ressurser i utvalget, og hvor mange?",
@@ -4411,14 +4285,13 @@
       "source_template_id": "wd-dev-035",
       "flags": [
         "template_reuses_development_gold_not_independent",
-        "norway_self_P17_country_statement_affects_results",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "norway_self_P17_country_statement_affects_results"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-071",
-      "case_sha256": "8af3363b7dcf281c236eae41238797c9e696076379f2e48367523b8cf4bcacd3",
+      "case_sha256": "22a812873cac6c1adffd956b63995c16de3eb23c00b4a74a70dca55d9bd306da",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke elementer i utvalget har minst to ulike oppførte klassifiseringer, og hvor mange?",
@@ -4461,14 +4334,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-036",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-072",
-      "case_sha256": "4db27f6d37d4514bead156548fbdf92abde6e51d243dac53eeeb1bac29737e79",
+      "case_sha256": "9641c473c2dba83318685d42e2ee5a708f44fd31d9cb4fc9856759b34238f59d",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke elementer i utvalget har minst to ulike oppførte klassifiseringer, og hvor mange?",
@@ -4511,14 +4383,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-036",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-073",
-      "case_sha256": "f2832c04b34f53ac5b2c058c8332da07321c49c34bbc250136356073f3f48e3a",
+      "case_sha256": "8e8047879c1b7fcb1866ffd4db0352e8eb9b9b5c6a4745fb431b7f568f125487",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke Wikidata-elementer finnes innenfor den valgte utviklingsgrafen?",
@@ -4546,14 +4417,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-037",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-074",
-      "case_sha256": "eec60a70108c628381704930b29cd6b9e830e95b5e549c5ae0b8669871571a68",
+      "case_sha256": "26b98cf611f4f44bffe593576688bddbc73d4ede08e73e51c45dce575745ae70",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke Wikidata-elementer finnes innenfor den valgte utviklingsgrafen?",
@@ -4581,14 +4451,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-037",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-075",
-      "case_sha256": "ac590e9d5db31e6aca8a2b25924160ee6a38574b4f66a7d4058c2dd8eb006345",
+      "case_sha256": "a8009bd1518e74e23e59a019ecb56ab28de63e7888ddf1f3fe89530492b63b68",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har både oppgitt folketall over 200000 og en etableringsdato før 1100?",
@@ -4635,14 +4504,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-038",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-review-076",
-      "case_sha256": "850d4dcf4d3ce90b572d434f46683b38622228efafe5d0d4b7f596d3ccac7e7f",
+      "case_sha256": "007b8c43aae735b3b8cdceb84d0e4b57c529e18c027d1ebd16a1dc35b5145d53",
       "split": "review_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har både oppgitt folketall over 200000 og en etableringsdato før 1100?",
@@ -4689,14 +4557,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": "wd-dev-038",
       "flags": [
-        "template_reuses_development_gold_not_independent",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "template_reuses_development_gold_not_independent"
       ],
       "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
     },
     {
       "id": "wd-transfer_candidate-001",
-      "case_sha256": "0fd1845d61ef8236358308d9a91114ae4e14e5799e217c940d639edb41109368",
+      "case_sha256": "30684f722ec717911e4a822019266b5c2ce5702fdebae6a942fab6b4448b27ea",
       "split": "transfer_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke navn er oppført for Stockholm i utvalget?",
@@ -4724,14 +4591,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "same_wikidata_ontology_not_cross_ontology",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "same_wikidata_ontology_not_cross_ontology"
       ],
       "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
     },
     {
       "id": "wd-transfer_candidate-002",
-      "case_sha256": "40ff624f1abf76f057836a8ac00fe3c3e1e8ddc8e8a43f4eaf68514c95fc95bb",
+      "case_sha256": "c4e45ae062a3a1a76a3f4eb5b9e66e53106f41457d5783f6704c4222548f2b36",
       "split": "transfer_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilket land er Stockholm knyttet til i grafen?",
@@ -4759,14 +4625,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "same_wikidata_ontology_not_cross_ontology",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "same_wikidata_ontology_not_cross_ontology"
       ],
       "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
     },
     {
       "id": "wd-transfer_candidate-003",
-      "case_sha256": "2b0d6befd2cdb3103acbece0b201b7879724b9d8ade475566dcf397a8708810a",
+      "case_sha256": "47d92a16391f7fd3cca0292bae788ae809975af91a81f04de106fa34738e0404",
       "split": "transfer_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke land i utvalget har Stockholm som hovedstad?",
@@ -4794,14 +4659,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "same_wikidata_ontology_not_cross_ontology",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "same_wikidata_ontology_not_cross_ontology"
       ],
       "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
     },
     {
       "id": "wd-transfer_candidate-004",
-      "case_sha256": "5530f55d790dac116626c3b0d067fbb400774d25a19b6dd3125fe7683a45e326",
+      "case_sha256": "147f3f759744538a69ef0a450c189e377e844802e4d16100eb7dd405ab3366c8",
       "split": "transfer_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hva er hovedstaden i landet som Stockholm er knyttet til?",
@@ -4835,14 +4699,13 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "same_wikidata_ontology_not_cross_ontology",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "same_wikidata_ontology_not_cross_ontology"
       ],
       "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
     },
     {
       "id": "wd-transfer_candidate-005",
-      "case_sha256": "01baf485803a3d641c6ba54ee6da58aa66ad2359d2abf00fbbbc080b8704c76c",
+      "case_sha256": "aeab55df95ac4e8f0ceefe4d81c04bdbf4ad0b55d99f0fa958ee1ad6c14e1780",
       "split": "transfer_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvilke etableringsdatoer er oppført for Stockholm i grafutvalget?",
@@ -4870,18 +4733,17 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "same_wikidata_ontology_not_cross_ontology",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "same_wikidata_ontology_not_cross_ontology"
       ],
       "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
     },
     {
       "id": "wd-transfer_candidate-006",
-      "case_sha256": "03cbf6e2cbb5c667def376d28e20e858f02429ab22c788735be5739917321e87",
+      "case_sha256": "50bfe32f7c560d17d13713cd0532a251daddf817effea16033f944bad7c16fe2",
       "split": "transfer_candidate",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Hvilke elementer finnes bare i den valgte overføringsgrafen?",
-      "independently_stated_intent": "Return wikibase:Item subjects from the transfer graph; this does not test absence from other graphs.",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke Wikidata-elementer er oppført i den valgte overføringsgrafen?",
+      "independently_stated_intent": "Return explicitly typed wikibase:Item subjects from only the transfer named graph; no claim of exclusive graph membership.",
       "expected_status": "executed",
       "expected_plan_signature": {
         "patterns": [
@@ -4906,14 +4768,13 @@
       "source_template_id": null,
       "flags": [
         "same_wikidata_ontology_not_cross_ontology",
-        "bare_may_mean_exclusive_but_query_only_limits_scope",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "scope_only_wording_now_explicit_no_exclusivity_claim"
       ],
       "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
     },
     {
       "id": "wd-transfer_candidate-007",
-      "case_sha256": "c6dd14a0c5f26e5e1bb9005dd3fa56bc489918fa5ebc0dfe06a7f98c12b6b044",
+      "case_sha256": "572b2cdf25dff5a36b0eeb44208c05397d3f4509e0a594d986de04f488a2bc75",
       "split": "transfer_candidate",
       "assessment": "provisionally_consistent_ai_only",
       "reviewed_question": "Hvor mange ulike elementer finnes i overføringsutvalget?",
@@ -4941,18 +4802,17 @@
       "observed_plan_matches_intent_signature": true,
       "source_template_id": null,
       "flags": [
-        "same_wikidata_ontology_not_cross_ontology",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "same_wikidata_ontology_not_cross_ontology"
       ],
       "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
     },
     {
       "id": "wd-transfer_candidate-008",
-      "case_sha256": "e069488f0379d3fb85fe2eed29963d8acdcd5d07ef94c6edd137637f74dbbfbc",
+      "case_sha256": "83456a1072242f00d09ff98e46a1dbebc5981b043f04d07cffbc9909932bc0dc",
       "split": "transfer_candidate",
-      "assessment": "needs_question_or_plan_adjudication",
-      "reviewed_question": "Hvilke land og hovedsteder er uttrykkelig oppført i overføringsgrafen?",
-      "independently_stated_intent": "Return P36 subject/object pairs; a country-type restriction is not present in the supplied query.",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser har en eksplisitt hovedstadsrelasjon i overføringsgrafen, og hvilke hovedsteder peker de til?",
+      "independently_stated_intent": "Return subjects and objects of the recorded P36 capital relation within the transfer graph; no claim that the subject was independently type-checked as a country.",
       "expected_status": "executed",
       "expected_plan_signature": {
         "patterns": [
@@ -4978,10 +4838,144 @@
       "source_template_id": null,
       "flags": [
         "same_wikidata_ontology_not_cross_ontology",
-        "country_subject_not_type_constrained",
-        "generic_circular_intent_metadata_replace_before_gold_approval"
+        "subject_type_not_required_by_corrected_question"
       ],
       "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
     }
-  ]
+  ],
+  "correction_history": {
+    "status": "AI_adjudicated_wording_and_intent_only_not_human_approved",
+    "date": "2026-10-16",
+    "modified_case_ids": [
+      "wd-dev-001",
+      "wd-dev-002",
+      "wd-dev-003",
+      "wd-dev-004",
+      "wd-dev-005",
+      "wd-dev-006",
+      "wd-dev-007",
+      "wd-dev-008",
+      "wd-dev-009",
+      "wd-dev-010",
+      "wd-dev-011",
+      "wd-dev-012",
+      "wd-dev-013",
+      "wd-dev-014",
+      "wd-dev-015",
+      "wd-dev-016",
+      "wd-dev-017",
+      "wd-dev-018",
+      "wd-dev-019",
+      "wd-dev-020",
+      "wd-dev-021",
+      "wd-dev-022",
+      "wd-dev-023",
+      "wd-dev-024",
+      "wd-dev-025",
+      "wd-dev-026",
+      "wd-dev-027",
+      "wd-dev-028",
+      "wd-dev-029",
+      "wd-dev-030",
+      "wd-dev-031",
+      "wd-dev-032",
+      "wd-dev-033",
+      "wd-dev-034",
+      "wd-dev-035",
+      "wd-dev-036",
+      "wd-dev-037",
+      "wd-dev-038",
+      "wd-review-001",
+      "wd-review-002",
+      "wd-review-003",
+      "wd-review-004",
+      "wd-review-005",
+      "wd-review-006",
+      "wd-review-007",
+      "wd-review-008",
+      "wd-review-009",
+      "wd-review-010",
+      "wd-review-011",
+      "wd-review-012",
+      "wd-review-013",
+      "wd-review-014",
+      "wd-review-015",
+      "wd-review-016",
+      "wd-review-017",
+      "wd-review-018",
+      "wd-review-019",
+      "wd-review-020",
+      "wd-review-021",
+      "wd-review-022",
+      "wd-review-023",
+      "wd-review-024",
+      "wd-review-025",
+      "wd-review-026",
+      "wd-review-027",
+      "wd-review-028",
+      "wd-review-029",
+      "wd-review-030",
+      "wd-review-031",
+      "wd-review-032",
+      "wd-review-033",
+      "wd-review-034",
+      "wd-review-035",
+      "wd-review-036",
+      "wd-review-037",
+      "wd-review-038",
+      "wd-review-039",
+      "wd-review-040",
+      "wd-review-041",
+      "wd-review-042",
+      "wd-review-043",
+      "wd-review-044",
+      "wd-review-045",
+      "wd-review-046",
+      "wd-review-047",
+      "wd-review-048",
+      "wd-review-049",
+      "wd-review-050",
+      "wd-review-051",
+      "wd-review-052",
+      "wd-review-053",
+      "wd-review-054",
+      "wd-review-055",
+      "wd-review-056",
+      "wd-review-057",
+      "wd-review-058",
+      "wd-review-059",
+      "wd-review-060",
+      "wd-review-061",
+      "wd-review-062",
+      "wd-review-063",
+      "wd-review-064",
+      "wd-review-065",
+      "wd-review-066",
+      "wd-review-067",
+      "wd-review-068",
+      "wd-review-069",
+      "wd-review-070",
+      "wd-review-071",
+      "wd-review-072",
+      "wd-review-073",
+      "wd-review-074",
+      "wd-review-075",
+      "wd-review-076",
+      "wd-transfer_candidate-001",
+      "wd-transfer_candidate-002",
+      "wd-transfer_candidate-003",
+      "wd-transfer_candidate-004",
+      "wd-transfer_candidate-005",
+      "wd-transfer_candidate-006",
+      "wd-transfer_candidate-007",
+      "wd-transfer_candidate-008"
+    ],
+    "changes": [
+      "Disambiguated Stavanger municipality Q25416 in five development cases and ten derived templates",
+      "Removed exclusivity implication in transfer candidate 006",
+      "Aligned capital relation question wording to the supported untyped P36 plan in transfer candidate 008",
+      "Replaced generic circular intention descriptions in all 122 executable cases"
+    ],
+    "reference_queries_and_expected_bindings_unchanged": true
+  }
 }
