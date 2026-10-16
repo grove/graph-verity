@@ -112,7 +112,7 @@ class AIAuditTests(unittest.TestCase):
             "expected_abstention_is_plausible_ai_only",
         })
         self.assertEqual(sum(r["assessment"] == "needs_question_or_plan_adjudication"
-                             for r in self.audit["cases"]), 17)
+                             for r in self.audit["cases"]), 0)
         self.assertEqual(sum(r["assessment"] == "expected_abstention_is_plausible_ai_only"
                              for r in self.audit["cases"]), 8)
 
@@ -131,6 +131,22 @@ class AIAuditTests(unittest.TestCase):
                 for field in ("gold", "reference_sparql", "expected_bindings"):
                     self.assertEqual(current[field], original[field])
 
+
+    def test_human_review_is_still_pending_and_intents_are_not_circular(self):
+        from benchmark_review import review_summary
+        reviews = json.loads((ROOT / "benchmarks/reviews.json").read_text())
+        manifest = json.loads((ROOT / "benchmarks/split-manifest.json").read_text())
+        summary = review_summary(self.benchmark, manifest, reviews)
+        self.assertFalse(summary["initial_ready"])
+        self.assertFalse(summary["final_ready"])
+        self.assertEqual(summary["decisions"], {"pending": 130})
+        for case in self.cases.values():
+            if case["expected_status"] == "executed":
+                self.assertNotIn("Execute exactly the supplied directed plan", case["interpretation"])
+                self.assertIn("Graph semantics:", case["interpretation"])
+        self.assertEqual(self.audit["correction_history"]["status"],
+                         "AI_adjudicated_wording_and_intent_only_not_human_approved")
+
     def test_material_semantic_findings_grounded_in_exact_snapshot(self):
         snapshot = SNAPSHOT.read_text()
         expected_statements = (
@@ -148,11 +164,12 @@ class AIAuditTests(unittest.TestCase):
             self.assertTrue(self.audit["source_assertions"][flag])
             self.assertIn(statement, snapshot)
         ambiguous = [r for r in self.audit["cases"]
-                     if "stavanger_q25416_municipality_vs_place_ambiguity" in r["flags"]]
+                     if "municipality_entity_q25416_now_explicit_in_question" in r["flags"]]
         self.assertEqual(len(ambiguous), 15)
-        self.assertIn("bare_may_mean_exclusive_but_query_only_limits_scope",
+        self.assertTrue(all("Stavanger kommune" in self.cases[r["id"]]["question"] for r in ambiguous))
+        self.assertIn("scope_only_wording_now_explicit_no_exclusivity_claim",
                       self.records["wd-transfer_candidate-006"]["flags"])
-        self.assertIn("country_subject_not_type_constrained",
+        self.assertIn("subject_type_not_required_by_corrected_question",
                       self.records["wd-transfer_candidate-008"]["flags"])
         for r in self.audit["cases"]:
             if r["split"] == "transfer_candidate":
