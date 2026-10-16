@@ -39,13 +39,15 @@ fn bind(types: &mut BTreeMap<String, Types>, node: &Node, allowed: &Types) -> Re
     Ok(())
 }
 
-fn known(node: &Node, catalog: &Catalog) -> Result<()> {
+fn known(node: &Node, catalog: &Catalog, graph: &str) -> Result<()> {
     if let Node::Iri { iri: id } = node {
         iri(id)?;
-        if !catalog.entries.contains_key(id) {
+        if !catalog.entries.get(id).is_some_and(|entry| {
+            entry.roles.contains("entity") && entry.graphs.contains(graph)
+        }) {
             return Err(reject(
                 "unknown_identifier",
-                "IRI is not in the scoped vocabulary",
+                "IRI is not an observed entity in the pattern graph",
             ));
         }
     }
@@ -107,8 +109,8 @@ impl Snapshot {
                     "A literal cannot be the subject of an RDF edge",
                 ));
             }
-            known(subject, &catalog)?;
-            known(object, &catalog)?;
+            known(subject, &catalog, &pattern.graph)?;
+            known(object, &catalog, &pattern.graph)?;
             let profile = catalog
                 .profiles
                 .get(&pattern.graph)
@@ -129,6 +131,14 @@ impl Snapshot {
                         return Err(reject("class", "Type object is not an observed class"));
                     }
                 }
+            }
+            if matches!(object, Node::Iri { .. })
+                && !profile.object_types.contains("resource")
+            {
+                return Err(reject(
+                    "datatype",
+                    "IRI object is incompatible with the scoped predicate range",
+                ));
             }
             bind(&mut types, subject, &BTreeSet::from(["resource".into()]))?;
             bind(&mut types, object, &profile.object_types)?;
