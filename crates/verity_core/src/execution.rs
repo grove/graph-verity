@@ -59,6 +59,7 @@ pub type Row = BTreeMap<String, RdfTerm>;
 pub enum PlanOrigin {
     Manual,
     Fixture,
+    LocalModel,
 }
 
 #[derive(Debug, Serialize)]

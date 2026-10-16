@@ -1,11 +1,67 @@
 #![forbid(unsafe_code)]
-use std::{env, fs, process::ExitCode};
+use std::{
+    env, fs,
+    io::{self, BufRead, Write},
+    process::ExitCode,
+};
 use verity_core::{
-    catalog::Policy, evaluation::Benchmark, execution::PlanOrigin, ir::decode_plan,
-    parser::FixtureParser, read_limited, reject, Result, Snapshot,
+    catalog::Policy,
+    evaluation::Benchmark,
+    execution::PlanOrigin,
+    ir::decode_plan,
+    parser::{FixtureParser, ParserRequest, SemanticParser},
+    read_limited, reject, Result, Snapshot,
 };
 
-const USAGE: &str = "verity schema | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, PLAN and BENCHMARK are JSON files";
+const USAGE: &str = "verity schema | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, PLAN and BENCHMARK are JSON files. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
+
+// The parent owns llama.cpp, deadlines and process cleanup; model bytes stay inside response.
+struct LlamaCppBridge(String);
+impl SemanticParser for LlamaCppBridge {
+    fn origin(&self) -> PlanOrigin {
+        PlanOrigin::LocalModel
+    }
+    fn model(&self) -> Option<String> {
+        Some(self.0.clone())
+    }
+    fn propose(&self, request: &ParserRequest) -> Result<Vec<u8>> {
+        println!("{}", serde_json::json!({"parser_request": request}));
+        io::stdout().flush()?;
+        let mut line = Vec::new();
+        let mut input = io::stdin().lock();
+        // Bound before allocation, including JSON escaping in the bridge envelope.
+        loop {
+            let available = input.fill_buf()?;
+            if available.is_empty() {
+                return Err(reject("local_backend", "Parser parent disconnected"));
+            }
+            let length = available
+                .iter()
+                .position(|b| *b == b'\n')
+                .map_or(available.len(), |i| i + 1);
+            if line.len() + length > 1024 * 1024 {
+                return Err(reject("input_limit", "Parser bridge line exceeds 1 MiB"));
+            }
+            line.extend_from_slice(&available[..length]);
+            input.consume(length);
+            if line.last() == Some(&b'\n') {
+                break;
+            }
+        }
+        let reply: serde_json::Value = serde_json::from_slice(&line)?;
+        if let Some(error) = reply.get("error").and_then(|v| v.as_str()) {
+            return Err(reject("local_backend", error));
+        }
+        let raw = reply
+            .get("response")
+            .and_then(|v| v.as_str())
+            .ok_or_else(|| reject("local_backend", "Missing model response"))?;
+        if raw.len() > 131_072 {
+            return Err(reject("input_limit", "Model output exceeds 128 KiB"));
+        }
+        Ok(raw.as_bytes().to_vec())
+    }
+}
 
 fn json(path: &str) -> Result<serde_json::Value> {
     Ok(serde_json::from_slice(&read_limited(
@@ -94,6 +150,25 @@ fn run() -> Result<()> {
                     "One or more benchmark checks failed",
                 ));
             }
+            Ok(())
+        }
+        ("evaluate-local", 7) => {
+            if !matches!(args[5].as_str(), "dev" | "transfer_dev") {
+                return Err(reject(
+                    "split",
+                    "Local spike only accepts public development splits",
+                ));
+            }
+            let benchmark: Benchmark = serde_json::from_value(json(&args[4])?)?;
+            println!("{}", serde_json::json!({"startup_ready": true}));
+            io::stdout().flush()?;
+            let report = graph.evaluate(
+                &benchmark,
+                &args[5],
+                &policy,
+                Some(&LlamaCppBridge(args[6].clone())),
+            )?;
+            println!("{}", serde_json::json!({"report": report}));
             Ok(())
         }
         _ => Err(reject("usage", USAGE)),

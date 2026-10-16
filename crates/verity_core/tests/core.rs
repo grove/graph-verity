@@ -611,4 +611,75 @@ fn evaluator_detects_valid_but_wrong_plan_and_independent_reference() {
     assert_eq!(report.cases[0].json_valid, Some(true));
     assert!(report.cases[0].wrong_plan_successful_execution);
     assert_eq!(report.cases[0].structural_ir_exact, Some(false));
+    let score = &report.cases[0];
+    assert_eq!(score.contract_valid, Some(true));
+    assert_eq!(score.safety_valid, Some(true));
+    assert_eq!(score.components_exact.get("operator"), Some(&false));
+    assert_eq!(score.components_exact.get("number"), Some(&true));
+    assert!(score.raw_response.is_some());
+    assert!(score.generation_ms.is_some());
+    assert!(score.end_to_end_ms >= score.generation_ms.unwrap());
+    assert!(report.model.is_none());
+}
+
+#[test]
+fn local_origin_and_independent_model_output_rejections() {
+    use verity_core::parser::{ParserRequest, SemanticParser};
+    struct MockModel(Vec<u8>);
+    impl SemanticParser for MockModel {
+        fn origin(&self) -> PlanOrigin {
+            PlanOrigin::LocalModel
+        }
+        fn model(&self) -> Option<String> {
+            Some("mock_not_inference".into())
+        }
+        fn propose(&self, _: &ParserRequest) -> verity_core::Result<Vec<u8>> {
+            Ok(self.0.clone())
+        }
+    }
+    let g = graph();
+    let scope = vec![PUBLIC.into()];
+    let response = |p| {
+        serde_json::to_vec(&ParserResponse {
+            version: 1,
+            proposal: Proposal::Candidate { plan: p },
+        })
+        .unwrap()
+    };
+    let result = g
+        .run_parser(&MockModel(response(base(&g))), "test", &scope, &policy())
+        .unwrap();
+    let ParserOutcome::Executed { result } = result else {
+        panic!("Expected execution")
+    };
+    assert_eq!(serde_json::to_value(result.origin).unwrap(), "local_model");
+    assert_eq!(result.interpretation_correctness, "not_assessed");
+
+    for mutation in [
+        "scope",
+        "snapshot",
+        "entity",
+        "predicate",
+        "datatype",
+        "operator",
+    ] {
+        let mut p = numeric_plan(&g, Compare::Ge);
+        match mutation {
+            "scope" => p.scope.push(PRIVATE.into()),
+            "snapshot" => p.snapshot_id = "invented".into(),
+            "entity" => p.patterns[0].to = id("unknown"),
+            "predicate" => p.patterns[1].predicate = "https://example.org/unknown".into(),
+            "datatype" => p.filters[0].value.datatype = format!("{XSD}string"),
+            "operator" => p.projection.clear(),
+            _ => unreachable!(),
+        }
+        assert!(
+            g.run_parser(&MockModel(response(p)), "test", &scope, &policy())
+                .is_err(),
+            "{mutation}"
+        );
+    }
+    for bytes in [b"SELECT * WHERE {?s ?p ?o}".as_slice(), b"{", b"{\"version\":1,\"proposal\":{\"status\":\"unsupported\",\"reason\":\"x\",\"sparql\":\"DROP ALL\"}}"] {
+        assert!(g.run_parser(&MockModel(bytes.to_vec()), "test", &scope, &policy()).is_err());
+    }
 }

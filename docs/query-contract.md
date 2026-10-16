@@ -64,9 +64,13 @@ after parsing. Blank-node identifiers are local to a loaded snapshot, not stable
 
 `SemanticParser::propose` accepts an authorized `ParserRequest` and returns raw JSON bytes. The
 boundary independently decodes and validates `ParserResponse` v1 and refuses any scope change.
-The exact-request fixture adapter cannot interpret new questions. All generation, weights,
-tokenization, grammar enforcement, model attribution and inference measurements remain unimplemented.
-`FutureLocalConfig` records intended local artifact hashes and resource settings; it loads nothing.
+The exact-request fixture adapter cannot interpret new questions. The opt-in
+[local parser experiment](local-parser-experiment.md) now implements pinned CPU llama.cpp
+generation through an owned stdio bridge, with grammar probes and independent Rust validation.
+`SemanticParser::origin` is explicit: fixture replay stays `fixture`, actual local generation
+uses `local_model`. The runner supplies the model identity independently of model-authored JSON.
+The legacy schema's `FutureLocalConfig` remains a placeholder, not the runner's configuration;
+the actual experiment configuration is `configs/local-parser.json`.
 
 The evaluator accepts the same proposal trait and uses the same result scoring. Structural IR exact
 match is deliberately conservative (including array order and variable names), not a proof of arbitrary
@@ -75,6 +79,9 @@ run only in a physically isolated copy of authorized graphs, with no HTTP-enable
 trusted benchmark assets, not a public raw-query API. Gold bindings are never updated by evaluation.
 
 Oracle reports include code, schema, dependency and data hashes. Fixture abstention entries are clearly
-marked bookkeeping, not evidence of ambiguity detection. Timing excludes ingestion and model generation;
-process VmHWM is lifetime peak, not per-query or model memory. Cold-start/model metrics require separate
-measurement. Independent human gold review and preregistered holdout remain mandatory.
+marked bookkeeping, not evidence of ambiguity detection. Legacy `pipeline_ms` timing excludes
+ingestion and generation; `generation_ms` and `end_to_end_ms` record the actual parser path.
+The local runner separately records process-cold startup, warm percentiles and aggregate RSS.
+Process VmHWM remains lifetime peak, not per-query or incremental model memory.
+Independent expert gold and a preregistered holdout remain unmet feasibility gates;
+the owner's AI-reference waiver permits development measurements only.

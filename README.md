@@ -4,7 +4,7 @@
 
 Graph Verity is a local-first RDF question-answering project. Its **deterministic pre-LLM core is implemented on `main`**: manually authored or fixture-supplied typed plans are validated in Rust, compiled into read-only SPARQL, and executed in embedded Oxigraph with scoped RDF evidence.
 
-**Natural-language interpretation, local model inference, embeddings, Find/search, SHACL validation and HTTP serving are not implemented.** Successful graph execution does not establish that a question was understood or that the graph's statements are true in the world.
+An opt-in **CPU-only local semantic-parser experiment** is implemented behind the same Rust validation boundary. It evaluates public development questions with oracle vocabulary, reports AI-reference agreement separately from JSON validity and query execution, and preserves model/grammar/prompt/output artifacts. See [the experiment and reproduction command](docs/local-parser-experiment.md). Embeddings, Find/search, SHACL validation and product HTTP serving remain unimplemented. Successful graph execution does not establish that a question was understood or that the graph's statements are true in the world.
 
 ## Try the implemented pipeline
 
@@ -42,7 +42,7 @@ Other implemented commands are `schema`, `smoke`, `catalog` and exact `resolve`.
 
 Supported plans include entity/class references, forward/reverse edges, connected one- and two-hop joins, conjunctions, numeric/date comparisons, projection, `COUNT(DISTINCT)`, `GROUP BY`, `HAVING` and explicit named graphs. Unsupported query syntax, identifiers, types, bindings and graph scopes fail validation. There is no public raw-SPARQL or write endpoint. See [the full contract and resource limits](docs/query-contract.md).
 
-Results distinguish `executed`, `truncated`, abstention and errors. They disclose manual/fixture origin, `interpretation_correctness: not_assessed`, `real_world_truth: not_established`, result completeness and separately bounded evidence. Missing graph facts do not imply false real-world statements.
+Results distinguish `executed`, `truncated`, abstention and errors. They disclose manual/fixture/local-model origin, `interpretation_correctness: not_assessed`, `real_world_truth: not_established`, result completeness and separately bounded evidence. Missing graph facts do not imply false real-world statements.
 
 ## Real data and benchmark status
 
@@ -66,14 +66,14 @@ The project owner has **authorized proceeding without a paid independent human g
 
 The human reviewer ledger stays empty and its `review --require-reviewed` checks are not bypassed. The next local-model experiment may compare against the exposed development cases; any later externally held candidate evaluation must be pre-frozen and described as **AI-reference agreement**, not verified Norwegian semantic accuracy. See [Phase 0 risk acceptance](docs/phase-0-ai-gold-risk-acceptance.md) and [benchmark review](docs/benchmark-review.md).
 
-## Next: the local semantic-parser experiment
+## Run the local semantic-parser experiment
 
-After explicit authorization, implement the local inference backend behind `SemanticParser`, pin and test the actual runtime/grammar/model combination, and preserve independent Rust validation. First evaluate development questions with authorized vocabulary; freeze the approved protocol and independent holdout before making feasibility claims. [The integration handoff](docs/local-parser-handoff.md) records prerequisites and pending measurements.
+The [local experiment](docs/local-parser-experiment.md) pins Qwen2.5-1.5B-Instruct Q4_K_M, llama.cpp, the embedded tokenizer, ChatML template, grammar and prompt. After one-time `python3 tools/local_parser.py prepare` and `cargo build --locked -p verity_cli`, run `python3 tools/local_parser.py run --out artifacts/local-parser/repeat-1` offline. It owns the loopback-only CPU runtime and evaluates only public `dev` / `transfer_dev` cases; normal CI still runs no inference. Each fresh run preserves raw proposals, failures, component diagnostics, complete parser timings and RAM measurements. Gold remains AI-authored, and the sealed holdout remains unevaluated. This experiment does not approve the numerical Phase 0 gates or establish unrestricted Ask feasibility.
 
-The longer-term design has two distinct modes: **Find** ranks vocabulary/entities and may miss answers; **Ask** executes a validated formal plan within a declared graph scope. Retrieval, model inference, SHACL, production serving and hardening remain future work. The [implementation plan](docs/implementation-plan.md) and [Phase 0 feasibility protocol](docs/phase-0-feasibility.md) describe those design goals; this README and readiness report describe the runnable implementation.
+The longer-term design has two distinct modes: **Find** ranks vocabulary/entities and may miss answers; **Ask** executes a validated formal plan within a declared graph scope. Retrieval, SHACL, production serving and hardening remain future work. The [implementation plan](docs/implementation-plan.md) and [Phase 0 feasibility protocol](docs/phase-0-feasibility.md) describe those design goals; this README and readiness report describe the runnable implementation.
 
 ## Review and contribution
 
 The model-independent foundation was merged through PRs [#11](https://github.com/grove/graph-verity/pull/11)–[#14](https://github.com/grove/graph-verity/pull/14); benchmark review tooling and the AI audit were added through [#15](https://github.com/grove/graph-verity/pull/15) and [#16](https://github.com/grove/graph-verity/pull/16). The owner explicitly waived expert review for issue #5's **engineering-readiness milestone**; the missing independent evaluation evidence remains a disclosed limitation, not a model-feasibility pass.
 
-Code and original fixtures use [Apache-2.0](LICENSE). Retained Wikidata structured RDF is CC0-1.0 as documented with the dataset. Model/runtime licenses will require separate review when a model is selected.
+Code and original fixtures use [Apache-2.0](LICENSE). Retained Wikidata structured RDF is CC0-1.0 as documented with the dataset. The selected experimental model uses Apache-2.0 and llama.cpp uses MIT; [pinned license details](docs/local-parser-experiment.md#frozen-inputs-and-attribution) remain separate from the graph licenses.

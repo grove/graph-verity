@@ -36,6 +36,10 @@ pub enum Proposal {
 /// Future backends return raw bytes so JSON validity can be measured independently.
 pub trait SemanticParser {
     fn propose(&self, request: &ParserRequest) -> Result<Vec<u8>>;
+    fn origin(&self) -> PlanOrigin;
+    fn model(&self) -> Option<String> {
+        None
+    }
 }
 
 #[derive(Default)]
@@ -50,6 +54,9 @@ impl FixtureParser {
     }
 }
 impl SemanticParser for FixtureParser {
+    fn origin(&self) -> PlanOrigin {
+        PlanOrigin::Fixture
+    }
     fn propose(&self, request: &ParserRequest) -> Result<Vec<u8>> {
         self.responses.get(&request.key()?).cloned().ok_or_else(|| {
             reject(
@@ -136,7 +143,7 @@ impl Snapshot {
                     ));
                 }
                 Ok(ParserOutcome::Executed {
-                    result: Box::new(self.execute(&plan, policy, PlanOrigin::Fixture)?),
+                    result: Box::new(self.execute(&plan, policy, parser.origin())?),
                 })
             }
             proposal => Ok(ParserOutcome::Abstained { proposal }),
