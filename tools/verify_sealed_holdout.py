@@ -6,6 +6,7 @@ cryptographic commitment, never the questions/answers, belongs in Git.
 """
 from __future__ import annotations
 import argparse
+from datetime import date
 from hashlib import sha256
 import json
 from pathlib import Path
@@ -65,12 +66,56 @@ def verify(path: Path) -> dict:
             "locked_holdout_evaluated": False,
             "source_snapshot": conf["snapshot_id"]}
 
+def check_external_reviews(bundle: Path, review_path: Path) -> dict:
+    # Reviewers must establish identity/independence in project review; software
+    # cannot authenticate expertise from a self-declared JSON string.
+    base = verify(bundle)
+    with ZipFile(bundle) as archive:
+        benchmark = json.loads(archive.read("holdout.json"))
+    cases = {c["id"]: c for c in benchmark["cases"]}
+    ledger = json.loads(review_path.read_text(encoding="utf-8"))
+    if ledger.get("version") != 1 or not isinstance(ledger.get("records"), list):
+        raise ValueError("Invalid private human reviewer ledger")
+    latest = {}
+    required = {"case_id", "case_sha256", "reviewer", "reviewed_at",
+                "decision", "rationale", "expertise_statement"}
+    for record in ledger["records"]:
+        if set(record) != required or not all(isinstance(v, str) and v.strip()
+                                               for v in record.values()):
+            raise ValueError("Incomplete case decision metadata")
+        cid = record["case_id"]
+        if cid not in cases or record["decision"] not in {"approved", "excluded", "disputed"}:
+            raise ValueError("Unknown or invalid case decision")
+        case_digest = sha256(json.dumps(
+            {"case": cases[cid], "snapshot_id": benchmark["snapshot_id"]},
+            sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8")).hexdigest()
+        if record["case_sha256"] != case_digest:
+            raise ValueError("Approval references stale or modified gold case")
+        d = date.fromisoformat(record["reviewed_at"])
+        if d.isoformat() != record["reviewed_at"] or d > date.today():
+            raise ValueError("Invalid review date")
+        if cid in latest and record["reviewed_at"] < latest[cid]["reviewed_at"]:
+            raise ValueError("Out-of-order case review history")
+        latest[cid] = record
+    summary = {k: 0 for k in ("approved", "excluded", "disputed", "pending")}
+    for cid in cases:
+        summary[latest[cid]["decision"] if cid in latest else "pending"] += 1
+    base["claimed_human_case_review_counts"] = summary
+    base["all_claimed_approved"] = (summary["approved"] == base["cases"])
+    base["reviewer_independence_or_expertise_verified_by_software"] = False
+    return base
+
+
 def main() -> None:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("bundle", type=Path, help="External private ZIP, never commit into public repo")
+    p.add_argument("--reviews", type=Path,
+                   help="Optional external reviewer ledger; never include it in public CI")
     args = p.parse_args()
     # Prints *only metadata*, never private questions or expected bindings.
-    print(json.dumps(verify(args.bundle), indent=2))
+    report = (check_external_reviews(args.bundle, args.reviews)
+              if args.reviews else verify(args.bundle))
+    print(json.dumps(report, indent=2))
 
 if __name__ == "__main__":
     main()
