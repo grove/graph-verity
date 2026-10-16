@@ -1,0 +1,51 @@
+{
+  "proposal": {
+    "plan": {
+      "filters": [],
+      "group_by": [],
+      "having": [],
+      "limit": 100,
+      "patterns": [
+        {
+          "direction": "forward",
+          "from": {
+            "iri": "http://www.wikidata.org/entity/Q585",
+            "kind": "iri"
+          },
+          "graph": "urn:graph-verity:wikidata:development",
+          "predicate": "http://www.wikidata.org/prop/direct/P17",
+          "to": {
+            "kind": "variable",
+            "name": "country"
+          }
+        },
+        {
+          "direction": "forward",
+          "from": {
+            "kind": "variable",
+            "name": "country"
+          },
+          "graph": "urn:graph-verity:wikidata:development",
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "to": {
+            "kind": "variable",
+            "name": "capital"
+          }
+        }
+      ],
+      "projection": [
+        {
+          "kind": "variable",
+          "name": "capital"
+        }
+      ],
+      "scope": [
+        "urn:graph-verity:wikidata:development"
+      ],
+      "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
+      "version": 1
+    },
+    "status": "candidate"
+  },
+  "version": 1
+}
