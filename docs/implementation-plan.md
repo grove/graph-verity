@@ -2,7 +2,7 @@
 ## Detailed Implementation Plan, Revised MVP
 
 **Revised:** 14 October 2026  
-**Status:** Proposed engineering plan; implementation not yet started  
+**Status:** Proposed engineering plan; implementation not yet started. Phase 0 parser feasibility is now the first architectural decision gate.  
 **Initial scale:** 10,000–100,000 searchable RDF resources  
 **Primary languages:** Norwegian questions; Norwegian and English graph labels  
 **Runtime:** Local Rust process, without an external database or hosted AI inference service
@@ -18,7 +18,7 @@ The two main user-facing operations are:
 
 **Separation of responsibilities:** embeddings/rerankers estimate relevance; grammar constrains *output syntax, not semantic correctness*; typed IR validation constrains legal operations and references; SPARQL/SHACL provide verifiable evidence within the selected graph snapshot and semantics.
 
-**MVP decisions:** start with two Rust crates, reuse SHACL libraries before building custom validation, prioritize the semantic parser, and benchmark optional reranking. **Defer CompGCN/R-GCN to post-MVP research.** Performance claims and success probabilities from architecture reviews are hypotheses, not guarantees. The proposed schedule is gate-driven and must be revised against real engineering capacity.
+**MVP decisions:** run a small local-model semantic-parsing feasibility spike in Phase 0, before investing in the complete retrieval/verification stack; start with two Rust crates, reuse SHACL libraries before building custom validation, prioritize the semantic parser, and benchmark optional reranking. **Defer CompGCN/R-GCN to post-MVP research.** Performance claims and success probabilities from architecture reviews are hypotheses, not guarantees. The proposed schedule is gate-driven and must be revised against real engineering capacity.
 
 ## 2. Goals, Scope, and Non-Goals
 
@@ -33,7 +33,7 @@ The two main user-facing operations are:
 
 ### 2.2 MVP boundary
 
-- One well-defined RDF domain, initially 10,000–100,000 indexed resources and a fixed target CPU.
+- One well-defined, **real and imperfect** RDF domain (preferably Norwegian public procurement/municipal suppliers/contracts where licensing and RDF availability permit), initially 10,000–100,000 indexed resources and a fixed target CPU. Synthetic data may supplement but must not replace the real holdout.
 - **Controlled** question families: entity/class lookup, direct/two-hop traversal, conjunction, numeric/date comparisons, `COUNT(DISTINCT ...)` / `HAVING`, shape lookup, and violations in a supported SHACL subset.
 - A versioned, typed JSON IR with explicit direction, scope, variables and typed values. The generator may select *only retrieved/authorized ontology IDs*; it may not invent RDF terms or raw SPARQL.
 - Evaluate a maintained Rust SHACL implementation (Rudof/`shacl`) first. If needed, implement an explicit **2017 SHACL Core subset**: simple predicate paths, `sh:minCount`, `sh:maxCount`, `sh:datatype` and `sh:class`, tested against a reference validator.
@@ -260,7 +260,7 @@ Illustrative IR (a conceptual sketch, **not the final JSON Schema**; catalog IDs
 6. **Compile and execute:** deterministic Rust compiler emits controlled read-only SPARQL with validated/bound RDF terms, time/row/resource limits and no remote `SERVICE` or arbitrary updates; Oxigraph evaluates it.
 7. **Explain:** return resolved term IDs, plan summary, result scope and provenance, evidence, query snapshot and honest completeness status.
 
-**Critical limitation:** grammar-constrained output guarantees at most structural JSON correctness; a well-formed plan can still express the wrong meaning. Measure **semantic IR accuracy** and **answer-set accuracy** independently.
+**Critical limitation:** grammar-constrained output guarantees at most structural JSON correctness; a well-formed plan can still express the wrong meaning. Measure **semantic IR accuracy** and **answer-set accuracy** independently. A verified execution means the **resolved query plan** ran against a specific graph; it does not prove the user's interpretation was captured correctly or establish real-world truth. Present the resolved relations, filters, scope and supporting triples to the user, and treat high-confidence wrong-plan answers as a primary failure mode.
 
 ### 8.3 Supported question families
 
@@ -283,6 +283,8 @@ HAVING (COUNT(DISTINCT ?contract) >= 3)
 For structured questions, the retriever supplies likely *ontology terms*, not a limited list of answer rows. A complete result is possible only **relative to a declared graph scope, semantics and successfully executed query**.
 
 ### 8.4 Planner test and promotion gate
+
+**Run the first planner trial during Phase 0**, not after SHACL and full indexing work. Start with fixed, expert-supplied authorized ontology candidates so model semantic ability can be isolated from retrieval failures. Compare with deterministic templates and a modest grammar-constrained local model on the target CPU; confirm the exact llama.cpp version honors the selected JSON grammar, reject invalid outputs independently in Rust, and include adversarial RDF labels. Only then evaluate retrieval-grounded planning.
 
 Compare generated IR with expert-authored reference IR/SPARQL over frozen snapshots. Hold out Norwegian paraphrases, reversed predicates, dates, “more than” vs “at least,” scoped negation, nested constraints and graph changes. Include ambiguity, missing evidence, unsupported logic and malicious prompt text inside RDF labels.
 
@@ -369,7 +371,7 @@ Changes to RDF edges can make verbalized neighborhood descriptions stale; schedu
 
 ### 12.1 Frozen benchmark
 
-Build a gold set of Norwegian user questions with **all correct result bindings known where feasible**, expert-authored SPARQL, IR examples and explicit selected RDF snapshots. Keep held-out paraphrases and a domain/time/named-graph holdout where appropriate.
+Build **100–200 expert-reviewed Norwegian questions** over an actual, imperfect RDF dataset, with **all correct result bindings known where feasible**, expert-authored SPARQL, typed IR examples, ambiguity/unsupported labels and explicit selected RDF snapshots. Include at least one distinct-ontology or time-based holdout for transfer; keep a locked held-out set separate from tuning. Capture the source/quality limits of each graph. Keep held-out paraphrases and a domain/time/named-graph holdout where appropriate.
 
 Test: entity/term lookup; inverse and similarly named relations; one/two hops; joins and conjunction; numeric/date filters; counting with `HAVING`; multilingual Norwegian→English; SHACL shape relevance and violations; subclasses, ill-typed literals, blank nodes and named-graph scope; missing/conflicting data; new/deleted nodes; ambiguous or unsupported questions; and prompt-injection text hidden in RDF labels.
 
@@ -425,26 +427,30 @@ CompGCN and R-GCN are **not MVP benchmarks**. After release, compare them agains
 
 ## 14. Proposed Delivery Phases
 
-**Indicative schedule: about 20 engineering weeks, gated by test results**, with a Rust engineer and periodic RDF/domain/ML support. This is not a promise that a small local model will solve all Norwegian paraphrases within three weeks. Scope and dates must adapt to benchmark results and available people.
+**Delivery planning ranges (not guarantees):** basic prototype 4–8 weeks, useful limited-domain MVP 3–5 months, hardened pilot 6–9 months, subject to engineering capacity, availability of expert-labelled RDF cases and Phase 0 results. The former 20-week schedule should be read as an optimistic build sequence, **not** a credible fixed commitment for reliable pilot readiness. General-purpose arbitrary natural-language RDF querying remains out of scope. Do not proceed to full stack implementation if the small local parser does not pass Phase 0 gates.
 
 | Phase | Indicative timing | Deliverables | Exit criterion |
 |---|---|---|---|
-| **0. Benchmarks and contracts** | Weeks 1–2 | Frozen graph, gold answers, supported question families, typed IR/JSON Schema, scopes, target CPU and release gates. | Expert-reviewed benchmark and IR spec. |
-| **1. RDF ingestion and vocabulary** | Weeks 3–4 | Oxigraph, deterministic graph/named graphs, ontology catalog, verbalization, SHACL library assessment. | Reproducible import and vocabulary ID tests. |
-| **2. Hybrid search** | Weeks 5–7 | EmbeddingGemma ONNX, Rust parity, flat vector index, BM25, `/v1/search`. | B2 retrieval quality, pre-rerank Recall@50 and CPU measurements. |
-| **3. RDF/SHACL verification** | Weeks 8–10 | Existing validator integration or bounded cached SPARQL constraint templates; evidence. | Differential parity for supported SHACL fixtures. |
-| **4. Semantic parser + IR compiler** | Weeks 11–15 | Local constrained generator, ontology-scoped prompts, IR validator, safe SPARQL compiler and `/v1/ask`. | Supported Norwegian query families pass gold answer and safe-abstention gates. |
-| **5. Optional reranker + error analysis** | Weeks 16–17 | B3 comparison on 10/20/50 candidates, latency/RAM, retrieval failure analysis. | Explicit adopt/reject decision vs B2. |
-| **6. Hardening and pilot** | Weeks 18–20 | Compatible bundle activation, delta updates, permissions, offline packaging, load/rollback tests. | Pilot definition of done. |
+| **0. Benchmark + parser feasibility** | Weeks 1–4 (overlapping prototype work) | Real RDF domain, 100–200 gold questions, tiny typed IR→SPARQL compiler and oracle; local parser grammar/runtime spike on target CPU; unsupported-question and transfer tests. | Documented go / revise / stop decision based on locked end-to-end answer correctness, wrong-plan risk, abstention and CPU/RAM. |
+| **1. RDF ingestion and vocabulary** | After Phase 0 go decision | Oxigraph, deterministic graph/named graphs, ontology catalog, verbalization, SHACL library assessment. | Reproducible import and vocabulary ID tests. |
+| **2. Hybrid search** | MVP implementation | EmbeddingGemma ONNX, Rust parity, flat vector index, BM25, `/v1/search`. | B2 retrieval quality, pre-rerank Recall@50 and CPU measurements. |
+| **3. RDF/SHACL verification** | MVP implementation | Existing validator integration or bounded cached SPARQL constraint templates; evidence. | Differential parity for supported SHACL fixtures. |
+| **4. Expand parser + query compiler** | After proven Phase 0 spike | Improve ontology-scoped context, harden validated IR compiler, add supported families and `/v1/ask`. | Held-out Norwegian families pass accuracy, transfer, calibration and safe-abstention gates on target CPU. |
+| **5. Optional reranker + error analysis** | After working baseline | B3 comparison on 10/20/50 candidates, latency/RAM, retrieval failure analysis. | Explicit adopt/reject decision vs B2. |
+| **6. Hardening and pilot** | Pilot stage (6–9 month planning range overall) | Compatible bundle activation, delta updates, permissions, offline packaging, load/rollback tests. | Pilot definition of done. |
+
+**These phases are sequential dependencies, not a fixed 20-week calendar;** parallelism and iteration depend on benchmark gates, data quality and capacity. The feasibility spike may justify a narrower Find-only release.
 
 **Deferred:** CompGCN/R-GCN training, relational vector refresh, and model alignment **after** the MVP. Preserve the experimental recipe in Appendix A without committing MVP weeks to it.
 
 ### 14.1 Phase-by-phase checklists
 
 **Phase 0 — specification**
-- [ ] Freeze ontology, source data, named-graph/entailment semantics, Norwegian questions and expert gold SPARQL.
-- [ ] Define IR operators/JSON Schema and which question patterns are in-scope.
-- [ ] Set answer-set/abstention accuracy gates and full CPU/RAM budgets.
+- [ ] Freeze an imperfect real RDF dataset, named-graph/entailment semantics and 100–200 expert-reviewed Norwegian questions with gold SPARQL/IR, expected result sets and unsupported/ambiguous cases.
+- [ ] Define a minimal IR and implement/test deterministic IR→SPARQL using expert IR before integrating a local model.
+- [ ] In the **first four weeks**, benchmark a grammar-constrained small local model with fixed ontology terms against expert IR; independently test grammar enforcement and Rust validation, reversed edges, numerical operators and malicious RDF labels.
+- [ ] Set answer-set/abstention/wrong-plan accuracy gates and full CPU/RAM budgets **before** looking at locked holdout results; make a go / revise / stop decision.
+- [ ] Evaluate on a distinct-ontology or temporal holdout; measure ontology transfer independently from within-domain paraphrase accuracy. See [Phase 0 feasibility protocol](phase-0-feasibility.md).
 
 **Phase 1 — ingestion**
 - [ ] Preserve graph provenance, RDF literals, language tags, predicate direction and stable resource IDs.
@@ -573,6 +579,7 @@ When a module needs a stronger boundary, use ordinary Rust visibility/traits fir
 
 The first pilot is ready only when:
 
+- [ ] Phase 0 feasibility findings, grammar-behavior tests and an explicit documented go/revise/stop decision are recorded; no implementation claims rest solely on schema-valid JSON.
 - [ ] A local/offline Rust process runs with Oxigraph, an embedding model, compatible indexes and a pinned local semantic-parser runtime.
 - [ ] Norwegian↔English RDF retrieval and **pre-rerank Recall@50** are measured on the frozen benchmark; B2 works without GNNs or reranking.
 - [ ] An ontology-scoped small local generator produces *candidate* typed IR; **no** invalid, unauthorized or unsupported IR can reach SPARQL execution.
