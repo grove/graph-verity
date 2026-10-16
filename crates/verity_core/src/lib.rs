@@ -80,7 +80,10 @@ impl Snapshot {
         let mut graphs = self
             .store
             .named_graphs()
-            .map(|g| g.map(|g| g.to_string()).map_err(|e| Error::Store(e.to_string())))
+            .map(|g| {
+                g.map(|g| g.to_string())
+                    .map_err(|e| Error::Store(e.to_string()))
+            })
             .collect::<Result<Vec<_>>>()?;
         graphs.sort();
         Ok(SnapshotInfo {
