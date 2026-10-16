@@ -129,12 +129,12 @@ round-trip and runtime-reported prompt/prediction durations. Stage distributions
 include sample counts and `not_measured` when historical evidence lacks that stage.
 Warm end-to-end p50/p95/p99 include failed attempts and exclude the first case in each
 fresh server. Total cold first answer adds server startup and Rust/snapshot startup;
-startup is also reported separately. OS page cache is not evicted, so **process cold
+startup is also reported separately. Cold service timing excludes the preceding asset-hash and grammar-probe preflight; it is not total command wall time. OS page cache is not evicted, so **process cold
 is not uncached disk cold**. Prompt prefix caching is disclosed. Report generations,
 retries, failures and timeouts with their scope; quality failures are not backend failures.
 
 The sampler follows the runner's process descendants (including startup), every
-200 ms. It includes sampling overhead, may double-count shared pages and miss short
+200 ms. Sampling begins after grammar probes; probe/preparation peaks are not measured. It includes sampling overhead, may double-count shared pages and miss short
 spikes. The OS child lifetime high-water mark is a separate measurement. CPU/OS/
 architecture/logical cores, four threads, physical RAM and disabled acceleration
 are recorded. Historical PR #20 RSS used the three known runner/server/Rust processes;

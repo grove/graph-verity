@@ -7,7 +7,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from phase0 import (APPROVAL, GATES, PROTOCOL, ROOT, annotate, assess, authorize_locked,
-                    digest, freeze, rate, read, seal, sha, statistics, summarize,
+                    build_report, digest, freeze, rate, read, seal, sha, statistics, summarize,
                     unseal, verify_manifest, write_new)
 
 
@@ -143,6 +143,13 @@ class Phase0Tests(unittest.TestCase):
         with self.assertRaises(ValueError):
             assess(s, bad, self.approval)
 
+    def test_fixture_parser_without_model_identity_is_not_model_accuracy(self):
+        fixture = copy.deepcopy(self.report)
+        fixture["model"] = None
+        result = summarize(fixture, self.reference, "dev")
+        self.assertFalse(result["model_predictions_scored"])
+        self.assertNotIn("exact_answer", result["metrics"])
+
     def test_new_components_are_unavailable_in_historical_reports(self):
         self.assertEqual(self.baseline["metrics"]["components"]["variables"]["status"], "not_measured")
         self.assertIsNone(self.baseline["metrics"]["components"]["variables"]["numerator"])
@@ -170,6 +177,48 @@ class Phase0Tests(unittest.TestCase):
             (p / "summary.json").write_text("changed")
             with self.assertRaises(ValueError):
                 verify_manifest(p / "manifest.json")
+
+    def test_oracle_aggregation_is_never_model_accuracy_and_modes_cannot_mix(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            evidence = Path(tmp)
+            write_new(evidence / "run.json", read(ROOT / "reports/local-parser-development/run.json"))
+            for name in ["wikidata", "worldcities-transfer"]:
+                report = read(ROOT / f"reports/local-parser-development/{name}-report.json")
+                report["mode"] = "oracle_no_model"
+                report["model"] = None
+                write_new(evidence / f"{name}-report.json", report)
+            out = evidence / "out"
+            out.mkdir()
+            with patch("phase0.platform.platform", return_value="synthetic_os"), patch("phase0.subprocess.check_output", return_value="synthetic_test_only"):
+                result = build_report(evidence, out)
+            self.assertEqual(result["aggregate"]["status"], "not_measured_oracle_is_not_model_accuracy")
+            self.assertNotIn("exact_answer", result["aggregate"])
+            mixed = read(evidence / "wikidata-report.json")
+            mixed["mode"] = "parser_proposals"
+            mixed["model"] = "synthetic_test_only"
+            (evidence / "wikidata-report.json").write_text(json.dumps(mixed))
+            with self.assertRaisesRegex(ValueError, "Do not aggregate"):
+                build_report(evidence, evidence / "never-written")
+
+    def test_approved_freeze_is_immutable_versioned_and_requires_change_reason(self):
+        approved = {**self.approved(), "revision": 1}
+        original_sha = sha
+        def test_sha(path):
+            return "synthetic_test_only" if str(path).endswith("target/debug/verity") else original_sha(path)
+        with tempfile.TemporaryDirectory() as tmp, patch("phase0.sha", side_effect=test_sha), \
+             patch("phase0.subprocess.check_output", side_effect=lambda args, **kw: "" if "status" in args else "synthetic_test_only"):
+            p = Path(tmp)
+            freeze(approved, p / "v1.json")
+            old = read(p / "v1.json")
+            with self.assertRaises(FileExistsError):
+                freeze(approved, p / "v1.json")
+            changed = {**approved, "revision": 2}
+            with self.assertRaises(ValueError):
+                freeze(changed, p / "v2.json", p / "v1.json")
+            changed["change_reason"] = "synthetic test revision only"
+            freeze(changed, p / "v2.json", p / "v1.json")
+            self.assertEqual(unseal(read(p / "v2.json"))["previous_sha256"], old["sha256"])
+            self.assertEqual(read(p / "v1.json"), old)
 
     def test_unapproved_freeze_and_locked_admission_never_read_payload(self):
         with tempfile.TemporaryDirectory() as tmp:

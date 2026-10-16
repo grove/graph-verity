@@ -89,10 +89,6 @@ class LocalParserTests(unittest.TestCase):
         self.assertEqual(result["structural_AI_reference_matches"], 0)
         self.assertEqual(percentiles([]), {"p50": None, "p95": None, "p99": None})
 
-
-if __name__ == "__main__":
-    unittest.main()
-
 class ProcessTreeTests(unittest.TestCase):
     def test_memory_includes_descendants_and_ignores_unrelated_processes(self):
         from local_parser import process_tree_rss
@@ -103,3 +99,7 @@ class ProcessTreeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaises(ValueError):
                 evaluate({}, Path(directory) / "rejected", "private", "locked_holdout", None)
+
+
+if __name__ == "__main__":
+    unittest.main()

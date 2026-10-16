@@ -9,8 +9,10 @@ and [checksum manifest](manifest.json) were generated with implementation commit
 
 ```sh
 .venv/bin/python tools/phase0.py report --out artifacts/phase0/new-baseline
-.venv/bin/python tools/phase0.py verify reports/phase-0-baseline/manifest.json --check-inputs
+.venv/bin/python tools/phase0.py verify reports/phase-0-baseline/manifest.json
 ```
+
+To also verify the original source inputs, use `--check-inputs` in a checkout of `4168a64`; later code revisions retain this original archived report and its scoring identity.
 
 Both datasets have 0 strict IR matches (0/38 and 0/35); answer binding agreement is
 3/38 and 0/35; correct expected abstentions are 0/8 and 0/5. Historical M1 Pro warm

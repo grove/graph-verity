@@ -39,10 +39,6 @@ class LockedAdapterTests(unittest.TestCase):
             self.assertFalse(args.out.exists())
             self.assertFalse(args.admission.exists())
 
-
-if __name__ == "__main__":
-    unittest.main()
-
 class SyntheticAuthorizedAdapterTests(unittest.TestCase):
     def test_authorized_adapter_restores_locked_identity_and_keeps_private_artifacts(self):
         import copy
@@ -109,3 +105,7 @@ class SyntheticAuthorizedAdapterTests(unittest.TestCase):
         with patch("sys.argv", command), patch("locked_phase0.run", side_effect=ValueError("synthetic-secret-question")), patch("sys.stderr", errors):
             self.assertEqual(main(), 1)
         self.assertNotIn("synthetic-secret-question", errors.getvalue())
+
+
+if __name__ == "__main__":
+    unittest.main()
