@@ -1,5 +1,175 @@
 {
   "benchmark_sha256": "1a197c4ddeb8711ad47b57a5af6e4cee48bdeed20ba1ec1114c1defb18351bf9",
+  "exposed_groups": [
+    "ambiguous",
+    "capital_relation",
+    "conjunction_distinct_count",
+    "conjunction_numeric_date",
+    "date_comparison",
+    "date_lookup",
+    "direct_relation",
+    "entity_labels",
+    "grouping",
+    "inventory",
+    "numeric_comparison",
+    "unsupported"
+  ],
+  "groups": {
+    "ambiguous": [
+      "wd-dev-039",
+      "wd-dev-040"
+    ],
+    "capital_relation": [
+      "wd-dev-003",
+      "wd-dev-004",
+      "wd-dev-008",
+      "wd-dev-009",
+      "wd-dev-013",
+      "wd-dev-014",
+      "wd-dev-018",
+      "wd-dev-019",
+      "wd-review-005",
+      "wd-review-006",
+      "wd-review-007",
+      "wd-review-008",
+      "wd-review-015",
+      "wd-review-016",
+      "wd-review-017",
+      "wd-review-018",
+      "wd-review-025",
+      "wd-review-026",
+      "wd-review-027",
+      "wd-review-028",
+      "wd-review-035",
+      "wd-review-036",
+      "wd-review-037",
+      "wd-review-038",
+      "wd-transfer_candidate-003",
+      "wd-transfer_candidate-004",
+      "wd-transfer_candidate-008"
+    ],
+    "conjunction_distinct_count": [
+      "wd-dev-036",
+      "wd-review-071",
+      "wd-review-072"
+    ],
+    "conjunction_numeric_date": [
+      "wd-dev-038",
+      "wd-review-075",
+      "wd-review-076"
+    ],
+    "date_comparison": [
+      "wd-dev-027",
+      "wd-dev-028",
+      "wd-dev-029",
+      "wd-dev-030",
+      "wd-review-053",
+      "wd-review-054",
+      "wd-review-055",
+      "wd-review-056",
+      "wd-review-057",
+      "wd-review-058",
+      "wd-review-059",
+      "wd-review-060"
+    ],
+    "date_lookup": [
+      "wd-dev-005",
+      "wd-dev-010",
+      "wd-dev-015",
+      "wd-dev-020",
+      "wd-review-009",
+      "wd-review-010",
+      "wd-review-019",
+      "wd-review-020",
+      "wd-review-029",
+      "wd-review-030",
+      "wd-review-039",
+      "wd-review-040",
+      "wd-transfer_candidate-005"
+    ],
+    "direct_relation": [
+      "wd-dev-002",
+      "wd-dev-007",
+      "wd-dev-012",
+      "wd-dev-017",
+      "wd-review-003",
+      "wd-review-004",
+      "wd-review-013",
+      "wd-review-014",
+      "wd-review-023",
+      "wd-review-024",
+      "wd-review-033",
+      "wd-review-034",
+      "wd-transfer_candidate-002"
+    ],
+    "entity_labels": [
+      "wd-dev-001",
+      "wd-dev-006",
+      "wd-dev-011",
+      "wd-dev-016",
+      "wd-review-001",
+      "wd-review-002",
+      "wd-review-011",
+      "wd-review-012",
+      "wd-review-021",
+      "wd-review-022",
+      "wd-review-031",
+      "wd-review-032",
+      "wd-transfer_candidate-001"
+    ],
+    "grouping": [
+      "wd-dev-033",
+      "wd-dev-034",
+      "wd-dev-035",
+      "wd-review-065",
+      "wd-review-066",
+      "wd-review-067",
+      "wd-review-068",
+      "wd-review-069",
+      "wd-review-070"
+    ],
+    "inventory": [
+      "wd-dev-031",
+      "wd-dev-032",
+      "wd-dev-037",
+      "wd-review-061",
+      "wd-review-062",
+      "wd-review-063",
+      "wd-review-064",
+      "wd-review-073",
+      "wd-review-074",
+      "wd-transfer_candidate-006",
+      "wd-transfer_candidate-007"
+    ],
+    "numeric_comparison": [
+      "wd-dev-021",
+      "wd-dev-022",
+      "wd-dev-023",
+      "wd-dev-024",
+      "wd-dev-025",
+      "wd-dev-026",
+      "wd-review-041",
+      "wd-review-042",
+      "wd-review-043",
+      "wd-review-044",
+      "wd-review-045",
+      "wd-review-046",
+      "wd-review-047",
+      "wd-review-048",
+      "wd-review-049",
+      "wd-review-050",
+      "wd-review-051",
+      "wd-review-052"
+    ],
+    "unsupported": [
+      "wd-dev-041",
+      "wd-dev-042",
+      "wd-dev-043",
+      "wd-dev-044",
+      "wd-dev-045",
+      "wd-dev-046"
+    ]
+  },
   "holdout_status": "prospective_candidate_pools_not_independent_or_human_approved; do_not_tune_on_candidates; reviewer_must_author_and_freeze_final_holdout",
   "splits": {
     "dev": [
@@ -138,5 +308,6 @@
       "wd-transfer_candidate-007",
       "wd-transfer_candidate-008"
     ]
-  }
+  },
+  "version": 1
 }

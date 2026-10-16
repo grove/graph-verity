@@ -144,6 +144,7 @@ pub fn schemas() -> serde_json::Value {
         "contract_version": 1,
         "plan": schemars::schema_for!(ir::Plan),
         "policy": schemars::schema_for!(catalog::Policy),
+        "benchmark": schemars::schema_for!(evaluation::Benchmark),
         "parser_input": schemars::schema_for!(parser::ParserRequest),
         "parser_output": schemars::schema_for!(parser::ParserResponse),
         "future_local_config": schemars::schema_for!(parser::FutureLocalConfig)
