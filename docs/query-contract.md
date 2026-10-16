@@ -43,7 +43,8 @@ or a fact about the real world was verified. Entity/class constants must actuall
 resource terms in the pattern's own named graph; an IRI known only as a predicate, or
 only from another graph, is insufficient. IRI object constants are rejected for
 literal-only predicates. Graph-specific checks retain shared entities explicitly
-observed in each graph.
+observed in each graph. All such invalid constants are rejected during compilation, before
+any SPARQL query is executed.
 
 Positive statements alone do not prove an exact count;
 the full scoped query and snapshot are part of aggregate evidence.
