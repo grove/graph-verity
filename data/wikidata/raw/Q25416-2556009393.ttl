@@ -1,0 +1,4558 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix data: <https://www.wikidata.org/wiki/Special:EntityData/> .
+@prefix wds: <http://www.wikidata.org/entity/statement/> .
+@prefix wdref: <http://www.wikidata.org/reference/> .
+@prefix wdv: <http://www.wikidata.org/value/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix wdtn: <http://www.wikidata.org/prop/direct-normalized/> .
+@prefix p: <http://www.wikidata.org/prop/> .
+@prefix ps: <http://www.wikidata.org/prop/statement/> .
+@prefix psv: <http://www.wikidata.org/prop/statement/value/> .
+@prefix psn: <http://www.wikidata.org/prop/statement/value-normalized/> .
+@prefix pq: <http://www.wikidata.org/prop/qualifier/> .
+@prefix pqv: <http://www.wikidata.org/prop/qualifier/value/> .
+@prefix pqn: <http://www.wikidata.org/prop/qualifier/value-normalized/> .
+@prefix pr: <http://www.wikidata.org/prop/reference/> .
+@prefix prv: <http://www.wikidata.org/prop/reference/value/> .
+@prefix prn: <http://www.wikidata.org/prop/reference/value-normalized/> .
+@prefix wdno: <http://www.wikidata.org/prop/novalue/> .
+
+data:Q25416 a schema:Dataset ;
+	schema:about wd:Q25416 ;
+	cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	schema:softwareVersion "1.0.0" ;
+	schema:version "2556009393"^^xsd:integer ;
+	schema:dateModified "2026-10-11T21:50:43Z"^^xsd:dateTime ;
+	wikibase:statements "214"^^xsd:integer ;
+	wikibase:sitelinks "111"^^xsd:integer ;
+	wikibase:identifiers "58"^^xsd:integer .
+
+wd:Q25416 a wikibase:Item .
+
+<https://af.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "af" ;
+	schema:isPartOf <https://af.wikipedia.org/> ;
+	schema:name "Stavanger"@af .
+
+<https://af.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ar.wikipedia.org/wiki/%D8%B3%D8%AA%D8%A7%D9%81%D8%A7%D9%86%D8%BA%D8%B1> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ar" ;
+	schema:isPartOf <https://ar.wikipedia.org/> ;
+	schema:name "ستافانغر"@ar .
+
+<https://ar.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://arz.wikipedia.org/wiki/%D8%B3%D8%AA%D8%A7%DA%A4%D8%A7%D9%86%D8%AC%D8%B1> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "arz" ;
+	schema:isPartOf <https://arz.wikipedia.org/> ;
+	schema:name "ستاڤانجر"@arz .
+
+<https://arz.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bat-smg.wikipedia.org/wiki/Stavangeris> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "sgs" ;
+	schema:isPartOf <https://bat-smg.wikipedia.org/> ;
+	schema:name "Stavangeris"@sgs .
+
+<https://bat-smg.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://be-tarask.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "be-tarask" ;
+	schema:isPartOf <https://be-tarask.wikipedia.org/> ;
+	schema:name "Ставангер"@be-tarask .
+
+<https://be-tarask.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://be.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "be" ;
+	schema:isPartOf <https://be.wikipedia.org/> ;
+	schema:name "Ставангер"@be .
+
+<https://be.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bg.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "bg" ;
+	schema:isPartOf <https://bg.wikipedia.org/> ;
+	schema:name "Ставангер"@bg .
+
+<https://bg.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bpy.wikipedia.org/wiki/%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%A8%E0%A6%97%E0%A7%87%E0%A6%B0> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "bpy" ;
+	schema:isPartOf <https://bpy.wikipedia.org/> ;
+	schema:name "স্টাভানগের"@bpy .
+
+<https://bpy.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://br.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "br" ;
+	schema:isPartOf <https://br.wikipedia.org/> ;
+	schema:name "Stavanger"@br .
+
+<https://br.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bs.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "bs" ;
+	schema:isPartOf <https://bs.wikipedia.org/> ;
+	schema:name "Stavanger"@bs .
+
+<https://bs.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ca.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ca" ;
+	schema:isPartOf <https://ca.wikipedia.org/> ;
+	schema:name "Stavanger"@ca .
+
+<https://ca.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ce.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ce" ;
+	schema:isPartOf <https://ce.wikipedia.org/> ;
+	schema:name "Ставангер"@ce .
+
+<https://ce.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://commons.wikimedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "en" ;
+	schema:isPartOf <https://commons.wikimedia.org/> ;
+	schema:name "Stavanger"@en .
+
+<https://commons.wikimedia.org/> wikibase:wikiGroup "commons" .
+
+<https://cs.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "cs" ;
+	schema:isPartOf <https://cs.wikipedia.org/> ;
+	schema:name "Stavanger"@cs .
+
+<https://cs.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://cy.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "cy" ;
+	schema:isPartOf <https://cy.wikipedia.org/> ;
+	schema:name "Stavanger"@cy .
+
+<https://cy.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://da.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "da" ;
+	schema:isPartOf <https://da.wikipedia.org/> ;
+	schema:name "Stavanger"@da ;
+	wikibase:badge wd:Q17559452 .
+
+<https://da.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://de.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "de" ;
+	schema:isPartOf <https://de.wikipedia.org/> ;
+	schema:name "Stavanger"@de .
+
+<https://de.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://de.wikinews.org/wiki/Kategorie:Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "de" ;
+	schema:isPartOf <https://de.wikinews.org/> ;
+	schema:name "Kategorie:Stavanger"@de .
+
+<https://de.wikinews.org/> wikibase:wikiGroup "wikinews" .
+
+<https://de.wikivoyage.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "de" ;
+	schema:isPartOf <https://de.wikivoyage.org/> ;
+	schema:name "Stavanger"@de ;
+	wikibase:badge wd:Q17559452 .
+
+<https://de.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://el.wikipedia.org/wiki/%CE%A3%CF%84%CE%B1%CE%B2%CE%AC%CE%BD%CE%B3%CE%BA%CE%B5%CF%81> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "el" ;
+	schema:isPartOf <https://el.wikipedia.org/> ;
+	schema:name "Σταβάνγκερ"@el .
+
+<https://el.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://en.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "en" ;
+	schema:isPartOf <https://en.wikipedia.org/> ;
+	schema:name "Stavanger"@en .
+
+<https://en.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://en.wikivoyage.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "en" ;
+	schema:isPartOf <https://en.wikivoyage.org/> ;
+	schema:name "Stavanger"@en .
+
+<https://en.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://eo.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "eo" ;
+	schema:isPartOf <https://eo.wikipedia.org/> ;
+	schema:name "Stavanger"@eo .
+
+<https://eo.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://es.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "es" ;
+	schema:isPartOf <https://es.wikipedia.org/> ;
+	schema:name "Stavanger"@es .
+
+<https://es.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://eu.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "eu" ;
+	schema:isPartOf <https://eu.wikipedia.org/> ;
+	schema:name "Stavanger"@eu .
+
+<https://eu.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fa.wikipedia.org/wiki/%D8%A7%D8%B3%D8%AA%D8%A7%D9%88%D8%A7%D9%86%DA%AF%D8%B1> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "fa" ;
+	schema:isPartOf <https://fa.wikipedia.org/> ;
+	schema:name "استاوانگر"@fa .
+
+<https://fa.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fa.wikivoyage.org/wiki/%D8%A7%D8%B3%D8%AA%D8%A7%D9%88%D8%A7%D9%86%DA%AF%D8%B1> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "fa" ;
+	schema:isPartOf <https://fa.wikivoyage.org/> ;
+	schema:name "استاوانگر"@fa .
+
+<https://fa.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://fi.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "fi" ;
+	schema:isPartOf <https://fi.wikipedia.org/> ;
+	schema:name "Stavanger"@fi .
+
+<https://fi.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fo.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "fo" ;
+	schema:isPartOf <https://fo.wikipedia.org/> ;
+	schema:name "Stavanger"@fo .
+
+<https://fo.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://frr.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "frr" ;
+	schema:isPartOf <https://frr.wikipedia.org/> ;
+	schema:name "Stavanger"@frr .
+
+<https://frr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fr.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "fr" ;
+	schema:isPartOf <https://fr.wikipedia.org/> ;
+	schema:name "Stavanger"@fr .
+
+<https://fr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fr.wikivoyage.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "fr" ;
+	schema:isPartOf <https://fr.wikivoyage.org/> ;
+	schema:name "Stavanger"@fr .
+
+<https://fr.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://fy.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "fy" ;
+	schema:isPartOf <https://fy.wikipedia.org/> ;
+	schema:name "Stavanger"@fy .
+
+<https://fy.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://gl.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "gl" ;
+	schema:isPartOf <https://gl.wikipedia.org/> ;
+	schema:name "Stavanger"@gl .
+
+<https://gl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ha.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ha" ;
+	schema:isPartOf <https://ha.wikipedia.org/> ;
+	schema:name "Stavanger"@ha .
+
+<https://ha.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://he.wikipedia.org/wiki/%D7%A1%D7%98%D7%95%D7%95%D7%A0%D7%92%D7%A8> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "he" ;
+	schema:isPartOf <https://he.wikipedia.org/> ;
+	schema:name "סטוונגר"@he .
+
+<https://he.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://he.wikivoyage.org/wiki/%D7%A1%D7%98%D7%95%D7%95%D7%A0%D7%92%D7%A8> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "he" ;
+	schema:isPartOf <https://he.wikivoyage.org/> ;
+	schema:name "סטוונגר"@he .
+
+<https://he.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://hr.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "hr" ;
+	schema:isPartOf <https://hr.wikipedia.org/> ;
+	schema:name "Stavanger"@hr .
+
+<https://hr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://hu.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "hu" ;
+	schema:isPartOf <https://hu.wikipedia.org/> ;
+	schema:name "Stavanger"@hu .
+
+<https://hu.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://hy.wikipedia.org/wiki/%D5%8D%D5%A9%D5%A1%D5%BE%D5%A1%D5%B6%D5%A3%D5%A5%D6%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "hy" ;
+	schema:isPartOf <https://hy.wikipedia.org/> ;
+	schema:name "Սթավանգեր"@hy .
+
+<https://hy.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ia.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ia" ;
+	schema:isPartOf <https://ia.wikipedia.org/> ;
+	schema:name "Stavanger"@ia .
+
+<https://ia.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://id.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "id" ;
+	schema:isPartOf <https://id.wikipedia.org/> ;
+	schema:name "Stavanger"@id .
+
+<https://id.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ie.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ie" ;
+	schema:isPartOf <https://ie.wikipedia.org/> ;
+	schema:name "Stavanger"@ie .
+
+<https://ie.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://io.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "io" ;
+	schema:isPartOf <https://io.wikipedia.org/> ;
+	schema:name "Stavanger"@io .
+
+<https://io.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://is.wikipedia.org/wiki/Stafangur> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "is" ;
+	schema:isPartOf <https://is.wikipedia.org/> ;
+	schema:name "Stafangur"@is .
+
+<https://is.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://it.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "it" ;
+	schema:isPartOf <https://it.wikipedia.org/> ;
+	schema:name "Stavanger"@it .
+
+<https://it.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://it.wikivoyage.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "it" ;
+	schema:isPartOf <https://it.wikivoyage.org/> ;
+	schema:name "Stavanger"@it .
+
+<https://it.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%BF%E3%83%B4%E3%82%A1%E3%83%B3%E3%82%B2%E3%83%AB> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ja" ;
+	schema:isPartOf <https://ja.wikipedia.org/> ;
+	schema:name "スタヴァンゲル"@ja .
+
+<https://ja.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://jv.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "jv" ;
+	schema:isPartOf <https://jv.wikipedia.org/> ;
+	schema:name "Stavanger"@jv .
+
+<https://jv.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ko.wikipedia.org/wiki/%EC%8A%A4%ED%83%80%EB%B0%A9%EC%97%90%EB%A5%B4> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ko" ;
+	schema:isPartOf <https://ko.wikipedia.org/> ;
+	schema:name "스타방에르"@ko .
+
+<https://ko.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://lb.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "lb" ;
+	schema:isPartOf <https://lb.wikipedia.org/> ;
+	schema:name "Stavanger"@lb .
+
+<https://lb.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://li.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "li" ;
+	schema:isPartOf <https://li.wikipedia.org/> ;
+	schema:name "Stavanger"@li .
+
+<https://li.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://lt.wikipedia.org/wiki/Stavangeris> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "lt" ;
+	schema:isPartOf <https://lt.wikipedia.org/> ;
+	schema:name "Stavangeris"@lt .
+
+<https://lt.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mi.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "mi" ;
+	schema:isPartOf <https://mi.wikipedia.org/> ;
+	schema:name "Stavanger"@mi .
+
+<https://mi.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mk.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "mk" ;
+	schema:isPartOf <https://mk.wikipedia.org/> ;
+	schema:name "Ставангер"@mk .
+
+<https://mk.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mr.wikipedia.org/wiki/%E0%A4%B8%E0%A5%8D%E0%A4%9F%E0%A4%BE%E0%A4%B5%E0%A4%BE%E0%A4%82%E0%A4%97%E0%A5%8D%E0%A4%AF%E0%A4%BF%E0%A4%B0> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "mr" ;
+	schema:isPartOf <https://mr.wikipedia.org/> ;
+	schema:name "स्टावांग्यिर"@mr .
+
+<https://mr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ms.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ms" ;
+	schema:isPartOf <https://ms.wikipedia.org/> ;
+	schema:name "Stavanger"@ms .
+
+<https://ms.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://nds.wikipedia.org/wiki/Kommun_Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "nds" ;
+	schema:isPartOf <https://nds.wikipedia.org/> ;
+	schema:name "Kommun Stavanger"@nds .
+
+<https://nds.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://nl.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "nl" ;
+	schema:isPartOf <https://nl.wikipedia.org/> ;
+	schema:name "Stavanger"@nl .
+
+<https://nl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://nl.wikivoyage.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "nl" ;
+	schema:isPartOf <https://nl.wikivoyage.org/> ;
+	schema:name "Stavanger"@nl .
+
+<https://nl.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://nn.wikipedia.org/wiki/Stavanger_kommune> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "nn" ;
+	schema:isPartOf <https://nn.wikipedia.org/> ;
+	schema:name "Stavanger kommune"@nn .
+
+<https://nn.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://no.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "nb" ;
+	schema:isPartOf <https://no.wikipedia.org/> ;
+	schema:name "Stavanger"@nb .
+
+<https://no.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://os.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "os" ;
+	schema:isPartOf <https://os.wikipedia.org/> ;
+	schema:name "Ставангер"@os .
+
+<https://os.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://pl.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "pl" ;
+	schema:isPartOf <https://pl.wikipedia.org/> ;
+	schema:name "Stavanger"@pl .
+
+<https://pl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://pl.wikivoyage.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "pl" ;
+	schema:isPartOf <https://pl.wikivoyage.org/> ;
+	schema:name "Stavanger"@pl .
+
+<https://pl.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://pms.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "pms" ;
+	schema:isPartOf <https://pms.wikipedia.org/> ;
+	schema:name "Stavanger"@pms .
+
+<https://pms.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://pnb.wikipedia.org/wiki/%D8%B3%D8%AA%D8%A7%D9%88%D8%A7%D9%86%DA%AF%DB%8C%D8%B1> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "pnb" ;
+	schema:isPartOf <https://pnb.wikipedia.org/> ;
+	schema:name "ستاوانگیر"@pnb .
+
+<https://pnb.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://pt.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "pt" ;
+	schema:isPartOf <https://pt.wikipedia.org/> ;
+	schema:name "Stavanger"@pt .
+
+<https://pt.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ro.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ro" ;
+	schema:isPartOf <https://ro.wikipedia.org/> ;
+	schema:name "Stavanger"@ro .
+
+<https://ro.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ro.wikivoyage.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ro" ;
+	schema:isPartOf <https://ro.wikivoyage.org/> ;
+	schema:name "Stavanger"@ro .
+
+<https://ro.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ru" ;
+	schema:isPartOf <https://ru.wikipedia.org/> ;
+	schema:name "Ставангер"@ru .
+
+<https://ru.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ru.wikinews.org/wiki/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ru" ;
+	schema:isPartOf <https://ru.wikinews.org/> ;
+	schema:name "Категория:Ставангер"@ru .
+
+<https://ru.wikinews.org/> wikibase:wikiGroup "wikinews" .
+
+<https://ru.wikivoyage.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ru" ;
+	schema:isPartOf <https://ru.wikivoyage.org/> ;
+	schema:name "Ставангер"@ru .
+
+<https://ru.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://sco.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "sco" ;
+	schema:isPartOf <https://sco.wikipedia.org/> ;
+	schema:name "Stavanger"@sco .
+
+<https://sco.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://se.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "se" ;
+	schema:isPartOf <https://se.wikipedia.org/> ;
+	schema:name "Stavanger"@se .
+
+<https://se.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://simple.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "en-simple" ;
+	schema:isPartOf <https://simple.wikipedia.org/> ;
+	schema:name "Stavanger"@en-simple .
+
+<https://simple.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sk.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "sk" ;
+	schema:isPartOf <https://sk.wikipedia.org/> ;
+	schema:name "Stavanger"@sk .
+
+<https://sk.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sl.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "sl" ;
+	schema:isPartOf <https://sl.wikipedia.org/> ;
+	schema:name "Stavanger"@sl .
+
+<https://sl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sq.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "sq" ;
+	schema:isPartOf <https://sq.wikipedia.org/> ;
+	schema:name "Stavanger"@sq .
+
+<https://sq.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sr.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "sr" ;
+	schema:isPartOf <https://sr.wikipedia.org/> ;
+	schema:name "Ставангер"@sr .
+
+<https://sr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sv.wikivoyage.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "sv" ;
+	schema:isPartOf <https://sv.wikivoyage.org/> ;
+	schema:name "Stavanger"@sv .
+
+<https://sv.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://szl.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "szl" ;
+	schema:isPartOf <https://szl.wikipedia.org/> ;
+	schema:name "Stavanger"@szl .
+
+<https://szl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://th.wikipedia.org/wiki/%E0%B8%AA%E0%B8%95%E0%B8%B2%E0%B8%A7%E0%B8%B1%E0%B8%87%E0%B9%80%E0%B8%87%E0%B8%AD%E0%B8%A3%E0%B9%8C> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "th" ;
+	schema:isPartOf <https://th.wikipedia.org/> ;
+	schema:name "สตาวังเงอร์"@th .
+
+<https://th.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://tr.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "tr" ;
+	schema:isPartOf <https://tr.wikipedia.org/> ;
+	schema:name "Stavanger"@tr .
+
+<https://tr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://tt.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D2%A3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "tt" ;
+	schema:isPartOf <https://tt.wikipedia.org/> ;
+	schema:name "Ставаңер"@tt .
+
+<https://tt.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://tum.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "tum" ;
+	schema:isPartOf <https://tum.wikipedia.org/> ;
+	schema:name "Stavanger"@tum .
+
+<https://tum.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://uk.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "uk" ;
+	schema:isPartOf <https://uk.wikipedia.org/> ;
+	schema:name "Ставангер"@uk .
+
+<https://uk.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ur.wikipedia.org/wiki/%D8%B3%D8%AA%D8%A7%D9%88%D8%A7%D9%86%DA%AF%DB%8C%D8%B1> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ur" ;
+	schema:isPartOf <https://ur.wikipedia.org/> ;
+	schema:name "ستاوانگیر"@ur .
+
+<https://ur.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://vi.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "vi" ;
+	schema:isPartOf <https://vi.wikipedia.org/> ;
+	schema:name "Stavanger"@vi .
+
+<https://vi.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://vo.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "vo" ;
+	schema:isPartOf <https://vo.wikipedia.org/> ;
+	schema:name "Stavanger"@vo .
+
+<https://vo.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://war.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "war" ;
+	schema:isPartOf <https://war.wikipedia.org/> ;
+	schema:name "Stavanger"@war .
+
+<https://war.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://wuu.wikipedia.org/wiki/%E6%96%AF%E5%A1%94%E4%B8%87%E6%A0%BC> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "wuu" ;
+	schema:isPartOf <https://wuu.wikipedia.org/> ;
+	schema:name "斯塔万格"@wuu .
+
+<https://wuu.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://zh-min-nan.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "nan" ;
+	schema:isPartOf <https://zh-min-nan.wikipedia.org/> ;
+	schema:name "Stavanger"@nan .
+
+<https://zh-min-nan.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://zh-yue.wikipedia.org/wiki/%E6%96%AF%E5%A1%94%E5%87%A1%E6%A0%BC> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "yue" ;
+	schema:isPartOf <https://zh-yue.wikipedia.org/> ;
+	schema:name "斯塔凡格"@yue .
+
+<https://zh-yue.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://zh.wikipedia.org/wiki/%E6%96%AF%E5%A1%94%E4%B8%87%E6%A0%BC> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "zh" ;
+	schema:isPartOf <https://zh.wikipedia.org/> ;
+	schema:name "斯塔万格"@zh .
+
+<https://zh.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sh.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "sh" ;
+	schema:isPartOf <https://sh.wikipedia.org/> ;
+	schema:name "Stavanger"@sh .
+
+<https://sh.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://la.wikipedia.org/wiki/Stafangria> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "la" ;
+	schema:isPartOf <https://la.wikipedia.org/> ;
+	schema:name "Stafangria"@la .
+
+<https://la.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://vep.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "vep" ;
+	schema:isPartOf <https://vep.wikipedia.org/> ;
+	schema:name "Stavanger"@vep .
+
+<https://vep.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fur.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "fur" ;
+	schema:isPartOf <https://fur.wikipedia.org/> ;
+	schema:name "Stavanger"@fur .
+
+<https://fur.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mdf.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D1%8D%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "mdf" ;
+	schema:isPartOf <https://mdf.wikipedia.org/> ;
+	schema:name "Ставангэр"@mdf .
+
+<https://mdf.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://an.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "an" ;
+	schema:isPartOf <https://an.wikipedia.org/> ;
+	schema:name "Stavanger"@an .
+
+<https://an.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sat.wikipedia.org/wiki/%E1%B1%A5%E1%B1%B4%E1%B1%9F%E1%B1%B5%E1%B1%B7%E1%B1%9F%E1%B1%9D%E1%B1%9C%E1%B1%AE%E1%B1%A8> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "sat" ;
+	schema:isPartOf <https://sat.wikipedia.org/> ;
+	schema:name "ᱥᱴᱟᱵᱷᱟᱝᱜᱮᱨ"@sat .
+
+<https://sat.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://te.wikipedia.org/wiki/%E0%B0%B8%E0%B1%8D%E0%B0%9F%E0%B0%BE%E0%B0%B5%E0%B0%BE%E0%B0%82%E0%B0%97%E0%B0%B0%E0%B1%8D> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "te" ;
+	schema:isPartOf <https://te.wikipedia.org/> ;
+	schema:name "స్టావాంగర్"@te .
+
+<https://te.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://lv.wikipedia.org/wiki/Stavangeres_kom%C5%ABna> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "lv" ;
+	schema:isPartOf <https://lv.wikipedia.org/> ;
+	schema:name "Stavangeres komūna"@lv .
+
+<https://lv.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ceb.wikipedia.org/wiki/Stavanger_(munisipyo)> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ceb" ;
+	schema:isPartOf <https://ceb.wikipedia.org/> ;
+	schema:name "Stavanger (munisipyo)"@ceb .
+
+<https://ceb.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sv.wikipedia.org/wiki/Stavangers_kommun> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "sv" ;
+	schema:isPartOf <https://sv.wikipedia.org/> ;
+	schema:name "Stavangers kommun"@sv .
+
+<https://sv.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bn.wikipedia.org/wiki/%E0%A6%B8%E0%A7%8D%E0%A6%9F%E0%A6%BE%E0%A6%AD%E0%A6%BE%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A7%87%E0%A6%B0> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "bn" ;
+	schema:isPartOf <https://bn.wikipedia.org/> ;
+	schema:name "স্টাভাঙ্গের"@bn .
+
+<https://bn.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ast.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ast" ;
+	schema:isPartOf <https://ast.wikipedia.org/> ;
+	schema:name "Stavanger"@ast .
+
+<https://ast.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ang.wikipedia.org/wiki/Stafangere> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "ang" ;
+	schema:isPartOf <https://ang.wikipedia.org/> ;
+	schema:name "Stafangere"@ang .
+
+<https://ang.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://so.wikipedia.org/wiki/Stavanger> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "so" ;
+	schema:isPartOf <https://so.wikipedia.org/> ;
+	schema:name "Stavanger"@so .
+
+<https://so.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mn.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%B2%D0%B0%D0%BD%D0%B3%D0%B5%D1%80> a schema:Article ;
+	schema:about wd:Q25416 ;
+	schema:inLanguage "mn" ;
+	schema:isPartOf <https://mn.wikipedia.org/> ;
+	schema:name "Ставангер"@mn .
+
+<https://mn.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+wd:Q25416 wdt:P190 wd:Q36405,
+		wd:Q473250,
+		wd:Q9248,
+		wd:Q583184,
+		wd:Q26234,
+		wd:Q1007634,
+		wd:Q176728,
+		wd:Q135744,
+		wd:Q852729,
+		wd:Q7880,
+		wd:Q16555,
+		wd:Q134620,
+		wd:Q214178,
+		wd:Q192225,
+		wd:Q275635,
+		wd:Q823600,
+		wd:Q6506,
+		wd:Q170525,
+		wd:Q1146805,
+		wd:Q503144,
+		wd:Q509568,
+		wd:Q656 ;
+	wdt:P131 wd:Q50624 ;
+	wdt:P94 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavanger%20komm.svg> ;
+	wdt:P47 wd:Q492115,
+		wd:Q494045,
+		wd:Q27587,
+		wd:Q488948,
+		wd:Q48591,
+		wd:Q250055,
+		wd:Q48577,
+		wd:Q493977,
+		wd:Q489351,
+		wd:Q494024 ;
+	wdt:P373 "Stavanger" ;
+	wdt:P17 wd:Q20 ;
+	wdt:P625 "Point(5.7313888888889 58.97)"^^geo:wktLiteral ;
+	wdt:P948 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavanger%20banner%20Domkirke%20detail.jpg> ;
+	wdt:P910 wd:Q8817311 ;
+	wdt:P998 "Regional/Europe/Norway/Rogaland/Stavanger/" ;
+	wdt:P935 "Stavanger" ;
+	wdt:P982 "fd07dd33-6691-4247-948d-f4a2e6cb57d6" ;
+	wdtn:P982 <http://musicbrainz.org/area/fd07dd33-6691-4247-948d-f4a2e6cb57d6> ;
+	wdt:P31 wd:Q755707 ;
+	wdt:P646 "/m/01773g" ;
+	wdt:P6 wd:Q18764115 ;
+	wdt:P1464 wd:Q8073800 ;
+	wdt:P1465 wd:Q16611482 ;
+	wdt:P1566 "6453391" ;
+	wdtn:P1566 <https://sws.geonames.org/6453391/> ;
+	wdt:P227 "4057047-2" ;
+	wdtn:P227 <https://d-nb.info/gnd/4057047-2> ;
+	wdt:P166 wd:Q18910363,
+		wd:Q18910363 ;
+	wdt:P1792 wd:Q9182931 ;
+	wdt:P214 "146588075" ;
+	wdtn:P214 <http://viaf.org/viaf/146588075> ;
+	wdt:P244 "n81035078" ;
+	wdtn:P244 <http://id.loc.gov/authorities/names/n81035078> ;
+	wdt:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/Vaagen-modf.jpg> ;
+	wdt:P1997 "115341461813501" ;
+	wdt:P856 <https://www.stavanger.kommune.no/>,
+		<https://www.stavanger.kommune.no/> ;
+	wdt:P1281 "864342" ;
+	wdt:P1082 "+151669"^^xsd:decimal ;
+	wdt:P2046 "+262.52"^^xsd:decimal ;
+	wdt:P2504 "1103" ;
+	wdt:P2354 wd:Q17778996,
+		wd:Q11984505 ;
+	wdt:P2044 "+1"^^xsd:decimal ;
+	wdt:P213 "0000000406120820" ;
+	wdt:P3500 "87540" ;
+	wdt:P1225 "10045068" ;
+	wdt:P2924 "4162003" ;
+	wdt:P1549 "siddis"@nb,
+		"siddis"@nn ;
+	wdt:P4342 "Stavanger" ;
+	wdt:P2427 "grid.459168.7" ;
+	wdt:P5573 "6944" ;
+	wdt:P1313 wd:Q56539864 ;
+	wdt:P1850 "631869" ;
+	wdt:P36 wd:Q26772333 ;
+	wdt:P6520 "Stavanger_kommune" ;
+	wdt:P237 wd:Q12375347 ;
+	wdt:P1417 "place/Stavanger" ;
+	wdt:P6782 "02meh8z92" ;
+	wdt:P242 <http://commons.wikimedia.org/wiki/Special:FilePath/NO%201103%20Stavanger.svg> ;
+	wdt:P402 "10150658" ;
+	wdtn:P402 <https://www.openstreetmap.org/relation/10150658> ;
+	wdt:P571 "1837-01-01T00:00:00Z"^^xsd:dateTime ;
+	wdt:P1296 "0064073" ;
+	wdt:P1889 wd:Q26772333 ;
+	wdt:P6766 "1159297103" ;
+	wdt:P6821 "alvin-place:516" ;
+	wdtn:P6821 <http://www.alvin-portal.org/alvin/view.jsf?pid=alvin-place:516> ;
+	wdt:P1343 wd:Q602358,
+		wd:Q3181656,
+		wd:Q867541 ;
+	wdt:P2936 wd:Q25167,
+		wd:Q25164 ;
+	wdt:P7867 wd:Q84098745 ;
+	wdt:P1705 "Stavanger"@no ;
+	wdt:P793 wd:Q28953942,
+		wd:Q28953942,
+		wd:Q28953942,
+		wd:Q28953942,
+		wd:Q28953942,
+		wd:Q28953942,
+		wd:Q28953942,
+		wd:Q28953942,
+		wd:Q28953942 ;
+	wdt:P691 "ge394469" ;
+	wdt:P1538 "+60709"^^xsd:decimal ;
+	wdt:P8402 wd:Q97025520,
+		wd:Q97064011 ;
+	wdt:P8406 "T081108" ;
+	wdtn:P8406 <http://dx.doi.org/10.1093/gao/9781884446054.article.T081108> ;
+	wdt:P5063 "i82945" ;
+	wdtn:P5063 <https://globalwordnet.github.io/cili/i82945> ;
+	wdt:P8989 wd:Q104597563 ;
+	wdt:P8814 "08783293-n" ;
+	wdtn:P8814 <https://en-word.net/id/oewn-08783293-n> ;
+	wdt:P610 wd:Q20554756 ;
+	wdt:P8168 "Q92034" ;
+	wdtn:P8168 <https://database.factgrid.de/entity/Q92034> ;
+	wdt:P7471 "40314" ;
+	wdt:P2003 "stavangerkommune" ;
+	wdt:P4264 "stavanger-kommune" ;
+	wdt:P2002 "kommunen",
+		"kommunen" ;
+	wdt:P2013 "stavangerkommune" ;
+	wdt:P2347 "234814" ;
+	wdtn:P2347 <http://www.yso.fi/onto/yso/p234814> ;
+	wdt:P8189 "987007555035805171" ;
+	wdt:P9957 "1955" ;
+	wdt:P8313 "Stavanger" ;
+	wdt:P7305 "3979319" ;
+	wdt:P41 <http://commons.wikimedia.org/wiki/Special:FilePath/Flag%20of%20Stavanger.gif> ;
+	wdt:P12086 "Stavanger" ;
+	wdt:P12385 "stavanger" ;
+	wdt:P10832 "E39PBJh8JKfTQPtyfdgBR7x4bd" ;
+	wdt:P463 wd:Q15477956 ;
+	wdt:P269 "19647678X" ;
+	wdtn:P269 <http://www.idref.fr/19647678X/id> ;
+	wdt:P10730 "wikidataId/Q25416" ;
+	wdt:P8253 "stavangerkommune-2efea4",
+		"stavangerkommune-ee5f1f" ;
+	wdt:P1248 "b19684c5-7ed2-4a56-822a-e780552b0a41" ;
+	wdtn:P1248 <http://kulturnav.org/b19684c5-7ed2-4a56-822a-e780552b0a41> ;
+	wdt:P12361 "stavanger.kommune.no" ;
+	wdt:P7085 "stavangerkommune" ;
+	wdt:P281 "4005–4049",
+		"4077",
+		"4083",
+		"4085" ;
+	wdt:P8592 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavanger%20aerial%204.jpg> ;
+	wdt:P3451 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavangernight.JPG> ;
+	wdt:P5252 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavanger%20on%20a%20grey%20day%20in%20december.jpg> ;
+	wdt:P2716 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavangercollage2.png> ;
+	wdt:P1448 "Stavanger kommune"@nb ;
+	wdt:P2333 "964965226" ;
+	wdt:P1128 "+11000"^^xsd:decimal ;
+	wdt:P5008 wd:Q108109790 ;
+	wdt:P92 wd:Q11981511 ;
+	wdt:P13591 "place/d10caf50-d660-457d-888c-a47f137bb2aa" ;
+	wdt:P1617 "0acd7d05-6d79-4277-bff1-02146bc7244b" ;
+	wdtn:P1617 <http://www.bbc.co.uk/things/0acd7d05-6d79-4277-bff1-02146bc7244b#id> ;
+	wdt:P1320 "no/964965226" ;
+	wdt:P1813 "Stavanger"@nb ;
+	wdt:P1454 wd:Q15284 ;
+	wdt:P14075 "49804" ;
+	wdt:P452 wd:Q29585954 ;
+	wdt:P159 wd:Q25416 ;
+	p:P1036 wds:Q25416-0aae27f4-4614-69f3-8981-2bf59e03dcdd .
+
+wds:Q25416-0aae27f4-4614-69f3-8981-2bf59e03dcdd a wikibase:Statement ;
+	wikibase:rank wikibase:DeprecatedRank ;
+	ps:P1036 "2--4834" .
+
+wd:Q25416 p:P190 wds:Q25416-e6f228bc-44b5-ef0f-0233-46aa817f5f14 .
+
+wds:Q25416-e6f228bc-44b5-ef0f-0233-46aa817f5f14 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q36405 .
+
+wd:Q25416 p:P190 wds:Q25416-e41b2bc3-46d8-d94e-0e47-6340032bddc4 .
+
+wds:Q25416-e41b2bc3-46d8-d94e-0e47-6340032bddc4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q473250 .
+
+wd:Q25416 p:P190 wds:Q25416-bb356ef2-401a-dfb4-16de-e16421e1c9fb .
+
+wds:Q25416-bb356ef2-401a-dfb4-16de-e16421e1c9fb a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q9248 ;
+	prov:wasDerivedFrom wdref:53c39e74880714e77d22e733881d8c4553e68de5 .
+
+wd:Q25416 p:P190 wds:Q25416-bd8d1e7f-4f16-8495-5598-a0a06a60e1c2 .
+
+wds:Q25416-bd8d1e7f-4f16-8495-5598-a0a06a60e1c2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q583184 .
+
+wd:Q25416 p:P190 wds:Q25416-c15ab855-4674-7e4e-89a3-17f549b9774b .
+
+wds:Q25416-c15ab855-4674-7e4e-89a3-17f549b9774b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q26234 .
+
+wd:Q25416 p:P190 wds:Q25416-34b5fc8b-4d77-3595-4c6b-853a3c74442f .
+
+wds:Q25416-34b5fc8b-4d77-3595-4c6b-853a3c74442f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q1007634 .
+
+wd:Q25416 p:P190 wds:Q25416-349cef5c-424d-754b-a9b0-33fe407aad69 .
+
+wds:Q25416-349cef5c-424d-754b-a9b0-33fe407aad69 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q176728 .
+
+wd:Q25416 p:P190 wds:Q25416-9127d3b9-4980-75a6-3aec-0b52016d1510 .
+
+wds:Q25416-9127d3b9-4980-75a6-3aec-0b52016d1510 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q135744 .
+
+wd:Q25416 p:P190 wds:Q25416-f36ecdff-4429-c305-24b3-d9205cfc47a5 .
+
+wds:Q25416-f36ecdff-4429-c305-24b3-d9205cfc47a5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q852729 .
+
+wd:Q25416 p:P190 wds:Q25416-e33cc829-4731-6888-133b-396531f1d78b .
+
+wds:Q25416-e33cc829-4731-6888-133b-396531f1d78b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q7880 .
+
+wd:Q25416 p:P190 wds:Q25416-fca38c31-4044-e219-00a3-e7da58c18a3d .
+
+wds:Q25416-fca38c31-4044-e219-00a3-e7da58c18a3d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q16555 .
+
+wd:Q25416 p:P190 wds:Q25416-006faee2-41a4-0316-9506-81cb23fe1e75 .
+
+wds:Q25416-006faee2-41a4-0316-9506-81cb23fe1e75 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q134620 ;
+	pq:P580 "1947-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:60099f1613b21721bdc66dbd17b5a123 ;
+	prov:wasDerivedFrom wdref:7fab43785a8f5c7981368d559b57f5cf82d1748e,
+		wdref:f40b6154b6e4afcb1161f1190aac826bfc89980b .
+
+wd:Q25416 p:P190 wds:Q25416-4d42c689-412e-9b0c-605c-efa55dac7ce8 .
+
+wds:Q25416-4d42c689-412e-9b0c-605c-efa55dac7ce8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q214178 .
+
+wd:Q25416 p:P190 wds:Q25416-abf60843-446a-c130-b0c9-13f4fba67f8d .
+
+wds:Q25416-abf60843-446a-c130-b0c9-13f4fba67f8d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q192225 ;
+	pq:P580 "1997-04-16T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:20fcae8364bb8f60366bb24949cf71a8 ;
+	prov:wasDerivedFrom wdref:7fab43785a8f5c7981368d559b57f5cf82d1748e,
+		wdref:154c6ea341071a2b4e6d27944566602b25957905 .
+
+wd:Q25416 p:P190 wds:Q25416-95d0b573-40ba-3909-e5d4-40e03dcb3122 .
+
+wds:Q25416-95d0b573-40ba-3909-e5d4-40e03dcb3122 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q275635 .
+
+wd:Q25416 p:P190 wds:Q25416-74b645f2-4be1-4293-8145-5afa732213c6 .
+
+wds:Q25416-74b645f2-4be1-4293-8145-5afa732213c6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q823600 .
+
+wd:Q25416 p:P190 wds:Q25416-796a7c58-42d5-83ea-3df8-cfb075c55a23 .
+
+wds:Q25416-796a7c58-42d5-83ea-3df8-cfb075c55a23 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q6506 .
+
+wd:Q25416 p:P190 wds:Q25416-68f3a7fe-4fd0-6ba3-bfe0-8040d4a2d3d3 .
+
+wds:Q25416-68f3a7fe-4fd0-6ba3-bfe0-8040d4a2d3d3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q170525 .
+
+wd:Q25416 p:P190 wds:Q25416-3408C9C5-3217-46D7-9667-AFBEDB3213D9 .
+
+wds:Q25416-3408C9C5-3217-46D7-9667-AFBEDB3213D9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q1146805 ;
+	prov:wasDerivedFrom wdref:d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3 .
+
+wd:Q25416 p:P190 wds:Q25416-B1A33112-9DC6-4A74-8D0A-4CAFE8EE4393 .
+
+wds:Q25416-B1A33112-9DC6-4A74-8D0A-4CAFE8EE4393 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q503144 .
+
+wd:Q25416 p:P190 wds:Q25416-099FBC64-2F09-4FCA-A674-EC6ED5380ADE .
+
+wds:Q25416-099FBC64-2F09-4FCA-A674-EC6ED5380ADE a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q509568 ;
+	pq:P580 "1948-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:ec8eae08c5ae82941e89496436677d0e .
+
+wd:Q25416 p:P190 wds:Q25416-833EA207-613F-417A-B1C1-753C06C6FE47 .
+
+wds:Q25416-833EA207-613F-417A-B1C1-753C06C6FE47 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q656 ;
+	pq:P580 "2008-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:ce90feaacda74eb7f8326b25fb625c6d ;
+	prov:wasDerivedFrom wdref:80263ad097e75688a26f01016781529259bbe806 .
+
+wd:Q25416 p:P131 wds:q25416-C0754E8C-F43B-4200-AAF3-AB0C4794C4AF .
+
+wds:q25416-C0754E8C-F43B-4200-AAF3-AB0C4794C4AF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P131 wd:Q50624 .
+
+wd:Q25416 p:P94 wds:q25416-6516259A-7300-4834-9967-A73957A446E9 .
+
+wds:q25416-6516259A-7300-4834-9967-A73957A446E9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P94 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavanger%20komm.svg> .
+
+wd:Q25416 p:P47 wds:q25416-1927958F-675C-44D8-B8C6-0B35DD150BC2 .
+
+wds:q25416-1927958F-675C-44D8-B8C6-0B35DD150BC2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P47 wd:Q492115 .
+
+wd:Q25416 p:P47 wds:q25416-0BFC637E-DE8F-455F-93E4-E95C0CF19B49 .
+
+wds:q25416-0BFC637E-DE8F-455F-93E4-E95C0CF19B49 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P47 wd:Q494045 ;
+	pq:P582 "2019-12-31T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:e1bc22867995c9ded39820f209e1ab5b .
+
+wd:Q25416 p:P47 wds:q25416-FCA764F8-9FD8-4418-BC63-850A04503057 .
+
+wds:q25416-FCA764F8-9FD8-4418-BC63-850A04503057 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P47 wd:Q27587 .
+
+wd:Q25416 p:P47 wds:q25416-11670C15-DFA6-4444-B9C4-EE21D16AACCE .
+
+wds:q25416-11670C15-DFA6-4444-B9C4-EE21D16AACCE a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P47 wd:Q488948 .
+
+wd:Q25416 p:P47 wds:Q25416-9bdfd522-495a-05e2-5958-d2d4500605ec .
+
+wds:Q25416-9bdfd522-495a-05e2-5958-d2d4500605ec a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P47 wd:Q48591 ;
+	pq:P580 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:86d08cb380a7d361151c510ebb4a98ec .
+
+wd:Q25416 p:P47 wds:Q25416-c9a75331-4b60-54c1-4077-706bfdc1c16e .
+
+wds:Q25416-c9a75331-4b60-54c1-4077-706bfdc1c16e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P47 wd:Q250055 ;
+	pq:P580 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:86d08cb380a7d361151c510ebb4a98ec .
+
+wd:Q25416 p:P47 wds:Q25416-2d1a7bd8-4658-9373-d5cb-7625205dd1f1 .
+
+wds:Q25416-2d1a7bd8-4658-9373-d5cb-7625205dd1f1 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P47 wd:Q48577 ;
+	pq:P580 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:86d08cb380a7d361151c510ebb4a98ec .
+
+wd:Q25416 p:P47 wds:Q25416-64cfdfe9-45d5-eb3b-0f45-7af6325a046a .
+
+wds:Q25416-64cfdfe9-45d5-eb3b-0f45-7af6325a046a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P47 wd:Q493977 ;
+	pq:P580 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:86d08cb380a7d361151c510ebb4a98ec .
+
+wd:Q25416 p:P47 wds:Q25416-573dd385-4686-52fc-4bd0-c1303cb652d0 .
+
+wds:Q25416-573dd385-4686-52fc-4bd0-c1303cb652d0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P47 wd:Q489351 ;
+	pq:P580 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:86d08cb380a7d361151c510ebb4a98ec .
+
+wd:Q25416 p:P47 wds:Q25416-7f3ad4ce-42a9-7934-b321-aed262c4cca8 .
+
+wds:Q25416-7f3ad4ce-42a9-7934-b321-aed262c4cca8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P47 wd:Q494024 ;
+	pq:P580 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:86d08cb380a7d361151c510ebb4a98ec .
+
+wd:Q25416 p:P373 wds:q25416-410AC503-5ECD-4576-ADF4-F74BACCCC6AA .
+
+wds:q25416-410AC503-5ECD-4576-ADF4-F74BACCCC6AA a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P373 "Stavanger" .
+
+wd:Q25416 p:P17 wds:q25416-BF0C9DB0-BA95-46CA-81B8-58CEFFC1B98E .
+
+wds:q25416-BF0C9DB0-BA95-46CA-81B8-58CEFFC1B98E a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P17 wd:Q20 ;
+	pq:P580 "1905-06-07T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:ea502f00c7e55f65029d34e4dbbebe03 ;
+	prov:wasDerivedFrom wdref:11e5d1c5a20879f40154c69682ae89d4bbbb50e8 .
+
+wd:Q25416 p:P17 wds:Q25416-6f64bf14-46eb-8daa-d8a0-0917faf592e5 .
+
+wds:Q25416-6f64bf14-46eb-8daa-d8a0-0917faf592e5 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P17 wd:Q62589 ;
+	pq:P582 "1905-06-06T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:476319c9dc1e3277ae5a9a3e31fa5c32 ;
+	pq:P580 "1814-11-04T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:ece863bfbfb37ec947d1c52b58268086 .
+
+wd:Q25416 p:P17 wds:Q25416-e85f71ad-49a2-2936-55e6-920470dfa1a6 .
+
+wds:Q25416-e85f71ad-49a2-2936-55e6-920470dfa1a6 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P17 wd:Q2597352 ;
+	pq:P582 "1814-11-03T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:997904faf91fe99701097723258a3f21 ;
+	pq:P580 "1814-01-14T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:8e70b3797ad8b620f22da8e17e1fd1c1 .
+
+wd:Q25416 p:P17 wds:Q25416-c0996763-4c08-ebc1-8188-37ed088f7d09 .
+
+wds:Q25416-c0996763-4c08-ebc1-8188-37ed088f7d09 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P17 wd:Q62651 ;
+	pq:P582 "1814-01-13T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:903a3b29e4b11b0a34a27b5e8e9ce5d2 .
+
+wd:Q25416 p:P17 wds:Q25416-D3F01AF4-7BEB-4F59-B789-07A33407EB98 .
+
+wds:Q25416-D3F01AF4-7BEB-4F59-B789-07A33407EB98 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P17 wd:Q20 ;
+	prov:wasDerivedFrom wdref:11e5d1c5a20879f40154c69682ae89d4bbbb50e8 .
+
+wd:Q25416 p:P625 wds:q25416-308F4155-4A57-401C-AC1A-73F9B970A354 .
+
+wds:q25416-308F4155-4A57-401C-AC1A-73F9B970A354 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P625 "Point(5.7313888888889 58.97)"^^geo:wktLiteral ;
+	psv:P625 wdv:b165ca30ef233208f19a9da91449de78 ;
+	prov:wasDerivedFrom wdref:fa278ebfc458360e5aed63d5058cca83c46134f1 .
+
+wd:Q25416 p:P948 wds:Q25416-CE4BA24E-DCAE-4A73-B6FD-FEB9CFB1B4FB .
+
+wds:Q25416-CE4BA24E-DCAE-4A73-B6FD-FEB9CFB1B4FB a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P948 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavanger%20banner%20Domkirke%20detail.jpg> .
+
+wd:Q25416 p:P910 wds:Q25416-3B230BFE-F57B-4ACC-B3F3-73928BFA3292 .
+
+wds:Q25416-3B230BFE-F57B-4ACC-B3F3-73928BFA3292 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P910 wd:Q8817311 .
+
+wd:Q25416 p:P998 wds:Q25416-CC649008-85A0-4FE3-A830-FBAC377FFE7F .
+
+wds:Q25416-CC649008-85A0-4FE3-A830-FBAC377FFE7F a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P998 "Regional/Europe/Norway/Rogaland/Stavanger/" .
+
+wd:Q25416 p:P935 wds:Q25416-825C82C3-163F-4FB8-A9F6-EA0A771AB658 .
+
+wds:Q25416-825C82C3-163F-4FB8-A9F6-EA0A771AB658 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P935 "Stavanger" .
+
+wd:Q25416 p:P982 wds:Q25416-987966FB-01E4-4ED0-92A4-8CEC1147B9FF .
+
+wds:Q25416-987966FB-01E4-4ED0-92A4-8CEC1147B9FF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P982 "fd07dd33-6691-4247-948d-f4a2e6cb57d6" ;
+	psn:P982 <http://musicbrainz.org/area/fd07dd33-6691-4247-948d-f4a2e6cb57d6> .
+
+wd:Q25416 p:P31 wds:Q25416-F3517F0C-5830-4A37-A80C-008ACF0550A6 .
+
+wds:Q25416-F3517F0C-5830-4A37-A80C-008ACF0550A6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q755707 .
+
+wd:Q25416 p:P646 wds:Q25416-711336F9-85C6-4BEE-AD5B-70C71F5FA8DB .
+
+wds:Q25416-711336F9-85C6-4BEE-AD5B-70C71F5FA8DB a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P646 "/m/01773g" ;
+	prov:wasDerivedFrom wdref:2b00cb481cddcac7623114367489b5c194901c4a .
+
+wd:Q25416 p:P6 wds:Q25416-07E72D29-2652-4B96-93EE-04A623095525 .
+
+wds:Q25416-07E72D29-2652-4B96-93EE-04A623095525 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6 wd:Q11963764 ;
+	pq:P580 "2011-10-17T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:f0ef54ac106469c30d94992c1d7b5c58 ;
+	pq:P582 "2019-10-20T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:51d16a5198b8680512d1f4fcec4e178f ;
+	prov:wasDerivedFrom wdref:e7dae9ac3cf0875a20a89ce3417dbcdf3e649b7e .
+
+wd:Q25416 p:P6 wds:Q25416-cce9b9c0-4b5c-6148-1427-a43d6f6a580a .
+
+wds:Q25416-cce9b9c0-4b5c-6148-1427-a43d6f6a580a a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6 wd:Q50768057 ;
+	pq:P102 wd:Q190219 ;
+	pq:P580 "2019-10-21T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:1bbe935c00a140330af5b8de421aa99c ;
+	pq:P582 "2023-10-22T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:8a8d9bd4661408d87411a36780ed1564 ;
+	prov:wasDerivedFrom wdref:73e585503eedad8df8e88e7cf8dcb0370fe1ba02 .
+
+wd:Q25416 p:P6 wds:Q25416-9dd7054d-4fa5-58f0-5b76-9d2afd9478e7 .
+
+wds:Q25416-9dd7054d-4fa5-58f0-5b76-9d2afd9478e7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P6 wd:Q18764115 ;
+	pq:P102 wd:Q586364 ;
+	pq:P580 "2023-10-23T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:0cf4fedc04ca52d3be3998c293cda592 ;
+	prov:wasDerivedFrom wdref:90d673d7523818807a8169abcb19f9b56acb44b5 .
+
+wd:Q25416 p:P1464 wds:Q25416-63D79585-EE4A-4D91-83F8-70BA6ADBA64A .
+
+wds:Q25416-63D79585-EE4A-4D91-83F8-70BA6ADBA64A a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1464 wd:Q8073800 .
+
+wd:Q25416 p:P1465 wds:Q25416-5B20D50B-8C3C-44A4-96C2-AAB56DA16CCA .
+
+wds:Q25416-5B20D50B-8C3C-44A4-96C2-AAB56DA16CCA a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1465 wd:Q16611482 .
+
+wd:Q25416 p:P1566 wds:Q25416-7AF9F2CC-E578-4F67-80A4-3EC1101C3C47 .
+
+wds:Q25416-7AF9F2CC-E578-4F67-80A4-3EC1101C3C47 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1566 "6453391" ;
+	psn:P1566 <https://sws.geonames.org/6453391/> .
+
+wd:Q25416 p:P227 wds:Q25416-763E038D-9573-42DA-B46E-1480CDE17AE2 .
+
+wds:Q25416-763E038D-9573-42DA-B46E-1480CDE17AE2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P227 "4057047-2" ;
+	psn:P227 <https://d-nb.info/gnd/4057047-2> ;
+	prov:wasDerivedFrom wdref:9a24f7c0208b05d6be97077d855671d1dfdbc0dd .
+
+wd:Q25416 p:P166 wds:Q25416-fbbafb6b-436b-9894-eb56-30205dbe4469 .
+
+wds:Q25416-fbbafb6b-436b-9894-eb56-30205dbe4469 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P166 wd:Q18910363 ;
+	pq:P585 "2005-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:e9fb92a10cba9810496dcd2069ca7a89 .
+
+wd:Q25416 p:P166 wds:Q25416-a3d1499e-4e48-3a31-e34a-b54382c28c0c .
+
+wds:Q25416-a3d1499e-4e48-3a31-e34a-b54382c28c0c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P166 wd:Q18910363 ;
+	pq:P585 "2006-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:efd690456e471a014e71685683c62024 ;
+	pq:P1706 wd:Q27587 .
+
+wd:Q25416 p:P1792 wds:Q25416-39D1426B-6FCD-4775-865C-5348E8D98A61 .
+
+wds:Q25416-39D1426B-6FCD-4775-865C-5348E8D98A61 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1792 wd:Q9182931 .
+
+wd:Q25416 p:P214 wds:Q25416-05CC64DB-A72B-4D1D-9176-F17223DCDAA9 .
+
+wds:Q25416-05CC64DB-A72B-4D1D-9176-F17223DCDAA9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P214 "146588075" ;
+	psn:P214 <http://viaf.org/viaf/146588075> ;
+	prov:wasDerivedFrom wdref:9a24f7c0208b05d6be97077d855671d1dfdbc0dd .
+
+wd:Q25416 p:P244 wds:Q25416-0F65BF02-C14F-403A-85C6-248754258826 .
+
+wds:Q25416-0F65BF02-C14F-403A-85C6-248754258826 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P244 "n81035078" ;
+	psn:P244 <http://id.loc.gov/authorities/names/n81035078> ;
+	prov:wasDerivedFrom wdref:9a24f7c0208b05d6be97077d855671d1dfdbc0dd .
+
+wd:Q25416 p:P18 wds:Q25416-0C568A69-1CA3-402E-8ACF-0D68EFFD8A04 .
+
+wds:Q25416-0C568A69-1CA3-402E-8ACF-0D68EFFD8A04 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/Vaagen-modf.jpg> ;
+	pq:P2096 "Vågen, l'antic port d'Stavanger"@ca ;
+	pq:P180 wd:Q26772333 .
+
+wd:Q25416 p:P1997 wds:Q25416-c9a47806-4749-86eb-b28a-cf2bbe470910 .
+
+wds:Q25416-c9a47806-4749-86eb-b28a-cf2bbe470910 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1997 "115341461813501" .
+
+wd:Q25416 p:P856 wds:Q25416-d8afb86d-4b90-095c-146e-e19e0a0d582c .
+
+wds:Q25416-d8afb86d-4b90-095c-146e-e19e0a0d582c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P856 <https://www.stavanger.kommune.no/> ;
+	pq:P407 wd:Q25167 .
+
+wd:Q25416 p:P856 wds:Q25416-09EBB318-D1F5-4B80-8C56-74CB4FB68CCD .
+
+wds:Q25416-09EBB318-D1F5-4B80-8C56-74CB4FB68CCD a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P856 <https://www.stavanger.kommune.no/> .
+
+wd:Q25416 p:P1281 wds:Q25416-721D780B-4817-41D5-9395-BBD0E15B6CC9 .
+
+wds:Q25416-721D780B-4817-41D5-9395-BBD0E15B6CC9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1281 "864342" ;
+	prov:wasDerivedFrom wdref:d4767d15e44afe8795350d71c4aaf13e1067eea5 .
+
+wd:Q25416 p:P1082 wds:Q25416-710929D7-844B-4667-9816-929ACFA34FB3 .
+
+wds:Q25416-710929D7-844B-4667-9816-929ACFA34FB3 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+132729"^^xsd:decimal ;
+	psv:P1082 wdv:367e874ef051f9234eea4c98d35d127b ;
+	pq:P585 "2017-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:8bf14fd5c6dc0f5de433b8fe86c3f6eb ;
+	pq:P459 wd:Q791801 ;
+	prov:wasDerivedFrom wdref:e7069a176816881ba34a0c9b2c3d7d200c3edb6f .
+
+wd:Q25416 p:P1082 wds:Q25416-42430BE2-E08E-4469-A870-00404F7D70D8 .
+
+wds:Q25416-42430BE2-E08E-4469-A870-00404F7D70D8 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+130426"^^xsd:decimal ;
+	psv:P1082 wdv:8b35ac2318611b59e327aa50db6e6651 ;
+	pq:P585 "2011-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:dafb9cf711b15afe91ec0aa7158e57a6 ;
+	prov:wasDerivedFrom wdref:8f08ac3e0839bdbc4c6eb8d671e772deb12ba423 .
+
+wd:Q25416 p:P1082 wds:Q25416-5d2ef6aa-4f7f-1b84-42e7-30b8f65e0a41 .
+
+wds:Q25416-5d2ef6aa-4f7f-1b84-42e7-30b8f65e0a41 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+143574"^^xsd:decimal ;
+	psv:P1082 wdv:a33f42f08f77a23015db7570bfa79f53 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	pq:P459 wd:Q64224988 ;
+	prov:wasDerivedFrom wdref:f2002187a708bd941f3b1bf8c5c1565cfcf6dda6 .
+
+wd:Q25416 p:P1082 wds:Q25416-c6237e48-19ec-4ed4-bd56-3166033a9d3c .
+
+wds:Q25416-c6237e48-19ec-4ed4-bd56-3166033a9d3c a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+144147"^^xsd:decimal ;
+	psv:P1082 wdv:eaeaa4dae89dbe05ad9ae93de4444b97 ;
+	pq:P585 "2021-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:e774db7756a97ebda4df1381ea77305b ;
+	pq:P459 wd:Q64224988 ;
+	prov:wasDerivedFrom wdref:69e28a333000c44cd321af6209558a19a216b3ae .
+
+wd:Q25416 p:P1082 wds:Q25416-3ae13b5c-ec2b-4eb1-8628-87ba823b89dd .
+
+wds:Q25416-3ae13b5c-ec2b-4eb1-8628-87ba823b89dd a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+144699"^^xsd:decimal ;
+	psv:P1082 wdv:ac3551d5b972a87834eb197850d728bb ;
+	pq:P585 "2022-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:f0a794f755c96023755b4684ff262fe8 ;
+	pq:P459 wd:Q64224988 ;
+	prov:wasDerivedFrom wdref:1cebdc518a1f706055485ec0bd41d424dfaff5a9 .
+
+wd:Q25416 p:P1082 wds:Q25416-CD95444E-7514-49F2-83BF-846A1F335515 .
+
+wds:Q25416-CD95444E-7514-49F2-83BF-846A1F335515 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+146011"^^xsd:decimal ;
+	psv:P1082 wdv:928227d0e9f468f040c435880296737e ;
+	pq:P585 "2023-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:36115d4827ebd6fd24fc3f76ddcbfbfc ;
+	pq:P459 wd:Q64224988 ;
+	prov:wasDerivedFrom wdref:c081ec4b63a8da52a7f9ff896737dff8e192de73 .
+
+wd:Q25416 p:P1082 wds:Q25416-50bdc1b9-4a9a-efa4-9e82-83b3b72534d5 .
+
+wds:Q25416-50bdc1b9-4a9a-efa4-9e82-83b3b72534d5 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+123850"^^xsd:decimal ;
+	psv:P1082 wdv:7fc6db1aab12910976ba9345b7b0e3b5 ;
+	pq:P585 "2010-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4f272fae38ee73a331afd0407cdc74b9 ;
+	pq:P459 wd:Q64224988 .
+
+wd:Q25416 p:P1082 wds:Q25416-e48b299f-4f11-1e9a-cf03-5ffb96088861 .
+
+wds:Q25416-e48b299f-4f11-1e9a-cf03-5ffb96088861 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+108818"^^xsd:decimal ;
+	psv:P1082 wdv:c8a557ba9c55f5a88ef5b5a4ee499ae7 ;
+	pq:P585 "2000-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:6928b7cd3a8b4aff7d73814a5a8f2359 ;
+	pq:P459 wd:Q64224988 .
+
+wd:Q25416 p:P1082 wds:Q25416-6a6d4088-47af-ed4a-9851-dd613631476c .
+
+wds:Q25416-6a6d4088-47af-ed4a-9851-dd613631476c a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+97570"^^xsd:decimal ;
+	psv:P1082 wdv:55c87621e82bc5e433f92be708e5383d ;
+	pq:P585 "1990-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:25c003eb0ef8438f618cb61d21c9a4fa ;
+	pq:P459 wd:Q64224988 .
+
+wd:Q25416 p:P1082 wds:Q25416-18867948-4490-aca6-cd76-2a80fb276c59 .
+
+wds:Q25416-18867948-4490-aca6-cd76-2a80fb276c59 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+89913"^^xsd:decimal ;
+	psv:P1082 wdv:912bc25ab3ce40683f4ca4ce1a2d34d0 ;
+	pq:P585 "1980-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:ef979b8df4f4f2ae359ed26952114819 ;
+	pq:P459 wd:Q64224988 .
+
+wd:Q25416 p:P1082 wds:Q25416-49588d8e-4e61-630d-b265-334e7827169b .
+
+wds:Q25416-49588d8e-4e61-630d-b265-334e7827169b a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+81741"^^xsd:decimal ;
+	psv:P1082 wdv:45babbe10a3a607fad2c939659a5e57b ;
+	pq:P585 "1970-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:9a581f623d181b3e8160146d1a1c062c ;
+	pq:P459 wd:Q64224988 .
+
+wd:Q25416 p:P1082 wds:Q25416-5a088afb-45e8-958c-0184-5aa46f2977ea .
+
+wds:Q25416-5a088afb-45e8-958c-0184-5aa46f2977ea a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+52835"^^xsd:decimal ;
+	psv:P1082 wdv:6815f37cdefc04eb79eb4084ed90ff4d ;
+	pq:P585 "1960-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:25bc1714e3b0ce11f853727e3e379540 ;
+	pq:P459 wd:Q64224988 .
+
+wd:Q25416 p:P1082 wds:Q25416-937fd576-4ef3-eba3-2609-0a78ed0c9848 .
+
+wds:Q25416-937fd576-4ef3-eba3-2609-0a78ed0c9848 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+50617"^^xsd:decimal ;
+	psv:P1082 wdv:27c63d0986866dc581945586fb38af87 ;
+	pq:P585 "1951-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:252c8e9664aaae853b47e5f8eca14ef9 ;
+	pq:P459 wd:Q64224988 .
+
+wd:Q25416 p:P1082 wds:Q25416-4388e4c3-44d9-3455-7013-7787b91f4117 .
+
+wds:Q25416-4388e4c3-44d9-3455-7013-7787b91f4117 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+150123"^^xsd:decimal ;
+	psv:P1082 wdv:d96b8ad7e23d023fcc504dce5652b6ed ;
+	pq:P585 "2025-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:0bba73a2c22634302960d00f316f5fff ;
+	pq:P459 wd:Q64224988 ;
+	prov:wasDerivedFrom wdref:a2d57497744a8c78addb80d7a077e9cac775d504 .
+
+wd:Q25416 p:P1082 wds:Q25416-1109c55e-5525-4ac1-9cb5-fb63102ac54b .
+
+wds:Q25416-1109c55e-5525-4ac1-9cb5-fb63102ac54b a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+149048"^^xsd:decimal ;
+	psv:P1082 wdv:eac378c9fba85754991ee4310a046b8a ;
+	pq:P585 "2024-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:fc76c6f1fe20833a5648c7115c465738 ;
+	pq:P459 wd:Q64224988 ;
+	prov:wasDerivedFrom wdref:810f230534ab56d6b4c15ebfb1aa775054034a36 .
+
+wd:Q25416 p:P1082 wds:Q25416-743b7f22-8a59-4a3b-9459-178bff7665bd .
+
+wds:Q25416-743b7f22-8a59-4a3b-9459-178bff7665bd a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+150123"^^xsd:decimal ;
+	psv:P1082 wdv:d96b8ad7e23d023fcc504dce5652b6ed ;
+	pq:P585 "2025-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4de85214967b9397934a56b47799b9d3 ;
+	pq:P459 wd:Q64224988 ;
+	prov:wasDerivedFrom wdref:75c21775867de1a8b9f99873761013fabb75bd7f .
+
+wd:Q25416 p:P1082 wds:Q25416-c4293746-5771-4e92-bd07-e360523ca5be .
+
+wds:Q25416-c4293746-5771-4e92-bd07-e360523ca5be a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P1082 "+151669"^^xsd:decimal ;
+	psv:P1082 wdv:3b5cf1037feb37ed4c295ed56859f37f ;
+	pq:P585 "2026-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:2c5b93b4bbc053cd9d940798294e8f5e ;
+	pq:P459 wd:Q64224988 ;
+	prov:wasDerivedFrom wdref:b9c3a78ced386b37adadea26d523c1a8eefd26df .
+
+wd:Q25416 p:P2046 wds:Q25416-FC98ABBB-1980-4DBA-ABB5-D4B72C3EFA01 .
+
+wds:Q25416-FC98ABBB-1980-4DBA-ABB5-D4B72C3EFA01 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+71"^^xsd:decimal ;
+	psv:P2046 wdv:61167096d57a680371886172643ab128 ;
+	psn:P2046 wdv:c3852d13c0deb8c98746ee997fe72f82 .
+
+wd:Q25416 p:P2046 wds:Q25416-706A59E2-AD1E-4660-9D98-7362AD46161E .
+
+wds:Q25416-706A59E2-AD1E-4660-9D98-7362AD46161E a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+71.35450941021394"^^xsd:decimal ;
+	psv:P2046 wdv:92e5417739965a4242bb6d9529713b68 ;
+	psn:P2046 wdv:c7d497455db6ec8c017ce7667026bd5e ;
+	pq:P518 wd:Q205895,
+		wd:Q23442 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-58D441DA-5E49-4205-AAB7-48DA1D8A3905 .
+
+wds:Q25416-58D441DA-5E49-4205-AAB7-48DA1D8A3905 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+140.11151615995817"^^xsd:decimal ;
+	psv:P2046 wdv:fbe14cf0dffbabb3ea300a30f106af34 ;
+	psn:P2046 wdv:8d5aa12063b909cbdcf6fb71b8bbac74 ;
+	pq:P518 wd:Q16868672 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-A7B915C3-B0CE-4F59-A0C4-34F499F77A1E .
+
+wds:Q25416-A7B915C3-B0CE-4F59-A0C4-34F499F77A1E a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+68.75700674974425"^^xsd:decimal ;
+	psv:P2046 wdv:82951774f3285712a9c99857f61bddc7 ;
+	psn:P2046 wdv:ef5183ccde1aa4b204b700ffca9920f8 ;
+	pq:P518 wd:Q213204 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-17A16934-9647-432F-A2FA-2CF793926EDE .
+
+wds:Q25416-17A16934-9647-432F-A2FA-2CF793926EDE a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+21.421137834797445"^^xsd:decimal ;
+	psv:P2046 wdv:d20b67658b1fa5fa33fda0cf7b2fdf60 ;
+	psn:P2046 wdv:7caf679cd713ce63c9b053fea3b60ecc ;
+	pq:P518 wd:Q72591134 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-CF8C29D4-34CF-42E7-B278-3220355B8E41 .
+
+wds:Q25416-CF8C29D4-34CF-42E7-B278-3220355B8E41 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+0"^^xsd:decimal ;
+	psv:P2046 wdv:cbb5bb62ba02ace63e9340b9354e8a74 ;
+	psn:P2046 wdv:5f96b81eebd844bf7fcbe00c9c1ad41b ;
+	pq:P518 wd:Q7561,
+		wd:Q23392,
+		wd:Q35666 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-CF1265F2-4AFC-4CDB-89BF-C1CE9FAF864B .
+
+wds:Q25416-CF1265F2-4AFC-4CDB-89BF-C1CE9FAF864B a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+3.3545061278823494"^^xsd:decimal ;
+	psv:P2046 wdv:b30e3da6744720137fe5595773d8167f ;
+	psn:P2046 wdv:8de5b6325814dbd56878284033b1b148 ;
+	pq:P518 wd:Q23397 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-0A8FC8F5-AFD5-4330-A41F-8C24EC25BCBE .
+
+wds:Q25416-0A8FC8F5-AFD5-4330-A41F-8C24EC25BCBE a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+0"^^xsd:decimal ;
+	psv:P2046 wdv:cbb5bb62ba02ace63e9340b9354e8a74 ;
+	psn:P2046 wdv:5f96b81eebd844bf7fcbe00c9c1ad41b ;
+	pq:P518 wd:Q4022,
+		wd:Q373315 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-3B5D419E-C8F1-4FFB-AD93-12EE867B7659 .
+
+wds:Q25416-3B5D419E-C8F1-4FFB-AD93-12EE867B7659 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+0.03489172302901884"^^xsd:decimal ;
+	psv:P2046 wdv:b97a861f27c18595c3b428eb3dc31f93 ;
+	psn:P2046 wdv:fd7c42b931fde29493a38795dcf39ce8 ;
+	pq:P518 wd:Q1681353 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-FC54C5CC-822B-4CF2-B1FD-256FE9710FAD .
+
+wds:Q25416-FC54C5CC-822B-4CF2-B1FD-256FE9710FAD a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+7.496658257919832"^^xsd:decimal ;
+	psv:P2046 wdv:6fad4040d6226f5f25f0b443f7cf379a ;
+	psn:P2046 wdv:b4323659e388108143c799b82b6b7cb6 ;
+	pq:P518 wd:Q4421 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-4D135A58-6C44-4CDD-99AD-84CEA11DC98F .
+
+wds:Q25416-4D135A58-6C44-4CDD-99AD-84CEA11DC98F a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+11.512132334379174"^^xsd:decimal ;
+	psv:P2046 wdv:93697eccffa38e74701f32f78b18a9e5 ;
+	psn:P2046 wdv:9225809f568320a7d902b6e8399072ac ;
+	pq:P518 wd:Q843920 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-2E027DE0-F147-4C65-9BF8-F446AAD87FC7 .
+
+wds:Q25416-2E027DE0-F147-4C65-9BF8-F446AAD87FC7 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+23.450379847666152"^^xsd:decimal ;
+	psv:P2046 wdv:38cc8e0838a58524ab4f01675ef8d758 ;
+	psn:P2046 wdv:44af064d5ae5a9ef468ee44ef73b7b13 ;
+	pq:P518 wd:Q159313 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-D9FDDDC5-2A07-45C6-AD68-1A8F84C6DC05 .
+
+wds:Q25416-D9FDDDC5-2A07-45C6-AD68-1A8F84C6DC05 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+3.0037033002785987"^^xsd:decimal ;
+	psv:P2046 wdv:e09da87795dac10785a8e73d3cc5ed69 ;
+	psn:P2046 wdv:eb25bb9ab386c6991834f84b311ca464 ;
+	pq:P518 wd:Q329683 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-00318C6F-A3EC-4380-A789-BE3C79A152A2 .
+
+wds:Q25416-00318C6F-A3EC-4380-A789-BE3C79A152A2 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+1.0810999842613525"^^xsd:decimal ;
+	psv:P2046 wdv:489c27abf3d0b119b223b9bc4a221a54 ;
+	psn:P2046 wdv:dcd9d19ca2c9280c8406ba1aff5ac91a ;
+	pq:P518 wd:Q55107540 ;
+	pq:P585 "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 ;
+	prov:wasDerivedFrom wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 .
+
+wd:Q25416 p:P2046 wds:Q25416-E4B69FF3-D508-46C8-A961-738F3DDBCA9C .
+
+wds:Q25416-E4B69FF3-D508-46C8-A961-738F3DDBCA9C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P2046 "+262.52"^^xsd:decimal ;
+	psv:P2046 wdv:226b8c36037362483385c97642fd71c1 ;
+	psn:P2046 wdv:62caf746b96b06a35589b8c0ee482099 ;
+	pq:P518 wd:Q205895,
+		wd:Q23442 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	prov:wasDerivedFrom wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 .
+
+wd:Q25416 p:P2046 wds:Q25416-D87D670B-2E2D-4E66-8D57-9183CCE8E24B .
+
+wds:Q25416-D87D670B-2E2D-4E66-8D57-9183CCE8E24B a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+776.16"^^xsd:decimal ;
+	psv:P2046 wdv:613c89ec255929513eefbc305cedaa49 ;
+	psn:P2046 wdv:5ecc7fb3a98ba7c562e29af14bab24dd ;
+	pq:P518 wd:Q16868672 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	pq:P1012 wd:Q213204 ;
+	prov:wasDerivedFrom wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 .
+
+wd:Q25416 p:P2046 wds:Q25416-829935DC-5A5B-4CF3-86D5-40959E11DF36 .
+
+wds:Q25416-829935DC-5A5B-4CF3-86D5-40959E11DF36 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+93.97"^^xsd:decimal ;
+	psv:P2046 wdv:86705764edd27e4cda5a2500c2859d5d ;
+	psn:P2046 wdv:89db4264a8ef751ca27300f1e8f05024 ;
+	pq:P518 wd:Q72591134 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	prov:wasDerivedFrom wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 .
+
+wd:Q25416 p:P2046 wds:Q25416-442C7BD6-7AC7-41F1-91F0-7351D3DBBF6C .
+
+wds:Q25416-442C7BD6-7AC7-41F1-91F0-7351D3DBBF6C a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+0"^^xsd:decimal ;
+	psv:P2046 wdv:cbb5bb62ba02ace63e9340b9354e8a74 ;
+	psn:P2046 wdv:5f96b81eebd844bf7fcbe00c9c1ad41b ;
+	pq:P518 wd:Q7561,
+		wd:Q23392,
+		wd:Q35666 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	prov:wasDerivedFrom wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 .
+
+wd:Q25416 p:P2046 wds:Q25416-A2723F7E-A47A-46B9-B1CA-E8E7DF9BAAFC .
+
+wds:Q25416-A2723F7E-A47A-46B9-B1CA-E8E7DF9BAAFC a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+6"^^xsd:decimal ;
+	psv:P2046 wdv:af2f0a4729c89142c2c15d42ceecc5af ;
+	psn:P2046 wdv:1d1927789299eb5f52f1161d504dc4af ;
+	pq:P518 wd:Q23397 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	prov:wasDerivedFrom wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 .
+
+wd:Q25416 p:P2046 wds:Q25416-E4F3F0AF-B9C3-4E87-AA75-CD456F393847 .
+
+wds:Q25416-E4F3F0AF-B9C3-4E87-AA75-CD456F393847 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+0"^^xsd:decimal ;
+	psv:P2046 wdv:cbb5bb62ba02ace63e9340b9354e8a74 ;
+	psn:P2046 wdv:5f96b81eebd844bf7fcbe00c9c1ad41b ;
+	pq:P518 wd:Q4022,
+		wd:Q373315 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	prov:wasDerivedFrom wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 .
+
+wd:Q25416 p:P2046 wds:Q25416-EF7057EA-B2EB-4923-B2CE-E9F84E01E04B .
+
+wds:Q25416-EF7057EA-B2EB-4923-B2CE-E9F84E01E04B a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+3.58"^^xsd:decimal ;
+	psv:P2046 wdv:d9b16c0052b957a3e8549ac39cc913b8 ;
+	psn:P2046 wdv:70c9f3163367afc2c4483a14e22ffad8 ;
+	pq:P518 wd:Q1681353 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	prov:wasDerivedFrom wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 .
+
+wd:Q25416 p:P2046 wds:Q25416-66F52D7A-8548-45C8-94E5-74E6DC69CE49 .
+
+wds:Q25416-66F52D7A-8548-45C8-94E5-74E6DC69CE49 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+86.27"^^xsd:decimal ;
+	psv:P2046 wdv:3b2900ed64abc7e94d992aa3ae7e6e74 ;
+	psn:P2046 wdv:3e3db83376f55fd9eda0de2e191144b9 ;
+	pq:P518 wd:Q4421 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	prov:wasDerivedFrom wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 .
+
+wd:Q25416 p:P2046 wds:Q25416-BDE8B48B-B648-4423-A951-38301458A35C .
+
+wds:Q25416-BDE8B48B-B648-4423-A951-38301458A35C a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+43.7"^^xsd:decimal ;
+	psv:P2046 wdv:14be75fdba071f048f62c45fccd23c75 ;
+	psn:P2046 wdv:ce07a25661ce69ba53a74a390868747b ;
+	pq:P518 wd:Q843920 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	prov:wasDerivedFrom wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 .
+
+wd:Q25416 p:P2046 wds:Q25416-357DB407-02D7-4BCD-969F-B42D889B3AC4 .
+
+wds:Q25416-357DB407-02D7-4BCD-969F-B42D889B3AC4 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+24.52"^^xsd:decimal ;
+	psv:P2046 wdv:3db86f025374d38d6c4e4e6be223e12a ;
+	psn:P2046 wdv:8d3a31475d6e48d1163b6b2a10ef2499 ;
+	pq:P518 wd:Q159313 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	prov:wasDerivedFrom wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 .
+
+wd:Q25416 p:P2046 wds:Q25416-ACE9FA9B-9E20-40CF-AA25-40F3970F602A .
+
+wds:Q25416-ACE9FA9B-9E20-40CF-AA25-40F3970F602A a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+3.17"^^xsd:decimal ;
+	psv:P2046 wdv:f798a75bff384b3ac4d2e32895d8916a ;
+	psn:P2046 wdv:1bae378521a66f5dcfe9abcb417b001b ;
+	pq:P518 wd:Q329683 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	prov:wasDerivedFrom wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 .
+
+wd:Q25416 p:P2046 wds:Q25416-B19E18FB-8078-47A3-A59A-DFE72F3EC9E2 .
+
+wds:Q25416-B19E18FB-8078-47A3-A59A-DFE72F3EC9E2 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+1.32"^^xsd:decimal ;
+	psv:P2046 wdv:0a125174880f640a7fd799255be05558 ;
+	psn:P2046 wdv:b8f2b55da9b1d8302434af28f796ee2a ;
+	pq:P518 wd:Q55107540 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	prov:wasDerivedFrom wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 .
+
+wd:Q25416 p:P2046 wds:Q25416-3AC4F5DE-7BD2-4AC6-9FFD-A2F6D911CC4F .
+
+wds:Q25416-3AC4F5DE-7BD2-4AC6-9FFD-A2F6D911CC4F a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+241"^^xsd:decimal ;
+	psv:P2046 wdv:185500a7e7a1a99ab7273bf9439df9ef ;
+	psn:P2046 wdv:b4316703874fc660083b26336f70a795 ;
+	prov:wasDerivedFrom wdref:e3eca1d13fb67d6a51170a4bbb0bef05f3569f40 .
+
+wd:Q25416 p:P2504 wds:Q25416-c8b530e3-4f23-61f2-dfbb-922c3069b5fe .
+
+wds:Q25416-c8b530e3-4f23-61f2-dfbb-922c3069b5fe a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2504 "1103" .
+
+wd:Q25416 p:P2354 wds:Q25416-dca189ae-4df2-04c0-f943-8b975d591402 .
+
+wds:Q25416-dca189ae-4df2-04c0-f943-8b975d591402 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2354 wd:Q17778996 .
+
+wd:Q25416 p:P2354 wds:Q25416-52f1e9dc-47f1-728d-b2c8-1e9c62e412ec .
+
+wds:Q25416-52f1e9dc-47f1-728d-b2c8-1e9c62e412ec a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2354 wd:Q11984505 ;
+	prov:wasDerivedFrom wdref:3f6a91a25355d22354e9bd2ff752439065a3acd1 .
+
+wd:Q25416 p:P2044 wds:Q25416-7399CB3F-DC88-4061-A72C-ED9E70FEDF8C .
+
+wds:Q25416-7399CB3F-DC88-4061-A72C-ED9E70FEDF8C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2044 "+1"^^xsd:decimal ;
+	psv:P2044 wdv:92d8dba5758dfaaab4c2a1a0d0980ab5 ;
+	psn:P2044 wdv:92d8dba5758dfaaab4c2a1a0d0980ab5 ;
+	prov:wasDerivedFrom wdref:c456dc5cd2117249948c288206ff3f8b1bf574f0 .
+
+wd:Q25416 p:P213 wds:Q25416-FA81A59F-391A-4D0A-B82C-B138546F2778 .
+
+wds:Q25416-FA81A59F-391A-4D0A-B82C-B138546F2778 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P213 "0000000406120820" ;
+	prov:wasDerivedFrom wdref:5a761c7a986f4a5cf8cefbfc18e5a5ae5133d44b .
+
+wd:Q25416 p:P3500 wds:Q25416-136AB27C-EDAB-47FA-BA4F-524A6E1E5253 .
+
+wds:Q25416-136AB27C-EDAB-47FA-BA4F-524A6E1E5253 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3500 "87540" ;
+	prov:wasDerivedFrom wdref:2834ac5da275724a6354a73d2d2a89ae956042a9 .
+
+wd:Q25416 p:P1225 wds:Q25416-67D3BA1E-FAA4-4B79-AD3D-36FEBF6A687F .
+
+wds:Q25416-67D3BA1E-FAA4-4B79-AD3D-36FEBF6A687F a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1225 "10045068" .
+
+wd:Q25416 p:P2924 wds:Q25416-1C5FD81D-E8E8-4BD4-BC1E-8449772FA325 .
+
+wds:Q25416-1C5FD81D-E8E8-4BD4-BC1E-8449772FA325 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2924 "4162003" ;
+	pq:P1810 "СТАВАНГЕР" .
+
+wd:Q25416 p:P1549 wds:Q25416-20DB9569-B1DF-4ACF-9F11-0328617C3532 .
+
+wds:Q25416-20DB9569-B1DF-4ACF-9F11-0328617C3532 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1549 "siddis"@nb ;
+	prov:wasDerivedFrom wdref:4c2e9e395ae262965d2b526a3bc271b5794e9019 .
+
+wd:Q25416 p:P1549 wds:Q25416-10C10A72-92CF-47C9-9FF1-F4650F8144F6 .
+
+wds:Q25416-10C10A72-92CF-47C9-9FF1-F4650F8144F6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1549 "siddis"@nn ;
+	prov:wasDerivedFrom wdref:4c2e9e395ae262965d2b526a3bc271b5794e9019 .
+
+wd:Q25416 p:P4342 wds:Q25416-249CCF72-0226-4CE4-A65B-A77B4FF8CE08 .
+
+wds:Q25416-249CCF72-0226-4CE4-A65B-A77B4FF8CE08 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P4342 "Stavanger" ;
+	pq:P4390 wd:Q39893449 .
+
+wd:Q25416 p:P2427 wds:Q25416-FDA2B05F-2DC5-4163-A9CC-022A58DD4A5A .
+
+wds:Q25416-FDA2B05F-2DC5-4163-A9CC-022A58DD4A5A a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2427 "grid.459168.7" ;
+	prov:wasDerivedFrom wdref:a1914c8952a5bc482eafeb26be4fda504fe701f9 .
+
+wd:Q25416 p:P5573 wds:Q25416-D4751711-87F3-452C-B9F9-88AD22E240E9 .
+
+wds:Q25416-D4751711-87F3-452C-B9F9-88AD22E240E9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P5573 "6944" ;
+	prov:wasDerivedFrom wdref:21494d78c86d729112257391ca4131a84f73b44b .
+
+wd:Q25416 p:P1313 wds:Q25416-2691ed9d-428a-f35c-e4cb-48ad3d7d1ef3 .
+
+wds:Q25416-2691ed9d-428a-f35c-e4cb-48ad3d7d1ef3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1313 wd:Q56539864 .
+
+wd:Q25416 p:P1850 wds:Q25416-d4210a30-4247-d1e8-f68f-97e050b26f77 .
+
+wds:Q25416-d4210a30-4247-d1e8-f68f-97e050b26f77 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1850 "631869" .
+
+wd:Q25416 p:P36 wds:Q25416-e955909f-45e7-f9e1-a3f8-5eaa9c6bf35a .
+
+wds:Q25416-e955909f-45e7-f9e1-a3f8-5eaa9c6bf35a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P36 wd:Q26772333 .
+
+wd:Q25416 p:P6520 wds:Q25416-585DB0DF-905D-48D2-8104-EC841C9AB052 .
+
+wds:Q25416-585DB0DF-905D-48D2-8104-EC841C9AB052 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6520 "Stavanger_kommune" .
+
+wd:Q25416 p:P237 wds:Q25416-c752a76f-4950-316e-f4bd-63c07f617d55 .
+
+wds:Q25416-c752a76f-4950-316e-f4bd-63c07f617d55 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P237 wd:Q12375347 .
+
+wd:Q25416 p:P1417 wds:Q25416-E75446D0-30AC-4C54-BA58-72E70A1B20EE .
+
+wds:Q25416-E75446D0-30AC-4C54-BA58-72E70A1B20EE a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1417 "place/Stavanger" ;
+	pq:P1810 "Stavanger" .
+
+wd:Q25416 p:P6782 wds:Q25416-BBEC2320-E79F-41A5-8DC3-580493C27970 .
+
+wds:Q25416-BBEC2320-E79F-41A5-8DC3-580493C27970 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6782 "02meh8z92" .
+
+wd:Q25416 p:P242 wds:Q25416-60f8b3c6-435b-f721-ee9c-1a1d21fd93c3 .
+
+wds:Q25416-60f8b3c6-435b-f721-ee9c-1a1d21fd93c3 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P242 <http://commons.wikimedia.org/wiki/Special:FilePath/Norway%20Rogaland%20-%20Stavanger.svg> ;
+	pq:P582 "2019-12-31T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:e1bc22867995c9ded39820f209e1ab5b .
+
+wd:Q25416 p:P242 wds:Q25416-a2102ea6-4655-fdb3-f6fc-7f99e7fc9602 .
+
+wds:Q25416-a2102ea6-4655-fdb3-f6fc-7f99e7fc9602 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P242 <http://commons.wikimedia.org/wiki/Special:FilePath/NO%201103%20Stavanger.svg> ;
+	pq:P580 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:86d08cb380a7d361151c510ebb4a98ec .
+
+wd:Q25416 p:P402 wds:Q25416-577780ff-45a9-dd73-ecd9-a1b08716fede .
+
+wds:Q25416-577780ff-45a9-dd73-ecd9-a1b08716fede a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P402 "10150658" ;
+	psn:P402 <https://www.openstreetmap.org/relation/10150658> .
+
+wd:Q25416 p:P571 wds:Q25416-05125FC0-2857-4D3B-BA62-F7008F0C67A0 .
+
+wds:Q25416-05125FC0-2857-4D3B-BA62-F7008F0C67A0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P571 "1837-01-01T00:00:00Z"^^xsd:dateTime ;
+	psv:P571 wdv:b1486160dfd84e735f6d019b577923b2 ;
+	prov:wasDerivedFrom wdref:baf1fd1ada6d3cbec812f7594b8759adb4841ecf .
+
+wd:Q25416 p:P1296 wds:Q25416-B7D51666-10F9-4160-9ADB-99D9D159BA0C .
+
+wds:Q25416-B7D51666-10F9-4160-9ADB-99D9D159BA0C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1296 "0064073" .
+
+wd:Q25416 p:P1889 wds:Q25416-4e39b33b-4de7-8d0a-5bb3-863c7f4c997c .
+
+wds:Q25416-4e39b33b-4de7-8d0a-5bb3-863c7f4c997c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1889 wd:Q26772333 .
+
+wd:Q25416 p:P6766 wds:Q25416-1CFDD386-FC7E-4481-A38C-9683CE5F6086 .
+
+wds:Q25416-1CFDD386-FC7E-4481-A38C-9683CE5F6086 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6766 "1159297103" .
+
+wd:Q25416 p:P6821 wds:Q25416-ada7a3e0-468b-2467-b1c9-f656f7863b59 .
+
+wds:Q25416-ada7a3e0-468b-2467-b1c9-f656f7863b59 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6821 "alvin-place:516" ;
+	psn:P6821 <http://www.alvin-portal.org/alvin/view.jsf?pid=alvin-place:516> .
+
+wd:Q25416 p:P1343 wds:Q25416-3a67bb0b-5954-46ab-aeb2-c8f5b76022ba .
+
+wds:Q25416-3a67bb0b-5954-46ab-aeb2-c8f5b76022ba a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q602358 ;
+	pq:P805 wd:Q24479465 .
+
+wd:Q25416 p:P1343 wds:Q25416-55c9574c-402d-edbf-44b3-fbd989a45499 .
+
+wds:Q25416-55c9574c-402d-edbf-44b3-fbd989a45499 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q3181656 ;
+	pq:P1810 "Stavanger" .
+
+wd:Q25416 p:P1343 wds:Q25416-7E3908C0-2BB9-4C32-BF9E-8624827642D0 .
+
+wds:Q25416-7E3908C0-2BB9-4C32-BF9E-8624827642D0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q867541 ;
+	pq:P805 wd:Q120365432 .
+
+wd:Q25416 p:P2936 wds:Q25416-988150E8-E305-43D1-9648-DF1370B50DB5 .
+
+wds:Q25416-988150E8-E305-43D1-9648-DF1370B50DB5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2936 wd:Q25167 ;
+	pq:P3831 wd:Q14860523 ;
+	pq:P585 "2015-10-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:385142e5ecd043e30e081df6768636bc ;
+	prov:wasDerivedFrom wdref:8f6d2b4a0e3da23aca841c5dfe6b7ed894bd315a .
+
+wd:Q25416 p:P2936 wds:Q25416-23719420-4636-b45e-686b-56ed2dfd129a .
+
+wds:Q25416-23719420-4636-b45e-686b-56ed2dfd129a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2936 wd:Q25164 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec .
+
+wd:Q25416 p:P7867 wds:Q25416-326f708e-ad47-4790-9fd0-4689b5eb98b4 .
+
+wds:Q25416-326f708e-ad47-4790-9fd0-4689b5eb98b4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P7867 wd:Q84098745 .
+
+wd:Q25416 p:P1705 wds:Q25416-aebf63f4-4ccb-c5fa-e59d-329e5cc2be24 .
+
+wds:Q25416-aebf63f4-4ccb-c5fa-e59d-329e5cc2be24 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1705 "Stavanger"@no ;
+	pq:P443 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavanger.ogg> ;
+	prov:wasDerivedFrom wdref:1d43b494f0935d29b9e8f22d73835f8e4afec4d9 .
+
+wd:Q25416 p:P793 wds:Q25416-08ad9fcc-45b7-106a-d770-514fc547fe4c .
+
+wds:Q25416-08ad9fcc-45b7-106a-d770-514fc547fe4c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P793 wd:Q28953942 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	pq:P7903 wd:Q250055 ;
+	prov:wasDerivedFrom wdref:8d133c3c09f3c9dc62515ce2d053af3fb36b773b .
+
+wd:Q25416 p:P793 wds:Q25416-3552e443-4d64-049c-537d-a024f0cd7842 .
+
+wds:Q25416-3552e443-4d64-049c-537d-a024f0cd7842 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P793 wd:Q28953942 ;
+	pq:P585 "2020-10-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:8e14b3eda362a5084180828fbe8e2f65 ;
+	pq:P7904 wd:Q488948 ;
+	prov:wasDerivedFrom wdref:999941627a37348f2bc564de3a66cd35f72eabf4 .
+
+wd:Q25416 p:P793 wds:Q25416-4442611a-407f-7e9e-9236-6101df26c248 .
+
+wds:Q25416-4442611a-407f-7e9e-9236-6101df26c248 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P793 wd:Q28953942 ;
+	pq:P585 "1867-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:784e0bd79be8bd87a7c23abf0f7d328a ;
+	pq:P7903 wd:Q3437377 ;
+	prov:wasDerivedFrom wdref:337701d22f822cc07cf505026cd30ecc0cdde286 .
+
+wd:Q25416 p:P793 wds:Q25416-fd41e6b8-4488-736a-bcd5-3cfd4ed1c28d .
+
+wds:Q25416-fd41e6b8-4488-736a-bcd5-3cfd4ed1c28d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P793 wd:Q28953942 ;
+	pq:P585 "1879-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:1203713dfdbef8c5b36ba905cf1e97a6 ;
+	pq:P7903 wd:Q3437377 ;
+	prov:wasDerivedFrom wdref:337701d22f822cc07cf505026cd30ecc0cdde286 .
+
+wd:Q25416 p:P793 wds:Q25416-b12507da-4108-89d7-43ec-53c9fec966be .
+
+wds:Q25416-b12507da-4108-89d7-43ec-53c9fec966be a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P793 wd:Q28953942 ;
+	pq:P585 "1906-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:ca485f3356664866e61146a159fd05f5 ;
+	pq:P7903 wd:Q3437377 ;
+	prov:wasDerivedFrom wdref:337701d22f822cc07cf505026cd30ecc0cdde286 .
+
+wd:Q25416 p:P793 wds:Q25416-91502279-4de5-0eda-cd2e-ed691cd5304a .
+
+wds:Q25416-91502279-4de5-0eda-cd2e-ed691cd5304a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P793 wd:Q28953942 ;
+	pq:P585 "1923-07-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:0395c83870e041c46244685d64339740 ;
+	pq:P7903 wd:Q3437377 ;
+	prov:wasDerivedFrom wdref:337701d22f822cc07cf505026cd30ecc0cdde286 .
+
+wd:Q25416 p:P793 wds:Q25416-00eadf37-41d8-2e6f-6976-8b13bff0582d .
+
+wds:Q25416-00eadf37-41d8-2e6f-6976-8b13bff0582d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P793 wd:Q28953942 ;
+	pq:P585 "1953-07-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:0d92d9a8515e0076779816bf424174c0 ;
+	pq:P7903 wd:Q3437377 ;
+	prov:wasDerivedFrom wdref:79df88b60a3118d2f2d21da13d0f76909f401682 .
+
+wd:Q25416 p:P793 wds:Q25416-206e3833-4c05-6fba-7b0e-55e28252831c .
+
+wds:Q25416-206e3833-4c05-6fba-7b0e-55e28252831c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P793 wd:Q28953942 ;
+	pq:P585 "1965-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:236165b569c30381bd8a98c979884881 ;
+	pq:P7903 wd:Q3437377,
+		wd:Q19380822 ;
+	prov:wasDerivedFrom wdref:c2a0bf5043a6c3b75752995029c4f4444164167c .
+
+wd:Q25416 p:P793 wds:Q25416-3ed74203-41d1-0db9-a404-6d0de12bc024 .
+
+wds:Q25416-3ed74203-41d1-0db9-a404-6d0de12bc024 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P793 wd:Q28953942 ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	pq:P7903 wd:Q494045,
+		wd:Q48750 .
+
+wd:Q25416 p:P691 wds:Q25416-72ECF659-A31E-4679-995C-E5B46B72C3FF .
+
+wds:Q25416-72ECF659-A31E-4679-995C-E5B46B72C3FF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P691 "ge394469" ;
+	pq:P1810 "Stavanger (Norsko)" ;
+	prov:wasDerivedFrom wdref:b9b51021e848a830ef06c9221e61589b19193ecd .
+
+wd:Q25416 p:P1538 wds:Q25416-E3B240DF-9309-4AA9-AEC5-572C98D48C2D .
+
+wds:Q25416-E3B240DF-9309-4AA9-AEC5-572C98D48C2D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P1538 "+60709"^^xsd:decimal ;
+	psv:P1538 wdv:d664fae3bcf066821ca7a6f954b24751 ;
+	pq:P518 wd:Q88502666 ;
+	pq:P585 "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4b51c4c9ae946af39583823cf72d3d28 ;
+	prov:wasDerivedFrom wdref:f508524d8f89406a218823f52f592e4496edcaf7 .
+
+wd:Q25416 p:P1538 wds:Q25416-27117025-2951-4A33-95C5-062AD07DF022 .
+
+wds:Q25416-27117025-2951-4A33-95C5-062AD07DF022 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1538 "+20641"^^xsd:decimal ;
+	psv:P1538 wdv:3a859167abdc33ed2b1af44b7498297d ;
+	pq:P518 wd:Q1307276 ;
+	pq:P585 "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4b51c4c9ae946af39583823cf72d3d28 ;
+	prov:wasDerivedFrom wdref:f508524d8f89406a218823f52f592e4496edcaf7 .
+
+wd:Q25416 p:P1538 wds:Q25416-B88939D0-65C9-4AE2-ADAD-2B03F1F32C00 .
+
+wds:Q25416-B88939D0-65C9-4AE2-ADAD-2B03F1F32C00 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1538 "+10763"^^xsd:decimal ;
+	psv:P1538 wdv:c5375f89689ec706c0769f404503d1b7 ;
+	pq:P585 "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4b51c4c9ae946af39583823cf72d3d28 ;
+	pq:P518 wd:Q7419624 ;
+	prov:wasDerivedFrom wdref:f508524d8f89406a218823f52f592e4496edcaf7 .
+
+wd:Q25416 p:P1538 wds:Q25416-01440961-1732-4CD2-8554-D2FFF64D9F83 .
+
+wds:Q25416-01440961-1732-4CD2-8554-D2FFF64D9F83 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1538 "+9985"^^xsd:decimal ;
+	psv:P1538 wdv:4dcb564a3106f86f60602b5143adbeff ;
+	pq:P518 wd:Q875016 ;
+	pq:P585 "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4b51c4c9ae946af39583823cf72d3d28 ;
+	prov:wasDerivedFrom wdref:f508524d8f89406a218823f52f592e4496edcaf7 .
+
+wd:Q25416 p:P1538 wds:Q25416-B42F2B8D-6610-4E55-9344-565D2B433555 .
+
+wds:Q25416-B42F2B8D-6610-4E55-9344-565D2B433555 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1538 "+16439"^^xsd:decimal ;
+	psv:P1538 wdv:2ca02af7d19e6e04eb901c34d6322181 ;
+	pq:P518 wd:Q13402009 ;
+	pq:P585 "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4b51c4c9ae946af39583823cf72d3d28 ;
+	prov:wasDerivedFrom wdref:f508524d8f89406a218823f52f592e4496edcaf7 .
+
+wd:Q25416 p:P1538 wds:Q25416-616CE09A-0419-4443-ABD2-466E499CFE79 .
+
+wds:Q25416-616CE09A-0419-4443-ABD2-466E499CFE79 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1538 "+2881"^^xsd:decimal ;
+	psv:P1538 wdv:2ee95287254ed24b974b48e59fde9a09 ;
+	pq:P518 wd:Q88490088 ;
+	pq:P585 "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4b51c4c9ae946af39583823cf72d3d28 ;
+	prov:wasDerivedFrom wdref:f508524d8f89406a218823f52f592e4496edcaf7 .
+
+wd:Q25416 p:P8402 wds:Q25416-2eeb2f92-4eac-b798-3b3e-7489c0fb58bd .
+
+wds:Q25416-2eeb2f92-4eac-b798-3b3e-7489c0fb58bd a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8402 wd:Q97025520 .
+
+wd:Q25416 p:P8402 wds:Q25416-66a2b9f5-4f23-cb29-084f-dcfbae43b9a1 .
+
+wds:Q25416-66a2b9f5-4f23-cb29-084f-dcfbae43b9a1 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8402 wd:Q97064011 .
+
+wd:Q25416 p:P8406 wds:Q25416-F9E3FAFC-8D9C-44D7-AA30-6ADA75CB9A4D .
+
+wds:Q25416-F9E3FAFC-8D9C-44D7-AA30-6ADA75CB9A4D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8406 "T081108" ;
+	psn:P8406 <http://dx.doi.org/10.1093/gao/9781884446054.article.T081108> .
+
+wd:Q25416 p:P5063 wds:Q25416-28F932F0-16A0-4726-9BD7-6B7DBC7E54A6 .
+
+wds:Q25416-28F932F0-16A0-4726-9BD7-6B7DBC7E54A6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P5063 "i82945" ;
+	psn:P5063 <https://globalwordnet.github.io/cili/i82945> .
+
+wd:Q25416 p:P8989 wds:Q25416-6d33e4ea-9b57-4445-ae62-2841bbc148c3 .
+
+wds:Q25416-6d33e4ea-9b57-4445-ae62-2841bbc148c3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8989 wd:Q104597563 .
+
+wd:Q25416 p:P8814 wds:Q25416-CED04C5D-E916-41FB-8071-5D9732EF6065 .
+
+wds:Q25416-CED04C5D-E916-41FB-8071-5D9732EF6065 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8814 "08783293-n" ;
+	psn:P8814 <https://en-word.net/id/oewn-08783293-n> .
+
+wd:Q25416 p:P610 wds:Q25416-731f6358-462f-c2c5-315f-263895ef2c7e .
+
+wds:Q25416-731f6358-462f-c2c5-315f-263895ef2c7e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P610 wd:Q20554756 ;
+	pq:P2044 "+513.894"^^xsd:decimal ;
+	pqv:P2044 wdv:e4278f30698f53763a3b40aec7e9a626 ;
+	pqn:P2044 wdv:e4278f30698f53763a3b40aec7e9a626 ;
+	prov:wasDerivedFrom wdref:30022ec07e4c12c9e56457e41f4960fcd0f88afc .
+
+wd:Q25416 p:P8168 wds:Q25416-9BCDCC96-8DA3-41B6-B207-426B10A92B19 .
+
+wds:Q25416-9BCDCC96-8DA3-41B6-B207-426B10A92B19 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8168 "Q92034" ;
+	psn:P8168 <https://database.factgrid.de/entity/Q92034> .
+
+wd:Q25416 p:P7471 wds:Q25416-0BEF65D7-FF2B-4650-BF02-DE22C9285EE3 .
+
+wds:Q25416-0BEF65D7-FF2B-4650-BF02-DE22C9285EE3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P7471 "40314" ;
+	prov:wasDerivedFrom wdref:cd265fa9f8591b5905bba6f0b4fd1d62328dc775 .
+
+wd:Q25416 p:P300 wds:Q25416-56073494-4265-a679-2726-eb663399257e .
+
+wds:Q25416-56073494-4265-a679-2726-eb663399257e a wikibase:Statement ;
+	wikibase:rank wikibase:DeprecatedRank ;
+	ps:P300 "NO-1103" ;
+	pq:P2241 wd:Q107631600 ;
+	prov:wasDerivedFrom wdref:93a541df29e741dd08411a4b1b61e86b311b12be .
+
+wd:Q25416 p:P2003 wds:Q25416-014D607E-9A8B-4243-ACE6-70197999B3A1 .
+
+wds:Q25416-014D607E-9A8B-4243-ACE6-70197999B3A1 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2003 "stavangerkommune" .
+
+wd:Q25416 p:P4264 wds:Q25416-48BEA062-486E-4283-8510-F0737A95821A .
+
+wds:Q25416-48BEA062-486E-4283-8510-F0737A95821A a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P4264 "stavanger-kommune" .
+
+wd:Q25416 p:P2002 wds:Q25416-C2CFA968-32CF-407D-B252-7165E79CC0B2 .
+
+wds:Q25416-C2CFA968-32CF-407D-B252-7165E79CC0B2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2002 "kommunen" ;
+	pq:P6552 "180777812" ;
+	pq:P580 "2010-08-20T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:b0a6decebb7cab066c8f66e4370ebdd3 ;
+	pq:P585 "2021-11-17T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:67b6cb26f62e675c99f35a374dd8709a .
+
+wd:Q25416 p:P2002 wds:Q25416-639b4b5d-4faf-14cb-2e6a-200a50b9d9d0 .
+
+wds:Q25416-639b4b5d-4faf-14cb-2e6a-200a50b9d9d0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2002 "kommunen" ;
+	pq:P6552 "180777812" .
+
+wd:Q25416 p:P2013 wds:Q25416-56128E56-656D-4105-9475-4D16F2219920 .
+
+wds:Q25416-56128E56-656D-4105-9475-4D16F2219920 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2013 "stavangerkommune" .
+
+wd:Q25416 p:P2347 wds:Q25416-29EE9499-0525-4AE3-9F7F-0E297E617022 .
+
+wds:Q25416-29EE9499-0525-4AE3-9F7F-0E297E617022 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2347 "234814" ;
+	psn:P2347 <http://www.yso.fi/onto/yso/p234814> ;
+	pq:P14457 "Stavanger"@fi,
+		"Stavanger"@en,
+		"Stavanger"@sv ;
+	prov:wasDerivedFrom wdref:f9bf1a1f034ddd51bd9928ac535e0f57d748e2cf .
+
+wd:Q25416 p:P8189 wds:Q25416-768D1662-F782-4C57-B390-54CD6304E7D6 .
+
+wds:Q25416-768D1662-F782-4C57-B390-54CD6304E7D6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8189 "987007555035805171" .
+
+wd:Q25416 p:P9957 wds:Q25416-5F73FA05-C930-48F2-A201-B7E4D8526DDA .
+
+wds:Q25416-5F73FA05-C930-48F2-A201-B7E4D8526DDA a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P9957 "1955" .
+
+wd:Q25416 p:P8313 wds:Q25416-4C9C0083-1D85-4FDF-BD22-C5215BAC1B1E .
+
+wds:Q25416-4C9C0083-1D85-4FDF-BD22-C5215BAC1B1E a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8313 "Stavanger" .
+
+wd:Q25416 p:P7305 wds:Q25416-c504903e-4ed0-dd7f-01a2-4c90ac086432 .
+
+wds:Q25416-c504903e-4ed0-dd7f-01a2-4c90ac086432 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P7305 "3979319" .
+
+wd:Q25416 p:P41 wds:Q25416-ace8c17a-4856-715c-f3ca-f625a7652808 .
+
+wds:Q25416-ace8c17a-4856-715c-f3ca-f625a7652808 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P41 <http://commons.wikimedia.org/wiki/Special:FilePath/Flag%20of%20Stavanger.gif> .
+
+wd:Q25416 p:P12086 wds:Q25416-1BD3CFB4-E1B3-4257-9D25-FF06CCB2AE1A .
+
+wds:Q25416-1BD3CFB4-E1B3-4257-9D25-FF06CCB2AE1A a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P12086 "Stavanger" ;
+	pq:P9675 "30358" .
+
+wd:Q25416 p:P12385 wds:Q25416-aa5bfb2e-94ef-4c41-b09a-95e5a8e45f74 .
+
+wds:Q25416-aa5bfb2e-94ef-4c41-b09a-95e5a8e45f74 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P12385 "stavanger" .
+
+wd:Q25416 p:P10832 wds:Q25416-B4971040-8B85-4774-9838-A72E7A71E08B .
+
+wds:Q25416-B4971040-8B85-4774-9838-A72E7A71E08B a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P10832 "E39PBJh8JKfTQPtyfdgBR7x4bd" ;
+	prov:wasDerivedFrom wdref:d8aa00fe9e643f8f94cfd58a4ce80d50f109159f .
+
+wd:Q25416 p:P463 wds:Q25416-71AA1247-C1F0-4EDC-AE58-03639E8DDC5C .
+
+wds:Q25416-71AA1247-C1F0-4EDC-AE58-03639E8DDC5C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P463 wd:Q15477956 ;
+	prov:wasDerivedFrom wdref:02a72c1e5f185ea1d2ef3bf4c5588ec8652dbcd8 .
+
+wd:Q25416 p:P269 wds:q25416-9d485276-407d-8d7f-4a4b-65f5737d8896 .
+
+wds:q25416-9d485276-407d-8d7f-4a4b-65f5737d8896 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P269 "19647678X" ;
+	psn:P269 <http://www.idref.fr/19647678X/id> ;
+	prov:wasDerivedFrom wdref:b794b3f4668f4cafc549150573c6864eca31ff63 .
+
+wd:Q25416 p:P10730 wds:Q25416-2156E275-E800-4612-9F7D-E845F1AF7E60 .
+
+wds:Q25416-2156E275-E800-4612-9F7D-E845F1AF7E60 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P10730 "wikidataId/Q25416" .
+
+wd:Q25416 p:P8253 wds:Q25416-90CD4FF4-6A14-415C-9286-F89551CE3270 .
+
+wds:Q25416-90CD4FF4-6A14-415C-9286-F89551CE3270 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8253 "stavangerkommune-2efea4" ;
+	prov:wasDerivedFrom wdref:17b44e0865ba260d9e25a3eb6dd105da11a26206 .
+
+wd:Q25416 p:P8253 wds:Q25416-09BE41C4-B14C-49EE-A061-A62C2B77151A .
+
+wds:Q25416-09BE41C4-B14C-49EE-A061-A62C2B77151A a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8253 "stavangerkommune-ee5f1f" ;
+	prov:wasDerivedFrom wdref:17b44e0865ba260d9e25a3eb6dd105da11a26206 .
+
+wd:Q25416 p:P1248 wds:Q25416-00E171C6-D6C8-4B2F-8E71-72BAA06CC1F8 .
+
+wds:Q25416-00E171C6-D6C8-4B2F-8E71-72BAA06CC1F8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1248 "b19684c5-7ed2-4a56-822a-e780552b0a41" ;
+	psn:P1248 <http://kulturnav.org/b19684c5-7ed2-4a56-822a-e780552b0a41> ;
+	pq:P972 wd:Q131314154 .
+
+wd:Q25416 p:P12361 wds:Q25416-a6aa12ad-4268-8e19-fdba-4179b696b90d .
+
+wds:Q25416-a6aa12ad-4268-8e19-fdba-4179b696b90d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P12361 "stavanger.kommune.no" ;
+	pq:P12409 "did:plc:wavwrwc53b2jxrg67bn4b5o6" ;
+	pq:P580 "2023-08-16T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:c19f40e2297fdfce26756fb3af9dfd15 .
+
+wd:Q25416 p:P7085 wds:Q25416-00d6396b-4aa8-b098-b83e-36311f6f6c3e .
+
+wds:Q25416-00d6396b-4aa8-b098-b83e-36311f6f6c3e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P7085 "stavangerkommune" .
+
+wd:Q25416 p:P281 wds:Q25416-18e0574d-4483-90d8-1ba1-16ffbfe0d9a6 .
+
+wds:Q25416-18e0574d-4483-90d8-1ba1-16ffbfe0d9a6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P281 "4005–4049" .
+
+wd:Q25416 p:P281 wds:Q25416-65c6ebb4-44ca-524b-abbc-0c7927a9f732 .
+
+wds:Q25416-65c6ebb4-44ca-524b-abbc-0c7927a9f732 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P281 "4077" .
+
+wd:Q25416 p:P281 wds:Q25416-9A20E239-3F43-4F6F-B348-89895EF2625E .
+
+wds:Q25416-9A20E239-3F43-4F6F-B348-89895EF2625E a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P281 "4083" .
+
+wd:Q25416 p:P281 wds:Q25416-4E306617-B8A9-4264-B86A-BE51C5EF3AD5 .
+
+wds:Q25416-4E306617-B8A9-4264-B86A-BE51C5EF3AD5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P281 "4085" .
+
+wd:Q25416 p:P8592 wds:Q25416-2504ca5b-4c0d-b66d-56e2-3259c933b74d .
+
+wds:Q25416-2504ca5b-4c0d-b66d-56e2-3259c933b74d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8592 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavanger%20aerial%204.jpg> .
+
+wd:Q25416 p:P3451 wds:Q25416-a6c8d3f3-43c2-1d8d-7311-68a3855c6552 .
+
+wds:Q25416-a6c8d3f3-43c2-1d8d-7311-68a3855c6552 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3451 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavangernight.JPG> .
+
+wd:Q25416 p:P5252 wds:Q25416-b1a146f3-405c-c256-a68e-e75dbbce3700 .
+
+wds:Q25416-b1a146f3-405c-c256-a68e-e75dbbce3700 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P5252 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavanger%20on%20a%20grey%20day%20in%20december.jpg> .
+
+wd:Q25416 p:P2716 wds:Q25416-cd929269-4b82-08de-af02-b589bd78e6a3 .
+
+wds:Q25416-cd929269-4b82-08de-af02-b589bd78e6a3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2716 <http://commons.wikimedia.org/wiki/Special:FilePath/Stavangercollage2.png> .
+
+wd:Q25416 p:P1448 wds:Q25416-467D431B-A7AB-4504-871C-5AF69A057F5F .
+
+wds:Q25416-467D431B-A7AB-4504-871C-5AF69A057F5F a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1448 "Stavanger kommune"@nb .
+
+wd:Q25416 p:P2333 wds:Q25416-C735AB48-DBA7-474F-AEF6-462243DB4055 .
+
+wds:Q25416-C735AB48-DBA7-474F-AEF6-462243DB4055 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2333 "964965226" .
+
+wd:Q25416 p:P1128 wds:Q25416-ABCEDCF0-4D20-4ABA-974F-EE81C122E5EC .
+
+wds:Q25416-ABCEDCF0-4D20-4ABA-974F-EE81C122E5EC a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1128 "+11000"^^xsd:decimal ;
+	psv:P1128 wdv:6849fa4b21786326c95aa3ef52733f40 ;
+	pq:P1480 wd:Q60070514 ;
+	prov:wasDerivedFrom wdref:60d57b1911047fc1a736169dc9ff359922912446 .
+
+wd:Q25416 p:P5008 wds:Q25416-EFABB935-5360-4EBB-B2F2-CE6B0B2B768E .
+
+wds:Q25416-EFABB935-5360-4EBB-B2F2-CE6B0B2B768E a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P5008 wd:Q108109790 ;
+	prov:wasDerivedFrom wdref:0380aa42fb34bd6ffc31551f02bf91098387fe77 .
+
+wd:Q25416 p:P92 wds:Q25416-9BD3EBCD-71D9-4A1C-916A-EEE01C05FB7A .
+
+wds:Q25416-9BD3EBCD-71D9-4A1C-916A-EEE01C05FB7A a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P92 wd:Q11981511 .
+
+wd:Q25416 p:P13591 wds:Q25416-0E0A1EBC-CD4E-44FD-81A6-F2B99F36A3BE .
+
+wds:Q25416-0E0A1EBC-CD4E-44FD-81A6-F2B99F36A3BE a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13591 "place/d10caf50-d660-457d-888c-a47f137bb2aa" .
+
+wd:Q25416 p:P1617 wds:Q25416-11b2981f-90e3-4921-ab36-134c560908ee .
+
+wds:Q25416-11b2981f-90e3-4921-ab36-134c560908ee a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1617 "0acd7d05-6d79-4277-bff1-02146bc7244b" ;
+	psn:P1617 <http://www.bbc.co.uk/things/0acd7d05-6d79-4277-bff1-02146bc7244b#id> .
+
+wd:Q25416 p:P1320 wds:Q25416-8C6E6DF9-04A6-46E6-B9F8-EF982CA30F0D .
+
+wds:Q25416-8C6E6DF9-04A6-46E6-B9F8-EF982CA30F0D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1320 "no/964965226" ;
+	prov:wasDerivedFrom wdref:088829837d30a3ef743b2612b7ad586793002e4d .
+
+wd:Q25416 p:P1813 wds:Q25416-4be55e80-416c-ab90-5c86-bcd2605a3ba4 .
+
+wds:Q25416-4be55e80-416c-ab90-5c86-bcd2605a3ba4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1813 "Stavanger"@nb .
+
+wd:Q25416 p:P1454 wds:Q25416-f37184b7-4a04-6472-9b44-74259b45f7e5 .
+
+wds:Q25416-f37184b7-4a04-6472-9b44-74259b45f7e5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1454 wd:Q15284 .
+
+wd:Q25416 p:P14075 wds:Q25416-15F1AC75-B91D-4AF2-B27F-7ABDDBC6BF13 .
+
+wds:Q25416-15F1AC75-B91D-4AF2-B27F-7ABDDBC6BF13 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P14075 "49804" .
+
+wd:Q25416 p:P452 wds:Q25416-4C5DFD69-3590-4C67-899D-56A3DB58419B .
+
+wds:Q25416-4C5DFD69-3590-4C67-899D-56A3DB58419B a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P452 wd:Q29585954 ;
+	prov:wasDerivedFrom wdref:d7332f982c4bec9b1c1647b54057c4837b49f42f .
+
+wd:Q25416 p:P159 wds:Q25416-875DC7D3-3769-4AA2-8802-5CA0D3F9312D .
+
+wds:Q25416-875DC7D3-3769-4AA2-8802-5CA0D3F9312D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P159 wd:Q25416 ;
+	prov:wasDerivedFrom wdref:d7332f982c4bec9b1c1647b54057c4837b49f42f .
+
+wd:Q25416 rdfs:label "Stavanger"@lb ;
+	skos:prefLabel "Stavanger"@lb ;
+	schema:name "Stavanger"@lb ;
+	rdfs:label "斯塔万格"@zh ;
+	skos:prefLabel "斯塔万格"@zh ;
+	schema:name "斯塔万格"@zh ;
+	rdfs:label "Stavanger"@pl ;
+	skos:prefLabel "Stavanger"@pl ;
+	schema:name "Stavanger"@pl ;
+	rdfs:label "Stavanger"@eu ;
+	skos:prefLabel "Stavanger"@eu ;
+	schema:name "Stavanger"@eu ;
+	rdfs:label "Stavanger"@bs ;
+	skos:prefLabel "Stavanger"@bs ;
+	schema:name "Stavanger"@bs ;
+	rdfs:label "Stavanger"@es ;
+	skos:prefLabel "Stavanger"@es ;
+	schema:name "Stavanger"@es ;
+	rdfs:label "Stavanger"@vo ;
+	skos:prefLabel "Stavanger"@vo ;
+	schema:name "Stavanger"@vo ;
+	rdfs:label "Stavanger"@mi ;
+	skos:prefLabel "Stavanger"@mi ;
+	schema:name "Stavanger"@mi ;
+	rdfs:label "Stavanger"@af ;
+	skos:prefLabel "Stavanger"@af ;
+	schema:name "Stavanger"@af ;
+	rdfs:label "Stavanger"@hu ;
+	skos:prefLabel "Stavanger"@hu ;
+	schema:name "Stavanger"@hu ;
+	rdfs:label "Stavanger"@sw ;
+	skos:prefLabel "Stavanger"@sw ;
+	schema:name "Stavanger"@sw ;
+	rdfs:label "Stavanger"@et ;
+	skos:prefLabel "Stavanger"@et ;
+	schema:name "Stavanger"@et ;
+	rdfs:label "Stavanger"@br ;
+	skos:prefLabel "Stavanger"@br ;
+	schema:name "Stavanger"@br ;
+	rdfs:label "Σταβάνγκερ"@el ;
+	skos:prefLabel "Σταβάνγκερ"@el ;
+	schema:name "Σταβάνγκερ"@el ;
+	rdfs:label "سٹاوانگر"@pnb ;
+	skos:prefLabel "سٹاوانگر"@pnb ;
+	schema:name "سٹاوانگر"@pnb ;
+	rdfs:label "Stavanger"@nl ;
+	skos:prefLabel "Stavanger"@nl ;
+	schema:name "Stavanger"@nl ;
+	rdfs:label "ستافانغر"@ar ;
+	skos:prefLabel "ستافانغر"@ar ;
+	schema:name "ستافانغر"@ar ;
+	rdfs:label "Stavangers kommun"@sv ;
+	skos:prefLabel "Stavangers kommun"@sv ;
+	schema:name "Stavangers kommun"@sv ;
+	rdfs:label "Stavanger"@pt ;
+	skos:prefLabel "Stavanger"@pt ;
+	schema:name "Stavanger"@pt ;
+	rdfs:label "Stavanger"@eo ;
+	skos:prefLabel "Stavanger"@eo ;
+	schema:name "Stavanger"@eo ;
+	rdfs:label "Stafangur"@is ;
+	skos:prefLabel "Stafangur"@is ;
+	schema:name "Stafangur"@is ;
+	rdfs:label "Ставангер"@ru ;
+	skos:prefLabel "Ставангер"@ru ;
+	schema:name "Ставангер"@ru ;
+	rdfs:label "Ставангер"@sr ;
+	skos:prefLabel "Ставангер"@sr ;
+	schema:name "Ставангер"@sr ;
+	rdfs:label "Stavanger"@tr ;
+	skos:prefLabel "Stavanger"@tr ;
+	schema:name "Stavanger"@tr ;
+	rdfs:label "Stavanger"@se ;
+	skos:prefLabel "Stavanger"@se ;
+	schema:name "Stavanger"@se ;
+	rdfs:label "Stavanger"@kl ;
+	skos:prefLabel "Stavanger"@kl ;
+	schema:name "Stavanger"@kl ;
+	rdfs:label "Stavanger"@fi ;
+	skos:prefLabel "Stavanger"@fi ;
+	schema:name "Stavanger"@fi ;
+	rdfs:label "Ставангер"@uk ;
+	skos:prefLabel "Ставангер"@uk ;
+	schema:name "Ставангер"@uk ;
+	rdfs:label "Ставангер"@be-tarask ;
+	skos:prefLabel "Ставангер"@be-tarask ;
+	schema:name "Ставангер"@be-tarask ;
+	rdfs:label "Stavanger kommune"@nn ;
+	skos:prefLabel "Stavanger kommune"@nn ;
+	schema:name "Stavanger kommune"@nn ;
+	rdfs:label "Stavanger"@sco ;
+	skos:prefLabel "Stavanger"@sco ;
+	schema:name "Stavanger"@sco ;
+	rdfs:label "Stavanger"@hr ;
+	skos:prefLabel "Stavanger"@hr ;
+	schema:name "Stavanger"@hr ;
+	rdfs:label "স্টাভানগের"@bpy ;
+	skos:prefLabel "স্টাভানগের"@bpy ;
+	schema:name "স্টাভানগের"@bpy ;
+	rdfs:label "Stavanger"@fr ;
+	skos:prefLabel "Stavanger"@fr ;
+	schema:name "Stavanger"@fr ;
+	rdfs:label "Ставангер"@be ;
+	skos:prefLabel "Ставангер"@be ;
+	schema:name "Ставангер"@be ;
+	rdfs:label "סטוונגר"@he ;
+	skos:prefLabel "סטוונגר"@he ;
+	schema:name "סטוונגר"@he ;
+	rdfs:label "스타방에르"@ko ;
+	skos:prefLabel "스타방에르"@ko ;
+	schema:name "스타방에르"@ko ;
+	rdfs:label "Stavanger"@frr ;
+	skos:prefLabel "Stavanger"@frr ;
+	schema:name "Stavanger"@frr ;
+	rdfs:label "Stavangeres komūna"@lv ;
+	skos:prefLabel "Stavangeres komūna"@lv ;
+	schema:name "Stavangeres komūna"@lv ;
+	rdfs:label "Stavanger"@it ;
+	skos:prefLabel "Stavanger"@it ;
+	schema:name "Stavanger"@it ;
+	rdfs:label "Stavanger"@gl ;
+	skos:prefLabel "Stavanger"@gl ;
+	schema:name "Stavanger"@gl ;
+	rdfs:label "Stavanger"@id ;
+	skos:prefLabel "Stavanger"@id ;
+	schema:name "Stavanger"@id ;
+	rdfs:label "Stavanger"@de ;
+	skos:prefLabel "Stavanger"@de ;
+	schema:name "Stavanger"@de ;
+	rdfs:label "スタヴァンゲル"@ja ;
+	skos:prefLabel "スタヴァンゲル"@ja ;
+	schema:name "スタヴァンゲル"@ja ;
+	rdfs:label "Stavanger"@vi ;
+	skos:prefLabel "Stavanger"@vi ;
+	schema:name "Stavanger"@vi ;
+	rdfs:label "Stavanger"@sk ;
+	skos:prefLabel "Stavanger"@sk ;
+	schema:name "Stavanger"@sk ;
+	rdfs:label "Stavanger"@en ;
+	skos:prefLabel "Stavanger"@en ;
+	schema:name "Stavanger"@en ;
+	rdfs:label "Stavanger"@fy ;
+	skos:prefLabel "Stavanger"@fy ;
+	schema:name "Stavanger"@fy ;
+	rdfs:label "Comuna Stavanger"@ro ;
+	skos:prefLabel "Comuna Stavanger"@ro ;
+	schema:name "Comuna Stavanger"@ro ;
+	rdfs:label "สตาวังเงอร์"@th ;
+	skos:prefLabel "สตาวังเงอร์"@th ;
+	schema:name "สตาวังเงอร์"@th ;
+	rdfs:label "Stavanger"@ca ;
+	skos:prefLabel "Stavanger"@ca ;
+	schema:name "Stavanger"@ca ;
+	rdfs:label "Stafangria"@la ;
+	skos:prefLabel "Stafangria"@la ;
+	schema:name "Stafangria"@la ;
+	rdfs:label "Stavanger"@fo ;
+	skos:prefLabel "Stavanger"@fo ;
+	schema:name "Stavanger"@fo ;
+	rdfs:label "Stavanger"@cy ;
+	skos:prefLabel "Stavanger"@cy ;
+	schema:name "Stavanger"@cy ;
+	rdfs:label "Stavanger"@war ;
+	skos:prefLabel "Stavanger"@war ;
+	schema:name "Stavanger"@war ;
+	rdfs:label "Stavanger"@sl ;
+	skos:prefLabel "Stavanger"@sl ;
+	schema:name "Stavanger"@sl ;
+	rdfs:label "Ставангер"@os ;
+	skos:prefLabel "Ставангер"@os ;
+	schema:name "Ставангер"@os ;
+	rdfs:label "Stavangeris"@sgs ;
+	skos:prefLabel "Stavangeris"@sgs ;
+	schema:name "Stavangeris"@sgs ;
+	rdfs:label "Stavanger"@cs ;
+	skos:prefLabel "Stavanger"@cs ;
+	schema:name "Stavanger"@cs ;
+	rdfs:label "استاوانگر"@fa ;
+	skos:prefLabel "استاوانگر"@fa ;
+	schema:name "استاوانگر"@fa ;
+	rdfs:label "स्टावांग्यिर"@mr ;
+	skos:prefLabel "स्टावांग्यिर"@mr ;
+	schema:name "स्टावांग्यिर"@mr ;
+	rdfs:label "Ставангер"@bg ;
+	skos:prefLabel "Ставангер"@bg ;
+	schema:name "Ставангер"@bg ;
+	rdfs:label "Stavanger"@nds ;
+	skos:prefLabel "Stavanger"@nds ;
+	schema:name "Stavanger"@nds ;
+	rdfs:label "Stavangeris"@lt ;
+	skos:prefLabel "Stavangeris"@lt ;
+	schema:name "Stavangeris"@lt ;
+	rdfs:label "Stavanger"@nb ;
+	skos:prefLabel "Stavanger"@nb ;
+	schema:name "Stavanger"@nb ;
+	rdfs:label "Stavanger"@en-ca ;
+	skos:prefLabel "Stavanger"@en-ca ;
+	schema:name "Stavanger"@en-ca ;
+	rdfs:label "Stavanger Municipality"@en-gb ;
+	skos:prefLabel "Stavanger Municipality"@en-gb ;
+	schema:name "Stavanger Municipality"@en-gb ;
+	rdfs:label "Ставангер"@mk ;
+	skos:prefLabel "Ставангер"@mk ;
+	schema:name "Ставангер"@mk ;
+	rdfs:label "Stavanger"@pt-br ;
+	skos:prefLabel "Stavanger"@pt-br ;
+	schema:name "Stavanger"@pt-br ;
+	rdfs:label "Stavanger"@sq ;
+	skos:prefLabel "Stavanger"@sq ;
+	schema:name "Stavanger"@sq ;
+	rdfs:label "Stavanger"@oc ;
+	skos:prefLabel "Stavanger"@oc ;
+	schema:name "Stavanger"@oc ;
+	rdfs:label "Ставангер"@ce ;
+	skos:prefLabel "Ставангер"@ce ;
+	schema:name "Ставангер"@ce ;
+	rdfs:label "Stavanger"@pms ;
+	skos:prefLabel "Stavanger"@pms ;
+	schema:name "Stavanger"@pms ;
+	rdfs:label "Stavanger"@ms ;
+	skos:prefLabel "Stavanger"@ms ;
+	schema:name "Stavanger"@ms ;
+	rdfs:label "Stavanger"@jv ;
+	skos:prefLabel "Stavanger"@jv ;
+	schema:name "Stavanger"@jv ;
+	rdfs:label "Stavanger"@szl ;
+	skos:prefLabel "Stavanger"@szl ;
+	schema:name "Stavanger"@szl ;
+	rdfs:label "Սթավանգեր"@hy ;
+	skos:prefLabel "Սթավանգեր"@hy ;
+	schema:name "Սթավանգեր"@hy ;
+	rdfs:label "Stavanger"@nah ;
+	skos:prefLabel "Stavanger"@nah ;
+	schema:name "Stavanger"@nah ;
+	rdfs:label "Stavanger"@nan ;
+	skos:prefLabel "Stavanger"@nan ;
+	schema:name "Stavanger"@nan ;
+	rdfs:label "ستاوانگیر"@ur ;
+	skos:prefLabel "ستاوانگیر"@ur ;
+	schema:name "ستاوانگیر"@ur ;
+	rdfs:label "Stavanger"@li ;
+	skos:prefLabel "Stavanger"@li ;
+	schema:name "Stavanger"@li ;
+	rdfs:label "Stavanger"@tum ;
+	skos:prefLabel "Stavanger"@tum ;
+	schema:name "Stavanger"@tum ;
+	rdfs:label "斯塔凡格"@yue ;
+	skos:prefLabel "斯塔凡格"@yue ;
+	schema:name "斯塔凡格"@yue ;
+	rdfs:label "Stavanger"@ie ;
+	skos:prefLabel "Stavanger"@ie ;
+	schema:name "Stavanger"@ie ;
+	rdfs:label "Stavanger (munisipyo)"@ceb ;
+	skos:prefLabel "Stavanger (munisipyo)"@ceb ;
+	schema:name "Stavanger (munisipyo)"@ceb ;
+	rdfs:label "Stavanger"@an ;
+	skos:prefLabel "Stavanger"@an ;
+	schema:name "Stavanger"@an ;
+	rdfs:label "Stavanger"@ast ;
+	skos:prefLabel "Stavanger"@ast ;
+	schema:name "Stavanger"@ast ;
+	rdfs:label "Stavanger"@bar ;
+	skos:prefLabel "Stavanger"@bar ;
+	schema:name "Stavanger"@bar ;
+	rdfs:label "Stavanger"@co ;
+	skos:prefLabel "Stavanger"@co ;
+	schema:name "Stavanger"@co ;
+	rdfs:label "Stavanger"@de-at ;
+	skos:prefLabel "Stavanger"@de-at ;
+	schema:name "Stavanger"@de-at ;
+	rdfs:label "Stavanger"@de-ch ;
+	skos:prefLabel "Stavanger"@de-ch ;
+	schema:name "Stavanger"@de-ch ;
+	rdfs:label "Stavanger"@frp ;
+	skos:prefLabel "Stavanger"@frp ;
+	schema:name "Stavanger"@frp ;
+	rdfs:label "Stavanger"@fur ;
+	skos:prefLabel "Stavanger"@fur ;
+	schema:name "Stavanger"@fur ;
+	rdfs:label "Stavanger"@ga ;
+	skos:prefLabel "Stavanger"@ga ;
+	schema:name "Stavanger"@ga ;
+	rdfs:label "Stavanger"@gd ;
+	skos:prefLabel "Stavanger"@gd ;
+	schema:name "Stavanger"@gd ;
+	rdfs:label "Stavanger"@gsw ;
+	skos:prefLabel "Stavanger"@gsw ;
+	schema:name "Stavanger"@gsw ;
+	rdfs:label "Stavanger"@ia ;
+	skos:prefLabel "Stavanger"@ia ;
+	schema:name "Stavanger"@ia ;
+	rdfs:label "Stavanger"@io ;
+	skos:prefLabel "Stavanger"@io ;
+	schema:name "Stavanger"@io ;
+	rdfs:label "Stavanger"@kg ;
+	skos:prefLabel "Stavanger"@kg ;
+	schema:name "Stavanger"@kg ;
+	rdfs:label "Stavanger"@lij ;
+	skos:prefLabel "Stavanger"@lij ;
+	schema:name "Stavanger"@lij ;
+	rdfs:label "Stavanger"@mg ;
+	skos:prefLabel "Stavanger"@mg ;
+	schema:name "Stavanger"@mg ;
+	rdfs:label "Stavanger"@min ;
+	skos:prefLabel "Stavanger"@min ;
+	schema:name "Stavanger"@min ;
+	rdfs:label "Stavanger"@nap ;
+	skos:prefLabel "Stavanger"@nap ;
+	schema:name "Stavanger"@nap ;
+	rdfs:label "Stavanger"@nds-nl ;
+	skos:prefLabel "Stavanger"@nds-nl ;
+	schema:name "Stavanger"@nds-nl ;
+	rdfs:label "Stavanger"@nrm ;
+	skos:prefLabel "Stavanger"@nrm ;
+	schema:name "Stavanger"@nrm ;
+	rdfs:label "Stavanger"@pcd ;
+	skos:prefLabel "Stavanger"@pcd ;
+	schema:name "Stavanger"@pcd ;
+	rdfs:label "Stavanger"@rm ;
+	skos:prefLabel "Stavanger"@rm ;
+	schema:name "Stavanger"@rm ;
+	rdfs:label "Stavanger"@sc ;
+	skos:prefLabel "Stavanger"@sc ;
+	schema:name "Stavanger"@sc ;
+	rdfs:label "Stavanger"@scn ;
+	skos:prefLabel "Stavanger"@scn ;
+	schema:name "Stavanger"@scn ;
+	rdfs:label "Stavanger"@sr-el ;
+	skos:prefLabel "Stavanger"@sr-el ;
+	schema:name "Stavanger"@sr-el ;
+	rdfs:label "Stavanger"@vec ;
+	skos:prefLabel "Stavanger"@vec ;
+	schema:name "Stavanger"@vec ;
+	rdfs:label "Stavanger"@vls ;
+	skos:prefLabel "Stavanger"@vls ;
+	schema:name "Stavanger"@vls ;
+	rdfs:label "Stavanger"@wa ;
+	skos:prefLabel "Stavanger"@wa ;
+	schema:name "Stavanger"@wa ;
+	rdfs:label "Stavanger"@wo ;
+	skos:prefLabel "Stavanger"@wo ;
+	schema:name "Stavanger"@wo ;
+	rdfs:label "Stavanger"@zu ;
+	skos:prefLabel "Stavanger"@zu ;
+	schema:name "Stavanger"@zu ;
+	rdfs:label "स्टावेंगर"@hi ;
+	skos:prefLabel "स्टावेंगर"@hi ;
+	schema:name "स्टावेंगर"@hi ;
+	rdfs:label "ஸ்டாவென்ஜர்"@ta ;
+	skos:prefLabel "ஸ்டாவென்ஜர்"@ta ;
+	schema:name "ஸ்டாவென்ஜர்"@ta ;
+	rdfs:label "స్టావంగెర్"@te ;
+	skos:prefLabel "స్టావంగెర్"@te ;
+	schema:name "స్టావంగెర్"@te ;
+	rdfs:label "স্ট্যাভাঙ্গার"@bn ;
+	skos:prefLabel "স্ট্যাভাঙ্গার"@bn ;
+	schema:name "স্ট্যাভাঙ্গার"@bn ;
+	rdfs:label "ස්ටාවෙන්ජර්"@si ;
+	skos:prefLabel "ස්ටාවෙන්ජර්"@si ;
+	schema:name "ස්ටාවෙන්ජර්"@si ;
+	rdfs:label "સ્ટાવૅન્જર"@gu ;
+	skos:prefLabel "સ્ટાવૅન્જર"@gu ;
+	schema:name "સ્ટાવૅન્જર"@gu ;
+	rdfs:label "ಸ್ಟಾವಂಗರ್"@kn ;
+	skos:prefLabel "ಸ್ಟಾವಂಗರ್"@kn ;
+	schema:name "ಸ್ಟಾವಂಗರ್"@kn ;
+	rdfs:label "ستوانګر"@ps ;
+	skos:prefLabel "ستوانګر"@ps ;
+	schema:name "ستوانګر"@ps ;
+	rdfs:label "Ставаңер"@tt ;
+	skos:prefLabel "Ставаңер"@tt ;
+	schema:name "Ставаңер"@tt ;
+	rdfs:label "斯塔萬格"@zh-hant ;
+	skos:prefLabel "斯塔萬格"@zh-hant ;
+	schema:name "斯塔萬格"@zh-hant ;
+	rdfs:label "Stavanger"@ha ;
+	skos:prefLabel "Stavanger"@ha ;
+	schema:name "Stavanger"@ha ;
+	rdfs:label "ستاڤانجر"@arz ;
+	skos:prefLabel "ستاڤانجر"@arz ;
+	schema:name "ستاڤانجر"@arz ;
+	rdfs:label "斯塔万格"@wuu ;
+	skos:prefLabel "斯塔万格"@wuu ;
+	schema:name "斯塔万格"@wuu ;
+	rdfs:label "Stavanqer"@az ;
+	skos:prefLabel "Stavanqer"@az ;
+	schema:name "Stavanqer"@az ;
+	rdfs:label "Stavanger"@na ;
+	skos:prefLabel "Stavanger"@na ;
+	schema:name "Stavanger"@na ;
+	rdfs:label "Stavanger"@sh ;
+	skos:prefLabel "Stavanger"@sh ;
+	schema:name "Stavanger"@sh ;
+	rdfs:label "斯塔万格"@zh-hans ;
+	skos:prefLabel "斯塔万格"@zh-hans ;
+	schema:name "斯塔万格"@zh-hans ;
+	rdfs:label "Stavanger"@sms ;
+	skos:prefLabel "Stavanger"@sms ;
+	schema:name "Stavanger"@sms ;
+	rdfs:label "Stavanger"@smn ;
+	skos:prefLabel "Stavanger"@smn ;
+	schema:name "Stavanger"@smn ;
+	rdfs:label "Ставангэр"@mdf ;
+	skos:prefLabel "Ставангэр"@mdf ;
+	schema:name "Ставангэр"@mdf ;
+	rdfs:label "Stavanger"@mt ;
+	skos:prefLabel "Stavanger"@mt ;
+	schema:name "Stavanger"@mt ;
+	rdfs:label "Stavanger"@vep ;
+	skos:prefLabel "Stavanger"@vep ;
+	schema:name "Stavanger"@vep ;
+	rdfs:label "Stavangr"@shi ;
+	skos:prefLabel "Stavangr"@shi ;
+	schema:name "Stavangr"@shi ;
+	rdfs:label "ⵙⵜⴰⴼⴰⵏⴳⵔ"@zgh ;
+	skos:prefLabel "ⵙⵜⴰⴼⴰⵏⴳⵔ"@zgh ;
+	schema:name "ⵙⵜⴰⴼⴰⵏⴳⵔ"@zgh ;
+	rdfs:label "ᱥᱴᱟᱵᱷᱟᱝᱜᱮᱨ"@sat ;
+	skos:prefLabel "ᱥᱴᱟᱵᱷᱟᱝᱜᱮᱨ"@sat ;
+	schema:name "ᱥᱴᱟᱵᱷᱟᱝᱜᱮᱨ"@sat ;
+	rdfs:label "Stafangere"@ang ;
+	skos:prefLabel "Stafangere"@ang ;
+	schema:name "Stafangere"@ang ;
+	rdfs:label "Stavanger"@so ;
+	skos:prefLabel "Stavanger"@so ;
+	schema:name "Stavanger"@so ;
+	rdfs:label "Stavanger"@da ;
+	skos:prefLabel "Stavanger"@da ;
+	schema:name "Stavanger"@da ;
+	rdfs:label "Ставангер"@mn ;
+	skos:prefLabel "Ставангер"@mn ;
+	schema:name "Ставангер"@mn ;
+	schema:description "commune de Rogaland, Norvège"@fr,
+		"kommune i Rogaland fylke i Norge"@nb,
+		"kommune i Rogaland fylke i Noreg"@nn,
+		"municipality in Rogaland, Norway"@en,
+		"Stadt in Rogaland, Norwegen"@de,
+		"kommun i Rogaland fylke i Norge"@sv,
+		"manisipaa ya Rogaland katika Norwei"@sw,
+		"comună în Rogaland în Norvegia"@ro,
+		"municipio en Rogaland, Noruega"@es,
+		"komunumo en Rogaland, Norvegio"@eo,
+		"Stavanger is een Stadt in Norwegen"@nds,
+		"коммуна в Норвегии, административный центр фюльке Ругаланн"@ru,
+		"città norvegese"@it,
+		"gemeente in Noorwegen"@nl,
+		"עיר בנורווגיה"@he,
+		"քաղաք Նորվեգիայում"@hy,
+		"miasto w Norwegii"@pl,
+		"kaupunki Rogalandin läänissä, Norjassa"@fi,
+		"ښار"@ps,
+		"Norvēģijas komūna Rūgalannes filkē"@lv,
+		"مدينة في روغالاند غرب النرويج"@ar,
+		"municipi de Noruega"@ca,
+		"kåʹdd Taarâst"@sms,
+		"gielda Norggas"@se,
+		"kieldâ Rogalandist, Taažâst"@smn,
+		"sídlo v kraji Rogaland v Norsku"@cs,
+		"ノルウェーの都市"@ja,
+		"város Norvégiában"@hu,
+		"ошсь Норвегияса"@mdf,
+		"muniċipalità fin-Norveġja"@mt,
+		"urbs Norvegiae"@la,
+		"Norveç'te belediye"@tr,
+		"挪威罗加兰郡的市镇"@zh,
+		"municipality in Rogaland, Norway"@en-gb,
+		"občina v okrožju Rogaland na Norveškem"@sl,
+		"град в Норвегия"@bg,
+		"δήμος της Νορβηγίας"@el,
+		"Stad vun Norwegen"@lb,
+		"নরওয়ের তৃতীয় বৃহত্তম শহর এবং পৌরসভা"@bn,
+		"norsk by og kommune i Rogaland Fylke"@da,
+		"노르웨이의 도시"@ko,
+		"مدينة في روغالاند غرب النرويج"@ary,
+		"места ў Нарвэгіі"@be-tarask ;
+	skos:altLabel "Stavangen"@nl,
+		"ستافنجر"@ar,
+		"Stavanger"@is,
+		"Kommunen Stavanger"@nn,
+		"סטאוונגר"@he,
+		"스타방게르"@ko,
+		"Stavanger kommune"@lv,
+		"Stavangeras pašvaldība"@lv,
+		"Stavenger"@it,
+		"Università di Stavanger"@it,
+		"スタバンゲル"@ja,
+		"スタヴァンガー"@ja,
+		"スタバンガー"@ja,
+		"Stavanger"@th,
+		"สตาวังเงร์"@th,
+		"Stavangerės"@sgs,
+		"Stavanger"@lt,
+		"Kommun Stavanger"@nds,
+		"Stavanger kommun"@sv,
+		"Ստավանգեր"@hy,
+		"Stavanger, Rogaland, Norway"@en,
+		"Stavanger, Norway"@en,
+		"Stavanger municipality"@en,
+		"斯塔凡格"@zh,
+		"Stavanger kommune"@nb .
+
+wdv:b165ca30ef233208f19a9da91449de78 a wikibase:GlobecoordinateValue ;
+	wikibase:geoLatitude "58.97"^^xsd:double ;
+	wikibase:geoLongitude "5.7313888888889"^^xsd:double ;
+	wikibase:geoPrecision "0.00027777777777778"^^xsd:double ;
+	wikibase:geoGlobe <http://www.wikidata.org/entity/Q2> .
+
+wdv:367e874ef051f9234eea4c98d35d127b a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+132729"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:8b35ac2318611b59e327aa50db6e6651 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+130426"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:a33f42f08f77a23015db7570bfa79f53 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+143574"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:eaeaa4dae89dbe05ad9ae93de4444b97 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+144147"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:ac3551d5b972a87834eb197850d728bb a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+144699"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:928227d0e9f468f040c435880296737e a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+146011"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:7fc6db1aab12910976ba9345b7b0e3b5 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+123850"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:c8a557ba9c55f5a88ef5b5a4ee499ae7 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+108818"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:55c87621e82bc5e433f92be708e5383d a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+97570"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:912bc25ab3ce40683f4ca4ce1a2d34d0 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+89913"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:45babbe10a3a607fad2c939659a5e57b a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+81741"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:6815f37cdefc04eb79eb4084ed90ff4d a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+52835"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:27c63d0986866dc581945586fb38af87 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+50617"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:d96b8ad7e23d023fcc504dce5652b6ed a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+150123"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:eac378c9fba85754991ee4310a046b8a a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+149048"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:3b5cf1037feb37ed4c295ed56859f37f a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+151669"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:61167096d57a680371886172643ab128 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+71"^^xsd:decimal ;
+	wikibase:quantityUpperBound "+72"^^xsd:decimal ;
+	wikibase:quantityLowerBound "+70"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:c3852d13c0deb8c98746ee997fe72f82 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+71000000"^^xsd:decimal ;
+	wikibase:quantityUpperBound "+72000000"^^xsd:decimal ;
+	wikibase:quantityLowerBound "+70000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:c3852d13c0deb8c98746ee997fe72f82 .
+
+wdv:61167096d57a680371886172643ab128 wikibase:quantityNormalized wdv:c3852d13c0deb8c98746ee997fe72f82 .
+
+wdv:92e5417739965a4242bb6d9529713b68 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+71.35450941021394"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:c7d497455db6ec8c017ce7667026bd5e a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+71354509.41021394000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:c7d497455db6ec8c017ce7667026bd5e .
+
+wdv:92e5417739965a4242bb6d9529713b68 wikibase:quantityNormalized wdv:c7d497455db6ec8c017ce7667026bd5e .
+
+wdv:fbe14cf0dffbabb3ea300a30f106af34 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+140.11151615995817"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:8d5aa12063b909cbdcf6fb71b8bbac74 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+140111516.15995817000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:8d5aa12063b909cbdcf6fb71b8bbac74 .
+
+wdv:fbe14cf0dffbabb3ea300a30f106af34 wikibase:quantityNormalized wdv:8d5aa12063b909cbdcf6fb71b8bbac74 .
+
+wdv:82951774f3285712a9c99857f61bddc7 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+68.75700674974425"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:ef5183ccde1aa4b204b700ffca9920f8 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+68757006.74974425000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:ef5183ccde1aa4b204b700ffca9920f8 .
+
+wdv:82951774f3285712a9c99857f61bddc7 wikibase:quantityNormalized wdv:ef5183ccde1aa4b204b700ffca9920f8 .
+
+wdv:d20b67658b1fa5fa33fda0cf7b2fdf60 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+21.421137834797445"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:7caf679cd713ce63c9b053fea3b60ecc a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+21421137.834797445000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:7caf679cd713ce63c9b053fea3b60ecc .
+
+wdv:d20b67658b1fa5fa33fda0cf7b2fdf60 wikibase:quantityNormalized wdv:7caf679cd713ce63c9b053fea3b60ecc .
+
+wdv:cbb5bb62ba02ace63e9340b9354e8a74 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+0"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:5f96b81eebd844bf7fcbe00c9c1ad41b a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+0"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:5f96b81eebd844bf7fcbe00c9c1ad41b .
+
+wdv:cbb5bb62ba02ace63e9340b9354e8a74 wikibase:quantityNormalized wdv:5f96b81eebd844bf7fcbe00c9c1ad41b .
+
+wdv:b30e3da6744720137fe5595773d8167f a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+3.3545061278823494"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:8de5b6325814dbd56878284033b1b148 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+3354506.1278823494000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:8de5b6325814dbd56878284033b1b148 .
+
+wdv:b30e3da6744720137fe5595773d8167f wikibase:quantityNormalized wdv:8de5b6325814dbd56878284033b1b148 .
+
+wdv:b97a861f27c18595c3b428eb3dc31f93 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+0.03489172302901884"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:fd7c42b931fde29493a38795dcf39ce8 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+34891.72302901884000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:fd7c42b931fde29493a38795dcf39ce8 .
+
+wdv:b97a861f27c18595c3b428eb3dc31f93 wikibase:quantityNormalized wdv:fd7c42b931fde29493a38795dcf39ce8 .
+
+wdv:6fad4040d6226f5f25f0b443f7cf379a a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+7.496658257919832"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:b4323659e388108143c799b82b6b7cb6 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+7496658.257919832000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:b4323659e388108143c799b82b6b7cb6 .
+
+wdv:6fad4040d6226f5f25f0b443f7cf379a wikibase:quantityNormalized wdv:b4323659e388108143c799b82b6b7cb6 .
+
+wdv:93697eccffa38e74701f32f78b18a9e5 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+11.512132334379174"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:9225809f568320a7d902b6e8399072ac a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+11512132.334379174000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:9225809f568320a7d902b6e8399072ac .
+
+wdv:93697eccffa38e74701f32f78b18a9e5 wikibase:quantityNormalized wdv:9225809f568320a7d902b6e8399072ac .
+
+wdv:38cc8e0838a58524ab4f01675ef8d758 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+23.450379847666152"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:44af064d5ae5a9ef468ee44ef73b7b13 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+23450379.847666152000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:44af064d5ae5a9ef468ee44ef73b7b13 .
+
+wdv:38cc8e0838a58524ab4f01675ef8d758 wikibase:quantityNormalized wdv:44af064d5ae5a9ef468ee44ef73b7b13 .
+
+wdv:e09da87795dac10785a8e73d3cc5ed69 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+3.0037033002785987"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:eb25bb9ab386c6991834f84b311ca464 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+3003703.3002785987000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:eb25bb9ab386c6991834f84b311ca464 .
+
+wdv:e09da87795dac10785a8e73d3cc5ed69 wikibase:quantityNormalized wdv:eb25bb9ab386c6991834f84b311ca464 .
+
+wdv:489c27abf3d0b119b223b9bc4a221a54 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+1.0810999842613525"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:dcd9d19ca2c9280c8406ba1aff5ac91a a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+1081099.9842613525000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:dcd9d19ca2c9280c8406ba1aff5ac91a .
+
+wdv:489c27abf3d0b119b223b9bc4a221a54 wikibase:quantityNormalized wdv:dcd9d19ca2c9280c8406ba1aff5ac91a .
+
+wdv:226b8c36037362483385c97642fd71c1 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+262.52"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:62caf746b96b06a35589b8c0ee482099 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+262520000.00"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:62caf746b96b06a35589b8c0ee482099 .
+
+wdv:226b8c36037362483385c97642fd71c1 wikibase:quantityNormalized wdv:62caf746b96b06a35589b8c0ee482099 .
+
+wdv:613c89ec255929513eefbc305cedaa49 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+776.16"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:5ecc7fb3a98ba7c562e29af14bab24dd a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+776160000.00"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:5ecc7fb3a98ba7c562e29af14bab24dd .
+
+wdv:613c89ec255929513eefbc305cedaa49 wikibase:quantityNormalized wdv:5ecc7fb3a98ba7c562e29af14bab24dd .
+
+wdv:86705764edd27e4cda5a2500c2859d5d a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+93.97"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:89db4264a8ef751ca27300f1e8f05024 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+93970000.00"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:89db4264a8ef751ca27300f1e8f05024 .
+
+wdv:86705764edd27e4cda5a2500c2859d5d wikibase:quantityNormalized wdv:89db4264a8ef751ca27300f1e8f05024 .
+
+wdv:af2f0a4729c89142c2c15d42ceecc5af a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+6"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:1d1927789299eb5f52f1161d504dc4af a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+6000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:1d1927789299eb5f52f1161d504dc4af .
+
+wdv:af2f0a4729c89142c2c15d42ceecc5af wikibase:quantityNormalized wdv:1d1927789299eb5f52f1161d504dc4af .
+
+wdv:d9b16c0052b957a3e8549ac39cc913b8 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+3.58"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:70c9f3163367afc2c4483a14e22ffad8 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+3580000.00"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:70c9f3163367afc2c4483a14e22ffad8 .
+
+wdv:d9b16c0052b957a3e8549ac39cc913b8 wikibase:quantityNormalized wdv:70c9f3163367afc2c4483a14e22ffad8 .
+
+wdv:3b2900ed64abc7e94d992aa3ae7e6e74 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+86.27"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:3e3db83376f55fd9eda0de2e191144b9 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+86270000.00"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:3e3db83376f55fd9eda0de2e191144b9 .
+
+wdv:3b2900ed64abc7e94d992aa3ae7e6e74 wikibase:quantityNormalized wdv:3e3db83376f55fd9eda0de2e191144b9 .
+
+wdv:14be75fdba071f048f62c45fccd23c75 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+43.7"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:ce07a25661ce69ba53a74a390868747b a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+43700000.0"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:ce07a25661ce69ba53a74a390868747b .
+
+wdv:14be75fdba071f048f62c45fccd23c75 wikibase:quantityNormalized wdv:ce07a25661ce69ba53a74a390868747b .
+
+wdv:3db86f025374d38d6c4e4e6be223e12a a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+24.52"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:8d3a31475d6e48d1163b6b2a10ef2499 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+24520000.00"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:8d3a31475d6e48d1163b6b2a10ef2499 .
+
+wdv:3db86f025374d38d6c4e4e6be223e12a wikibase:quantityNormalized wdv:8d3a31475d6e48d1163b6b2a10ef2499 .
+
+wdv:f798a75bff384b3ac4d2e32895d8916a a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+3.17"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:1bae378521a66f5dcfe9abcb417b001b a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+3170000.00"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:1bae378521a66f5dcfe9abcb417b001b .
+
+wdv:f798a75bff384b3ac4d2e32895d8916a wikibase:quantityNormalized wdv:1bae378521a66f5dcfe9abcb417b001b .
+
+wdv:0a125174880f640a7fd799255be05558 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+1.32"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:b8f2b55da9b1d8302434af28f796ee2a a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+1320000.00"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:b8f2b55da9b1d8302434af28f796ee2a .
+
+wdv:0a125174880f640a7fd799255be05558 wikibase:quantityNormalized wdv:b8f2b55da9b1d8302434af28f796ee2a .
+
+wdv:185500a7e7a1a99ab7273bf9439df9ef a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+241"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:b4316703874fc660083b26336f70a795 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+241000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:b4316703874fc660083b26336f70a795 .
+
+wdv:185500a7e7a1a99ab7273bf9439df9ef wikibase:quantityNormalized wdv:b4316703874fc660083b26336f70a795 .
+
+wdv:92d8dba5758dfaaab4c2a1a0d0980ab5 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+1"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q11573> ;
+	wikibase:quantityNormalized wdv:92d8dba5758dfaaab4c2a1a0d0980ab5 .
+
+wdv:d664fae3bcf066821ca7a6f954b24751 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+60709"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:3a859167abdc33ed2b1af44b7498297d a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+20641"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:c5375f89689ec706c0769f404503d1b7 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+10763"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:4dcb564a3106f86f60602b5143adbeff a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+9985"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:2ca02af7d19e6e04eb901c34d6322181 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+16439"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:2ee95287254ed24b974b48e59fde9a09 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+2881"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:e4278f30698f53763a3b40aec7e9a626 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+513.894"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q11573> ;
+	wikibase:quantityNormalized wdv:e4278f30698f53763a3b40aec7e9a626 .
+
+wdv:6849fa4b21786326c95aa3ef52733f40 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+11000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:60099f1613b21721bdc66dbd17b5a123 a wikibase:TimeValue ;
+	wikibase:timeValue "1947-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:20fcae8364bb8f60366bb24949cf71a8 a wikibase:TimeValue ;
+	wikibase:timeValue "1997-04-16T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ec8eae08c5ae82941e89496436677d0e a wikibase:TimeValue ;
+	wikibase:timeValue "1948-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ce90feaacda74eb7f8326b25fb625c6d a wikibase:TimeValue ;
+	wikibase:timeValue "2008-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:e1bc22867995c9ded39820f209e1ab5b a wikibase:TimeValue ;
+	wikibase:timeValue "2019-12-31T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:86d08cb380a7d361151c510ebb4a98ec a wikibase:TimeValue ;
+	wikibase:timeValue "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ea502f00c7e55f65029d34e4dbbebe03 a wikibase:TimeValue ;
+	wikibase:timeValue "1905-06-07T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:86c0d15fa43e4be1d49751f639b70b6c a wikibase:TimeValue ;
+	wikibase:timeValue "2018-11-05T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:476319c9dc1e3277ae5a9a3e31fa5c32 a wikibase:TimeValue ;
+	wikibase:timeValue "1905-06-06T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ece863bfbfb37ec947d1c52b58268086 a wikibase:TimeValue ;
+	wikibase:timeValue "1814-11-04T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:997904faf91fe99701097723258a3f21 a wikibase:TimeValue ;
+	wikibase:timeValue "1814-11-03T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:8e70b3797ad8b620f22da8e17e1fd1c1 a wikibase:TimeValue ;
+	wikibase:timeValue "1814-01-14T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:903a3b29e4b11b0a34a27b5e8e9ce5d2 a wikibase:TimeValue ;
+	wikibase:timeValue "1814-01-13T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:f987783e1f9c9fa0cb0b774d330af52d a wikibase:TimeValue ;
+	wikibase:timeValue "2013-10-28T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:f0ef54ac106469c30d94992c1d7b5c58 a wikibase:TimeValue ;
+	wikibase:timeValue "2011-10-17T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:51d16a5198b8680512d1f4fcec4e178f a wikibase:TimeValue ;
+	wikibase:timeValue "2019-10-20T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:1bbe935c00a140330af5b8de421aa99c a wikibase:TimeValue ;
+	wikibase:timeValue "2019-10-21T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:8a8d9bd4661408d87411a36780ed1564 a wikibase:TimeValue ;
+	wikibase:timeValue "2023-10-22T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:25224ed4d37ab6cdfc5ec4f1acbe3886 a wikibase:TimeValue ;
+	wikibase:timeValue "2021-03-09T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:0cf4fedc04ca52d3be3998c293cda592 a wikibase:TimeValue ;
+	wikibase:timeValue "2023-10-23T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:e9fb92a10cba9810496dcd2069ca7a89 a wikibase:TimeValue ;
+	wikibase:timeValue "2005-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:efd690456e471a014e71685683c62024 a wikibase:TimeValue ;
+	wikibase:timeValue "2006-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:8bf14fd5c6dc0f5de433b8fe86c3f6eb a wikibase:TimeValue ;
+	wikibase:timeValue "2017-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:dafb9cf711b15afe91ec0aa7158e57a6 a wikibase:TimeValue ;
+	wikibase:timeValue "2011-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:e774db7756a97ebda4df1381ea77305b a wikibase:TimeValue ;
+	wikibase:timeValue "2021-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:0f8e1b20ccd8847889c26e6582deb2bd a wikibase:TimeValue ;
+	wikibase:timeValue "2021-02-23T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:f0a794f755c96023755b4684ff262fe8 a wikibase:TimeValue ;
+	wikibase:timeValue "2022-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:9b3be2abae8b28dcd51644535ce6dccd a wikibase:TimeValue ;
+	wikibase:timeValue "2022-02-24T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:36115d4827ebd6fd24fc3f76ddcbfbfc a wikibase:TimeValue ;
+	wikibase:timeValue "2023-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:c9dbca63b39185342a67766f887d72a0 a wikibase:TimeValue ;
+	wikibase:timeValue "2023-02-21T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:4f272fae38ee73a331afd0407cdc74b9 a wikibase:TimeValue ;
+	wikibase:timeValue "2010-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:6928b7cd3a8b4aff7d73814a5a8f2359 a wikibase:TimeValue ;
+	wikibase:timeValue "2000-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:25c003eb0ef8438f618cb61d21c9a4fa a wikibase:TimeValue ;
+	wikibase:timeValue "1990-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ef979b8df4f4f2ae359ed26952114819 a wikibase:TimeValue ;
+	wikibase:timeValue "1980-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:9a581f623d181b3e8160146d1a1c062c a wikibase:TimeValue ;
+	wikibase:timeValue "1970-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:25bc1714e3b0ce11f853727e3e379540 a wikibase:TimeValue ;
+	wikibase:timeValue "1960-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:252c8e9664aaae853b47e5f8eca14ef9 a wikibase:TimeValue ;
+	wikibase:timeValue "1951-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:0bba73a2c22634302960d00f316f5fff a wikibase:TimeValue ;
+	wikibase:timeValue "2025-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:fc76c6f1fe20833a5648c7115c465738 a wikibase:TimeValue ;
+	wikibase:timeValue "2024-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:087f106950d5f4b2d2d7e02e47917d23 a wikibase:TimeValue ;
+	wikibase:timeValue "2025-02-25T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:4de85214967b9397934a56b47799b9d3 a wikibase:TimeValue ;
+	wikibase:timeValue "2025-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:2c5b93b4bbc053cd9d940798294e8f5e a wikibase:TimeValue ;
+	wikibase:timeValue "2026-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ed1aa5e1d04c296de6d2672cad49a78f a wikibase:TimeValue ;
+	wikibase:timeValue "2026-02-25T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:b49dd1dbe46cc982527c1f8acfc7c1d3 a wikibase:TimeValue ;
+	wikibase:timeValue "2018-01-18T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:fb39b7543f4eff2cc1d836c288f2ba7e a wikibase:TimeValue ;
+	wikibase:timeValue "2018-02-27T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:d03e645a99ca34b0eb29de5cea9048f1 a wikibase:TimeValue ;
+	wikibase:timeValue "2020-01-05T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:189f21f967cc93bff8d6a7c1c24c2a5a a wikibase:TimeValue ;
+	wikibase:timeValue "2018-03-10T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:7488c67169f63bb9b57929cf9869fa4b a wikibase:TimeValue ;
+	wikibase:timeValue "2018-08-05T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:b1486160dfd84e735f6d019b577923b2 a wikibase:TimeValue ;
+	wikibase:timeValue "1837-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:385142e5ecd043e30e081df6768636bc a wikibase:TimeValue ;
+	wikibase:timeValue "2015-10-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:8e14b3eda362a5084180828fbe8e2f65 a wikibase:TimeValue ;
+	wikibase:timeValue "2020-10-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:784e0bd79be8bd87a7c23abf0f7d328a a wikibase:TimeValue ;
+	wikibase:timeValue "1867-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:1203713dfdbef8c5b36ba905cf1e97a6 a wikibase:TimeValue ;
+	wikibase:timeValue "1879-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ca485f3356664866e61146a159fd05f5 a wikibase:TimeValue ;
+	wikibase:timeValue "1906-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:0395c83870e041c46244685d64339740 a wikibase:TimeValue ;
+	wikibase:timeValue "1923-07-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:0d92d9a8515e0076779816bf424174c0 a wikibase:TimeValue ;
+	wikibase:timeValue "1953-07-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:236165b569c30381bd8a98c979884881 a wikibase:TimeValue ;
+	wikibase:timeValue "1965-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:dd4ba6ec2688f129ba71382c97c9197a a wikibase:TimeValue ;
+	wikibase:timeValue "2020-03-19T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:4b51c4c9ae946af39583823cf72d3d28 a wikibase:TimeValue ;
+	wikibase:timeValue "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:faf333901cba0b90a19a801ee11293ed a wikibase:TimeValue ;
+	wikibase:timeValue "2021-03-10T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:39451061a76ae4026b50b8e0544b54eb a wikibase:TimeValue ;
+	wikibase:timeValue "2021-04-25T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:b0a6decebb7cab066c8f66e4370ebdd3 a wikibase:TimeValue ;
+	wikibase:timeValue "2010-08-20T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:67b6cb26f62e675c99f35a374dd8709a a wikibase:TimeValue ;
+	wikibase:timeValue "2021-11-17T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:9be66ecfb620f6387f106acb6d70b6b2 a wikibase:TimeValue ;
+	wikibase:timeValue "2024-04-23T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:c90d6b928451d03c5f9193d9e6b7ff1e a wikibase:TimeValue ;
+	wikibase:timeValue "2024-06-04T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:50e89194b0cb31f9a4d9b0f16b6446d7 a wikibase:TimeValue ;
+	wikibase:timeValue "2024-07-09T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:c19f40e2297fdfce26756fb3af9dfd15 a wikibase:TimeValue ;
+	wikibase:timeValue "2023-08-16T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ebb69ca99ab07ba5832ccd3e95e2528c a wikibase:TimeValue ;
+	wikibase:timeValue "2025-06-23T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:36831a9956776691dcd9475905ca3df9 a wikibase:TimeValue ;
+	wikibase:timeValue "2025-08-28T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:c57e3f6ed25535b94b9395d5bde8605e a wikibase:TimeValue ;
+	wikibase:timeValue "2026-06-06T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdref:53c39e74880714e77d22e733881d8c4553e68de5 a wikibase:Reference ;
+	pr:P854 <http://baku-ih.gov.az/page/26.html> .
+
+wdref:7fab43785a8f5c7981368d559b57f5cf82d1748e a wikibase:Reference ;
+	pr:P854 <https://www.stavanger.kommune.no/om-stavanger-kommune/fakta-om-stavanger/#stavangers-vennskapsbyer> .
+
+wdref:f40b6154b6e4afcb1161f1190aac826bfc89980b a wikibase:Reference ;
+	pr:P854 <https://www.jyvaskyla.fi/organisaatio/konsernihallinto/kansainvaliset-yhteydet/verkostot/jyvaskylan-ystavyyskunnat> .
+
+wdref:154c6ea341071a2b4e6d27944566602b25957905 a wikibase:Reference ;
+	pr:P854 <https://v2.netanya.muni.il/Eng/?CategoryID=1779&ArticleID=1498> .
+
+wdref:d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3 a wikibase:Reference ;
+	pr:P143 wd:Q11920 .
+
+wdref:80263ad097e75688a26f01016781529259bbe806 a wikibase:Reference ;
+	pr:P854 <https://kvs.gov.spb.ru/en/agreements/> .
+
+wdref:11e5d1c5a20879f40154c69682ae89d4bbbb50e8 a wikibase:Reference ;
+	pr:P5573 "6944" ;
+	pr:P248 wd:Q265049 ;
+	pr:P813 "2018-11-05T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:86c0d15fa43e4be1d49751f639b70b6c .
+
+wdref:fa278ebfc458360e5aed63d5058cca83c46134f1 a wikibase:Reference ;
+	pr:P143 wd:Q328 .
+
+wdref:2b00cb481cddcac7623114367489b5c194901c4a a wikibase:Reference ;
+	pr:P248 wd:Q15241312 ;
+	pr:P577 "2013-10-28T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:f987783e1f9c9fa0cb0b774d330af52d .
+
+wdref:e7dae9ac3cf0875a20a89ce3417dbcdf3e649b7e a wikibase:Reference ;
+	pr:P143 wd:Q32176383 .
+
+wdref:73e585503eedad8df8e88e7cf8dcb0370fe1ba02 a wikibase:Reference ;
+	pr:P854 <https://www.stavanger.kommune.no/politikk/ordforer/> ;
+	pr:P813 "2021-03-09T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:25224ed4d37ab6cdfc5ec4f1acbe3886 .
+
+wdref:90d673d7523818807a8169abcb19f9b56acb44b5 a wikibase:Reference ;
+	pr:P854 <https://www.stavanger.kommune.no/politikk/ordforer/> ;
+	pr:P813 "2023-10-23T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:0cf4fedc04ca52d3be3998c293cda592 .
+
+wdref:9a24f7c0208b05d6be97077d855671d1dfdbc0dd a wikibase:Reference ;
+	pr:P143 wd:Q48183 .
+
+wdref:d4767d15e44afe8795350d71c4aaf13e1067eea5 a wikibase:Reference ;
+	pr:P248 wd:Q24010939 .
+
+wdref:e7069a176816881ba34a0c9b2c3d7d200c3edb6f a wikibase:Reference ;
+	pr:P854 <https://www.ssb.no/en/befolkning/statistikker/folkemengde/aar-per-1-januar> .
+
+wdref:8f08ac3e0839bdbc4c6eb8d671e772deb12ba423 a wikibase:Reference ;
+	pr:P143 wd:Q465 .
+
+wdref:f2002187a708bd941f3b1bf8c5c1565cfcf6dda6 a wikibase:Reference ;
+	pr:P854 <https://www.ssb.no/befolkning/statistikker/folkemengde> ;
+	pr:P123 wd:Q2367019 .
+
+wdref:69e28a333000c44cd321af6209558a19a216b3ae a wikibase:Reference ;
+	pr:P1476 "Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning (K) 1986 - 2021"@nb ;
+	pr:P854 <https://www.ssb.no/statbank/table/07459/> ;
+	pr:P123 wd:Q2367019 ;
+	pr:P577 "2021-02-23T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:0f8e1b20ccd8847889c26e6582deb2bd .
+
+wdref:1cebdc518a1f706055485ec0bd41d424dfaff5a9 a wikibase:Reference ;
+	pr:P1476 "Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning (K) 1986 - 2022"@nb ;
+	pr:P854 <https://www.ssb.no/statbank/table/07459/> ;
+	pr:P123 wd:Q2367019 ;
+	pr:P577 "2022-02-24T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:9b3be2abae8b28dcd51644535ce6dccd .
+
+wdref:c081ec4b63a8da52a7f9ff896737dff8e192de73 a wikibase:Reference ;
+	pr:P1476 "07459: Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning (K) 1986 - 2023"@nb ;
+	pr:P854 <https://www.ssb.no/statbank/table/07459/> ;
+	pr:P123 wd:Q2367019 ;
+	pr:P577 "2023-02-21T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:c9dbca63b39185342a67766f887d72a0 .
+
+wdref:a2d57497744a8c78addb80d7a077e9cac775d504 a wikibase:Reference ;
+	pr:P1476 "07459: Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning (K) 1986 - 2023"@nb ;
+	pr:P854 <https://www.ssb.no/statbank/table/07459/> ;
+	pr:P123 wd:Q2367019 ;
+	pr:P577 "2025-01-01T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:0bba73a2c22634302960d00f316f5fff .
+
+wdref:810f230534ab56d6b4c15ebfb1aa775054034a36 a wikibase:Reference ;
+	pr:P1476 "Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning (K) 1986 - 2024"@nb ;
+	pr:P854 <https://www.ssb.no/statbank/table/07459/> ;
+	pr:P123 wd:Q2367019 ;
+	pr:P577 "2025-02-25T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:087f106950d5f4b2d2d7e02e47917d23 .
+
+wdref:75c21775867de1a8b9f99873761013fabb75bd7f a wikibase:Reference ;
+	pr:P1476 "Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning (K) 1986 - 2025"@nb ;
+	pr:P854 <https://www.ssb.no/statbank/table/07459/> ;
+	pr:P123 wd:Q2367019 ;
+	pr:P577 "2025-02-25T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:087f106950d5f4b2d2d7e02e47917d23 .
+
+wdref:b9c3a78ced386b37adadea26d523c1a8eefd26df a wikibase:Reference ;
+	pr:P1476 "Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning (K) 1986 - 2026"@nb ;
+	pr:P854 <https://www.ssb.no/statbank/table/07459/> ;
+	pr:P123 wd:Q2367019 ;
+	pr:P577 "2026-02-25T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:ed1aa5e1d04c296de6d2672cad49a78f .
+
+wdref:3a514dd25217b8e38de84ae2f532a4fe2e46feb6 a wikibase:Reference ;
+	pr:P854 <https://www.kartverket.no/kunnskap/Fakta-om-Norge/Arealstatistikk/Arealstatistikk-Norge/> ;
+	pr:P1476 "Arealstatistikk for Norge"@nb ;
+	pr:P123 wd:Q2728585 ;
+	pr:P577 "2018-02-27T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:fb39b7543f4eff2cc1d836c288f2ba7e .
+
+wdref:2b2676728cabed7a9fbdc2c6374eef81f121d0c3 a wikibase:Reference ;
+	pr:P248 wd:Q87265903 .
+
+wdref:e3eca1d13fb67d6a51170a4bbb0bef05f3569f40 a wikibase:Reference ;
+	pr:P854 <https://www.stavanger.kommune.no/om-stavanger-kommune/fakta-om-stavanger/> .
+
+wdref:3f6a91a25355d22354e9bd2ff752439065a3acd1 a wikibase:Reference ;
+	pr:P813 "2020-01-05T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:d03e645a99ca34b0eb29de5cea9048f1 .
+
+wdref:c456dc5cd2117249948c288206ff3f8b1bf574f0 a wikibase:Reference ;
+	pr:P143 wd:Q8449 .
+
+wdref:5a761c7a986f4a5cf8cefbfc18e5a5ae5133d44b a wikibase:Reference ;
+	pr:P248 wd:Q53705033 .
+
+wdref:2834ac5da275724a6354a73d2d2a89ae956042a9 a wikibase:Reference ;
+	pr:P248 wd:Q64159407 .
+
+wdref:4c2e9e395ae262965d2b526a3bc271b5794e9019 a wikibase:Reference ;
+	pr:P854 <http://www.sprakradet.no/sprakhjelp/Skriverad/navn-pa-steder-og-personer/Innbyggjarnamn/> ;
+	pr:P813 "2018-03-10T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:189f21f967cc93bff8d6a7c1c24c2a5a .
+
+wdref:a1914c8952a5bc482eafeb26be4fda504fe701f9 a wikibase:Reference ;
+	pr:P248 wd:Q53705036 .
+
+wdref:21494d78c86d729112257391ca4131a84f73b44b a wikibase:Reference ;
+	pr:P854 <https://www.archinform.net/service/wd_aiort.php> ;
+	pr:P248 wd:Q265049 ;
+	pr:P813 "2018-08-05T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:7488c67169f63bb9b57929cf9869fa4b .
+
+wdref:baf1fd1ada6d3cbec812f7594b8759adb4841ecf a wikibase:Reference ;
+	pr:P854 <https://snl.no/Stavanger> .
+
+wdref:8f6d2b4a0e3da23aca841c5dfe6b7ed894bd315a a wikibase:Reference ;
+	pr:P143 wd:Q191769 .
+
+wdref:1d43b494f0935d29b9e8f22d73835f8e4afec4d9 a wikibase:Reference ;
+	pr:P143 wd:Q206855 ;
+	pr:P4656 <https://ru.wikipedia.org/?oldid=104170464> .
+
+wdref:8d133c3c09f3c9dc62515ce2d053af3fb36b773b a wikibase:Reference ;
+	pr:P854 <https://www.regjeringen.no/no/aktuelt/justerer-grensa-mellom-kommunane-finnoy-og-hjelmeland/id2621793/> ;
+	pr:P248 wd:Q99542696 .
+
+wdref:999941627a37348f2bc564de3a66cd35f72eabf4 a wikibase:Reference ;
+	pr:P854 <https://lovdata.no/dokument/LF/forskrift/2020-07-09-1533> ;
+	pr:P248 wd:Q100324049 .
+
+wdref:337701d22f822cc07cf505026cd30ecc0cdde286 a wikibase:Reference ;
+	pr:P248 wd:Q76137154 ;
+	pr:P304 "45" .
+
+wdref:79df88b60a3118d2f2d21da13d0f76909f401682 a wikibase:Reference ;
+	pr:P248 wd:Q76137154 ;
+	pr:P304 "46" .
+
+wdref:c2a0bf5043a6c3b75752995029c4f4444164167c a wikibase:Reference ;
+	pr:P248 wd:Q76137154 ;
+	pr:P304 "44" .
+
+wdref:b9b51021e848a830ef06c9221e61589b19193ecd a wikibase:Reference ;
+	pr:P248 wd:Q13550863 ;
+	pr:P813 "2020-03-19T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:dd4ba6ec2688f129ba71382c97c9197a ;
+	pr:P691 "ge394469" .
+
+wdref:f508524d8f89406a218823f52f592e4496edcaf7 a wikibase:Reference ;
+	pr:P248 wd:Q88504419 .
+
+wdref:30022ec07e4c12c9e56457e41f4960fcd0f88afc a wikibase:Reference ;
+	pr:P854 <https://kartverket.no/til-lands/fakta-om-norge/hoyeste-fjelltopp-i-kommunen> ;
+	pr:P813 "2021-03-10T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:faf333901cba0b90a19a801ee11293ed .
+
+wdref:cd265fa9f8591b5905bba6f0b4fd1d62328dc775 a wikibase:Reference ;
+	pr:P248 wd:Q16958215 ;
+	pr:P813 "2021-04-25T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:39451061a76ae4026b50b8e0544b54eb ;
+	pr:P854 <https://www.inaturalist.org/places/inaturalist-places.csv.zip> .
+
+wdref:93a541df29e741dd08411a4b1b61e86b311b12be a wikibase:Reference ;
+	pr:P143 wd:Q206855 ;
+	pr:P4656 <https://ru.wikipedia.org/?oldid=112977342> .
+
+wdref:f9bf1a1f034ddd51bd9928ac535e0f57d748e2cf a wikibase:Reference ;
+	pr:P248 wd:Q89345680 .
+
+wdref:d8aa00fe9e643f8f94cfd58a4ce80d50f109159f a wikibase:Reference ;
+	pr:P11797 wd:Q13219454 ;
+	pr:P244 "n81035078" ;
+	prn:P244 <http://id.loc.gov/authorities/names/n81035078> ;
+	pr:P813 "2024-04-23T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:9be66ecfb620f6387f106acb6d70b6b2 .
+
+wdref:02a72c1e5f185ea1d2ef3bf4c5588ec8652dbcd8 a wikibase:Reference ;
+	pr:P854 <https://icorn.org/icorn-cities-refuge> ;
+	pr:P813 "2024-06-04T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:c90d6b928451d03c5f9193d9e6b7ff1e ;
+	pr:P1065 <https://perma-archives.org/warc/20240604140643/https://icorn.org/icorn-cities-refuge> ;
+	pr:P2960 "2024-06-04T00:00:00Z"^^xsd:dateTime ;
+	prv:P2960 wdv:c90d6b928451d03c5f9193d9e6b7ff1e .
+
+wdref:b794b3f4668f4cafc549150573c6864eca31ff63 a wikibase:Reference ;
+	pr:P248 wd:Q54919 ;
+	pr:P214 "146588075" ;
+	prn:P214 <http://viaf.org/viaf/146588075> ;
+	pr:P813 "2024-07-09T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:50e89194b0cb31f9a4d9b0f16b6446d7 .
+
+wdref:17b44e0865ba260d9e25a3eb6dd105da11a26206 a wikibase:Reference ;
+	pr:P248 wd:Q62108705 .
+
+wdref:60d57b1911047fc1a736169dc9ff359922912446 a wikibase:Reference ;
+	pr:P854 <https://www.stavanger.kommune.no/om-stavanger-kommune/organisasjon-og-administrasjon/kommunen-som-arbeidsgiver/> .
+
+wdref:0380aa42fb34bd6ffc31551f02bf91098387fe77 a wikibase:Reference ;
+	pr:P854 <https://www.govdirectory.org/norway/> ;
+	pr:P813 "2025-06-23T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:ebb69ca99ab07ba5832ccd3e95e2528c .
+
+wdref:088829837d30a3ef743b2612b7ad586793002e4d a wikibase:Reference ;
+	pr:P3452 wd:Q1770101 ;
+	pr:P2333 "964965226" ;
+	pr:P813 "2025-08-28T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:36831a9956776691dcd9475905ca3df9 .
+
+wdref:d7332f982c4bec9b1c1647b54057c4837b49f42f a wikibase:Reference ;
+	pr:P248 wd:Q5380556 ;
+	pr:P813 "2026-06-06T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:c57e3f6ed25535b94b9395d5bde8605e ;
+	pr:P854 <https://virksomhet.brreg.no/nb/oppslag/enheter/964965226> .

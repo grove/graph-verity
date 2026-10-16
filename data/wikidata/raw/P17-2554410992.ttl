@@ -1,0 +1,2338 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix data: <https://www.wikidata.org/wiki/Special:EntityData/> .
+@prefix wds: <http://www.wikidata.org/entity/statement/> .
+@prefix wdref: <http://www.wikidata.org/reference/> .
+@prefix wdv: <http://www.wikidata.org/value/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix wdtn: <http://www.wikidata.org/prop/direct-normalized/> .
+@prefix p: <http://www.wikidata.org/prop/> .
+@prefix ps: <http://www.wikidata.org/prop/statement/> .
+@prefix psv: <http://www.wikidata.org/prop/statement/value/> .
+@prefix psn: <http://www.wikidata.org/prop/statement/value-normalized/> .
+@prefix pq: <http://www.wikidata.org/prop/qualifier/> .
+@prefix pqv: <http://www.wikidata.org/prop/qualifier/value/> .
+@prefix pqn: <http://www.wikidata.org/prop/qualifier/value-normalized/> .
+@prefix pr: <http://www.wikidata.org/prop/reference/> .
+@prefix prv: <http://www.wikidata.org/prop/reference/value/> .
+@prefix prn: <http://www.wikidata.org/prop/reference/value-normalized/> .
+@prefix wdno: <http://www.wikidata.org/prop/novalue/> .
+
+data:P17 a schema:Dataset ;
+	schema:about wd:P17 ;
+	cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	schema:softwareVersion "1.0.0" ;
+	schema:version "2554410992"^^xsd:integer ;
+	schema:dateModified "2026-10-07T07:22:00Z"^^xsd:dateTime ;
+	wikibase:statements "88"^^xsd:integer .
+
+wd:P17 a wikibase:Property ;
+	wdt:P1659 wd:P495,
+		wd:P1532,
+		wd:P27,
+		wd:P1336,
+		wd:P2596,
+		wd:P1001,
+		wd:P131,
+		wd:P2341,
+		wd:P2012,
+		wd:P205,
+		wd:P8047 ;
+	wdt:P1629 wd:Q6256 ;
+	wdt:P1647 wd:P131 ;
+	wdt:P31 wd:Q19829914,
+		wd:Q26935994,
+		wd:Q70564278 ;
+	wdt:P2875 wd:Q20116958 ;
+	wdt:P1628 <http://www.w3.org/2006/vcard/ns#country-name>,
+		<https://schema.org/addressCountry>,
+		<http://d-nb.info/standards/elementset/gnd#Country>,
+		<http://dbpedia.org/ontology/country>,
+		<http://www.w3.org/2006/vcard/ns#hasCountryName> ;
+	wdt:P3713 wd:Q22158803 ;
+	wdt:P3254 <https://www.wikidata.org/wiki/Wikidata:Property_proposal/Archive/1#P17> ;
+	wdt:P1855 wd:Q2270034,
+		wd:Q51,
+		wd:Q513,
+		wd:Q183 ;
+	wdt:P3734 wd:Q32085240 ;
+	wdt:P3709 wd:Q22158802 ;
+	wdt:P7964 "country-name" ;
+	wdt:P2668 wd:Q23611840 ;
+	wdt:P2302 wd:Q21510851,
+		wd:Q53869507,
+		wd:Q52004125,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q21510865,
+		wd:Q52558054,
+		wd:Q52558054 ;
+	wdt:P13786 "addr:country",
+		"country" ;
+	wdt:P14692 "Q37" ;
+	wdtn:P14692 <https://wiki.openstreetmap.org/entity/Q37> ;
+	wdt:P14692 "Q182" ;
+	wdtn:P14692 <https://wiki.openstreetmap.org/entity/Q182> ;
+	p:P1659 wds:P17-fd105eca-4371-e9e7-c0e3-4c3a2dc239c3 .
+
+wds:P17-fd105eca-4371-e9e7-c0e3-4c3a2dc239c3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P495 .
+
+wd:P17 p:P1659 wds:P17-3bdcc180-4e23-3a23-fb54-9709ff7c5c18 .
+
+wds:P17-3bdcc180-4e23-3a23-fb54-9709ff7c5c18 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P1532 .
+
+wd:P17 p:P1659 wds:P17-a14f7f23-41af-46a8-c3fe-e049e9cc1ee4 .
+
+wds:P17-a14f7f23-41af-46a8-c3fe-e049e9cc1ee4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P27 .
+
+wd:P17 p:P1659 wds:P17-ac067eaf-496b-8a71-d418-b423008cce74 .
+
+wds:P17-ac067eaf-496b-8a71-d418-b423008cce74 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P1336 .
+
+wd:P17 p:P1659 wds:P17-ed36eaaa-46f3-09bd-eb7b-e0a3f35f5e5f .
+
+wds:P17-ed36eaaa-46f3-09bd-eb7b-e0a3f35f5e5f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P2596 .
+
+wd:P17 p:P1659 wds:P17-6f29af22-4312-4f20-de33-dc2a3f7dae96 .
+
+wds:P17-6f29af22-4312-4f20-de33-dc2a3f7dae96 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P1001 .
+
+wd:P17 p:P1659 wds:P17-3fb3461c-4e24-c36e-e2ce-8173fbf68fc9 .
+
+wds:P17-3fb3461c-4e24-c36e-e2ce-8173fbf68fc9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P131 .
+
+wd:P17 p:P1659 wds:P17-6602255f-4640-c22c-2029-8de6c1b86950 .
+
+wds:P17-6602255f-4640-c22c-2029-8de6c1b86950 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P2341 .
+
+wd:P17 p:P1659 wds:P17-0bd2c966-46fa-c615-d656-6e783a40a8aa .
+
+wds:P17-0bd2c966-46fa-c615-d656-6e783a40a8aa a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P2012 .
+
+wd:P17 p:P1659 wds:P17-ca3dd29c-4828-eca0-7200-22fc4089e8cc .
+
+wds:P17-ca3dd29c-4828-eca0-7200-22fc4089e8cc a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P205 .
+
+wd:P17 p:P1659 wds:P17-632eb0ef-478d-13d4-48cb-c857c8fed1ed .
+
+wds:P17-632eb0ef-478d-13d4-48cb-c857c8fed1ed a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P8047 .
+
+wd:P17 p:P1629 wds:P17-d342a73a-4678-36bc-a869-68333ffa2e81 .
+
+wds:P17-d342a73a-4678-36bc-a869-68333ffa2e81 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q3024240 .
+
+wd:P17 p:P1629 wds:P17-d20711b4-4509-afd3-5d87-3e0beba81ffb .
+
+wds:P17-d20711b4-4509-afd3-5d87-3e0beba81ffb a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q7275 .
+
+wd:P17 p:P1629 wds:P17-120ca180-4b1a-c042-5b67-c4dfadf57acb .
+
+wds:P17-120ca180-4b1a-c042-5b67-c4dfadf57acb a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q3624078 .
+
+wd:P17 p:P1629 wds:P17-eb520bc9-482f-5882-14b5-ec8076535327 .
+
+wds:P17-eb520bc9-482f-5882-14b5-ec8076535327 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P1629 wd:Q6256 .
+
+wd:P17 p:P1647 wds:P17-845f7a51-425d-f5e3-c9f8-eb8c214d2f2f .
+
+wds:P17-845f7a51-425d-f5e3-c9f8-eb8c214d2f2f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1647 wd:P131 .
+
+wd:P17 p:P31 wds:P17-79baa14a-45b3-b902-57c7-12f5514966a8 .
+
+wds:P17-79baa14a-45b3-b902-57c7-12f5514966a8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q19829914 .
+
+wd:P17 p:P31 wds:P17-1218b58a-4df7-f86b-4d43-5dfe2fb767ef .
+
+wds:P17-1218b58a-4df7-f86b-4d43-5dfe2fb767ef a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q26935994 .
+
+wd:P17 p:P31 wds:P17-2307A6A7-3E03-4972-8762-0146ACA14F28 .
+
+wds:P17-2307A6A7-3E03-4972-8762-0146ACA14F28 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q70564278 .
+
+wd:P17 p:P2875 wds:P17-f0612208-4168-79b0-a676-1e9d9659416f .
+
+wds:P17-f0612208-4168-79b0-a676-1e9d9659416f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2875 wd:Q20116958 .
+
+wd:P17 p:P1628 wds:P17-233a37cc-4331-02e4-7180-71a087e15362 .
+
+wds:P17-233a37cc-4331-02e4-7180-71a087e15362 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <http://www.w3.org/2006/vcard/ns#country-name> .
+
+wd:P17 p:P1628 wds:P17-b6171033-4896-9c67-ce18-6936df9d38e7 .
+
+wds:P17-b6171033-4896-9c67-ce18-6936df9d38e7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <https://schema.org/addressCountry> .
+
+wd:P17 p:P1628 wds:P17-8959f2eb-438e-42af-97b5-717483a0db1f .
+
+wds:P17-8959f2eb-438e-42af-97b5-717483a0db1f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <http://d-nb.info/standards/elementset/gnd#Country> .
+
+wd:P17 p:P1628 wds:P17-ccec729a-4717-6cbb-506e-0d11d9bb1e28 .
+
+wds:P17-ccec729a-4717-6cbb-506e-0d11d9bb1e28 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <http://dbpedia.org/ontology/country> .
+
+wd:P17 p:P1628 wds:P17-6c0455f3-47dd-b5e6-b063-4a6616ef5567 .
+
+wds:P17-6c0455f3-47dd-b5e6-b063-4a6616ef5567 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <http://www.w3.org/2006/vcard/ns#hasCountryName> .
+
+wd:P17 p:P3713 wds:P17-3629D50C-6658-4FD2-A98F-86C35447F430 .
+
+wds:P17-3629D50C-6658-4FD2-A98F-86C35447F430 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3713 wd:Q22158803 .
+
+wd:P17 p:P3254 wds:P17-D7346CD2-AD27-4BAD-86E7-FBDDF5C5250D .
+
+wds:P17-D7346CD2-AD27-4BAD-86E7-FBDDF5C5250D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3254 <https://www.wikidata.org/wiki/Wikidata:Property_proposal/Archive/1#P17> .
+
+wd:P17 p:P1855 wds:P17-5cdbdcd3-458b-1946-88a1-58f0d65109d2 .
+
+wds:P17-5cdbdcd3-458b-1946-88a1-58f0d65109d2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q2270034 ;
+	pq:P17 wd:Q148 .
+
+wd:P17 p:P1855 wds:P17-e61d0406-4f72-8fe4-1b88-5133d6a2c282 .
+
+wds:P17-e61d0406-4f72-8fe4-1b88-5133d6a2c282 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q51 ;
+	a wdno:P17 .
+
+wd:P17 p:P1855 wds:P17-52055c39-4dbf-f4f5-be35-23b568967c06 .
+
+wds:P17-52055c39-4dbf-f4f5-be35-23b568967c06 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q513 ;
+	pq:P17 wd:Q837,
+		wd:Q148 .
+
+wd:P17 p:P1855 wds:P17-0f6b0451-449d-38e5-5e5b-81b9c7d52367 .
+
+wds:P17-0f6b0451-449d-38e5-5e5b-81b9c7d52367 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q183 ;
+	pq:P17 wd:Q183 .
+
+wd:P17 p:P3734 wds:P17-6B2E62D3-F778-4056-9547-73177E7C51A2 .
+
+wds:P17-6B2E62D3-F778-4056-9547-73177E7C51A2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3734 wd:Q32085240 .
+
+wd:P17 p:P3709 wds:P17-8F8CD616-212B-4125-B704-4309B7A6CB60 .
+
+wds:P17-8F8CD616-212B-4125-B704-4309B7A6CB60 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3709 wd:Q22158802 .
+
+wd:P17 p:P7964 wds:P17-c543d3f4-4937-eecf-22c9-ff0298791321 .
+
+wds:P17-c543d3f4-4937-eecf-22c9-ff0298791321 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P7964 "country-name" ;
+	prov:wasDerivedFrom wdref:9dc185a20523321f133af9d5d271b8e3c073fb82 .
+
+wd:P17 p:P2668 wds:P17-8d328b94-4b67-1f8e-0a0e-be82134ef4a7 .
+
+wds:P17-8d328b94-4b67-1f8e-0a0e-be82134ef4a7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2668 wd:Q23611840 .
+
+wd:P17 p:P2302 wds:P17-2C156E4C-7505-47F2-BB43-5250845EB7E3 .
+
+wds:P17-2C156E4C-7505-47F2-BB43-5250845EB7E3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510851 ;
+	pq:P2306 wd:P580,
+		wd:P1319,
+		wd:P585,
+		wd:P1326,
+		wd:P582,
+		wd:P518,
+		wd:P805,
+		wd:P1310,
+		wd:P2241,
+		wd:P131,
+		wd:P710,
+		wd:P531,
+		wd:P1706,
+		wd:P459,
+		wd:P3831,
+		wd:P828,
+		wd:P1534,
+		wd:P3680,
+		wd:P2868,
+		wd:P7452,
+		wd:P5102,
+		wd:P8555,
+		wd:P8554,
+		wd:P17,
+		wd:P1001,
+		wd:P1480,
+		wd:P1013,
+		wd:P3842,
+		wd:P2348,
+		wd:P7588,
+		wd:P1479,
+		wd:P1552,
+		wd:P12506,
+		wd:P13589 ;
+	pq:P2303 wd:Q36332,
+		wd:Q373767,
+		wd:Q61029267 .
+
+wd:P17 p:P2302 wds:P17-8937bf55-461e-a87d-ee36-d1ce8f292cce .
+
+wds:P17-8937bf55-461e-a87d-ee36-d1ce8f292cce a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q53869507 ;
+	pq:P5314 wd:Q54828448,
+		wd:Q54828449 .
+
+wd:P17 p:P2302 wds:P17-0097a04e-40ba-6310-4d6b-e6291c01d792 .
+
+wds:P17-0097a04e-40ba-6310-4d6b-e6291c01d792 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52004125 ;
+	pq:P2305 wd:Q29934200,
+		wd:Q29934218 .
+
+wd:P17 p:P2302 wds:P17-974E2345-EC52-45F5-B27E-2F24D42AEA9C .
+
+wds:P17-974E2345-EC52-45F5-B27E-2F24D42AEA9C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q202444,
+		wd:Q11879590,
+		wd:Q12308941,
+		wd:Q4167410,
+		wd:Q4167836,
+		wd:Q11266439,
+		wd:Q11753321 ;
+	pq:P2304 wd:P31 ;
+	pq:P2306 wd:P31 .
+
+wd:P17 p:P2302 wds:P17-99529e62-40f5-24a3-9801-f39545c101f0 .
+
+wds:P17-99529e62-40f5-24a3-9801-f39545c101f0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q3172759,
+		wd:Q11460,
+		wd:Q28823,
+		wd:Q7832362,
+		wd:Q24334685,
+		wd:Q25810847,
+		wd:Q943929,
+		wd:Q223393,
+		wd:Q60733114,
+		wd:Q771035,
+		wd:Q2578402,
+		wd:Q13002315,
+		wd:Q251777,
+		wd:Q11921029,
+		wd:Q11639,
+		wd:Q1292119,
+		wd:Q105575966,
+		wd:Q188451,
+		wd:Q11042 ;
+	pq:P2306 wd:P31 ;
+	pq:P6824 wd:P2341,
+		wd:P495 .
+
+wd:P17 p:P2302 wds:P17-382092b1-472c-f5bf-274a-d2bc3b014174 .
+
+wds:P17-382092b1-472c-f5bf-274a-d2bc3b014174 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q16521 ;
+	pq:P2306 wd:P31 ;
+	pq:P6824 wd:P183,
+		wd:P5588 .
+
+wd:P17 p:P2302 wds:P17-42d2ce4e-47da-2529-07de-757a33866716 .
+
+wds:P17-42d2ce4e-47da-2529-07de-757a33866716 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q2431196,
+		wd:Q11424,
+		wd:Q15416,
+		wd:Q5398426,
+		wd:Q21191270,
+		wd:Q24856 ;
+	pq:P2306 wd:P31 ;
+	pq:P6824 wd:P915,
+		wd:P840,
+		wd:P495,
+		wd:P291 ;
+	pq:P6607 "use: country of origin (P495) or filming location (P915) or narrative location (P840) or place of publication (P291)"@en,
+		"verwende: Ursprungsland (P495) oder Drehort (P915) oder Handlungsort (P840) oder Erscheinungsort (P291)"@de,
+		"本国（P495）または撮影地（P915）または物語の舞台（P840）または出版地（P291）を使用してください"@ja .
+
+wd:P17 p:P2302 wds:P17-ed589f57-4c19-51ec-3526-0ee715e599ac .
+
+wds:P17-ed589f57-4c19-51ec-3526-0ee715e599ac a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q5 ;
+	pq:P2306 wd:P31 ;
+	pq:P6824 wd:P27,
+		wd:P19,
+		wd:P551,
+		wd:P20,
+		wd:P66,
+		wd:P937 .
+
+wd:P17 p:P2302 wds:P17-417427b9-4b04-d12d-21a7-5bbde471dce9 .
+
+wds:P17-417427b9-4b04-d12d-21a7-5bbde471dce9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q24634210,
+		wd:Q61855877,
+		wd:Q69154911 ;
+	pq:P2306 wd:P31 ;
+	pq:P6824 wd:P840,
+		wd:P495,
+		wd:P291 .
+
+wd:P17 p:P2302 wds:P17-6ddc465f-4249-18ca-e450-958285d28890 .
+
+wds:P17-6ddc465f-4249-18ca-e450-958285d28890 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q11086742,
+		wd:Q63952888,
+		wd:Q102364578,
+		wd:Q100269041,
+		wd:Q104775758,
+		wd:Q202866,
+		wd:Q581714 ;
+	pq:P2306 wd:P31 ;
+	pq:P6824 wd:P840,
+		wd:P495,
+		wd:P291 .
+
+wd:P17 p:P2302 wds:P17-42874e28-49e1-5606-ca70-3f5d8bad0e97 .
+
+wds:P17-42874e28-49e1-5606-ca70-3f5d8bad0e97 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q571,
+		wd:Q47461344,
+		wd:Q83790 ;
+	pq:P2306 wd:P31 ;
+	pq:P6824 wd:P291,
+		wd:P840,
+		wd:P495 .
+
+wd:P17 p:P2302 wds:P17-ab8340a0-42c4-01f1-2fa8-9cebacb5b5a4 .
+
+wds:P17-ab8340a0-42c4-01f1-2fa8-9cebacb5b5a4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q8261,
+		wd:Q38072107,
+		wd:Q74574 ;
+	pq:P6824 wd:P840,
+		wd:P495,
+		wd:P291 ;
+	pq:P2306 wd:P31 .
+
+wd:P17 p:P2302 wds:P17-5c918044-4778-04ed-9453-ecc283707364 .
+
+wds:P17-5c918044-4778-04ed-9453-ecc283707364 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q215380,
+		wd:Q2088357,
+		wd:Q9212979,
+		wd:Q281643 ;
+	pq:P6824 wd:P495 ;
+	pq:P2306 wd:P31 ;
+	pq:P6607 "please use ‘country of origin’ (P495)"@mul,
+		"verwende bitte ‚Ursprungsland‘ (P495)"@de,
+		"gebruik 'land van herkomst' (P495)"@nl,
+		"「本国（P495）」を使用してください"@ja,
+		"請使用「原產地」（P495）"@zh-tw .
+
+wd:P17 p:P2302 wds:P17-f16413bb-4baa-4473-4769-6872f4081216 .
+
+wds:P17-f16413bb-4baa-4473-4769-6872f4081216 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P31 ;
+	pq:P2305 wd:Q482994,
+		wd:Q134556,
+		wd:Q169930 ;
+	pq:P6824 wd:P291 .
+
+wd:P17 p:P2302 wds:P17-c10aa64f-4d9e-e07e-c503-fe3ece3c41a7 .
+
+wds:P17-c10aa64f-4d9e-e07e-c503-fe3ece3c41a7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q7889,
+		wd:Q209163,
+		wd:Q7058673 ;
+	pq:P2306 wd:P31 ;
+	pq:P6824 wd:P840,
+		wd:P495,
+		wd:P291 ;
+	pq:P6607 "The \"country\" of a video game is ambiguous as it may, for example, refer to the location where the video game was created, the location where the video game was published and distributed, or the location which the video game depicts. Use more specific properties instead."@en,
+		"Le \"pays\" d'un jeu vidéo est ambigu car il peut, par exemple, se référer à l'endroit où le jeu vidéo a été créé, à l'endroit où le jeu vidéo a été publié et distribué, ou à l'emplacement que représente le jeu vidéo. Utiliser plutôt des propriétés plus spécifiques."@fr,
+		"电子游戏的“国家/地区”概念比较模糊，例如，它可能指游戏的开发地、发行地或游戏所描绘的地点。建议使用更具体的属性来描述。"@zh,
+		"コンピュータゲームにおける「国」は、そのゲームの制作場所や出版場所、頒布場所、舞台となる場所など様々なものを指す可能性があり、曖昧です。より具体的なプロパティを使用してください。"@ja .
+
+wd:P17 p:P2302 wds:P17-d0024e4c-4788-4ebe-86c7-efc15b59d023 .
+
+wds:P17-d0024e4c-4788-4ebe-86c7-efc15b59d023 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q11436,
+		wd:Q1420,
+		wd:Q43193 ;
+	pq:P2306 wd:P31 ;
+	pq:P6824 wd:P1071,
+		wd:P276 ;
+	pq:P6607 "The \"country\" of an instance of a vehicle is ambiguous as it may, for example, refer to the location of where the vehicle was manufactured or the location where it is physically situated. Use more specific properties instead."@en,
+		"车辆实例的“国家/地区”属性含义模糊，例如，它可能指车辆的制造地点或车辆的实际所在地。建议使用更具体的属性来代替。"@zh,
+		"乗り物における「国」は、その乗り物の製造場所や現在の所在地など様々なものを指す可能性があり、曖昧です。より具体的なプロパティを使用してください。"@ja ;
+	pq:P2303 wd:Q1838527 .
+
+wd:P17 p:P2302 wds:P17-cfc16938-48de-fe9d-132c-6efef289a91a .
+
+wds:P17-cfc16938-48de-fe9d-132c-6efef289a91a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q15056995,
+		wd:Q29048322,
+		wd:Q3231690,
+		wd:Q21546143,
+		wd:Q23866334 ;
+	pq:P2306 wd:P31 ;
+	pq:P6824 wd:P495 ;
+	pq:P6607 "The \"country\" of a vehicle model is ambiguous as it may, for example, refer to the location of where the vehicle model was designed, where the vehicle model was manufactured or where the vehicle model was marketed and used. Use more specific properties instead."@en,
+		"车辆型号的“国家/地区”含义模糊，例如，它可能指车辆型号的设计地、车辆型号的制造地或车辆型号的销售和使用地。请使用更具体的属性。"@zh,
+		"乗り物の型式における「国」は、その乗り物の設計地や製造地、販売地、使用されている場所など様々なものを指す可能性があり、曖昧です。より具体的なプロパティを使用してください。"@ja .
+
+wd:P17 p:P2302 wds:P17-94bb1635-4e82-48bf-5920-950391730d1a .
+
+wds:P17-94bb1635-4e82-48bf-5920-950391730d1a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q16334298 ;
+	pq:P2306 wd:P31 ;
+	pq:P6824 wd:P159,
+		wd:P937 .
+
+wd:P17 p:P2302 wds:P17-4fd7eec1-468e-3a18-d087-1a9cc6ab62bd .
+
+wds:P17-4fd7eec1-468e-3a18-d087-1a9cc6ab62bd a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P31 ;
+	pq:P2305 wd:Q620615 ;
+	pq:P6824 wd:P495 .
+
+wd:P17 p:P2302 wds:P17-db3835a0-4486-a6b8-a6e6-ac5c481435b4 .
+
+wds:P17-db3835a0-4486-a6b8-a6e6-ac5c481435b4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P31 ;
+	pq:P2305 wd:Q37930,
+		wd:Q1926935,
+		wd:Q673383,
+		wd:Q1002873,
+		wd:Q129176525,
+		wd:Q129176393,
+		wd:Q126720640,
+		wd:Q3528760,
+		wd:Q2066703 ;
+	pq:P6824 wd:P495 ;
+	pq:P6607 "use \"country of origin\" (P495)"@en,
+		"使用“原产国” (P495)"@zh,
+		"「本国（P945）」を使用してください。"@ja .
+
+wd:P17 p:P2302 wds:P17-62017b37-4334-ed17-01ad-c72bcce25d24 .
+
+wds:P17-62017b37-4334-ed17-01ad-c72bcce25d24 a wikibase:Statement ;
+	wikibase:rank wikibase:DeprecatedRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P31 ;
+	pq:P2305 wd:Q13406463 ;
+	pq:P6824 wd:P921 ;
+	pq:P6607 "unuseful constraint and absurd on most lists"@en .
+
+wd:P17 p:P2302 wds:P17-cdab6dc2-4d90-e59c-8a1f-88cc3a60df62 .
+
+wds:P17-cdab6dc2-4d90-e59c-8a1f-88cc3a60df62 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q728 ;
+	pq:P2306 wd:P279 ;
+	pq:P6824 wd:P495 ;
+	pq:P6607 "The \"country\" of a weapon is ambiguous as it may, for example, refer to the location of where the weapon was designed, manufactured or used. Use more specific properties instead."@en,
+		"武器的“国家”这一概念比较模糊，因为它可能指的是武器的设计地、制造地或使用地。因此，建议使用更具体的属性来描述。"@zh,
+		"武器における「国」は、その武器の設計地や製造地、使用されている場所など様々なものを指す可能性があり、曖昧です。より具体的なプロパティを使用してください。"@ja .
+
+wd:P17 p:P2302 wds:P17-5e042b92-4ef8-aaee-a1ae-0f92c7c1200d .
+
+wds:P17-5e042b92-4ef8-aaee-a1ae-0f92c7c1200d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q2184 ;
+	pq:P9729 wd:Q2305208 ;
+	pq:P6607 "Links are often confused. The RSFSR should be only indicated as a state for the period from 1918 to 1922 when it was independent; for later dates, the USSR should be used."@en,
+		"この2つはよく混同されます。ロシア・ソビエト連邦社会主義共和国は1918年から1922年までの独立国にのみ使用し、それ以後にはソビエト連邦を使用するべきです。"@ja,
+		"这些链接经常会引起混淆。俄罗斯苏维埃联邦社会主义共和国（RSFSR）只能用于指代其独立时期，即1918年至1922年；对于之后的时期，应使用苏联（USSR）。"@zh .
+
+wd:P17 p:P2302 wds:P17-c8f68ee8-4c6a-d265-bed5-bb85d347c535 .
+
+wds:P17-c8f68ee8-4c6a-d265-bed5-bb85d347c535 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q62633,
+		wd:Q221457 ;
+	pq:P6824 wd:P131 ;
+	pq:P6607 "Autonome Länder des russischen Imperiums sollten als territoriale Verwaltungseinheiten aufgeführt werden, nicht als Staaten."@de,
+		"Autonomous areas of the Russian Empire should be listed as administrative territorial entities, not as states."@en,
+		"Venäjän keisarikunnan autonomiset alueet tulisi merkitä hallinnolliseksi alueyksiköksi, ei valtioksi."@fi,
+		"俄罗斯帝国的自治区域应被列为行政领土实体，而不是国家。"@zh,
+		"ロシア帝国の自治区に対しては、国ではなく、位置する行政区画を使用するべきです。"@ja ;
+	pq:P2303 wd:Q944955 .
+
+wd:P17 p:P2302 wds:P17-016f6004-42e1-3102-3602-3b4674ee08e5 .
+
+wds:P17-016f6004-42e1-3102-3602-3b4674ee08e5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q5710,
+		wd:Q5481 ;
+	pq:P6824 wd:P131 ;
+	pq:P6607 "не является независимым государством"@ru,
+		"独立国家ではないため、「位置する行政区画（P131）」を使用するべきです。"@ja .
+
+wd:P17 p:P2302 wds:P17-cbdb11a6-492c-fc06-856e-e10218f1c8b4 .
+
+wds:P17-cbdb11a6-492c-fc06-856e-e10218f1c8b4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q8646 ;
+	pq:P9729 wd:Q148,
+		wd:Q1054923 ;
+	pq:P2316 wd:Q62026391 ;
+	pq:P6607 "Use Q148 (what after July 1 1997 in Hong Kong) or Q1054923 (what before June 30 1997 in Hong Kong) instead"@en,
+		"請使用 Q148 (在1997年7月1日或以後) 或 Q1054923 (在1997年6月30日以前)"@zh-hant,
+		"请使用 Q148 (在1997年7月1日或以后) 或 Q1054923 (在1997年6月30日以前)"@zh-hans,
+		"Utiliser Q148 si existant après 1997 et/ou Q1054923 avant le 7 juillet 1997"@fr,
+		"请使用 Q148（指 1997 年 7 月 1 日之后在香港发生的事情）或 Q1054923（指 1997 年 6 月 30 日之前在香港发生的事情）代替。"@zh,
+		"代わりにQ148（1997年7月1日以降）またはQ1054923（1997年6月30日以前）を使用してください。"@ja .
+
+wd:P17 p:P2302 wds:P17-d10335f8-4d19-a7b5-c7f5-7b19c4daff97 .
+
+wds:P17-d10335f8-4d19-a7b5-c7f5-7b19c4daff97 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q23334 ;
+	pq:P9729 wd:Q31354462 ;
+	pq:P6607 "статья про регион, а не государственное образование"@ru .
+
+wd:P17 p:P2302 wds:P17-69217d53-4a3e-3a2a-ffde-5e717ed2f211 .
+
+wds:P17-69217d53-4a3e-3a2a-ffde-5e717ed2f211 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q14773 ;
+	pq:P9729 wd:Q148,
+		wd:Q3916279 ;
+	pq:P2316 wd:Q62026391 ;
+	pq:P6607 "Use Q148 (what after December 20 1999 in Macao) or Q3916279 (what before December 20 1999 in Macao) instead"@en,
+		"請使用 Q148 (在1999年12月20日或以後) 或 Q3916279 (在1999年12月20日以前)"@zh-hant,
+		"请使用 Q148 (在1999年12月20日或以后) 或 Q3916279 (在1999年12月20日以前)"@zh-hans,
+		"代わりにQ148（1999年12月20日以降）またはQ3916279（1999年12月20日以前）を使用してください。"@ja .
+
+wd:P17 p:P2302 wds:P17-3501f3d7-410f-d651-1213-b71970fd0e9b .
+
+wds:P17-3501f3d7-410f-d651-1213-b71970fd0e9b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q42620 ;
+	pq:P9729 wd:Q219060 ;
+	pq:P6607 "орган власти не равен государственному образованию"@ru,
+		"パレスチナ自治政府は政府であって、国ではありません。"@ja,
+		"The Palestinian National Authority is a government, not a country."@en,
+		"הרשות הפלסטינית (Q42620) אינה מדינה. בוויקינתונים יש להשתמש בפריט \"מדינה פלסטינית\" (Q219060)."@he .
+
+wd:P17 p:P2302 wds:P17-2C4357F4-4C79-4ABB-A126-3283D3EEFAE9 .
+
+wds:P17-2C4357F4-4C79-4ABB-A126-3283D3EEFAE9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q518617 ;
+	pq:P9729 wd:Q1206012,
+		wd:Q7318 ;
+	pq:P6607 "Anstatt Drittes Reich (Q518617) sollte Deutsches Reich (Q1206012) oder NS-Staat (Q7318) verwendet werden."@de,
+		"Use German Reich (Q1206012) or Nazi Germany (Q7318) instead."@en,
+		"请改用德意志帝国 (Q1206012) 或纳粹德国 (Q7318)。"@zh,
+		"ドイツ国（Q1206012）またはナチス・ドイツ（Q7318）を使用してください。"@ja .
+
+wd:P17 p:P2302 wds:P17-48F8F600-7686-4C48-9D70-4F0A56C713CE .
+
+wds:P17-48F8F600-7686-4C48-9D70-4F0A56C713CE a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q713750 ;
+	pq:P9729 wd:Q183 ;
+	pq:P6607 "Anstatt Bundesrepublik Deutschland bis 1990 (Q713750) sollte Deutschland (Q183) verwendet werden."@de .
+
+wd:P17 p:P2302 wds:P17-0e879b33-421e-67b1-4e50-2281b1627c81 .
+
+wds:P17-0e879b33-421e-67b1-4e50-2281b1627c81 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q29520 ;
+	pq:P9729 wd:Q148,
+		wd:Q865,
+		wd:Q13426199,
+		wd:Q12060881 .
+
+wd:P17 p:P2302 wds:P17-249639d3-4f65-cb0a-16c2-d0b21361b39f .
+
+wds:P17-249639d3-4f65-cb0a-16c2-d0b21361b39f a wikibase:Statement ;
+	wikibase:rank wikibase:DeprecatedRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P8047 ;
+	pq:P2303 wd:Q852190,
+		wd:Q16039303,
+		wd:Q2103611,
+		wd:Q6119988 .
+
+wd:P17 p:P2302 wds:P17-37985638-4a75-1818-35a3-2103da7ab68b .
+
+wds:P17-37985638-4a75-1818-35a3-2103da7ab68b a wikibase:Statement ;
+	wikibase:rank wikibase:DeprecatedRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2305 wd:Q11446 ;
+	pq:P2306 wd:P31 ;
+	pq:P6824 wd:P1071,
+		wd:P8047 ;
+	pq:P6607 "The \"country\" of a ship is ambiguous as it may, for example, refer to the location of where the ship was manufactured or the country in which a ship is registered. Use more specific properties instead."@en,
+		"船舶的“国家”概念比较模糊，例如，它可能指船舶的制造地，也可能指船舶的注册国。因此，建议使用更具体的属性来描述。"@zh,
+		"船舶における「国」は、その船の製造地や船籍国など様々なものを指す可能性があり、曖昧です。より具体的なプロパティを使用してください。"@ja .
+
+wd:P17 p:P2302 wds:P17-310d4a70-452f-51cf-7bd7-ee991d655f00 .
+
+wds:P17-310d4a70-452f-51cf-7bd7-ee991d655f00 a wikibase:Statement ;
+	wikibase:rank wikibase:DeprecatedRank ;
+	ps:P2302 wd:Q21510864 ;
+	pq:P2306 wd:P30 ;
+	pq:P2316 wd:Q62026391 ;
+	pq:P2303 wd:Q900119,
+		wd:Q96196475,
+		wd:Q1145276 .
+
+wd:P17 p:P2302 wds:P17-53802f65-4d2e-3c60-c479-3fd7291c34ff .
+
+wds:P17-53802f65-4d2e-3c60-c479-3fd7291c34ff a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q458 ;
+	pq:P6607 "The EU is not a country"@en,
+		"欧盟不是一个国家。"@zh,
+		"欧州連合は国ではありません。"@ja .
+
+wd:P17 p:P2302 wds:P17-095fdcd3-448a-fafc-41bb-16c4b4c9198f .
+
+wds:P17-095fdcd3-448a-fafc-41bb-16c4b4c9198f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q5705 ;
+	pq:P6824 wd:P131 ;
+	pq:P9729 wd:Q29 .
+
+wd:P17 p:P2302 wds:P17-66c5dbfa-4a18-b916-5bc6-27f419454618 .
+
+wds:P17-66c5dbfa-4a18-b916-5bc6-27f419454618 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q47588 ;
+	pq:P6607 "The Basque Country is not a country."@en,
+		"巴斯克地区不是一个国家。"@zh,
+		"バスク地方は国ではありません。"@ja .
+
+wd:P17 p:P2302 wds:P17-c2837388-496a-2d53-8974-cb89d3ecd9a2 .
+
+wds:P17-c2837388-496a-2d53-8974-cb89d3ecd9a2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q17252 ;
+	pq:P6607 "Tibet is not a country"@en,
+		"西藏不是一个国家。"@zh,
+		"チベットは国ではありません。"@ja .
+
+wd:P17 p:P2302 wds:P17-266e31b2-421a-b88e-bc33-7fffe07fc9c0 .
+
+wds:P17-266e31b2-421a-b88e-bc33-7fffe07fc9c0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q6583 ;
+	pq:P9729 wd:Q6250 ;
+	pq:P6607 "The Sahara is not a country."@en,
+		"撒哈拉沙漠不是一个国家。"@zh,
+		"サハラ砂漠は国ではありません。"@ja .
+
+wd:P17 p:P2302 wds:P17-44DF57C5-B96E-4B67-8A5A-9434555A8EE7 .
+
+wds:P17-44DF57C5-B96E-4B67-8A5A-9434555A8EE7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q650489 ;
+	pq:P9729 wd:Q20011161,
+		wd:Q131545583 .
+
+wd:P17 p:P2302 wds:P17-414814BF-450D-4312-8A1B-F7D2005E4785 .
+
+wds:P17-414814BF-450D-4312-8A1B-F7D2005E4785 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q22890 ;
+	pq:P9729 wd:Q27,
+		wd:Q145,
+		wd:Q174193,
+		wd:Q31747,
+		wd:Q215530 ;
+	pq:P6607 "For modern use (after 1937), use (Republic of) Ireland or United Kingdom respectively. For the period between 1922 and 1937, United Kingdom and/or Irish Free State may be applicable. For more information about this subject, as well as earlier time periods, check out [[:en:wp:Irish nationality law]] and [[:en:wp:British nationality law and the Republic of Ireland]]."@en,
+		"对于现代（1937 年以后）的情况，请分别使用爱尔兰（共和国）或联合王国。对于 1922 年至 1937 年期间，联合王国和/或爱尔兰自由邦均适用。有关此主题以及更早时期的情况，请参阅维基百科条目“爱尔兰国籍法”和“英国国籍法与爱尔兰共和国”。"@zh ;
+	pq:P2316 wd:Q21502408 .
+
+wd:P17 p:P2302 wds:P17-8E63756C-12FB-426A-9402-C5CEA51B8CA6 .
+
+wds:P17-8E63756C-12FB-426A-9402-C5CEA51B8CA6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q29520 ;
+	pq:P2316 wd:Q62026391 ;
+	pq:P9729 wd:Q148,
+		wd:Q13426199,
+		wd:Q8733,
+		wd:Q9903,
+		wd:Q7313,
+		wd:Q7462,
+		wd:Q9683,
+		wd:Q7405,
+		wd:Q5066,
+		wd:Q320930,
+		wd:Q320925,
+		wd:Q274488,
+		wd:Q7209,
+		wd:Q7183,
+		wd:Q35216,
+		wd:Q128938,
+		wd:Q169705,
+		wd:Q12060881 .
+
+wd:P17 p:P2302 wds:P17-3BA97D7C-35A7-4262-8FA3-4450EE032832 .
+
+wds:P17-3BA97D7C-35A7-4262-8FA3-4450EE032832 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q1657833,
+		wd:Q607459,
+		wd:Q872285,
+		wd:Q603624,
+		wd:Q108151641,
+		wd:Q4843341,
+		wd:Q15132899,
+		wd:Q25594375,
+		wd:Q61951161,
+		wd:Q96336410,
+		wd:Q96336606,
+		wd:Q113403829,
+		wd:Q2454900 ;
+	pq:P6607 "It's not always clear in Pokémon canon if regions are part of a larger country or are countries in and of themselves. Better to not touch the subject at all with the uncertainty of it."@en,
+		"在宝可梦的官方设定中，各个地区究竟是一个更大国家的一部分，还是本身就是一个独立的国家，这一点并不总是很明确。鉴于这种不确定性，最好完全避免讨论这个问题。"@zh,
+		"ポケットモンスターの公式設定では、その地方がより大きな国の一部なのか、それとも独立した国なのかが明確になっていないことがあります。その不確定性を考えると、この問題に触れるのは避けるべきでしょう。"@ja .
+
+wd:P17 p:P2302 wds:P17-1405E23C-58BA-4A93-B2F6-6A5213547A15 .
+
+wds:P17-1405E23C-58BA-4A93-B2F6-6A5213547A15 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q11772 ;
+	pq:P6607 "Ancient Greece was never a sovereign state in a modern sense, but it was a multitude of small states sharing a common culture. Use one of those small states instead (eg. Athens, Sparta, Achaean League, etc.)"@en,
+		"古希腊从来就不是一个现代意义上的主权国家，而是由许多共享共同文化的小城邦组成。请使用其中一个小城邦（例如雅典、斯巴达、亚该亚同盟等）"@zh,
+		"古代ギリシアは現代の意味での主権国家ではなく、文化を共有する小さな国家の集まりでした。代わりに、個々の国を使用してください（アテネ、スパルタ、アカイア同盟など）。"@ja .
+
+wd:P17 p:P2302 wds:P17-D91BEE9D-E46D-4803-876C-A8F1AEBFA814 .
+
+wds:P17-D91BEE9D-E46D-4803-876C-A8F1AEBFA814 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q219825,
+		wd:Q219817,
+		wd:Q877619 ;
+	pq:P9729 wd:Q58296 .
+
+wd:P17 p:P2302 wds:P17-7C69E570-FCBE-40FA-9B01-D94501F44D25 .
+
+wds:P17-7C69E570-FCBE-40FA-9B01-D94501F44D25 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510865 ;
+	pq:P2308 wd:Q3624078,
+		wd:Q1151405,
+		wd:Q2577883,
+		wd:Q15239622,
+		wd:Q148837,
+		wd:Q1250464,
+		wd:Q3895768,
+		wd:Q28171280,
+		wd:Q59281,
+		wd:Q6256,
+		wd:Q161243,
+		wd:Q170156,
+		wd:Q3024240,
+		wd:Q7275,
+		wd:Q1145276,
+		wd:Q43702,
+		wd:Q182547,
+		wd:Q48349,
+		wd:Q1896989,
+		wd:Q15304003,
+		wd:Q3238337,
+		wd:Q1620908,
+		wd:Q253836,
+		wd:Q5982983,
+		wd:Q10711424,
+		wd:Q678116 ;
+	pq:P2309 wd:Q21503252 ;
+	pq:P2304 wd:P31 ;
+	pq:P2303 wd:Q1072012,
+		wd:Q61029267,
+		wd:Q214086,
+		wd:Q689055,
+		wd:Q176 .
+
+wd:P17 p:P2302 wds:P17-8e88ee77-4cd8-bd78-35e9-a8ab36e6441e .
+
+wds:P17-8e88ee77-4cd8-bd78-35e9-a8ab36e6441e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q126852 ;
+	pq:P9729 wd:Q30 .
+
+wd:P17 p:P2302 wds:P17-aae2e69e-461b-578b-5a1c-dbecde776227 .
+
+wds:P17-aae2e69e-461b-578b-5a1c-dbecde776227 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q15,
+		wd:Q48,
+		wd:Q46,
+		wd:Q55643,
+		wd:Q49,
+		wd:Q18,
+		wd:Q27527,
+		wd:Q828,
+		wd:Q5401 ;
+	pq:P6824 wd:P30 .
+
+wd:P17 p:P13786 wds:P17-6c0b92e9-45a3-51ce-3a29-fd91edc66c7e .
+
+wds:P17-6c0b92e9-45a3-51ce-3a29-fd91edc66c7e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13786 "addr:country" ;
+	pq:P518 wd:Q3624078 .
+
+wd:P17 p:P13786 wds:P17-c1b3f563-41e4-007a-0152-1357a70617b3 .
+
+wds:P17-c1b3f563-41e4-007a-0152-1357a70617b3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13786 "country" ;
+	pq:P518 wd:Q3624078 .
+
+wd:P17 p:P14692 wds:P17-BA518F04-D612-4B47-8197-BB738CE99EF8 .
+
+wds:P17-BA518F04-D612-4B47-8197-BB738CE99EF8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P14692 "Q37" ;
+	psn:P14692 <https://wiki.openstreetmap.org/entity/Q37> .
+
+wd:P17 p:P14692 wds:P17-8F3BF450-5832-4EBC-9D98-7542D9C0C3CB .
+
+wds:P17-8F3BF450-5832-4EBC-9D98-7542D9C0C3CB a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P14692 "Q182" ;
+	psn:P14692 <https://wiki.openstreetmap.org/entity/Q182> .
+
+wd:P17 rdfs:label "paese"@it ;
+	skos:prefLabel "paese"@it ;
+	schema:name "paese"@it ;
+	rdfs:label "pays"@fr ;
+	skos:prefLabel "pays"@fr ;
+	schema:name "pays"@fr ;
+	rdfs:label "国家"@zh ;
+	skos:prefLabel "国家"@zh ;
+	schema:name "国家"@zh ;
+	rdfs:label "国家"@zh-hans ;
+	skos:prefLabel "国家"@zh-hans ;
+	schema:name "国家"@zh-hans ;
+	rdfs:label "國家"@zh-hant ;
+	skos:prefLabel "國家"@zh-hant ;
+	schema:name "國家"@zh-hant ;
+	rdfs:label "Staat"@de ;
+	skos:prefLabel "Staat"@de ;
+	schema:name "Staat"@de ;
+	rdfs:label "valtio"@fi ;
+	skos:prefLabel "valtio"@fi ;
+	schema:name "valtio"@fi ;
+	rdfs:label "מדינה"@he ;
+	skos:prefLabel "מדינה"@he ;
+	schema:name "מדינה"@he ;
+	rdfs:label "stát"@cs ;
+	skos:prefLabel "stát"@cs ;
+	schema:name "stát"@cs ;
+	rdfs:label "land"@is ;
+	skos:prefLabel "land"@is ;
+	schema:name "land"@is ;
+	rdfs:label "ქვეყანა"@ka ;
+	skos:prefLabel "ქვეყანა"@ka ;
+	schema:name "ქვეყანა"@ka ;
+	rdfs:label "государство"@ru ;
+	skos:prefLabel "государство"@ru ;
+	schema:name "государство"@ru ;
+	rdfs:label "ország"@hu ;
+	skos:prefLabel "ország"@hu ;
+	schema:name "ország"@hu ;
+	rdfs:label "država"@hr ;
+	skos:prefLabel "država"@hr ;
+	schema:name "država"@hr ;
+	rdfs:label "país"@es ;
+	skos:prefLabel "país"@es ;
+	schema:name "país"@es ;
+	rdfs:label "χώρα"@el ;
+	skos:prefLabel "χώρα"@el ;
+	schema:name "χώρα"@el ;
+	rdfs:label "land"@nl ;
+	skos:prefLabel "land"@nl ;
+	schema:name "land"@nl ;
+	rdfs:label "Stat"@lmo ;
+	skos:prefLabel "Stat"@lmo ;
+	schema:name "Stat"@lmo ;
+	rdfs:label "państwo"@pl ;
+	skos:prefLabel "państwo"@pl ;
+	schema:name "państwo"@pl ;
+	rdfs:label "држава"@sr ;
+	skos:prefLabel "држава"@sr ;
+	schema:name "држава"@sr ;
+	rdfs:label "estat"@ca ;
+	skos:prefLabel "estat"@ca ;
+	schema:name "estat"@ca ;
+	rdfs:label "land"@nb ;
+	skos:prefLabel "land"@nb ;
+	schema:name "land"@nb ;
+	rdfs:label "pagilian"@ilo ;
+	skos:prefLabel "pagilian"@ilo ;
+	schema:name "pagilian"@ilo ;
+	rdfs:label "краіна"@be ;
+	skos:prefLabel "краіна"@be ;
+	schema:name "краіна"@be ;
+	rdfs:label "کشور"@fa ;
+	skos:prefLabel "کشور"@fa ;
+	schema:name "کشور"@fa ;
+	rdfs:label "다음 나라의 것임"@ko ;
+	skos:prefLabel "다음 나라의 것임"@ko ;
+	schema:name "다음 나라의 것임"@ko ;
+	rdfs:label "краіна"@be-tarask ;
+	skos:prefLabel "краіна"@be-tarask ;
+	schema:name "краіна"@be-tarask ;
+	rdfs:label "国家"@zh-cn ;
+	skos:prefLabel "国家"@zh-cn ;
+	schema:name "国家"@zh-cn ;
+	rdfs:label "நாடு"@ta ;
+	skos:prefLabel "நாடு"@ta ;
+	schema:name "நாடு"@ta ;
+	rdfs:label "国"@ja ;
+	skos:prefLabel "国"@ja ;
+	schema:name "国"@ja ;
+	rdfs:label "land"@nn ;
+	skos:prefLabel "land"@nn ;
+	schema:name "land"@nn ;
+	rdfs:label "país"@pt-br ;
+	skos:prefLabel "país"@pt-br ;
+	schema:name "país"@pt-br ;
+	rdfs:label "país"@pt ;
+	skos:prefLabel "país"@pt ;
+	schema:name "país"@pt ;
+	rdfs:label "land"@da ;
+	skos:prefLabel "land"@da ;
+	schema:name "land"@da ;
+	rdfs:label "country"@en-gb ;
+	skos:prefLabel "country"@en-gb ;
+	schema:name "country"@en-gb ;
+	rdfs:label "country"@en-ca ;
+	skos:prefLabel "country"@en-ca ;
+	schema:name "country"@en-ca ;
+	rdfs:label "quốc gia"@vi ;
+	skos:prefLabel "quốc gia"@vi ;
+	schema:name "quốc gia"@vi ;
+	rdfs:label "država"@bs ;
+	skos:prefLabel "država"@bs ;
+	schema:name "država"@bs ;
+	rdfs:label "ประเทศ"@th ;
+	skos:prefLabel "ประเทศ"@th ;
+	schema:name "ประเทศ"@th ;
+	rdfs:label "країна"@uk ;
+	skos:prefLabel "країна"@uk ;
+	schema:name "країна"@uk ;
+	rdfs:label "davlat"@uz ;
+	skos:prefLabel "davlat"@uz ;
+	schema:name "davlat"@uz ;
+	rdfs:label "valsts"@lv ;
+	skos:prefLabel "valsts"@lv ;
+	schema:name "valsts"@lv ;
+	rdfs:label "देश"@hi ;
+	skos:prefLabel "देश"@hi ;
+	schema:name "देश"@hi ;
+	rdfs:label "Land"@nds ;
+	skos:prefLabel "Land"@nds ;
+	schema:name "Land"@nds ;
+	rdfs:label "lando"@eo ;
+	skos:prefLabel "lando"@eo ;
+	schema:name "lando"@eo ;
+	rdfs:label "država"@sl ;
+	skos:prefLabel "država"@sl ;
+	schema:name "država"@sl ;
+	rdfs:label "land"@sv ;
+	skos:prefLabel "land"@sv ;
+	schema:name "land"@sv ;
+	rdfs:label "Lound"@stq ;
+	skos:prefLabel "Lound"@stq ;
+	schema:name "Lound"@stq ;
+	rdfs:label "negara"@id ;
+	skos:prefLabel "negara"@id ;
+	schema:name "negara"@id ;
+	rdfs:label "țară"@ro ;
+	skos:prefLabel "țară"@ro ;
+	schema:name "țară"@ro ;
+	rdfs:label "stadi"@rm ;
+	skos:prefLabel "stadi"@rm ;
+	schema:name "stadi"@rm ;
+	rdfs:label "രാജ്യം"@ml ;
+	skos:prefLabel "രാജ്യം"@ml ;
+	schema:name "രാജ്യം"@ml ;
+	rdfs:label "البلد"@ar ;
+	skos:prefLabel "البلد"@ar ;
+	schema:name "البلد"@ar ;
+	rdfs:label "nagara"@min ;
+	skos:prefLabel "nagara"@min ;
+	schema:name "nagara"@min ;
+	rdfs:label "國家"@zh-tw ;
+	skos:prefLabel "國家"@zh-tw ;
+	schema:name "國家"@zh-tw ;
+	rdfs:label "país"@gl ;
+	skos:prefLabel "país"@gl ;
+	schema:name "país"@gl ;
+	rdfs:label "земја"@mk ;
+	skos:prefLabel "земја"@mk ;
+	schema:name "земја"@mk ;
+	rdfs:label "land"@af ;
+	skos:prefLabel "land"@af ;
+	schema:name "land"@af ;
+	rdfs:label "देश"@mr ;
+	skos:prefLabel "देश"@mr ;
+	schema:name "देश"@mr ;
+	rdfs:label "kintra"@sco ;
+	skos:prefLabel "kintra"@sco ;
+	schema:name "kintra"@sco ;
+	rdfs:label "দেশ"@bn ;
+	skos:prefLabel "দেশ"@bn ;
+	schema:name "দেশ"@bn ;
+	rdfs:label "štát"@sk ;
+	skos:prefLabel "štát"@sk ;
+	schema:name "štát"@sk ;
+	rdfs:label "land"@nds-nl ;
+	skos:prefLabel "land"@nds-nl ;
+	schema:name "land"@nds-nl ;
+	rdfs:label "bro"@br ;
+	skos:prefLabel "bro"@br ;
+	schema:name "bro"@br ;
+	rdfs:label "civitas"@la ;
+	skos:prefLabel "civitas"@la ;
+	schema:name "civitas"@la ;
+	rdfs:label "valstybė"@lt ;
+	skos:prefLabel "valstybė"@lt ;
+	schema:name "valstybė"@lt ;
+	rdfs:label "държава"@bg ;
+	skos:prefLabel "държава"@bg ;
+	schema:name "държава"@bg ;
+	rdfs:label "وڵات"@ckb ;
+	skos:prefLabel "وڵات"@ckb ;
+	schema:name "وڵات"@ckb ;
+	rdfs:label "Land"@de-ch ;
+	skos:prefLabel "Land"@de-ch ;
+	schema:name "Land"@de-ch ;
+	rdfs:label "riik"@et ;
+	skos:prefLabel "riik"@et ;
+	schema:name "riik"@et ;
+	rdfs:label "pays"@pcd ;
+	skos:prefLabel "pays"@pcd ;
+	schema:name "pays"@pcd ;
+	rdfs:label "ülkesi"@tr ;
+	skos:prefLabel "ülkesi"@tr ;
+	schema:name "ülkesi"@tr ;
+	rdfs:label "paese"@co ;
+	skos:prefLabel "paese"@co ;
+	schema:name "paese"@co ;
+	rdfs:label "מדינה"@yi ;
+	skos:prefLabel "מדינה"@yi ;
+	schema:name "מדינה"@yi ;
+	rdfs:label "estat"@oc ;
+	skos:prefLabel "estat"@oc ;
+	schema:name "estat"@oc ;
+	rdfs:label "gugde"@jbo ;
+	skos:prefLabel "gugde"@jbo ;
+	schema:name "gugde"@jbo ;
+	rdfs:label "State"@roa-tara ;
+	skos:prefLabel "State"@roa-tara ;
+	schema:name "State"@roa-tara ;
+	rdfs:label "દેશ"@gu ;
+	skos:prefLabel "દેશ"@gu ;
+	schema:name "દેશ"@gu ;
+	rdfs:label "negara"@ms ;
+	skos:prefLabel "negara"@ms ;
+	schema:name "negara"@ms ;
+	rdfs:label "bansa"@tl ;
+	skos:prefLabel "bansa"@tl ;
+	schema:name "bansa"@tl ;
+	rdfs:label "држава"@sr-ec ;
+	skos:prefLabel "држава"@sr-ec ;
+	schema:name "држава"@sr-ec ;
+	rdfs:label "država"@sr-el ;
+	skos:prefLabel "država"@sr-el ;
+	schema:name "država"@sr-el ;
+	rdfs:label "zemlja"@sh ;
+	skos:prefLabel "zemlja"@sh ;
+	schema:name "zemlja"@sh ;
+	rdfs:label "Firenena"@mg ;
+	skos:prefLabel "Firenena"@mg ;
+	schema:name "Firenena"@mg ;
+	rdfs:label "Staat"@gsw ;
+	skos:prefLabel "Staat"@gsw ;
+	schema:name "Staat"@gsw ;
+	rdfs:label "Land"@lb ;
+	skos:prefLabel "Land"@lb ;
+	schema:name "Land"@lb ;
+	rdfs:label "దేశం"@te ;
+	skos:prefLabel "దేశం"@te ;
+	schema:name "దేశం"@te ;
+	rdfs:label "Tiko"@ts ;
+	skos:prefLabel "Tiko"@ts ;
+	schema:name "Tiko"@ts ;
+	rdfs:label "дәүләт"@tt ;
+	skos:prefLabel "дәүләт"@tt ;
+	schema:name "дәүләт"@tt ;
+	rdfs:label "國"@yue ;
+	skos:prefLabel "國"@yue ;
+	schema:name "國"@yue ;
+	rdfs:label "國家"@zh-hk ;
+	skos:prefLabel "國家"@zh-hk ;
+	schema:name "國家"@zh-hk ;
+	rdfs:label "ଦେଶ"@or ;
+	skos:prefLabel "ଦେଶ"@or ;
+	schema:name "ଦେଶ"@or ;
+	rdfs:label "pais"@ia ;
+	skos:prefLabel "pais"@ia ;
+	schema:name "pais"@ia ;
+	rdfs:label "Schtaht"@ksh ;
+	skos:prefLabel "Schtaht"@ksh ;
+	schema:name "Schtaht"@ksh ;
+	rdfs:label "estatu burujabe"@eu ;
+	skos:prefLabel "estatu burujabe"@eu ;
+	schema:name "estatu burujabe"@eu ;
+	rdfs:label "pajisi"@scn ;
+	skos:prefLabel "pajisi"@scn ;
+	schema:name "pajisi"@scn ;
+	rdfs:label "lân"@fy ;
+	skos:prefLabel "lân"@fy ;
+	schema:name "lân"@fy ;
+	rdfs:label "пачхьалкх"@ce ;
+	skos:prefLabel "пачхьалкх"@ce ;
+	schema:name "пачхьалкх"@ce ;
+	rdfs:label "देश"@ne ;
+	skos:prefLabel "देश"@ne ;
+	schema:name "देश"@ne ;
+	rdfs:label "país"@ast ;
+	skos:prefLabel "país"@ast ;
+	schema:name "país"@ast ;
+	rdfs:label "gwladwriaeth"@cy ;
+	skos:prefLabel "gwladwriaeth"@cy ;
+	schema:name "gwladwriaeth"@cy ;
+	rdfs:label "мастор"@myv ;
+	skos:prefLabel "мастор"@myv ;
+	schema:name "мастор"@myv ;
+	rdfs:label "երկիր"@hy ;
+	skos:prefLabel "երկիր"@hy ;
+	schema:name "երկիր"@hy ;
+	rdfs:label "мланде"@mhr ;
+	skos:prefLabel "мланде"@mhr ;
+	schema:name "мланде"@mhr ;
+	rdfs:label "shteti"@sq ;
+	skos:prefLabel "shteti"@sq ;
+	schema:name "shteti"@sq ;
+	rdfs:label "pajjiż"@mt ;
+	skos:prefLabel "pajjiż"@mt ;
+	schema:name "pajjiż"@mt ;
+	rdfs:label "देश"@mai ;
+	skos:prefLabel "देश"@mai ;
+	schema:name "देश"@mai ;
+	rdfs:label "هېواد"@ps ;
+	skos:prefLabel "هېواد"@ps ;
+	schema:name "هېواد"@ps ;
+	rdfs:label "stoot"@frr ;
+	skos:prefLabel "stoot"@frr ;
+	schema:name "stoot"@frr ;
+	rdfs:label "land"@fo ;
+	skos:prefLabel "land"@fo ;
+	schema:name "land"@fo ;
+	rdfs:label "ದೇಶ"@kn ;
+	skos:prefLabel "ದೇಶ"@kn ;
+	schema:name "ದೇಶ"@kn ;
+	rdfs:label "tír"@ga ;
+	skos:prefLabel "tír"@ga ;
+	schema:name "tír"@ga ;
+	rdfs:label "dùthaich"@gd ;
+	skos:prefLabel "dùthaich"@gd ;
+	schema:name "dùthaich"@gd ;
+	rdfs:label "ਦੇਸ਼"@pa ;
+	skos:prefLabel "ਦੇਸ਼"@pa ;
+	schema:name "ਦੇਸ਼"@pa ;
+	rdfs:label "кишвар"@tg ;
+	skos:prefLabel "кишвар"@tg ;
+	schema:name "кишвар"@tg ;
+	rdfs:label "stat"@hsb ;
+	skos:prefLabel "stat"@hsb ;
+	schema:name "stat"@hsb ;
+	rdfs:label "dewlet"@ku-latn ;
+	skos:prefLabel "dewlet"@ku-latn ;
+	schema:name "dewlet"@ku-latn ;
+	rdfs:label "valdivo"@olo ;
+	skos:prefLabel "valdivo"@olo ;
+	schema:name "valdivo"@olo ;
+	rdfs:label "國家"@zh-mo ;
+	skos:prefLabel "國家"@zh-mo ;
+	schema:name "國家"@zh-mo ;
+	rdfs:label "国家"@zh-my ;
+	skos:prefLabel "国家"@zh-my ;
+	schema:name "国家"@zh-my ;
+	rdfs:label "国家"@zh-sg ;
+	skos:prefLabel "国家"@zh-sg ;
+	schema:name "国家"@zh-sg ;
+	rdfs:label "bangsa"@pam ;
+	skos:prefLabel "bangsa"@pam ;
+	schema:name "bangsa"@pam ;
+	rdfs:label "дәүләт"@ba ;
+	skos:prefLabel "дәүләт"@ba ;
+	schema:name "дәүләт"@ba ;
+	rdfs:label "Naga"@nso ;
+	skos:prefLabel "Naga"@nso ;
+	schema:name "Naga"@nso ;
+	rdfs:label "país"@an ;
+	skos:prefLabel "país"@an ;
+	schema:name "país"@an ;
+	rdfs:label "Stoot"@bar ;
+	skos:prefLabel "Stoot"@bar ;
+	schema:name "Stoot"@bar ;
+	rdfs:label "мамлекет"@ky ;
+	skos:prefLabel "мамлекет"@ky ;
+	schema:name "мамлекет"@ky ;
+	rdfs:label "ملک"@ur ;
+	skos:prefLabel "ملک"@ur ;
+	schema:name "ملک"@ur ;
+	rdfs:label "orílè-èdè"@yo ;
+	skos:prefLabel "orílè-èdè"@yo ;
+	schema:name "orílè-èdè"@yo ;
+	rdfs:label "давлат"@tg-cyrl ;
+	skos:prefLabel "давлат"@tg-cyrl ;
+	schema:name "давлат"@tg-cyrl ;
+	rdfs:label "နိုင်ငံ"@my ;
+	skos:prefLabel "နိုင်ငံ"@my ;
+	schema:name "နိုင်ငံ"@my ;
+	rdfs:label "البلاد"@aeb-arab ;
+	skos:prefLabel "البلاد"@aeb-arab ;
+	schema:name "البلاد"@aeb-arab ;
+	rdfs:label "дәүләт"@tt-cyrl ;
+	skos:prefLabel "дәүләт"@tt-cyrl ;
+	schema:name "дәүләт"@tt-cyrl ;
+	rdfs:label "däwlät"@tt-latn ;
+	skos:prefLabel "däwlät"@tt-latn ;
+	schema:name "däwlät"@tt-latn ;
+	rdfs:label "riika"@se ;
+	skos:prefLabel "riika"@se ;
+	schema:name "riika"@se ;
+	rdfs:label "රට"@si ;
+	skos:prefLabel "රට"@si ;
+	schema:name "රට"@si ;
+	rdfs:label "lando"@io ;
+	skos:prefLabel "lando"@io ;
+	schema:name "lando"@io ;
+	rdfs:label "län"@vo ;
+	skos:prefLabel "län"@vo ;
+	schema:name "län"@vo ;
+	rdfs:label "pais"@lfn ;
+	skos:prefLabel "pais"@lfn ;
+	schema:name "pais"@lfn ;
+	rdfs:label "ƙasa"@ha ;
+	skos:prefLabel "ƙasa"@ha ;
+	schema:name "ƙasa"@ha ;
+	rdfs:label "ölkə"@az ;
+	skos:prefLabel "ölkə"@az ;
+	schema:name "ölkə"@az ;
+	rdfs:label "askik"@atj ;
+	skos:prefLabel "askik"@atj ;
+	schema:name "askik"@atj ;
+	rdfs:label "አገር"@am ;
+	skos:prefLabel "አገር"@am ;
+	schema:name "አገር"@am ;
+	rdfs:label "dewlete"@diq ;
+	skos:prefLabel "dewlete"@diq ;
+	schema:name "dewlete"@diq ;
+	rdfs:label "vaļsteiba"@ltg ;
+	skos:prefLabel "vaļsteiba"@ltg ;
+	schema:name "vaļsteiba"@ltg ;
+	rdfs:label "šalės"@sgs ;
+	skos:prefLabel "šalės"@sgs ;
+	schema:name "šalės"@sgs ;
+	rdfs:label "nagara"@jv ;
+	skos:prefLabel "nagara"@jv ;
+	schema:name "nagara"@jv ;
+	rdfs:label "tamurt"@kab ;
+	skos:prefLabel "tamurt"@kab ;
+	schema:name "tamurt"@kab ;
+	rdfs:label "гьукумат"@lez ;
+	skos:prefLabel "гьукумат"@lez ;
+	schema:name "гьукумат"@lez ;
+	rdfs:label "ߖߡߊ߬ߣߊ߫"@nqo ;
+	skos:prefLabel "ߖߡߊ߬ߣߊ߫"@nqo ;
+	schema:name "ߖߡߊ߬ߣߊ߫"@nqo ;
+	rdfs:label "whenua"@mi ;
+	skos:prefLabel "whenua"@mi ;
+	schema:name "whenua"@mi ;
+	rdfs:label "stato"@vec ;
+	skos:prefLabel "stato"@vec ;
+	schema:name "stato"@vec ;
+	rdfs:label "بلاد"@ary ;
+	skos:prefLabel "بلاد"@ary ;
+	schema:name "بلاد"@ary ;
+	rdfs:label "ꯂꯩꯄꯥꯛ"@mni ;
+	skos:prefLabel "ꯂꯩꯄꯥꯛ"@mni ;
+	schema:name "ꯂꯩꯄꯥꯛ"@mni ;
+	rdfs:label "pow"@kw ;
+	skos:prefLabel "pow"@kw ;
+	schema:name "pow"@kw ;
+	rdfs:label "ملڪ"@sd ;
+	skos:prefLabel "ملڪ"@sd ;
+	schema:name "ملڪ"@sd ;
+	rdfs:label "staatâ"@smn ;
+	skos:prefLabel "staatâ"@smn ;
+	schema:name "staatâ"@smn ;
+	rdfs:label "valdia"@sms ;
+	skos:prefLabel "valdia"@sms ;
+	schema:name "valdia"@sms ;
+	rdfs:label "państwo"@szl ;
+	skos:prefLabel "państwo"@szl ;
+	schema:name "państwo"@szl ;
+	rdfs:label "ሃገር"@ti ;
+	skos:prefLabel "ሃገር"@ti ;
+	schema:name "ሃገር"@ti ;
+	rdfs:label "мемлекет"@kk ;
+	skos:prefLabel "мемлекет"@kk ;
+	schema:name "мемлекет"@kk ;
+	rdfs:label "kanatal"@szy ;
+	skos:prefLabel "kanatal"@szy ;
+	schema:name "kanatal"@szy ;
+	rdfs:label "pàize"@lij ;
+	skos:prefLabel "pàize"@lij ;
+	schema:name "pàize"@lij ;
+	rdfs:label "نݢارا"@ms-arab ;
+	skos:prefLabel "نݢارا"@ms-arab ;
+	schema:name "نݢارا"@ms-arab ;
+	rdfs:label "паддзахад"@os ;
+	skos:prefLabel "паддзахад"@os ;
+	schema:name "паддзахад"@os ;
+	rdfs:label "pais"@pap ;
+	skos:prefLabel "pais"@pap ;
+	schema:name "pais"@pap ;
+	rdfs:label "dewlet"@ku ;
+	skos:prefLabel "dewlet"@ku ;
+	schema:name "dewlet"@ku ;
+	rdfs:label "negara"@ban ;
+	skos:prefLabel "negara"@ban ;
+	schema:name "negara"@ban ;
+	rdfs:label "kok-ka"@nan ;
+	skos:prefLabel "kok-ka"@nan ;
+	schema:name "kok-ka"@nan ;
+	rdfs:label "tiŋa"@dag ;
+	skos:prefLabel "tiŋa"@dag ;
+	schema:name "tiŋa"@dag ;
+	rdfs:label "кунэз"@udm ;
+	skos:prefLabel "кунэз"@udm ;
+	schema:name "кунэз"@udm ;
+	rdfs:label "izwe"@zu ;
+	skos:prefLabel "izwe"@zu ;
+	schema:name "izwe"@zu ;
+	rdfs:label "Oman"@ak ;
+	skos:prefLabel "Oman"@ak ;
+	schema:name "Oman"@ak ;
+	rdfs:label "country"@en ;
+	skos:prefLabel "country"@en ;
+	schema:name "country"@en ;
+	rdfs:label "тергее"@alt ;
+	skos:prefLabel "тергее"@alt ;
+	schema:name "тергее"@alt ;
+	rdfs:label "ქიანა"@xmf ;
+	skos:prefLabel "ქიანა"@xmf ;
+	schema:name "ქიანა"@xmf ;
+	rdfs:label "مُلُک"@ks ;
+	skos:prefLabel "مُلُک"@ks ;
+	schema:name "مُلُک"@ks ;
+	rdfs:label "stat"@dsb ;
+	skos:prefLabel "stat"@dsb ;
+	schema:name "stat"@dsb ;
+	rdfs:label "Paese"@nap ;
+	skos:prefLabel "Paese"@nap ;
+	schema:name "Paese"@nap ;
+	rdfs:label "mba/obodo"@ig ;
+	skos:prefLabel "mba/obodo"@ig ;
+	schema:name "mba/obodo"@ig ;
+	rdfs:label "a̱byin"@kcg ;
+	skos:prefLabel "a̱byin"@kcg ;
+	schema:name "a̱byin"@kcg ;
+	rdfs:label "lesdi"@ff ;
+	skos:prefLabel "lesdi"@ff ;
+	schema:name "lesdi"@ff ;
+	rdfs:label "улс"@mn ;
+	skos:prefLabel "улс"@mn ;
+	schema:name "улс"@mn ;
+	rdfs:label "country"@gpe ;
+	skos:prefLabel "country"@gpe ;
+	schema:name "country"@gpe ;
+	rdfs:label "دیس"@pnb ;
+	skos:prefLabel "دیس"@pnb ;
+	schema:name "دیس"@pnb ;
+	rdfs:label "দেশ"@as ;
+	skos:prefLabel "দেশ"@as ;
+	schema:name "দেশ"@as ;
+	rdfs:label "держава"@rue ;
+	skos:prefLabel "держава"@rue ;
+	schema:name "держава"@rue ;
+	rdfs:label "otò"@guw ;
+	skos:prefLabel "otò"@guw ;
+	schema:name "otò"@guw ;
+	rdfs:label "kontri"@pcm ;
+	skos:prefLabel "kontri"@pcm ;
+	schema:name "kontri"@pcm ;
+	rdfs:label "tetã"@gn ;
+	skos:prefLabel "tetã"@gn ;
+	schema:name "tetã"@gn ;
+	rdfs:label "paisu"@sc ;
+	skos:prefLabel "paisu"@sc ;
+	schema:name "paisu"@sc ;
+	rdfs:label "Nchi"@sw ;
+	skos:prefLabel "Nchi"@sw ;
+	schema:name "Nchi"@sw ;
+	rdfs:label "paès"@rgn ;
+	skos:prefLabel "paès"@rgn ;
+	schema:name "paès"@rgn ;
+	rdfs:label "البلاد"@arq ;
+	skos:prefLabel "البلاد"@arq ;
+	schema:name "البلاد"@arq ;
+	rdfs:label "kaumokuʻāina"@haw ;
+	skos:prefLabel "kaumokuʻāina"@haw ;
+	schema:name "kaumokuʻāina"@haw ;
+	rdfs:label "ma"@tok ;
+	skos:prefLabel "ma"@tok ;
+	schema:name "ma"@tok ;
+	rdfs:label "mámleket"@kaa ;
+	skos:prefLabel "mámleket"@kaa ;
+	schema:name "mámleket"@kaa ;
+	rdfs:label "nagara"@su ;
+	skos:prefLabel "nagara"@su ;
+	schema:name "nagara"@su ;
+	rdfs:label "देश"@bho ;
+	skos:prefLabel "देश"@bho ;
+	schema:name "देश"@bho ;
+	rdfs:label "国"@ryu ;
+	skos:prefLabel "国"@ryu ;
+	schema:name "国"@ryu ;
+	rdfs:label "کشور"@mzn ;
+	skos:prefLabel "کشور"@mzn ;
+	schema:name "کشور"@mzn ;
+	rdfs:label "państwò"@csb ;
+	skos:prefLabel "państwò"@csb ;
+	schema:name "państwò"@csb ;
+	rdfs:label "ꙁємл҄ѣ"@cu ;
+	skos:prefLabel "ꙁємл҄ѣ"@cu ;
+	schema:name "ꙁємл҄ѣ"@cu ;
+	rdfs:label "bikéyah"@nv ;
+	skos:prefLabel "bikéyah"@nv ;
+	schema:name "bikéyah"@nv ;
+	rdfs:label "χώρᾱ"@grc ;
+	skos:prefLabel "χώρᾱ"@grc ;
+	schema:name "χώρᾱ"@grc ;
+	rdfs:label "𐍂𐌴𐌹𐌺𐌹"@got ;
+	skos:prefLabel "𐍂𐌴𐌹𐌺𐌹"@got ;
+	schema:name "𐍂𐌴𐌹𐌺𐌹"@got ;
+	rdfs:label "yakni"@cho ;
+	skos:prefLabel "yakni"@cho ;
+	schema:name "yakni"@cho ;
+	rdfs:label "ᏍᎦᏚᎩ"@chr ;
+	skos:prefLabel "ᏍᎦᏚᎩ"@chr ;
+	schema:name "ᏍᎦᏚᎩ"@chr ;
+	rdfs:label "kišvər"@tly ;
+	skos:prefLabel "kišvər"@tly ;
+	schema:name "kišvər"@tly ;
+	rdfs:label "To"@fon ;
+	skos:prefLabel "To"@fon ;
+	schema:name "To"@fon ;
+	rdfs:label "ປະເທດ"@lo ;
+	skos:prefLabel "ປະເທດ"@lo ;
+	schema:name "ປະເທດ"@lo ;
+	rdfs:label "Къэрал"@ady ;
+	skos:prefLabel "Къэрал"@ady ;
+	schema:name "Къэрал"@ady ;
+	rdfs:label "ᱫᱤᱥᱚᱢ"@sat ;
+	skos:prefLabel "ᱫᱤᱥᱚᱢ"@sat ;
+	schema:name "ᱫᱤᱥᱚᱢ"@sat ;
+	rdfs:label "país"@ext ;
+	skos:prefLabel "país"@ext ;
+	schema:name "país"@ext ;
+	rdfs:label "ꠖꠦꠡ"@syl ;
+	skos:prefLabel "ꠖꠦꠡ"@syl ;
+	schema:name "ꠖꠦꠡ"@syl ;
+	rdfs:label "патшалӑх"@cv ;
+	skos:prefLabel "патшалӑх"@cv ;
+	schema:name "патшалӑх"@cv ;
+	rdfs:label "國家"@nan-hani ;
+	skos:prefLabel "國家"@nan-hani ;
+	schema:name "國家"@nan-hani ;
+	rdfs:label "country"@en-us ;
+	skos:prefLabel "country"@en-us ;
+	schema:name "country"@en-us ;
+	rdfs:label "Ɔman"@tw ;
+	skos:prefLabel "Ɔman"@tw ;
+	schema:name "Ɔman"@tw ;
+	rdfs:label "devlet"@crh ;
+	skos:prefLabel "devlet"@crh ;
+	schema:name "devlet"@crh ;
+	rdfs:label "çheer"@gv ;
+	skos:prefLabel "çheer"@gv ;
+	schema:name "çheer"@gv ;
+	rdfs:label "tamazirt"@shi ;
+	skos:prefLabel "tamazirt"@shi ;
+	schema:name "tamazirt"@shi ;
+	rdfs:label "kok-ka"@nan-latn-pehoeji ;
+	skos:prefLabel "kok-ka"@nan-latn-pehoeji ;
+	schema:name "kok-ka"@nan-latn-pehoeji ;
+	rdfs:label "guekgya"@za ;
+	skos:prefLabel "guekgya"@za ;
+	schema:name "guekgya"@za ;
+	rdfs:label "Igihugu"@rn ;
+	skos:prefLabel "Igihugu"@rn ;
+	schema:name "Igihugu"@rn ;
+	rdfs:label "tautā"@prg ;
+	skos:prefLabel "tautā"@prg ;
+	schema:name "tautā"@prg ;
+	rdfs:label "Paaloŋ"@dga ;
+	skos:prefLabel "Paaloŋ"@dga ;
+	schema:name "Paaloŋ"@dga ;
+	rdfs:label "國家"@nan-hant ;
+	skos:prefLabel "國家"@nan-hant ;
+	schema:name "國家"@nan-hant ;
+	rdfs:label "kok-ka"@nan-latn-tailo ;
+	skos:prefLabel "kok-ka"@nan-latn-tailo ;
+	schema:name "kok-ka"@nan-latn-tailo ;
+	rdfs:label "ዓድ"@tig ;
+	skos:prefLabel "ዓድ"@tig ;
+	schema:name "ዓድ"@tig ;
+	rdfs:label "ido"@ann ;
+	skos:prefLabel "ido"@ann ;
+	schema:name "ido"@ann ;
+	rdfs:label "хӀукумат"@lbe ;
+	skos:prefLabel "хӀукумат"@lbe ;
+	schema:name "хӀукумат"@lbe ;
+	rdfs:label "memleket"@crh-ro ;
+	skos:prefLabel "memleket"@crh-ro ;
+	schema:name "memleket"@crh-ro ;
+	rdfs:label "maŋ"@gaa ;
+	skos:prefLabel "maŋ"@gaa ;
+	schema:name "maŋ"@gaa ;
+	rdfs:label "ⵜⴰⵎⴰⵣⵉⵔⵜ"@zgh ;
+	skos:prefLabel "ⵜⴰⵎⴰⵣⵉⵔⵜ"@zgh ;
+	schema:name "ⵜⴰⵎⴰⵣⵉⵔⵜ"@zgh ;
+	rdfs:label "nuna"@kl ;
+	skos:prefLabel "nuna"@kl ;
+	schema:name "nuna"@kl ;
+	rdfs:label "naghârâ"@mad ;
+	skos:prefLabel "naghârâ"@mad ;
+	schema:name "naghârâ"@mad ;
+	rdfs:label "kanatal kitakit"@ami ;
+	skos:prefLabel "kanatal kitakit"@ami ;
+	schema:name "kanatal kitakit"@ami ;
+	rdfs:label "menua"@iba ;
+	skos:prefLabel "menua"@iba ;
+	schema:name "menua"@iba ;
+	rdfs:label "klwaan"@trv ;
+	skos:prefLabel "klwaan"@trv ;
+	schema:name "klwaan"@trv ;
+	rdfs:label "البلد"@acm ;
+	skos:prefLabel "البلد"@acm ;
+	schema:name "البلد"@acm ;
+	rdfs:label "Paalʋʋ"@wlx ;
+	skos:prefLabel "Paalʋʋ"@wlx ;
+	schema:name "Paalʋʋ"@wlx ;
+	rdfs:label "Egwanga"@lg ;
+	skos:prefLabel "Egwanga"@lg ;
+	schema:name "Egwanga"@lg ;
+	rdfs:label "kuntrii"@pih ;
+	skos:prefLabel "kuntrii"@pih ;
+	schema:name "kuntrii"@pih ;
+	rdfs:label "пачалихъ"@av ;
+	skos:prefLabel "пачалихъ"@av ;
+	schema:name "пачалихъ"@av ;
+	rdfs:label "국가"@ko-kp ;
+	skos:prefLabel "국가"@ko-kp ;
+	schema:name "국가"@ko-kp ;
+	rdfs:label "Eihanga"@nyn ;
+	skos:prefLabel "Eihanga"@nyn ;
+	schema:name "Eihanga"@nyn ;
+	rdfs:label "naigalaan"@aig ;
+	skos:prefLabel "naigalaan"@aig ;
+	schema:name "naigalaan"@aig ;
+	rdfs:label "ka̱byen"@kaj ;
+	skos:prefLabel "ka̱byen"@kaj ;
+	schema:name "ka̱byen"@kaj ;
+	rdfs:label "မိူင်း"@shn ;
+	skos:prefLabel "မိူင်း"@shn ;
+	schema:name "မိူင်း"@shn ;
+	rdfs:label "རྒྱལ་ཁབ།"@bo ;
+	skos:prefLabel "རྒྱལ་ཁབ།"@bo ;
+	schema:name "རྒྱལ་ཁབ།"@bo ;
+	rdfs:label "biittaa"@wal ;
+	skos:prefLabel "biittaa"@wal ;
+	schema:name "biittaa"@wal ;
+	rdfs:label "ದೇಸೊ"@tcy ;
+	skos:prefLabel "ದೇಸೊ"@tcy ;
+	schema:name "ದೇಸೊ"@tcy ;
+	rdfs:label "Ɔman"@fat ;
+	skos:prefLabel "Ɔman"@fat ;
+	schema:name "Ɔman"@fat ;
+	rdfs:label "Mama llaqta"@qu ;
+	skos:prefLabel "Mama llaqta"@qu ;
+	schema:name "Mama llaqta"@qu ;
+	rdfs:label "воа̄ллтланнҍ"@sjd ;
+	skos:prefLabel "воа̄ллтланнҍ"@sjd ;
+	schema:name "воа̄ллтланнҍ"@sjd ;
+	rdfs:label "chalo"@tum ;
+	skos:prefLabel "chalo"@tum ;
+	schema:name "chalo"@tum ;
+	rdfs:label "ကၟိန်ဍုင်"@mnw ;
+	skos:prefLabel "ကၟိန်ဍုင်"@mnw ;
+	schema:name "ကၟိန်ဍုင်"@mnw ;
+	rdfs:label "bansa"@pag ;
+	skos:prefLabel "bansa"@pag ;
+	schema:name "bansa"@pag ;
+	rdfs:label "држава"@isv-cyrl ;
+	skos:prefLabel "држава"@isv-cyrl ;
+	schema:name "држава"@isv-cyrl ;
+	rdfs:label "država"@isv-latn ;
+	skos:prefLabel "država"@isv-latn ;
+	schema:name "država"@isv-latn ;
+	rdfs:label "судаарыстыба"@sah ;
+	skos:prefLabel "судаарыстыба"@sah ;
+	schema:name "судаарыстыба"@sah ;
+	rdfs:label "dobadona"@lzz ;
+	skos:prefLabel "dobadona"@lzz ;
+	schema:name "dobadona"@lzz ;
+	schema:description "sovereign state that this subject item is in (not to be used for human beings)"@en,
+		"État souverain ou sur lequel se trouve l'élément (ne pas utiliser sur les humains)"@fr,
+		"ordinamento giuridico politico indipendente a cui appartiene questo elemento"@it,
+		"suverena država ovog elementa"@hr,
+		"Estado soberano donde se encuentra este elemento (no usar con humanos)"@es,
+		"souveräner Staat, in dem sich das Subjekt befindet"@de,
+		"το κυρίαρχο κράτος αυτού του αντικείμενου"@el,
+		"valtio, jossa kohde sijaitsee"@fi,
+		"ti naturay nga estado iti daytoy a banag"@ilo,
+		"samostatný státní útvar"@cs,
+		"מדינה ריבונית, אוניטארית או פדרלית"@he,
+		"den selvstændige stat hvori dette objekt befinder sig"@da,
+		"此项目位于的主权国家（不可用于人类）"@zh,
+		"sovereign state that this item is in (not to be used for human beings)"@en-gb,
+		"sovereign state that this item is in (not to be used for human beings)"@en-ca,
+		"quốc gia của khoản mục này (không được dùng cho người)"@vi,
+		"het land waar een item zich bevindt"@nl,
+		"इस आइटम का संप्रभु राज्य"@hi,
+		"suverena država, ki ji predmet pripada"@sl,
+		"該主體位於的主權國家（不可用於人類）"@zh-hant,
+		"此项目位于的主权国家（不可用于人类）"@zh-hans,
+		"இந்த உருப்படியின் இறையாண்மையுள்ள நாடு"@ta,
+		"negara berdaulat dari butir ini; jangan gunakan pada manusia"@id,
+		"stat suveran în care se află acest element (nu trebuie utilizat pentru ființe umane)"@ro,
+		"valsts, uz kuru šī vienība attiecas/pieder"@lv,
+		"該主體位於的主權國家（不可用於人類）"@zh-tw,
+		"tillhör eller avser suverän stat"@sv,
+		"此项目位于的主权国家（不可用于人类）"@zh-cn,
+		"суверенное государство, связанное с этим элементом"@ru,
+		"suvereine ståt van dit objekt"@nds-nl,
+		"stad souveren an elfenn-mañ"@br,
+		"суверенната политическа общност от която е част обектът"@bg,
+		"gehört zu diesem Datenobjekt"@de-ch,
+		"во која суверена држава се наоѓа предметот"@mk,
+		"estat sobirà de l'element"@ca,
+		"країна, у якій розташовується елемент (крім людей та рухомого складу)"@uk,
+		"سرزمین"@fa,
+		"ordinamende giurideche politeche indipendende"@roa-tara,
+		"આ લેખનું સાર્વભૌમ રાષ્ટ્ર"@gu,
+		"país ao qual o item pertence"@pt,
+		"суверена држава ове ставке; не користите на људима"@sr,
+		"суверена држава којој ставка припада"@sr-ec,
+		"suverena država kojoj stavka pripada"@sr-el,
+		"suverena država"@sh,
+		"suveren stat som elementet befinner seg i eller hører til"@nb,
+		"de suveräni Staat, wu s Objäkt dinne lyt"@gsw,
+		"szuverén ország, ahol az elem található (személyeknél nem használható)"@hu,
+		"此項目位於的主權國家（不可用於人類）"@zh-hk,
+		"Dä suvverähne Schtahd, wo dat es"@ksh,
+		"statu suvranu unni si trova a cosa (nun s'usa pî cristiani)"@scn,
+		"この項目が存在する主権国家（人間には使用しない）"@ja,
+		"elementu honen estatu subiranoa"@eu,
+		"estáu soberanu d'esti elementu (nun usar pa persones)"@ast,
+		"gwladwriaeth neu wlad"@cy,
+		"państwo, w którym obiekt się znajduje"@pl,
+		"տվյալ տարրի ինքնիշխան պետություն"@hy,
+		"país ao qual o item pertence"@pt-br,
+		"항목 주제는 다음 나라(국가)의 것을 다루고 있음"@ko,
+		"الدولة ذات السيادة التي يتواجد فيها هذا العنصر (لا يستخدم للبشر)"@ar,
+		"ଏହି ବସ୍ତୁର ରାଜ୍ୟ"@or,
+		"সার্বভৌম রাষ্ট্র"@bn,
+		"njewotwisny stat, w kotrymž so objekt nadeńdźe"@hsb,
+		"ამ ელემენტის სუვერენული სახელმწიფო"@ka,
+		"此項目位於的主權國家（不可用於人類）"@zh-mo,
+		"此项目位于的主权国家（不可用于人类）"@zh-my,
+		"此项目位于的主权国家（不可用于人类）"@zh-sg,
+		"был элементтың бойондороҡһоҙ дәүләте"@ba,
+		"Stoot wo dea Beziak liegt"@bar,
+		"souveräne Staat, wou sech de Sujet befënnt (net fir Persoune benotzen)"@lb,
+		"ఈ అంశం యొక్క సార్వభౌమ రాజ్యం"@te,
+		"bu ögenin ait olduğu egemen devlet (bireyler için kullanmayınız; onlar için \"country of citizenship\" kullanınız)"@tr,
+		"negara berdaulat tempat item subjek ini berada (tidak untuk digunakan pada manusia)"@ms,
+		"මෙම අයිතමය අයත් ස්වෛරී රාජ්‍යය"@si,
+		"項目主題屬於邊個國家 (唔好用喺人類)"@yue,
+		"ਪ੍ਰਭੂਸੱਤਾ ਰਾਜ ਜਿਸ ਵਿੱਚ ਇਹ ਆਈਟਮ ਹੈ (ਮਨੁੱਖਾਂ ਲਈ ਵਰਤੇ ਜਾਣ ਲਈ ਨਹੀਂ)"@pa,
+		"сувэрэнная дзяржава гэтага элемэнту; не прымяняйце для людзей"@be-tarask,
+		"сарзамин"@tg,
+		"nagara mardika saka wiji iki; aja dianggo tumrap manungsa"@jv,
+		"estado soberano do elemento (non usar con seres humanos)"@gl,
+		"ߖߊ߬ߡߊ ߣߊ߫"@nqo,
+		"bu maddənin suveren dövləti; insanlara istifadə etməyin"@az,
+		"Stato sovran del ełemento"@vec,
+		"هن شيءَ جي خودمختيار رياست (انسان لاءِ استعمال نه ٿيندي)"@sd,
+		"اس شے کی خودمختار رياست (انسانوں کے لیے استعمال نہیں ہوگی)"@ur,
+		"państwo, w kerym ôbiekt sie znajduje"@szl,
+		"ናይዚ ውልቀ ነገር ልኡላዊት ሃገር"@ti,
+		"осы нәрсе (элемент) тиесілі мемлекет"@kk,
+		"stâto sovràn"@lij,
+		"суверэнная дзяржава для гэтага элемента (не ўжываць для людзей)"@be,
+		"Tiŋgbaŋ shɛli ni ninsali nim ni be (amaa di bi mali buɣisiri ninsali nima)"@dag,
+		"та арберилэн кунэз (адямиослы кутонтэм)"@udm,
+		"ഈ ഇനത്തിന്റെ പരമാധികാര രാഷ്ട്രം (മനുഷ്യർക്കായുള്ള ഇനങ്ങളിൽ ഉപയോഗിക്കാൻ പാടില്ല)"@ml,
+		"njewótwisny stat, w kótaremž se objekt nadejźo"@dsb,
+		"dùthaich anns a bheil an rud seo (na cleachd airson daoine)"@gd,
+		"obodo nke ihe a (agaghị eji maka mmadụ)"@ig,
+		"a̱byin ka̱ yong a̱pyia̱ nka"@kcg,
+		"бие даасан улс"@mn,
+		"sovereign state for dis item (dem for no use am give human beings)"@gpe,
+		"держава, у котрій ся нахожує елемент"@rue,
+		"istadu soberanu de custu elementu (non bolet impreadu pro sas persones)"@sc,
+		"ushbu element joylashgan suveren davlat (odamlar uchun ishlatilmaydi)"@uz,
+		"nagara daulat yén barang ieu aya dina; ulah dianggo pikeun manusa"@su,
+		"संप्रभु राज्य जेह में ई आइटम स्थित बाटे (मनुष्य खाती ना इस्तेमाल कइल जाय)"@bho,
+		"دولتی که این آیتم جه ربط دارنه"@mzn,
+		"Estau soberano on ye este elemento (no usar con humanos)"@an,
+		"suverena ŝtato en kiu ĉi tiu objekto situas (ne uzebla por homoj)"@eo,
+		"estau soberanu d'esti elementu"@ext,
+		"suveren stat som elementet er i (skal ikkje nyttast for menneske)"@nn,
+		"Estat sobeiran d'aqueste element"@oc,
+		"ئیسپانیا"@ckb,
+		"dewleta ku ev îtem tê de ye"@ku,
+		"這个項目的主權國家(袂當用佇人類身上)"@nan-hani,
+		"chit-ê hāng-bo̍k ê chú-koân kok-ka(bōe-tàng iōng tī lîn-lūi sin-siòng)"@nan,
+		"usı element jaylasqan suveren mámleket (adamlar ushın isletilmeydi)"@kaa,
+		"sovereign state that this item is in (not to be used for human beings)"@en-us,
+		"chit-ê hāng-bo̍k ê chú-koân kok-ka(bōe-tàng iōng tī lîn-lūi sin-siòng)"@nan-latn-pehoeji,
+		"Leta yigenga aho  iki kintu kiri (ntigikoreshwe ku bantu)"@rn,
+		"wālstis šisse elamēntis ēn"@prg,
+		"paaloŋ na ana bone ŋa naŋ be (ka o ta kyaare nensaalba )"@dga,
+		"這个項目的主權國家(袂當用佇人類身上)"@nan-hant,
+		"tsit-ê hāng-bo̍k ê tsú-kuân kok-ka(buē-tàng iōng tī lîn-luī sin-siòng)"@nan-latn-tailo,
+		"suverena država u kojoj se ovaj predmet nalazi (ne koristi se za ljudska bića)"@bs,
+		"ⴰⵡⴰⵏⴽ ⵏⵏⴰ ⵉⵍⴰⵏ ⵜⴰⵙⵏⵉⵎⴰⵏⵜ ⵏⵏⵙ"@zgh,
+		"onafhanklike staat waarin die item te vinde is"@af,
+		"menua item tu; anang dikena ba mensia"@iba,
+		"stát ardcheannasach ina bhfuil an mír (ná húsáidtear do dhaoine)"@ga,
+		"суверенияб пачалихъ, гьеб элементалда хурхараб"@av,
+		"Ekitundu ekirina obukulembeze obwetongodde"@lg,
+		"ka̱byen ya du̱tyok du̱ccu nka"@kaj,
+		"هغه ځمکه چې انسانان پکې په گډه د يو حکومت ترچتر لاندې اوسېږي"@ps,
+		"issibay de'iyo la'a kawotettaa, (asa naatussi go'ettennaagaa)"@wal,
+		"asukohariik (mitte kasutada inimeste puhul)"@et ;
+	skos:altLabel "國家"@zh,
+		"主权国家"@zh,
+		"主權國家"@zh,
+		"sovereign state"@en,
+		"state"@en,
+		"land"@en,
+		"host country"@en,
+		"Land"@de,
+		"संप्रभु राज्य"@hi,
+		"är i landet"@sv,
+		"gäller landet"@sv,
+		"avser landet"@sv,
+		"држава"@mk,
+		"země"@cs,
+		"staat"@nl,
+		"soevereine staat"@nl,
+		"natie"@nl,
+		"страна"@bg,
+		"לאַנד"@yi,
+		"держава"@uk,
+		"دیار"@fa,
+		"وطن"@fa,
+		"میهن"@fa,
+		"Estado"@es,
+		"Estado soberano"@es,
+		"país anfitrión"@es,
+		"主权国家"@zh-hans,
+		"estáu"@ast,
+		"estáu soberanu"@ast,
+		"país soberanu"@ast,
+		"nazione"@it,
+		"Stato"@it,
+		"kraj"@pl,
+		"estat sobirà"@ca,
+		"país"@ca,
+		"Estado"@pt-br,
+		"estado soberano"@pt-br,
+		"nação"@pt-br,
+		"나라"@ko,
+		"속해 있는 나라"@ko,
+		"다음 나라와 관련 있음"@ko,
+		"속해 있는 국가"@ko,
+		"다음 국가에 속해 있음"@ko,
+		"다음 국가와 관련 있음"@ko,
+		"다음 나라에 속해 있음"@ko,
+		"다음 국가에 위치함"@ko,
+		"위치한 국가"@ko,
+		"위치한 나라"@ko,
+		"위치하고 있는 국가"@ko,
+		"위치하고 있는 나라"@ko,
+		"다음 국가에 있음"@ko,
+		"다음 국가에 위치하고 있음"@ko,
+		"다음 나라에 위치해 있음"@ko,
+		"다음 국가에 위치해 있음"@ko,
+		"다음 나라에 있음"@ko,
+		"다음 나라 안에 위치함"@ko,
+		"다음 나라 안에 있음"@ko,
+		"다음 나라에 위치함"@ko,
+		"다음 나라에 위치하고 있음"@ko,
+		"다음 국가와 관련된 주제임"@ko,
+		"다음 나라에 관한 주제임"@ko,
+		"다음 국가에 관한 주제임"@ko,
+		"다음 나라와 관련된 주제임"@ko,
+		"다음 나라에 관한 것임"@ko,
+		"다음 국가에 관한 것임"@ko,
+		"다음 국가의 것임"@ko,
+		"다음나라의것임"@ko,
+		"다음국가의것임"@ko,
+		"국가"@ko,
+		"주권국"@ko,
+		"ríki"@fo,
+		"страна"@ru,
+		"bro"@br,
+		"État"@fr,
+		"இறையாண்மையுள்ள நாடு"@ta,
+		"தேசம்"@ta,
+		"நிலம்"@ta,
+		"ରାଷ୍ଟ୍ର"@or,
+		"ଜାତି"@or,
+		"ଭୂମି"@or,
+		"রাষ্ট্র"@bn,
+		"სახელმწიფო"@ka,
+		"soberanung estadu"@pam,
+		"estadung soberanu"@pam,
+		"stat"@nb,
+		"estatu"@eu,
+		"herrialde"@eu,
+		"lurralde"@eu,
+		"давлат"@tg,
+		"мамлакат"@tg,
+		"диёр"@tg,
+		"ватан"@tg,
+		"меҳан"@tg,
+		"Land"@bar,
+		"రాజ్యం"@te,
+		"кишвар"@tg-cyrl,
+		"мамлакат"@tg-cyrl,
+		"အချုပ်အခြာ အာဏာပိုင် နိုင်ငံ"@my,
+		"ил"@tt-cyrl,
+		"il"@tt-latn,
+		"ил"@tt,
+		"egemen devleti"@tr,
+		"ulusu"@tr,
+		"devleti"@tr,
+		"toprağı"@tr,
+		"stat"@ro,
+		"țara gazdă"@ro,
+		"stat suveran"@ro,
+		"stat"@da,
+		"sovereign state"@en-ca,
+		"nation"@en-ca,
+		"state"@en-ca,
+		"land"@en-ca,
+		"sovereign state"@en-gb,
+		"nation"@en-gb,
+		"state"@en-gb,
+		"negara berdaulat"@ms,
+		"bangsa"@ms,
+		"negara hos"@ms,
+		"country"@si,
+		"ŝtato"@eo,
+		"suverena ŝtato"@eo,
+		"gastiganta lando"@eo,
+		"суверена држава"@sr,
+		"земља"@sr,
+		"國家"@yue,
+		"主權國"@yue,
+		"ਪ੍ਰਭੂਸੱਤਾ ਸੰਪੰਨ ਰਾਜ"@pa,
+		"ਰਾਜ"@pa,
+		"ਮੇਜ਼ਬਾਨ ਦੇਸ਼"@pa,
+		"ਮੁਲਕ"@pa,
+		"ਦੇਸ"@pa,
+		"дзяржава"@be-tarask,
+		"край"@be-tarask,
+		"өлкө"@ky,
+		"دولة"@ar,
+		"دولة ذات سيادة"@ar,
+		"أرض"@ar,
+		"الدولة المضيفة"@ar,
+		"suveren dövlət"@az,
+		"dövlət"@az,
+		"torpaq"@az,
+		"yer"@az,
+		"ərazi"@az,
+		"ev sahibi ölkə"@az,
+		"paexe"@vec,
+		"nasion"@vec,
+		"mua"@olo,
+		"bro"@kw,
+		"مُلڪُ"@sd,
+		"ڏيھُہ"@sd,
+		"ديس"@sd,
+		"رياست"@sd,
+		"ٻهراڙي"@sd,
+		"riijkâ"@smn,
+		"jânnam"@sms,
+		"riikk"@sms,
+		"stáhta"@se,
+		"stáda"@se,
+		"stáhtta"@se,
+		"krŏj"@szl,
+		"ዓዲ"@ti,
+		"шаерез"@udm,
+		"രാഷ്ട്രം"@ml,
+		"šalis"@lt,
+		"a̱sa̱t a̱byin"@kcg,
+		"si̱tet"@kcg,
+		"ملک"@pnb,
+		"دیش"@ur,
+		"ৰাষ্ট্ৰ"@as,
+		"leysdi"@ff,
+		"liddi"@ff,
+		"ladde"@ff,
+		"leyde"@ff,
+		"istadu"@sc,
+		"stèt"@rgn,
+		"karajaan"@su,
+		"देस"@bho,
+		"संप्रभु राज्य"@bho,
+		"دولت"@mzn,
+		"مملکت"@mzn,
+		"وطن"@mzn,
+		"سرزمین"@mzn,
+		"زلمی"@mzn,
+		"estau"@an,
+		"estau sobirano"@an,
+		"zemlja"@hr,
+		"vend"@sq,
+		"shtet"@sq,
+		"estau"@ext,
+		"país"@oc,
+		"estat sobeiran"@oc,
+		"主権国家"@ja,
+		"くに"@ja,
+		"国家"@ja,
+		"こっか"@ja,
+		"suverena država"@sl,
+		"dûgel"@ku,
+		"dûgel"@ku-latn,
+		"Staat"@lb,
+		"Reta"@rn,
+		"Jamhuriya"@ha,
+		"ҫӗршыв"@cv,
+		"ⴰⵡⴰⵏⴽ"@zgh,
+		"ⵜⴰⵎⵓⵔⵜ"@zgh,
+		"statu"@scn,
+		"terra"@scn,
+		"tana"@mad,
+		"állam"@hu,
+		"knlangan"@trv,
+		"klangan"@trv,
+		"الدولة"@acm,
+		"ракь"@av,
+		"다음 나라에 속함"@ko-kp,
+		"다음 나라의것임"@ko-kp,
+		"나라"@ko-kp,
+		"kawnchri"@aig,
+		"estado"@gl,
+		"κράτος"@el,
+		"خپلواک دولت"@ps,
+		"دولت"@ps,
+		"ၸိုင်ႈမိူင်း"@shn,
+		"ကၟိန်ဍုင် မပိုင်ပြဳ ကြက်အဝဵုအာဏာ"@mnw,
+		"主權國家"@zh-tw ;
+	wikibase:propertyType <http://wikiba.se/ontology#WikibaseItem> ;
+	wikibase:directClaim wdt:P17 ;
+	wikibase:claim p:P17 ;
+	wikibase:statementProperty ps:P17 ;
+	wikibase:statementValue psv:P17 ;
+	wikibase:qualifier pq:P17 ;
+	wikibase:qualifierValue pqv:P17 ;
+	wikibase:reference pr:P17 ;
+	wikibase:referenceValue prv:P17 ;
+	wikibase:novalue wdno:P17 .
+
+p:P17 a owl:ObjectProperty .
+
+psv:P17 a owl:ObjectProperty .
+
+pqv:P17 a owl:ObjectProperty .
+
+prv:P17 a owl:ObjectProperty .
+
+wdt:P17 a owl:ObjectProperty .
+
+ps:P17 a owl:ObjectProperty .
+
+pq:P17 a owl:ObjectProperty .
+
+pr:P17 a owl:ObjectProperty .
+
+wdno:P17 a owl:Class ;
+	owl:complementOf _:67baa1dbbc8d4f6b0b3d4a74a3ee0290 .
+
+_:67baa1dbbc8d4f6b0b3d4a74a3ee0290 a owl:Restriction ;
+	owl:onProperty wdt:P17 ;
+	owl:someValuesFrom owl:Thing .
+
+wdv:58b2d25495dd96699d2e0bb6db7b5a86 a wikibase:TimeValue ;
+	wikibase:timeValue "2020-03-17T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdref:9dc185a20523321f133af9d5d271b8e3c073fb82 a wikibase:Reference ;
+	pr:P854 <https://www.w3.org/TR/2017/REC-html52-20171214/sec-forms.html#sec-autofill> ;
+	pr:P813 "2020-03-17T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:58b2d25495dd96699d2e0bb6db7b5a86 .

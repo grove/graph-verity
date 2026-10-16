@@ -1,0 +1,3655 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix data: <https://www.wikidata.org/wiki/Special:EntityData/> .
+@prefix wds: <http://www.wikidata.org/entity/statement/> .
+@prefix wdref: <http://www.wikidata.org/reference/> .
+@prefix wdv: <http://www.wikidata.org/value/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix wdtn: <http://www.wikidata.org/prop/direct-normalized/> .
+@prefix p: <http://www.wikidata.org/prop/> .
+@prefix ps: <http://www.wikidata.org/prop/statement/> .
+@prefix psv: <http://www.wikidata.org/prop/statement/value/> .
+@prefix psn: <http://www.wikidata.org/prop/statement/value-normalized/> .
+@prefix pq: <http://www.wikidata.org/prop/qualifier/> .
+@prefix pqv: <http://www.wikidata.org/prop/qualifier/value/> .
+@prefix pqn: <http://www.wikidata.org/prop/qualifier/value-normalized/> .
+@prefix pr: <http://www.wikidata.org/prop/reference/> .
+@prefix prv: <http://www.wikidata.org/prop/reference/value/> .
+@prefix prn: <http://www.wikidata.org/prop/reference/value-normalized/> .
+@prefix wdno: <http://www.wikidata.org/prop/novalue/> .
+
+data:Q25804 a schema:Dataset ;
+	schema:about wd:Q25804 ;
+	cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	schema:softwareVersion "1.0.0" ;
+	schema:version "2534110142"^^xsd:integer ;
+	schema:dateModified "2026-08-21T07:59:58Z"^^xsd:dateTime ;
+	wikibase:statements "165"^^xsd:integer ;
+	wikibase:sitelinks "126"^^xsd:integer ;
+	wikibase:identifiers "66"^^xsd:integer .
+
+wd:Q25804 a wikibase:Item .
+
+<https://af.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "af" ;
+	schema:isPartOf <https://af.wikipedia.org/> ;
+	schema:name "Trondheim"@af .
+
+<https://af.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ar.wikipedia.org/wiki/%D8%AA%D8%B1%D9%88%D9%86%D8%AF%D9%87%D8%A7%D9%8A%D9%85> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ar" ;
+	schema:isPartOf <https://ar.wikipedia.org/> ;
+	schema:name "تروندهايم"@ar .
+
+<https://ar.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://arz.wikipedia.org/wiki/%D8%AA%D8%B1%D9%88%D9%86%D8%AF%D9%87%D8%A7%D9%8A%D9%85> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "arz" ;
+	schema:isPartOf <https://arz.wikipedia.org/> ;
+	schema:name "تروندهايم"@arz .
+
+<https://arz.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ast.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ast" ;
+	schema:isPartOf <https://ast.wikipedia.org/> ;
+	schema:name "Trondheim"@ast .
+
+<https://ast.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://az.wikipedia.org/wiki/Tronheym> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "az" ;
+	schema:isPartOf <https://az.wikipedia.org/> ;
+	schema:name "Tronheym"@az .
+
+<https://az.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bar.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "bar" ;
+	schema:isPartOf <https://bar.wikipedia.org/> ;
+	schema:name "Trondheim"@bar .
+
+<https://bar.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bat-smg.wikipedia.org/wiki/Truondh%C4%97ims> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "sgs" ;
+	schema:isPartOf <https://bat-smg.wikipedia.org/> ;
+	schema:name "Truondhėims"@sgs .
+
+<https://bat-smg.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://be-tarask.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D0%B3%D1%8D%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "be-tarask" ;
+	schema:isPartOf <https://be-tarask.wikipedia.org/> ;
+	schema:name "Тронгэйм"@be-tarask .
+
+<https://be-tarask.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://be.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D1%85%D0%B5%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "be" ;
+	schema:isPartOf <https://be.wikipedia.org/> ;
+	schema:name "Тронхейм"@be .
+
+<https://be.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bg.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D1%85%D0%B0%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "bg" ;
+	schema:isPartOf <https://bg.wikipedia.org/> ;
+	schema:name "Тронхайм"@bg .
+
+<https://bg.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bpy.wikipedia.org/wiki/%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A7%8B%E0%A6%A8%E0%A6%A1%E0%A7%87%E0%A6%B9%E0%A6%BF%E0%A6%AE> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "bpy" ;
+	schema:isPartOf <https://bpy.wikipedia.org/> ;
+	schema:name "ট্রোনডেহিম"@bpy .
+
+<https://bpy.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://br.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "br" ;
+	schema:isPartOf <https://br.wikipedia.org/> ;
+	schema:name "Trondheim"@br .
+
+<https://br.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ca.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ca" ;
+	schema:isPartOf <https://ca.wikipedia.org/> ;
+	schema:name "Trondheim"@ca ;
+	wikibase:badge wd:Q17437798 .
+
+<https://ca.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ceb.wikipedia.org/wiki/Trondheim_(kapital_sa_lalawigan)> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ceb" ;
+	schema:isPartOf <https://ceb.wikipedia.org/> ;
+	schema:name "Trondheim (kapital sa lalawigan)"@ceb .
+
+<https://ceb.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ce.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D1%85%D0%B5%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ce" ;
+	schema:isPartOf <https://ce.wikipedia.org/> ;
+	schema:name "Тронхейм"@ce .
+
+<https://ce.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://commons.wikimedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "en" ;
+	schema:isPartOf <https://commons.wikimedia.org/> ;
+	schema:name "Trondheim"@en .
+
+<https://commons.wikimedia.org/> wikibase:wikiGroup "commons" .
+
+<https://cs.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "cs" ;
+	schema:isPartOf <https://cs.wikipedia.org/> ;
+	schema:name "Trondheim"@cs .
+
+<https://cs.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://cy.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "cy" ;
+	schema:isPartOf <https://cy.wikipedia.org/> ;
+	schema:name "Trondheim"@cy .
+
+<https://cy.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://da.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "da" ;
+	schema:isPartOf <https://da.wikipedia.org/> ;
+	schema:name "Trondheim"@da ;
+	wikibase:badge wd:Q17559452 .
+
+<https://da.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://de.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "de" ;
+	schema:isPartOf <https://de.wikipedia.org/> ;
+	schema:name "Trondheim"@de .
+
+<https://de.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://de.wikinews.org/wiki/Kategorie:Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "de" ;
+	schema:isPartOf <https://de.wikinews.org/> ;
+	schema:name "Kategorie:Trondheim"@de .
+
+<https://de.wikinews.org/> wikibase:wikiGroup "wikinews" .
+
+<https://de.wikivoyage.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "de" ;
+	schema:isPartOf <https://de.wikivoyage.org/> ;
+	schema:name "Trondheim"@de .
+
+<https://de.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://el.wikipedia.org/wiki/%CE%A4%CF%81%CF%8C%CE%BD%CF%84%CF%87%CE%B1%CF%8A%CE%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "el" ;
+	schema:isPartOf <https://el.wikipedia.org/> ;
+	schema:name "Τρόντχαϊμ"@el .
+
+<https://el.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://en.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "en" ;
+	schema:isPartOf <https://en.wikipedia.org/> ;
+	schema:name "Trondheim"@en .
+
+<https://en.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://en.wikivoyage.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "en" ;
+	schema:isPartOf <https://en.wikivoyage.org/> ;
+	schema:name "Trondheim"@en ;
+	wikibase:badge wd:Q17437798 .
+
+<https://en.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://eo.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "eo" ;
+	schema:isPartOf <https://eo.wikipedia.org/> ;
+	schema:name "Trondheim"@eo .
+
+<https://eo.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://es.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "es" ;
+	schema:isPartOf <https://es.wikipedia.org/> ;
+	schema:name "Trondheim"@es .
+
+<https://es.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://es.wikivoyage.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "es" ;
+	schema:isPartOf <https://es.wikivoyage.org/> ;
+	schema:name "Trondheim"@es .
+
+<https://es.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://et.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "et" ;
+	schema:isPartOf <https://et.wikipedia.org/> ;
+	schema:name "Trondheim"@et .
+
+<https://et.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://eu.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "eu" ;
+	schema:isPartOf <https://eu.wikipedia.org/> ;
+	schema:name "Trondheim"@eu .
+
+<https://eu.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fa.wikipedia.org/wiki/%D8%AA%D8%B1%D9%88%D9%86%D8%AF%D9%87%D8%A7%DB%8C%D9%85> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "fa" ;
+	schema:isPartOf <https://fa.wikipedia.org/> ;
+	schema:name "تروندهایم"@fa .
+
+<https://fa.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fa.wikivoyage.org/wiki/%D8%AA%D8%B1%D9%88%D9%86%D8%AF%D9%87%D8%A7%DB%8C%D9%85> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "fa" ;
+	schema:isPartOf <https://fa.wikivoyage.org/> ;
+	schema:name "تروندهایم"@fa .
+
+<https://fa.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://fi.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "fi" ;
+	schema:isPartOf <https://fi.wikipedia.org/> ;
+	schema:name "Trondheim"@fi .
+
+<https://fi.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fo.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "fo" ;
+	schema:isPartOf <https://fo.wikipedia.org/> ;
+	schema:name "Trondheim"@fo .
+
+<https://fo.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://frr.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "frr" ;
+	schema:isPartOf <https://frr.wikipedia.org/> ;
+	schema:name "Trondheim"@frr .
+
+<https://frr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fr.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "fr" ;
+	schema:isPartOf <https://fr.wikipedia.org/> ;
+	schema:name "Trondheim"@fr .
+
+<https://fr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fr.wikivoyage.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "fr" ;
+	schema:isPartOf <https://fr.wikivoyage.org/> ;
+	schema:name "Trondheim"@fr .
+
+<https://fr.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://gl.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "gl" ;
+	schema:isPartOf <https://gl.wikipedia.org/> ;
+	schema:name "Trondheim"@gl .
+
+<https://gl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ha.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ha" ;
+	schema:isPartOf <https://ha.wikipedia.org/> ;
+	schema:name "Trondheim"@ha .
+
+<https://ha.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://he.wikipedia.org/wiki/%D7%98%D7%A8%D7%95%D7%A0%D7%93%D7%94%D7%99%D7%99%D7%9D> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "he" ;
+	schema:isPartOf <https://he.wikipedia.org/> ;
+	schema:name "טרונדהיים"@he .
+
+<https://he.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://he.wikivoyage.org/wiki/%D7%98%D7%A8%D7%95%D7%A0%D7%93%D7%94%D7%99%D7%99%D7%9D> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "he" ;
+	schema:isPartOf <https://he.wikivoyage.org/> ;
+	schema:name "טרונדהיים"@he .
+
+<https://he.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://hr.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "hr" ;
+	schema:isPartOf <https://hr.wikipedia.org/> ;
+	schema:name "Trondheim"@hr .
+
+<https://hr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://hu.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "hu" ;
+	schema:isPartOf <https://hu.wikipedia.org/> ;
+	schema:name "Trondheim"@hu .
+
+<https://hu.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://hy.wikipedia.org/wiki/%D4%B9%D6%80%D5%B8%D5%B6%D5%B0%D5%A5%D5%B5%D5%B4> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "hy" ;
+	schema:isPartOf <https://hy.wikipedia.org/> ;
+	schema:name "Թրոնհեյմ"@hy .
+
+<https://hy.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://id.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "id" ;
+	schema:isPartOf <https://id.wikipedia.org/> ;
+	schema:name "Trondheim"@id .
+
+<https://id.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ie.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ie" ;
+	schema:isPartOf <https://ie.wikipedia.org/> ;
+	schema:name "Trondheim"@ie .
+
+<https://ie.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://io.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "io" ;
+	schema:isPartOf <https://io.wikipedia.org/> ;
+	schema:name "Trondheim"@io .
+
+<https://io.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://is.wikipedia.org/wiki/%C3%9Er%C3%A1ndheimur> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "is" ;
+	schema:isPartOf <https://is.wikipedia.org/> ;
+	schema:name "Þrándheimur"@is .
+
+<https://is.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://it.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "it" ;
+	schema:isPartOf <https://it.wikipedia.org/> ;
+	schema:name "Trondheim"@it .
+
+<https://it.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://it.wikivoyage.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "it" ;
+	schema:isPartOf <https://it.wikivoyage.org/> ;
+	schema:name "Trondheim"@it .
+
+<https://it.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://ja.wikipedia.org/wiki/%E3%83%88%E3%83%AD%E3%83%B3%E3%83%8F%E3%82%A4%E3%83%A0> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ja" ;
+	schema:isPartOf <https://ja.wikipedia.org/> ;
+	schema:name "トロンハイム"@ja .
+
+<https://ja.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://jbo.wikipedia.org/wiki/troneim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "jbo" ;
+	schema:isPartOf <https://jbo.wikipedia.org/> ;
+	schema:name "troneim"@jbo .
+
+<https://jbo.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://jv.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "jv" ;
+	schema:isPartOf <https://jv.wikipedia.org/> ;
+	schema:name "Trondheim"@jv .
+
+<https://jv.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ka.wikipedia.org/wiki/%E1%83%A2%E1%83%A0%E1%83%9D%E1%83%9C%E1%83%B0%E1%83%94%E1%83%98%E1%83%9B%E1%83%98> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ka" ;
+	schema:isPartOf <https://ka.wikipedia.org/> ;
+	schema:name "ტრონჰეიმი"@ka .
+
+<https://ka.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ko.wikipedia.org/wiki/%ED%8A%B8%EB%A1%A0%ED%97%A4%EC%9E%84> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ko" ;
+	schema:isPartOf <https://ko.wikipedia.org/> ;
+	schema:name "트론헤임"@ko .
+
+<https://ko.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://la.wikipedia.org/wiki/Nidrosia> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "la" ;
+	schema:isPartOf <https://la.wikipedia.org/> ;
+	schema:name "Nidrosia"@la .
+
+<https://la.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://lb.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "lb" ;
+	schema:isPartOf <https://lb.wikipedia.org/> ;
+	schema:name "Trondheim"@lb .
+
+<https://lb.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://li.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "li" ;
+	schema:isPartOf <https://li.wikipedia.org/> ;
+	schema:name "Trondheim"@li .
+
+<https://li.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://lmo.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "lmo" ;
+	schema:isPartOf <https://lmo.wikipedia.org/> ;
+	schema:name "Trondheim"@lmo .
+
+<https://lmo.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://lt.wikipedia.org/wiki/Trondheimas> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "lt" ;
+	schema:isPartOf <https://lt.wikipedia.org/> ;
+	schema:name "Trondheimas"@lt .
+
+<https://lt.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://lv.wikipedia.org/wiki/Tronheima> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "lv" ;
+	schema:isPartOf <https://lv.wikipedia.org/> ;
+	schema:name "Tronheima"@lv .
+
+<https://lv.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mi.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "mi" ;
+	schema:isPartOf <https://mi.wikipedia.org/> ;
+	schema:name "Trondheim"@mi .
+
+<https://mi.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mk.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D0%B4%D1%85%D0%B5%D1%98%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "mk" ;
+	schema:isPartOf <https://mk.wikipedia.org/> ;
+	schema:name "Трондхејм"@mk .
+
+<https://mk.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mn.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D1%85%D0%B5%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "mn" ;
+	schema:isPartOf <https://mn.wikipedia.org/> ;
+	schema:name "Тронхейм"@mn .
+
+<https://mn.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mr.wikipedia.org/wiki/%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%8B%E0%A4%A8%E0%A4%B9%E0%A4%BE%E0%A4%87%E0%A4%AE> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "mr" ;
+	schema:isPartOf <https://mr.wikipedia.org/> ;
+	schema:name "ट्रोनहाइम"@mr .
+
+<https://mr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ms.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ms" ;
+	schema:isPartOf <https://ms.wikipedia.org/> ;
+	schema:name "Trondheim"@ms .
+
+<https://ms.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://myv.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D1%85%D0%B5%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "myv" ;
+	schema:isPartOf <https://myv.wikipedia.org/> ;
+	schema:name "Тронхейм"@myv .
+
+<https://myv.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://nl.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "nl" ;
+	schema:isPartOf <https://nl.wikipedia.org/> ;
+	schema:name "Trondheim"@nl .
+
+<https://nl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://nl.wikivoyage.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "nl" ;
+	schema:isPartOf <https://nl.wikivoyage.org/> ;
+	schema:name "Trondheim"@nl .
+
+<https://nl.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://nn.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "nn" ;
+	schema:isPartOf <https://nn.wikipedia.org/> ;
+	schema:name "Trondheim"@nn .
+
+<https://nn.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://no.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "nb" ;
+	schema:isPartOf <https://no.wikipedia.org/> ;
+	schema:name "Trondheim"@nb .
+
+<https://no.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://no.wikibooks.org/wiki/Wikil%C3%A6reboken_i_samfunnsfag/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "nb" ;
+	schema:isPartOf <https://no.wikibooks.org/> ;
+	schema:name "Wikilæreboken i samfunnsfag/Trondheim"@nb .
+
+<https://no.wikibooks.org/> wikibase:wikiGroup "wikibooks" .
+
+<https://os.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D1%85%D0%B5%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "os" ;
+	schema:isPartOf <https://os.wikipedia.org/> ;
+	schema:name "Тронхейм"@os .
+
+<https://os.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://pl.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "pl" ;
+	schema:isPartOf <https://pl.wikipedia.org/> ;
+	schema:name "Trondheim"@pl .
+
+<https://pl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://pl.wikivoyage.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "pl" ;
+	schema:isPartOf <https://pl.wikivoyage.org/> ;
+	schema:name "Trondheim"@pl .
+
+<https://pl.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://pms.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "pms" ;
+	schema:isPartOf <https://pms.wikipedia.org/> ;
+	schema:name "Trondheim"@pms .
+
+<https://pms.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://pnb.wikipedia.org/wiki/%D8%AA%D8%B1%D9%88%D9%86%DB%81%D8%A7%D8%A6%DB%8C%D9%85> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "pnb" ;
+	schema:isPartOf <https://pnb.wikipedia.org/> ;
+	schema:name "ترونہائیم"@pnb .
+
+<https://pnb.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ps.wikipedia.org/wiki/%D8%AA%D8%B1%D9%88%D9%86%D8%AF%D9%87%D8%A7%D9%8A%D9%85> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ps" ;
+	schema:isPartOf <https://ps.wikipedia.org/> ;
+	schema:name "تروندهايم"@ps .
+
+<https://ps.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://pt.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "pt" ;
+	schema:isPartOf <https://pt.wikipedia.org/> ;
+	schema:name "Trondheim"@pt .
+
+<https://pt.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ro.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ro" ;
+	schema:isPartOf <https://ro.wikipedia.org/> ;
+	schema:name "Trondheim"@ro .
+
+<https://ro.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ro.wikivoyage.org/wiki/Tr%C3%B8ndheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ro" ;
+	schema:isPartOf <https://ro.wikivoyage.org/> ;
+	schema:name "Trøndheim"@ro .
+
+<https://ro.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D1%85%D0%B5%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ru" ;
+	schema:isPartOf <https://ru.wikipedia.org/> ;
+	schema:name "Тронхейм"@ru .
+
+<https://ru.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ru.wikinews.org/wiki/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%A2%D1%80%D0%BE%D0%BD%D1%85%D0%B5%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ru" ;
+	schema:isPartOf <https://ru.wikinews.org/> ;
+	schema:name "Категория:Тронхейм"@ru .
+
+<https://ru.wikinews.org/> wikibase:wikiGroup "wikinews" .
+
+<https://ru.wikivoyage.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D1%85%D0%B5%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ru" ;
+	schema:isPartOf <https://ru.wikivoyage.org/> ;
+	schema:name "Тронхейм"@ru .
+
+<https://ru.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://sco.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "sco" ;
+	schema:isPartOf <https://sco.wikipedia.org/> ;
+	schema:name "Trondheim"@sco .
+
+<https://sco.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://se.wikipedia.org/wiki/Troandin> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "se" ;
+	schema:isPartOf <https://se.wikipedia.org/> ;
+	schema:name "Troandin"@se .
+
+<https://se.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sh.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "sh" ;
+	schema:isPartOf <https://sh.wikipedia.org/> ;
+	schema:name "Trondheim"@sh .
+
+<https://sh.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://simple.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "en-simple" ;
+	schema:isPartOf <https://simple.wikipedia.org/> ;
+	schema:name "Trondheim"@en-simple .
+
+<https://simple.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sk.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "sk" ;
+	schema:isPartOf <https://sk.wikipedia.org/> ;
+	schema:name "Trondheim"@sk .
+
+<https://sk.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sl.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "sl" ;
+	schema:isPartOf <https://sl.wikipedia.org/> ;
+	schema:name "Trondheim"@sl .
+
+<https://sl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sq.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "sq" ;
+	schema:isPartOf <https://sq.wikipedia.org/> ;
+	schema:name "Trondheim"@sq .
+
+<https://sq.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sr.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D0%B4%D1%85%D0%B5%D1%98%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "sr" ;
+	schema:isPartOf <https://sr.wikipedia.org/> ;
+	schema:name "Трондхејм"@sr .
+
+<https://sr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sv.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "sv" ;
+	schema:isPartOf <https://sv.wikipedia.org/> ;
+	schema:name "Trondheim"@sv .
+
+<https://sv.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sv.wikivoyage.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "sv" ;
+	schema:isPartOf <https://sv.wikivoyage.org/> ;
+	schema:name "Trondheim"@sv .
+
+<https://sv.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://sw.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "sw" ;
+	schema:isPartOf <https://sw.wikipedia.org/> ;
+	schema:name "Trondheim"@sw .
+
+<https://sw.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://szl.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "szl" ;
+	schema:isPartOf <https://szl.wikipedia.org/> ;
+	schema:name "Trondheim"@szl .
+
+<https://szl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://th.wikipedia.org/wiki/%E0%B8%97%E0%B8%A3%E0%B9%87%E0%B8%AD%E0%B8%99%E0%B9%84%E0%B8%AE%E0%B8%A1%E0%B9%8C> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "th" ;
+	schema:isPartOf <https://th.wikipedia.org/> ;
+	schema:name "ทร็อนไฮม์"@th .
+
+<https://th.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://tr.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "tr" ;
+	schema:isPartOf <https://tr.wikipedia.org/> ;
+	schema:name "Trondheim"@tr .
+
+<https://tr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://tt.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D2%BB%D0%B5%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "tt" ;
+	schema:isPartOf <https://tt.wikipedia.org/> ;
+	schema:name "Тронһейм"@tt .
+
+<https://tt.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://tum.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "tum" ;
+	schema:isPartOf <https://tum.wikipedia.org/> ;
+	schema:name "Trondheim"@tum .
+
+<https://tum.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://uk.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D0%B3%D0%B5%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "uk" ;
+	schema:isPartOf <https://uk.wikipedia.org/> ;
+	schema:name "Тронгейм"@uk .
+
+<https://uk.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ur.wikipedia.org/wiki/%D8%AA%DA%BE%D8%B1%D9%88%D9%86%DB%81%D8%A7%D8%A6%D9%85> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ur" ;
+	schema:isPartOf <https://ur.wikipedia.org/> ;
+	schema:name "تھرونہائم"@ur .
+
+<https://ur.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://vec.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "vec" ;
+	schema:isPartOf <https://vec.wikipedia.org/> ;
+	schema:name "Trondheim"@vec .
+
+<https://vec.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://vep.wikipedia.org/wiki/Tronheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "vep" ;
+	schema:isPartOf <https://vep.wikipedia.org/> ;
+	schema:name "Tronheim"@vep .
+
+<https://vep.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://vi.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "vi" ;
+	schema:isPartOf <https://vi.wikipedia.org/> ;
+	schema:name "Trondheim"@vi .
+
+<https://vi.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://vi.wikivoyage.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "vi" ;
+	schema:isPartOf <https://vi.wikivoyage.org/> ;
+	schema:name "Trondheim"@vi .
+
+<https://vi.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://vo.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "vo" ;
+	schema:isPartOf <https://vo.wikipedia.org/> ;
+	schema:name "Trondheim"@vo .
+
+<https://vo.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://war.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "war" ;
+	schema:isPartOf <https://war.wikipedia.org/> ;
+	schema:name "Trondheim"@war .
+
+<https://war.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://wuu.wikipedia.org/wiki/%E7%89%B9%E9%9A%86%E8%B5%AB%E5%A7%86> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "wuu" ;
+	schema:isPartOf <https://wuu.wikipedia.org/> ;
+	schema:name "特隆赫姆"@wuu .
+
+<https://wuu.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://zh-min-nan.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "nan" ;
+	schema:isPartOf <https://zh-min-nan.wikipedia.org/> ;
+	schema:name "Trondheim"@nan .
+
+<https://zh-min-nan.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://zh-yue.wikipedia.org/wiki/%E7%89%B9%E5%80%AB%E6%B1%97> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "yue" ;
+	schema:isPartOf <https://zh-yue.wikipedia.org/> ;
+	schema:name "特倫汗"@yue .
+
+<https://zh-yue.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://zh.wikipedia.org/wiki/%E7%89%B9%E9%9A%86%E8%B5%AB%E5%A7%86> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "zh" ;
+	schema:isPartOf <https://zh.wikipedia.org/> ;
+	schema:name "特隆赫姆"@zh .
+
+<https://zh.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fy.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "fy" ;
+	schema:isPartOf <https://fy.wikipedia.org/> ;
+	schema:name "Trondheim"@fy .
+
+<https://fy.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mdf.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D0%B3%D1%8D%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "mdf" ;
+	schema:isPartOf <https://mdf.wikipedia.org/> ;
+	schema:name "Тронгэйм"@mdf .
+
+<https://mdf.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://smn.wikipedia.org/wiki/Ru%C3%A1ndim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "smn" ;
+	schema:isPartOf <https://smn.wikipedia.org/> ;
+	schema:name "Ruándim"@smn .
+
+<https://smn.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://tg.wikipedia.org/wiki/%D0%A2%D1%80%D0%BE%D0%BD%D2%B3%D0%B5%D0%B9%D0%BC> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "tg" ;
+	schema:isPartOf <https://tg.wikipedia.org/> ;
+	schema:name "Тронҳейм"@tg .
+
+<https://tg.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mg.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "mg" ;
+	schema:isPartOf <https://mg.wikipedia.org/> ;
+	schema:name "Trondheim"@mg .
+
+<https://mg.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mt.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "mt" ;
+	schema:isPartOf <https://mt.wikipedia.org/> ;
+	schema:name "Trondheim"@mt .
+
+<https://mt.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://an.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "an" ;
+	schema:isPartOf <https://an.wikipedia.org/> ;
+	schema:name "Trondheim"@an .
+
+<https://an.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://gu.wikipedia.org/wiki/%E0%AA%A4%E0%AB%8D%E0%AA%B0%E0%AB%8B%E0%AA%A8%E0%AA%B9%E0%AB%87%E0%AA%88%E0%AA%AE> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "gu" ;
+	schema:isPartOf <https://gu.wikipedia.org/> ;
+	schema:name "ત્રોનહેઈમ"@gu .
+
+<https://gu.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://hi.wikipedia.org/wiki/%E0%A4%9F%E0%A5%8D%E0%A4%B0%E0%A5%89%E0%A4%A8%E0%A4%B9%E0%A5%88%E0%A4%AE> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "hi" ;
+	schema:isPartOf <https://hi.wikipedia.org/> ;
+	schema:name "ट्रॉनहैम"@hi .
+
+<https://hi.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://te.wikipedia.org/wiki/%E0%B0%9F%E0%B1%8D%E0%B0%B0%E0%B1%8B%E0%B0%82%E0%B0%A1%E0%B1%8D%E2%80%8C%E0%B0%B9%E0%B1%88%E0%B0%AE%E0%B1%8D> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "te" ;
+	schema:isPartOf <https://te.wikipedia.org/> ;
+	schema:name "ట్రోండ్‌హైమ్"@te .
+
+<https://te.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ang.wikipedia.org/wiki/Ni%C3%B0mu%C3%B0e> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ang" ;
+	schema:isPartOf <https://ang.wikipedia.org/> ;
+	schema:name "Niðmuðe"@ang .
+
+<https://ang.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://tok.wikipedia.org/wiki/ma_tomo_Tonjen> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "tok" ;
+	schema:isPartOf <https://tok.wikipedia.org/> ;
+	schema:name "ma tomo Tonjen"@tok .
+
+<https://tok.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ga.wikipedia.org/wiki/Trondheim> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "ga" ;
+	schema:isPartOf <https://ga.wikipedia.org/> ;
+	schema:name "Trondheim"@ga .
+
+<https://ga.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://got.wikipedia.org/wiki/%F0%90%8C%B8%F0%90%8D%82%F0%90%8D%89%F0%90%8D%85%F0%90%8D%89%F0%90%8C%BD%F0%90%8C%B3%F0%90%8C%B7%F0%90%8C%B0%F0%90%8C%B9%F0%90%8C%BC%F0%90%8D%83> a schema:Article ;
+	schema:about wd:Q25804 ;
+	schema:inLanguage "got" ;
+	schema:isPartOf <https://got.wikipedia.org/> ;
+	schema:name "𐌸𐍂𐍉𐍅𐍉𐌽𐌳𐌷𐌰𐌹𐌼𐍃"@got .
+
+<https://got.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+wd:Q25804 wdt:P1465 wd:Q9220220 ;
+	wdt:P190 wd:Q13298,
+		wd:Q158119 ;
+	wdt:P1082 "+198777"^^xsd:decimal ;
+	wdt:P131 wd:Q127676,
+		wd:Q1324436 ;
+	wdt:P94 <http://commons.wikimedia.org/wiki/Special:FilePath/Trondheim%20komm.svg> ;
+	wdt:P41 <http://commons.wikimedia.org/wiki/Special:FilePath/Flag%20of%20Trondheim.svg> ;
+	wdt:P373 "Trondheim" ;
+	wdt:P17 wd:Q20 ;
+	wdt:P163 wd:Q3435436 ;
+	wdt:P571 "0997-01-01T00:00:00Z"^^xsd:dateTime ;
+	wdt:P625 "Point(10.4 63.44)"^^geo:wktLiteral ;
+	wdt:P948 <http://commons.wikimedia.org/wiki/Special:FilePath/Trondheim%20banner%20Panorama%20with%20coast%20and%20city.jpg> ;
+	wdt:P910 wd:Q8873574 ;
+	wdt:P998 "Regional/Europe/Norway/Sør-Trøndelag/Trondheim/" ;
+	wdt:P982 "4c093436-be96-4317-a82f-733938485084" ;
+	wdtn:P982 <http://musicbrainz.org/area/4c093436-be96-4317-a82f-733938485084> ;
+	wdt:P31 wd:Q15092344,
+		wd:Q515,
+		wd:Q1306755,
+		wd:Q1549591 ;
+	wdt:P646 "/m/09btk" ;
+	wdt:P1464 wd:Q8075936 ;
+	wdt:P1566 "3133880" ;
+	wdtn:P1566 <https://sws.geonames.org/3133880/> ;
+	wdt:P227 "4070588-2" ;
+	wdtn:P227 <https://d-nb.info/gnd/4070588-2> ;
+	wdt:P166 wd:Q18910363,
+		wd:Q18910363,
+		wd:Q46996056 ;
+	wdt:P214 "233891406" ;
+	wdtn:P214 <http://viaf.org/viaf/233891406> ;
+	wdt:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/Overview%20of%20Trondheim%202008%2003.jpg> ;
+	wdt:P1383 wd:Q11969200,
+		wd:Q1648687,
+		wd:Q11980429,
+		wd:Q12000711,
+		wd:Q11966480,
+		wd:Q1373658,
+		wd:Q19378716,
+		wd:Q4581064,
+		wd:Q11989782,
+		wd:Q11987024,
+		wd:Q636798 ;
+	wdt:P856 <https://www.trondheim.kommune.no/> ;
+	wdt:P935 "Trondheim" ;
+	wdt:P244 "n79061146" ;
+	wdtn:P244 <http://id.loc.gov/authorities/names/n79061146> ;
+	wdt:P1997 "110429825645017" ;
+	wdt:P1281 "865157" ;
+	wdt:P3417 "Trondheim-Norway" ;
+	wdt:P3500 "25574" ;
+	wdt:P1791 wd:Q29579321 ;
+	wdt:P1376 wd:Q1324436,
+		wd:Q50628,
+		wd:Q12004785 ;
+	wdt:P2347 "209904" ;
+	wdtn:P2347 <http://www.yso.fi/onto/yso/p209904> ;
+	wdt:P1225 "10045078" ;
+	wdt:P3219 "trondheim" ;
+	wdt:P2924 "4205111" ;
+	wdt:P1549 "trondheimer"@nb,
+		"trondheimar"@nn,
+		"trondhjemmer"@nb,
+		"trondhjemmar"@nn ;
+	wdt:P1417 "place/Trondheim" ;
+	wdt:P2427 "grid.451476.5" ;
+	wdt:P206 wd:Q499668,
+		wd:Q279579 ;
+	wdt:P268 "11956512q" ;
+	wdtn:P268 <http://data.bnf.fr/ark:/12148/cb11956512q#about> ;
+	wdt:P5573 "6542" ;
+	wdt:P1850 "558690" ;
+	wdt:P281 "7004" ;
+	wdt:P2046 "+57.49"^^xsd:decimal,
+		"+58.21"^^xsd:decimal ;
+	wdt:P6782 "01gjtys23" ;
+	wdt:P6520 "Trondheim" ;
+	wdt:P3222 "trondhjem",
+		"trondheim" ;
+	wdt:P6821 "alvin-place:5205" ;
+	wdtn:P6821 <http://www.alvin-portal.org/alvin/view.jsf?pid=alvin-place:5205> ;
+	wdt:P6821 "alvin-place:1514" ;
+	wdtn:P6821 <http://www.alvin-portal.org/alvin/view.jsf?pid=alvin-place:1514> ;
+	wdt:P1296 "0067742" ;
+	wdt:P6766 "101751927" ;
+	wdt:P1448 "Trondheim"@no,
+		"Nidaros"@nn ;
+	wdt:P1343 wd:Q602358,
+		wd:Q3181656,
+		wd:Q19219752,
+		wd:Q867541 ;
+	wdt:P3992 "6501" ;
+	wdt:P2936 wd:Q25167,
+		wd:Q25164 ;
+	wdt:P6262 "norway:Trondheim" ;
+	wdt:P691 "xx0028756" ;
+	wdt:P8406 "T086293" ;
+	wdtn:P8406 <http://dx.doi.org/10.1093/gao/9781884446054.article.T086293> ;
+	wdt:P8519 "5817" ;
+	wdtn:P8519 <https://data.rkd.nl/thesau/5817> ;
+	wdt:P5063 "i82946" ;
+	wdtn:P5063 <https://globalwordnet.github.io/cili/i82946> ;
+	wdt:P7471 "40369" ;
+	wdt:P9100 "trondheim" ;
+	wdt:P8814 "08783456-n" ;
+	wdtn:P8814 <https://en-word.net/id/oewn-08783456-n> ;
+	wdt:P8168 "Q92640" ;
+	wdtn:P8168 <https://database.factgrid.de/entity/Q92640> ;
+	wdt:P1705 "Trondheim"@no ;
+	wdt:P213 "0000000404606448" ;
+	wdt:P8189 "987007562086805171" ;
+	wdt:P9957 "4223" ;
+	wdt:P10397 "LO1L003812" ;
+	wdt:P8313 "Trondheim" ;
+	wdt:P402 "406549" ;
+	wdtn:P402 <https://www.openstreetmap.org/relation/406549> ;
+	wdt:P242 <http://commons.wikimedia.org/wiki/Special:FilePath/NO%205001%20Trondheim.svg> ;
+	wdt:P7305 "3989312" ;
+	wdt:P269 "027548171" ;
+	wdtn:P269 <http://www.idref.fr/027548171/id> ;
+	wdt:P9495 "geo/F69BA0E7-4E24-4636-890B-BE485B61FFDE" ;
+	wdt:P11693 "31264142" ;
+	wdt:P12086 "Trondheim" ;
+	wdt:P12385 "trondheim" ;
+	wdt:P2326 "-284421" ;
+	wdt:P10832 "E39PBJjhCFvR3YyDBY9QRGTT73" ;
+	wdt:P12749 "Q2161" ;
+	wdt:P13030 "location/1978" ;
+	wdt:P1937 "NOTRD" ;
+	wdt:P3847 "place:trondheim_(norway)" ;
+	wdt:P13591 "place/5930169f-c8eb-4ab9-953e-fc13e0dc700e" ;
+	wdt:P1617 "831a0a89-d29c-4ee7-946b-1b9722ee7c1c" ;
+	wdtn:P1617 <http://www.bbc.co.uk/things/831a0a89-d29c-4ee7-946b-1b9722ee7c1c#id> ;
+	wdt:P1015 "90075856" ;
+	wdtn:P1015 <https://livedata.bibsys.no/authority/90075856> ;
+	wdt:P8179 "ncf12150348" ;
+	wdt:P2163 "1205358" ;
+	wdtn:P2163 <http://id.worldcat.org/fast/1205358> ;
+	wdt:P1207 "n2019049166" ;
+	wdt:P14075 "42296" ;
+	wdt:P13204 "uc3wvjjb" ;
+	wdt:P14586 "92261" ;
+	wdt:P5252 <http://commons.wikimedia.org/wiki/Special:FilePath/View%20from%20Kristiansten%20festning%2C%20Trondheim%20%287036210495%29.jpg> ;
+	p:P1465 wds:Q25804-da257495-4200-e719-c8b3-d0884970e4a0 .
+
+wds:Q25804-da257495-4200-e719-c8b3-d0884970e4a0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1465 wd:Q9220220 ;
+	prov:wasDerivedFrom wdref:d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3 .
+
+wd:Q25804 p:P1036 wds:Q25804-c89e8c8f-4c9a-80d1-4c00-03c2254f23f2 .
+
+wds:Q25804-c89e8c8f-4c9a-80d1-4c00-03c2254f23f2 a wikibase:Statement ;
+	wikibase:rank wikibase:DeprecatedRank ;
+	ps:P1036 "2--4841" .
+
+wd:Q25804 p:P190 wds:Q25804-31d263b4-42dd-1946-c2bf-8eeec0d75e90 .
+
+wds:Q25804-31d263b4-42dd-1946-c2bf-8eeec0d75e90 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q43070 .
+
+wd:Q25804 p:P190 wds:Q25804-881b84d8-4b37-a4a0-595c-6ba689405726 .
+
+wds:Q25804-881b84d8-4b37-a4a0-595c-6ba689405726 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q1663 .
+
+wd:Q25804 p:P190 wds:Q25804-17bba8a7-40bb-e73d-4e8b-7a82da5f03fd .
+
+wds:Q25804-17bba8a7-40bb-e73d-4e8b-7a82da5f03fd a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q2973 ;
+	pq:P580 "1968-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:7049a7dcbd73dd46c3241bbd38fdc279 .
+
+wd:Q25804 p:P190 wds:Q25804-07059e71-455e-6266-103a-278d9a63546c .
+
+wds:Q25804-07059e71-455e-6266-103a-278d9a63546c a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q211950 .
+
+wd:Q25804 p:P190 wds:Q25804-14152ef3-4630-1488-bc9f-6eaa035500fe .
+
+wds:Q25804-14152ef3-4630-1488-bc9f-6eaa035500fe a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P190 wd:Q13298 ;
+	pq:P580 "1968-10-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:defcbd172f06bc718ddb6367c3aff9f8 ;
+	prov:wasDerivedFrom wdref:992324205d6def6e0ff3f0127da97c2e5ffca99f,
+		wdref:1f12877fa276e79a461b1bb31e5e4142e825c294,
+		wdref:5bcb3fa74863df7522f8f4e9e5d5b0927f6539e5 .
+
+wd:Q25804 p:P190 wds:Q25804-41b1fb0c-4979-0fd3-ef22-8e48067a901d .
+
+wds:Q25804-41b1fb0c-4979-0fd3-ef22-8e48067a901d a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q163852 .
+
+wd:Q25804 p:P190 wds:Q25804-63f6392f-425b-b0e1-02ff-81ee67d687c0 .
+
+wds:Q25804-63f6392f-425b-b0e1-02ff-81ee67d687c0 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q306789 .
+
+wd:Q25804 p:P190 wds:Q25804-0f842459-41f6-ecf7-0cda-655af52564f9 .
+
+wds:Q25804-0f842459-41f6-ecf7-0cda-655af52564f9 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q189361 .
+
+wd:Q25804 p:P190 wds:Q25804-fab53676-4624-35bb-ec02-f2cec51ef7ad .
+
+wds:Q25804-fab53676-4624-35bb-ec02-f2cec51ef7ad a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q21146 .
+
+wd:Q25804 p:P190 wds:Q25804-dd6b6dcc-4e0d-fec2-43c0-dccf0ae39749 .
+
+wds:Q25804-dd6b6dcc-4e0d-fec2-43c0-dccf0ae39749 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q190828 .
+
+wd:Q25804 p:P190 wds:Q25804-29ae9285-4cf5-e311-e79a-dfaec519fd48 .
+
+wds:Q25804-29ae9285-4cf5-e311-e79a-dfaec519fd48 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P190 wd:Q158119 ;
+	pq:P580 "2004-02-19T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:fc77eb5039532b33ca7d30608c3bb16c ;
+	prov:wasDerivedFrom wdref:e19583e869cd4afedaf33c282371ec8017769878,
+		wdref:30950790dc3153e7a574691558408dd20ea585c5,
+		wdref:4e817f4b15c0a5ae0b30a4b88145a51cf8bc31b2 .
+
+wd:Q25804 p:P190 wds:Q25804-dc0761b2-4b4c-5b90-9f91-26f5d6ebe85e .
+
+wds:Q25804-dc0761b2-4b4c-5b90-9f91-26f5d6ebe85e a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q40840 ;
+	pq:P580 "1946-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:5e18c83c88166026dd5e577bb10cc628 ;
+	prov:wasDerivedFrom wdref:ccc3ecc1fb3ac759fba6e96a8ffdccbd4a371f8a,
+		wdref:adba82a5340298c2c4b4948e4d0eeee40c2aca10,
+		wdref:1db137055abae614575d41a6a8cdc02486e25320 .
+
+wd:Q25804 p:P190 wds:Q25804-2865ff86-44b6-7026-bbb9-44773cf7e30b .
+
+wds:Q25804-2865ff86-44b6-7026-bbb9-44773cf7e30b a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q132572 .
+
+wd:Q25804 p:P190 wds:Q25804-ccdacaab-444a-0499-42ea-6686e5766b18 .
+
+wds:Q25804-ccdacaab-444a-0499-42ea-6686e5766b18 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q208445 .
+
+wd:Q25804 p:P190 wds:Q25804-0B19068E-1CAD-43F7-BBCA-2ABA6D6A718E .
+
+wds:Q25804-0B19068E-1CAD-43F7-BBCA-2ABA6D6A718E a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q25331 ;
+	prov:wasDerivedFrom wdref:d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3 .
+
+wd:Q25804 p:P190 wds:Q25804-F4128C8B-4C4C-4E81-BF27-9E9400F11205 .
+
+wds:Q25804-F4128C8B-4C4C-4E81-BF27-9E9400F11205 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q504676 .
+
+wd:Q25804 p:P1082 wds:Q25804-8bb20171-47b0-c679-ba14-6bb1b5459a0b .
+
+wds:Q25804-8bb20171-47b0-c679-ba14-6bb1b5459a0b a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+175068"^^xsd:decimal ;
+	psv:P1082 wdv:8095be6d41ba273543f241fd4e84170d ;
+	pq:P585 "2015-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:9ae5d1899372cd9945ad846f214f14d5 ;
+	prov:wasDerivedFrom wdref:bd49d3e4f67bc460ce7a06b6ac3027347cf5ee55 .
+
+wd:Q25804 p:P1082 wds:Q25804-1574a1b5-4cb3-5b26-2ad9-8df9bbe88ca9 .
+
+wds:Q25804-1574a1b5-4cb3-5b26-2ad9-8df9bbe88ca9 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+183378"^^xsd:decimal ;
+	psv:P1082 wdv:f5820b96b29cb36711aa4d32f25aabf1 ;
+	pq:P585 "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4b3cea969fafa6d97b799a2d874a68a4 ;
+	prov:wasDerivedFrom wdref:cc050cb6a36129fd4a8e3bef5c3fc64a119dc391 .
+
+wd:Q25804 p:P1082 wds:Q25804-96EB4ED8-B1ED-4CC5-A006-B1C7807B1B7A .
+
+wds:Q25804-96EB4ED8-B1ED-4CC5-A006-B1C7807B1B7A a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+186364"^^xsd:decimal ;
+	psv:P1082 wdv:2b5aafbd81d68dfa5b8f50d765ef8ee7 ;
+	pq:P585 "2019-11-04T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:54afc7973e523b9a0580bcfbfb6fe3dd ;
+	pq:P518 wd:Q16868672 ;
+	pq:P459 wd:Q791801 ;
+	prov:wasDerivedFrom wdref:90f9c663e4d91a493500b1139133aca75b5f1709 .
+
+wd:Q25804 p:P1082 wds:Q25804-994283ce-40d4-82ea-25e1-d0978ee5b9be .
+
+wds:Q25804-994283ce-40d4-82ea-25e1-d0978ee5b9be a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+194860"^^xsd:decimal ;
+	psv:P1082 wdv:77be8512d1f3ee05f65a08d7c8b2d5e0 ;
+	pq:P459 wd:Q791801 ;
+	pq:P585 "2022-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:f0a794f755c96023755b4684ff262fe8 ;
+	prov:wasDerivedFrom wdref:4fa67aff90cf7b9d34d76377c8f71ad78353d611 .
+
+wd:Q25804 p:P1082 wds:Q25804-12dba0ed-4b85-bb6f-0eac-d5696733eb64 .
+
+wds:Q25804-12dba0ed-4b85-bb6f-0eac-d5696733eb64 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+183960"^^xsd:decimal ;
+	psv:P1082 wdv:ab112c705a5a3475e9d619dcd3359817 ;
+	pq:P585 "2014-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4755748741739c53456596b64165b84b .
+
+wd:Q25804 p:P1082 wds:Q25804-7d4d1578-4d0b-31d3-9343-d095cd8c693c .
+
+wds:Q25804-7d4d1578-4d0b-31d3-9343-d095cd8c693c a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+171540"^^xsd:decimal ;
+	psv:P1082 wdv:01ad202e995056b098d825cffa32502a ;
+	pq:P585 "2010-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4f272fae38ee73a331afd0407cdc74b9 .
+
+wd:Q25804 p:P1082 wds:Q25804-e3079efd-4ba9-fdaf-8203-3dd3b8e5f539 .
+
+wds:Q25804-e3079efd-4ba9-fdaf-8203-3dd3b8e5f539 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+148859"^^xsd:decimal ;
+	psv:P1082 wdv:b989f5323076eaeafa778bacd2dbe5ac ;
+	pq:P585 "2000-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:6928b7cd3a8b4aff7d73814a5a8f2359 .
+
+wd:Q25804 p:P1082 wds:Q25804-3760599c-46f2-5055-591f-ce0ebac9935a .
+
+wds:Q25804-3760599c-46f2-5055-591f-ce0ebac9935a a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+212660"^^xsd:decimal ;
+	psv:P1082 wdv:16216c3ebf197abddbb5cd273afbc09f ;
+	pq:P585 "2023-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:36115d4827ebd6fd24fc3f76ddcbfbfc .
+
+wd:Q25804 p:P1082 wds:Q25804-87bac7e5-43ed-8b51-7657-583d34c133f3 .
+
+wds:Q25804-87bac7e5-43ed-8b51-7657-583d34c133f3 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+137346"^^xsd:decimal ;
+	psv:P1082 wdv:7bde0194f6e76b6171afb98a152e67b0 ;
+	pq:P585 "1990-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:25c003eb0ef8438f618cb61d21c9a4fa .
+
+wd:Q25804 p:P1082 wds:Q25804-e13b5274-4744-5961-900d-4c541fe54226 .
+
+wds:Q25804-e13b5274-4744-5961-900d-4c541fe54226 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+134726"^^xsd:decimal ;
+	psv:P1082 wdv:0529c5b7a51ebe787d0fd7f14c0a7b2f ;
+	pq:P585 "1980-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:ef979b8df4f4f2ae359ed26952114819 .
+
+wd:Q25804 p:P1082 wds:Q25804-3b06e36b-46ef-8fba-3e0a-c536d38412ed .
+
+wds:Q25804-3b06e36b-46ef-8fba-3e0a-c536d38412ed a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+126190"^^xsd:decimal ;
+	psv:P1082 wdv:c5b6d0ac6fc19fa56d78f621aa6bbf33 ;
+	pq:P585 "1970-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:9a581f623d181b3e8160146d1a1c062c .
+
+wd:Q25804 p:P1082 wds:Q25804-c38d93ad-4da5-2b2c-5fcf-2307e7a184bc .
+
+wds:Q25804-c38d93ad-4da5-2b2c-5fcf-2307e7a184bc a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+59286"^^xsd:decimal ;
+	psv:P1082 wdv:297c4decf93de61bc1c8774fbba60456 ;
+	pq:P585 "1960-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:25bc1714e3b0ce11f853727e3e379540 .
+
+wd:Q25804 p:P1082 wds:Q25804-b06bc9e0-457f-3b76-c283-6b589d57ed18 .
+
+wds:Q25804-b06bc9e0-457f-3b76-c283-6b589d57ed18 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+133000"^^xsd:decimal ;
+	psv:P1082 wdv:3b4b28dfd8b6cd676d80f08f8e42ad34 ;
+	pq:P459 wd:Q29051383 ;
+	pq:P585 "1974-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b95be118151106aee9695534f063a319 ;
+	prov:wasDerivedFrom wdref:5d284fadf31a304eadc24a634336a998afb94a95 .
+
+wd:Q25804 p:P1082 wds:Q25804-c0ccab74-4fc8-ef76-3162-c6816642e3c1 .
+
+wds:Q25804-c0ccab74-4fc8-ef76-3162-c6816642e3c1 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+134000"^^xsd:decimal ;
+	psv:P1082 wdv:deb570a50093172d25c5836b3967eda1 ;
+	pq:P585 "1987-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:7f49e2a32a9edc46cf5a8602a5d640c2 ;
+	pq:P459 wd:Q29051383 ;
+	prov:wasDerivedFrom wdref:5eaff620f40474fc5830f81f8acf1449c850bd9c .
+
+wd:Q25804 p:P1082 wds:Q25804-e3f4003a-4ebf-1ef2-b3ae-d20d2b7c9c21 .
+
+wds:Q25804-e3f4003a-4ebf-1ef2-b3ae-d20d2b7c9c21 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+146000"^^xsd:decimal ;
+	psv:P1082 wdv:ebfe52c9355008b486b53d522a9de237 ;
+	pq:P585 "1998-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:566896ed1bc98ce4ec8a459edd4d836a ;
+	pq:P459 wd:Q29051383 ;
+	prov:wasDerivedFrom wdref:26191436279bdf24177a90bfb9c3676b46ef5606 .
+
+wd:Q25804 p:P1082 wds:Q25804-fe1fad7a-4c68-326b-e796-dba2fbc2826c .
+
+wds:Q25804-fe1fad7a-4c68-326b-e796-dba2fbc2826c a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+150000"^^xsd:decimal ;
+	psv:P1082 wdv:760d5c0e4e2c2296b8f257024d98cf38 ;
+	pq:P459 wd:Q29051383 ;
+	pq:P585 "2001-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:c5c0b1372c566af0e3d31535e7b831b4 ;
+	prov:wasDerivedFrom wdref:2e3e06d06dd6cf99630f6b19b490edb7299402c2 .
+
+wd:Q25804 p:P1082 wds:Q25804-58d1392c-4488-c6db-c1a2-c778d25b8042 .
+
+wds:Q25804-58d1392c-4488-c6db-c1a2-c778d25b8042 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+216518"^^xsd:decimal ;
+	psv:P1082 wdv:e2f25c264492a6cfa284190b87d69703 ;
+	pq:P585 "2025-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4de85214967b9397934a56b47799b9d3 ;
+	prov:wasDerivedFrom wdref:647373607a5dc67171da53e8b288907b5e88e483 .
+
+wd:Q25804 p:P1082 wds:Q25804-2830ddf1-fec7-47d9-8a88-049ce58c01dc .
+
+wds:Q25804-2830ddf1-fec7-47d9-8a88-049ce58c01dc a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+189271"^^xsd:decimal ;
+	psv:P1082 wdv:ab0a370636552883737cb3e45f66d7aa ;
+	pq:P585 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:86d08cb380a7d361151c510ebb4a98ec ;
+	pq:P459 wd:Q64224988 ;
+	prov:wasDerivedFrom wdref:9e551b2e5ea2bed3925f1c0b5ff774bc3063917d .
+
+wd:Q25804 p:P1082 wds:Q25804-9b3396bd-594d-4e89-a619-5c5526f0424b .
+
+wds:Q25804-9b3396bd-594d-4e89-a619-5c5526f0424b a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+191771"^^xsd:decimal ;
+	psv:P1082 wdv:4eee0d95599fd6506e211dd41530d2a6 ;
+	pq:P585 "2021-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:e774db7756a97ebda4df1381ea77305b ;
+	pq:P459 wd:Q64224988 ;
+	prov:wasDerivedFrom wdref:85d858bbd5ddf1995d7f08e71c4f4f367ede8205 .
+
+wd:Q25804 p:P1082 wds:Q25804-a93095cd-2379-432d-b200-810c12256019 .
+
+wds:Q25804-a93095cd-2379-432d-b200-810c12256019 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P1082 "+198777"^^xsd:decimal ;
+	psv:P1082 wdv:6eafd05a2d12aec4b6e9df7de3ef344e ;
+	pq:P585 "2024-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:fc76c6f1fe20833a5648c7115c465738 ;
+	pq:P459 wd:Q64224988 ;
+	prov:wasDerivedFrom wdref:e6867cddfc4d19ed999bb91e4dd183570ff4d6b1 .
+
+wd:Q25804 p:P131 wds:q25804-37C6D302-E37E-4037-8AA1-F745D15A4BFC .
+
+wds:q25804-37C6D302-E37E-4037-8AA1-F745D15A4BFC a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P131 wd:Q50628 ;
+	pq:P580 "1919-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:fe7abd5d6247e9b54048ebb77716143d ;
+	pq:P582 "2017-12-31T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:59d82e713c60397f4831320daa2ca4a4 .
+
+wd:Q25804 p:P131 wds:Q25804-7efe8bc1-48dd-514a-4bbc-8c5667f7ab19 .
+
+wds:Q25804-7efe8bc1-48dd-514a-4bbc-8c5667f7ab19 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P131 wd:Q19393186 ;
+	pq:P580 "1662-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:ec0521ea6110763ce367d49ecc87e111 ;
+	pq:P582 "1919-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:fe7abd5d6247e9b54048ebb77716143d .
+
+wd:Q25804 p:P131 wds:Q25804-acda804f-4bef-f1ce-7b7c-83e6471a2b5d .
+
+wds:Q25804-acda804f-4bef-f1ce-7b7c-83e6471a2b5d a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P131 wd:Q3358872 ;
+	pq:P580 "1308-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:7bbbdecbd3dafe6ca9744f11b849d775 ;
+	pq:P582 "1662-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:ec0521ea6110763ce367d49ecc87e111 .
+
+wd:Q25804 p:P131 wds:Q25804-73B72E05-1A12-4469-8DF1-5049F84B3776 .
+
+wds:Q25804-73B72E05-1A12-4469-8DF1-5049F84B3776 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P131 wd:Q127676 ;
+	pq:P580 "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:4b3cea969fafa6d97b799a2d874a68a4 .
+
+wd:Q25804 p:P131 wds:Q25804-c7346717-4503-4ba4-98c0-af31a563837b .
+
+wds:Q25804-c7346717-4503-4ba4-98c0-af31a563837b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P131 wd:Q1324436 .
+
+wd:Q25804 p:P94 wds:q25804-F30109D0-E809-4697-BA1E-FCC6B1E30C87 .
+
+wds:q25804-F30109D0-E809-4697-BA1E-FCC6B1E30C87 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P94 <http://commons.wikimedia.org/wiki/Special:FilePath/Trondheim%20komm.svg> .
+
+wd:Q25804 p:P41 wds:q25804-2218C3F7-CD91-41DD-9AF3-9018A545E674 .
+
+wds:q25804-2218C3F7-CD91-41DD-9AF3-9018A545E674 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P41 <http://commons.wikimedia.org/wiki/Special:FilePath/Flag%20of%20Trondheim.svg> .
+
+wd:Q25804 p:P373 wds:q25804-145FCF09-737D-4919-896D-C9ADCFA26B51 .
+
+wds:q25804-145FCF09-737D-4919-896D-C9ADCFA26B51 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P373 "Trondheim" .
+
+wd:Q25804 p:P17 wds:q25804-0A1188AB-0700-4578-A17F-799D91D1B239 .
+
+wds:q25804-0A1188AB-0700-4578-A17F-799D91D1B239 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P17 wd:Q20 ;
+	prov:wasDerivedFrom wdref:2a3a56697a289b22b58db6411fae23598a223792 .
+
+wd:Q25804 p:P163 wds:q25804-50b51af5-4b20-2994-fa28-dadc63ffa955 .
+
+wds:q25804-50b51af5-4b20-2994-fa28-dadc63ffa955 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P163 wd:Q3435436 .
+
+wd:Q25804 p:P571 wds:q25804-d2f35632-4237-e9c2-5cc1-eb87079340f6 .
+
+wds:q25804-d2f35632-4237-e9c2-5cc1-eb87079340f6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P571 "0997-01-01T00:00:00Z"^^xsd:dateTime ;
+	psv:P571 wdv:9d22c59eb26e0d8b1e5793882e14f274 .
+
+wd:Q25804 p:P625 wds:q25804-0A36F780-5969-4FF5-9726-295FCE02D7E7 .
+
+wds:q25804-0A36F780-5969-4FF5-9726-295FCE02D7E7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P625 "Point(10.4 63.44)"^^geo:wktLiteral ;
+	psv:P625 wdv:7e2da56486ea7fca38014ff7fa4eb8d4 ;
+	prov:wasDerivedFrom wdref:732ec1c90a6f0694c7db9a71bf09fe7f2b674172 .
+
+wd:Q25804 p:P948 wds:Q25804-F996E690-A013-476E-84B8-5001FCEC2A84 .
+
+wds:Q25804-F996E690-A013-476E-84B8-5001FCEC2A84 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P948 <http://commons.wikimedia.org/wiki/Special:FilePath/Trondheim%20banner%20Panorama%20with%20coast%20and%20city.jpg> .
+
+wd:Q25804 p:P910 wds:Q25804-2A494C92-E40F-43BA-9BCC-398FD3B86880 .
+
+wds:Q25804-2A494C92-E40F-43BA-9BCC-398FD3B86880 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P910 wd:Q8873574 .
+
+wd:Q25804 p:P998 wds:Q25804-335B7608-04DA-4551-BDDE-FB98BBF3C629 .
+
+wds:Q25804-335B7608-04DA-4551-BDDE-FB98BBF3C629 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P998 "Regional/Europe/Norway/Sør-Trøndelag/Trondheim/" .
+
+wd:Q25804 p:P982 wds:Q25804-BEA5AE2F-E501-49C4-983E-5DC453772BFD .
+
+wds:Q25804-BEA5AE2F-E501-49C4-983E-5DC453772BFD a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P982 "4c093436-be96-4317-a82f-733938485084" ;
+	psn:P982 <http://musicbrainz.org/area/4c093436-be96-4317-a82f-733938485084> ;
+	prov:wasDerivedFrom wdref:706208b3024200fd0a39ad499808dd0d98d74065 .
+
+wd:Q25804 p:P31 wds:Q25804-E9346E80-DD4B-4C44-92F8-16C078D5DF79 .
+
+wds:Q25804-E9346E80-DD4B-4C44-92F8-16C078D5DF79 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q15092344 .
+
+wd:Q25804 p:P31 wds:Q25804-42f8560b-4b9d-2374-cec5-0587c2cef398 .
+
+wds:Q25804-42f8560b-4b9d-2374-cec5-0587c2cef398 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q515 .
+
+wd:Q25804 p:P31 wds:Q25804-4427ccae-4587-6685-cd6d-bb52013ca314 .
+
+wds:Q25804-4427ccae-4587-6685-cd6d-bb52013ca314 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q1306755 .
+
+wd:Q25804 p:P31 wds:Q25804-DC686AC9-EC25-4EC2-AA0B-1A5827472CD1 .
+
+wds:Q25804-DC686AC9-EC25-4EC2-AA0B-1A5827472CD1 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q1549591 .
+
+wd:Q25804 p:P646 wds:Q25804-5F874C91-D036-403B-8026-0AD50CA64D8C .
+
+wds:Q25804-5F874C91-D036-403B-8026-0AD50CA64D8C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P646 "/m/09btk" ;
+	pq:P1810 "Trondheim" ;
+	prov:wasDerivedFrom wdref:2b00cb481cddcac7623114367489b5c194901c4a .
+
+wd:Q25804 p:P1464 wds:Q25804-897915EF-6574-4903-92C2-521A84DE77DF .
+
+wds:Q25804-897915EF-6574-4903-92C2-521A84DE77DF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1464 wd:Q8075936 ;
+	prov:wasDerivedFrom wdref:288ab581e7d2d02995a26dfa8b091d96e78457fc .
+
+wd:Q25804 p:P1566 wds:Q25804-6F8BB505-7DC5-45F6-8C4E-394556071402 .
+
+wds:Q25804-6F8BB505-7DC5-45F6-8C4E-394556071402 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1566 "3133880" ;
+	psn:P1566 <https://sws.geonames.org/3133880/> ;
+	prov:wasDerivedFrom wdref:88694a0f4d1486770c269f7db16a1982f74da69d .
+
+wd:Q25804 p:P227 wds:Q25804-24F64D88-98D2-4B21-B6BB-CDAAD50B0351 .
+
+wds:Q25804-24F64D88-98D2-4B21-B6BB-CDAAD50B0351 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P227 "4070588-2" ;
+	psn:P227 <https://d-nb.info/gnd/4070588-2> ;
+	prov:wasDerivedFrom wdref:9a24f7c0208b05d6be97077d855671d1dfdbc0dd .
+
+wd:Q25804 p:P166 wds:Q25804-4a071839-4113-79de-c3ec-d26639465830 .
+
+wds:Q25804-4a071839-4113-79de-c3ec-d26639465830 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P166 wd:Q18910363 ;
+	pq:P585 "2008-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:ce90feaacda74eb7f8326b25fb625c6d .
+
+wd:Q25804 p:P166 wds:Q25804-097d5446-45b2-8fca-9af5-d1ec29a06028 .
+
+wds:Q25804-097d5446-45b2-8fca-9af5-d1ec29a06028 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P166 wd:Q18910363 ;
+	pq:P585 "2010-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4f272fae38ee73a331afd0407cdc74b9 .
+
+wd:Q25804 p:P166 wds:Q25804-ac4053f0-4d0a-5f13-299d-b15da582b73a .
+
+wds:Q25804-ac4053f0-4d0a-5f13-299d-b15da582b73a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P166 wd:Q46996056 ;
+	pq:P585 "2015-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:418aedfba643e02a5ba758952f8f7765 ;
+	prov:wasDerivedFrom wdref:66cfba2ba7f813d682538e7975d5ecdf9a1b65ae .
+
+wd:Q25804 p:P214 wds:Q25804-34F6F33E-2A6F-471F-A315-B342AFF5E9E2 .
+
+wds:Q25804-34F6F33E-2A6F-471F-A315-B342AFF5E9E2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P214 "233891406" ;
+	psn:P214 <http://viaf.org/viaf/233891406> ;
+	prov:wasDerivedFrom wdref:9a24f7c0208b05d6be97077d855671d1dfdbc0dd .
+
+wd:Q25804 p:P18 wds:Q25804-48d6e87b-49ae-df7f-ed2e-bb4036c03a04 .
+
+wds:Q25804-48d6e87b-49ae-df7f-ed2e-bb4036c03a04 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/Overview%20of%20Trondheim%202008%2003.jpg> ;
+	pq:P585 "2008-07-02T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:1790291e027a3826f7fd5f2fcb8374a2 ;
+	pq:P2093 "Åge Hojem" ;
+	pq:P2096 "Nidelven går gjennom byens sentrum"@nb .
+
+wd:Q25804 p:P18 wds:Q25804-bc8facdc-400a-7bd2-b2c5-f6fba3d38b8d .
+
+wds:Q25804-bc8facdc-400a-7bd2-b2c5-f6fba3d38b8d a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/Trondheim%20IMG%208241tudengimaja%20kool.jpg> ;
+	pq:P585 "2015-08-17T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:409585c2be51a79b0733ba703eba9c8d .
+
+wd:Q25804 p:P1383 wds:Q25804-e825e6ca-4e58-f94f-de2c-00391526d72d .
+
+wds:Q25804-e825e6ca-4e58-f94f-de2c-00391526d72d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1383 wd:Q11969200 .
+
+wd:Q25804 p:P1383 wds:Q25804-f629a038-4f7c-a0ba-9ad0-c13cc787e943 .
+
+wds:Q25804-f629a038-4f7c-a0ba-9ad0-c13cc787e943 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1383 wd:Q1648687 .
+
+wd:Q25804 p:P1383 wds:Q25804-19ca9ae6-4fa4-e9fc-dca6-58253457454d .
+
+wds:Q25804-19ca9ae6-4fa4-e9fc-dca6-58253457454d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1383 wd:Q11980429 .
+
+wd:Q25804 p:P1383 wds:Q25804-7b03014e-4ab0-b691-5711-5e923e3b503d .
+
+wds:Q25804-7b03014e-4ab0-b691-5711-5e923e3b503d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1383 wd:Q12000711 .
+
+wd:Q25804 p:P1383 wds:Q25804-62c4c16a-433c-3e81-b91f-03db20f18ae1 .
+
+wds:Q25804-62c4c16a-433c-3e81-b91f-03db20f18ae1 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1383 wd:Q11966480 .
+
+wd:Q25804 p:P1383 wds:Q25804-df0993af-4920-833b-ee58-3ce3ee8b1924 .
+
+wds:Q25804-df0993af-4920-833b-ee58-3ce3ee8b1924 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1383 wd:Q1373658 .
+
+wd:Q25804 p:P1383 wds:Q25804-554f04c0-49a0-9806-5d7c-2ab2ec0b2aee .
+
+wds:Q25804-554f04c0-49a0-9806-5d7c-2ab2ec0b2aee a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1383 wd:Q19378716 .
+
+wd:Q25804 p:P1383 wds:Q25804-e9e35b25-412b-94c9-ce15-d1aebd303d90 .
+
+wds:Q25804-e9e35b25-412b-94c9-ce15-d1aebd303d90 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1383 wd:Q4581064 .
+
+wd:Q25804 p:P1383 wds:Q25804-d2722ca1-47e5-bd2d-6afd-1f2ffc14f1ea .
+
+wds:Q25804-d2722ca1-47e5-bd2d-6afd-1f2ffc14f1ea a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1383 wd:Q11989782 .
+
+wd:Q25804 p:P1383 wds:Q25804-7f00d13e-44bb-9846-8b17-d7f0ab34d6cf .
+
+wds:Q25804-7f00d13e-44bb-9846-8b17-d7f0ab34d6cf a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1383 wd:Q11987024 .
+
+wd:Q25804 p:P1383 wds:Q25804-8fc0a5fb-473d-c551-814d-b624b87423dd .
+
+wds:Q25804-8fc0a5fb-473d-c551-814d-b624b87423dd a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1383 wd:Q636798 .
+
+wd:Q25804 p:P856 wds:Q25804-425FD20B-0C9B-4A21-BDDB-EA4A72716194 .
+
+wds:Q25804-425FD20B-0C9B-4A21-BDDB-EA4A72716194 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P856 <https://www.trondheim.no/> ;
+	pq:P407 wd:Q9043 .
+
+wd:Q25804 p:P856 wds:Q25804-6da41c96-42bd-ce43-3033-500332e4e49b .
+
+wds:Q25804-6da41c96-42bd-ce43-3033-500332e4e49b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P856 <https://www.trondheim.kommune.no/> ;
+	prov:wasDerivedFrom wdref:1aab5255d20554486d17cbbbcb8d22855d700084 .
+
+wd:Q25804 p:P935 wds:Q25804-BA9B4FB8-37AE-4B7D-A35F-373C936D760E .
+
+wds:Q25804-BA9B4FB8-37AE-4B7D-A35F-373C936D760E a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P935 "Trondheim" .
+
+wd:Q25804 p:P244 wds:Q25804-8211fedf-452d-2bf4-989c-dd47d1560278 .
+
+wds:Q25804-8211fedf-452d-2bf4-989c-dd47d1560278 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P244 "n79061146" ;
+	psn:P244 <http://id.loc.gov/authorities/names/n79061146> .
+
+wd:Q25804 p:P1997 wds:Q25804-1d1bb611-4782-a43e-1170-366956975a1b .
+
+wds:Q25804-1d1bb611-4782-a43e-1170-366956975a1b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1997 "110429825645017" .
+
+wd:Q25804 p:P1281 wds:Q25804-F91D5A88-894D-4E42-A07A-C2C5317ED20E .
+
+wds:Q25804-F91D5A88-894D-4E42-A07A-C2C5317ED20E a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1281 "865157" ;
+	prov:wasDerivedFrom wdref:d4767d15e44afe8795350d71c4aaf13e1067eea5 .
+
+wd:Q25804 p:P3417 wds:Q25804-990EB757-09AB-410D-B37A-F23D7D42E5FF .
+
+wds:Q25804-990EB757-09AB-410D-B37A-F23D7D42E5FF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3417 "Trondheim-Norway" .
+
+wd:Q25804 p:P3500 wds:Q25804-368AD48D-F8DD-4997-823D-D08147A4D4E2 .
+
+wds:Q25804-368AD48D-F8DD-4997-823D-D08147A4D4E2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3500 "25574" ;
+	prov:wasDerivedFrom wdref:2834ac5da275724a6354a73d2d2a89ae956042a9 .
+
+wd:Q25804 p:P1791 wds:Q25804-9090d64c-4340-517d-06e9-f869a166c317 .
+
+wds:Q25804-9090d64c-4340-517d-06e9-f869a166c317 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1791 wd:Q29579321 .
+
+wd:Q25804 p:P1376 wds:Q25804-b4e4e4d9-4425-e8de-2f47-e70dc5a464fb .
+
+wds:Q25804-b4e4e4d9-4425-e8de-2f47-e70dc5a464fb a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1376 wd:Q1324436 .
+
+wd:Q25804 p:P1376 wds:Q25804-becd0fe0-4114-f1c4-368a-b56c28be1bc5 .
+
+wds:Q25804-becd0fe0-4114-f1c4-368a-b56c28be1bc5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1376 wd:Q50628 ;
+	pq:P580 "1919-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:fe7abd5d6247e9b54048ebb77716143d ;
+	pq:P582 "2017-12-31T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:59d82e713c60397f4831320daa2ca4a4 .
+
+wd:Q25804 p:P1376 wds:Q25804-406ad526-402a-4c81-debf-d152e1eb15dc .
+
+wds:Q25804-406ad526-402a-4c81-debf-d152e1eb15dc a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1376 wd:Q12004785 ;
+	pq:P580 "1804-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:a8a208ecd011004502eaffb91bffb493 ;
+	pq:P582 "1918-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:b7d683052372182191ee81a4c0a1b8da .
+
+wd:Q25804 p:P2347 wds:Q25804-76C85DF7-052F-4DB9-BC9B-8B1067F7F7D4 .
+
+wds:Q25804-76C85DF7-052F-4DB9-BC9B-8B1067F7F7D4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2347 "209904" ;
+	psn:P2347 <http://www.yso.fi/onto/yso/p209904> ;
+	pq:P14457 "Trondheim"@fi,
+		"Trondheim"@sv,
+		"Trondheim"@en ;
+	pq:P14458 "Nidaros"@sv,
+		"Trondhjem"@sv .
+
+wd:Q25804 p:P1225 wds:Q25804-CE6874CA-C849-4D6A-9DFD-CF7BC1CC412B .
+
+wds:Q25804-CE6874CA-C849-4D6A-9DFD-CF7BC1CC412B a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1225 "10045078" .
+
+wd:Q25804 p:P3219 wds:Q25804-C44C3A94-C9F2-4305-9AA1-690001DC26DE .
+
+wds:Q25804-C44C3A94-C9F2-4305-9AA1-690001DC26DE a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3219 "trondheim" .
+
+wd:Q25804 p:P2924 wds:Q25804-F08245E0-4615-4AE3-9EEF-F0E3E6A6500B .
+
+wds:Q25804-F08245E0-4615-4AE3-9EEF-F0E3E6A6500B a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2924 "4205111" ;
+	pq:P1810 "ТРОНХЕЙМ" .
+
+wd:Q25804 p:P1549 wds:Q25804-426479A7-BB9F-4AE5-8938-26EBB7794875 .
+
+wds:Q25804-426479A7-BB9F-4AE5-8938-26EBB7794875 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1549 "trondheimer"@nb ;
+	prov:wasDerivedFrom wdref:1cab2102f91b8738e5bda60db91df7015981d0b5 .
+
+wd:Q25804 p:P1549 wds:Q25804-DA236E70-0CDE-40E1-A949-DC91AAC69E17 .
+
+wds:Q25804-DA236E70-0CDE-40E1-A949-DC91AAC69E17 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1549 "trondheimar"@nn ;
+	prov:wasDerivedFrom wdref:1cab2102f91b8738e5bda60db91df7015981d0b5 .
+
+wd:Q25804 p:P1549 wds:Q25804-1F37CABB-8B56-4891-9A95-CE85FA52BF83 .
+
+wds:Q25804-1F37CABB-8B56-4891-9A95-CE85FA52BF83 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1549 "trondhjemmer"@nb ;
+	prov:wasDerivedFrom wdref:1cab2102f91b8738e5bda60db91df7015981d0b5 .
+
+wd:Q25804 p:P1549 wds:Q25804-4C99AB4C-F6AA-4287-A8E0-1D7D22F58104 .
+
+wds:Q25804-4C99AB4C-F6AA-4287-A8E0-1D7D22F58104 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1549 "trondhjemmar"@nn ;
+	prov:wasDerivedFrom wdref:1cab2102f91b8738e5bda60db91df7015981d0b5 .
+
+wd:Q25804 p:P1417 wds:Q25804-6140AE8A-5B78-40C1-849D-4E5E6CB5FF9C .
+
+wds:Q25804-6140AE8A-5B78-40C1-849D-4E5E6CB5FF9C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1417 "place/Trondheim" ;
+	pq:P1810 "Trondheim" .
+
+wd:Q25804 p:P2427 wds:Q25804-A67C7825-FC96-43BE-841C-4B4F740445C0 .
+
+wds:Q25804-A67C7825-FC96-43BE-841C-4B4F740445C0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2427 "grid.451476.5" ;
+	prov:wasDerivedFrom wdref:56a0410f161434baeaf149d4c06314ea35abaed8 .
+
+wd:Q25804 p:P206 wds:Q25804-BEEB4DC4-1F27-4CC2-A271-208886DAA459 .
+
+wds:Q25804-BEEB4DC4-1F27-4CC2-A271-208886DAA459 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P206 wd:Q499668 ;
+	prov:wasDerivedFrom wdref:03cdc8ba5c41ecc063ed7ae4c8d6b6ac59bae6f3 .
+
+wd:Q25804 p:P206 wds:Q25804-ba74188f-48da-187b-681a-9980147c82a6 .
+
+wds:Q25804-ba74188f-48da-187b-681a-9980147c82a6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P206 wd:Q279579 .
+
+wd:Q25804 p:P268 wds:Q25804-DFC3D300-9408-4AC0-BF59-F6E22A791EAB .
+
+wds:Q25804-DFC3D300-9408-4AC0-BF59-F6E22A791EAB a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P268 "11956512q" ;
+	psn:P268 <http://data.bnf.fr/ark:/12148/cb11956512q#about> ;
+	prov:wasDerivedFrom wdref:5a858a70d6ac562123c1debf25a5aed93a5c4939 .
+
+wd:Q25804 p:P5573 wds:Q25804-2F0E5BF7-0F91-448C-A8EB-7D6DCAB11E1A .
+
+wds:Q25804-2F0E5BF7-0F91-448C-A8EB-7D6DCAB11E1A a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P5573 "6542" ;
+	prov:wasDerivedFrom wdref:21494d78c86d729112257391ca4131a84f73b44b .
+
+wd:Q25804 p:P1850 wds:Q25804-905e8cfd-4c67-fd2c-3041-8b54b698079f .
+
+wds:Q25804-905e8cfd-4c67-fd2c-3041-8b54b698079f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1850 "558690" .
+
+wd:Q25804 p:P281 wds:Q25804-8845afff-41ba-0cd6-cdac-3b70ec32f123 .
+
+wds:Q25804-8845afff-41ba-0cd6-cdac-3b70ec32f123 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P281 "7004" .
+
+wd:Q25804 p:P2046 wds:Q25804-07076013-4636-a5be-c752-e837ccaf1c73 .
+
+wds:Q25804-07076013-4636-a5be-c752-e837ccaf1c73 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+57.49"^^xsd:decimal ;
+	psv:P2046 wdv:d351fff1a6d1d7a046cb1a136f20898d ;
+	psn:P2046 wdv:cb873b795ff5924ef6476c390df609f7 ;
+	pq:P585 "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:4b3cea969fafa6d97b799a2d874a68a4 ;
+	prov:wasDerivedFrom wdref:cc050cb6a36129fd4a8e3bef5c3fc64a119dc391 .
+
+wd:Q25804 p:P2046 wds:Q25804-47203A39-03B0-40C5-A45D-86B55C367025 .
+
+wds:Q25804-47203A39-03B0-40C5-A45D-86B55C367025 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+58.21"^^xsd:decimal ;
+	psv:P2046 wdv:710ce4a71b47a4b79bb6077cca23933f ;
+	psn:P2046 wdv:298d6c5a2d0aef8fb8010cff126c58e5 ;
+	pq:P585 "2019-11-04T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:54afc7973e523b9a0580bcfbfb6fe3dd ;
+	pq:P518 wd:Q16868672 ;
+	prov:wasDerivedFrom wdref:90f9c663e4d91a493500b1139133aca75b5f1709 .
+
+wd:Q25804 p:P6782 wds:Q25804-71948139-98E7-4C93-9CE1-624EED727DC5 .
+
+wds:Q25804-71948139-98E7-4C93-9CE1-624EED727DC5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6782 "01gjtys23" .
+
+wd:Q25804 p:P6520 wds:Q25804-cc00d8a8-4374-5080-15c6-9360defca598 .
+
+wds:Q25804-cc00d8a8-4374-5080-15c6-9360defca598 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6520 "Trondheim" .
+
+wd:Q25804 p:P3222 wds:Q25804-A1A8A5C3-596E-4FAC-AE1A-A6D53234FE60 .
+
+wds:Q25804-A1A8A5C3-596E-4FAC-AE1A-A6D53234FE60 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3222 "trondhjem" .
+
+wd:Q25804 p:P3222 wds:Q25804-E71103EE-BA24-49C7-9DBE-962361DAAB2A .
+
+wds:Q25804-E71103EE-BA24-49C7-9DBE-962361DAAB2A a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3222 "trondheim" .
+
+wd:Q25804 p:P6821 wds:Q25804-2598f5c9-4eaf-aede-fda8-90ec87e98daf .
+
+wds:Q25804-2598f5c9-4eaf-aede-fda8-90ec87e98daf a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6821 "alvin-place:5205" ;
+	psn:P6821 <http://www.alvin-portal.org/alvin/view.jsf?pid=alvin-place:5205> .
+
+wd:Q25804 p:P6821 wds:Q25804-c205f92c-4458-1fc1-9a89-fb6691a891ae .
+
+wds:Q25804-c205f92c-4458-1fc1-9a89-fb6691a891ae a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6821 "alvin-place:1514" ;
+	psn:P6821 <http://www.alvin-portal.org/alvin/view.jsf?pid=alvin-place:1514> .
+
+wd:Q25804 p:P1296 wds:Q25804-B00C03CD-CBFC-4C39-BA23-BC427F466771 .
+
+wds:Q25804-B00C03CD-CBFC-4C39-BA23-BC427F466771 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1296 "0067742" .
+
+wd:Q25804 p:P6766 wds:Q25804-4AB1DBB1-32BF-4CE6-9CE7-8A712053A3BD .
+
+wds:Q25804-4AB1DBB1-32BF-4CE6-9CE7-8A712053A3BD a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6766 "101751927" .
+
+wd:Q25804 p:P1448 wds:Q25804-3df77747-4e35-aedc-83f7-79802154f346 .
+
+wds:Q25804-3df77747-4e35-aedc-83f7-79802154f346 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1448 "Trondheim"@no ;
+	prov:wasDerivedFrom wdref:d79291cdb46324db8c3f5dd4a93379506bdf9584 .
+
+wd:Q25804 p:P1448 wds:Q25804-f4874401-4149-ee26-6738-7d1bf17f431b .
+
+wds:Q25804-f4874401-4149-ee26-6738-7d1bf17f431b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1448 "Nidaros"@nn ;
+	pq:P580 "1930-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:08d3749ad0f8f754b53206761ebe9ac5 ;
+	pq:P582 "1931-03-06T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:2d179480167e96f1ea0e05501e0e1fba ;
+	prov:wasDerivedFrom wdref:2c73b81923dc8cfc479c9a376721ecf3997a86eb .
+
+wd:Q25804 p:P1343 wds:Q25804-67035d1e-9273-4c90-b1b6-847b383cc8ff .
+
+wds:Q25804-67035d1e-9273-4c90-b1b6-847b383cc8ff a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q602358 ;
+	pq:P805 wd:Q24412655 .
+
+wd:Q25804 p:P1343 wds:Q25804-741ae142-460c-663e-3f83-a1804d65057c .
+
+wds:Q25804-741ae142-460c-663e-3f83-a1804d65057c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q3181656 ;
+	pq:P1810 "Trondhjem" .
+
+wd:Q25804 p:P1343 wds:Q25804-687A4D76-8480-4175-82EE-3F10372D0056 .
+
+wds:Q25804-687A4D76-8480-4175-82EE-3F10372D0056 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q19219752 ;
+	pq:P805 wd:Q117836917 .
+
+wd:Q25804 p:P1343 wds:Q25804-C7868E05-162E-4ECE-B7FF-0A22B1FB10A0 .
+
+wds:Q25804-C7868E05-162E-4ECE-B7FF-0A22B1FB10A0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q867541 ;
+	pq:P805 wd:Q84668865 .
+
+wd:Q25804 p:P3992 wds:Q25804-a66e76b5-43e9-15d6-c259-56ad442fae4d .
+
+wds:Q25804-a66e76b5-43e9-15d6-c259-56ad442fae4d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3992 "6501" .
+
+wd:Q25804 p:P2936 wds:Q25804-47d03e43-4489-cc85-6f7b-832218a3952d .
+
+wds:Q25804-47d03e43-4489-cc85-6f7b-832218a3952d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2936 wd:Q25167 .
+
+wd:Q25804 p:P2936 wds:Q25804-0c17b4a1-4f00-4684-eed8-b579541a87e5 .
+
+wds:Q25804-0c17b4a1-4f00-4684-eed8-b579541a87e5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2936 wd:Q25164 .
+
+wd:Q25804 p:P6262 wds:Q25804-053a1fb0-4f18-d07f-0fd4-96dbb2014825 .
+
+wds:Q25804-053a1fb0-4f18-d07f-0fd4-96dbb2014825 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6262 "norway:Trondheim" ;
+	pq:P407 wd:Q1860 ;
+	pq:P1810 "Trondheim" ;
+	pq:P9675 "2093" .
+
+wd:Q25804 p:P691 wds:Q25804-C2736014-E8C8-413D-A2F0-C7F7F336F2AF .
+
+wds:Q25804-C2736014-E8C8-413D-A2F0-C7F7F336F2AF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P691 "xx0028756" ;
+	pq:P1810 "Trondheim (Norsko)" ;
+	prov:wasDerivedFrom wdref:c77e9c997148676adaf9084f93096acac27c1868 .
+
+wd:Q25804 p:P8406 wds:Q25804-46EBADEF-0509-4E37-84AB-48DF9D26618B .
+
+wds:Q25804-46EBADEF-0509-4E37-84AB-48DF9D26618B a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8406 "T086293" ;
+	psn:P8406 <http://dx.doi.org/10.1093/gao/9781884446054.article.T086293> .
+
+wd:Q25804 p:P8519 wds:Q25804-34b80dba-f3b6-4f06-9721-b0011607a0fd .
+
+wds:Q25804-34b80dba-f3b6-4f06-9721-b0011607a0fd a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8519 "5817" ;
+	psn:P8519 <https://data.rkd.nl/thesau/5817> .
+
+wd:Q25804 p:P5063 wds:Q25804-6ACE7AAB-EE53-4F11-AF39-E57958A1DF53 .
+
+wds:Q25804-6ACE7AAB-EE53-4F11-AF39-E57958A1DF53 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P5063 "i82946" ;
+	psn:P5063 <https://globalwordnet.github.io/cili/i82946> .
+
+wd:Q25804 p:P7471 wds:Q25804-CD99F36E-F96F-47E7-BAC2-63DF9634BBBC .
+
+wds:Q25804-CD99F36E-F96F-47E7-BAC2-63DF9634BBBC a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P7471 "40369" .
+
+wd:Q25804 p:P9100 wds:Q25804-1b23b560-4f5a-270b-3bfc-4950191d3ec5 .
+
+wds:Q25804-1b23b560-4f5a-270b-3bfc-4950191d3ec5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P9100 "trondheim" .
+
+wd:Q25804 p:P8814 wds:Q25804-E20F40DC-4E0B-444F-94BF-78B49EDB8849 .
+
+wds:Q25804-E20F40DC-4E0B-444F-94BF-78B49EDB8849 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8814 "08783456-n" ;
+	psn:P8814 <https://en-word.net/id/oewn-08783456-n> .
+
+wd:Q25804 p:P8168 wds:Q25804-D8844109-7F21-4CB7-8659-EE37A858E9D8 .
+
+wds:Q25804-D8844109-7F21-4CB7-8659-EE37A858E9D8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8168 "Q92640" ;
+	psn:P8168 <https://database.factgrid.de/entity/Q92640> .
+
+wd:Q25804 p:P1705 wds:Q25804-a223bbc4-4b70-90d0-b787-8ca6777a1a99 .
+
+wds:Q25804-a223bbc4-4b70-90d0-b787-8ca6777a1a99 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1705 "Trondheim"@no ;
+	pq:P443 <http://commons.wikimedia.org/wiki/Special:FilePath/Trondheim.ogg> ;
+	prov:wasDerivedFrom wdref:9bec69ff4a6c2884304853ff0f57587ec8b10d8c .
+
+wd:Q25804 p:P213 wds:Q25804-2EFC86EE-426F-4E0A-BBA2-CD7DE43AA4F7 .
+
+wds:Q25804-2EFC86EE-426F-4E0A-BBA2-CD7DE43AA4F7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P213 "0000000404606448" ;
+	prov:wasDerivedFrom wdref:c7f0f6b45f83e84010e868bebe6f63e93490edd2 .
+
+wd:Q25804 p:P8189 wds:Q25804-52F9AC73-EA8E-4B42-8526-904E66ED6D88 .
+
+wds:Q25804-52F9AC73-EA8E-4B42-8526-904E66ED6D88 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8189 "987007562086805171" .
+
+wd:Q25804 p:P9957 wds:Q25804-8CC88AEB-13C1-43AB-A9A3-34E2C1ADB3F6 .
+
+wds:Q25804-8CC88AEB-13C1-43AB-A9A3-34E2C1ADB3F6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P9957 "4223" ;
+	prov:wasDerivedFrom wdref:190527dca615f4510213808b0e1cb81522b247f6 .
+
+wd:Q25804 p:P10397 wds:Q25804-CEEC21D3-F53A-4FBD-851C-4224C102ABBC .
+
+wds:Q25804-CEEC21D3-F53A-4FBD-851C-4224C102ABBC a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P10397 "LO1L003812" .
+
+wd:Q25804 p:P8313 wds:Q25804-4D49A761-0BFE-4783-875F-77CFFD3BC900 .
+
+wds:Q25804-4D49A761-0BFE-4783-875F-77CFFD3BC900 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8313 "Trondheim" .
+
+wd:Q25804 p:P402 wds:Q25804-dac3bca4-490b-53fb-25a9-a663a44b19d2 .
+
+wds:Q25804-dac3bca4-490b-53fb-25a9-a663a44b19d2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P402 "406549" ;
+	psn:P402 <https://www.openstreetmap.org/relation/406549> .
+
+wd:Q25804 p:P242 wds:Q25804-dc2938c4-4b24-6623-f92d-9e1e0f905599 .
+
+wds:Q25804-dc2938c4-4b24-6623-f92d-9e1e0f905599 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P242 <http://commons.wikimedia.org/wiki/Special:FilePath/NO%205001%20Trondheim.svg> ;
+	prov:wasDerivedFrom wdref:db9bdc05f08a6e21cf05cd401a5a9ee1927b8bd2 .
+
+wd:Q25804 p:P7305 wds:Q25804-d059e17d-4392-c6fc-63c0-a016d9af7b29 .
+
+wds:Q25804-d059e17d-4392-c6fc-63c0-a016d9af7b29 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P7305 "3989312" .
+
+wd:Q25804 p:P269 wds:Q25804-5AF4793F-875F-4EDE-A9ED-FF4A6065CF7F .
+
+wds:Q25804-5AF4793F-875F-4EDE-A9ED-FF4A6065CF7F a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P269 "027548171" ;
+	psn:P269 <http://www.idref.fr/027548171/id> ;
+	prov:wasDerivedFrom wdref:4df2fbdce13fcbf6c1512665bcd17c56ffd8bbf3 .
+
+wd:Q25804 p:P9495 wds:Q25804-E244EF16-CA38-446A-A23B-51505B1CEC5D .
+
+wds:Q25804-E244EF16-CA38-446A-A23B-51505B1CEC5D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P9495 "geo/F69BA0E7-4E24-4636-890B-BE485B61FFDE" .
+
+wd:Q25804 p:P11693 wds:Q25804-8CEB8D4B-46DC-404D-907A-7DB54D0BE4EF .
+
+wds:Q25804-8CEB8D4B-46DC-404D-907A-7DB54D0BE4EF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P11693 "31264142" .
+
+wd:Q25804 p:P12086 wds:Q25804-C2D43768-F4B3-40CA-935A-EE9805CA3065 .
+
+wds:Q25804-C2D43768-F4B3-40CA-935A-EE9805CA3065 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P12086 "Trondheim" ;
+	pq:P9675 "35909" .
+
+wd:Q25804 p:P12385 wds:Q25804-99f3d995-7b26-4663-8912-44963428f699 .
+
+wds:Q25804-99f3d995-7b26-4663-8912-44963428f699 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P12385 "trondheim" .
+
+wd:Q25804 p:P2326 wds:Q25804-62C17E4D-9BB6-4650-8384-31C1687D98C4 .
+
+wds:Q25804-62C17E4D-9BB6-4650-8384-31C1687D98C4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2326 "-284421" .
+
+wd:Q25804 p:P10832 wds:Q25804-34848A9C-AE6C-4710-870C-07EDCF8AA22A .
+
+wds:Q25804-34848A9C-AE6C-4710-870C-07EDCF8AA22A a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P10832 "E39PBJjhCFvR3YyDBY9QRGTT73" ;
+	prov:wasDerivedFrom wdref:b10a83ad94457c15ae271650f430f7935e1dc786 .
+
+wd:Q25804 p:P12749 wds:Q25804-C662CC24-A445-4A23-BB0D-A2FB10F0605C .
+
+wds:Q25804-C662CC24-A445-4A23-BB0D-A2FB10F0605C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P12749 "Q2161" .
+
+wd:Q25804 p:P13030 wds:Q25804-AF1AE013-29A4-4FD2-A495-D0C20DC4C2EF .
+
+wds:Q25804-AF1AE013-29A4-4FD2-A495-D0C20DC4C2EF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13030 "location/1978" .
+
+wd:Q25804 p:P1937 wds:Q25804-7efeb3c3-4c52-5981-1eef-60d3117d3113 .
+
+wds:Q25804-7efeb3c3-4c52-5981-1eef-60d3117d3113 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1937 "NOTRD" .
+
+wd:Q25804 p:P3847 wds:Q25804-bfd597ab-4eaa-0fe7-5baf-238c6360a786 .
+
+wds:Q25804-bfd597ab-4eaa-0fe7-5baf-238c6360a786 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3847 "place:trondheim_(norway)" .
+
+wd:Q25804 p:P13591 wds:Q25804-955029CC-C2F7-4B8F-8C3A-B36617845F3B .
+
+wds:Q25804-955029CC-C2F7-4B8F-8C3A-B36617845F3B a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13591 "place/5930169f-c8eb-4ab9-953e-fc13e0dc700e" .
+
+wd:Q25804 p:P1617 wds:Q25804-ba9d7775-7835-487c-b7ae-76576844705c .
+
+wds:Q25804-ba9d7775-7835-487c-b7ae-76576844705c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1617 "831a0a89-d29c-4ee7-946b-1b9722ee7c1c" ;
+	psn:P1617 <http://www.bbc.co.uk/things/831a0a89-d29c-4ee7-946b-1b9722ee7c1c#id> ;
+	prov:wasDerivedFrom wdref:8582d8416671f1f2567247201bac753552435ca5 .
+
+wd:Q25804 p:P1015 wds:q25804-688414d5-4d98-9ed1-b58b-04151a5489ea .
+
+wds:q25804-688414d5-4d98-9ed1-b58b-04151a5489ea a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1015 "90075856" ;
+	psn:P1015 <https://livedata.bibsys.no/authority/90075856> ;
+	prov:wasDerivedFrom wdref:a13b3f57d68d8d1f600f0544b983c591afb18818 .
+
+wd:Q25804 p:P8179 wds:q25804-2974b8c8-4cab-967c-58aa-c6e3f34d87b7 .
+
+wds:q25804-2974b8c8-4cab-967c-58aa-c6e3f34d87b7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8179 "ncf12150348" ;
+	prov:wasDerivedFrom wdref:a13b3f57d68d8d1f600f0544b983c591afb18818 .
+
+wd:Q25804 p:P2163 wds:q25804-22994604-46c4-9355-da1d-8721f96795df .
+
+wds:q25804-22994604-46c4-9355-da1d-8721f96795df a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2163 "1205358" ;
+	psn:P2163 <http://id.worldcat.org/fast/1205358> ;
+	prov:wasDerivedFrom wdref:a13b3f57d68d8d1f600f0544b983c591afb18818 .
+
+wd:Q25804 p:P1207 wds:q25804-53f44da2-4178-b973-d0f1-ffad69b6515e .
+
+wds:q25804-53f44da2-4178-b973-d0f1-ffad69b6515e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1207 "n2019049166" ;
+	prov:wasDerivedFrom wdref:a13b3f57d68d8d1f600f0544b983c591afb18818 .
+
+wd:Q25804 p:P14075 wds:Q25804-E7091115-1F1C-4EEB-9581-6EFFA6F03694 .
+
+wds:Q25804-E7091115-1F1C-4EEB-9581-6EFFA6F03694 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P14075 "42296" .
+
+wd:Q25804 p:P13204 wds:Q25804-D24BE116-C88F-41E0-8EC5-DD28ACE6FA52 .
+
+wds:Q25804-D24BE116-C88F-41E0-8EC5-DD28ACE6FA52 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13204 "uc3wvjjb" .
+
+wd:Q25804 p:P14586 wds:Q25804-92DC5FAD-1DEC-47BE-AFCF-CFD06EC9EB4B .
+
+wds:Q25804-92DC5FAD-1DEC-47BE-AFCF-CFD06EC9EB4B a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P14586 "92261" .
+
+wd:Q25804 p:P5252 wds:Q25804-A8AFCE39-D52A-491E-AB22-2F1093FD1587 .
+
+wds:Q25804-A8AFCE39-D52A-491E-AB22-2F1093FD1587 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P5252 <http://commons.wikimedia.org/wiki/Special:FilePath/View%20from%20Kristiansten%20festning%2C%20Trondheim%20%287036210495%29.jpg> .
+
+wd:Q25804 rdfs:label "Trondheim"@lb ;
+	skos:prefLabel "Trondheim"@lb ;
+	schema:name "Trondheim"@lb ;
+	rdfs:label "特隆赫姆"@zh ;
+	skos:prefLabel "特隆赫姆"@zh ;
+	schema:name "特隆赫姆"@zh ;
+	rdfs:label "Trondheim"@eu ;
+	skos:prefLabel "Trondheim"@eu ;
+	schema:name "Trondheim"@eu ;
+	rdfs:label "Trondheim"@pl ;
+	skos:prefLabel "Trondheim"@pl ;
+	schema:name "Trondheim"@pl ;
+	rdfs:label "Trondheim"@es ;
+	skos:prefLabel "Trondheim"@es ;
+	schema:name "Trondheim"@es ;
+	rdfs:label "Trondheim"@vo ;
+	skos:prefLabel "Trondheim"@vo ;
+	schema:name "Trondheim"@vo ;
+	rdfs:label "Trondheim"@mi ;
+	skos:prefLabel "Trondheim"@mi ;
+	schema:name "Trondheim"@mi ;
+	rdfs:label "Trondheim"@af ;
+	skos:prefLabel "Trondheim"@af ;
+	schema:name "Trondheim"@af ;
+	rdfs:label "Trondheim"@hu ;
+	skos:prefLabel "Trondheim"@hu ;
+	schema:name "Trondheim"@hu ;
+	rdfs:label "Trondheim"@sw ;
+	skos:prefLabel "Trondheim"@sw ;
+	schema:name "Trondheim"@sw ;
+	rdfs:label "Trondheim"@et ;
+	skos:prefLabel "Trondheim"@et ;
+	schema:name "Trondheim"@et ;
+	rdfs:label "Trondheim"@br ;
+	skos:prefLabel "Trondheim"@br ;
+	schema:name "Trondheim"@br ;
+	rdfs:label "Τρόντχαϊμ"@el ;
+	skos:prefLabel "Τρόντχαϊμ"@el ;
+	schema:name "Τρόντχαϊμ"@el ;
+	rdfs:label "ٹرونڈہائم"@pnb ;
+	skos:prefLabel "ٹرونڈہائم"@pnb ;
+	schema:name "ٹرونڈہائم"@pnb ;
+	rdfs:label "تروندهايم"@ar ;
+	skos:prefLabel "تروندهايم"@ar ;
+	schema:name "تروندهايم"@ar ;
+	rdfs:label "Trondheim"@nl ;
+	skos:prefLabel "Trondheim"@nl ;
+	schema:name "Trondheim"@nl ;
+	rdfs:label "Trondheim"@pt ;
+	skos:prefLabel "Trondheim"@pt ;
+	schema:name "Trondheim"@pt ;
+	rdfs:label "Trondheim"@eo ;
+	skos:prefLabel "Trondheim"@eo ;
+	schema:name "Trondheim"@eo ;
+	rdfs:label "Þrándheimur"@is ;
+	skos:prefLabel "Þrándheimur"@is ;
+	schema:name "Þrándheimur"@is ;
+	rdfs:label "Тронхейм"@ru ;
+	skos:prefLabel "Тронхейм"@ru ;
+	schema:name "Тронхейм"@ru ;
+	rdfs:label "Трондхејм"@sr ;
+	skos:prefLabel "Трондхејм"@sr ;
+	schema:name "Трондхејм"@sr ;
+	rdfs:label "Trondheim"@tr ;
+	skos:prefLabel "Trondheim"@tr ;
+	schema:name "Trondheim"@tr ;
+	rdfs:label "Troandin"@se ;
+	skos:prefLabel "Troandin"@se ;
+	schema:name "Troandin"@se ;
+	rdfs:label "Trondheim"@kl ;
+	skos:prefLabel "Trondheim"@kl ;
+	schema:name "Trondheim"@kl ;
+	rdfs:label "Trondheim"@fi ;
+	skos:prefLabel "Trondheim"@fi ;
+	schema:name "Trondheim"@fi ;
+	rdfs:label "Тронгейм"@uk ;
+	skos:prefLabel "Тронгейм"@uk ;
+	schema:name "Тронгейм"@uk ;
+	rdfs:label "troneim"@jbo ;
+	skos:prefLabel "troneim"@jbo ;
+	schema:name "troneim"@jbo ;
+	rdfs:label "Тронгейм"@be-tarask ;
+	skos:prefLabel "Тронгейм"@be-tarask ;
+	schema:name "Тронгейм"@be-tarask ;
+	rdfs:label "Trondheim"@io ;
+	skos:prefLabel "Trondheim"@io ;
+	schema:name "Trondheim"@io ;
+	rdfs:label "Trondheim"@sco ;
+	skos:prefLabel "Trondheim"@sco ;
+	schema:name "Trondheim"@sco ;
+	rdfs:label "Trondheim"@hr ;
+	skos:prefLabel "Trondheim"@hr ;
+	schema:name "Trondheim"@hr ;
+	rdfs:label "ট্রোনডেহিম"@bpy ;
+	skos:prefLabel "ট্রোনডেহিম"@bpy ;
+	schema:name "ট্রোনডেহিম"@bpy ;
+	rdfs:label "Trondheim"@lmo ;
+	skos:prefLabel "Trondheim"@lmo ;
+	schema:name "Trondheim"@lmo ;
+	rdfs:label "Trondheim"@da ;
+	skos:prefLabel "Trondheim"@da ;
+	schema:name "Trondheim"@da ;
+	rdfs:label "트론헤임"@ko ;
+	skos:prefLabel "트론헤임"@ko ;
+	schema:name "트론헤임"@ko ;
+	rdfs:label "טרונדהיים"@he ;
+	skos:prefLabel "טרונדהיים"@he ;
+	schema:name "טרונדהיים"@he ;
+	rdfs:label "Trondheim"@fr ;
+	skos:prefLabel "Trondheim"@fr ;
+	schema:name "Trondheim"@fr ;
+	rdfs:label "Тронхейм"@be ;
+	skos:prefLabel "Тронхейм"@be ;
+	schema:name "Тронхейм"@be ;
+	rdfs:label "Trondheim"@frr ;
+	skos:prefLabel "Trondheim"@frr ;
+	schema:name "Trondheim"@frr ;
+	rdfs:label "Trondheim"@bar ;
+	skos:prefLabel "Trondheim"@bar ;
+	schema:name "Trondheim"@bar ;
+	rdfs:label "Tronheima"@lv ;
+	skos:prefLabel "Tronheima"@lv ;
+	schema:name "Tronheima"@lv ;
+	rdfs:label "Trondheim"@it ;
+	skos:prefLabel "Trondheim"@it ;
+	schema:name "Trondheim"@it ;
+	rdfs:label "Trondheim"@gl ;
+	skos:prefLabel "Trondheim"@gl ;
+	schema:name "Trondheim"@gl ;
+	rdfs:label "Trondheim"@de ;
+	skos:prefLabel "Trondheim"@de ;
+	schema:name "Trondheim"@de ;
+	rdfs:label "Trondheim"@id ;
+	skos:prefLabel "Trondheim"@id ;
+	schema:name "Trondheim"@id ;
+	rdfs:label "トロンハイム"@ja ;
+	skos:prefLabel "トロンハイム"@ja ;
+	schema:name "トロンハイム"@ja ;
+	rdfs:label "Trondheim"@vi ;
+	skos:prefLabel "Trondheim"@vi ;
+	schema:name "Trondheim"@vi ;
+	rdfs:label "Trondheim"@en ;
+	skos:prefLabel "Trondheim"@en ;
+	schema:name "Trondheim"@en ;
+	rdfs:label "Trondheim"@sk ;
+	skos:prefLabel "Trondheim"@sk ;
+	schema:name "Trondheim"@sk ;
+	rdfs:label "Trondheim"@ro ;
+	skos:prefLabel "Trondheim"@ro ;
+	schema:name "Trondheim"@ro ;
+	rdfs:label "ทร็อนไฮม์"@th ;
+	skos:prefLabel "ทร็อนไฮม์"@th ;
+	schema:name "ทร็อนไฮม์"@th ;
+	rdfs:label "Trondheim"@ca ;
+	skos:prefLabel "Trondheim"@ca ;
+	schema:name "Trondheim"@ca ;
+	rdfs:label "Nidrosia"@la ;
+	skos:prefLabel "Nidrosia"@la ;
+	schema:name "Nidrosia"@la ;
+	rdfs:label "Trondheim"@fo ;
+	skos:prefLabel "Trondheim"@fo ;
+	schema:name "Trondheim"@fo ;
+	rdfs:label "Trondheim"@cy ;
+	skos:prefLabel "Trondheim"@cy ;
+	schema:name "Trondheim"@cy ;
+	rdfs:label "Trondheim"@sl ;
+	skos:prefLabel "Trondheim"@sl ;
+	schema:name "Trondheim"@sl ;
+	rdfs:label "Trondheim"@war ;
+	skos:prefLabel "Trondheim"@war ;
+	schema:name "Trondheim"@war ;
+	rdfs:label "Trondheim"@cs ;
+	skos:prefLabel "Trondheim"@cs ;
+	schema:name "Trondheim"@cs ;
+	rdfs:label "Тронхейм"@os ;
+	skos:prefLabel "Тронхейм"@os ;
+	schema:name "Тронхейм"@os ;
+	rdfs:label "تروندهایم"@fa ;
+	skos:prefLabel "تروندهایم"@fa ;
+	schema:name "تروندهایم"@fa ;
+	rdfs:label "ტრონჰეიმი"@ka ;
+	skos:prefLabel "ტრონჰეიმი"@ka ;
+	schema:name "ტრონჰეიმი"@ka ;
+	rdfs:label "Kommun Trondheim"@nds ;
+	skos:prefLabel "Kommun Trondheim"@nds ;
+	schema:name "Kommun Trondheim"@nds ;
+	rdfs:label "Trondheimas"@lt ;
+	skos:prefLabel "Trondheimas"@lt ;
+	schema:name "Trondheimas"@lt ;
+	rdfs:label "Trondheim"@nb ;
+	skos:prefLabel "Trondheim"@nb ;
+	schema:name "Trondheim"@nb ;
+	rdfs:label "Тронхейм"@bg ;
+	skos:prefLabel "Тронхейм"@bg ;
+	schema:name "Тронхейм"@bg ;
+	rdfs:label "Trondheim"@en-ca ;
+	skos:prefLabel "Trondheim"@en-ca ;
+	schema:name "Trondheim"@en-ca ;
+	rdfs:label "Trondheim"@en-gb ;
+	skos:prefLabel "Trondheim"@en-gb ;
+	schema:name "Trondheim"@en-gb ;
+	rdfs:label "Trondheim"@nn ;
+	skos:prefLabel "Trondheim"@nn ;
+	schema:name "Trondheim"@nn ;
+	rdfs:label "Trondheim"@pt-br ;
+	skos:prefLabel "Trondheim"@pt-br ;
+	schema:name "Trondheim"@pt-br ;
+	rdfs:label "Trondheim"@sq ;
+	skos:prefLabel "Trondheim"@sq ;
+	schema:name "Trondheim"@sq ;
+	rdfs:label "Trondheim"@sv ;
+	skos:prefLabel "Trondheim"@sv ;
+	schema:name "Trondheim"@sv ;
+	rdfs:label "Trondheim"@oc ;
+	skos:prefLabel "Trondheim"@oc ;
+	schema:name "Trondheim"@oc ;
+	rdfs:label "Тронхейм"@ce ;
+	skos:prefLabel "Тронхейм"@ce ;
+	schema:name "Тронхейм"@ce ;
+	rdfs:label "Trondheim"@pms ;
+	skos:prefLabel "Trondheim"@pms ;
+	schema:name "Trondheim"@pms ;
+	rdfs:label "Trondheim"@ms ;
+	skos:prefLabel "Trondheim"@ms ;
+	schema:name "Trondheim"@ms ;
+	rdfs:label "Trondheim"@szl ;
+	skos:prefLabel "Trondheim"@szl ;
+	schema:name "Trondheim"@szl ;
+	rdfs:label "Тронхейм"@mn ;
+	skos:prefLabel "Тронхейм"@mn ;
+	schema:name "Тронхейм"@mn ;
+	rdfs:label "Трондхејм"@mk ;
+	skos:prefLabel "Трондхејм"@mk ;
+	schema:name "Трондхејм"@mk ;
+	rdfs:label "Truondhėims"@sgs ;
+	skos:prefLabel "Truondhėims"@sgs ;
+	schema:name "Truondhėims"@sgs ;
+	rdfs:label "Trondheim"@ie ;
+	skos:prefLabel "Trondheim"@ie ;
+	schema:name "Trondheim"@ie ;
+	rdfs:label "Trondheim"@na ;
+	skos:prefLabel "Trondheim"@na ;
+	schema:name "Trondheim"@na ;
+	rdfs:label "Trondheim"@sh ;
+	skos:prefLabel "Trondheim"@sh ;
+	schema:name "Trondheim"@sh ;
+	rdfs:label "Տրոնհեյմ"@hy ;
+	skos:prefLabel "Տրոնհեյմ"@hy ;
+	schema:name "Տրոնհեյմ"@hy ;
+	rdfs:label "ट्रोनहाइम"@mr ;
+	skos:prefLabel "ट्रोनहाइम"@mr ;
+	schema:name "ट्रोनहाइम"@mr ;
+	rdfs:label "Trondheim"@jv ;
+	skos:prefLabel "Trondheim"@jv ;
+	schema:name "Trondheim"@jv ;
+	rdfs:label "Trondheim"@nan ;
+	skos:prefLabel "Trondheim"@nan ;
+	schema:name "Trondheim"@nan ;
+	rdfs:label "ترونہائیم"@ur ;
+	skos:prefLabel "ترونہائیم"@ur ;
+	schema:name "ترونہائیم"@ur ;
+	rdfs:label "Trondheim"@li ;
+	skos:prefLabel "Trondheim"@li ;
+	schema:name "Trondheim"@li ;
+	rdfs:label "Trondheim"@tum ;
+	skos:prefLabel "Trondheim"@tum ;
+	schema:name "Trondheim"@tum ;
+	rdfs:label "特倫汗"@yue ;
+	skos:prefLabel "特倫汗"@yue ;
+	schema:name "特倫汗"@yue ;
+	rdfs:label "Tråante"@sma ;
+	skos:prefLabel "Tråante"@sma ;
+	schema:name "Tråante"@sma ;
+	rdfs:label "Tråante"@smj ;
+	skos:prefLabel "Tråante"@smj ;
+	schema:name "Tråante"@smj ;
+	rdfs:label "Trondheim (kapital sa lalawigan)"@ceb ;
+	skos:prefLabel "Trondheim (kapital sa lalawigan)"@ceb ;
+	schema:name "Trondheim (kapital sa lalawigan)"@ceb ;
+	rdfs:label "ट्रॉनहैम"@hi ;
+	skos:prefLabel "ट्रॉनहैम"@hi ;
+	schema:name "ट्रॉनहैम"@hi ;
+	rdfs:label "ட்ரான்ஹைம்"@ta ;
+	skos:prefLabel "ட்ரான்ஹைம்"@ta ;
+	schema:name "ட்ரான்ஹைம்"@ta ;
+	rdfs:label "ట్రన్డ్ హెయిమ్"@te ;
+	skos:prefLabel "ట్రన్డ్ హెయిమ్"@te ;
+	schema:name "ట్రన్డ్ హెయిమ్"@te ;
+	rdfs:label "ট্রন্ডাইম"@bn ;
+	skos:prefLabel "ট্রন্ডাইম"@bn ;
+	schema:name "ট্রন্ডাইম"@bn ;
+	rdfs:label "ට්‍රොන්ඩ්හිම්"@si ;
+	skos:prefLabel "ට්‍රොන්ඩ්හිම්"@si ;
+	schema:name "ට්‍රොන්ඩ්හිම්"@si ;
+	rdfs:label "ટ્રોન્ડહેઈમ"@gu ;
+	skos:prefLabel "ટ્રોન્ડહેઈમ"@gu ;
+	schema:name "ટ્રોન્ડહેઈમ"@gu ;
+	rdfs:label "ಟ್ರಾನ್ಧೆಯಿಮ್"@kn ;
+	skos:prefLabel "ಟ್ರಾನ್ಧೆಯಿಮ್"@kn ;
+	schema:name "ಟ್ರಾನ್ಧೆಯಿಮ್"@kn ;
+	rdfs:label "Trondheim"@ast ;
+	skos:prefLabel "Trondheim"@ast ;
+	schema:name "Trondheim"@ast ;
+	rdfs:label "Тронһейм"@tt ;
+	skos:prefLabel "Тронһейм"@tt ;
+	schema:name "Тронһейм"@tt ;
+	rdfs:label "Тронхейм"@myv ;
+	skos:prefLabel "Тронхейм"@myv ;
+	schema:name "Тронхейм"@myv ;
+	rdfs:label "Trondheim"@ha ;
+	skos:prefLabel "Trondheim"@ha ;
+	schema:name "Trondheim"@ha ;
+	rdfs:label "特隆赫姆"@wuu ;
+	skos:prefLabel "特隆赫姆"@wuu ;
+	schema:name "特隆赫姆"@wuu ;
+	rdfs:label "特隆赫姆"@zh-hant ;
+	skos:prefLabel "特隆赫姆"@zh-hant ;
+	schema:name "特隆赫姆"@zh-hant ;
+	rdfs:label "Tronheym"@az ;
+	skos:prefLabel "Tronheym"@az ;
+	schema:name "Tronheym"@az ;
+	rdfs:label "Trondheim"@vec ;
+	skos:prefLabel "Trondheim"@vec ;
+	schema:name "Trondheim"@vec ;
+	rdfs:label "تروندهايم"@ps ;
+	skos:prefLabel "تروندهايم"@ps ;
+	schema:name "تروندهايم"@ps ;
+	rdfs:label "Tronheim"@vep ;
+	skos:prefLabel "Tronheim"@vep ;
+	schema:name "Tronheim"@vep ;
+	rdfs:label "تروندهايم"@arz ;
+	skos:prefLabel "تروندهايم"@arz ;
+	schema:name "تروندهايم"@arz ;
+	rdfs:label "特隆赫姆"@zh-hans ;
+	skos:prefLabel "特隆赫姆"@zh-hans ;
+	schema:name "特隆赫姆"@zh-hans ;
+	rdfs:label "Trondheim"@ga ;
+	skos:prefLabel "Trondheim"@ga ;
+	schema:name "Trondheim"@ga ;
+	rdfs:label "Trondheim"@fy ;
+	skos:prefLabel "Trondheim"@fy ;
+	schema:name "Trondheim"@fy ;
+	rdfs:label "Trondheim"@mt ;
+	skos:prefLabel "Trondheim"@mt ;
+	schema:name "Trondheim"@mt ;
+	rdfs:label "ma tomo Tonjen"@tok ;
+	skos:prefLabel "ma tomo Tonjen"@tok ;
+	schema:name "ma tomo Tonjen"@tok ;
+	rdfs:label "Trondheim"@nah ;
+	skos:prefLabel "Trondheim"@nah ;
+	schema:name "Trondheim"@nah ;
+	rdfs:label "Тронгэйм"@mdf ;
+	skos:prefLabel "Тронгэйм"@mdf ;
+	schema:name "Тронгэйм"@mdf ;
+	rdfs:label "Ruándim"@smn ;
+	skos:prefLabel "Ruándim"@smn ;
+	schema:name "Ruándim"@smn ;
+	rdfs:label "特隆赫姆"@zh-cn ;
+	skos:prefLabel "特隆赫姆"@zh-cn ;
+	schema:name "特隆赫姆"@zh-cn ;
+	rdfs:label "Тронҳейм"@tg ;
+	skos:prefLabel "Тронҳейм"@tg ;
+	schema:name "Тронҳейм"@tg ;
+	rdfs:label "Trondheim"@mg ;
+	skos:prefLabel "Trondheim"@mg ;
+	schema:name "Trondheim"@mg ;
+	rdfs:label "Trondheim"@mul ;
+	skos:prefLabel "Trondheim"@mul ;
+	schema:name "Trondheim"@mul ;
+	rdfs:label "Niðmuðe"@ang ;
+	skos:prefLabel "Niðmuðe"@ang ;
+	schema:name "Niðmuðe"@ang ;
+	rdfs:label "Truäʹnddem"@sms ;
+	skos:prefLabel "Truäʹnddem"@sms ;
+	schema:name "Truäʹnddem"@sms ;
+	rdfs:label "Роаннт ланнҍ"@sjd ;
+	skos:prefLabel "Роаннт ланнҍ"@sjd ;
+	schema:name "Роаннт ланнҍ"@sjd ;
+	rdfs:label "𐌸𐍂𐍉𐍅𐍉𐌽𐌳𐌷𐌰𐌹𐌼𐍃"@got ;
+	skos:prefLabel "𐌸𐍂𐍉𐍅𐍉𐌽𐌳𐌷𐌰𐌹𐌼𐍃"@got ;
+	schema:name "𐌸𐍂𐍉𐍅𐍉𐌽𐌳𐌷𐌰𐌹𐌼𐍃"@got ;
+	schema:description "troisième ville de Norvège après Oslo et Bergen"@fr,
+		"by i Trøndelag i Norge"@nb,
+		"city in Trøndelag, Norway"@en,
+		"by i Trøndelag"@nn,
+		"by i Trøndelag i Norge"@da,
+		"Stadt in Trøndelag in Norwegen, Nidaros"@de,
+		"tätort i Trøndelag fylke i Norge"@sv,
+		"manisipaa ya Trøndelag katika Norwei"@sw,
+		"comună în Trøndelag în Norvegia"@ro,
+		"municipio en Trøndelag, Noruega"@es,
+		"komunumo en Trøndelag, Norvegio"@eo,
+		"comune e città norvegese"@it,
+		"gemeente in Noorwegen"@nl,
+		"город в Норвегии"@ru,
+		"municipi a Trøndelag, Noruega"@ca,
+		"עיר בנורווגיה"@he,
+		"miasto w Norwegii,"@pl,
+		"مدينة نرويجية"@ar,
+		"kaupunki Trøndelagin läänissä Norjassa"@fi,
+		"pilsēta Norvēģijā, Trennelāgas filkē"@lv,
+		"горад у Нарвегіі"@be,
+		"місто в Норвегії"@uk,
+		"مدينه فى تروندلاج"@arz,
+		"挪威特伦德拉格郡城市"@zh,
+		"места ў Нарвэгіі"@be-tarask,
+		"belt f'Tøndelag, in-Norveġja"@mt,
+		"város Norvégiában"@hu,
+		"grad u Norveškoj"@hr,
+		"ノルウェーの都市"@ja,
+		"borg í Þrændalögum í Noregi"@is,
+		"sídlo v kraji Trøndelag v Norsku"@cs,
+		"πόλη της Νορβηγίας"@el,
+		"Stad vun Norwegen"@lb,
+		"مدينة جات ف نورڤيج"@ary,
+		"dinas, Norwy"@cy,
+		"ланнҍ Та̄ре̄ммьнесьт"@sjd ;
+	skos:altLabel "特隆霍姆"@zh,
+		"特倫汗"@zh,
+		"Nidaros"@pl,
+		"Trondeim"@es,
+		"Nidaros"@es,
+		"Catedral Nidaros"@es,
+		"Trondhjem"@sw,
+		"Tråante"@sw,
+		"Drontheim"@sw,
+		"Nidaros"@et,
+		"Trondhjem"@et,
+		"Τρόντχαιμ"@el,
+		"Τρόντχάιμ"@el,
+		"Nidaros"@eo,
+		"Trondhjem"@eo,
+		"Trondhejmo"@eo,
+		"Trondheim"@is,
+		"Нидарос"@ru,
+		"Трондхейм"@ru,
+		"Дронгейм"@ru,
+		"Нидарус"@ru,
+		"Трондхайм"@ru,
+		"Дронтгейм"@ru,
+		"Трондгейм"@ru,
+		"Трондхеим"@sr,
+		"Trondheim"@sr,
+		"Трондхајм"@sr,
+		"Troanddin"@se,
+		"Nidaros"@fi,
+		"Trondhem"@fi,
+		"Trondhjem"@fi,
+		"Drontheim"@fi,
+		"Нідарос"@uk,
+		"Трондгейм"@uk,
+		"Трондхейм"@uk,
+		"tcadrtroneimu"@jbo,
+		"Тронхейм"@be-tarask,
+		"Nidaros"@da,
+		"Trondhjem"@da,
+		"Throndhjem"@da,
+		"טרונהם"@he,
+		"Niðaróss"@fr,
+		"Nidaros"@fr,
+		"Nidarós"@fr,
+		"Trondhjem"@fr,
+		"Транхейм"@be,
+		"Нідарас"@be,
+		"Trondheima"@lv,
+		"Nidarosa"@lv,
+		"Nidaros"@de,
+		"Trondhjem"@de,
+		"Drontheim"@de,
+		"トロンヘイム"@ja,
+		"Nidaros"@ca,
+		"Kaupangen"@ca,
+		"Tronthemium"@la,
+		"Trondheim"@la,
+		"Nidaros"@cs,
+		"Трондхейм"@os,
+		"Trondheim"@lt,
+		"Tronheimas"@lt,
+		"Nidaros"@nb,
+		"Trondhjem"@nb,
+		"Drontheim"@nb,
+		"Throndhjem"@nb,
+		"Tråante"@nb,
+		"Drontheim"@en,
+		"Trondhjem"@en,
+		"Nidaros"@en,
+		"Trondhem"@en,
+		"Kaupangen"@en,
+		"Nidaros"@sv,
+		"Trondhem"@sv,
+		"Trondhjem"@sv,
+		"Drontheim"@sv .
+
+wdv:7e2da56486ea7fca38014ff7fa4eb8d4 a wikibase:GlobecoordinateValue ;
+	wikibase:geoLatitude "63.44"^^xsd:double ;
+	wikibase:geoLongitude "10.4"^^xsd:double ;
+	wikibase:geoPrecision "0.00027777777777778"^^xsd:double ;
+	wikibase:geoGlobe <http://www.wikidata.org/entity/Q2> .
+
+wdv:8095be6d41ba273543f241fd4e84170d a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+175068"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:f5820b96b29cb36711aa4d32f25aabf1 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+183378"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:2b5aafbd81d68dfa5b8f50d765ef8ee7 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+186364"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:77be8512d1f3ee05f65a08d7c8b2d5e0 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+194860"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:ab112c705a5a3475e9d619dcd3359817 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+183960"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:01ad202e995056b098d825cffa32502a a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+171540"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:b989f5323076eaeafa778bacd2dbe5ac a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+148859"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:16216c3ebf197abddbb5cd273afbc09f a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+212660"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:7bde0194f6e76b6171afb98a152e67b0 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+137346"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:0529c5b7a51ebe787d0fd7f14c0a7b2f a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+134726"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:c5b6d0ac6fc19fa56d78f621aa6bbf33 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+126190"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:297c4decf93de61bc1c8774fbba60456 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+59286"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:3b4b28dfd8b6cd676d80f08f8e42ad34 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+133000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:deb570a50093172d25c5836b3967eda1 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+134000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:ebfe52c9355008b486b53d522a9de237 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+146000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:760d5c0e4e2c2296b8f257024d98cf38 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+150000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:e2f25c264492a6cfa284190b87d69703 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+216518"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:ab0a370636552883737cb3e45f66d7aa a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+189271"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:4eee0d95599fd6506e211dd41530d2a6 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+191771"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:6eafd05a2d12aec4b6e9df7de3ef344e a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+198777"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:d351fff1a6d1d7a046cb1a136f20898d a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+57.49"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:cb873b795ff5924ef6476c390df609f7 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+57490000.00"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:cb873b795ff5924ef6476c390df609f7 .
+
+wdv:d351fff1a6d1d7a046cb1a136f20898d wikibase:quantityNormalized wdv:cb873b795ff5924ef6476c390df609f7 .
+
+wdv:710ce4a71b47a4b79bb6077cca23933f a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+58.21"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:298d6c5a2d0aef8fb8010cff126c58e5 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+58210000.00"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:298d6c5a2d0aef8fb8010cff126c58e5 .
+
+wdv:710ce4a71b47a4b79bb6077cca23933f wikibase:quantityNormalized wdv:298d6c5a2d0aef8fb8010cff126c58e5 .
+
+wdv:7049a7dcbd73dd46c3241bbd38fdc279 a wikibase:TimeValue ;
+	wikibase:timeValue "1968-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:defcbd172f06bc718ddb6367c3aff9f8 a wikibase:TimeValue ;
+	wikibase:timeValue "1968-10-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "10"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:fc77eb5039532b33ca7d30608c3bb16c a wikibase:TimeValue ;
+	wikibase:timeValue "2004-02-19T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:5e18c83c88166026dd5e577bb10cc628 a wikibase:TimeValue ;
+	wikibase:timeValue "1946-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:9ae5d1899372cd9945ad846f214f14d5 a wikibase:TimeValue ;
+	wikibase:timeValue "2015-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:4b3cea969fafa6d97b799a2d874a68a4 a wikibase:TimeValue ;
+	wikibase:timeValue "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:54afc7973e523b9a0580bcfbfb6fe3dd a wikibase:TimeValue ;
+	wikibase:timeValue "2019-11-04T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:f0a794f755c96023755b4684ff262fe8 a wikibase:TimeValue ;
+	wikibase:timeValue "2022-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:4755748741739c53456596b64165b84b a wikibase:TimeValue ;
+	wikibase:timeValue "2014-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:4f272fae38ee73a331afd0407cdc74b9 a wikibase:TimeValue ;
+	wikibase:timeValue "2010-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:6928b7cd3a8b4aff7d73814a5a8f2359 a wikibase:TimeValue ;
+	wikibase:timeValue "2000-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:36115d4827ebd6fd24fc3f76ddcbfbfc a wikibase:TimeValue ;
+	wikibase:timeValue "2023-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:25c003eb0ef8438f618cb61d21c9a4fa a wikibase:TimeValue ;
+	wikibase:timeValue "1990-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ef979b8df4f4f2ae359ed26952114819 a wikibase:TimeValue ;
+	wikibase:timeValue "1980-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:9a581f623d181b3e8160146d1a1c062c a wikibase:TimeValue ;
+	wikibase:timeValue "1970-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:25bc1714e3b0ce11f853727e3e379540 a wikibase:TimeValue ;
+	wikibase:timeValue "1960-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:b95be118151106aee9695534f063a319 a wikibase:TimeValue ;
+	wikibase:timeValue "1974-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:7f49e2a32a9edc46cf5a8602a5d640c2 a wikibase:TimeValue ;
+	wikibase:timeValue "1987-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:9930877c43e09a3dd26a2b4a0d5aa9c8 a wikibase:TimeValue ;
+	wikibase:timeValue "1989-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:566896ed1bc98ce4ec8a459edd4d836a a wikibase:TimeValue ;
+	wikibase:timeValue "1998-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:c5c0b1372c566af0e3d31535e7b831b4 a wikibase:TimeValue ;
+	wikibase:timeValue "2001-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:4de85214967b9397934a56b47799b9d3 a wikibase:TimeValue ;
+	wikibase:timeValue "2025-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:34a0fea796797d4b4f6ffbc2314ebc3d a wikibase:TimeValue ;
+	wikibase:timeValue "2025-06-27T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:86d08cb380a7d361151c510ebb4a98ec a wikibase:TimeValue ;
+	wikibase:timeValue "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:13fdfabf72957eee0b6178a210cc0e52 a wikibase:TimeValue ;
+	wikibase:timeValue "2024-10-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:e774db7756a97ebda4df1381ea77305b a wikibase:TimeValue ;
+	wikibase:timeValue "2021-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:fc76c6f1fe20833a5648c7115c465738 a wikibase:TimeValue ;
+	wikibase:timeValue "2024-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:fe7abd5d6247e9b54048ebb77716143d a wikibase:TimeValue ;
+	wikibase:timeValue "1919-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:59d82e713c60397f4831320daa2ca4a4 a wikibase:TimeValue ;
+	wikibase:timeValue "2017-12-31T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ec0521ea6110763ce367d49ecc87e111 a wikibase:TimeValue ;
+	wikibase:timeValue "1662-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:7bbbdecbd3dafe6ca9744f11b849d775 a wikibase:TimeValue ;
+	wikibase:timeValue "1308-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985786> .
+
+wdv:ceb24b5b682f3e2809541d698d320cc5 a wikibase:TimeValue ;
+	wikibase:timeValue "2018-08-06T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:9d22c59eb26e0d8b1e5793882e14f274 a wikibase:TimeValue ;
+	wikibase:timeValue "0997-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985786> .
+
+wdv:f987783e1f9c9fa0cb0b774d330af52d a wikibase:TimeValue ;
+	wikibase:timeValue "2013-10-28T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ce90feaacda74eb7f8326b25fb625c6d a wikibase:TimeValue ;
+	wikibase:timeValue "2008-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:418aedfba643e02a5ba758952f8f7765 a wikibase:TimeValue ;
+	wikibase:timeValue "2015-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:870b398bb5e70ba2ea4096c1a63fddc2 a wikibase:TimeValue ;
+	wikibase:timeValue "2017-12-28T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:1790291e027a3826f7fd5f2fcb8374a2 a wikibase:TimeValue ;
+	wikibase:timeValue "2008-07-02T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:409585c2be51a79b0733ba703eba9c8d a wikibase:TimeValue ;
+	wikibase:timeValue "2015-08-17T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:a8a208ecd011004502eaffb91bffb493 a wikibase:TimeValue ;
+	wikibase:timeValue "1804-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:b7d683052372182191ee81a4c0a1b8da a wikibase:TimeValue ;
+	wikibase:timeValue "1918-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:189f21f967cc93bff8d6a7c1c24c2a5a a wikibase:TimeValue ;
+	wikibase:timeValue "2018-03-10T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:dbedf6c3618028bd4e394187424e64fa a wikibase:TimeValue ;
+	wikibase:timeValue "2015-08-26T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:7488c67169f63bb9b57929cf9869fa4b a wikibase:TimeValue ;
+	wikibase:timeValue "2018-08-05T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:08d3749ad0f8f754b53206761ebe9ac5 a wikibase:TimeValue ;
+	wikibase:timeValue "1930-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:2d179480167e96f1ea0e05501e0e1fba a wikibase:TimeValue ;
+	wikibase:timeValue "1931-03-06T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:73c9e4dcfa994b1d323af30751c86268 a wikibase:TimeValue ;
+	wikibase:timeValue "2022-02-20T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:0c5f07ea6b6e92dd89849b978518123d a wikibase:TimeValue ;
+	wikibase:timeValue "2020-04-30T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:f0faa0684efa9eda2e9e3aa2bad9dec1 a wikibase:TimeValue ;
+	wikibase:timeValue "2022-07-06T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:023461be7c78a1ac3bb779b68e676b2f a wikibase:TimeValue ;
+	wikibase:timeValue "2024-04-24T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:6ccdcc350ffe0955e88b499e9a474a74 a wikibase:TimeValue ;
+	wikibase:timeValue "2025-08-21T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdref:d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3 a wikibase:Reference ;
+	pr:P143 wd:Q11920 .
+
+wdref:992324205d6def6e0ff3f0127da97c2e5ffca99f a wikibase:Reference ;
+	pr:P854 <https://www.graz.at/cms/beitrag/10021786/7771992/Trondheim.html> .
+
+wdref:1f12877fa276e79a461b1bb31e5e4142e825c294 a wikibase:Reference ;
+	pr:P854 <https://www.trondheim.kommune.no/internasjonalt/> .
+
+wdref:5bcb3fa74863df7522f8f4e9e5d5b0927f6539e5 a wikibase:Reference ;
+	pr:P854 <https://www.graz.at/cms/ziel/7771992/DE/> .
+
+wdref:e19583e869cd4afedaf33c282371ec8017769878 a wikibase:Reference ;
+	pr:P854 <https://www.trondheim.kommune.no/internasjonalt/#vennskapsbyer> .
+
+wdref:30950790dc3153e7a574691558408dd20ea585c5 a wikibase:Reference ;
+	pr:P854 <https://www.ramallah.ps/userfiles/file/publications/IR.pdf> .
+
+wdref:4e817f4b15c0a5ae0b30a4b88145a51cf8bc31b2 a wikibase:Reference ;
+	pr:P854 <https://ramallah.ps/en/Article/9353/International-Cooperation> .
+
+wdref:ccc3ecc1fb3ac759fba6e96a8ffdccbd4a371f8a a wikibase:Reference ;
+	pr:P854 <https://www.trondheim.kommune.no/internasjonalt/#nordisk_samarbeid> .
+
+wdref:adba82a5340298c2c4b4948e4d0eeee40c2aca10 a wikibase:Reference ;
+	pr:P854 <https://www.trondheim.kommune.no/globalassets/10-bilder-og-filer/15-prosjekter-og-programmer/internasjonalt-arbeid/1.avtal.nordisk.plattformii.pdf> .
+
+wdref:1db137055abae614575d41a6a8cdc02486e25320 a wikibase:Reference ;
+	pr:P854 <https://www.tampere.fi/en/organisation/international-affairs/twin-cities> .
+
+wdref:bd49d3e4f67bc460ce7a06b6ac3027347cf5ee55 a wikibase:Reference ;
+	pr:P143 wd:Q169514 .
+
+wdref:cc050cb6a36129fd4a8e3bef5c3fc64a119dc391 a wikibase:Reference ;
+	pr:P854 <https://www.ssb.no/befolkning/statistikker/beftett/aar> .
+
+wdref:90f9c663e4d91a493500b1139133aca75b5f1709 a wikibase:Reference ;
+	pr:P1476 "Tettsteders befolkning og areal"@nb ;
+	pr:P123 wd:Q2367019 ;
+	pr:P854 <https://www.ssb.no/befolkning/statistikker/beftett/aar> .
+
+wdref:4fa67aff90cf7b9d34d76377c8f71ad78353d611 a wikibase:Reference ;
+	pr:P854 <https://www.ssb.no/befolkning/folketall/statistikk/tettsteders-befolkning-og-areal> .
+
+wdref:5d284fadf31a304eadc24a634336a998afb94a95 a wikibase:Reference ;
+	pr:P248 wd:Q17378135 ;
+	pr:P478 "26" ;
+	pr:P304 "243" .
+
+wdref:5eaff620f40474fc5830f81f8acf1449c850bd9c a wikibase:Reference ;
+	pr:P248 wd:Q113582703 ;
+	pr:P577 "1989-01-01T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:9930877c43e09a3dd26a2b4a0d5aa9c8 ;
+	pr:P304 "487" .
+
+wdref:26191436279bdf24177a90bfb9c3676b46ef5606 a wikibase:Reference ;
+	pr:P248 wd:Q113510146 ;
+	pr:P304 "652" .
+
+wdref:2e3e06d06dd6cf99630f6b19b490edb7299402c2 a wikibase:Reference ;
+	pr:P248 wd:Q24038862 ;
+	pr:P304 "528" .
+
+wdref:647373607a5dc67171da53e8b288907b5e88e483 a wikibase:Reference ;
+	pr:P854 <https://www.ssb.no/statbank/table/07459/> ;
+	pr:P1476 "07459: Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning (K) 1986 - 2025. Statistikkbanken"@no ;
+	pr:P407 wd:Q9043 ;
+	pr:P813 "2025-06-27T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:34a0fea796797d4b4f6ffbc2314ebc3d .
+
+wdref:9e551b2e5ea2bed3925f1c0b5ff774bc3063917d a wikibase:Reference ;
+	pr:P1476 "Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning (K) 1986 - 2020"@nb ;
+	pr:P854 <https://www.ssb.no/statbank/table/04859/> ;
+	pr:P123 wd:Q2367019 ;
+	pr:P577 "2024-10-01T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:13fdfabf72957eee0b6178a210cc0e52 .
+
+wdref:85d858bbd5ddf1995d7f08e71c4f4f367ede8205 a wikibase:Reference ;
+	pr:P1476 "Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning (K) 1986 - 2021"@nb ;
+	pr:P854 <https://www.ssb.no/statbank/table/04859/> ;
+	pr:P123 wd:Q2367019 ;
+	pr:P577 "2024-10-01T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:13fdfabf72957eee0b6178a210cc0e52 .
+
+wdref:e6867cddfc4d19ed999bb91e4dd183570ff4d6b1 a wikibase:Reference ;
+	pr:P1476 "Alders- og kjønnsfordeling i kommuner, fylker og hele landets befolkning (K) 1986 - 2024"@nb ;
+	pr:P854 <https://www.ssb.no/statbank/table/04859/> ;
+	pr:P123 wd:Q2367019 ;
+	pr:P577 "2024-10-01T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:13fdfabf72957eee0b6178a210cc0e52 .
+
+wdref:2a3a56697a289b22b58db6411fae23598a223792 a wikibase:Reference ;
+	pr:P5573 "6542" ;
+	pr:P248 wd:Q265049 ;
+	pr:P813 "2018-08-06T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:ceb24b5b682f3e2809541d698d320cc5 .
+
+wdref:732ec1c90a6f0694c7db9a71bf09fe7f2b674172 a wikibase:Reference ;
+	pr:P143 wd:Q10000 .
+
+wdref:706208b3024200fd0a39ad499808dd0d98d74065 a wikibase:Reference ;
+	pr:P248 wd:Q14005 .
+
+wdref:2b00cb481cddcac7623114367489b5c194901c4a a wikibase:Reference ;
+	pr:P248 wd:Q15241312 ;
+	pr:P577 "2013-10-28T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:f987783e1f9c9fa0cb0b774d330af52d .
+
+wdref:288ab581e7d2d02995a26dfa8b091d96e78457fc a wikibase:Reference ;
+	pr:P143 wd:Q206855 .
+
+wdref:88694a0f4d1486770c269f7db16a1982f74da69d a wikibase:Reference ;
+	pr:P248 wd:Q830106 .
+
+wdref:9a24f7c0208b05d6be97077d855671d1dfdbc0dd a wikibase:Reference ;
+	pr:P143 wd:Q48183 .
+
+wdref:66cfba2ba7f813d682538e7975d5ecdf9a1b65ae a wikibase:Reference ;
+	pr:P854 <https://www.regjeringen.no/no/aktuelt/trondheim-vinner-av-attraktiv-by-2015/id2414904/> ;
+	pr:P813 "2017-12-28T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:870b398bb5e70ba2ea4096c1a63fddc2 .
+
+wdref:1aab5255d20554486d17cbbbcb8d22855d700084 a wikibase:Reference ;
+	pr:P143 wd:Q24237997 .
+
+wdref:d4767d15e44afe8795350d71c4aaf13e1067eea5 a wikibase:Reference ;
+	pr:P248 wd:Q24010939 .
+
+wdref:2834ac5da275724a6354a73d2d2a89ae956042a9 a wikibase:Reference ;
+	pr:P248 wd:Q64159407 .
+
+wdref:1cab2102f91b8738e5bda60db91df7015981d0b5 a wikibase:Reference ;
+	pr:P854 <http://www.sprakradet.no/sprakhjelp/Skriverad/navn-pa-steder-og-personer/Innbyggjarnamn/> ;
+	pr:P1476 "Innbyggjarnamn"@nn ;
+	pr:P407 wd:Q25164 ;
+	pr:P813 "2018-03-10T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:189f21f967cc93bff8d6a7c1c24c2a5a ;
+	pr:P123 wd:Q1348705 .
+
+wdref:56a0410f161434baeaf149d4c06314ea35abaed8 a wikibase:Reference ;
+	pr:P248 wd:Q30142332 .
+
+wdref:03cdc8ba5c41ecc063ed7ae4c8d6b6ac59bae6f3 a wikibase:Reference ;
+	pr:P3452 wd:Q5359981 .
+
+wdref:5a858a70d6ac562123c1debf25a5aed93a5c4939 a wikibase:Reference ;
+	pr:P248 wd:Q19938912 ;
+	pr:P813 "2015-08-26T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:dbedf6c3618028bd4e394187424e64fa .
+
+wdref:21494d78c86d729112257391ca4131a84f73b44b a wikibase:Reference ;
+	pr:P854 <https://www.archinform.net/service/wd_aiort.php> ;
+	pr:P248 wd:Q265049 ;
+	pr:P813 "2018-08-05T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:7488c67169f63bb9b57929cf9869fa4b .
+
+wdref:d79291cdb46324db8c3f5dd4a93379506bdf9584 a wikibase:Reference ;
+	pr:P143 wd:Q206855 ;
+	pr:P4656 <https://ru.wikipedia.org/?oldid=101135834> .
+
+wdref:2c73b81923dc8cfc479c9a376721ecf3997a86eb a wikibase:Reference ;
+	pr:P248 wd:Q14437892 ;
+	pr:P854 <https://www.sprakradet.no/Vi-og-vart/Publikasjoner/Spraaknytt/Arkivet/Spraknytt-2007/Spraknytt_1_2007/Nidaros/> ;
+	pr:P813 "2022-02-20T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:73c9e4dcfa994b1d323af30751c86268 ;
+	pr:P1476 "«Nidaros – Trondheims hjerte»"@nb .
+
+wdref:c77e9c997148676adaf9084f93096acac27c1868 a wikibase:Reference ;
+	pr:P248 wd:Q13550863 ;
+	pr:P691 "xx0028756" ;
+	pr:P813 "2020-04-30T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:0c5f07ea6b6e92dd89849b978518123d .
+
+wdref:9bec69ff4a6c2884304853ff0f57587ec8b10d8c a wikibase:Reference ;
+	pr:P143 wd:Q206855 ;
+	pr:P4656 <https://ru.wikipedia.org/?oldid=113680519> .
+
+wdref:c7f0f6b45f83e84010e868bebe6f63e93490edd2 a wikibase:Reference ;
+	pr:P6782 "01gjtys23" .
+
+wdref:190527dca615f4510213808b0e1cb81522b247f6 a wikibase:Reference ;
+	pr:P248 wd:Q1360745 .
+
+wdref:db9bdc05f08a6e21cf05cd401a5a9ee1927b8bd2 a wikibase:Reference ;
+	pr:P143 wd:Q190551 .
+
+wdref:4df2fbdce13fcbf6c1512665bcd17c56ffd8bbf3 a wikibase:Reference ;
+	pr:P248 wd:Q54919 ;
+	pr:P813 "2022-07-06T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:f0faa0684efa9eda2e9e3aa2bad9dec1 ;
+	pr:P214 "233891406" ;
+	prn:P214 <http://viaf.org/viaf/233891406> .
+
+wdref:b10a83ad94457c15ae271650f430f7935e1dc786 a wikibase:Reference ;
+	pr:P11797 wd:Q13219454 ;
+	pr:P244 "n79061146" ;
+	prn:P244 <http://id.loc.gov/authorities/names/n79061146> ;
+	pr:P813 "2024-04-24T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:023461be7c78a1ac3bb779b68e676b2f .
+
+wdref:8582d8416671f1f2567247201bac753552435ca5 a wikibase:Reference ;
+	pr:P248 wd:Q18336371 .
+
+wdref:a13b3f57d68d8d1f600f0544b983c591afb18818 a wikibase:Reference ;
+	pr:P248 wd:Q54919 ;
+	pr:P214 "233891406" ;
+	prn:P214 <http://viaf.org/viaf/233891406> ;
+	pr:P813 "2025-08-21T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:6ccdcc350ffe0955e88b499e9a474a74 .

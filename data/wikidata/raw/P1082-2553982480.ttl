@@ -1,0 +1,1342 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix data: <https://www.wikidata.org/wiki/Special:EntityData/> .
+@prefix wds: <http://www.wikidata.org/entity/statement/> .
+@prefix wdref: <http://www.wikidata.org/reference/> .
+@prefix wdv: <http://www.wikidata.org/value/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix wdtn: <http://www.wikidata.org/prop/direct-normalized/> .
+@prefix p: <http://www.wikidata.org/prop/> .
+@prefix ps: <http://www.wikidata.org/prop/statement/> .
+@prefix psv: <http://www.wikidata.org/prop/statement/value/> .
+@prefix psn: <http://www.wikidata.org/prop/statement/value-normalized/> .
+@prefix pq: <http://www.wikidata.org/prop/qualifier/> .
+@prefix pqv: <http://www.wikidata.org/prop/qualifier/value/> .
+@prefix pqn: <http://www.wikidata.org/prop/qualifier/value-normalized/> .
+@prefix pr: <http://www.wikidata.org/prop/reference/> .
+@prefix prv: <http://www.wikidata.org/prop/reference/value/> .
+@prefix prn: <http://www.wikidata.org/prop/reference/value-normalized/> .
+@prefix wdno: <http://www.wikidata.org/prop/novalue/> .
+
+data:P1082 a schema:Dataset ;
+	schema:about wd:P1082 ;
+	cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	schema:softwareVersion "1.0.0" ;
+	schema:version "2553982480"^^xsd:integer ;
+	schema:dateModified "2026-10-06T15:04:23Z"^^xsd:dateTime ;
+	wikibase:statements "40"^^xsd:integer .
+
+wd:P1082 a wikibase:Property ;
+	wdt:P1659 wd:P1539,
+		wd:P1540,
+		wd:P4179,
+		wd:P1538,
+		wd:P6343,
+		wd:P6344,
+		wd:P6499,
+		wd:P12712 ;
+	wdt:P2668 wd:Q23611587 ;
+	wdt:P2875 wd:Q20990019 ;
+	wdt:P3254 <https://www.wikidata.org/wiki/Wikidata:Property_proposal/Archive/18#P1082> ;
+	wdt:P2302 wd:Q21510860,
+		wd:Q21510851,
+		wd:Q21503250,
+		wd:Q21502838,
+		wd:Q52848401,
+		wd:Q19474404,
+		wd:Q52060874,
+		wd:Q21510856,
+		wd:Q21510856,
+		wd:Q52004125,
+		wd:Q53869507,
+		wd:Q21514353,
+		wd:Q21502838 ;
+	wdt:P3713 wd:Q32765317 ;
+	wdt:P31 wd:Q22984494,
+		wd:Q111974592 ;
+	wdt:P1629 wd:Q1613416 ;
+	wdt:P1896 <http://data.worldbank.org/indicator/SP.POP.TOTL> ;
+	wdt:P1855 wd:Q62,
+		wd:Q40168 ;
+	wdt:P1628 <http://dbpedia.org/ontology/populationTotal>,
+		<http://gov.genealogy.net/ontology.owl#hasPopulation>,
+		<https://www.geonames.org/ontology#population> ;
+	wdt:P3709 wd:Q57337476 ;
+	wdt:P3734 wd:Q105089828 ;
+	wdt:P2667 wd:Q43428644 ;
+	wdt:P13786 "population" ;
+	wdt:P14692 "Q574" ;
+	wdtn:P14692 <https://wiki.openstreetmap.org/entity/Q574> ;
+	p:P1659 wds:P1082-32945610-468c-5a79-12d2-9b206cedc683 .
+
+wds:P1082-32945610-468c-5a79-12d2-9b206cedc683 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P1539 .
+
+wd:P1082 p:P1659 wds:P1082-972521db-497a-1082-cd97-a56cd4f739a4 .
+
+wds:P1082-972521db-497a-1082-cd97-a56cd4f739a4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P1540 .
+
+wd:P1082 p:P1659 wds:P1082-b14f53f8-4b26-53df-0420-5692b1654fac .
+
+wds:P1082-b14f53f8-4b26-53df-0420-5692b1654fac a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P4179 .
+
+wd:P1082 p:P1659 wds:P1082-7057c528-4f80-4ede-45bc-2cbfe527391c .
+
+wds:P1082-7057c528-4f80-4ede-45bc-2cbfe527391c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P1538 .
+
+wd:P1082 p:P1659 wds:P1082-1ece447e-495f-f5a0-7f86-76f71c4e1f1e .
+
+wds:P1082-1ece447e-495f-f5a0-7f86-76f71c4e1f1e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P6343 .
+
+wd:P1082 p:P1659 wds:P1082-f2a69ab3-4e8c-a50d-a02d-b546a6eaa395 .
+
+wds:P1082-f2a69ab3-4e8c-a50d-a02d-b546a6eaa395 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P6344 .
+
+wd:P1082 p:P1659 wds:P1082-30ed214d-4b72-4e18-3e9b-cd0e0728901d .
+
+wds:P1082-30ed214d-4b72-4e18-3e9b-cd0e0728901d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P6499 .
+
+wd:P1082 p:P1659 wds:P1082-6a901e2c-43a8-cd8c-9ee5-f41213add95c .
+
+wds:P1082-6a901e2c-43a8-cd8c-9ee5-f41213add95c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P12712 .
+
+wd:P1082 p:P2668 wds:P1082-5b4fad72-4a3e-4999-3b8e-7204392565ad .
+
+wds:P1082-5b4fad72-4a3e-4999-3b8e-7204392565ad a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2668 wd:Q23611587 .
+
+wd:P1082 p:P2875 wds:P1082-0a7f072b-4881-7c16-2ffd-b896f84428a3 .
+
+wds:P1082-0a7f072b-4881-7c16-2ffd-b896f84428a3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2875 wd:Q20990019 .
+
+wd:P1082 p:P3254 wds:P1082-561C9C1A-AF31-49E4-ABFA-35D71A15EF8E .
+
+wds:P1082-561C9C1A-AF31-49E4-ABFA-35D71A15EF8E a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3254 <https://www.wikidata.org/wiki/Wikidata:Property_proposal/Archive/18#P1082> .
+
+wd:P1082 p:P2302 wds:P1082-B4161C3D-41C6-4927-90EF-57B1ACDA1B76 .
+
+wds:P1082-B4161C3D-41C6-4927-90EF-57B1ACDA1B76 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510860 ;
+	pq:P2312 "+100000000000"^^xsd:decimal ;
+	pqv:P2312 wdv:cc7fd0a1ea01bbdc6c1e68662a778f3b ;
+	pq:P2313 "+0"^^xsd:decimal ;
+	pqv:P2313 wdv:67a17c05603b9e75b6c25826fa747705 ;
+	pq:P2303 wd:Q66370715,
+		wd:Q3530052,
+		wd:Q3742737,
+		wd:Q760864,
+		wd:Q1249325,
+		wd:Q57033047,
+		wd:Q66371234,
+		wd:Q2786172,
+		wd:Q24229363,
+		wd:Q57032684,
+		wd:Q49225047,
+		wd:Q718160,
+		wd:Q13576156,
+		wd:Q122733396,
+		wd:Q719329,
+		wd:Q122706786 .
+
+wd:P1082 p:P2302 wds:P1082-5C4EBC3A-92DE-4D35-9BAE-1E408169F4AF .
+
+wds:P1082-5C4EBC3A-92DE-4D35-9BAE-1E408169F4AF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510851 ;
+	pq:P2306 wd:P459,
+		wd:P585,
+		wd:P1013,
+		wd:P518,
+		wd:P1540,
+		wd:P1539,
+		wd:P1011,
+		wd:P2241,
+		wd:P1538,
+		wd:P1012,
+		wd:P1480,
+		wd:P805,
+		wd:P7452,
+		wd:P3680,
+		wd:P10663,
+		wd:P5102,
+		wd:P1810,
+		wd:P172,
+		wd:P6343,
+		wd:P6344,
+		wd:P11279,
+		wd:P1107 ;
+	pq:P2304 wd:P17 ;
+	prov:wasDerivedFrom wdref:1c2d57d98191d133ed74379d6458b4cae0fc1f41 .
+
+wd:P1082 p:P2302 wds:P1082-EED40D96-B2BA-4C86-B09A-973BF02680D2 .
+
+wds:P1082-EED40D96-B2BA-4C86-B09A-973BF02680D2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21503250 ;
+	pq:P2308 wd:Q82794,
+		wd:Q4835091,
+		wd:Q15642541,
+		wd:Q486972,
+		wd:Q5107,
+		wd:Q33837,
+		wd:Q23442,
+		wd:Q28864185,
+		wd:Q3895768,
+		wd:Q21871294,
+		wd:Q41710,
+		wd:Q189760,
+		wd:Q108788952 ;
+	pq:P2309 wd:Q21503252 ;
+	pq:P2304 wd:P17 ;
+	pq:P2303 wd:Q2 .
+
+wd:P1082 p:P2302 wds:P1082-1B9BF539-BCE1-4D87-BF75-EF9AEDF15EBF .
+
+wds:P1082-1B9BF539-BCE1-4D87-BF75-EF9AEDF15EBF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P27 .
+
+wd:P1082 p:P2302 wds:P1082-b041be0a-4e03-3905-0830-8f4f541e3fb6 .
+
+wds:P1082-b041be0a-4e03-3905-0830-8f4f541e3fb6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52848401 .
+
+wd:P1082 p:P2302 wds:P1082-9f0fe419-4ab2-0b5c-8032-eaa2bcffb0f2 .
+
+wds:P1082-9f0fe419-4ab2-0b5c-8032-eaa2bcffb0f2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q19474404 ;
+	pq:P4155 wd:P585,
+		wd:P459,
+		wd:P518,
+		wd:P10663 .
+
+wd:P1082 p:P2302 wds:P1082-f64ebd63-45e5-c54f-3130-9d1abf24a4bf .
+
+wds:P1082-f64ebd63-45e5-c54f-3130-9d1abf24a4bf a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52060874 ;
+	pq:P4155 wd:P459,
+		wd:P585,
+		wd:P518 .
+
+wd:P1082 p:P2302 wds:P1082-E8CBFFC0-0655-46D1-B292-FECE461E8253 .
+
+wds:P1082-E8CBFFC0-0655-46D1-B292-FECE461E8253 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510856 ;
+	pq:P2306 wd:P459 ;
+	pq:P2304 wd:P17 ;
+	pq:P2316 wd:Q62026391 .
+
+wd:P1082 p:P2302 wds:P1082-af131c7f-4745-6ec5-b052-4cad42f33028 .
+
+wds:P1082-af131c7f-4745-6ec5-b052-4cad42f33028 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510856 ;
+	pq:P2306 wd:P585 ;
+	pq:P2304 wd:P17 ;
+	pq:P2303 wd:Q1310153 .
+
+wd:P1082 p:P2302 wds:P1082-e24f63d1-444b-136b-23ce-783377f672a7 .
+
+wds:P1082-e24f63d1-444b-136b-23ce-783377f672a7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52004125 ;
+	pq:P2305 wd:Q29934200 .
+
+wd:P1082 p:P2302 wds:P1082-c89f156e-4ea8-c353-dec7-04cc8d3aae93 .
+
+wds:P1082-c89f156e-4ea8-c353-dec7-04cc8d3aae93 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q53869507 ;
+	pq:P5314 wd:Q54828448 .
+
+wd:P1082 p:P2302 wds:P1082-8124D66D-5F8A-4F88-B830-539C8D446016 .
+
+wds:P1082-8124D66D-5F8A-4F88-B830-539C8D446016 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21514353 ;
+	a wdno:P2305 .
+
+wd:P1082 p:P2302 wds:P1082-84a05134-4a55-6a56-8fba-5ffcb75830cd .
+
+wds:P1082-84a05134-4a55-6a56-8fba-5ffcb75830cd a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P1394 ;
+	pq:P6607 "Use \"number of speakers\" (P1098) for languages."@en,
+		"对于语言，请使用“使用人数”（P1098）"@zh .
+
+wd:P1082 p:P3713 wds:P1082-00ead85b-4faf-9265-22e9-a5e4bcc50290 .
+
+wds:P1082-00ead85b-4faf-9265-22e9-a5e4bcc50290 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3713 wd:Q32765317 .
+
+wd:P1082 p:P31 wds:P1082-d58faa0d-4af6-04ac-19e1-680858ff07be .
+
+wds:P1082-d58faa0d-4af6-04ac-19e1-680858ff07be a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q22984494 .
+
+wd:P1082 p:P31 wds:P1082-8a53a2b9-490d-24a0-8079-d645bc651080 .
+
+wds:P1082-8a53a2b9-490d-24a0-8079-d645bc651080 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q111974592 .
+
+wd:P1082 p:P1629 wds:P1082-9106d6f4-4756-fba9-7432-da64fbc0486f .
+
+wds:P1082-9106d6f4-4756-fba9-7432-da64fbc0486f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q1613416 .
+
+wd:P1082 p:P1629 wds:P1082-ebe1e729-4e62-3233-4387-8c7571e73577 .
+
+wds:P1082-ebe1e729-4e62-3233-4387-8c7571e73577 a wikibase:Statement ;
+	wikibase:rank wikibase:DeprecatedRank ;
+	ps:P1629 wd:Q33829 ;
+	pq:P2241 wd:Q41755623 .
+
+wd:P1082 p:P1896 wds:P1082-70a60abb-4dd5-2ec3-a6af-860fe24d6ff7 .
+
+wds:P1082-70a60abb-4dd5-2ec3-a6af-860fe24d6ff7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1896 <http://data.worldbank.org/indicator/SP.POP.TOTL> .
+
+wd:P1082 p:P1855 wds:P1082-cdb1ea3c-4b19-083f-89a5-865dc7981d2e .
+
+wds:P1082-cdb1ea3c-4b19-083f-89a5-865dc7981d2e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q62 ;
+	pq:P1082 "+892533"^^xsd:decimal ;
+	pqv:P1082 wdv:6daeb7eb53ab22581396a377e74a92ee ;
+	pq:P585 "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:a112a6fb4487071d1ae3a0c6951488f6 ;
+	pq:P459 wd:Q791801 .
+
+wd:P1082 p:P1855 wds:P1082-ca3a2300-4897-c741-f877-0b31e6a58446 .
+
+wds:P1082-ca3a2300-4897-c741-f877-0b31e6a58446 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q40168 ;
+	pq:P1082 "+63692"^^xsd:decimal ;
+	pqv:P1082 wdv:53d6073789ccef2e0b6c6e39e544e618 ;
+	pq:P459 wd:Q39825 ;
+	pq:P585 "2015-08-15T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:85ecb07bd892f76179229c3b76f1e92f ;
+	prov:wasDerivedFrom wdref:5cea87e24b6050b993619ab755f31c643daf37b5 .
+
+wd:P1082 p:P1628 wds:P1082-71cba7a2-406b-174a-a00e-2d497e7e1eb8 .
+
+wds:P1082-71cba7a2-406b-174a-a00e-2d497e7e1eb8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <http://dbpedia.org/ontology/populationTotal> .
+
+wd:P1082 p:P1628 wds:P1082-a159e077-41f0-6a5b-8e57-d640724bf205 .
+
+wds:P1082-a159e077-41f0-6a5b-8e57-d640724bf205 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <http://gov.genealogy.net/ontology.owl#hasPopulation> ;
+	prov:wasDerivedFrom wdref:4b36a8349bd4fd6d816f04e085daf7c47fd1fad3 .
+
+wd:P1082 p:P1628 wds:P1082-e1f4d9bd-4f50-d3df-58b6-8532470f38cc .
+
+wds:P1082-e1f4d9bd-4f50-d3df-58b6-8532470f38cc a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <https://www.geonames.org/ontology#population> .
+
+wd:P1082 p:P3709 wds:P1082-9e43e3b8-44cb-5b7d-3cf4-2ea853c8df61 .
+
+wds:P1082-9e43e3b8-44cb-5b7d-3cf4-2ea853c8df61 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3709 wd:Q57337476 .
+
+wd:P1082 p:P3734 wds:P1082-b91a893e-4edc-8848-5793-d1e986eb0f07 .
+
+wds:P1082-b91a893e-4edc-8848-5793-d1e986eb0f07 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3734 wd:Q105089828 .
+
+wd:P1082 p:P2667 wds:P1082-3ca7529a-4bba-b46b-9493-a3483d8685cf .
+
+wds:P1082-3ca7529a-4bba-b46b-9493-a3483d8685cf a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2667 wd:Q43428644 .
+
+wd:P1082 p:P13786 wds:P1082-921e4253-4e7a-0523-f173-b6df00408a4f .
+
+wds:P1082-921e4253-4e7a-0523-f173-b6df00408a4f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13786 "population" .
+
+wd:P1082 p:P14692 wds:P1082-D9C0B968-39A7-4FAF-8073-FCF4BE671A65 .
+
+wds:P1082-D9C0B968-39A7-4FAF-8073-FCF4BE671A65 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P14692 "Q574" ;
+	psn:P14692 <https://wiki.openstreetmap.org/entity/Q574> .
+
+wd:P1082 rdfs:label "population"@en ;
+	skos:prefLabel "population"@en ;
+	schema:name "population"@en ;
+	rdfs:label "Einwohnerzahl"@de ;
+	skos:prefLabel "Einwohnerzahl"@de ;
+	schema:name "Einwohnerzahl"@de ;
+	rdfs:label "population"@fr ;
+	skos:prefLabel "population"@fr ;
+	schema:name "population"@fr ;
+	rdfs:label "población"@es ;
+	skos:prefLabel "población"@es ;
+	schema:name "población"@es ;
+	rdfs:label "popolazione"@it ;
+	skos:prefLabel "popolazione"@it ;
+	schema:name "popolazione"@it ;
+	rdfs:label "počet obyvatel"@cs ;
+	skos:prefLabel "počet obyvatel"@cs ;
+	schema:name "počet obyvatel"@cs ;
+	rdfs:label "népesség"@hu ;
+	skos:prefLabel "népesség"@hu ;
+	schema:name "népesség"@hu ;
+	rdfs:label "人口"@yue ;
+	skos:prefLabel "人口"@yue ;
+	schema:name "人口"@yue ;
+	rdfs:label "人口"@zh ;
+	skos:prefLabel "人口"@zh ;
+	schema:name "人口"@zh ;
+	rdfs:label "人口"@zh-cn ;
+	skos:prefLabel "人口"@zh-cn ;
+	schema:name "人口"@zh-cn ;
+	rdfs:label "人口"@zh-hk ;
+	skos:prefLabel "人口"@zh-hk ;
+	schema:name "人口"@zh-hk ;
+	rdfs:label "численность населения"@ru ;
+	skos:prefLabel "численность населения"@ru ;
+	schema:name "численность населения"@ru ;
+	rdfs:label "väkiluku"@fi ;
+	skos:prefLabel "väkiluku"@fi ;
+	schema:name "väkiluku"@fi ;
+	rdfs:label "invånarantal"@sv ;
+	skos:prefLabel "invånarantal"@sv ;
+	schema:name "invånarantal"@sv ;
+	rdfs:label "população"@pt-br ;
+	skos:prefLabel "população"@pt-br ;
+	schema:name "população"@pt-br ;
+	rdfs:label "população"@pt ;
+	skos:prefLabel "população"@pt ;
+	schema:name "população"@pt ;
+	rdfs:label "Inwahnertall"@nds ;
+	skos:prefLabel "Inwahnertall"@nds ;
+	schema:name "Inwahnertall"@nds ;
+	rdfs:label "population"@en-gb ;
+	skos:prefLabel "population"@en-gb ;
+	schema:name "population"@en-gb ;
+	rdfs:label "folketall"@nb ;
+	skos:prefLabel "folketall"@nb ;
+	schema:name "folketall"@nb ;
+	rdfs:label "folketal"@nn ;
+	skos:prefLabel "folketal"@nn ;
+	schema:name "folketal"@nn ;
+	rdfs:label "indbyggertal"@da ;
+	skos:prefLabel "indbyggertal"@da ;
+	schema:name "indbyggertal"@da ;
+	rdfs:label "πληθυσμός"@el ;
+	skos:prefLabel "πληθυσμός"@el ;
+	schema:name "πληθυσμός"@el ;
+	rdfs:label "кількість населення"@uk ;
+	skos:prefLabel "кількість населення"@uk ;
+	schema:name "кількість населення"@uk ;
+	rdfs:label "població"@ca ;
+	skos:prefLabel "població"@ca ;
+	schema:name "població"@ca ;
+	rdfs:label "人口"@ja ;
+	skos:prefLabel "人口"@ja ;
+	schema:name "人口"@ja ;
+	rdfs:label "인구수"@ko ;
+	skos:prefLabel "인구수"@ko ;
+	schema:name "인구수"@ko ;
+	rdfs:label "rahvaarv"@et ;
+	skos:prefLabel "rahvaarv"@et ;
+	schema:name "rahvaarv"@et ;
+	rdfs:label "liczba ludności"@pl ;
+	skos:prefLabel "liczba ludności"@pl ;
+	schema:name "liczba ludności"@pl ;
+	rdfs:label "جمعیت"@fa ;
+	skos:prefLabel "جمعیت"@fa ;
+	schema:name "جمعیت"@fa ;
+	rdfs:label "iedzīvotāju skaits"@lv ;
+	skos:prefLabel "iedzīvotāju skaits"@lv ;
+	schema:name "iedzīvotāju skaits"@lv ;
+	rdfs:label "inwonertal"@nl ;
+	skos:prefLabel "inwonertal"@nl ;
+	schema:name "inwonertal"@nl ;
+	rdfs:label "колькасць насельніцтва"@be ;
+	skos:prefLabel "колькасць насельніцтва"@be ;
+	schema:name "колькасць насельніцтва"@be ;
+	rdfs:label "dân số"@vi ;
+	skos:prefLabel "dân số"@vi ;
+	schema:name "dân số"@vi ;
+	rdfs:label "אוכלוסייה"@he ;
+	skos:prefLabel "אוכלוסייה"@he ;
+	schema:name "אוכלוסייה"@he ;
+	rdfs:label "колькасьць насельніцтва"@be-tarask ;
+	skos:prefLabel "колькасьць насельніцтва"@be-tarask ;
+	schema:name "колькасьць насельніцтва"@be-tarask ;
+	rdfs:label "ଲୋକସଂଖ୍ୟା"@or ;
+	skos:prefLabel "ଲୋକସଂଖ୍ୟା"@or ;
+	schema:name "ଲୋକସଂଖ୍ୟା"@or ;
+	rdfs:label "насељеност"@sr ;
+	skos:prefLabel "насељеност"@sr ;
+	schema:name "насељеност"@sr ;
+	rdfs:label "насељеност"@sr-ec ;
+	skos:prefLabel "насељеност"@sr-ec ;
+	schema:name "насељеност"@sr-ec ;
+	rdfs:label "naseljenost"@sr-el ;
+	skos:prefLabel "naseljenost"@sr-el ;
+	schema:name "naseljenost"@sr-el ;
+	rdfs:label "počet obyvateľov"@sk ;
+	skos:prefLabel "počet obyvateľov"@sk ;
+	schema:name "počet obyvateľov"@sk ;
+	rdfs:label "loĝantaro"@eo ;
+	skos:prefLabel "loĝantaro"@eo ;
+	schema:name "loĝantaro"@eo ;
+	rdfs:label "stanovništvo"@bs ;
+	skos:prefLabel "stanovništvo"@bs ;
+	schema:name "stanovništvo"@bs ;
+	rdfs:label "íbúafjöldi"@is ;
+	skos:prefLabel "íbúafjöldi"@is ;
+	schema:name "íbúafjöldi"@is ;
+	rdfs:label "population"@sco ;
+	skos:prefLabel "population"@sco ;
+	schema:name "population"@sco ;
+	rdfs:label "באפעלקערונג"@yi ;
+	skos:prefLabel "באפעלקערונג"@yi ;
+	schema:name "באפעלקערונג"@yi ;
+	rdfs:label "populație"@ro ;
+	skos:prefLabel "populație"@ro ;
+	schema:name "populație"@ro ;
+	rdfs:label "人口"@zh-hans ;
+	skos:prefLabel "人口"@zh-hans ;
+	schema:name "人口"@zh-hans ;
+	rdfs:label "人口"@zh-hant ;
+	skos:prefLabel "人口"@zh-hant ;
+	schema:name "人口"@zh-hant ;
+	rdfs:label "poblañs"@br ;
+	skos:prefLabel "poblañs"@br ;
+	schema:name "poblañs"@br ;
+	rdfs:label "জনসংখ্যা"@bn ;
+	skos:prefLabel "জনসংখ্যা"@bn ;
+	schema:name "জনসংখ্যা"@bn ;
+	rdfs:label "მოსახლეობა"@ka ;
+	skos:prefLabel "მოსახლეობა"@ka ;
+	schema:name "მოსახლეობა"@ka ;
+	rdfs:label "bevolking"@af ;
+	skos:prefLabel "bevolking"@af ;
+	schema:name "bevolking"@af ;
+	rdfs:label "biztanleria"@eu ;
+	skos:prefLabel "biztanleria"@eu ;
+	schema:name "biztanleria"@eu ;
+	rdfs:label "pupulazzioni"@scn ;
+	skos:prefLabel "pupulazzioni"@scn ;
+	schema:name "pupulazzioni"@scn ;
+	rdfs:label "население"@mk ;
+	skos:prefLabel "население"@mk ;
+	schema:name "население"@mk ;
+	rdfs:label "prebivalstvo"@sl ;
+	skos:prefLabel "prebivalstvo"@sl ;
+	schema:name "prebivalstvo"@sl ;
+	rdfs:label "人口"@zh-tw ;
+	skos:prefLabel "人口"@zh-tw ;
+	schema:name "人口"@zh-tw ;
+	rdfs:label "लोकसंख्या"@mr ;
+	skos:prefLabel "लोकसंख्या"@mr ;
+	schema:name "लोकसंख्या"@mr ;
+	rdfs:label "ประชากร"@th ;
+	skos:prefLabel "ประชากร"@th ;
+	schema:name "ประชากร"@th ;
+	rdfs:label "عدد السكان"@ar ;
+	skos:prefLabel "عدد السكان"@ar ;
+	schema:name "عدد السكان"@ar ;
+	rdfs:label "poboación"@gl ;
+	skos:prefLabel "poboación"@gl ;
+	schema:name "poboación"@gl ;
+	rdfs:label "जनसंख्या"@ne ;
+	skos:prefLabel "जनसंख्या"@ne ;
+	schema:name "जनसंख्या"@ne ;
+	rdfs:label "nüfus"@tr ;
+	skos:prefLabel "nüfus"@tr ;
+	schema:name "nüfus"@tr ;
+	rdfs:label "բնակչություն"@hy ;
+	skos:prefLabel "բնակչություն"@hy ;
+	schema:name "բնակչություն"@hy ;
+	rdfs:label "население"@bg ;
+	skos:prefLabel "население"@bg ;
+	schema:name "население"@bg ;
+	rdfs:label "numerus incolarum"@la ;
+	skos:prefLabel "numerus incolarum"@la ;
+	schema:name "numerus incolarum"@la ;
+	rdfs:label "ಜನಸಂಖ್ಯೆ"@kn ;
+	skos:prefLabel "ಜನಸಂಖ್ಯೆ"@kn ;
+	schema:name "ಜನಸಂಖ್ಯೆ"@kn ;
+	rdfs:label "மக்கள்தொகை"@ta ;
+	skos:prefLabel "மக்கள்தொகை"@ta ;
+	schema:name "மக்கள்தொகை"@ta ;
+	rdfs:label "poblogaeth"@cy ;
+	skos:prefLabel "poblogaeth"@cy ;
+	schema:name "poblogaeth"@cy ;
+	rdfs:label "gyventojų skaičius"@lt ;
+	skos:prefLabel "gyventojų skaičius"@lt ;
+	schema:name "gyventojų skaičius"@lt ;
+	rdfs:label "የህዝብ ብዛት"@am ;
+	skos:prefLabel "የህዝብ ብዛት"@am ;
+	schema:name "የህዝብ ብዛት"@am ;
+	rdfs:label "popolazzjoni"@mt ;
+	skos:prefLabel "popolazzjoni"@mt ;
+	schema:name "popolazzjoni"@mt ;
+	rdfs:label "population"@en-ca ;
+	skos:prefLabel "population"@en-ca ;
+	schema:name "population"@en-ca ;
+	rdfs:label "jumlah penduduk"@id ;
+	skos:prefLabel "jumlah penduduk"@id ;
+	schema:name "jumlah penduduk"@id ;
+	rdfs:label "población"@ast ;
+	skos:prefLabel "población"@ast ;
+	schema:name "población"@ast ;
+	rdfs:label "د وگړو شمېر"@ps ;
+	skos:prefLabel "د وگړو شمېر"@ps ;
+	schema:name "د وگړو شمېر"@ps ;
+	rdfs:label "ličba wobydlerstwa"@hsb ;
+	skos:prefLabel "ličba wobydlerstwa"@hsb ;
+	schema:name "ličba wobydlerstwa"@hsb ;
+	rdfs:label "ജനസംഖ്യ"@ml ;
+	skos:prefLabel "ജനസംഖ്യ"@ml ;
+	schema:name "ജനസംഖ്യ"@ml ;
+	rdfs:label "nifûs"@ku-latn ;
+	skos:prefLabel "nifûs"@ku-latn ;
+	schema:name "nifûs"@ku-latn ;
+	rdfs:label "人口"@zh-mo ;
+	skos:prefLabel "人口"@zh-mo ;
+	schema:name "人口"@zh-mo ;
+	rdfs:label "人口"@zh-my ;
+	skos:prefLabel "人口"@zh-my ;
+	schema:name "人口"@zh-my ;
+	rdfs:label "人口"@zh-sg ;
+	skos:prefLabel "人口"@zh-sg ;
+	schema:name "人口"@zh-sg ;
+	rdfs:label "Awunnerzuel"@lb ;
+	skos:prefLabel "Awunnerzuel"@lb ;
+	schema:name "Awunnerzuel"@lb ;
+	rdfs:label "populacion"@oc ;
+	skos:prefLabel "populacion"@oc ;
+	schema:name "populacion"@oc ;
+	rdfs:label "халыҡ һаны"@ba ;
+	skos:prefLabel "халыҡ һаны"@ba ;
+	schema:name "халыҡ һаны"@ba ;
+	rdfs:label "populasyon"@tl ;
+	skos:prefLabel "populasyon"@tl ;
+	schema:name "populasyon"@tl ;
+	rdfs:label "Eiwohnärzôhl"@vmf ;
+	skos:prefLabel "Eiwohnärzôhl"@vmf ;
+	schema:name "Eiwohnärzôhl"@vmf ;
+	rdfs:label "آبادی"@ur ;
+	skos:prefLabel "آبادی"@ur ;
+	schema:name "آبادی"@ur ;
+	rdfs:label "шумораи аҳолӣ"@tg ;
+	skos:prefLabel "шумораи аҳолӣ"@tg ;
+	schema:name "шумораи аҳолӣ"@tg ;
+	rdfs:label "калкынын саны"@ky ;
+	skos:prefLabel "калкынын саны"@ky ;
+	schema:name "калкынын саны"@ky ;
+	rdfs:label "stanovništvo"@hr ;
+	skos:prefLabel "stanovništvo"@hr ;
+	schema:name "stanovništvo"@hr ;
+	rdfs:label "populasyun"@pam ;
+	skos:prefLabel "populasyun"@pam ;
+	schema:name "populasyun"@pam ;
+	rdfs:label "iye èrò"@yo ;
+	skos:prefLabel "iye èrò"@yo ;
+	schema:name "iye èrò"@yo ;
+	rdfs:label "шумораи аҳолӣ"@tg-cyrl ;
+	skos:prefLabel "шумораи аҳолӣ"@tg-cyrl ;
+	schema:name "шумораи аҳолӣ"@tg-cyrl ;
+	rdfs:label "popullsia"@sq ;
+	skos:prefLabel "popullsia"@sq ;
+	schema:name "popullsia"@sq ;
+	rdfs:label "Yywohnerzahl"@gsw ;
+	skos:prefLabel "Yywohnerzahl"@gsw ;
+	schema:name "Yywohnerzahl"@gsw ;
+	rdfs:label "jumlah penduduk"@ms ;
+	skos:prefLabel "jumlah penduduk"@ms ;
+	schema:name "jumlah penduduk"@ms ;
+	rdfs:label "populasion"@ilo ;
+	skos:prefLabel "populasion"@ilo ;
+	schema:name "populasion"@ilo ;
+	rdfs:label "population"@ia ;
+	skos:prefLabel "population"@ia ;
+	schema:name "population"@ia ;
+	rdfs:label "бахархой"@ce ;
+	skos:prefLabel "бахархой"@ce ;
+	schema:name "бахархой"@ce ;
+	rdfs:label "халык саны"@tt ;
+	skos:prefLabel "халык саны"@tt ;
+	schema:name "халык саны"@tt ;
+	rdfs:label "olmmošlohku"@se ;
+	skos:prefLabel "olmmošlohku"@se ;
+	schema:name "olmmošlohku"@se ;
+	rdfs:label "халык саны"@tt-cyrl ;
+	skos:prefLabel "халык саны"@tt-cyrl ;
+	schema:name "халык саны"@tt-cyrl ;
+	rdfs:label "iinwenertaal"@frr ;
+	skos:prefLabel "iinwenertaal"@frr ;
+	schema:name "iinwenertaal"@frr ;
+	rdfs:label "လူဦးရေ"@my ;
+	skos:prefLabel "လူဦးရေ"@my ;
+	schema:name "လူဦးရေ"@my ;
+	rdfs:label "e tacihaniwok"@atj ;
+	skos:prefLabel "e tacihaniwok"@atj ;
+	schema:name "e tacihaniwok"@atj ;
+	rdfs:label "popolaçion"@lij ;
+	skos:prefLabel "popolaçion"@lij ;
+	schema:name "popolaçion"@lij ;
+	rdfs:label "ਆਬਾਦੀ"@pa ;
+	skos:prefLabel "ਆਬਾਦੀ"@pa ;
+	schema:name "ਆਬਾਦੀ"@pa ;
+	rdfs:label "जनसंख्या"@hi ;
+	skos:prefLabel "जनसंख्या"@hi ;
+	schema:name "जनसंख्या"@hi ;
+	rdfs:label "əhalisi"@az ;
+	skos:prefLabel "əhalisi"@az ;
+	schema:name "əhalisi"@az ;
+	rdfs:label "daonra"@ga ;
+	skos:prefLabel "daonra"@ga ;
+	schema:name "daonra"@ga ;
+	rdfs:label "nıfus"@diq ;
+	skos:prefLabel "nıfus"@diq ;
+	schema:name "nıfus"@diq ;
+	rdfs:label "inwoanertal"@nds-nl ;
+	skos:prefLabel "inwoanertal"@nds-nl ;
+	schema:name "inwoanertal"@nds-nl ;
+	rdfs:label "taupori"@mi ;
+	skos:prefLabel "taupori"@mi ;
+	schema:name "taupori"@mi ;
+	rdfs:label "વસ્તી / જનસંખ્યા"@gu ;
+	skos:prefLabel "વસ્તી / જનસંખ્યા"@gu ;
+	schema:name "વસ્તી / જનસંખ્યા"@gu ;
+	rdfs:label "բնակչութեան թիւ"@hyw ;
+	skos:prefLabel "բնակչութեան թիւ"@hyw ;
+	schema:name "բնակչութեան թիւ"@hyw ;
+	rdfs:label "ߡߌ߬ߙߌ߲߬ߘߌ"@nqo ;
+	skos:prefLabel "ߡߌ߬ߙߌ߲߬ߘߌ"@nqo ;
+	schema:name "ߡߌ߬ߙߌ߲߬ߘߌ"@nqo ;
+	rdfs:label "popołasion"@vec ;
+	skos:prefLabel "popołasion"@vec ;
+	schema:name "popołasion"@vec ;
+	rdfs:label "rahvahan lugumiäry"@olo ;
+	skos:prefLabel "rahvahan lugumiäry"@olo ;
+	schema:name "rahvahan lugumiäry"@olo ;
+	rdfs:label "stanovništvo"@sh ;
+	skos:prefLabel "stanovništvo"@sh ;
+	schema:name "stanovništvo"@sh ;
+	rdfs:label "poblans"@kw ;
+	skos:prefLabel "poblans"@kw ;
+	schema:name "poblans"@kw ;
+	rdfs:label "دانیشتووان"@ckb ;
+	skos:prefLabel "دانیشتووان"@ckb ;
+	schema:name "دانیشتووان"@ckb ;
+	rdfs:label "wielość ludności"@szl ;
+	skos:prefLabel "wielość ludności"@szl ;
+	schema:name "wielość ludności"@szl ;
+	rdfs:label "عدد السكان"@arz ;
+	skos:prefLabel "عدد السكان"@arz ;
+	schema:name "عدد السكان"@arz ;
+	rdfs:label "ብዝሒ ህዝቢ"@ti ;
+	skos:prefLabel "ብዝሒ ህዝቢ"@ti ;
+	schema:name "ብዝሒ ህዝቢ"@ti ;
+	rdfs:label "جومله ڤندودوق"@ms-arab ;
+	skos:prefLabel "جومله ڤندودوق"@ms-arab ;
+	schema:name "جومله ڤندودوق"@ms-arab ;
+	rdfs:label "జనాభా"@te ;
+	skos:prefLabel "జనాభా"@te ;
+	schema:name "జనాభా"@te ;
+	rdfs:label "aholisi"@uz ;
+	skos:prefLabel "aholisi"@uz ;
+	schema:name "aholisi"@uz ;
+	rdfs:label "daadambiɛligu kalinli"@dag ;
+	skos:prefLabel "daadambiɛligu kalinli"@dag ;
+	schema:name "daadambiɛligu kalinli"@dag ;
+	rdfs:label "улӥсьёслэн лыдзы"@udm ;
+	skos:prefLabel "улӥсьёслэн лыдзы"@udm ;
+	schema:name "улӥсьёслэн лыдзы"@udm ;
+	rdfs:label "inani labantu"@zu ;
+	skos:prefLabel "inani labantu"@zu ;
+	schema:name "inani labantu"@zu ;
+	rdfs:label "ässeeloho"@smn ;
+	skos:prefLabel "ässeeloho"@smn ;
+	schema:name "ässeeloho"@smn ;
+	rdfs:label "aassilååkk"@sms ;
+	skos:prefLabel "aassilååkk"@sms ;
+	schema:name "aassilååkk"@sms ;
+	rdfs:label "Eihwohnazoih"@bar ;
+	skos:prefLabel "Eihwohnazoih"@bar ;
+	schema:name "Eihwohnazoih"@bar ;
+	rdfs:label "цæрджытæ"@os ;
+	skos:prefLabel "цæрджытæ"@os ;
+	schema:name "цæрджытæ"@os ;
+	rdfs:label "მახორობა"@xmf ;
+	skos:prefLabel "მახორობა"@xmf ;
+	schema:name "მახორობა"@xmf ;
+	rdfs:label "popolazzion"@lmo ;
+	skos:prefLabel "popolazzion"@lmo ;
+	schema:name "popolazzion"@lmo ;
+	rdfs:label "Ɗuunma"@ff ;
+	skos:prefLabel "Ɗuunma"@ff ;
+	schema:name "Ɗuunma"@ff ;
+	rdfs:label "yawan mutane"@ha ;
+	skos:prefLabel "yawan mutane"@ha ;
+	schema:name "yawan mutane"@ha ;
+	rdfs:label "àireamh-sluaidh"@gd ;
+	skos:prefLabel "àireamh-sluaidh"@gd ;
+	schema:name "àireamh-sluaidh"@gd ;
+	rdfs:label "eali"@crh ;
+	skos:prefLabel "eali"@crh ;
+	schema:name "eali"@crh ;
+	rdfs:label "ọnụọgụgụ mmadụ"@ig ;
+	skos:prefLabel "ọnụọgụgụ mmadụ"@ig ;
+	schema:name "ọnụọgụgụ mmadụ"@ig ;
+	rdfs:label "хүн ам"@mn ;
+	skos:prefLabel "хүн ам"@mn ;
+	schema:name "хүн ам"@mn ;
+	rdfs:label "آبٲدی"@ks ;
+	skos:prefLabel "آبٲدی"@ks ;
+	schema:name "آبٲدی"@ks ;
+	rdfs:label "آبادی"@pnb ;
+	skos:prefLabel "آبادی"@pnb ;
+	schema:name "آبادی"@pnb ;
+	rdfs:label "populatzione"@sc ;
+	skos:prefLabel "populatzione"@sc ;
+	schema:name "populatzione"@sc ;
+	rdfs:label "kalɛ"@gur ;
+	skos:prefLabel "kalɛ"@gur ;
+	schema:name "kalɛ"@gur ;
+	rdfs:label "idadi ya watu"@sw ;
+	skos:prefLabel "idadi ya watu"@sw ;
+	schema:name "idadi ya watu"@sw ;
+	rdfs:label "عدد السكان"@arq ;
+	skos:prefLabel "عدد السكان"@arq ;
+	schema:name "عدد السكان"@arq ;
+	rdfs:label "fólkatal"@fo ;
+	skos:prefLabel "fólkatal"@fo ;
+	schema:name "fólkatal"@fo ;
+	rdfs:label "heluna kānaka"@haw ;
+	skos:prefLabel "heluna kānaka"@haw ;
+	schema:name "heluna kānaka"@haw ;
+	rdfs:label "ッチュカジ"@ryu ;
+	skos:prefLabel "ッチュカジ"@ryu ;
+	schema:name "ッチュカジ"@ryu ;
+	rdfs:label "въсєлѥниѥ"@cu ;
+	skos:prefLabel "въсєлѥниѥ"@cu ;
+	schema:name "въсєлѥниѥ"@cu ;
+	rdfs:label "puebración"@ext ;
+	skos:prefLabel "puebración"@ext ;
+	schema:name "puebración"@ext ;
+	rdfs:label "халӑх йышӗ"@cv ;
+	skos:prefLabel "халӑх йышӗ"@cv ;
+	schema:name "халӑх йышӗ"@cv ;
+	rdfs:label "xalqı"@kaa ;
+	skos:prefLabel "xalqı"@kaa ;
+	schema:name "xalqı"@kaa ;
+	rdfs:label "akéh krama"@ban ;
+	skos:prefLabel "akéh krama"@ban ;
+	schema:name "akéh krama"@ban ;
+	rdfs:label "nifûs"@ku ;
+	skos:prefLabel "nifûs"@ku ;
+	schema:name "nifûs"@ku ;
+	rdfs:label "ἐνοικοῦντες"@grc ;
+	skos:prefLabel "ἐνοικοῦντες"@grc ;
+	schema:name "ἐνοικοῦντες"@grc ;
+	rdfs:label "amḍan n imzdaɣn"@shi ;
+	skos:prefLabel "amḍan n imzdaɣn"@shi ;
+	schema:name "amḍan n imzdaɣn"@shi ;
+	rdfs:label "Əhalisi"@tly ;
+	skos:prefLabel "Əhalisi"@tly ;
+	schema:name "Əhalisi"@tly ;
+	rdfs:label "haeujvunz"@za ;
+	skos:prefLabel "haeujvunz"@za ;
+	schema:name "haeujvunz"@za ;
+	rdfs:label "buwīntajai"@prg ;
+	skos:prefLabel "buwīntajai"@prg ;
+	schema:name "buwīntajai"@prg ;
+	rdfs:label "ብዝሔ ኣዳም"@tig ;
+	skos:prefLabel "ብዝሔ ኣዳም"@tig ;
+	schema:name "ብዝሔ ኣዳም"@tig ;
+	rdfs:label "mute jan"@tok ;
+	skos:prefLabel "mute jan"@tok ;
+	schema:name "mute jan"@tok ;
+	rdfs:label "ᱦᱚᱲᱞᱮᱠᱷᱟ"@sat ;
+	skos:prefLabel "ᱦᱚᱲᱞᱮᱠᱷᱟ"@sat ;
+	schema:name "ᱦᱚᱲᱞᱮᱠᱷᱟ"@sat ;
+	rdfs:label "ꠎꠘꠡꠂꠈ꠆ꠈꠣ"@syl ;
+	skos:prefLabel "ꠎꠘꠡꠂꠈ꠆ꠈꠣ"@syl ;
+	schema:name "ꠎꠘꠡꠂꠈ꠆ꠈꠣ"@syl ;
+	rdfs:label "чагӀазул рикӀкӀен"@av ;
+	skos:prefLabel "чагӀазул рикӀкӀен"@av ;
+	schema:name "чагӀазул рикӀкӀен"@av ;
+	rdfs:label "جمیعت"@mzn ;
+	skos:prefLabel "جمیعت"@mzn ;
+	schema:name "جمیعت"@mzn ;
+	rdfs:label "人口"@nan-hant ;
+	skos:prefLabel "人口"@nan-hant ;
+	schema:name "人口"@nan-hant ;
+	rdfs:label "Jîn-kháu"@nan ;
+	skos:prefLabel "Jîn-kháu"@nan ;
+	schema:name "Jîn-kháu"@nan ;
+	rdfs:label "人口"@nan-hani ;
+	skos:prefLabel "人口"@nan-hani ;
+	schema:name "人口"@nan-hani ;
+	rdfs:label "Jîn-kháu"@nan-latn-pehoeji ;
+	skos:prefLabel "Jîn-kháu"@nan-latn-pehoeji ;
+	schema:name "Jîn-kháu"@nan-latn-pehoeji ;
+	rdfs:label "Jîn-kháu"@nan-latn-tailo ;
+	skos:prefLabel "Jîn-kháu"@nan-latn-tailo ;
+	schema:name "Jîn-kháu"@nan-latn-tailo ;
+	rdfs:label "belödans"@vo ;
+	skos:prefLabel "belödans"@vo ;
+	schema:name "belödans"@vo ;
+	rdfs:label "naiganumba"@aig ;
+	skos:prefLabel "naiganumba"@aig ;
+	schema:name "naiganumba"@aig ;
+	rdfs:label "агьалинал аьдад"@lbe ;
+	skos:prefLabel "агьалинал аьдад"@lbe ;
+	schema:name "агьалинал аьдад"@lbe ;
+	rdfs:label "taɣerfa"@kab ;
+	skos:prefLabel "taɣerfa"@kab ;
+	schema:name "taɣerfa"@kab ;
+	rdfs:label "asaa coratettaa"@wal ;
+	skos:prefLabel "asaa coratettaa"@wal ;
+	schema:name "asaa coratettaa"@wal ;
+	rdfs:label "obunji bw'abantu"@lg ;
+	skos:prefLabel "obunji bw'abantu"@lg ;
+	schema:name "obunji bw'abantu"@lg ;
+	rdfs:label "е̄ллье числа"@sjd ;
+	skos:prefLabel "е̄ллье числа"@sjd ;
+	schema:name "е̄ллье числа"@sjd ;
+	rdfs:label "जनसङ्ख्या"@mai ;
+	skos:prefLabel "जनसङ्ख्या"@mai ;
+	schema:name "जनसङ्ख्या"@mai ;
+	rdfs:label "насељенје"@isv-cyrl ;
+	skos:prefLabel "насељенје"@isv-cyrl ;
+	schema:name "насељенје"@isv-cyrl ;
+	rdfs:label "naseljenje"@isv-latn ;
+	skos:prefLabel "naseljenje"@isv-latn ;
+	schema:name "naseljenje"@isv-latn ;
+	rdfs:label "nakʼonoba"@lzz ;
+	skos:prefLabel "nakʼonoba"@lzz ;
+	schema:name "nakʼonoba"@lzz ;
+	schema:description "number of people inhabiting the place; number of people of subject"@en,
+		"Anzahl der Einwohner eines Orts oder Gebietes"@de,
+		"nombre d'habitants du lieu ou de personnes dans un groupe"@fr,
+		"numero di abitanti di un luogo"@it,
+		"tietyssä paikassa asuvien ihmisten määrä"@fi,
+		"número de pessoas que habitam o local"@pt-br,
+		"número de pessoas que habitam o local"@pt,
+		"antall personer som bor fast i området"@nb,
+		"αριθμός ατόμων που κατοικούν σε ένα μέρος"@el,
+		"кількість людей, що живуть у локації"@uk,
+		"aantal inwoners van een plaats of gebied"@nl,
+		"número de habitantes de un lugar"@es,
+		"מספר האנשים שגרים במקום"@he,
+		"ସେହି ସ୍ଥାନରେ ରହୁଥିବା ଲୋକଙ୍କ ସଂଖ୍ୟା"@or,
+		"nombro de homoj loĝantaj en la areo"@eo,
+		"fjöldi fólks sem býr á svæðinu"@is,
+		"צאל אײַנוואוינער אין ארט"@yi,
+		"број људи који насељавају место"@sr,
+		"број људи који насељавају место"@sr-ec,
+		"broj ljudi koji naseljavaju mesto"@sr-el,
+		"numărul locuitorilor într-o anumită arie sau loc geografic"@ro,
+		"egy adott helyen lakó emberek száma"@hu,
+		"niver a dud o vevañ el lec'h"@br,
+		"স্থান নিবাসী মানুষের সংখ্যা"@bn,
+		"biztanleen kopurua"@eu,
+		"nùmmaru di cristiani ntôn postu o ntôn gruppu"@scn,
+		"عدد الأشخاص الذين يقطنون هذا المكان"@ar,
+		"número de habitantes dun lugar"@gl,
+		"कुनै समयमा कुनै क्षेत्रमा बसोबास गर्ने मनिसको संख्या"@ne,
+		"nombre d'habitants d'un lloc"@ca,
+		"antal personer der bor et sted"@da,
+		"bu yerde yaşayan insanların sayısı"@tr,
+		"ilość ludzi zamieszkujących miejsce"@pl,
+		"žmonių skaičius, kurie gyvena vietoje"@lt,
+		"number of people inhabiting the place; number of people of subject"@en-gb,
+		"jumlah penduduk yang mendiami suatu tempat; jumlah penduduk dari subjek"@id,
+		"númberu d'habitantes d'un llugar"@ast,
+		"د ټولو مېشتو وگړو شمېر"@ps,
+		"number of people inhabiting the place; number of people of subject"@en-ca,
+		"ličba wobydlerjow jednoho městna abo teritorija"@hsb,
+		"താമസിക്കുന്ന ആൾക്കാരുടെ എണ്ണം"@ml,
+		"რაიმე ადგილის (ქვეყნის, ქალაქის და მისთანის) მცხოვრებთა ერთობლიობა დროის მოცემულ მომენტში"@ka,
+		"брой хора, населяващи дадено място"@bg,
+		"nombre d'abitants del luòc o de personas dins un grop."@oc,
+		"kabuuan ng bilang ng mga taong naninirahan sa isang lugar"@tl,
+		"počet lidí obývajících místo"@cs,
+		"Ôzôhl von dä Eiwohnär von äm Ord odär Gbied"@vmf,
+		"ایک خاص مقام کے رہنے والوں کی کل تعداد"@ur,
+		"количество людей, населяющих место"@ru,
+		"broj stanovnika"@hr,
+		"колькасць жыхароў дадзенай мясціны"@be,
+		"numri i njerëzve që banojnë në një vend; numri i njerëzve në subjekt"@sq,
+		"penduduk sesebuah kawasan"@ms,
+		"bilang ti tattao a mangtagtagitao iti lugar;"@ilo,
+		"bilang ti tattao iti suheto"@bcl,
+		"एखाद्या ठिकाणी वस्तीस असलेल्या लोकांची संख्या ;विषयानुसार लोकांची संख्या"@mr,
+		"특정 지역에 거주하는 사람의 수"@ko,
+		"antal personer som bebor platsen"@sv,
+		"колькасьць людзей, якія насяляюць мясьціну"@be-tarask,
+		"某地居住的人數；某個主體中的人數"@zh,
+		"某地居住的人數；某個主體中的人數"@zh-hant,
+		"某地居住的人數；某個主體中的人數"@zh-tw,
+		"nùmero de abitànti de 'n pòsto"@lij,
+		"Zuel vun de Leit, déi do wunnen"@lb,
+		"ਕਿਸੇ ਥਾਂ ਤੇ ਰਹਿਣ ਵਾਲੇ ਲੋਕਾਂ ਦੀ ਗਿਣਤੀ"@pa,
+		"किसी स्थान पर निवास करने वाले लोगों की संख्या"@hi,
+		"líon daoine ina gcónaí san áit"@ga,
+		"antal inwoaners van een plaatse of gebeed"@nds-nl,
+		"આ સ્થાને રહેતા લોકોની વસ્તી"@gu,
+		"broj ljudi koji naseljavaju mjesto"@sh,
+		"niver a bobel trigys y'n tyller"@kw,
+		"wielość ludzi zamiyszkujōncych plac"@szl,
+		"ብዝሒ ተቐመጥቲ ናይ ሓደ ቦታ"@ti,
+		"ниндәйҙер торама пунктта йәшәүсе кешеләр"@ba,
+		"ఒక ప్రదేశం లో ఉన్న వ్యక్తుల సంఖ్య"@te,
+		"та интыын улӥсьёслэн лыдзы"@udm,
+		"daadama kalinli ban ʒi shɛli polo"@dag,
+		"その場所に住む人々の数; 主題の人の数"@ja,
+		"ọnụ ọgụgụ ndị mmadụ bi n'ebe ahụ; ọnụ ọgụgụ ndị mmadụ nke isiokwu"@ig,
+		"اکسے تھاں تے رہݨ والے لوکاں دی گݨتی"@pnb,
+		"nùmeru de abitantes de unu logu"@sc,
+		"nɛreba kãlɛ n de se'em bɔna zi'an"@gur,
+		"namba ya watu katika eneo fulani"@sw,
+		"númiru de habitantis nun lugal"@ext,
+		"gīrbjas buwijjai ēn deīktan / gīrbjas zmūnin subjaktan"@prg,
+		"ijo ni la jan li mute seme?"@tok,
+		"ᱚᱱᱟ ᱡᱟᱭᱜᱟ ᱨᱮ ᱵᱟᱥᱟ ᱦᱚᱲ ᱠᱚᱣᱟᱜ ᱮᱞ;  ᱥᱟᱛᱟᱢ ᱨᱮᱱ ᱦᱚᱲ ᱠᱚᱣᱟᱜ ᱮᱞ"@sat,
+		"бакӀалда ругезул рикӀкӀен"@av,
+		"آدمونی که اتا جا درنه تعداد"@mzn,
+		"某麼所在的蹛踮的人數；主題的人數"@nan-hant,
+		"bó͘-mih só͘-chai ê tòa-tiàm ê jîn-sò͘, chú-tê ê jîn-sò͘"@nan,
+		"某麼所在的蹛踮的人數；主題的人數"@nan-hani,
+		"bó͘-mih só͘-chai ê tòa-tiàm ê jîn-sò͘, chú-tê ê jîn-sò͘"@nan-latn-pehoeji,
+		"boó-mih soó-tsai ê tuà-tiàm ê jîn-sòo, tsú-tê ê jîn-sòo"@nan-latn-tailo,
+		"počet ľudí žijúcich v danej lokalite"@sk ;
+	skos:altLabel "obyvatel"@cs,
+		"populace"@cs,
+		"население"@ru,
+		"жителей"@ru,
+		"Population"@de,
+		"Bewohner"@de,
+		"Bevölkerung"@de,
+		"Einwohner"@de,
+		"인구"@ko,
+		"사람 수"@ko,
+		"인구 수"@ko,
+		"elanike arv"@et,
+		"bevolking"@nl,
+		"populatie"@nl,
+		"inwonersaantal"@nl,
+		"inwoners"@nl,
+		"насельніцтва"@be,
+		"жыхароў"@be,
+		"số dân cư"@vi,
+		"ଜନସଂଖ୍ୟା"@or,
+		"lakosság"@hu,
+		"lakónépesség"@hu,
+		"lakosságszám"@hu,
+		"népességadat"@hu,
+		"lélekszám"@hu,
+		"abitanti"@it,
+		"numero di abitanti"@it,
+		"nombre d'habitants"@fr,
+		"nombre de personnes"@fr,
+		"populazzioni"@scn,
+		"वस्तीची लोकसंख्या"@mr,
+		"जनगणना"@mr,
+		"populatie"@ro,
+		"număr de locuitori"@ro,
+		"populacja"@pl,
+		"mieszkańcy"@pl,
+		"liczba mieszkańców"@pl,
+		"número de habitantes"@es,
+		"habitantes"@es,
+		"población humana"@es,
+		"väestömäärä"@fi,
+		"asukasluku"@fi,
+		"populiacija"@lt,
+		"gyventojų"@lt,
+		"населення"@uk,
+		"людей"@uk,
+		"жителів"@uk,
+		"чисельність населення"@uk,
+		"inhabitants"@en,
+		"human population"@en,
+		"inhabitants"@en-ca,
+		"human population"@en-ca,
+		"inhabitants"@en-gb,
+		"human population"@en-gb,
+		"pencacahan jiwa"@id,
+		"populasi"@id,
+		"penduduk"@id,
+		"befolkning"@sv,
+		"folkmängd"@sv,
+		"befolkning"@nb,
+		"innbyggere"@nb,
+		"habitantes"@ast,
+		"habitantes"@gl,
+		"número de habitantes"@gl,
+		"wobydlerstwo"@hsb,
+		"მოსახლეობის რაოდენობა"@ka,
+		"популация"@bg,
+		"nombre d'abitants"@oc,
+		"abitants"@oc,
+		"nombre d'estatjants"@oc,
+		"халыҡ һаны"@ba,
+		"Eiwohnär"@vmf,
+		"Bwohnär"@vmf,
+		"Bävölkärung"@vmf,
+		"аҳолӣ"@tg,
+		"сокинон"@tg,
+		"шаҳрвандон"@tg,
+		"зиндагидорон"@tg,
+		"умрбасарбурдагон"@tg,
+		"одамон"@tg,
+		"κάτοικοι"@el,
+		"Iye èrò ènìyàn"@yo,
+		"Iye ènìyàn"@yo,
+		"banorë"@sq,
+		"njerëz"@sq,
+		"bilang dagiti umili"@ilo,
+		"sakinleri"@tr,
+		"popülasyon"@tr,
+		"toplam sayı"@tr,
+		"насельніцтва"@be-tarask,
+		"жыхароў"@be-tarask,
+		"колькасьць жыхароў"@be-tarask,
+		"людзей"@be-tarask,
+		"пражываюць"@be-tarask,
+		"habitants"@ca,
+		"人口數"@zh,
+		"人口数"@zh,
+		"人口數"@zh-hant,
+		"人口數"@zh-tw,
+		"innbyggjarar"@nn,
+		"innbyggarar"@nn,
+		"innbyggjartal"@nn,
+		"innbyggartal"@nn,
+		"abitànti"@lij,
+		"Awunner"@lb,
+		"ਜਨਸੰਖਿਆ"@pa,
+		"आबादी"@hi,
+		"bevolking"@nds-nl,
+		"populaty"@nds-nl,
+		"inwoaners"@nds-nl,
+		"inwoanerantal"@nds-nl,
+		"حجم السكان"@ar,
+		"Բնակչութիւն"@hyw,
+		"ژمارەی دانیشتووان"@ckb,
+		"populacyjŏ"@szl,
+		"ተቐመጥቲ"@ti,
+		"ብዝሒ ተቐመጥቲ"@ti,
+		"ڤوڤولاسي"@ms-arab,
+		"populasi"@ms,
+		"జనాభా లెక్కలు"@te,
+		"улӥсь калык"@udm,
+		"narodlååkk"@sms,
+		"iedzīvotāji"@lv,
+		"じんこう"@ja,
+		"adadu yimɓe"@ff,
+		"anna"@ff,
+		"annaji"@ff,
+		"جنسنکھیا"@pnb,
+		"abitantes"@sc,
+		"nùmeru de abitantes"@sc,
+		"bividores"@sc,
+		"nùmeru de bividores"@sc,
+		"nɛrekãlɛ"@gur,
+		"daadambiɛligu kalinli"@dag,
+		"人口"@ryu,
+		"habitantis"@ext,
+		"mute ijo"@tok,
+		"habitantes"@pt,
+		"população humana"@pt,
+		"ᱦᱚᱲ ᱮᱞ"@sat,
+		"популация"@av,
+		"جمعیت"@mzn,
+		"Lîn-kháu"@nan,
+		"Jîn-kháu-sò͘"@nan,
+		"Lîn-kháu-sò͘"@nan,
+		"人口數"@nan-hani,
+		"人口數"@nan-hant,
+		"Lîn-kháu"@nan-latn-pehoeji,
+		"Jîn-kháu-sò͘"@nan-latn-pehoeji,
+		"Lîn-kháu-sò͘"@nan-latn-pehoeji,
+		"Lîn-kháu"@nan-latn-tailo,
+		"Jîn-kháu-sòo"@nan-latn-tailo,
+		"Lîn-kháu-sòo"@nan-latn-tailo,
+		"populácia"@sk,
+		"obyvateľstvo"@sk,
+		"počet duší"@sk ;
+	wikibase:propertyType <http://wikiba.se/ontology#Quantity> ;
+	wikibase:directClaim wdt:P1082 ;
+	wikibase:claim p:P1082 ;
+	wikibase:statementProperty ps:P1082 ;
+	wikibase:statementValue psv:P1082 ;
+	wikibase:qualifier pq:P1082 ;
+	wikibase:qualifierValue pqv:P1082 ;
+	wikibase:reference pr:P1082 ;
+	wikibase:referenceValue prv:P1082 ;
+	wikibase:novalue wdno:P1082 ;
+	wikibase:directClaimNormalized wdtn:P1082 ;
+	wikibase:statementValueNormalized psn:P1082 ;
+	wikibase:qualifierValueNormalized pqn:P1082 ;
+	wikibase:referenceValueNormalized prn:P1082 .
+
+p:P1082 a owl:ObjectProperty .
+
+psv:P1082 a owl:ObjectProperty .
+
+pqv:P1082 a owl:ObjectProperty .
+
+prv:P1082 a owl:ObjectProperty .
+
+wdt:P1082 a owl:DatatypeProperty .
+
+ps:P1082 a owl:DatatypeProperty .
+
+pq:P1082 a owl:DatatypeProperty .
+
+pr:P1082 a owl:DatatypeProperty .
+
+psn:P1082 a owl:ObjectProperty .
+
+pqn:P1082 a owl:ObjectProperty .
+
+prn:P1082 a owl:ObjectProperty .
+
+wdtn:P1082 a owl:DatatypeProperty .
+
+wdno:P1082 a owl:Class ;
+	owl:complementOf _:2a1892fba552c53d822cf911a54d2853 .
+
+_:2a1892fba552c53d822cf911a54d2853 a owl:Restriction ;
+	owl:onProperty wdt:P1082 ;
+	owl:someValuesFrom owl:Thing .
+
+wdv:cc7fd0a1ea01bbdc6c1e68662a778f3b a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+100000000000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:67a17c05603b9e75b6c25826fa747705 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+0"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:6daeb7eb53ab22581396a377e74a92ee a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+892533"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:53d6073789ccef2e0b6c6e39e544e618 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+63692"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:a112a6fb4487071d1ae3a0c6951488f6 a wikibase:TimeValue ;
+	wikibase:timeValue "2018-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:85ecb07bd892f76179229c3b76f1e92f a wikibase:TimeValue ;
+	wikibase:timeValue "2015-08-15T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdref:1c2d57d98191d133ed74379d6458b4cae0fc1f41 a wikibase:Reference ;
+	pr:P2306 wd:P1107 ;
+	pr:P5997 "https://www.wikidata.org/w/index.php?title=Q132480&diff=prev&oldid=2343589224" .
+
+wdref:5cea87e24b6050b993619ab755f31c643daf37b5 a wikibase:Reference ;
+	pr:P248 wd:Q24170418 .
+
+wdref:4b36a8349bd4fd6d816f04e085daf7c47fd1fad3 a wikibase:Reference ;
+	pr:P248 wd:Q141592110 .
