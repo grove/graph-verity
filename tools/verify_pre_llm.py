@@ -112,6 +112,8 @@ def main() -> int:
         require(rebuilt.read_bytes() == (ROOT / "data/wikidata/snapshot.nq").read_bytes(),
                 "Derived snapshot is not byte-reproducible")
         run("gold-verify", [sys.executable, "tools/benchmark.py", "verify"])
+        run("worldcities-transfer-source", [sys.executable, "tools/worldcities_transfer.py", "verify"])
+        run("worldcities-transfer-reference", [sys.executable, "tools/verify_worldcities_benchmark.py", "verify"])
         review = json.loads(run("review-report", [sys.executable, "tools/benchmark.py", "review"]))
         state["benchmark_review"] = {k: v for k, v in review.items() if k != "case_sha256"}
         schema = json.loads(cli("schema", "schema"))
@@ -127,6 +129,33 @@ def main() -> int:
         report = json.loads((OUT / "oracle/report.json").read_text())
         benchmark = json.loads((ROOT / "benchmarks/wikidata.json").read_text())
         summary = oracle_summary(report, benchmark)
+        cli("worldcities-transfer-oracle", "evaluate",
+            "data/worldcities-transfer/snapshot.nq", "nquads",
+            "data/worldcities-transfer/policy.json",
+            "benchmarks/worldcities-transfer.json", "transfer_dev",
+            str(OUT / "worldcities-transfer-oracle"))
+        transfer = json.loads((OUT / "worldcities-transfer-oracle/report.json").read_text())
+        transfer_gold = json.loads((ROOT / "benchmarks/worldcities-transfer.json").read_text())
+        relevant = {c["id"]: c for c in transfer_gold["cases"] if c["split"] == "transfer_dev"}
+        scored = {c["id"]: c for c in transfer["cases"]}
+        require(transfer["mode"] == "oracle_no_model" and transfer["model"] is None
+                and transfer["snapshot_id"] == transfer_gold["snapshot_id"]
+                and len(relevant) == len(scored) == 40 and set(relevant) == set(scored),
+                "Cross-ontology oracle mode/cases mismatch")
+        good = [scored[k] for k,v in relevant.items() if v["expected_status"] == "executed"]
+        skipped = [scored[k] for k,v in relevant.items() if v["expected_status"] != "executed"]
+        require(len(good) == 35 and all(c["stage"] == "scored" and c["passed"]
+                    and c["exact_result_set"] is True for c in good),
+                "Cross-ontology executable oracle mismatch")
+        require(len(skipped) == 5 and all(c["stage"] == "fixture_status_only"
+                    and c["exact_result_set"] is None for c in skipped),
+                "Cross-ontology abstentions were mistakenly interpreted as model tests")
+        state["transfer_summary"] = {
+            "different_source_and_ontology": True,
+            "transfer_development_executable_passed": len(good),
+            "recorded_abstentions_not_model_tested": len(skipped),
+            "locked_holdout_evaluated": False, "model_transfer_accuracy": None,
+        }
         manual = json.loads(cli("manual", "run", rdf, fmt, policy, "examples/manual-plan.json"))
         replay = json.loads(cli("replay", "replay", rdf, fmt, policy, scope,
                                 "examples/question.txt", "examples/fixture-response.json"))
