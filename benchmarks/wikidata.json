@@ -46,7 +46,7 @@
         "version": 1
       },
       "id": "wd-dev-001",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q585 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke navn er oppført for Oslo i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q585 rdfs:label ?label } }",
@@ -100,7 +100,7 @@
         "version": 1
       },
       "id": "wd-dev-002",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q585 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilket land er Oslo knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q585 wdt:P17 ?country } }",
@@ -154,7 +154,7 @@
         "version": 1
       },
       "id": "wd-dev-003",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q585; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke land i utvalget har Oslo som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?country wdt:P36 wd:Q585 } }",
@@ -221,7 +221,7 @@
         "version": 1
       },
       "id": "wd-dev-004",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q585 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hva er hovedstaden i landet som Oslo er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q585 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
@@ -277,7 +277,7 @@
         "version": 1
       },
       "id": "wd-dev-005",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q585, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke etableringsdatoer er oppført for Oslo i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q585 wdt:P571 ?date } }",
@@ -349,7 +349,7 @@
         "version": 1
       },
       "id": "wd-dev-006",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q26793 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke navn er oppført for Bergen i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q26793 rdfs:label ?label } }",
@@ -403,7 +403,7 @@
         "version": 1
       },
       "id": "wd-dev-007",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q26793 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilket land er Bergen knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q26793 wdt:P17 ?country } }",
@@ -450,7 +450,7 @@
         "version": 1
       },
       "id": "wd-dev-008",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q26793; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke land i utvalget har Bergen som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?country wdt:P36 wd:Q26793 } }",
@@ -517,7 +517,7 @@
         "version": 1
       },
       "id": "wd-dev-009",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q26793 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hva er hovedstaden i landet som Bergen er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q26793 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
@@ -573,7 +573,7 @@
         "version": 1
       },
       "id": "wd-dev-010",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q26793, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke etableringsdatoer er oppført for Bergen i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q26793 wdt:P571 ?date } }",
@@ -645,7 +645,7 @@
         "version": 1
       },
       "id": "wd-dev-011",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q25804 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke navn er oppført for Trondheim i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25804 rdfs:label ?label } }",
@@ -699,7 +699,7 @@
         "version": 1
       },
       "id": "wd-dev-012",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q25804 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilket land er Trondheim knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25804 wdt:P17 ?country } }",
@@ -746,7 +746,7 @@
         "version": 1
       },
       "id": "wd-dev-013",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q25804; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke land i utvalget har Trondheim som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?country wdt:P36 wd:Q25804 } }",
@@ -813,7 +813,7 @@
         "version": 1
       },
       "id": "wd-dev-014",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q25804 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hva er hovedstaden i landet som Trondheim er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25804 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
@@ -869,7 +869,7 @@
         "version": 1
       },
       "id": "wd-dev-015",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q25804, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke etableringsdatoer er oppført for Trondheim i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25804 wdt:P571 ?date } }",
@@ -941,9 +941,9 @@
         "version": 1
       },
       "id": "wd-dev-016",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q25416 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
-      "question": "Hvilke navn er oppført for Stavanger i utvalget?",
+      "question": "Hvilke navn er oppført for Stavanger kommune i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25416 rdfs:label ?label } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -995,9 +995,9 @@
         "version": 1
       },
       "id": "wd-dev-017",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q25416 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
-      "question": "Hvilket land er Stavanger knyttet til i grafen?",
+      "question": "Hvilket land er Stavanger kommune knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25416 wdt:P17 ?country } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -1042,9 +1042,9 @@
         "version": 1
       },
       "id": "wd-dev-018",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q25416; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
-      "question": "Hvilke land i utvalget har Stavanger som hovedstad?",
+      "question": "Hvilke land i utvalget har Stavanger kommune som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?country wdt:P36 wd:Q25416 } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -1109,9 +1109,9 @@
         "version": 1
       },
       "id": "wd-dev-019",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q25416 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
-      "question": "Hva er hovedstaden i landet som Stavanger er knyttet til?",
+      "question": "Hva er hovedstaden i landet som Stavanger kommune er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25416 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -1165,9 +1165,9 @@
         "version": 1
       },
       "id": "wd-dev-020",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q25416, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
-      "question": "Hvilke etableringsdatoer er oppført for Stavanger i grafutvalget?",
+      "question": "Hvilke etableringsdatoer er oppført for Stavanger kommune i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25416 wdt:P571 ?date } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -1266,7 +1266,7 @@
         "version": 1
       },
       "id": "wd-dev-021",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population gt 100000; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 100000 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population > 100000) } }",
@@ -1355,7 +1355,7 @@
         "version": 1
       },
       "id": "wd-dev-022",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population ge 200000; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 200000 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population >= 200000) } }",
@@ -1450,7 +1450,7 @@
         "version": 1
       },
       "id": "wd-dev-023",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population lt 1000000; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på under 1000000 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population < 1000000) } }",
@@ -1539,7 +1539,7 @@
         "version": 1
       },
       "id": "wd-dev-024",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population le 500000; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på høyst 500000 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population <= 500000) } }",
@@ -1616,7 +1616,7 @@
         "version": 1
       },
       "id": "wd-dev-025",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population gt 717710; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 717710 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population > 717710) } }",
@@ -1699,7 +1699,7 @@
         "version": 1
       },
       "id": "wd-dev-026",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population ge 717710; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 717710 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population >= 717710) } }",
@@ -1781,7 +1781,7 @@
         "version": 1
       },
       "id": "wd-dev-027",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find entities with an explicit inception (P571) dateTime lt 1100-01-01T00:00:00Z; existential over multiple recorded dates. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke ressurser har en oppgitt etableringsdato før 1100 i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P571 ?date . FILTER(?date < \"1100-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -1863,7 +1863,7 @@
         "version": 1
       },
       "id": "wd-dev-028",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find entities with an explicit inception (P571) dateTime le 1200-01-01T00:00:00Z; existential over multiple recorded dates. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke ressurser har en oppgitt etableringsdato senest 1. januar 1200 i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P571 ?date . FILTER(?date <= \"1200-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -1945,7 +1945,7 @@
         "version": 1
       },
       "id": "wd-dev-029",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find entities with an explicit inception (P571) dateTime ge 1000-01-01T00:00:00Z; existential over multiple recorded dates. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke ressurser har en oppgitt etableringsdato fra og med 1. januar 1000 i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P571 ?date . FILTER(?date >= \"1000-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -2015,7 +2015,7 @@
         "version": 1
       },
       "id": "wd-dev-030",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find entities with an explicit inception (P571) dateTime gt 1500-01-01T00:00:00Z; existential over multiple recorded dates. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke ressurser har en oppgitt etableringsdato etter 1. januar 1500 i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P571 ?date . FILTER(?date > \"1500-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -2072,7 +2072,7 @@
         "version": 1
       },
       "id": "wd-dev-031",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Count distinct subjects explicitly typed wikibase:Item in the development graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvor mange ulike Wikidata-elementer finnes i utviklingsutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity a wikibase:Item } }",
@@ -2129,7 +2129,7 @@
         "version": 1
       },
       "id": "wd-dev-032",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Count distinct objects of P17 country statements, not entity subjects. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvor mange ulike land peker land-relasjonene i utviklingsutvalget til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT (COUNT(DISTINCT ?country) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 ?country } }",
@@ -2196,7 +2196,7 @@
         "version": 1
       },
       "id": "wd-dev-033",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Group P17 subjects by country; count distinct subjects. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvor mange ulike ressurser i utvalget er knyttet til hvert land?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 ?country } } GROUP BY ?country",
@@ -2269,7 +2269,7 @@
         "version": 1
       },
       "id": "wd-dev-034",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Group P17 subjects by country; count distinct subjects and retain groups with count ≥ 2. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke land har minst 2 ulike tilknyttede ressurser i utvalget, og hvor mange?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 ?country } } GROUP BY ?country HAVING(COUNT(DISTINCT ?entity) >= 2)",
@@ -2342,7 +2342,7 @@
         "version": 1
       },
       "id": "wd-dev-035",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Group P17 subjects by country; count distinct subjects and retain groups with count ≥ 5. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke land har minst 5 ulike tilknyttede ressurser i utvalget, og hvor mange?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 ?country } } GROUP BY ?country HAVING(COUNT(DISTINCT ?entity) >= 5)",
@@ -2464,7 +2464,7 @@
         "version": 1
       },
       "id": "wd-dev-036",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "For wikibase:Item subjects count distinct P31 class objects; keep two or more. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke elementer i utvalget har minst to ulike oppførte klassifiseringer, og hvor mange?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?entity (COUNT(DISTINCT ?class) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity a wikibase:Item; wdt:P31 ?class } } GROUP BY ?entity HAVING(COUNT(DISTINCT ?class) >= 2)",
@@ -2542,7 +2542,7 @@
         "version": 1
       },
       "id": "wd-dev-037",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects with explicit wikibase:Item type in the authorized development graph only. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke Wikidata-elementer finnes innenfor den valgte utviklingsgrafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity a wikibase:Item } }",
@@ -2640,7 +2640,7 @@
         "version": 1
       },
       "id": "wd-dev-038",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find subjects possessing both P1082 > 200000 and P571 earlier than year 1100 in the same graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke ressurser har både oppgitt folketall over 200000 og en etableringsdato før 1100?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P1082 ?population; wdt:P571 ?date . FILTER(?population > 200000 && ?date < \"1100-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -2824,7 +2824,7 @@
         "version": 1
       },
       "id": "wd-review-001",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q585 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-001; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Oslo i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q585 rdfs:label ?label } }",
@@ -2880,7 +2880,7 @@
         "version": 1
       },
       "id": "wd-review-002",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q585 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-001; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Oslo i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q585 rdfs:label ?label } }",
@@ -2934,7 +2934,7 @@
         "version": 1
       },
       "id": "wd-review-003",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q585 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-002; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Oslo knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q585 wdt:P17 ?country } }",
@@ -2988,7 +2988,7 @@
         "version": 1
       },
       "id": "wd-review-004",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q585 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-002; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Oslo knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q585 wdt:P17 ?country } }",
@@ -3042,7 +3042,7 @@
         "version": 1
       },
       "id": "wd-review-005",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q585; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-003; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Oslo som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?country wdt:P36 wd:Q585 } }",
@@ -3096,7 +3096,7 @@
         "version": 1
       },
       "id": "wd-review-006",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q585; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-003; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Oslo som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?country wdt:P36 wd:Q585 } }",
@@ -3163,7 +3163,7 @@
         "version": 1
       },
       "id": "wd-review-007",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q585 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-004; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Oslo er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q585 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
@@ -3230,7 +3230,7 @@
         "version": 1
       },
       "id": "wd-review-008",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q585 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-004; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Oslo er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q585 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
@@ -3286,7 +3286,7 @@
         "version": 1
       },
       "id": "wd-review-009",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q585, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-005; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Oslo i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q585 wdt:P571 ?date } }",
@@ -3342,7 +3342,7 @@
         "version": 1
       },
       "id": "wd-review-010",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q585, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-005; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Oslo i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q585 wdt:P571 ?date } }",
@@ -3414,7 +3414,7 @@
         "version": 1
       },
       "id": "wd-review-011",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q26793 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-006; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Bergen i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q26793 rdfs:label ?label } }",
@@ -3486,7 +3486,7 @@
         "version": 1
       },
       "id": "wd-review-012",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q26793 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-006; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Bergen i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q26793 rdfs:label ?label } }",
@@ -3540,7 +3540,7 @@
         "version": 1
       },
       "id": "wd-review-013",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q26793 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-007; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Bergen knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q26793 wdt:P17 ?country } }",
@@ -3594,7 +3594,7 @@
         "version": 1
       },
       "id": "wd-review-014",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q26793 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-007; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Bergen knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q26793 wdt:P17 ?country } }",
@@ -3641,7 +3641,7 @@
         "version": 1
       },
       "id": "wd-review-015",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q26793; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-008; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Bergen som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?country wdt:P36 wd:Q26793 } }",
@@ -3688,7 +3688,7 @@
         "version": 1
       },
       "id": "wd-review-016",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q26793; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-008; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Bergen som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?country wdt:P36 wd:Q26793 } }",
@@ -3755,7 +3755,7 @@
         "version": 1
       },
       "id": "wd-review-017",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q26793 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-009; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Bergen er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q26793 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
@@ -3822,7 +3822,7 @@
         "version": 1
       },
       "id": "wd-review-018",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q26793 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-009; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Bergen er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q26793 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
@@ -3878,7 +3878,7 @@
         "version": 1
       },
       "id": "wd-review-019",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q26793, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-010; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Bergen i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q26793 wdt:P571 ?date } }",
@@ -3934,7 +3934,7 @@
         "version": 1
       },
       "id": "wd-review-020",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q26793, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-010; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Bergen i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q26793 wdt:P571 ?date } }",
@@ -4006,7 +4006,7 @@
         "version": 1
       },
       "id": "wd-review-021",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q25804 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-011; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Trondheim i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25804 rdfs:label ?label } }",
@@ -4078,7 +4078,7 @@
         "version": 1
       },
       "id": "wd-review-022",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q25804 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-011; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Trondheim i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25804 rdfs:label ?label } }",
@@ -4132,7 +4132,7 @@
         "version": 1
       },
       "id": "wd-review-023",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q25804 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-012; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Trondheim knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25804 wdt:P17 ?country } }",
@@ -4186,7 +4186,7 @@
         "version": 1
       },
       "id": "wd-review-024",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q25804 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-012; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Trondheim knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25804 wdt:P17 ?country } }",
@@ -4233,7 +4233,7 @@
         "version": 1
       },
       "id": "wd-review-025",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q25804; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-013; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Trondheim som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?country wdt:P36 wd:Q25804 } }",
@@ -4280,7 +4280,7 @@
         "version": 1
       },
       "id": "wd-review-026",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q25804; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-013; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Trondheim som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?country wdt:P36 wd:Q25804 } }",
@@ -4347,7 +4347,7 @@
         "version": 1
       },
       "id": "wd-review-027",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q25804 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-014; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Trondheim er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25804 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
@@ -4414,7 +4414,7 @@
         "version": 1
       },
       "id": "wd-review-028",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q25804 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-014; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Trondheim er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25804 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
@@ -4470,7 +4470,7 @@
         "version": 1
       },
       "id": "wd-review-029",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q25804, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-015; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Trondheim i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25804 wdt:P571 ?date } }",
@@ -4526,7 +4526,7 @@
         "version": 1
       },
       "id": "wd-review-030",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q25804, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-015; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Trondheim i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25804 wdt:P571 ?date } }",
@@ -4598,9 +4598,9 @@
         "version": 1
       },
       "id": "wd-review-031",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q25416 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-016; not independent holdout",
-      "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Stavanger i utvalget?",
+      "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Stavanger kommune i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25416 rdfs:label ?label } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -4670,9 +4670,9 @@
         "version": 1
       },
       "id": "wd-review-032",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q25416 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-016; not independent holdout",
-      "question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Stavanger i utvalget?",
+      "question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Stavanger kommune i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25416 rdfs:label ?label } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -4724,9 +4724,9 @@
         "version": 1
       },
       "id": "wd-review-033",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q25416 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-017; not independent holdout",
-      "question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Stavanger knyttet til i grafen?",
+      "question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Stavanger kommune knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25416 wdt:P17 ?country } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -4778,9 +4778,9 @@
         "version": 1
       },
       "id": "wd-review-034",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q25416 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-017; not independent holdout",
-      "question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Stavanger knyttet til i grafen?",
+      "question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Stavanger kommune knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25416 wdt:P17 ?country } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -4825,9 +4825,9 @@
         "version": 1
       },
       "id": "wd-review-035",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q25416; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-018; not independent holdout",
-      "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Stavanger som hovedstad?",
+      "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Stavanger kommune som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?country wdt:P36 wd:Q25416 } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -4872,9 +4872,9 @@
         "version": 1
       },
       "id": "wd-review-036",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q25416; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-018; not independent holdout",
-      "question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Stavanger som hovedstad?",
+      "question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Stavanger kommune som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?country wdt:P36 wd:Q25416 } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -4939,9 +4939,9 @@
         "version": 1
       },
       "id": "wd-review-037",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q25416 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-019; not independent holdout",
-      "question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Stavanger er knyttet til?",
+      "question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Stavanger kommune er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25416 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -5006,9 +5006,9 @@
         "version": 1
       },
       "id": "wd-review-038",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q25416 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-019; not independent holdout",
-      "question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Stavanger er knyttet til?",
+      "question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Stavanger kommune er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25416 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -5062,9 +5062,9 @@
         "version": 1
       },
       "id": "wd-review-039",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q25416, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-020; not independent holdout",
-      "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Stavanger i grafutvalget?",
+      "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Stavanger kommune i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25416 wdt:P571 ?date } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -5118,9 +5118,9 @@
         "version": 1
       },
       "id": "wd-review-040",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q25416, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-020; not independent holdout",
-      "question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Stavanger i grafutvalget?",
+      "question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Stavanger kommune i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:development> { wd:Q25416 wdt:P571 ?date } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -5219,7 +5219,7 @@
         "version": 1
       },
       "id": "wd-review-041",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population gt 100000; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-021; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 100000 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population > 100000) } }",
@@ -5320,7 +5320,7 @@
         "version": 1
       },
       "id": "wd-review-042",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population gt 100000; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-021; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 100000 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population > 100000) } }",
@@ -5409,7 +5409,7 @@
         "version": 1
       },
       "id": "wd-review-043",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population ge 200000; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-022; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 200000 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population >= 200000) } }",
@@ -5498,7 +5498,7 @@
         "version": 1
       },
       "id": "wd-review-044",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population ge 200000; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-022; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 200000 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population >= 200000) } }",
@@ -5593,7 +5593,7 @@
         "version": 1
       },
       "id": "wd-review-045",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population lt 1000000; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-023; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på under 1000000 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population < 1000000) } }",
@@ -5688,7 +5688,7 @@
         "version": 1
       },
       "id": "wd-review-046",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population lt 1000000; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-023; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på under 1000000 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population < 1000000) } }",
@@ -5777,7 +5777,7 @@
         "version": 1
       },
       "id": "wd-review-047",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population le 500000; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-024; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på høyst 500000 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population <= 500000) } }",
@@ -5866,7 +5866,7 @@
         "version": 1
       },
       "id": "wd-review-048",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population le 500000; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-024; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på høyst 500000 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population <= 500000) } }",
@@ -5943,7 +5943,7 @@
         "version": 1
       },
       "id": "wd-review-049",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population gt 717710; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-025; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 717710 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population > 717710) } }",
@@ -6020,7 +6020,7 @@
         "version": 1
       },
       "id": "wd-review-050",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population gt 717710; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-025; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 717710 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population > 717710) } }",
@@ -6103,7 +6103,7 @@
         "version": 1
       },
       "id": "wd-review-051",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population ge 717710; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-026; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 717710 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population >= 717710) } }",
@@ -6186,7 +6186,7 @@
         "version": 1
       },
       "id": "wd-review-052",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find every entity with an explicit P17 → Norway and a P1082 population ge 717710; existential over captured direct values. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-026; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 717710 i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 wd:Q20; wdt:P1082 ?population . FILTER(?population >= 717710) } }",
@@ -6268,7 +6268,7 @@
         "version": 1
       },
       "id": "wd-review-053",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find entities with an explicit inception (P571) dateTime lt 1100-01-01T00:00:00Z; existential over multiple recorded dates. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-027; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har en oppgitt etableringsdato før 1100 i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P571 ?date . FILTER(?date < \"1100-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -6350,7 +6350,7 @@
         "version": 1
       },
       "id": "wd-review-054",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find entities with an explicit inception (P571) dateTime lt 1100-01-01T00:00:00Z; existential over multiple recorded dates. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-027; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har en oppgitt etableringsdato før 1100 i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P571 ?date . FILTER(?date < \"1100-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -6432,7 +6432,7 @@
         "version": 1
       },
       "id": "wd-review-055",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find entities with an explicit inception (P571) dateTime le 1200-01-01T00:00:00Z; existential over multiple recorded dates. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-028; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har en oppgitt etableringsdato senest 1. januar 1200 i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P571 ?date . FILTER(?date <= \"1200-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -6514,7 +6514,7 @@
         "version": 1
       },
       "id": "wd-review-056",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find entities with an explicit inception (P571) dateTime le 1200-01-01T00:00:00Z; existential over multiple recorded dates. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-028; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har en oppgitt etableringsdato senest 1. januar 1200 i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P571 ?date . FILTER(?date <= \"1200-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -6596,7 +6596,7 @@
         "version": 1
       },
       "id": "wd-review-057",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find entities with an explicit inception (P571) dateTime ge 1000-01-01T00:00:00Z; existential over multiple recorded dates. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-029; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har en oppgitt etableringsdato fra og med 1. januar 1000 i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P571 ?date . FILTER(?date >= \"1000-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -6678,7 +6678,7 @@
         "version": 1
       },
       "id": "wd-review-058",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find entities with an explicit inception (P571) dateTime ge 1000-01-01T00:00:00Z; existential over multiple recorded dates. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-029; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har en oppgitt etableringsdato fra og med 1. januar 1000 i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P571 ?date . FILTER(?date >= \"1000-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -6748,7 +6748,7 @@
         "version": 1
       },
       "id": "wd-review-059",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find entities with an explicit inception (P571) dateTime gt 1500-01-01T00:00:00Z; existential over multiple recorded dates. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-030; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har en oppgitt etableringsdato etter 1. januar 1500 i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P571 ?date . FILTER(?date > \"1500-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -6818,7 +6818,7 @@
         "version": 1
       },
       "id": "wd-review-060",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find entities with an explicit inception (P571) dateTime gt 1500-01-01T00:00:00Z; existential over multiple recorded dates. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-030; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har en oppgitt etableringsdato etter 1. januar 1500 i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P571 ?date . FILTER(?date > \"1500-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -6875,7 +6875,7 @@
         "version": 1
       },
       "id": "wd-review-061",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Count distinct subjects explicitly typed wikibase:Item in the development graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-031; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvor mange ulike Wikidata-elementer finnes i utviklingsutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity a wikibase:Item } }",
@@ -6932,7 +6932,7 @@
         "version": 1
       },
       "id": "wd-review-062",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Count distinct subjects explicitly typed wikibase:Item in the development graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-031; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvor mange ulike Wikidata-elementer finnes i utviklingsutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity a wikibase:Item } }",
@@ -6989,7 +6989,7 @@
         "version": 1
       },
       "id": "wd-review-063",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Count distinct objects of P17 country statements, not entity subjects. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-032; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvor mange ulike land peker land-relasjonene i utviklingsutvalget til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT (COUNT(DISTINCT ?country) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 ?country } }",
@@ -7046,7 +7046,7 @@
         "version": 1
       },
       "id": "wd-review-064",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Count distinct objects of P17 country statements, not entity subjects. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-032; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvor mange ulike land peker land-relasjonene i utviklingsutvalget til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT (COUNT(DISTINCT ?country) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 ?country } }",
@@ -7113,7 +7113,7 @@
         "version": 1
       },
       "id": "wd-review-065",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Group P17 subjects by country; count distinct subjects. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-033; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvor mange ulike ressurser i utvalget er knyttet til hvert land?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 ?country } } GROUP BY ?country",
@@ -7180,7 +7180,7 @@
         "version": 1
       },
       "id": "wd-review-066",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Group P17 subjects by country; count distinct subjects. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-033; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvor mange ulike ressurser i utvalget er knyttet til hvert land?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 ?country } } GROUP BY ?country",
@@ -7253,7 +7253,7 @@
         "version": 1
       },
       "id": "wd-review-067",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Group P17 subjects by country; count distinct subjects and retain groups with count ≥ 2. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-034; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land har minst 2 ulike tilknyttede ressurser i utvalget, og hvor mange?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 ?country } } GROUP BY ?country HAVING(COUNT(DISTINCT ?entity) >= 2)",
@@ -7326,7 +7326,7 @@
         "version": 1
       },
       "id": "wd-review-068",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Group P17 subjects by country; count distinct subjects and retain groups with count ≥ 2. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-034; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke land har minst 2 ulike tilknyttede ressurser i utvalget, og hvor mange?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 ?country } } GROUP BY ?country HAVING(COUNT(DISTINCT ?entity) >= 2)",
@@ -7399,7 +7399,7 @@
         "version": 1
       },
       "id": "wd-review-069",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Group P17 subjects by country; count distinct subjects and retain groups with count ≥ 5. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-035; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land har minst 5 ulike tilknyttede ressurser i utvalget, og hvor mange?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 ?country } } GROUP BY ?country HAVING(COUNT(DISTINCT ?entity) >= 5)",
@@ -7472,7 +7472,7 @@
         "version": 1
       },
       "id": "wd-review-070",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Group P17 subjects by country; count distinct subjects and retain groups with count ≥ 5. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-035; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke land har minst 5 ulike tilknyttede ressurser i utvalget, og hvor mange?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P17 ?country } } GROUP BY ?country HAVING(COUNT(DISTINCT ?entity) >= 5)",
@@ -7594,7 +7594,7 @@
         "version": 1
       },
       "id": "wd-review-071",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "For wikibase:Item subjects count distinct P31 class objects; keep two or more. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-036; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke elementer i utvalget har minst to ulike oppførte klassifiseringer, og hvor mange?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?entity (COUNT(DISTINCT ?class) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity a wikibase:Item; wdt:P31 ?class } } GROUP BY ?entity HAVING(COUNT(DISTINCT ?class) >= 2)",
@@ -7716,7 +7716,7 @@
         "version": 1
       },
       "id": "wd-review-072",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "For wikibase:Item subjects count distinct P31 class objects; keep two or more. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-036; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke elementer i utvalget har minst to ulike oppførte klassifiseringer, og hvor mange?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?entity (COUNT(DISTINCT ?class) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity a wikibase:Item; wdt:P31 ?class } } GROUP BY ?entity HAVING(COUNT(DISTINCT ?class) >= 2)",
@@ -7794,7 +7794,7 @@
         "version": 1
       },
       "id": "wd-review-073",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects with explicit wikibase:Item type in the authorized development graph only. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-037; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke Wikidata-elementer finnes innenfor den valgte utviklingsgrafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity a wikibase:Item } }",
@@ -7872,7 +7872,7 @@
         "version": 1
       },
       "id": "wd-review-074",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects with explicit wikibase:Item type in the authorized development graph only. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-037; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke Wikidata-elementer finnes innenfor den valgte utviklingsgrafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity a wikibase:Item } }",
@@ -7970,7 +7970,7 @@
         "version": 1
       },
       "id": "wd-review-075",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find subjects possessing both P1082 > 200000 and P571 earlier than year 1100 in the same graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-038; not independent holdout",
       "question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har både oppgitt folketall over 200000 og en etableringsdato før 1100?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P1082 ?population; wdt:P571 ?date . FILTER(?population > 200000 && ?date < \"1100-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -8068,7 +8068,7 @@
         "version": 1
       },
       "id": "wd-review-076",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:development; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Find subjects possessing both P1082 > 200000 and P571 earlier than year 1100 in the same graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval; templated paraphrase of wd-dev-038; not independent holdout",
       "question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har både oppgitt folketall over 200000 og en etableringsdato før 1100?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:development> { ?entity wdt:P1082 ?population; wdt:P571 ?date . FILTER(?population > 200000 && ?date < \"1100-01-01T00:00:00Z\"^^xsd:dateTime) } }",
@@ -8140,7 +8140,7 @@
         "version": 1
       },
       "id": "wd-transfer_candidate-001",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:transfer; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return RDF labels of wd:Q1754 within the selected graph, preserving language tags. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke navn er oppført for Stockholm i utvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?label WHERE { GRAPH <urn:graph-verity:wikidata:transfer> { wd:Q1754 rdfs:label ?label } }",
@@ -8194,7 +8194,7 @@
         "version": 1
       },
       "id": "wd-transfer_candidate-002",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:transfer; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return objects of wd:Q1754 → P17 (country) in the selected named graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilket land er Stockholm knyttet til i grafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:transfer> { wd:Q1754 wdt:P17 ?country } }",
@@ -8248,7 +8248,7 @@
         "version": 1
       },
       "id": "wd-transfer_candidate-003",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:transfer; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects of P36 (capital) pointing to wd:Q1754; direction is reversed. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke land i utvalget har Stockholm som hovedstad?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country WHERE { GRAPH <urn:graph-verity:wikidata:transfer> { ?country wdt:P36 wd:Q1754 } }",
@@ -8315,7 +8315,7 @@
         "version": 1
       },
       "id": "wd-transfer_candidate-004",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:transfer; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Traverse wd:Q1754 → P17 → country → P36 → capital; require both edges. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hva er hovedstaden i landet som Stockholm er knyttet til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?capital WHERE { GRAPH <urn:graph-verity:wikidata:transfer> { wd:Q1754 wdt:P17 ?country . ?country wdt:P36 ?capital } }",
@@ -8371,7 +8371,7 @@
         "version": 1
       },
       "id": "wd-transfer_candidate-005",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:transfer; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return all selected P571 inception values of wd:Q1754, not an asserted single true founding date. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvilke etableringsdatoer er oppført for Stockholm i grafutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?date WHERE { GRAPH <urn:graph-verity:wikidata:transfer> { wd:Q1754 wdt:P571 ?date } }",
@@ -8431,9 +8431,9 @@
         "version": 1
       },
       "id": "wd-transfer_candidate-006",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:transfer; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return explicitly typed wikibase:Item subjects from only the transfer named graph; no claim of exclusive graph membership. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
-      "question": "Hvilke elementer finnes bare i den valgte overføringsgrafen?",
+      "question": "Hvilke Wikidata-elementer er oppført i den valgte overføringsgrafen?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?entity WHERE { GRAPH <urn:graph-verity:wikidata:transfer> { ?entity a wikibase:Item } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -8488,7 +8488,7 @@
         "version": 1
       },
       "id": "wd-transfer_candidate-007",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:transfer; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Count distinct wikibase:Item subjects in the transfer graph. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
       "question": "Hvor mange ulike elementer finnes i overføringsutvalget?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT (COUNT(DISTINCT ?entity) AS ?count) WHERE { GRAPH <urn:graph-verity:wikidata:transfer> { ?entity a wikibase:Item } }",
@@ -8550,9 +8550,9 @@
         "version": 1
       },
       "id": "wd-transfer_candidate-008",
-      "interpretation": "Execute exactly the supplied directed plan in urn:graph-verity:wikidata:transfer; direct best-ranked snapshot statements only, existential filters, no implicit latest-value selection or real-world completeness.",
+      "interpretation": "Return subjects and objects of the recorded P36 capital relation within the transfer graph; no claim that the subject was independently type-checked as a country. Graph semantics: selected direct statements in the explicitly named graph; absence is not real-world falsity.",
       "provenance": "data/wikidata/manifest.json; separately written reference SPARQL evaluated with RDFLib 7.1.4, not the Rust compiler; no independent human approval",
-      "question": "Hvilke land og hovedsteder er uttrykkelig oppført i overføringsgrafen?",
+      "question": "Hvilke ressurser har en eksplisitt hovedstadsrelasjon i overføringsgrafen, og hvilke hovedsteder peker de til?",
       "reference_sparql": "PREFIX wd: <http://www.wikidata.org/entity/>\nPREFIX wdt: <http://www.wikidata.org/prop/direct/>\nPREFIX wikibase: <http://wikiba.se/ontology#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?country ?capital WHERE { GRAPH <urn:graph-verity:wikidata:transfer> { ?country wdt:P36 ?capital } }",
       "review_status": "machine_authored_machine_checked_human_review_pending",
       "scope": [
@@ -8561,7 +8561,7 @@
       "split": "transfer_candidate"
     }
   ],
-  "name": "wikidata-nordic-candidate-v1",
+  "name": "wikidata-nordic-candidate-v2-ai-clarified",
   "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
   "version": 1
 }
