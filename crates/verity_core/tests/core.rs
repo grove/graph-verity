@@ -394,7 +394,7 @@ fn constants_must_be_graph_local_entities_with_compatible_ranges() {
     p.scope.push(PRIVATE.into());
     p.patterns.push(Pattern {
         graph: PRIVATE.into(),
-        from: id("company"),
+        from: var("company"),
         predicate: "https://example.org/secret".into(),
         direction: Direction::Forward,
         to: var("secret"),
