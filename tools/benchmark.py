@@ -59,7 +59,9 @@ def bindings(dataset: Dataset, query: str) -> list[dict]:
 
 
 def dataset() -> Dataset:
-    return Dataset().parse(data=(DATA / "snapshot.nq").read_bytes(), format="nquads")
+    graph = Dataset()
+    graph.parse(data=(DATA / "snapshot.nq").read_bytes(), format="nquads")
+    return graph
 
 
 def create() -> None:
