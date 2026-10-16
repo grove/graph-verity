@@ -1,0 +1,31 @@
+name: Rust CI
+on:
+  push:
+    branches: [main, 'feat/**']
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: rust-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install pinned Rust toolchain
+        run: rustup install
+      - name: Formatting
+        run: cargo fmt --all --check
+      - name: Clippy
+        if: ${{ !cancelled() }}
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - name: Tests
+        if: ${{ !cancelled() }}
+        run: cargo test --workspace --locked
+      - name: Smoke CLI
+        if: ${{ !cancelled() }}
+        run: cargo run --locked -p verity_cli -- smoke tests/fixtures/smoke.trig trig
