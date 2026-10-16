@@ -1,5 +1,9 @@
 # Handoff: first authorized local parser experiment (#7)
 
+Historical pre-integration handoff. The authorized development implementation and
+current measurement protocol are now in [local-parser-experiment.md](local-parser-experiment.md).
+The no-inference statements below describe the earlier pre-LLM milestone.
+
 No inference backend, model weights, hosted inference, embeddings or grammar-constrained generation has been installed or run by this pre-LLM implementation. `SemanticParser::propose(&ParserRequest) -> Result<Vec<u8>>` and strict `ParserResponse` decoding are the integration boundary. `FixtureParser` is exact replay, not a language parser.
 
 ## Next engineering task after explicit authorization

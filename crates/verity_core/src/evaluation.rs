@@ -54,6 +54,14 @@ pub struct CaseScore {
     pub recall: Option<f64>,
     pub f1: Option<f64>,
     pub pipeline_ms: Option<f64>,
+    pub expected_status: String,
+    pub proposal_status: Option<String>,
+    pub contract_valid: Option<bool>,
+    pub safety_valid: Option<bool>,
+    pub raw_response: Option<String>,
+    pub generation_ms: Option<f64>,
+    pub end_to_end_ms: f64,
+    pub components_exact: BTreeMap<String, bool>,
 }
 
 impl CaseScore {
@@ -72,8 +80,104 @@ impl CaseScore {
             recall: None,
             f1: None,
             pipeline_ms: None,
+            expected_status: case.expected_status.clone(),
+            proposal_status: None,
+            contract_valid: None,
+            safety_valid: None,
+            raw_response: None,
+            generation_ms: None,
+            end_to_end_ms: 0.0,
+            components_exact: BTreeMap::new(),
         }
     }
+}
+
+/// Conservative, variable-name-sensitive reference comparisons, not semantic equivalence.
+pub fn plan_components(actual: &Plan, gold: &Plan) -> BTreeMap<String, bool> {
+    fn parts(plan: &Plan) -> BTreeMap<String, serde_json::Value> {
+        let p = serde_json::to_value(plan).expect("Plan serialization is infallible");
+        let patterns = p["patterns"].as_array().expect("Plan patterns");
+        let filters = p["filters"].as_array().expect("Plan filters");
+        let having = p["having"].as_array().expect("Plan having");
+        let values: Vec<_> = filters
+            .iter()
+            .map(|f| &f["value"])
+            .chain(
+                patterns
+                    .iter()
+                    .flat_map(|e| [&e["from"]["value"], &e["to"]["value"]])
+                    .filter(|v| !v.is_null()),
+            )
+            .collect();
+        BTreeMap::from([
+            (
+                "operator".into(),
+                serde_json::json!([
+                    filters.iter().map(|f| &f["op"]).collect::<Vec<_>>(),
+                    having.iter().map(|h| &h["op"]).collect::<Vec<_>>(),
+                    p["projection"]
+                        .as_array()
+                        .unwrap()
+                        .iter()
+                        .map(|v| &v["kind"])
+                        .collect::<Vec<_>>()
+                ]),
+            ),
+            (
+                "direction".into(),
+                serde_json::json!(patterns.iter().map(|e| &e["direction"]).collect::<Vec<_>>()),
+            ),
+            (
+                "predicate".into(),
+                serde_json::json!(patterns.iter().map(|e| &e["predicate"]).collect::<Vec<_>>()),
+            ),
+            (
+                "entity".into(),
+                serde_json::json!(patterns
+                    .iter()
+                    .map(|e| [&e["from"]["iri"], &e["to"]["iri"]])
+                    .collect::<Vec<_>>()),
+            ),
+            (
+                "datatype".into(),
+                serde_json::json!(values
+                    .iter()
+                    .map(|v| [&v["datatype"], &v["language"]])
+                    .collect::<Vec<_>>()),
+            ),
+            (
+                "number".into(),
+                serde_json::json!([
+                    values
+                        .iter()
+                        .filter(|v| v["datatype"].as_str().is_some_and(crate::ir::numeric))
+                        .map(|v| &v["lexical"])
+                        .collect::<Vec<_>>(),
+                    having.iter().map(|h| &h["value"]).collect::<Vec<_>>()
+                ]),
+            ),
+            ("literal".into(), serde_json::json!(values)),
+            (
+                "scope".into(),
+                serde_json::json!([
+                    p["scope"],
+                    patterns.iter().map(|e| &e["graph"]).collect::<Vec<_>>()
+                ]),
+            ),
+            ("projection".into(), p["projection"].clone()),
+            ("group_by".into(), p["group_by"].clone()),
+            ("limit".into(), p["limit"].clone()),
+            ("snapshot".into(), p["snapshot_id"].clone()),
+        ])
+    }
+    let gold = parts(gold);
+    parts(actual)
+        .into_iter()
+        .map(|(key, value)| {
+            let exact = gold.get(&key) == Some(&value);
+            (key, exact)
+        })
+        .collect()
 }
 
 #[derive(Debug, Serialize)]
@@ -204,15 +308,23 @@ impl Snapshot {
         let mut cases = Vec::new();
         for case in benchmark.cases.iter().filter(|c| c.split == split) {
             let mut score = CaseScore::new(case);
+            let case_start = Instant::now();
             let scored: Result<()> = (|| {
                 policy.authorize(&case.scope)?;
                 score.stage = "proposal".into();
                 let proposal = if let Some(parser) = parser {
                     let request = self.parser_request(&case.question, &case.scope, policy)?;
-                    let raw = parser.propose(&request)?;
+                    let generation_start = Instant::now();
+                    let generated = parser.propose(&request);
+                    score.generation_ms = Some(generation_start.elapsed().as_secs_f64() * 1000.0);
+                    let raw = generated?;
+                    score.raw_response = Some(String::from_utf8_lossy(&raw).into_owned());
                     score.json_valid =
                         Some(serde_json::from_slice::<serde_json::Value>(&raw).is_ok());
-                    decode_response(&raw)?.proposal
+                    score.contract_valid = Some(false);
+                    let decoded = decode_response(&raw)?;
+                    score.contract_valid = Some(true);
+                    decoded.proposal
                 } else if let Some(gold) = &case.gold {
                     Proposal::Candidate { plan: gold.clone() }
                 } else {
@@ -223,6 +335,15 @@ impl Snapshot {
                     score.passed = true;
                     return Ok(());
                 };
+                score.proposal_status = Some(
+                    match &proposal {
+                        Proposal::Candidate { .. } => "candidate",
+                        Proposal::NeedsClarification { .. } => "needs_clarification",
+                        Proposal::Unsupported { .. } => "unsupported",
+                        Proposal::ParsingError { .. } => "parsing_error",
+                    }
+                    .into(),
+                );
                 let plan = match proposal {
                     Proposal::Candidate { plan } => plan,
                     Proposal::NeedsClarification { .. } => {
@@ -239,6 +360,11 @@ impl Snapshot {
                     }
                 };
                 score.stage = "validation".into();
+                score.safety_valid = Some(false);
+                score.structural_ir_exact = Some(case.gold.as_ref() == Some(&plan));
+                if let Some(gold) = &case.gold {
+                    score.components_exact = plan_components(&plan, gold);
+                }
                 if plan.scope.iter().collect::<BTreeSet<_>>()
                     != case.scope.iter().collect::<BTreeSet<_>>()
                 {
@@ -248,9 +374,11 @@ impl Snapshot {
                     ));
                 }
                 self.compile(&plan, policy)?;
-                score.structural_ir_exact = Some(case.gold.as_ref() == Some(&plan));
+                score.safety_valid = Some(true);
                 score.stage = "execution".into();
-                let result = self.execute(&plan, policy, PlanOrigin::Fixture)?;
+                let origin = parser.map_or(PlanOrigin::Fixture, SemanticParser::origin);
+                let result = self.execute(&plan, policy, origin)?;
+                score.end_to_end_ms = case_start.elapsed().as_secs_f64() * 1000.0;
                 score.pipeline_ms =
                     Some(result.validation_ms + result.query_ms + result.evidence_ms);
                 score.wrong_plan_successful_execution = score.structural_ir_exact == Some(false);
@@ -285,6 +413,9 @@ impl Snapshot {
             if let Err(error) = scored {
                 score.detail = error.to_string();
             }
+            if score.end_to_end_ms == 0.0 {
+                score.end_to_end_ms = case_start.elapsed().as_secs_f64() * 1000.0;
+            }
             cases.push(score);
         }
         if cases.is_empty() {
@@ -318,7 +449,7 @@ impl Snapshot {
             snapshot_id: self.id.clone(), schema_digest: snapshot_id(&serde_json::to_vec(&schemars::schema_for!(Plan))?, "ir-schema-v1"),
             implementation_digest: snapshot_id(&source, "core-source-v1"),
             dependency_lock_digest: snapshot_id(include_bytes!("../../../Cargo.lock"), "cargo-lock"),
-            model: None, split: split.into(), total: cases.len(), passed, per_family,
+            model: parser.and_then(SemanticParser::model), split: split.into(), total: cases.len(), passed, per_family,
             pass_rate_wilson_95: wilson(passed, cases.len()), cases,
             pipeline_p50_ms: quantile(&latencies, 0.50), pipeline_p95_ms: quantile(&latencies, 0.95),
             pipeline_p99_ms: quantile(&latencies, 0.99), process_peak_rss_kib: peak_rss(),

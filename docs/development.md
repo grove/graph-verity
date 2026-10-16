@@ -29,5 +29,6 @@ The one-time branch-only dependency/formatting workflow has been removed. Normal
 read-only repository permissions and locked dependencies; it never updates gold results,
 formats source, downloads model weights, or grants itself permission to merge a PR.
 
-No language model has been integrated or benchmarked. CI success verifies only the tests
-actually run, not parser feasibility or performance on deployment hardware.
+The opt-in [local parser experiment](local-parser-experiment.md) builds and runs a pinned
+CPU model separately. Normal CI invokes no inference and downloads no model weights.
+CI success verifies only its model-free tests, not parser feasibility on deployment hardware.

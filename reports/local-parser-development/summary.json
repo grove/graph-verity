@@ -1,0 +1,217 @@
+{
+  "wikidata": {
+    "questions": 46,
+    "supported": 38,
+    "expected_abstentions": 8,
+    "json_valid": 41,
+    "contract_valid": 41,
+    "invalid_contract": 5,
+    "backend_failures": 0,
+    "safety_rejected": 22,
+    "abstained_without_execution": 0,
+    "correct_status_abstentions": 0,
+    "false_abstentions": 0,
+    "structural_AI_reference_matches": 0,
+    "exact_answer_AI_reference_matches": 3,
+    "wrong_plan_successful_executions": 19,
+    "wrong_but_contract_valid_candidates": 41,
+    "per_family": {
+      "ambiguous": [
+        0,
+        2
+      ],
+      "conjunction_distinct_count": [
+        0,
+        1
+      ],
+      "conjunction_numeric_date": [
+        0,
+        1
+      ],
+      "date_comparison": [
+        0,
+        4
+      ],
+      "date_lookup": [
+        0,
+        4
+      ],
+      "direct_relation": [
+        0,
+        4
+      ],
+      "distinct_count": [
+        0,
+        2
+      ],
+      "entity_labels": [
+        0,
+        4
+      ],
+      "grouping": [
+        0,
+        1
+      ],
+      "having": [
+        0,
+        2
+      ],
+      "inverse_relation": [
+        0,
+        4
+      ],
+      "named_graph_scope": [
+        0,
+        1
+      ],
+      "numeric_comparison": [
+        0,
+        6
+      ],
+      "two_hop": [
+        0,
+        4
+      ],
+      "unsupported": [
+        0,
+        6
+      ]
+    },
+    "components_exact": {
+      "datatype": 28,
+      "direction": 29,
+      "entity": 7,
+      "group_by": 28,
+      "limit": 35,
+      "literal": 28,
+      "number": 25,
+      "operator": 16,
+      "predicate": 24,
+      "projection": 0,
+      "scope": 33,
+      "snapshot": 35
+    },
+    "warm_end_to_end_ms": {
+      "p50": 10579.228166,
+      "p95": 28061.503208000002,
+      "p99": 36179.602167
+    },
+    "generation_ms": {
+      "p50": 10568.017459,
+      "p95": 28049.269667,
+      "p99": 36173.513042000006
+    },
+    "cold_first_answer_ms_page_cache_not_evicted": 17682.21491605404,
+    "semantic_accuracy_claim": "AI-reference agreement; variable-sensitive structural equality; no independent expert gold",
+    "server_startup_ms": 411.8123329244554,
+    "rust_startup_ms": 26.92458312958479,
+    "executed_candidates": 19,
+    "safety_rejection_details": {
+      "predicate": 5,
+      "datatype": 14,
+      "aggregation": 2,
+      "projection": 1
+    }
+  },
+  "worldcities-transfer": {
+    "questions": 40,
+    "supported": 35,
+    "expected_abstentions": 5,
+    "json_valid": 32,
+    "contract_valid": 32,
+    "invalid_contract": 8,
+    "backend_failures": 0,
+    "safety_rejected": 24,
+    "abstained_without_execution": 0,
+    "correct_status_abstentions": 0,
+    "false_abstentions": 0,
+    "structural_AI_reference_matches": 0,
+    "exact_answer_AI_reference_matches": 0,
+    "wrong_plan_successful_executions": 8,
+    "wrong_but_contract_valid_candidates": 32,
+    "per_family": {
+      "ambiguous_largest": [
+        0,
+        1
+      ],
+      "direct_region": [
+        0,
+        5
+      ],
+      "distinct_city_count": [
+        0,
+        5
+      ],
+      "group_having": [
+        0,
+        5
+      ],
+      "identity_label": [
+        0,
+        5
+      ],
+      "inverse_region": [
+        0,
+        5
+      ],
+      "missing_ownership_domain": [
+        0,
+        1
+      ],
+      "missing_population": [
+        0,
+        1
+      ],
+      "numeric_identifier": [
+        0,
+        5
+      ],
+      "open_world_negation": [
+        0,
+        1
+      ],
+      "subjective_criterion": [
+        0,
+        1
+      ],
+      "two_hop_country": [
+        0,
+        5
+      ]
+    },
+    "components_exact": {
+      "datatype": 27,
+      "direction": 8,
+      "entity": 2,
+      "group_by": 23,
+      "limit": 0,
+      "literal": 27,
+      "number": 24,
+      "operator": 16,
+      "predicate": 6,
+      "projection": 7,
+      "scope": 13,
+      "snapshot": 27
+    },
+    "warm_end_to_end_ms": {
+      "p50": 10511.997583,
+      "p95": 26591.591708,
+      "p99": 28019.204291000002
+    },
+    "generation_ms": {
+      "p50": 10501.322290999999,
+      "p95": 26499.168292,
+      "p99": 28012.572042
+    },
+    "cold_first_answer_ms_page_cache_not_evicted": 18038.034331452844,
+    "semantic_accuracy_claim": "AI-reference agreement; variable-sensitive structural equality; no independent expert gold",
+    "server_startup_ms": 420.96329061314464,
+    "rust_startup_ms": 43.37104083970189,
+    "executed_candidates": 8,
+    "safety_rejection_details": {
+      "predicate": 16,
+      "datatype": 7,
+      "variable": 1
+    }
+  }
+}

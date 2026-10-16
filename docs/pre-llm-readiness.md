@@ -1,5 +1,8 @@
 # Pre-LLM engineering readiness
 
+Historical report for the deterministic milestone. The subsequently authorized
+local-model experiment is documented in [local-parser-experiment.md](local-parser-experiment.md).
+
 ## Scope and status
 
 The deterministic chain is implemented and has passed clean-checkout verification: **manual/fixture IR -> Rust validation -> deterministic SPARQL -> Oxigraph -> scoped evidence -> oracle report**. No model inference is implemented or authorized by this milestone. This is readiness for a first local development experiment, not a Phase 0 feasibility pass, production release, independently reviewed benchmark or authorization to start inference.
