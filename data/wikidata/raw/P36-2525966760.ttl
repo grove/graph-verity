@@ -1,0 +1,1347 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix data: <https://www.wikidata.org/wiki/Special:EntityData/> .
+@prefix wds: <http://www.wikidata.org/entity/statement/> .
+@prefix wdref: <http://www.wikidata.org/reference/> .
+@prefix wdv: <http://www.wikidata.org/value/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix wdtn: <http://www.wikidata.org/prop/direct-normalized/> .
+@prefix p: <http://www.wikidata.org/prop/> .
+@prefix ps: <http://www.wikidata.org/prop/statement/> .
+@prefix psv: <http://www.wikidata.org/prop/statement/value/> .
+@prefix psn: <http://www.wikidata.org/prop/statement/value-normalized/> .
+@prefix pq: <http://www.wikidata.org/prop/qualifier/> .
+@prefix pqv: <http://www.wikidata.org/prop/qualifier/value/> .
+@prefix pqn: <http://www.wikidata.org/prop/qualifier/value-normalized/> .
+@prefix pr: <http://www.wikidata.org/prop/reference/> .
+@prefix prv: <http://www.wikidata.org/prop/reference/value/> .
+@prefix prn: <http://www.wikidata.org/prop/reference/value-normalized/> .
+@prefix wdno: <http://www.wikidata.org/prop/novalue/> .
+
+data:P36 a schema:Dataset ;
+	schema:about wd:P36 ;
+	cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	schema:softwareVersion "1.0.0" ;
+	schema:version "2525966760"^^xsd:integer ;
+	schema:dateModified "2026-08-02T01:56:12Z"^^xsd:dateTime ;
+	wikibase:statements "30"^^xsd:integer .
+
+wd:P36 a wikibase:Property ;
+	wdt:P1628 <http://vocab.getty.edu/ontology#tgn3202_capital_is> ;
+	wdt:P1629 wd:Q5119,
+		wd:Q1306755,
+		wd:Q956214,
+		wd:Q52152600,
+		wd:Q108178728 ;
+	wdt:P2354 wd:Q25022717 ;
+	wdt:P1696 wd:P1376 ;
+	wdt:P2875 wd:Q27478256 ;
+	wdt:P1855 wd:Q191,
+		wd:Q159,
+		wd:Q38,
+		wd:Q237,
+		wd:Q750,
+		wd:Q2137422 ;
+	wdt:P3254 <https://www.wikidata.org/wiki/Wikidata:Property_proposal/Archive/1#P36> ;
+	wdt:P31 wd:Q18615777 ;
+	wdt:P3734 wd:Q42533365 ;
+	wdt:P2302 wd:Q52060874,
+		wd:Q21510855,
+		wd:Q21510851,
+		wd:Q21503250,
+		wd:Q21510865,
+		wd:Q25796498,
+		wd:Q53869507,
+		wd:Q52004125 ;
+	wdt:P7087 wd:Q65964597 ;
+	wdt:P1659 wd:P159 ;
+	wdt:P2668 wd:Q24025284,
+		wd:Q23611840 ;
+	p:P1628 wds:P36-e45fb77b-499c-6665-0e6a-aecc6241bc0e .
+
+wds:P36-e45fb77b-499c-6665-0e6a-aecc6241bc0e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <http://vocab.getty.edu/ontology#tgn3202_capital_is> .
+
+wd:P36 p:P1629 wds:P36-3c86f77d-452c-6bf7-59d6-792db6839083 .
+
+wds:P36-3c86f77d-452c-6bf7-59d6-792db6839083 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q5119 .
+
+wd:P36 p:P1629 wds:P36-69be148c-437c-dc4c-4b0f-4b47c6d3280f .
+
+wds:P36-69be148c-437c-dc4c-4b0f-4b47c6d3280f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q1306755 .
+
+wd:P36 p:P1629 wds:P36-0cd53404-4add-283d-8ae9-9bda1f7ecf48 .
+
+wds:P36-0cd53404-4add-283d-8ae9-9bda1f7ecf48 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q956214 .
+
+wd:P36 p:P1629 wds:P36-01afbf28-479a-971d-4bd0-856c7d407ca0 .
+
+wds:P36-01afbf28-479a-971d-4bd0-856c7d407ca0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q52152600 .
+
+wd:P36 p:P1629 wds:P36-1B35359A-C059-4E7E-97DE-E7F5A7A4F0F7 .
+
+wds:P36-1B35359A-C059-4E7E-97DE-E7F5A7A4F0F7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q108178728 .
+
+wd:P36 p:P2354 wds:P36-a0b87545-4261-bc61-3177-ff05a404e0c3 .
+
+wds:P36-a0b87545-4261-bc61-3177-ff05a404e0c3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2354 wd:Q25022717 .
+
+wd:P36 p:P1696 wds:P36-e0945f26-4015-fddd-6c27-1605a053f388 .
+
+wds:P36-e0945f26-4015-fddd-6c27-1605a053f388 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1696 wd:P1376 .
+
+wd:P36 p:P2875 wds:P36-AE973E70-A90A-48BC-9EDF-CE733A8F5358 .
+
+wds:P36-AE973E70-A90A-48BC-9EDF-CE733A8F5358 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2875 wd:Q27478256 .
+
+wd:P36 p:P1855 wds:P36-3ce803a8-4211-9a0f-98c3-283bd942a328 .
+
+wds:P36-3ce803a8-4211-9a0f-98c3-283bd942a328 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q191 ;
+	pq:P36 wd:Q1770 .
+
+wd:P36 p:P1855 wds:P36-107d76c0-48b0-5489-ef1e-0a25bbaf81fc .
+
+wds:P36-107d76c0-48b0-5489-ef1e-0a25bbaf81fc a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q159 ;
+	pq:P36 wd:Q649,
+		wd:Q656 ;
+	pq:P2559 "use applicable start time/end time as separator, preferred rank for current capital"@en,
+		"該当する開始日・終了日を修飾子として使用し、優先ランクを付けてください。"@ja .
+
+wd:P36 p:P1855 wds:P36-e206e3ab-4d3a-20d2-c077-46299091d79b .
+
+wds:P36-e206e3ab-4d3a-20d2-c077-46299091d79b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q38 ;
+	pq:P36 wd:Q220 .
+
+wd:P36 p:P1855 wds:P36-cc3696e1-492d-6c0a-50b3-bca3b63d301b .
+
+wds:P36-cc3696e1-492d-6c0a-50b3-bca3b63d301b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q237 ;
+	a wdno:P36 .
+
+wd:P36 p:P1855 wds:P36-269da7d5-4f4d-95f6-4cdd-d6e7ed2bd91f .
+
+wds:P36-269da7d5-4f4d-95f6-4cdd-d6e7ed2bd91f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q750 ;
+	pq:P36 wd:Q2907,
+		wd:Q1491 ;
+	pq:P2559 "constitutional and de facto capitals of the country. Use determination method as separator."@en,
+		"憲法上の首都と事実上の首都が異なる場合です。「使用された手段・手法（P459）」を使用してください。"@ja .
+
+wd:P36 p:P1855 wds:P36-14eff15c-4d75-978d-4ba9-28c733971f1c .
+
+wds:P36-14eff15c-4d75-978d-4ba9-28c733971f1c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q2137422 ;
+	pq:P36 wd:Q7027,
+		wd:Q2978 ;
+	pq:P2559 "successive capitals of former subnational entity. Use start time/end time as separator."@en,
+		"かつて存在したクライス（郡）の歴代首都。該当する開始日・終了日を修飾子として使用してください。"@ja .
+
+wd:P36 p:P3254 wds:P36-742B2719-E126-41F4-BB0C-774E14844401 .
+
+wds:P36-742B2719-E126-41F4-BB0C-774E14844401 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3254 <https://www.wikidata.org/wiki/Wikidata:Property_proposal/Archive/1#P36> .
+
+wd:P36 p:P31 wds:P36-b05e52e4-49bb-04bc-0efe-c857f4ee6010 .
+
+wds:P36-b05e52e4-49bb-04bc-0efe-c857f4ee6010 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q18615777 .
+
+wd:P36 p:P3734 wds:P36-20343411-E994-4816-8DC6-148FDBD5CF94 .
+
+wds:P36-20343411-E994-4816-8DC6-148FDBD5CF94 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3734 wd:Q42533365 .
+
+wd:P36 p:P2302 wds:P36-00E2BA7D-6642-4B16-9681-47452D4F4CB4 .
+
+wds:P36-00E2BA7D-6642-4B16-9681-47452D4F4CB4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52060874 ;
+	pq:P2303 wd:Q258,
+		wd:Q193619,
+		wd:Q179876,
+		wd:Q39,
+		wd:Q41,
+		wd:Q142,
+		wd:Q3462133,
+		wd:Q172107,
+		wd:Q5813,
+		wd:Q486538,
+		wd:Q498116,
+		wd:Q106996869,
+		wd:Q16207,
+		wd:Q16223,
+		wd:Q106997093 ;
+	pq:P4155 wd:P585,
+		wd:P582,
+		wd:P580,
+		wd:P459,
+		wd:P1706,
+		wd:P518 .
+
+wd:P36 p:P2302 wds:P36-BA43C084-59BD-4BDB-8F14-4F76411C6FC2 .
+
+wds:P36-BA43C084-59BD-4BDB-8F14-4F76411C6FC2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510855 ;
+	pq:P2306 wd:P1376 .
+
+wd:P36 p:P2302 wds:P36-4BEA0E67-75B6-416A-94C3-9120EA6FFA0C .
+
+wds:P36-4BEA0E67-75B6-416A-94C3-9120EA6FFA0C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510851 ;
+	pq:P2306 wd:P580,
+		wd:P582,
+		wd:P585,
+		wd:P1365,
+		wd:P1366,
+		wd:P459,
+		wd:P5102,
+		wd:P2241,
+		wd:P7452,
+		wd:P3831,
+		wd:P805,
+		wd:P8555,
+		wd:P1319,
+		wd:P8554,
+		wd:P1326,
+		wd:P518,
+		wd:P1249,
+		wd:P1534,
+		wd:P1480,
+		wd:P6375,
+		wd:P3005 ;
+	prov:wasDerivedFrom wdref:c8fdb8c3d95e96bda2c731de3bfae7effae1f568 .
+
+wd:P36 p:P2302 wds:P36-3DCE3955-2EA4-4BA7-9410-F85848F3DB5B .
+
+wds:P36-3DCE3955-2EA4-4BA7-9410-F85848F3DB5B a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21503250 ;
+	pq:P2308 wd:Q56061,
+		wd:Q486972,
+		wd:Q23442,
+		wd:Q1145276,
+		wd:Q3327870,
+		wd:Q1414991,
+		wd:Q82794,
+		wd:Q2775969,
+		wd:Q57663042,
+		wd:Q20750954,
+		wd:Q64034456,
+		wd:Q1907114,
+		wd:Q3024240,
+		wd:Q6266,
+		wd:Q3591867 ;
+	pq:P2309 wd:Q30208840 .
+
+wd:P36 p:P2302 wds:P36-41936905-E0AA-4A02-99C3-62EBC8CA6290 .
+
+wds:P36-41936905-E0AA-4A02-99C3-62EBC8CA6290 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510865 ;
+	pq:P2308 wd:Q56061,
+		wd:Q486972,
+		wd:Q1048835,
+		wd:Q64034456,
+		wd:Q5119,
+		wd:Q123349660 ;
+	pq:P2309 wd:Q21503252 .
+
+wd:P36 p:P2302 wds:P36-266E8B85-E54A-4C57-9794-69057E4670D2 .
+
+wds:P36-266E8B85-E54A-4C57-9794-69057E4670D2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q25796498 .
+
+wd:P36 p:P2302 wds:P36-218bc032-4ad9-ee5c-6dd9-19b2846f09b9 .
+
+wds:P36-218bc032-4ad9-ee5c-6dd9-19b2846f09b9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q53869507 ;
+	pq:P5314 wd:Q54828448 .
+
+wd:P36 p:P2302 wds:P36-dc35fabb-40e6-e973-c5ac-58e1d72e76b2 .
+
+wds:P36-dc35fabb-40e6-e973-c5ac-58e1d72e76b2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52004125 ;
+	pq:P2305 wd:Q29934200 .
+
+wd:P36 p:P7087 wds:P36-3411468c-4672-9296-9b39-de0cdafa6d23 .
+
+wds:P36-3411468c-4672-9296-9b39-de0cdafa6d23 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P7087 wd:Q65964597 .
+
+wd:P36 p:P1659 wds:P36-92ee768c-4bf3-8360-a807-e6ba0417bfef .
+
+wds:P36-92ee768c-4bf3-8360-a807-e6ba0417bfef a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P159 .
+
+wd:P36 p:P2668 wds:P36-627a2e0c-4445-6c6f-8648-6139ba2fae38 .
+
+wds:P36-627a2e0c-4445-6c6f-8648-6139ba2fae38 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2668 wd:Q24025284 .
+
+wd:P36 p:P2668 wds:P36-9d27d53c-489e-f2c3-b3fc-b3402592ee54 .
+
+wds:P36-9d27d53c-489e-f2c3-b3fc-b3402592ee54 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2668 wd:Q23611840 .
+
+wd:P36 rdfs:label "ରାଜଧାନୀ"@or ;
+	skos:prefLabel "ରାଜଧାନୀ"@or ;
+	schema:name "ରାଜଧାନୀ"@or ;
+	rdfs:label "capitala"@oc ;
+	skos:prefLabel "capitala"@oc ;
+	schema:name "capitala"@oc ;
+	rdfs:label "ರಾಜಧಾನಿ"@kn ;
+	skos:prefLabel "ರಾಜಧಾನಿ"@kn ;
+	schema:name "ರಾಜಧಾನಿ"@kn ;
+	rdfs:label "cifazif"@vo ;
+	skos:prefLabel "cifazif"@vo ;
+	schema:name "cifazif"@vo ;
+	rdfs:label "башкала"@tt-cyrl ;
+	skos:prefLabel "башкала"@tt-cyrl ;
+	schema:name "башкала"@tt-cyrl ;
+	rdfs:label "دار الحکومت"@ur ;
+	skos:prefLabel "دار الحکومت"@ur ;
+	schema:name "دار الحکومت"@ur ;
+	rdfs:label "kabisera"@tl ;
+	skos:prefLabel "kabisera"@tl ;
+	schema:name "kabisera"@tl ;
+	rdfs:label "Hauptstadt"@gsw ;
+	skos:prefLabel "Hauptstadt"@gsw ;
+	schema:name "Hauptstadt"@gsw ;
+	rdfs:label "capitale"@fr ;
+	skos:prefLabel "capitale"@fr ;
+	schema:name "capitale"@fr ;
+	rdfs:label "ĉefurbo"@eo ;
+	skos:prefLabel "ĉefurbo"@eo ;
+	schema:name "ĉefurbo"@eo ;
+	rdfs:label "行政中心"@zh ;
+	skos:prefLabel "行政中心"@zh ;
+	schema:name "行政中心"@zh ;
+	rdfs:label "престоница"@sr ;
+	skos:prefLabel "престоница"@sr ;
+	schema:name "престоница"@sr ;
+	rdfs:label "trung tâm hành chính"@vi ;
+	skos:prefLabel "trung tâm hành chính"@vi ;
+	schema:name "trung tâm hành chính"@vi ;
+	rdfs:label "پایتخت"@fa ;
+	skos:prefLabel "پایتخت"@fa ;
+	schema:name "پایتخت"@fa ;
+	rdfs:label "정부 소재지"@ko ;
+	skos:prefLabel "정부 소재지"@ko ;
+	schema:name "정부 소재지"@ko ;
+	rdfs:label "hoofstad"@af ;
+	skos:prefLabel "hoofstad"@af ;
+	schema:name "hoofstad"@af ;
+	rdfs:label "pääkaupunki"@fi ;
+	skos:prefLabel "pääkaupunki"@fi ;
+	schema:name "pääkaupunki"@fi ;
+	rdfs:label "tungku"@pam ;
+	skos:prefLabel "tungku"@pam ;
+	schema:name "tungku"@pam ;
+	rdfs:label "தலைநகரம்"@ta ;
+	skos:prefLabel "தலைநகரம்"@ta ;
+	schema:name "தலைநகரம்"@ta ;
+	rdfs:label "پلازمېنه"@ps ;
+	skos:prefLabel "پلازمېنه"@ps ;
+	schema:name "پلازمېنه"@ps ;
+	rdfs:label "höfuðborg"@is ;
+	skos:prefLabel "höfuðborg"@is ;
+	schema:name "höfuðborg"@is ;
+	rdfs:label "stolica"@pl ;
+	skos:prefLabel "stolica"@pl ;
+	schema:name "stolica"@pl ;
+	rdfs:label "hlavní město"@cs ;
+	skos:prefLabel "hlavní město"@cs ;
+	schema:name "hlavní město"@cs ;
+	rdfs:label "caipital"@sco ;
+	skos:prefLabel "caipital"@sco ;
+	schema:name "caipital"@sco ;
+	rdfs:label "Hööftstadt"@nds ;
+	skos:prefLabel "Hööftstadt"@nds ;
+	schema:name "Hööftstadt"@nds ;
+	rdfs:label "capitali"@scn ;
+	skos:prefLabel "capitali"@scn ;
+	schema:name "capitali"@scn ;
+	rdfs:label "ibu kota"@id ;
+	skos:prefLabel "ibu kota"@id ;
+	schema:name "ibu kota"@id ;
+	rdfs:label "capital"@en-ca ;
+	skos:prefLabel "capital"@en-ca ;
+	schema:name "capital"@en-ca ;
+	rdfs:label "行政中心"@zh-hant ;
+	skos:prefLabel "行政中心"@zh-hant ;
+	schema:name "行政中心"@zh-hant ;
+	rdfs:label "fővárosa/székhelye"@hu ;
+	skos:prefLabel "fővárosa/székhelye"@hu ;
+	schema:name "fővárosa/székhelye"@hu ;
+	rdfs:label "เมืองหลวง"@th ;
+	skos:prefLabel "เมืองหลวง"@th ;
+	schema:name "เมืองหลวง"@th ;
+	rdfs:label "राजधानी"@ne ;
+	skos:prefLabel "राजधानी"@ne ;
+	schema:name "राजधानी"@ne ;
+	rdfs:label "capital"@gl ;
+	skos:prefLabel "capital"@gl ;
+	schema:name "capital"@gl ;
+	rdfs:label "heufdstad"@nds-nl ;
+	skos:prefLabel "heufdstad"@nds-nl ;
+	schema:name "heufdstad"@nds-nl ;
+	rdfs:label "capital"@en-gb ;
+	skos:prefLabel "capital"@en-gb ;
+	schema:name "capital"@en-gb ;
+	rdfs:label "capital"@ca ;
+	skos:prefLabel "capital"@ca ;
+	schema:name "capital"@ca ;
+	rdfs:label "capitală"@ro ;
+	skos:prefLabel "capitală"@ro ;
+	schema:name "capitală"@ro ;
+	rdfs:label "הויפטשטאט"@yi ;
+	skos:prefLabel "הויפטשטאט"@yi ;
+	schema:name "הויפטשטאט"@yi ;
+	rdfs:label "ibu kota"@ms ;
+	skos:prefLabel "ibu kota"@ms ;
+	schema:name "ibu kota"@ms ;
+	rdfs:label "行政中心"@zh-hans ;
+	skos:prefLabel "行政中心"@zh-hans ;
+	schema:name "行政中心"@zh-hans ;
+	rdfs:label "রাজধানী"@bn ;
+	skos:prefLabel "রাজধানী"@bn ;
+	schema:name "রাজধানী"@bn ;
+	rdfs:label "capital"@en ;
+	skos:prefLabel "capital"@en ;
+	schema:name "capital"@en ;
+	rdfs:label "capital"@ia ;
+	skos:prefLabel "capital"@ia ;
+	schema:name "capital"@ia ;
+	rdfs:label "kitci otenaw"@atj ;
+	skos:prefLabel "kitci otenaw"@atj ;
+	schema:name "kitci otenaw"@atj ;
+	rdfs:label "العاصمة"@aeb-arab ;
+	skos:prefLabel "العاصمة"@aeb-arab ;
+	schema:name "العاصمة"@aeb-arab ;
+	rdfs:label "administratīvais centrs"@lv ;
+	skos:prefLabel "administratīvais centrs"@lv ;
+	schema:name "administratīvais centrs"@lv ;
+	rdfs:label "capital"@pt ;
+	skos:prefLabel "capital"@pt ;
+	schema:name "capital"@pt ;
+	rdfs:label "keskus"@et ;
+	skos:prefLabel "keskus"@et ;
+	schema:name "keskus"@et ;
+	rdfs:label "сталіца"@be-tarask ;
+	skos:prefLabel "сталіца"@be-tarask ;
+	schema:name "сталіца"@be-tarask ;
+	rdfs:label "åejviestaare"@sma ;
+	skos:prefLabel "åejviestaare"@sma ;
+	schema:name "åejviestaare"@sma ;
+	rdfs:label "belt kapitali"@mt ;
+	skos:prefLabel "belt kapitali"@mt ;
+	schema:name "belt kapitali"@mt ;
+	rdfs:label "پایتەخت"@ckb ;
+	skos:prefLabel "پایتەخت"@ckb ;
+	schema:name "پایتەخت"@ckb ;
+	rdfs:label "kryeqytet"@sq ;
+	skos:prefLabel "kryeqytet"@sq ;
+	schema:name "kryeqytet"@sq ;
+	rdfs:label "Haubdord"@vmf ;
+	skos:prefLabel "Haubdord"@vmf ;
+	schema:name "Haubdord"@vmf ;
+	rdfs:label "capital"@es ;
+	skos:prefLabel "capital"@es ;
+	schema:name "capital"@es ;
+	rdfs:label "başkent"@tr ;
+	skos:prefLabel "başkent"@tr ;
+	schema:name "başkent"@tr ;
+	rdfs:label "prifddinas"@cy ;
+	skos:prefLabel "prifddinas"@cy ;
+	schema:name "prifddinas"@cy ;
+	rdfs:label "главен град"@mk ;
+	skos:prefLabel "главен град"@mk ;
+	schema:name "главен град"@mk ;
+	rdfs:label "paytaxt"@az ;
+	skos:prefLabel "paytaxt"@az ;
+	schema:name "paytaxt"@az ;
+	rdfs:label "oaivegávpot"@se ;
+	skos:prefLabel "oaivegávpot"@se ;
+	schema:name "oaivegávpot"@se ;
+	rdfs:label "babban birni"@ha ;
+	skos:prefLabel "babban birni"@ha ;
+	schema:name "babban birni"@ha ;
+	rdfs:label "сталіца"@be ;
+	skos:prefLabel "сталіца"@be ;
+	schema:name "сталіца"@be ;
+	rdfs:label "עיר בירה"@he ;
+	skos:prefLabel "עיר בירה"@he ;
+	schema:name "עיר בירה"@he ;
+	rdfs:label "paytext"@ku-latn ;
+	skos:prefLabel "paytext"@ku-latn ;
+	schema:name "paytext"@ku-latn ;
+	rdfs:label "коьрта гӀала"@ce ;
+	skos:prefLabel "коьрта гӀала"@ce ;
+	schema:name "коьрта гӀала"@ce ;
+	rdfs:label "chapitala"@rm ;
+	skos:prefLabel "chapitala"@rm ;
+	schema:name "chapitala"@rm ;
+	rdfs:label "hovedstad"@nb ;
+	skos:prefLabel "hovedstad"@nb ;
+	schema:name "hovedstad"@nb ;
+	rdfs:label "centralort"@sv ;
+	skos:prefLabel "centralort"@sv ;
+	schema:name "centralort"@sv ;
+	rdfs:label "capital"@pt-br ;
+	skos:prefLabel "capital"@pt-br ;
+	schema:name "capital"@pt-br ;
+	rdfs:label "башкала"@tt ;
+	skos:prefLabel "башкала"@tt ;
+	schema:name "башкала"@tt ;
+	rdfs:label "πρωτεύουσα"@el ;
+	skos:prefLabel "πρωτεύουσα"@el ;
+	schema:name "πρωτεύουσα"@el ;
+	rdfs:label "hoofdplaats"@nl ;
+	skos:prefLabel "hoofdplaats"@nl ;
+	schema:name "hoofdplaats"@nl ;
+	rdfs:label "ibukoto"@min ;
+	skos:prefLabel "ibukoto"@min ;
+	schema:name "ibukoto"@min ;
+	rdfs:label "kêr-benn"@br ;
+	skos:prefLabel "kêr-benn"@br ;
+	schema:name "kêr-benn"@br ;
+	rdfs:label "capitale"@it ;
+	skos:prefLabel "capitale"@it ;
+	schema:name "capitale"@it ;
+	rdfs:label "Haudstääd"@stq ;
+	skos:prefLabel "Haudstääd"@stq ;
+	schema:name "Haudstääd"@stq ;
+	rdfs:label "අගනුවර"@si ;
+	skos:prefLabel "අගනුවර"@si ;
+	schema:name "අගනුවර"@si ;
+	rdfs:label "Hauptstadt"@de ;
+	skos:prefLabel "Hauptstadt"@de ;
+	schema:name "Hauptstadt"@de ;
+	rdfs:label "stolica"@hsb ;
+	skos:prefLabel "stolica"@hsb ;
+	schema:name "stolica"@hsb ;
+	rdfs:label "राजधानी"@mr ;
+	skos:prefLabel "राजधानी"@mr ;
+	schema:name "राजधानी"@mr ;
+	rdfs:label "Olú"@yo ;
+	skos:prefLabel "Olú"@yo ;
+	schema:name "Olú"@yo ;
+	rdfs:label "राजधानी"@hi ;
+	skos:prefLabel "राजधानी"@hi ;
+	schema:name "राजधानी"@hi ;
+	rdfs:label "行政中心地"@ja ;
+	skos:prefLabel "行政中心地"@ja ;
+	schema:name "行政中心地"@ja ;
+	rdfs:label "hovudstad"@nn ;
+	skos:prefLabel "hovudstad"@nn ;
+	schema:name "hovudstad"@nn ;
+	rdfs:label "столица"@bg ;
+	skos:prefLabel "столица"@bg ;
+	schema:name "столица"@bg ;
+	rdfs:label "poytaxt"@uz ;
+	skos:prefLabel "poytaxt"@uz ;
+	schema:name "poytaxt"@uz ;
+	rdfs:label "hiriburua"@eu ;
+	skos:prefLabel "hiriburua"@eu ;
+	schema:name "hiriburua"@eu ;
+	rdfs:label "തലസ്ഥാനം"@ml ;
+	skos:prefLabel "തലസ്ഥാനം"@ml ;
+	schema:name "തലസ്ഥാനം"@ml ;
+	rdfs:label "renivohitra"@mg ;
+	skos:prefLabel "renivohitra"@mg ;
+	schema:name "renivohitra"@mg ;
+	rdfs:label "административ үҙәк"@ba ;
+	skos:prefLabel "административ үҙәк"@ba ;
+	schema:name "административ үҙәк"@ba ;
+	rdfs:label "административный центр"@ru ;
+	skos:prefLabel "административный центр"@ru ;
+	schema:name "административный центр"@ru ;
+	rdfs:label "行政中心"@zh-cn ;
+	skos:prefLabel "行政中心"@zh-cn ;
+	schema:name "行政中心"@zh-cn ;
+	rdfs:label "capital"@ast ;
+	skos:prefLabel "capital"@ast ;
+	schema:name "capital"@ast ;
+	rdfs:label "glavni grad"@hr ;
+	skos:prefLabel "glavni grad"@hr ;
+	schema:name "glavni grad"@hr ;
+	rdfs:label "დედაქალაქი"@ka ;
+	skos:prefLabel "დედაქალაქი"@ka ;
+	schema:name "დედაქალაქი"@ka ;
+	rdfs:label "రాజధాని"@te ;
+	skos:prefLabel "రాజధాని"@te ;
+	schema:name "రాజధాని"@te ;
+	rdfs:label "hovedstad"@da ;
+	skos:prefLabel "hovedstad"@da ;
+	schema:name "hovedstad"@da ;
+	rdfs:label "行政中心"@yue ;
+	skos:prefLabel "行政中心"@yue ;
+	schema:name "行政中心"@yue ;
+	rdfs:label "العاصمة"@ar ;
+	skos:prefLabel "العاصمة"@ar ;
+	schema:name "العاصمة"@ar ;
+	rdfs:label "capital"@lmo ;
+	skos:prefLabel "capital"@lmo ;
+	schema:name "capital"@lmo ;
+	rdfs:label "մայրաքաղաք"@hy ;
+	skos:prefLabel "մայրաքաղաք"@hy ;
+	schema:name "մայրաքաղաք"@hy ;
+	rdfs:label "trutca"@jbo ;
+	skos:prefLabel "trutca"@jbo ;
+	schema:name "trutca"@jbo ;
+	rdfs:label "glavni grad"@bs ;
+	skos:prefLabel "glavni grad"@bs ;
+	schema:name "glavni grad"@bs ;
+	rdfs:label "capitale"@co ;
+	skos:prefLabel "capitale"@co ;
+	schema:name "capitale"@co ;
+	rdfs:label "пойтахт"@tg ;
+	skos:prefLabel "пойтахт"@tg ;
+	schema:name "пойтахт"@tg ;
+	rdfs:label "sostinė"@lt ;
+	skos:prefLabel "sostinė"@lt ;
+	schema:name "sostinė"@lt ;
+	rdfs:label "રાજધાની"@gu ;
+	skos:prefLabel "રાજધાની"@gu ;
+	schema:name "રાજધાની"@gu ;
+	rdfs:label "行政中心"@zh-tw ;
+	skos:prefLabel "行政中心"@zh-tw ;
+	schema:name "行政中心"@zh-tw ;
+	rdfs:label "ਰਾਜਧਾਨੀ"@pa ;
+	skos:prefLabel "ਰਾਜਧਾਨੀ"@pa ;
+	schema:name "ਰਾਜਧਾਨੀ"@pa ;
+	rdfs:label "пойтахт"@tg-cyrl ;
+	skos:prefLabel "пойтахт"@tg-cyrl ;
+	schema:name "пойтахт"@tg-cyrl ;
+	rdfs:label "首都"@zh-hk ;
+	skos:prefLabel "首都"@zh-hk ;
+	schema:name "首都"@zh-hk ;
+	rdfs:label "Chef-lieu"@lb ;
+	skos:prefLabel "Chef-lieu"@lb ;
+	schema:name "Chef-lieu"@lb ;
+	rdfs:label "kapitolio"@ilo ;
+	skos:prefLabel "kapitolio"@ilo ;
+	schema:name "kapitolio"@ilo ;
+	rdfs:label "glavno mesto"@sl ;
+	skos:prefLabel "glavno mesto"@sl ;
+	schema:name "glavno mesto"@sl ;
+	rdfs:label "caput"@la ;
+	skos:prefLabel "caput"@la ;
+	schema:name "caput"@la ;
+	rdfs:label "hlavné mesto"@sk ;
+	skos:prefLabel "hlavné mesto"@sk ;
+	schema:name "hlavné mesto"@sk ;
+	rdfs:label "столиця"@uk ;
+	skos:prefLabel "столиця"@uk ;
+	schema:name "столиця"@uk ;
+	rdfs:label "başqala"@tt-latn ;
+	skos:prefLabel "başqala"@tt-latn ;
+	schema:name "başqala"@tt-latn ;
+	rdfs:label "hoodsteed"@frr ;
+	skos:prefLabel "hoodsteed"@frr ;
+	schema:name "hoodsteed"@frr ;
+	rdfs:label "príomhchathair"@ga ;
+	skos:prefLabel "príomhchathair"@ga ;
+	schema:name "príomhchathair"@ga ;
+	rdfs:label "кьилин шегьер"@lez ;
+	skos:prefLabel "кьилин шегьер"@lez ;
+	schema:name "кьилин шегьер"@lez ;
+	rdfs:label "Paytext"@diq ;
+	skos:prefLabel "Paytext"@diq ;
+	schema:name "Paytext"@diq ;
+	rdfs:label "ߞߎߓߋߘߊ"@nqo ;
+	skos:prefLabel "ߞߎߓߋߘߊ"@nqo ;
+	schema:name "ߞߎߓߋߘߊ"@nqo ;
+	rdfs:label "capitałe"@vec ;
+	skos:prefLabel "capitałe"@vec ;
+	schema:name "capitałe"@vec ;
+	rdfs:label "لعاصمة"@ary ;
+	skos:prefLabel "لعاصمة"@ary ;
+	schema:name "لعاصمة"@ary ;
+	rdfs:label "glavni grad"@sh ;
+	skos:prefLabel "glavni grad"@sh ;
+	schema:name "glavni grad"@sh ;
+	rdfs:label "piälinnu"@olo ;
+	skos:prefLabel "piälinnu"@olo ;
+	schema:name "piälinnu"@olo ;
+	rdfs:label "tamanaɣt"@kab ;
+	skos:prefLabel "tamanaɣt"@kab ;
+	schema:name "tamanaɣt"@kab ;
+	rdfs:label "ርእሰ ከተማ"@ti ;
+	skos:prefLabel "ርእሰ ከተማ"@ti ;
+	schema:name "ርእሰ ከተማ"@ti ;
+	rdfs:label "stolica"@szl ;
+	skos:prefLabel "stolica"@szl ;
+	schema:name "stolica"@szl ;
+	rdfs:label "сæйраг сахар"@os ;
+	skos:prefLabel "сæйраг сахар"@os ;
+	schema:name "сæйраг сахар"@os ;
+	rdfs:label "ايبو کوتا"@ms-arab ;
+	skos:prefLabel "ايبو کوتا"@ms-arab ;
+	schema:name "ايبو کوتا"@ms-arab ;
+	rdfs:label "рӱдола"@mhr ;
+	skos:prefLabel "рӱдола"@mhr ;
+	schema:name "рӱдола"@mhr ;
+	rdfs:label "вуэййвланнҍ"@sjd ;
+	skos:prefLabel "вуэййвланнҍ"@sjd ;
+	schema:name "вуэййвланнҍ"@sjd ;
+	rdfs:label "oajvvestáda"@smj ;
+	skos:prefLabel "oajvvestáda"@smj ;
+	schema:name "oajvvestáda"@smj ;
+	rdfs:label "uáivikaavpug"@smn ;
+	skos:prefLabel "uáivikaavpug"@smn ;
+	schema:name "uáivikaavpug"@smn ;
+	rdfs:label "vueiʹvvgåårad"@sms ;
+	skos:prefLabel "vueiʹvvgåårad"@sms ;
+	schema:name "vueiʹvvgåårad"@sms ;
+	rdfs:label "pusat kota"@ban ;
+	skos:prefLabel "pusat kota"@ban ;
+	schema:name "pusat kota"@ban ;
+	rdfs:label "tavusu"@gn ;
+	skos:prefLabel "tavusu"@gn ;
+	schema:name "tavusu"@gn ;
+	rdfs:label "tinzuɣu"@dag ;
+	skos:prefLabel "tinzuɣu"@dag ;
+	schema:name "tinzuɣu"@dag ;
+	rdfs:label "ნანანოღა"@xmf ;
+	skos:prefLabel "ნანანოღა"@xmf ;
+	schema:name "ნანანოღა"@xmf ;
+	rdfs:label "kapital"@pap ;
+	skos:prefLabel "kapital"@pap ;
+	schema:name "kapital"@pap ;
+	rdfs:label "capital"@pap-aw ;
+	skos:prefLabel "capital"@pap-aw ;
+	schema:name "capital"@pap-aw ;
+	rdfs:label "رازدٲنؠ"@ks ;
+	skos:prefLabel "رازدٲنؠ"@ks ;
+	schema:name "رازدٲنؠ"@ks ;
+	rdfs:label "capitale"@nap ;
+	skos:prefLabel "capitale"@nap ;
+	schema:name "capitale"@nap ;
+	rdfs:label "isi steeti"@ig ;
+	skos:prefLabel "isi steeti"@ig ;
+	schema:name "isi steeti"@ig ;
+	rdfs:label "prìomh-bhaile"@gd ;
+	skos:prefLabel "prìomh-bhaile"@gd ;
+	schema:name "prìomh-bhaile"@gd ;
+	rdfs:label "a̱cyian"@kcg ;
+	skos:prefLabel "a̱cyian"@kcg ;
+	schema:name "a̱cyian"@kcg ;
+	rdfs:label "laamorde"@ff ;
+	skos:prefLabel "laamorde"@ff ;
+	schema:name "laamorde"@ff ;
+	rdfs:label "penncita"@kw ;
+	skos:prefLabel "penncita"@kw ;
+	schema:name "penncita"@kw ;
+	rdfs:label "capital"@gpe ;
+	skos:prefLabel "capital"@gpe ;
+	schema:name "capital"@gpe ;
+	rdfs:label "راجدھانی"@pnb ;
+	skos:prefLabel "راجدھانی"@pnb ;
+	schema:name "راجدھانی"@pnb ;
+	rdfs:label "capitale"@sc ;
+	skos:prefLabel "capitale"@sc ;
+	schema:name "capitale"@sc ;
+	rdfs:label "борбор"@ky ;
+	skos:prefLabel "борбор"@ky ;
+	schema:name "борбор"@ky ;
+	rdfs:label "mji mkuu"@sw ;
+	skos:prefLabel "mji mkuu"@sw ;
+	schema:name "mji mkuu"@sw ;
+	rdfs:label "capitèla"@rgn ;
+	skos:prefLabel "capitèla"@rgn ;
+	schema:name "capitèla"@rgn ;
+	rdfs:label "høvuðsstaður"@fo ;
+	skos:prefLabel "høvuðsstaður"@fo ;
+	schema:name "høvuðsstaður"@fo ;
+	rdfs:label "kapikala"@haw ;
+	skos:prefLabel "kapikala"@haw ;
+	schema:name "kapikala"@haw ;
+	rdfs:label "ma tomo lawa"@tok ;
+	skos:prefLabel "ma tomo lawa"@tok ;
+	schema:name "ma tomo lawa"@tok ;
+	rdfs:label "шоркар"@udm ;
+	skos:prefLabel "шоркар"@udm ;
+	schema:name "шоркар"@udm ;
+	rdfs:label "𑂩𑂰𑂔𑂡𑂰𑂢𑂲"@bho ;
+	skos:prefLabel "𑂩𑂰𑂔𑂡𑂰𑂢𑂲"@bho ;
+	schema:name "𑂩𑂰𑂔𑂡𑂰𑂢𑂲"@bho ;
+	rdfs:label "ミヤク"@ryu ;
+	skos:prefLabel "ミヤク"@ryu ;
+	schema:name "ミヤク"@ryu ;
+	rdfs:label "ᎠᏰᎵ ᏗᎦᎳᏫᎢᏍᏗ"@chr ;
+	skos:prefLabel "ᎠᏰᎵ ᏗᎦᎳᏫᎢᏍᏗ"@chr ;
+	schema:name "ᎠᏰᎵ ᏗᎦᎳᏫᎢᏍᏗ"@chr ;
+	rdfs:label "стольнъ градъ"@cu ;
+	skos:prefLabel "стольнъ градъ"@cu ;
+	schema:name "стольнъ градъ"@cu ;
+	rdfs:label "stolëca"@csb ;
+	skos:prefLabel "stolëca"@csb ;
+	schema:name "stolëca"@csb ;
+	rdfs:label "wááshindoon bikin"@nv ;
+	skos:prefLabel "wááshindoon bikin"@nv ;
+	schema:name "wááshindoon bikin"@nv ;
+	rdfs:label "ເມືອງຫຼວງ"@lo ;
+	skos:prefLabel "ເມືອງຫຼວງ"@lo ;
+	schema:name "ເມືອງຫຼວງ"@lo ;
+	rdfs:label "capital"@ext ;
+	skos:prefLabel "capital"@ext ;
+	schema:name "capital"@ext ;
+	rdfs:label "администраци вырӑнӗ"@cv ;
+	skos:prefLabel "администраци вырӑнӗ"@cv ;
+	schema:name "администраци вырӑнӗ"@cv ;
+	rdfs:label "paytaxtı"@kaa ;
+	skos:prefLabel "paytaxtı"@kaa ;
+	schema:name "paytaxtı"@kaa ;
+	rdfs:label "главни град"@sr-ec ;
+	skos:prefLabel "главни град"@sr-ec ;
+	schema:name "главни град"@sr-ec ;
+	rdfs:label "kuropɔn"@tw ;
+	skos:prefLabel "kuropɔn"@tw ;
+	schema:name "kuropɔn"@tw ;
+	rdfs:label "paytaht"@crh ;
+	skos:prefLabel "paytaht"@crh ;
+	schema:name "paytaht"@crh ;
+	rdfs:label "tamaẓunt"@shi ;
+	skos:prefLabel "tamaẓunt"@shi ;
+	schema:name "tamaẓunt"@shi ;
+	rdfs:label "kapital/teŋkpoŋ"@dga ;
+	skos:prefLabel "kapital/teŋkpoŋ"@dga ;
+	schema:name "kapital/teŋkpoŋ"@dga ;
+	rdfs:label "ama-ibot"@ann ;
+	skos:prefLabel "ama-ibot"@ann ;
+	schema:name "ama-ibot"@ann ;
+	rdfs:label "başkasaba"@crh-ro ;
+	skos:prefLabel "başkasaba"@crh-ro ;
+	schema:name "başkasaba"@crh-ro ;
+	rdfs:label "ᱨᱟᱡᱽᱜᱟᱲ"@sat ;
+	skos:prefLabel "ᱨᱟᱡᱽᱜᱟᱲ"@sat ;
+	schema:name "ᱨᱟᱡᱽᱜᱟᱲ"@sat ;
+	rdfs:label "μητρόπολις"@grc ;
+	skos:prefLabel "μητρόπολις"@grc ;
+	schema:name "μητρόπολις"@grc ;
+	rdfs:label "inzibotijə mərəngo"@tly ;
+	skos:prefLabel "inzibotijə mərəngo"@tly ;
+	schema:name "inzibotijə mərəngo"@tly ;
+	rdfs:label "نیشتگا"@mzn ;
+	skos:prefLabel "نیشتگا"@mzn ;
+	schema:name "نیشتگا"@mzn ;
+	rdfs:label "paalʋʋ teŋkpɔŋ"@wlx ;
+	skos:prefLabel "paalʋʋ teŋkpɔŋ"@wlx ;
+	schema:name "paalʋʋ teŋkpɔŋ"@wlx ;
+	rdfs:label "Hêng-chèng Tiong-sim"@nan ;
+	skos:prefLabel "Hêng-chèng Tiong-sim"@nan ;
+	schema:name "Hêng-chèng Tiong-sim"@nan ;
+	rdfs:label "行政中心"@nan-hani ;
+	skos:prefLabel "行政中心"@nan-hani ;
+	schema:name "行政中心"@nan-hani ;
+	rdfs:label "行政中心"@nan-hant ;
+	skos:prefLabel "行政中心"@nan-hant ;
+	schema:name "行政中心"@nan-hant ;
+	rdfs:label "Hêng-chèng Tiong-sim"@nan-latn-pehoeji ;
+	skos:prefLabel "Hêng-chèng Tiong-sim"@nan-latn-pehoeji ;
+	schema:name "Hêng-chèng Tiong-sim"@nan-latn-pehoeji ;
+	rdfs:label "Hîng-tsìng Tiong-sim"@nan-latn-tailo ;
+	skos:prefLabel "Hîng-tsìng Tiong-sim"@nan-latn-tailo ;
+	schema:name "Hîng-tsìng Tiong-sim"@nan-latn-tailo ;
+	rdfs:label "Hauptstoadt"@sli ;
+	skos:prefLabel "Hauptstoadt"@sli ;
+	schema:name "Hauptstoadt"@sli ;
+	rdfs:label "hednaigaspaat"@aig ;
+	skos:prefLabel "hednaigaspaat"@aig ;
+	schema:name "hednaigaspaat"@aig ;
+	rdfs:label "capital"@en-us ;
+	skos:prefLabel "capital"@en-us ;
+	schema:name "capital"@en-us ;
+	rdfs:label "ⵜⴰⵎⴰⵥⵓⵏⵜ"@zgh ;
+	skos:prefLabel "ⵜⴰⵎⴰⵥⵓⵏⵜ"@zgh ;
+	schema:name "ⵜⴰⵎⴰⵥⵓⵏⵜ"@zgh ;
+	rdfs:label "huuphe ambbaa"@wal ;
+	skos:prefLabel "huuphe ambbaa"@wal ;
+	schema:name "huuphe ambbaa"@wal ;
+	rdfs:label "राजधानी"@mai ;
+	skos:prefLabel "राजधानी"@mai ;
+	schema:name "राजधानी"@mai ;
+	schema:description "ପ୍ରଶାସନିକ ସଦର"@or,
+		"населено место кајшто е сместена управата на округот, покраината, сојузната држава или земјата во целина"@mk,
+		"административ берәмлекнең үзәк торак пункты"@tt-cyrl,
+		"administrativní sídlo dané územní jednotky"@cs,
+		"בירה של מדינה או מחוז"@he,
+		"siège des autorités d'un État, département, région, province ou autre type de division administrative ou électorale"@fr,
+		"ubication (citate, municipalitate) del sede governamental del pais, o entitate territorial administrative"@ia,
+		"Den viktigste byen eller styringssete i et land eller provins"@nb,
+		"国家、省、州或其他类型行政领土实体的政府所在地"@zh,
+		"centralort för en administrativ enhet"@sv,
+		"مرکز حکومتی کشور یا ایالت یا سایر تقسیمات مدیریتی"@fa,
+		"административ берәмлекнең үзәк торак пункты"@tt,
+		"항목 주제인 국가·지역의 행정부가 있는 곳"@ko,
+		"οικισμός ο οποίος αποτελεί την διοικητική έδρα μιας χώρας, επαρχίας, πολιτείας ή άλλης διοικητικής οντότητας"@el,
+		"hoofdstad van een land, provincie of bestuurlijke eenheid"@nl,
+		"kunta, jossa sijaitsee valtion, osavaltion tai hallinnollisen alueen hallinto"@fi,
+		"lec'h m'emañ sez ar galloud politikel"@br,
+		"città capitale di uno stato o capoluogo di una regione o provincia o di una amministrazione"@it,
+		"ஒரு நாடு, மாகாணம், மாநிலம் அல்லது வேறு வகை நிருவாகப் பகுதியொன்றின் முதன்மை நகரம்"@ta,
+		"repräsentativste Stadt innerhalb einer administrierten geografischen Region, häufig auch Regierungs- oder Verwaltungssitz der Administration. Hauptstadt und Stadt des Regierungssitzes sind aber nicht in jedem Fall identisch."@de,
+		"główne miasto kraju, województwa lub innej jednostki podziału terytorialnego"@pl,
+		"localidade que é sede administrativa"@gl,
+		"देश, राज्य या प्रशासनिक उपखंड की शासकीय सीट की नगर पालिका"@hi,
+		"国、州、又は行政区画の行政中枢である自治体"@ja,
+		"locu (città, cumuni) unni si trova lu guvernu di stu paìsi o st'entità tirrituriali amministrativa"@scn,
+		"pusat pemerintahan negara atau wilayah administratif"@id,
+		"city of governmental seat of the country, state or administrative subdivision"@en-ca,
+		"egy ország fővárosa vagy egy közigazgatási egység székhelye"@hu,
+		"riigi pealinn või muu piirkonna peamiste haldusasutuste asukoht"@et,
+		"herrialde, eskualde edo udalerri baten hiriburua"@eu,
+		"administrativ berämlekneñ üzäk toraq punktı"@tt-latn,
+		"административ берәмектең үҙәге"@ba,
+		"официальный главный населённый пункт в административной единице"@ru,
+		"location (city, municipality) of governmental seat of the country, or administrative territorial entity"@en-gb,
+		"ciutat (o població, etc.) que n'és la seu administrativa"@ca,
+		"sediul administrației unei țări, provincii sau unități administrative"@ro,
+		"glavni grad zemlje ili provincije"@hr,
+		"población onde ta allugada la sede d'una entidá territorial o división alministrativa"@ast,
+		"bandar utama sebuah negara, negeri atau jenis entiti kawasan pentadbiran lain"@ms,
+		"国家、领土内行政实体的中央政府驻地（城市或自治区）"@zh-hans,
+		"ადმინისტრაციული ერთეულის ცენტრალური დასახლებული პუნქტი"@ka,
+		"seat of government of a country, province, state or other type of administrative territorial entity"@en,
+		"micta otenaw"@atj,
+		"國家、州、省嘅府城"@yue,
+		"sità capital d'un paes"@lmo,
+		"principal cidade de um país, estado, província ou outro tipo de entidade administrativa territorial"@pt,
+		"tugaw ti gobierno ti pagilian wenno probinsia"@ilo,
+		"একটি দেশ, রাজ্য, বা অঞ্চলের কেন্দ্রীয় শহর, যেখান থেকে দেশটির সরকার পরিচালিত হয়"@bn,
+		"દેશ, રાજ્ય અથવા પ્રબંધન વિભાગની સરકારી બેઠક ધરાવતું સ્થળ (શહેર, નગરપાલિકા)"@gu,
+		"國家、省、州、縣等特定行政區範圍內的行政中心"@zh-tw,
+		"давлати аввалини давлат"@tg-cyrl,
+		"qyteti kryesor i një shteti, ose i llojeve tjera të nëndarjeve administrative"@sq,
+		"Wichdichsdä Ord von äm geogrôfischä Gbied"@vmf,
+		"ciudad donde se ubica el gobierno del país, región o subdivisión."@es,
+		"bir ülkenin yönetildiği bölge"@tr,
+		"столиця або адміністративний центр країни чи регіону"@uk,
+		"Nomen capitis (urbis vel oppidi)"@la,
+		"upravno središče države ali druge administrativne, teritorialne enote"@sl,
+		"гьукуматдин ва я административ текдин юкьван шегьер ва я ЯШЧ"@lez,
+		"pusek pamarintahan nagara atau wilayah administratif"@min,
+		"çità o cavedałe de on stato o caologo de na rejon o provincia o de na aministrasion"@vec,
+		"dinas weinyddol neu brif dref sir, talaith neu wlad"@cy,
+		"glavni grad zemlje ili pokrajine"@sh,
+		"Haaptuert an enger administrativer oder territorialer Ënnerdeelung"@lb,
+		"адміністрацыйны цэнтар краіны, вобласьці, штату ці іншай адміністрацыйна-тэрытарыяльнай адзінкі"@be-tarask,
+		"المدينة الرئيسية لدولة أو محافظة أو ولاية أو أي نوع من أنوع التقسيمات الإدارية"@ar,
+		"галоўны горад краіны, правінцыі, штата або іншай адміністрацыйна-тэрытарыяльнай адзінкі"@be,
+		"nơi đặt chính phủ của một nước, tỉnh, bang hoặc các loại thực thể quản lý lãnh thổ khác"@vi,
+		"táva ojejuhuhápe pe tetã rekuái"@gn,
+		"國家、省、州、縣等特定行政區範圍內的行政中心"@zh-hant,
+		"sede di gobiernu"@pap,
+		"ebe nnodụ gọọmenti nke mba, ngalaba, steeti ma ọ bụ ụdị ebe usoro nchikwa ọzọ  enwere"@ig,
+		"prìomh-bhaile oifigeil na dùthcha"@gd,
+		"a̱keang cuk a̱gwomna̱ti a̱byin, fam, jén, si̱tet"@kcg,
+		"seat of government for country, province, state or oda type of administrative territorial entity"@gpe,
+		"sede governativa de una regione amministrativa"@sc,
+		"мамлекеттин борбору же адмнистративдик-аймактык бирдиктин административдик борбору"@ky,
+		"makao makuu ya nchi"@sw,
+		"mamlakat, viloyat, shtat yoki boshqa turdagi ma'muriy-hududiy tuzilmaning hukumat qarorgohi"@uz,
+		"𑂍𑂫𑂢𑂷 𑂠𑂵𑂬, 𑂣𑂹𑂩𑂰𑂁𑂞, 𑂩𑂰𑂔𑂹𑂨 𑂦𑂰 𑂠𑂷𑂮𑂩𑂰 𑂣𑂹𑂩𑂍𑂰𑂩 𑂍𑂵 𑂣𑂹𑂩𑂬𑂰𑂮𑂢𑂱𑂍 𑂍𑂹𑂭𑂵𑂞𑂹𑂩𑂲𑂨 𑂅𑂍𑂰𑂆 𑂍𑂵 𑂮𑂩𑂍𑂰𑂩 𑂍𑂵 𑂮𑂲𑂗"@bho,
+		"ที่ทำการรัฐบาลของประเทศ จังหวัด รัฐ หรือประเภทอื่นๆ ของหน่วยงานในอาณาเขต"@th,
+		"ທີ່ເຮັດທຳການລັດຖະບານຂອງປະເທດ, ແຂວງ, ລັດ ຫຼື ປະເພດອື່ນໆ ຂອງໜ່ວຍງານໃນອານາເຂດ"@lo,
+		"puebración ondi s'alcuentra la sedi d'una entidá territorial o devisión almenistrativa"@ext,
+		"администраци вырнаҫнӑ вырӑн"@cv,
+		"د يو هېواد، ولايت، دولت، واکمنۍ يا سيمې اداري مرکز چې له هغې ځايه د هغې چار سمباليږي."@ps,
+		"седиште владе земље, покрајине, државе или друге врсте административног територијалног ентитета"@sr-ec,
+		"sídlo vlády krajiny, provincie, štátu alebo iného správneho územného celku"@sk,
+		"ᱢᱤᱫ ᱫᱤᱥᱚᱢ, ᱯᱚᱱᱚᱛ ᱥᱮ ᱴᱚᱴᱷᱟ ᱨᱮᱭᱟᱜ ᱛᱟᱞᱟ ᱥᱚᱦᱚᱨ, ᱡᱟᱦᱟᱸ ᱠᱷᱚᱱ ᱫᱤᱥᱚᱢ ᱨᱮᱭᱟᱜ ᱥᱚᱨᱠᱟᱨ ᱪᱟᱪᱞᱟᱣᱚᱜᱼᱟ"@sat,
+		"اتا منطقه‌یِ مرکز"@mzn,
+		"kok-ka, séng, chiu, koān ia̍h-sī kî-tha hêng-chèng léng-thó͘ si̍t-thé ê chèng-hú tiong-sim só͘-chai"@nan,
+		"國家、省、州、縣抑是其他行政領土實體的政府中心的所在"@nan-hani,
+		"國家、省、州、縣抑是其他行政領土實體的政府中心的所在"@nan-hant,
+		"kok-ka, séng, chiu, koān ia̍h-sī kî-tha hêng-chèng léng-thó͘ si̍t-thé ê chèng-hú tiong-sim só͘-chai"@nan-latn-pehoeji,
+		"kok-ka, síng, tsiu, kuān ia̍h-sī kî-tha hîng-tsìng líng-thoó si̍t-thé ê tsìng-hú tiong-sim soó-tsai"@nan-latn-tailo,
+		"seat of government of a country, province, state or other type of administrative territorial entity"@en-us,
+		"diar sat miast at regiaring of ferwalting"@frr,
+		"biittaa, dalgga manttiya woykko hara ayso shaahuwa kawotettaa ayso man\"iya"@wal ;
+	skos:altLabel "ସଦର"@or,
+		"административен центар"@mk,
+		"управен центар"@mk,
+		"седиште"@mk,
+		"административ үзәк"@tt-cyrl,
+		"دار الحکومت"@ur,
+		"punong lungsod"@tl,
+		"punong bayan"@tl,
+		"sentrong administratibo"@tl,
+		"chef-lieu"@fr,
+		"centre administratif de la région"@fr,
+		"bureau centralisateur"@fr,
+		"siège"@fr,
+		"Höövdstadt"@nds,
+		"administrasjonssenter"@nb,
+		"首都"@zh,
+		"省会"@zh,
+		"首府"@zh,
+		"治所"@zh,
+		"县治"@zh,
+		"縣治"@zh,
+		"公所所在地"@zh,
+		"役場所在地"@zh,
+		"huvudstad"@sv,
+		"residensstad"@sv,
+		"stiftsstad"@sv,
+		"kommunhuvudort"@sv,
+		"thủ phủ"@vi,
+		"thủ đô"@vi,
+		"tỉnh lỵ"@vi,
+		"tỉnh lị"@vi,
+		"quận lỵ"@vi,
+		"quận lị"@vi,
+		"مرکز کشور"@fa,
+		"مرکز"@fa,
+		"административ үзәк"@tt,
+		"수도"@ko,
+		"수도 도시"@ko,
+		"대통령궁의 위치"@ko,
+		"정부의 소재지"@ko,
+		"행정의 중심지"@ko,
+		"정부가 소재한 곳"@ko,
+		"정부가 위치한 곳"@ko,
+		"주도"@ko,
+		"군청 소재지"@ko,
+		"도청 소재지"@ko,
+		"시청 소재지"@ko,
+		"구청 소재지"@ko,
+		"현청 소재지"@ko,
+		"성 정부 소재지"@ko,
+		"지방정부 소재지"@ko,
+		"중앙정부 소재지"@ko,
+		"지방 정부 소재지"@ko,
+		"중앙 정부 소재지"@ko,
+		"정부가 위치한 도시"@ko,
+		"정부가 소재한 도시"@ko,
+		"성회"@ko,
+		"bestuurlijk centrum"@nl,
+		"hoofdstad"@nl,
+		"capulocu"@scn,
+		"capoluogo"@it,
+		"நிருவாக மையம்"@ta,
+		"தலைநகர்"@ta,
+		"Residenz"@de,
+		"Hauptort"@de,
+		"Hauptstadt ist"@de,
+		"Verwaltungssitz"@de,
+		"hłowne město"@hsb,
+		"sídlo administrativy"@cs,
+		"hlavní sídlo"@cs,
+		"správní centrum"@cs,
+		"administrativní centrum"@cs,
+		"správní sídlo"@cs,
+		"行政中心"@zh-hk,
+		"政庁所在地"@ja,
+		"首都"@ja,
+		"首府"@ja,
+		"都"@ja,
+		"州都"@ja,
+		"省都"@ja,
+		"道都"@ja,
+		"道庁所在地"@ja,
+		"郡庁所在地"@ja,
+		"県庁所在地"@ja,
+		"県都"@ja,
+		"都道府県庁所在地"@ja,
+		"府庁所在地"@ja,
+		"pun balen"@pam,
+		"kabesera"@pam,
+		"sentrung administratibu"@pam,
+		"ibukota"@id,
+		"galvaspilsēta"@lv,
+		"székhely"@hu,
+		"főváros"@hu,
+		"halduskeskus"@et,
+		"pealinn"@et,
+		"administrativ üzäq"@tt-latn,
+		"баш ҡала"@ba,
+		"главный город"@ru,
+		"столица"@ru,
+		"capital city"@en-gb,
+		"capital town"@en-gb,
+		"chef-lieu"@en-gb,
+		"principal place"@en-gb,
+		"county seat"@en-gb,
+		"administrative centre"@en-gb,
+		"administrative headquarters"@en-gb,
+		"centru administrativ"@ro,
+		"reședință de județ"@ro,
+		"sede alministrativa"@ast,
+		"centru alministrativu"@ast,
+		"ibu negeri"@ms,
+		"ibu negara"@ms,
+		"tempat utama"@ms,
+		"kerusi mukim"@ms,
+		"pusat pentadbiran"@ms,
+		"ibu pejabat pentadbiran"@ms,
+		"首都"@zh-hans,
+		"首府"@zh-hans,
+		"ადმინისტრაციული ცენტრი"@ka,
+		"capital city"@en,
+		"capital town"@en,
+		"chef-lieu"@en,
+		"principal place"@en,
+		"county seat"@en,
+		"administrative centre"@en,
+		"administrative headquarters"@en,
+		"has capital"@en,
+		"court residence"@en,
+		"seat"@en,
+		"administrative seat"@en,
+		"seat of government"@en,
+		"administrative capital"@en,
+		"government capital"@en,
+		"county town"@en,
+		"government seat"@en,
+		"administrative center"@en,
+		"location of capital"@en,
+		"首都"@yue,
+		"首府"@yue,
+		"府城"@yue,
+		"capital city"@en-ca,
+		"capital town"@en-ca,
+		"chef-lieu"@en-ca,
+		"principal place"@en-ca,
+		"county seat"@en-ca,
+		"administrative centre"@en-ca,
+		"administrative headquarters"@en-ca,
+		"cidade capital"@pt,
+		"sede administrativa"@pt,
+		"Olú ìlú"@yo,
+		"Ibùdó"@yo,
+		"首都"@zh-tw,
+		"首府"@zh-tw,
+		"縣治"@zh-tw,
+		"政府所在地"@zh-tw,
+		"公所所在地"@zh-tw,
+		"役場所在地"@zh-tw,
+		"siedziba administracyjna"@pl,
+		"siedziba województwa"@pl,
+		"siedziba powiatu"@pl,
+		"siedziba gminy"@pl,
+		"kryeqyteti"@sq,
+		"qendra administrative"@sq,
+		"sede administrativa"@es,
+		"адміністративний центр"@uk,
+		"центр"@uk,
+		"prestolnica"@sl,
+		"cavedaƚe"@vec,
+		"metropola"@sh,
+		"administrativni centar"@sh,
+		"upravno sjedište"@sh,
+		"цэнтар"@be-tarask,
+		"сядзіба"@be-tarask,
+		"адміністрацыйны цэнтар"@be-tarask,
+		"ምምሕዳራዊ ዋና መኣዘዚ ቦታ"@ti,
+		"галоўны горад"@be,
+		"адміністрацыйны цэнтр"@be,
+		"адміністратыўны цэнтр"@be,
+		"regurbo"@eo,
+		"päätoimipaikka"@fi,
+		"首都"@zh-cn,
+		"省会"@zh-cn,
+		"首府"@zh-cn,
+		"政府所在地"@zh-cn,
+		"рӱд ола"@mhr,
+		"столица"@mhr,
+		"táva guasu"@gn,
+		"首都"@zh-hant,
+		"首府"@zh-hant,
+		"政府所在地"@zh-hant,
+		"公所所在地"@zh-hant,
+		"役場所在地"@zh-hant,
+		"縣治"@zh-hant,
+		"centras"@lt,
+		"administracinis centras"@lt,
+		"adm. centras"@lt,
+		"Isi obodo"@ig,
+		"Isi ala"@ig,
+		"Ebe nnodụ gọọmenti"@ig,
+		"Ebe nchikwa"@ig,
+		"Ngalaba nchikwa"@ig,
+		"a̱keang a̱gwomna̱ti"@kcg,
+		"a̱keang cuk a̱gwomna̱ti"@kcg,
+		"a̱keangtung"@kcg,
+		"lamorde"@ff,
+		"pennsita"@kw,
+		"cabulogu"@sc,
+		"cabu de logu"@sc,
+		"cabu-de-logu"@sc,
+		"tzentru amministrativu de sa regione"@sc,
+		"административдик борбор"@ky,
+		"เมืองศูนย์กลาง"@th,
+		"สถานที่หลัก"@th,
+		"ที่ตั้งเทศมณฑล"@th,
+		"ศูนย์บริหาร"@th,
+		"สำนักงานบริหาร"@th,
+		"ที่ตั้งของฝ่ายบริหาร"@th,
+		"ที่ตั้งของฝ่ายรัฐบาล"@th,
+		"ที่ตั้งของเมืองหลวง"@th,
+		"宮処"@ryu,
+		"ເມືອງສູນກາງ"@lo,
+		"ສະຖານທີ່ຫຼັກ"@lo,
+		"ທີ່ຕັ້ງເທສະບານ"@lo,
+		"ສູນບໍລິຫານ"@lo,
+		"ສຳນັກງານບໍລິຫານ"@lo,
+		"ທີ່ຕັ້ງຂອງຝ່າຍບໍລິຫານ"@lo,
+		"ທີ່ຕັ້ງຝ່າຍຂອງລັດຖະບານ"@lo,
+		"ທີ່ຕັ້ງຂອງເມືອງຫຼວງ"@lo,
+		"sedi almenistraiva"@ext,
+		"centru almenistrativu"@ext,
+		"администраци центрӗ"@cv,
+		"администраци тӗплӗхӗ"@cv,
+		"администрацин тӗп вырӑнӗ"@cv,
+		"başkent"@crh-ro,
+		"başşeher"@crh-ro,
+		"başkala"@crh-ro,
+		"payitakît"@crh-ro,
+		"ᱨᱟᱡᱽᱫᱷᱟᱱᱤ"@sat,
+		"ᱨᱟᱡᱽ ᱥᱚᱦᱚᱨ"@sat,
+		"مرکز"@mzn,
+		"نیشتنگا"@mzn,
+		"نیشتگاه"@mzn,
+		"نیشتیگا"@mzn,
+		"پایتخت"@mzn,
+		"نشتگا"@mzn,
+		"گت شهر"@mzn,
+		"گت کلا"@mzn,
+		"kapital"@wlx,
+		"Capital city"@en-us,
+		"Capital town"@en-us,
+		"Chef-lieu"@en-us,
+		"Principal place"@en-us,
+		"Country seat"@en-us,
+		"administrative center"@en-us,
+		"administrative headquarters"@en-us,
+		"has capital"@en-us,
+		"Court residence"@en-us,
+		"Seat"@en-us,
+		"administrative seat"@en-us,
+		"Seat of government"@en-us,
+		"administrative capital"@en-us,
+		"government capital"@en-us,
+		"Country town"@en-us,
+		"government seat"@en-us,
+		"location of capital"@en-us,
+		"έδρα"@el,
+		"hoodstääd"@frr,
+		"административнэ кэ̄сскпа̄ҋҋк"@sjd ;
+	wikibase:propertyType <http://wikiba.se/ontology#WikibaseItem> ;
+	wikibase:directClaim wdt:P36 ;
+	wikibase:claim p:P36 ;
+	wikibase:statementProperty ps:P36 ;
+	wikibase:statementValue psv:P36 ;
+	wikibase:qualifier pq:P36 ;
+	wikibase:qualifierValue pqv:P36 ;
+	wikibase:reference pr:P36 ;
+	wikibase:referenceValue prv:P36 ;
+	wikibase:novalue wdno:P36 .
+
+p:P36 a owl:ObjectProperty .
+
+psv:P36 a owl:ObjectProperty .
+
+pqv:P36 a owl:ObjectProperty .
+
+prv:P36 a owl:ObjectProperty .
+
+wdt:P36 a owl:ObjectProperty .
+
+ps:P36 a owl:ObjectProperty .
+
+pq:P36 a owl:ObjectProperty .
+
+pr:P36 a owl:ObjectProperty .
+
+wdno:P36 a owl:Class ;
+	owl:complementOf _:5d7f9c0e6078d394ee200ddc6af39a29 .
+
+_:5d7f9c0e6078d394ee200ddc6af39a29 a owl:Restriction ;
+	owl:onProperty wdt:P36 ;
+	owl:someValuesFrom owl:Thing .
+
+wdref:c8fdb8c3d95e96bda2c731de3bfae7effae1f568 a wikibase:Reference ;
+	pr:P2306 wd:P6375,
+		wd:P3005 ;
+	pr:P5997 "https://www.wikidata.org/w/index.php?title=Q128186&diff=prev&oldid=2468221738" .

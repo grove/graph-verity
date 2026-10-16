@@ -1,0 +1,2251 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix data: <https://www.wikidata.org/wiki/Special:EntityData/> .
+@prefix wds: <http://www.wikidata.org/entity/statement/> .
+@prefix wdref: <http://www.wikidata.org/reference/> .
+@prefix wdv: <http://www.wikidata.org/value/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix wdtn: <http://www.wikidata.org/prop/direct-normalized/> .
+@prefix p: <http://www.wikidata.org/prop/> .
+@prefix ps: <http://www.wikidata.org/prop/statement/> .
+@prefix psv: <http://www.wikidata.org/prop/statement/value/> .
+@prefix psn: <http://www.wikidata.org/prop/statement/value-normalized/> .
+@prefix pq: <http://www.wikidata.org/prop/qualifier/> .
+@prefix pqv: <http://www.wikidata.org/prop/qualifier/value/> .
+@prefix pqn: <http://www.wikidata.org/prop/qualifier/value-normalized/> .
+@prefix pr: <http://www.wikidata.org/prop/reference/> .
+@prefix prv: <http://www.wikidata.org/prop/reference/value/> .
+@prefix prn: <http://www.wikidata.org/prop/reference/value-normalized/> .
+@prefix wdno: <http://www.wikidata.org/prop/novalue/> .
+
+data:P571 a schema:Dataset ;
+	schema:about wd:P571 ;
+	cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	schema:softwareVersion "1.0.0" ;
+	schema:version "2554751823"^^xsd:integer ;
+	schema:dateModified "2026-10-07T22:58:30Z"^^xsd:dateTime ;
+	wikibase:statements "63"^^xsd:integer .
+
+wd:P571 a wikibase:Property ;
+	wdt:P31 wd:Q18608993,
+		wd:Q18636219,
+		wd:Q70564278 ;
+	wdt:P1659 wd:P729,
+		wd:P1619,
+		wd:P1071,
+		wd:P577,
+		wd:P2754,
+		wd:P5204,
+		wd:P580,
+		wd:P7584,
+		wd:P575,
+		wd:P1249,
+		wd:P1191,
+		wd:P10135,
+		wd:P740,
+		wd:P10786 ;
+	wdt:P1647 wd:P580 ;
+	wdt:P1855 wd:Q36380,
+		wd:Q41542,
+		wd:Q1076187,
+		wd:Q20899061,
+		wd:Q185362 ;
+	wdt:P2875 wd:Q22013005 ;
+	wdt:P1629 wd:Q3406134,
+		wd:Q3075355,
+		wd:Q131244064 ;
+	wdt:P3713 wd:Q22013003 ;
+	wdt:P3254 <https://www.wikidata.org/wiki/Wikidata:Property_proposal/Archive/8#P571> ;
+	wdt:P3734 wd:Q32085204 ;
+	wdt:P3709 wd:Q22013004 ;
+	wdt:P2236 <https://schema.org/foundingDate> ;
+	wdt:P1628 <https://schema.org/dateCreated>,
+		<http://purl.org/dc/terms/created>,
+		<http://id.nlm.nih.gov/mesh/vocab#dateCreated>,
+		<http://schema.org/startDate> ;
+	wdt:P2235 <http://purl.org/dc/elements/1.1/date> ;
+	wdt:P1813 "tillkomst"@sv,
+		"Eingeführt am"@de,
+		"inception"@en,
+		"créé en"@fr,
+		"etableringsdato"@nb,
+		"дата возникновения"@ru ;
+	wdt:P6685 <http://commons.wikimedia.org/wiki/Special:FilePath/M%C3%A9senguy%2C%20Exposition%20de%20la%20Doctrine%20Chr%C3%A9tienne.%20Ou%20Instructions%20sur%20les%20principales%20v%C3%A9rit%C3%A9s%20de%20la%20Religion%20-%201758.pdf> ;
+	wdt:P8882 wd:P576,
+		wd:P2669,
+		wd:P730,
+		wd:P3999,
+		wd:P9667,
+		wd:P582 ;
+	wdt:P2668 wd:Q23611288 ;
+	wdt:P11914 "P5" ;
+	wdt:P2302 wd:Q52004125,
+		wd:Q53869507,
+		wd:Q52060874,
+		wd:Q21510851,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838 ;
+	wdt:P13786 "start_date" ;
+	wdt:P14692 "Q2006" ;
+	wdtn:P14692 <https://wiki.openstreetmap.org/entity/Q2006> ;
+	p:P31 wds:P571-339d42c5-4660-159a-4113-6016022aebd0 .
+
+wds:P571-339d42c5-4660-159a-4113-6016022aebd0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q18608993 .
+
+wd:P571 p:P31 wds:P571-533708f3-4e04-ae65-55cd-8e4d5e19be26 .
+
+wds:P571-533708f3-4e04-ae65-55cd-8e4d5e19be26 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q18636219 .
+
+wd:P571 p:P31 wds:P571-CF6BE332-D12E-43FE-9140-B677C422EAE9 .
+
+wds:P571-CF6BE332-D12E-43FE-9140-B677C422EAE9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q70564278 .
+
+wd:P571 p:P1659 wds:P571-353173d5-4122-dd0e-d502-4fac7e82fdc7 .
+
+wds:P571-353173d5-4122-dd0e-d502-4fac7e82fdc7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P729 .
+
+wd:P571 p:P1659 wds:P571-918d41c4-4024-5ce2-b5bb-51e78d418e76 .
+
+wds:P571-918d41c4-4024-5ce2-b5bb-51e78d418e76 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P1619 .
+
+wd:P571 p:P1659 wds:P571-69d60a49-4ef6-830c-966a-947ff01be5a2 .
+
+wds:P571-69d60a49-4ef6-830c-966a-947ff01be5a2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P1071 .
+
+wd:P571 p:P1659 wds:P571-2225484c-4630-3af7-af8c-5f928e437a79 .
+
+wds:P571-2225484c-4630-3af7-af8c-5f928e437a79 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P577 .
+
+wd:P571 p:P1659 wds:P571-978c48ce-4bcb-883f-5a1e-e8c200382aa0 .
+
+wds:P571-978c48ce-4bcb-883f-5a1e-e8c200382aa0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P2754 .
+
+wd:P571 p:P1659 wds:P571-8858a92e-48e8-50ff-b437-4a354b50c6cf .
+
+wds:P571-8858a92e-48e8-50ff-b437-4a354b50c6cf a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P5204 .
+
+wd:P571 p:P1659 wds:P571-d498d4ab-40df-b259-11be-ac95ccfcbdb6 .
+
+wds:P571-d498d4ab-40df-b259-11be-ac95ccfcbdb6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P580 .
+
+wd:P571 p:P1659 wds:P571-dd29823f-4723-1503-b15a-72542763e524 .
+
+wds:P571-dd29823f-4723-1503-b15a-72542763e524 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P7584 .
+
+wd:P571 p:P1659 wds:P571-e4366961-427b-a1ff-fd1e-2c53789984e1 .
+
+wds:P571-e4366961-427b-a1ff-fd1e-2c53789984e1 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P575 .
+
+wd:P571 p:P1659 wds:P571-601931d8-42fa-d805-f179-b56e9bde6c57 .
+
+wds:P571-601931d8-42fa-d805-f179-b56e9bde6c57 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P1249 .
+
+wd:P571 p:P1659 wds:P571-da8df855-447c-c746-1ed1-30c8af0e73f8 .
+
+wds:P571-da8df855-447c-c746-1ed1-30c8af0e73f8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P1191 .
+
+wd:P571 p:P1659 wds:P571-6c8164fa-4537-9ca4-5686-2aeeabe1c1e6 .
+
+wds:P571-6c8164fa-4537-9ca4-5686-2aeeabe1c1e6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P10135 .
+
+wd:P571 p:P1659 wds:P571-ce99ea64-4fc8-a90b-8e41-67a6ef2374a5 .
+
+wds:P571-ce99ea64-4fc8-a90b-8e41-67a6ef2374a5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P740 .
+
+wd:P571 p:P1659 wds:P571-c66ce1cd-4ed5-451e-c68f-caabd14ca9d6 .
+
+wds:P571-c66ce1cd-4ed5-451e-c68f-caabd14ca9d6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P10786 .
+
+wd:P571 p:P1647 wds:P571-84d3ea4b-412c-08ad-1f1b-fc6651fe688f .
+
+wds:P571-84d3ea4b-412c-08ad-1f1b-fc6651fe688f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1647 wd:P580 .
+
+wd:P571 p:P1855 wds:P571-eb9df171-4795-d593-266a-c6d03afe2ba6 .
+
+wds:P571-eb9df171-4795-d593-266a-c6d03afe2ba6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q36380 ;
+	pq:P571 "1539-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P571 wdv:59708a8083e1a8387c9929fe82801684 .
+
+wd:P571 p:P1855 wds:P571-effc3ce2-4329-1f1d-e4aa-c2ce4eb96f11 .
+
+wds:P571-effc3ce2-4329-1f1d-e4aa-c2ce4eb96f11 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q41542 ;
+	pq:P571 "1890-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P571 wdv:ed05533dbb4265ec73dc0d903b3dc69b ;
+	pq:P580 "1890-03-08T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:04f4de76064d2c1f16e72e37dad29788 ;
+	pq:P582 "1897-05-26T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:a33ccbba12ad5cdae1bf7c31afaa8bc2 .
+
+wd:P571 p:P1855 wds:P571-9b675544-45d8-7a16-0b15-99b360540f29 .
+
+wds:P571-9b675544-45d8-7a16-0b15-99b360540f29 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q1076187 ;
+	pq:P571 "1300-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P571 wdv:fa562ed1aed1c8aa910af9eb1fae5dc8 .
+
+wd:P571 p:P1855 wds:P571-8aa6d34e-4b17-50a8-a00a-635458afecfb .
+
+wds:P571-8aa6d34e-4b17-50a8-a00a-635458afecfb a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q20899061 ;
+	pq:P571 "1836-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P571 wdv:1bee2c3c0fc549a7b87ea056740686eb .
+
+wd:P571 p:P1855 wds:P571-5acd3963-4d21-132a-0af2-64e90b0a8825 .
+
+wds:P571-5acd3963-4d21-132a-0af2-64e90b0a8825 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q185362 ;
+	pq:P571 "0548-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P571 wdv:443a7ee2eb1d27a45be0caef60b450fb .
+
+wd:P571 p:P2875 wds:P571-c0c74387-4bc9-10b7-20a7-ac606cf03dcc .
+
+wds:P571-c0c74387-4bc9-10b7-20a7-ac606cf03dcc a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2875 wd:Q22013005 .
+
+wd:P571 p:P1629 wds:P571-882db7e1-4977-6768-6778-352aa9075f4b .
+
+wds:P571-882db7e1-4977-6768-6778-352aa9075f4b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q3406134 ;
+	pq:P3831 wd:Q2245405 .
+
+wd:P571 p:P1629 wds:P571-e5de9d72-4125-94e3-3a8d-2c76b0fdf12f .
+
+wds:P571-e5de9d72-4125-94e3-3a8d-2c76b0fdf12f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q3075355 ;
+	pq:P3831 wd:Q1914636 .
+
+wd:P571 p:P1629 wds:P571-fcab0451-45cd-7269-9d8f-322909b67b90 .
+
+wds:P571-fcab0451-45cd-7269-9d8f-322909b67b90 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q131244064 ;
+	pq:P3831 wd:Q618779,
+		wd:Q4504495 .
+
+wd:P571 p:P3713 wds:P571-DD3119A6-142C-4256-881D-07AF1400FC1C .
+
+wds:P571-DD3119A6-142C-4256-881D-07AF1400FC1C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3713 wd:Q22013003 .
+
+wd:P571 p:P3254 wds:P571-5A308DA9-D7CF-48BB-9764-E446668845E0 .
+
+wds:P571-5A308DA9-D7CF-48BB-9764-E446668845E0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3254 <https://www.wikidata.org/wiki/Wikidata:Property_proposal/Archive/8#P571> .
+
+wd:P571 p:P3734 wds:P571-44B6FDD9-E342-4DF0-B76D-B980DEF2C2AB .
+
+wds:P571-44B6FDD9-E342-4DF0-B76D-B980DEF2C2AB a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3734 wd:Q32085204 .
+
+wd:P571 p:P3709 wds:P571-DA2A9BFC-19E7-4A8E-813A-7B3F9CC57B23 .
+
+wds:P571-DA2A9BFC-19E7-4A8E-813A-7B3F9CC57B23 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3709 wd:Q22013004 .
+
+wd:P571 p:P2236 wds:P571-4ec2eb95-4c88-1d4e-1875-062941bfc09a .
+
+wds:P571-4ec2eb95-4c88-1d4e-1875-062941bfc09a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2236 <https://schema.org/foundingDate> .
+
+wd:P571 p:P1628 wds:P571-d6540a6d-4d28-eb37-adc6-3b4632cce294 .
+
+wds:P571-d6540a6d-4d28-eb37-adc6-3b4632cce294 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <https://schema.org/dateCreated> .
+
+wd:P571 p:P1628 wds:P571-164b2bdd-4d3f-3535-b153-a6f7245b93a2 .
+
+wds:P571-164b2bdd-4d3f-3535-b153-a6f7245b93a2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <http://purl.org/dc/terms/created> .
+
+wd:P571 p:P1628 wds:P571-3da1a8f1-4a23-285a-6103-97cca64efd4d .
+
+wds:P571-3da1a8f1-4a23-285a-6103-97cca64efd4d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <http://id.nlm.nih.gov/mesh/vocab#dateCreated> .
+
+wd:P571 p:P1628 wds:P571-ED221A38-A3CA-4CCD-BA28-4773E35FD8D4 .
+
+wds:P571-ED221A38-A3CA-4CCD-BA28-4773E35FD8D4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <http://schema.org/startDate> ;
+	pq:P1535 wd:Q105584 .
+
+wd:P571 p:P2235 wds:P571-b633cb2c-44fb-445c-a9d6-3a26e42e28c0 .
+
+wds:P571-b633cb2c-44fb-445c-a9d6-3a26e42e28c0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2235 <http://purl.org/dc/elements/1.1/date> .
+
+wd:P571 p:P1813 wds:P571-59d62ae9-449c-28e9-898f-03187063c869 .
+
+wds:P571-59d62ae9-449c-28e9-898f-03187063c869 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1813 "tillkomst"@sv .
+
+wd:P571 p:P1813 wds:P571-a70dd4ed-476d-4ad9-71a3-268162fd05f5 .
+
+wds:P571-a70dd4ed-476d-4ad9-71a3-268162fd05f5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1813 "Eingeführt am"@de .
+
+wd:P571 p:P1813 wds:P571-83eea9ce-4993-45ab-bd11-6a069a7261c0 .
+
+wds:P571-83eea9ce-4993-45ab-bd11-6a069a7261c0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1813 "inception"@en .
+
+wd:P571 p:P1813 wds:P571-90f8a407-4d14-0997-5be4-8fce641be2ba .
+
+wds:P571-90f8a407-4d14-0997-5be4-8fce641be2ba a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1813 "créé en"@fr .
+
+wd:P571 p:P1813 wds:P571-d1c96bde-46c5-85b0-043b-168102dbd29f .
+
+wds:P571-d1c96bde-46c5-85b0-043b-168102dbd29f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1813 "etableringsdato"@nb .
+
+wd:P571 p:P1813 wds:P571-71ed5264-44b7-d35a-eeae-ba75193d49e5 .
+
+wds:P571-71ed5264-44b7-d35a-eeae-ba75193d49e5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1813 "дата возникновения"@ru .
+
+wd:P571 p:P6685 wds:P571-d2e68757-4f01-96c2-328a-8bb752cd4c48 .
+
+wds:P571-d2e68757-4f01-96c2-328a-8bb752cd4c48 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6685 <http://commons.wikimedia.org/wiki/Special:FilePath/M%C3%A9senguy%2C%20Exposition%20de%20la%20Doctrine%20Chr%C3%A9tienne.%20Ou%20Instructions%20sur%20les%20principales%20v%C3%A9rit%C3%A9s%20de%20la%20Religion%20-%201758.pdf> ;
+	pq:P571 "1758-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P571 wdv:f251a9a7b5a83918ae84531e364cbaab .
+
+wd:P571 p:P8882 wds:P571-75EE1267-C773-4B1B-AF74-1B640FBE415A .
+
+wds:P571-75EE1267-C773-4B1B-AF74-1B640FBE415A a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8882 wd:P576 .
+
+wd:P571 p:P8882 wds:P571-117BB709-654B-421E-9AE9-674F7D4F280F .
+
+wds:P571-117BB709-654B-421E-9AE9-674F7D4F280F a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8882 wd:P2669 .
+
+wd:P571 p:P8882 wds:P571-FF313048-4C80-4DD8-8EAA-2EFBA26D576C .
+
+wds:P571-FF313048-4C80-4DD8-8EAA-2EFBA26D576C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8882 wd:P730 .
+
+wd:P571 p:P8882 wds:P571-159393F2-DA8C-48C8-AE69-5D681685F33C .
+
+wds:P571-159393F2-DA8C-48C8-AE69-5D681685F33C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8882 wd:P3999 .
+
+wd:P571 p:P8882 wds:P571-3968c110-4eb9-1f8a-bced-c6ad31150045 .
+
+wds:P571-3968c110-4eb9-1f8a-bced-c6ad31150045 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8882 wd:P9667 .
+
+wd:P571 p:P8882 wds:P571-a9d47609-4e6c-204f-109e-813fca8660e1 .
+
+wds:P571-a9d47609-4e6c-204f-109e-813fca8660e1 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8882 wd:P582 .
+
+wd:P571 p:P2668 wds:P571-022d528b-44fb-2606-c036-7a0f869506d0 .
+
+wds:P571-022d528b-44fb-2606-c036-7a0f869506d0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2668 wd:Q23611288 .
+
+wd:P571 p:P11914 wds:P571-8f9700c9-48a7-44fd-c5c7-bd5e6325c2ba .
+
+wds:P571-8f9700c9-48a7-44fd-c5c7-bd5e6325c2ba a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P11914 "P5" .
+
+wd:P571 p:P2302 wds:P571-2db7bda0-436f-c71c-3893-9d691078470c .
+
+wds:P571-2db7bda0-436f-c71c-3893-9d691078470c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52004125 ;
+	pq:P2305 wd:Q29934200,
+		wd:Q59712033,
+		wd:Q51885771 .
+
+wd:P571 p:P2302 wds:P571-0ee7c02b-4730-ede3-75a7-ee5f7119549f .
+
+wds:P571-0ee7c02b-4730-ede3-75a7-ee5f7119549f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q53869507 ;
+	pq:P5314 wd:Q54828448,
+		wd:Q54828449,
+		wd:Q54828450 .
+
+wd:P571 p:P2302 wds:P571-F6916744-13C3-4E45-8AAE-705FFA1A31A8 .
+
+wds:P571-F6916744-13C3-4E45-8AAE-705FFA1A31A8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52060874 ;
+	pq:P4155 wd:P518,
+		wd:P1001,
+		wd:P1810,
+		wd:P2868,
+		wd:P4649,
+		wd:P1545,
+		wd:P5102,
+		wd:P3831,
+		wd:P5168,
+		wd:P8338,
+		wd:P1013,
+		wd:P1365,
+		wd:P4626,
+		wd:P3680,
+		wd:P1932 .
+
+wd:P571 p:P2302 wds:P571-8c9d196d-4abe-bda0-203c-8b9c175ab31d .
+
+wds:P571-8c9d196d-4abe-bda0-203c-8b9c175ab31d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510851 ;
+	pq:P2306 wd:P1480,
+		wd:P1013,
+		wd:P518,
+		wd:P1001,
+		wd:P5168,
+		wd:P580,
+		wd:P582,
+		wd:P1319,
+		wd:P8555,
+		wd:P8554,
+		wd:P1326,
+		wd:P4241,
+		wd:P4895,
+		wd:P828,
+		wd:P1552,
+		wd:P4626,
+		wd:P4649,
+		wd:P2868,
+		wd:P3831,
+		wd:P1810,
+		wd:P1932,
+		wd:P5102,
+		wd:P805,
+		wd:P1310,
+		wd:P3680,
+		wd:P1027,
+		wd:P1683,
+		wd:P1545,
+		wd:P2241,
+		wd:P7452,
+		wd:P8338,
+		wd:P459,
+		wd:P790,
+		wd:P276,
+		wd:P740,
+		wd:P5997,
+		wd:P1365,
+		wd:P1706,
+		wd:P421,
+		wd:P9680,
+		wd:P10663,
+		wd:P12506,
+		wd:P17,
+		wd:P400,
+		wd:P2894,
+		wd:P12693,
+		wd:P577,
+		wd:P3629,
+		wd:P6001,
+		wd:P13044,
+		wd:P8327,
+		wd:P2348 ;
+	pq:P2303 wd:Q1419222,
+		wd:Q12877 ;
+	prov:wasDerivedFrom wdref:d8756d0b7aed1a288b498ded4b26ed70fab325a0 .
+
+wd:P571 p:P2302 wds:P571-6DEFF064-F35A-4752-AF82-6A9343E01942 .
+
+wds:P571-6DEFF064-F35A-4752-AF82-6A9343E01942 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P31 ;
+	pq:P2305 wd:Q4167410,
+		wd:Q4167836,
+		wd:Q13406463 ;
+	pq:P2304 wd:P31 .
+
+wd:P571 p:P2302 wds:P571-2bcff2bc-4469-11d5-32f7-632bf071d4be .
+
+wds:P571-2bcff2bc-4469-11d5-32f7-632bf071d4be a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P31 ;
+	pq:P2305 wd:Q11266439 .
+
+wd:P571 p:P2302 wds:P571-febd8718-415e-ead6-fdf4-735bc4de7068 .
+
+wds:P571-febd8718-415e-ead6-fdf4-735bc4de7068 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P31 ;
+	pq:P2305 wd:Q5 ;
+	pq:P6824 wd:P569 .
+
+wd:P571 p:P2302 wds:P571-F7A76C68-A646-4AFD-8646-2A2942312F81 .
+
+wds:P571-F7A76C68-A646-4AFD-8646-2A2942312F81 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P31 ;
+	pq:P2305 wd:Q24634210 ;
+	pq:P6607 "Use start time instead"@en,
+		"请使用开始时间"@zh ;
+	pq:P6824 wd:P580 .
+
+wd:P571 p:P2302 wds:P571-18ea3510-4fb7-27d2-94e1-39ecabfe0789 .
+
+wds:P571-18ea3510-4fb7-27d2-94e1-39ecabfe0789 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P31 ;
+	pq:P2305 wd:Q27787439 ;
+	pq:P2316 wd:Q21502408 .
+
+wd:P571 p:P13786 wds:P571-ce150917-4ec1-385e-0503-fa8e3f3254e4 .
+
+wds:P571-ce150917-4ec1-385e-0503-fa8e3f3254e4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13786 "start_date" .
+
+wd:P571 p:P14692 wds:P571-00F83415-D1D1-4AB3-9738-BDD7DA6CD0CA .
+
+wds:P571-00F83415-D1D1-4AB3-9738-BDD7DA6CD0CA a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P14692 "Q2006" ;
+	psn:P14692 <https://wiki.openstreetmap.org/entity/Q2006> .
+
+wd:P571 rdfs:label "inception"@en ;
+	skos:prefLabel "inception"@en ;
+	schema:name "inception"@en ;
+	rdfs:label "date de fondation ou de création"@fr ;
+	skos:prefLabel "date de fondation ou de création"@fr ;
+	schema:name "date de fondation ou de création"@fr ;
+	rdfs:label "luomisajankohta"@fi ;
+	skos:prefLabel "luomisajankohta"@fi ;
+	schema:name "luomisajankohta"@fi ;
+	rdfs:label "datum vytvoření / založení"@cs ;
+	skos:prefLabel "datum vytvoření / založení"@cs ;
+	schema:name "datum vytvoření / založení"@cs ;
+	rdfs:label "datum van oprichting of creatie"@nl ;
+	skos:prefLabel "datum van oprichting of creatie"@nl ;
+	schema:name "datum van oprichting of creatie"@nl ;
+	rdfs:label "Datum der Gründung, Entstehung, Erbauung"@de ;
+	skos:prefLabel "Datum der Gründung, Entstehung, Erbauung"@de ;
+	schema:name "Datum der Gründung, Entstehung, Erbauung"@de ;
+	rdfs:label "inception"@en-gb ;
+	skos:prefLabel "inception"@en-gb ;
+	schema:name "inception"@en-gb ;
+	rdfs:label "data di fondazione o creazione"@it ;
+	skos:prefLabel "data di fondazione o creazione"@it ;
+	schema:name "data di fondazione o creazione"@it ;
+	rdfs:label "fecha de fundación o creación"@es ;
+	skos:prefLabel "fecha de fundación o creación"@es ;
+	schema:name "fecha de fundación o creación"@es ;
+	rdfs:label "Tied opstellt / grünnt"@nds ;
+	skos:prefLabel "Tied opstellt / grünnt"@nds ;
+	schema:name "Tied opstellt / grünnt"@nds ;
+	rdfs:label "дата возникновения"@ru ;
+	skos:prefLabel "дата возникновения"@ru ;
+	schema:name "дата возникновения"@ru ;
+	rdfs:label "成立日期"@zh ;
+	skos:prefLabel "成立日期"@zh ;
+	schema:name "成立日期"@zh ;
+	rdfs:label "成立或创建时间"@zh-hans ;
+	skos:prefLabel "成立或创建时间"@zh-hans ;
+	schema:name "成立或创建时间"@zh-hans ;
+	rdfs:label "成立日期"@zh-hant ;
+	skos:prefLabel "成立日期"@zh-hant ;
+	schema:name "成立日期"@zh-hant ;
+	rdfs:label "дата заснавання / стварэння"@be ;
+	skos:prefLabel "дата заснавання / стварэння"@be ;
+	schema:name "дата заснавання / стварэння"@be ;
+	rdfs:label "etablerings- / skabelsesdato"@da ;
+	skos:prefLabel "etablerings- / skabelsesdato"@da ;
+	schema:name "etablerings- / skabelsesdato"@da ;
+	rdfs:label "дата створення / заснування"@uk ;
+	skos:prefLabel "дата створення / заснування"@uk ;
+	schema:name "дата створення / заснування"@uk ;
+	rdfs:label "ഉത്പത്തി"@ml ;
+	skos:prefLabel "ഉത്പത്തി"@ml ;
+	schema:name "ഉത്പത്തി"@ml ;
+	rdfs:label "स्थापितदिनम्"@sa ;
+	skos:prefLabel "स्थापितदिनम्"@sa ;
+	schema:name "स्थापितदिनम्"@sa ;
+	rdfs:label "skipingstidspunkt"@nn ;
+	skos:prefLabel "skipingstidspunkt"@nn ;
+	schema:name "skipingstidspunkt"@nn ;
+	rdfs:label "data utworzenia lub powstania"@pl ;
+	skos:prefLabel "data utworzenia lub powstania"@pl ;
+	schema:name "data utworzenia lub powstania"@pl ;
+	rdfs:label "létrejöttének ideje"@hu ;
+	skos:prefLabel "létrejöttének ideje"@hu ;
+	schema:name "létrejöttének ideje"@hu ;
+	rdfs:label "sejak"@id ;
+	skos:prefLabel "sejak"@id ;
+	schema:name "sejak"@id ;
+	rdfs:label "tanggal pandirian"@min ;
+	skos:prefLabel "tanggal pandirian"@min ;
+	schema:name "tanggal pandirian"@min ;
+	rdfs:label "data de fondacion / creacion"@oc ;
+	skos:prefLabel "data de fondacion / creacion"@oc ;
+	schema:name "data de fondacion / creacion"@oc ;
+	rdfs:label "تاریخ ساخت / تأسیس"@fa ;
+	skos:prefLabel "تاریخ ساخت / تأسیس"@fa ;
+	schema:name "تاریخ ساخت / تأسیس"@fa ;
+	rdfs:label "成立日"@ja ;
+	skos:prefLabel "成立日"@ja ;
+	schema:name "成立日"@ja ;
+	rdfs:label "만들어진 날"@ko ;
+	skos:prefLabel "만들어진 날"@ko ;
+	schema:name "만들어진 날"@ko ;
+	rdfs:label "zbasu detri"@jbo ;
+	skos:prefLabel "zbasu detri"@jbo ;
+	schema:name "zbasu detri"@jbo ;
+	rdfs:label "دامەزران"@ckb ;
+	skos:prefLabel "دامەزران"@ckb ;
+	schema:name "دامەزران"@ckb ;
+	rdfs:label "data de creació o fundació"@ca ;
+	skos:prefLabel "data de creació o fundació"@ca ;
+	schema:name "data de creació o fundació"@ca ;
+	rdfs:label "создадено"@mk ;
+	skos:prefLabel "создадено"@mk ;
+	schema:name "создадено"@mk ;
+	rdfs:label "настанак"@sr ;
+	skos:prefLabel "настанак"@sr ;
+	schema:name "настанак"@sr ;
+	rdfs:label "настанак"@sr-ec ;
+	skos:prefLabel "настанак"@sr-ec ;
+	schema:name "настанак"@sr-ec ;
+	rdfs:label "સ્થાપન દિવસ / રચના દિવસ"@gu ;
+	skos:prefLabel "સ્થાપન દિવસ / રચના દિવસ"@gu ;
+	schema:name "સ્થાપન દિવસ / રચના દિવસ"@gu ;
+	rdfs:label "成立或创建时间"@zh-cn ;
+	skos:prefLabel "成立或创建时间"@zh-cn ;
+	schema:name "成立或创建时间"@zh-cn ;
+	rdfs:label "ημερομηνία ίδρυσης ή δημιουργίας"@el ;
+	skos:prefLabel "ημερομηνία ίδρυσης ή δημιουργίας"@el ;
+	schema:name "ημερομηνία ίδρυσης ή δημιουργίας"@el ;
+	rdfs:label "masa permulaan"@ms ;
+	skos:prefLabel "masa permulaan"@ms ;
+	schema:name "masa permulaan"@ms ;
+	rdfs:label "datum osnivanja / utemeljenja"@bs ;
+	skos:prefLabel "datum osnivanja / utemeljenja"@bs ;
+	schema:name "datum osnivanja / utemeljenja"@bs ;
+	rdfs:label "araw ng pagtatag"@tl ;
+	skos:prefLabel "araw ng pagtatag"@tl ;
+	schema:name "araw ng pagtatag"@tl ;
+	rdfs:label "datum för grundande eller skapande"@sv ;
+	skos:prefLabel "datum för grundande eller skapande"@sv ;
+	schema:name "datum för grundande eller skapande"@sv ;
+	rdfs:label "成立日"@yue ;
+	skos:prefLabel "成立日"@yue ;
+	schema:name "成立日"@yue ;
+	rdfs:label "data de criação ou fundação"@pt ;
+	skos:prefLabel "data de criação ou fundação"@pt ;
+	schema:name "data de criação ou fundação"@pt ;
+	rdfs:label "data de criação ou fundação"@pt-br ;
+	skos:prefLabel "data de criação ou fundação"@pt-br ;
+	schema:name "data de criação ou fundação"@pt-br ;
+	rdfs:label "תאריך הקמה או יצירה"@he ;
+	skos:prefLabel "תאריך הקמה או יצירה"@he ;
+	schema:name "תאריך הקמה או יצירה"@he ;
+	rdfs:label "data de creación ou fundación"@gl ;
+	skos:prefLabel "data de creación ou fundación"@gl ;
+	schema:name "data de creación ou fundación"@gl ;
+	rdfs:label "stofndagsetning"@is ;
+	skos:prefLabel "stofndagsetning"@is ;
+	schema:name "stofndagsetning"@is ;
+	rdfs:label "dato de fondo aŭ kreo"@eo ;
+	skos:prefLabel "dato de fondo aŭ kreo"@eo ;
+	schema:name "dato de fondo aŭ kreo"@eo ;
+	rdfs:label "izveides datums"@lv ;
+	skos:prefLabel "izveides datums"@lv ;
+	schema:name "izveides datums"@lv ;
+	rdfs:label "дата заснаваньня / стварэньня"@be-tarask ;
+	skos:prefLabel "дата заснаваньня / стварэньня"@be-tarask ;
+	schema:name "дата заснаваньня / стварэньня"@be-tarask ;
+	rdfs:label "nastanak"@hr ;
+	skos:prefLabel "nastanak"@hr ;
+	schema:name "nastanak"@hr ;
+	rdfs:label "dato for etablering, fremstilling e.l."@nb ;
+	skos:prefLabel "dato for etablering, fremstilling e.l."@nb ;
+	schema:name "dato for etablering, fremstilling e.l."@nb ;
+	rdfs:label "datum van stigting of ontstaan"@af ;
+	skos:prefLabel "datum van stigting of ontstaan"@af ;
+	schema:name "datum van stigting of ontstaan"@af ;
+	rdfs:label "Gründigs- / Aalegigsdatum"@gsw ;
+	skos:prefLabel "Gründigs- / Aalegigsdatum"@gsw ;
+	schema:name "Gründigs- / Aalegigsdatum"@gsw ;
+	rdfs:label "dátum vzniku"@sk ;
+	skos:prefLabel "dátum vzniku"@sk ;
+	schema:name "dátum vzniku"@sk ;
+	rdfs:label "нигезләнү датасы"@tt ;
+	skos:prefLabel "нигезләнү датасы"@tt ;
+	schema:name "нигезләнү датасы"@tt ;
+	rdfs:label "ngày thành lập hoặc tạo ra"@vi ;
+	skos:prefLabel "ngày thành lập hoặc tạo ra"@vi ;
+	schema:name "ngày thành lập hoặc tạo ra"@vi ;
+	rdfs:label "date o foondation or creation"@sco ;
+	skos:prefLabel "date o foondation or creation"@sco ;
+	schema:name "date o foondation or creation"@sco ;
+	rdfs:label "date of foundation or creation"@en-ca ;
+	skos:prefLabel "date of foundation or creation"@en-ca ;
+	schema:name "date of foundation or creation"@en-ca ;
+	rdfs:label "స్థాపన లేదా సృజన తేదీ"@te ;
+	skos:prefLabel "స్థాపన లేదా సృజన తేదీ"@te ;
+	schema:name "స్థాపన లేదా సృజన తేదీ"@te ;
+	rdfs:label "petsa ti pundasion wenno pannakapartuat"@ilo ;
+	skos:prefLabel "petsa ti pundasion wenno pannakapartuat"@ilo ;
+	schema:name "petsa ti pundasion wenno pannakapartuat"@ilo ;
+	rdfs:label "成立或建立時間"@zh-hk ;
+	skos:prefLabel "成立或建立時間"@zh-hk ;
+	schema:name "成立或建立時間"@zh-hk ;
+	rdfs:label "ଆରମ୍ଭ ହେବା ଦିନ"@or ;
+	skos:prefLabel "ଆରମ୍ଭ ହେବା ଦିନ"@or ;
+	schema:name "ଆରମ୍ଭ ହେବା ଦିନ"@or ;
+	rdfs:label "成立日期"@zh-tw ;
+	skos:prefLabel "成立日期"@zh-tw ;
+	schema:name "成立日期"@zh-tw ;
+	rdfs:label "nastanek"@sl ;
+	skos:prefLabel "nastanek"@sl ;
+	schema:name "nastanek"@sl ;
+	rdfs:label "גרינדונג־דאטע"@yi ;
+	skos:prefLabel "גרינדונג־דאטע"@yi ;
+	schema:name "גרינדונג־דאטע"@yi ;
+	rdfs:label "প্রতিষ্ঠা বা সৃষ্টির তারিখ"@bn ;
+	skos:prefLabel "প্রতিষ্ঠা বা সৃষ্টির তারিখ"@bn ;
+	schema:name "প্রতিষ্ঠা বা সৃষ্টির তারিখ"@bn ;
+	rdfs:label "დაარსების ან შექმნის თარიღი"@ka ;
+	skos:prefLabel "დაარსების ან შექმნის თარიღი"@ka ;
+	schema:name "დაარსების ან შექმნის თარიღი"@ka ;
+	rdfs:label "asutamise või loomise aeg"@et ;
+	skos:prefLabel "asutamise või loomise aeg"@et ;
+	schema:name "asutamise või loomise aeg"@et ;
+	rdfs:label "วันที่สร้าง/วันก่อตั้ง"@th ;
+	skos:prefLabel "วันที่สร้าง/วันก่อตั้ง"@th ;
+	schema:name "วันที่สร้าง/วันก่อตั้ง"@th ;
+	rdfs:label "sorrera data"@eu ;
+	skos:prefLabel "sorrera data"@eu ;
+	schema:name "sorrera data"@eu ;
+	rdfs:label "data di pidamentu"@scn ;
+	skos:prefLabel "data di pidamentu"@scn ;
+	schema:name "data di pidamentu"@scn ;
+	rdfs:label "स्थापना"@mr ;
+	skos:prefLabel "स्थापना"@mr ;
+	schema:name "स्थापना"@mr ;
+	rdfs:label "inceptio"@la ;
+	skos:prefLabel "inceptio"@la ;
+	schema:name "inceptio"@la ;
+	rdfs:label "成立或建立時間"@zh-mo ;
+	skos:prefLabel "成立或建立時間"@zh-mo ;
+	schema:name "成立或建立時間"@zh-mo ;
+	rdfs:label "成立或创建时间"@zh-my ;
+	skos:prefLabel "成立或创建时间"@zh-my ;
+	schema:name "成立或创建时间"@zh-my ;
+	rdfs:label "成立或创建时间"@zh-sg ;
+	skos:prefLabel "成立或创建时间"@zh-sg ;
+	schema:name "成立或创建时间"@zh-sg ;
+	rdfs:label "स्थापना"@ne ;
+	skos:prefLabel "स्थापना"@ne ;
+	schema:name "स्थापना"@ne ;
+	rdfs:label "dechreuwyd"@cy ;
+	skos:prefLabel "dechreuwyd"@cy ;
+	schema:name "dechreuwyd"@cy ;
+	rdfs:label "ստեղծում"@hy ;
+	skos:prefLabel "ստեղծում"@hy ;
+	schema:name "ստեղծում"@hy ;
+	rdfs:label "pradžia"@lt ;
+	skos:prefLabel "pradžia"@lt ;
+	schema:name "pradžia"@lt ;
+	rdfs:label "data de creación o fundación"@ast ;
+	skos:prefLabel "data de creación o fundación"@ast ;
+	schema:name "data de creación o fundación"@ast ;
+	rdfs:label "data înființării sau creării"@ro ;
+	skos:prefLabel "data înființării sau creării"@ro ;
+	schema:name "data înființării sau creării"@ro ;
+	rdfs:label "بنسټ اېښودنه"@ps ;
+	skos:prefLabel "بنسټ اېښودنه"@ps ;
+	schema:name "بنسټ اېښودنه"@ps ;
+	rdfs:label "البداية"@ar ;
+	skos:prefLabel "البداية"@ar ;
+	schema:name "البداية"@ar ;
+	rdfs:label "grünjlaanj"@frr ;
+	skos:prefLabel "grünjlaanj"@frr ;
+	schema:name "grünjlaanj"@frr ;
+	rdfs:label "дата на създаване"@bg ;
+	skos:prefLabel "дата на създаване"@bg ;
+	schema:name "дата на създаване"@bg ;
+	rdfs:label "fiandohana"@mg ;
+	skos:prefLabel "fiandohana"@mg ;
+	schema:name "fiandohana"@mg ;
+	rdfs:label "Grënnungsdatum / Baudatum"@lb ;
+	skos:prefLabel "Grënnungsdatum / Baudatum"@lb ;
+	schema:name "Grënnungsdatum / Baudatum"@lb ;
+	rdfs:label "dáta a bunaíodh"@ga ;
+	skos:prefLabel "dáta a bunaíodh"@ga ;
+	schema:name "dáta a bunaíodh"@ga ;
+	rdfs:label "தொடக்கம்"@ta ;
+	skos:prefLabel "தொடக்கம்"@ta ;
+	schema:name "தொடக்கம்"@ta ;
+	rdfs:label "ಆರಂಭ"@kn ;
+	skos:prefLabel "ಆರಂಭ"@kn ;
+	schema:name "ಆರಂಭ"@kn ;
+	rdfs:label "stovnan"@fo ;
+	skos:prefLabel "stovnan"@fo ;
+	schema:name "stovnan"@fo ;
+	rdfs:label "dema avabûnê"@ku-latn ;
+	skos:prefLabel "dema avabûnê"@ku-latn ;
+	schema:name "dema avabûnê"@ku-latn ;
+	rdfs:label "таърихи таъсис"@tg ;
+	skos:prefLabel "таърихи таъсис"@tg ;
+	schema:name "таърихи таъсис"@tg ;
+	rdfs:label "ortaya çıkışı"@tr ;
+	skos:prefLabel "ortaya çıkışı"@tr ;
+	schema:name "ortaya çıkışı"@tr ;
+	rdfs:label "deiziad krouiñ"@br ;
+	skos:prefLabel "deiziad krouiñ"@br ;
+	schema:name "deiziad krouiñ"@br ;
+	rdfs:label "нигеҙләү датаһы"@ba ;
+	skos:prefLabel "нигеҙләү датаһы"@ba ;
+	schema:name "нигеҙләү датаһы"@ba ;
+	rdfs:label "datum załoženja / wutworjenja"@hsb ;
+	skos:prefLabel "datum załoženja / wutworjenja"@hsb ;
+	schema:name "datum załoženja / wutworjenja"@hsb ;
+	rdfs:label "ìbèrè"@yo ;
+	skos:prefLabel "ìbèrè"@yo ;
+	schema:name "ìbèrè"@yo ;
+	rdfs:label "санаи таъсис / эҷод"@tg-cyrl ;
+	skos:prefLabel "санаи таъсис / эҷод"@tg-cyrl ;
+	schema:name "санаи таъсис / эҷод"@tg-cyrl ;
+	rdfs:label "ਸ਼ੁਰੂਆਤ"@pa ;
+	skos:prefLabel "ਸ਼ੁਰੂਆਤ"@pa ;
+	schema:name "ਸ਼ੁਰੂਆਤ"@pa ;
+	rdfs:label "تاسیس"@ur ;
+	skos:prefLabel "تاسیس"@ur ;
+	schema:name "تاسیس"@ur ;
+	rdfs:label "fillimi"@sq ;
+	skos:prefLabel "fillimi"@sq ;
+	schema:name "fillimi"@sq ;
+	rdfs:label "йиллина терахь / кхоьллина"@ce ;
+	skos:prefLabel "йиллина терахь / кхоьллина"@ce ;
+	schema:name "йиллина терахь / кхоьллина"@ce ;
+	rdfs:label "farawa"@ha ;
+	skos:prefLabel "farawa"@ha ;
+	schema:name "farawa"@ha ;
+	rdfs:label "yaranma tarixi"@az ;
+	skos:prefLabel "yaranma tarixi"@az ;
+	schema:name "yaranma tarixi"@az ;
+	rdfs:label "cur air cois"@gd ;
+	skos:prefLabel "cur air cois"@gd ;
+	schema:name "cur air cois"@gd ;
+	rdfs:label "pitc ka tcimatakaniwok"@atj ;
+	skos:prefLabel "pitc ka tcimatakaniwok"@atj ;
+	schema:name "pitc ka tcimatakaniwok"@atj ;
+	rdfs:label "негизделген датасы"@ky ;
+	skos:prefLabel "негизделген датасы"@ky ;
+	schema:name "негизделген датасы"@ky ;
+	rdfs:label "Sazbiyayış"@diq ;
+	skos:prefLabel "Sazbiyayış"@diq ;
+	schema:name "Sazbiyayış"@diq ;
+	rdfs:label "ukuqala"@xh ;
+	skos:prefLabel "ukuqala"@xh ;
+	schema:name "ukuqala"@xh ;
+	rdfs:label "գործօն ընթացք"@hyw ;
+	skos:prefLabel "գործօն ընթացք"@hyw ;
+	schema:name "գործօն ընթացք"@hyw ;
+	rdfs:label "ߟߊߝߟߐߕߎߡߊ"@nqo ;
+	skos:prefLabel "ߟߊߝߟߐߕߎߡߊ"@nqo ;
+	schema:name "ߟߊߝߟߐߕߎߡߊ"@nqo ;
+	rdfs:label "data de creasion o fondasion"@vec ;
+	skos:prefLabel "data de creasion o fondasion"@vec ;
+	schema:name "data de creasion o fondasion"@vec ;
+	rdfs:label "perustamizen paivymiäry"@olo ;
+	skos:prefLabel "perustamizen paivymiäry"@olo ;
+	schema:name "perustamizen paivymiäry"@olo ;
+	rdfs:label "Gründung, Erstellung bzw. Entstehung oder Erbauung"@de-at ;
+	skos:prefLabel "Gründung, Erstellung bzw. Entstehung oder Erbauung"@de-at ;
+	schema:name "Gründung, Erstellung bzw. Entstehung oder Erbauung"@de-at ;
+	rdfs:label "нигезләнү датасы"@tt-cyrl ;
+	skos:prefLabel "нигезләнү датасы"@tt-cyrl ;
+	schema:name "нигезләнү датасы"@tt-cyrl ;
+	rdfs:label "Azemz n ubeddi d unulfu"@kab ;
+	skos:prefLabel "Azemz n ubeddi d unulfu"@kab ;
+	schema:name "Azemz n ubeddi d unulfu"@kab ;
+	rdfs:label "nastanak"@sh ;
+	skos:prefLabel "nastanak"@sh ;
+	schema:name "nastanak"@sh ;
+	rdfs:label "البدايه"@arz ;
+	skos:prefLabel "البدايه"@arz ;
+	schema:name "البدايه"@arz ;
+	rdfs:label "data utworzyniŏ abo nastōniŏ"@szl ;
+	skos:prefLabel "data utworzyniŏ abo nastōniŏ"@szl ;
+	schema:name "data utworzyniŏ abo nastōniŏ"@szl ;
+	rdfs:label "ዕለት መሰረት ወይ ምፍጣር"@ti ;
+	skos:prefLabel "ዕለት መሰረት ወይ ምፍጣር"@ti ;
+	schema:name "ዕለት መሰረት ወይ ምፍጣር"@ti ;
+	rdfs:label "تاريخ ڤنوبوهن"@ms-arab ;
+	skos:prefLabel "تاريخ ڤنوبوهن"@ms-arab ;
+	schema:name "تاريخ ڤنوبوهن"@ms-arab ;
+	rdfs:label "fecha di fundashon òf kreashon"@pap ;
+	skos:prefLabel "fecha di fundashon òf kreashon"@pap ;
+	schema:name "fecha di fundashon òf kreashon"@pap ;
+	rdfs:label "saking"@ban ;
+	skos:prefLabel "saking"@ban ;
+	schema:name "saking"@ban ;
+	rdfs:label "кылдон дырыз"@udm ;
+	skos:prefLabel "кылдон дырыз"@udm ;
+	schema:name "кылдон дырыз"@udm ;
+	rdfs:label "ára oñepyrũ"@gn ;
+	skos:prefLabel "ára oñepyrũ"@gn ;
+	schema:name "ára oñepyrũ"@gn ;
+	rdfs:label "Di pilli ni"@dag ;
+	skos:prefLabel "Di pilli ni"@dag ;
+	schema:name "Di pilli ni"@dag ;
+	rdfs:label "qurulğan vaqtı"@crh ;
+	skos:prefLabel "qurulğan vaqtı"@crh ;
+	schema:name "qurulğan vaqtı"@crh ;
+	rdfs:label "qurulğan vaqtı"@crh-latn ;
+	skos:prefLabel "qurulğan vaqtı"@crh-latn ;
+	schema:name "qurulğan vaqtı"@crh-latn ;
+	rdfs:label "Grindung, Astejung, Entstehung oda Abauung"@bar ;
+	skos:prefLabel "Grindung, Astejung, Entstehung oda Abauung"@bar ;
+	schema:name "Grindung, Astejung, Entstehung oda Abauung"@bar ;
+	rdfs:label "დორსხუაფაშ ვარ-და გოჭყაფაშ თარიღი"@xmf ;
+	skos:prefLabel "დორსხუაფაშ ვარ-და გოჭყაფაშ თარიღი"@xmf ;
+	schema:name "დორსხუაფაშ ვარ-და გოჭყაფაშ თარიღი"@xmf ;
+	rdfs:label "adlaw sa pagkatukod"@ceb ;
+	skos:prefLabel "adlaw sa pagkatukod"@ceb ;
+	schema:name "adlaw sa pagkatukod"@ceb ;
+	rdfs:label "nastanak"@sr-el ;
+	skos:prefLabel "nastanak"@sr-el ;
+	schema:name "nastanak"@sr-el ;
+	rdfs:label "data de creazzion o de fondazzion"@lmo ;
+	skos:prefLabel "data de creazzion o de fondazzion"@lmo ;
+	schema:name "data de creazzion o de fondazzion"@lmo ;
+	rdfs:label "စတင်တည်ထောင်ခြင်း"@my ;
+	skos:prefLabel "စတင်တည်ထောင်ခြင်း"@my ;
+	schema:name "စတင်တည်ထောင်ခြင်း"@my ;
+	rdfs:label "fecha di fundacion o creacion"@pap-aw ;
+	skos:prefLabel "fecha di fundacion o creacion"@pap-aw ;
+	schema:name "fecha di fundacion o creacion"@pap-aw ;
+	rdfs:label "بُنیاد"@ks ;
+	skos:prefLabel "بُنیاد"@ks ;
+	schema:name "بُنیاد"@ks ;
+	rdfs:label "лӀугьин"@av ;
+	skos:prefLabel "лӀугьин"@av ;
+	schema:name "лӀугьин"@av ;
+	rdfs:label "golle imaaɗe"@ff ;
+	skos:prefLabel "golle imaaɗe"@ff ;
+	schema:name "golle imaaɗe"@ff ;
+	rdfs:label "Oge/afọ mmalite"@ig ;
+	skos:prefLabel "Oge/afọ mmalite"@ig ;
+	schema:name "Oge/afọ mmalite"@ig ;
+	rdfs:label "kpaat"@kcg ;
+	skos:prefLabel "kpaat"@kcg ;
+	schema:name "kpaat"@kcg ;
+	rdfs:label "үүсгэн байгуулагдсан"@mn ;
+	skos:prefLabel "үүсгэн байгуулагдсан"@mn ;
+	schema:name "үүсгэн байгуулагдсан"@mn ;
+	rdfs:label "شروعات"@pnb ;
+	skos:prefLabel "شروعات"@pnb ;
+	schema:name "شروعات"@pnb ;
+	rdfs:label "data de fundatzione o creatzione"@sc ;
+	skos:prefLabel "data de fundatzione o creatzione"@sc ;
+	schema:name "data de fundatzione o creatzione"@sc ;
+	rdfs:label "data meta nħoloq"@mt ;
+	skos:prefLabel "data meta nħoloq"@mt ;
+	schema:name "data meta nħoloq"@mt ;
+	rdfs:label "vuáđudum"@smn ;
+	skos:prefLabel "vuáđudum"@smn ;
+	schema:name "vuáđudum"@smn ;
+	rdfs:label "dalleth"@kw ;
+	skos:prefLabel "dalleth"@kw ;
+	schema:name "dalleth"@kw ;
+	rdfs:label "kuanzishwa"@sw ;
+	skos:prefLabel "kuanzishwa"@sw ;
+	schema:name "kuanzishwa"@sw ;
+	rdfs:label "date bunneeaght"@gv ;
+	skos:prefLabel "date bunneeaght"@gv ;
+	schema:name "date bunneeaght"@gv ;
+	rdfs:label "بدية"@ary ;
+	skos:prefLabel "بدية"@ary ;
+	schema:name "بدية"@ary ;
+	rdfs:label "tashkil etilgan"@uz ;
+	skos:prefLabel "tashkil etilgan"@uz ;
+	schema:name "tashkil etilgan"@uz ;
+	rdfs:label "بساتن"@mzn ;
+	skos:prefLabel "بساتن"@mzn ;
+	schema:name "بساتن"@mzn ;
+	rdfs:label "ушетфоль"@mdf ;
+	skos:prefLabel "ушетфоль"@mdf ;
+	schema:name "ушетфоль"@mdf ;
+	rdfs:label "основанъ ѥстъ"@cu ;
+	skos:prefLabel "основанъ ѥстъ"@cu ;
+	schema:name "основанъ ѥстъ"@cu ;
+	rdfs:label "ວັນທີສ້າງ/ວັນກໍ່ຕັ້ງ"@lo ;
+	skos:prefLabel "ວັນທີສ້າງ/ວັນກໍ່ຕັ້ງ"@lo ;
+	schema:name "ວັນທີສ້າງ/ວັນກໍ່ຕັ້ງ"@lo ;
+	rdfs:label "fecha de criación o hundación"@ext ;
+	skos:prefLabel "fecha de criación o hundación"@ext ;
+	schema:name "fecha de criación o hundación"@ext ;
+	rdfs:label "никӗсленӳ/йӗркеленӳ вӑхӑчӗ"@cv ;
+	skos:prefLabel "никӗсленӳ/йӗркеленӳ вӑхӑчӗ"@cv ;
+	schema:name "никӗсленӳ/йӗркеленӳ вӑхӑчӗ"@cv ;
+	rdfs:label "dúzilgen waqtı"@kaa ;
+	skos:prefLabel "dúzilgen waqtı"@kaa ;
+	schema:name "dúzilgen waqtı"@kaa ;
+	rdfs:label "成立抑是建立的時間"@nan-hani ;
+	skos:prefLabel "成立抑是建立的時間"@nan-hani ;
+	schema:name "成立抑是建立的時間"@nan-hani ;
+	rdfs:label "Sêng-li̍p ia̍h-sī kiàn-li̍p ê sî-kan"@nan ;
+	skos:prefLabel "Sêng-li̍p ia̍h-sī kiàn-li̍p ê sî-kan"@nan ;
+	schema:name "Sêng-li̍p ia̍h-sī kiàn-li̍p ê sî-kan"@nan ;
+	rdfs:label "komenco"@io ;
+	skos:prefLabel "komenco"@io ;
+	schema:name "komenco"@io ;
+	rdfs:label "year dem found am"@gpe ;
+	skos:prefLabel "year dem found am"@gpe ;
+	schema:name "year dem found am"@gpe ;
+	rdfs:label "ⵜⵓⴷⴷⵎⴰ"@zgh ;
+	skos:prefLabel "ⵜⵓⴷⴷⵎⴰ"@zgh ;
+	schema:name "ⵜⵓⴷⴷⵎⴰ"@zgh ;
+	rdfs:label "олохтоммут, үөскээбит, айыллыбыт күнэ-дьыла"@sah ;
+	skos:prefLabel "олохтоммут, үөскээбит, айыллыбыт күнэ-дьыла"@sah ;
+	schema:name "олохтоммут, үөскээбит, айыллыбыт күнэ-дьыла"@sah ;
+	rdfs:label "inception"@en-us ;
+	skos:prefLabel "inception"@en-us ;
+	schema:name "inception"@en-us ;
+	rdfs:label "asakud n ussrsl nɣ isllwi"@shi ;
+	skos:prefLabel "asakud n ussrsl nɣ isllwi"@shi ;
+	schema:name "asakud n ussrsl nɣ isllwi"@shi ;
+	rdfs:label "ꠜꠤꠔ꠆ꠔꠤ ꠉꠣꠞꠣ ꠅꠁꠍꠦ"@syl ;
+	skos:prefLabel "ꠜꠤꠔ꠆ꠔꠤ ꠉꠣꠞꠣ ꠅꠁꠍꠦ"@syl ;
+	schema:name "ꠜꠤꠔ꠆ꠔꠤ ꠉꠣꠞꠣ ꠅꠁꠍꠦ"@syl ;
+	rdfs:label "soxtə taryx"@tly ;
+	skos:prefLabel "soxtə taryx"@tly ;
+	schema:name "soxtə taryx"@tly ;
+	rdfs:label "termīns pateikāi adder gruntina"@prg ;
+	skos:prefLabel "termīns pateikāi adder gruntina"@prg ;
+	schema:name "termīns pateikāi adder gruntina"@prg ;
+	rdfs:label "dat fondasyon oswa kreyasyon"@ht ;
+	skos:prefLabel "dat fondasyon oswa kreyasyon"@ht ;
+	schema:name "dat fondasyon oswa kreyasyon"@ht ;
+	rdfs:label "ᱛᱷᱟᱯᱚᱱ ᱥᱮ ᱵᱩᱱᱭᱟᱹᱫᱽ ᱢᱟᱦᱟ"@sat ;
+	skos:prefLabel "ᱛᱷᱟᱯᱚᱱ ᱥᱮ ᱵᱩᱱᱭᱟᱹᱫᱽ ᱢᱟᱦᱟ"@sat ;
+	schema:name "ᱛᱷᱟᱯᱚᱱ ᱥᱮ ᱵᱩᱱᱭᱟᱹᱫᱽ ᱢᱟᱦᱟ"@sat ;
+	rdfs:label "eshishijee"@gaa ;
+	skos:prefLabel "eshishijee"@gaa ;
+	schema:name "eshishijee"@gaa ;
+	rdfs:label "ἵδρυσις / κτίσις / δημιουργία"@grc ;
+	skos:prefLabel "ἵδρυσις / κτίσις / δημιουργία"@grc ;
+	schema:name "ἵδρυσις / κτίσις / δημιουργία"@grc ;
+	rdfs:label "datum załoženja / natwarjenja"@dsb ;
+	skos:prefLabel "datum załoženja / natwarjenja"@dsb ;
+	schema:name "datum załoženja / natwarjenja"@dsb ;
+	rdfs:label "tenpo pi kama lon"@tok ;
+	skos:prefLabel "tenpo pi kama lon"@tok ;
+	schema:name "tenpo pi kama lon"@tok ;
+	rdfs:label "vuâđđuum"@sms ;
+	skos:prefLabel "vuâđđuum"@sms ;
+	schema:name "vuâđđuum"@sms ;
+	rdfs:label "vuođđuduvvon"@se ;
+	skos:prefLabel "vuođđuduvvon"@se ;
+	schema:name "vuođđuduvvon"@se ;
+	rdfs:label "pipatirengan a romi'ad"@ami ;
+	skos:prefLabel "pipatirengan a romi'ad"@ami ;
+	schema:name "pipatirengan a romi'ad"@ami ;
+	rdfs:label "ibebene"@ann ;
+	skos:prefLabel "ibebene"@ann ;
+	schema:name "ibebene"@ann ;
+	rdfs:label "pnhyugan jiyax"@trv ;
+	skos:prefLabel "pnhyugan jiyax"@trv ;
+	schema:name "pnhyugan jiyax"@trv ;
+	rdfs:label "Piiluu"@dga ;
+	skos:prefLabel "Piiluu"@dga ;
+	schema:name "Piiluu"@dga ;
+	rdfs:label "taim mek"@aig ;
+	skos:prefLabel "taim mek"@aig ;
+	schema:name "taim mek"@aig ;
+	rdfs:label "data de inception"@ia ;
+	skos:prefLabel "data de inception"@ia ;
+	schema:name "data de inception"@ia ;
+	rdfs:label "ཐོག་མར་བྱུང་དུས།"@bo ;
+	skos:prefLabel "ཐོག་མར་བྱུང་དུས།"@bo ;
+	schema:name "ཐོག་མར་བྱུང་དུས།"@bo ;
+	rdfs:label "स्थापना"@mai ;
+	skos:prefLabel "स्थापना"@mai ;
+	schema:name "स्थापना"@mai ;
+	rdfs:label "स्थापना"@hi ;
+	skos:prefLabel "स्थापना"@hi ;
+	schema:name "स्थापना"@hi ;
+	rdfs:label "лыһкъюввэм а̄ййк"@sjd ;
+	skos:prefLabel "лыһкъюввэм а̄ййк"@sjd ;
+	schema:name "лыһкъюввэм а̄ййк"@sjd ;
+	rdfs:label "seizgan laebbaenz"@za ;
+	skos:prefLabel "seizgan laebbaenz"@za ;
+	schema:name "seizgan laebbaenz"@za ;
+	rdfs:label "ප්‍රාරම්භය"@si ;
+	skos:prefLabel "ප්‍රාරම්භය"@si ;
+	schema:name "ප්‍රාරම්භය"@si ;
+	rdfs:label "ပွမစဒက်ပ္တန်"@mnw ;
+	skos:prefLabel "ပွမစဒက်ပ္တန်"@mnw ;
+	schema:name "ပွမစဒက်ပ္တန်"@mnw ;
+	rdfs:label "datum de fundazion"@lld ;
+	skos:prefLabel "datum de fundazion"@lld ;
+	schema:name "datum de fundazion"@lld ;
+	rdfs:label "petsa na inkiletneg"@pag ;
+	skos:prefLabel "petsa na inkiletneg"@pag ;
+	schema:name "petsa na inkiletneg"@pag ;
+	rdfs:label "saprak"@su ;
+	skos:prefLabel "saprak"@su ;
+	schema:name "saprak"@su ;
+	schema:description "time when an entity begins to exist; for date of official opening use P1619"@en,
+		"milloin organisaatio / kohde on perustettu / luotu"@fi,
+		"Datum, an dem eine Organisation bzw. ein Objekt gegründet/erstellt wurde"@de,
+		"fecha en la cual fue fundada o creada la organización u objeto; para la fecha de apertura oficial utilice P1619"@es,
+		"dato eller tidspunkt for hvornår organisationen / objektet er blevet dannet / oprettet / skabt"@da,
+		"സംഘടനയും മറ്റും സ്ഥാപിച്ച തീയതി"@ml,
+		"tanggal atau waktu suatu lembaga atau objek ditemukan, dibuat, diciptakan, atau didirikan"@id,
+		"tanggal saaik pandirian organisasi"@min,
+		"زمان راه‎اندازی سازمان یا بنای مورد نظر"@fa,
+		"quand une organisation / un objet a été fondé / créé"@fr,
+		"data en què l'organització o objecte fou creat o fundat"@ca,
+		"જ્યારે સંગઠન / પદાર્થની રચના થઈ અથવા શરૂઆત થઈ"@gu,
+		"ημερομηνία κατά την οποία ο οργανισμός / αντικείμενο ιδρύθηκε / δημιουργήθηκε"@el,
+		"data in cui è stato fondato, creato, istituito o costruito l'oggetto"@it,
+		"תאריך הקמה של ארגון, מדינה וכו'. יכול לשמש גם כתאריך יצירה של יצירת אומנות או המצאה."@he,
+		"組織・事物が設立・作成された年月日"@ja,
+		"quando a organização foi fundada ou um objeto foi criado"@pt-br,
+		"datum kada je subjekt kako je definiran nastao"@hr,
+		"når organisasjonen, objektet eller øvrig ble grunnlagt, opprettet, fremstilt, startet å eksistere eller lignende"@nb,
+		"дата, когда организация или объект были основаны/созданы"@ru,
+		"az alany vagy szervezet keletkezési vagy alapítási dátuma; a hivatalos megnyitáshoz ezt használd: P1619"@hu,
+		"Datum, wu ne Organisation / en Objäkt grindet / aaglait woren isch"@gsw,
+		"某个实体开始存在的时间；正式开业日期请用 P1619"@zh,
+		"дата, калі арганізацыя / аб’ект былі заснаваныя / запачаткаваныя"@be-tarask,
+		"సంస్థను స్థాపించిన లేదా వస్తువును సృజించిన తేదీ"@te,
+		"idi napundar / napartuat ti gunglo / banag"@ilo,
+		"quando a organização foi fundada ou um objeto foi criado"@pt,
+		"kiam la organizo aŭ objekto estis kreita aŭ fondita"@eo,
+		"विषय के निर्माण की तारीख"@hi,
+		"date or point in time when the organisation / object was founded / created"@en-gb,
+		"যেদিন সংস্থা/বস্তুটি প্রতিষ্ঠিত/সৃষ্টি হয়েছে"@bn,
+		"datum eller år då organisationen/objektet grundades eller skapades"@sv,
+		"sorreraren data"@eu,
+		"항목 주제가 생겨난 시각·일자·연도·시대"@ko,
+		"data di quannu funnaru o criaru sta cosa"@scn,
+		"datum waarop een organisatie opgericht of een object gemaakt is"@nl,
+		"组织或事物成立、诞生的时间"@zh-hans,
+		"data lub moment w czasie kiedy element został utworzony, założony lub powstał"@pl,
+		"fecha o puntu nel tiempu nel que se creó o fundó la organización / oxetu"@ast,
+		"дата чи точка у часі, коли об'єкт було створено / засновано"@uk,
+		"дата или период, когато организацията / обекта е основан / създаден"@bg,
+		"laika brīdis, kad tika izveidota organizācija vai radīts objekts"@lv,
+		"தொடங்கிய ஆண்டு"@ta,
+		"tá ið felagsskapurin / luturin varð stovnaður / skapaður"@fo,
+		"الوقت الذي يبدأ فيه الكيان في الوجود ؛ لتاريخ الافتتاح الرسمي استخدم P1619"@ar,
+		"поягузорӣ"@tg,
+		"čas, kdy byl objekt založen / vytvořen"@cs,
+		"kuruluş / nesnenin kurulduğu ya da oluşturulduğu tarih veya tarihler"@tr,
+		"deiziad krouidigezh / diazezadenn un aozadur/un dra"@br,
+		"datum, hdyž je so organizacija załožiła / objekt wutworił"@hsb,
+		"datë ose shenjë në kohën kur u themelua / u krijua organizata / subjekti"@sq,
+		"датум или тренутак у времену када је организација / тема основана / направљена"@sr,
+		"ਵਿਸ਼ੇ ਦੇ ਨਿਰਮਾਣ ਦੀ ਮਿਤੀ"@pa,
+		"kdaj je bila neka stvar / organizacija zasnovana / ustanovljena"@sl,
+		"ngày hoặc thời điểm thành lập tổ chức hoặc tạo ra đối tượng"@vi,
+		"pitc ka ocitakaniwok oteno"@atj,
+		"組織或事物成立、創建的時間。"@zh-hant,
+		"實體開始存在的時間；正式開幕日期請使用 P1619"@zh-tw,
+		"data cando a organización ou obxecto foi fundado ou creado"@gl,
+		"ବିଷୟଟି ତିଆରି ହେବାର ତାରିଖ"@or,
+		"ߞߏ ߦߋ߫ ߛߋ߫ ߟߊ߫ ߕߍߓߊ߯ߦߊ ߘߐ߫ ߕߎ߬ߡߊ ߡߍ߲ ߠߊ߫."@nqo,
+		"ասպարէզին գործունեայ տարիներ"@hyw,
+		"组织或事物成立、诞生的时间。"@zh-cn,
+		"เวลาที่สิ่งนั้นเริ่มมีอยู่ สำหรับวันเปิดอย่างเป็นทางการ ใช้ P1619"@th,
+		"data abo mōmynt w czasie kedy elymynt ôstoł utworzōny, założōny abo powstoł"@szl,
+		"арберилэн кылдон дырыз"@udm,
+		"Di nambu dabisili"@dag,
+		"датум или период кога организацијата или делото е создадено"@mk,
+		"гӀуцӀи яги объекталъе кьучӀ лъураб заман"@av,
+		"Oge ihe ehiwere malitere ọrụ,maka ngosi ụbọchị/afọ mmepe ama ama jiri P1619"@ig,
+		"jen ji a̱ngga wu ku tsa ngyet a̱ni; ka̱ a̱tuk khwuk a̱gwomna̱ti kya, da̱ nyia̱ ta̱m ma̱ng P1619"@kcg,
+		"ямар нэг зүйл оршиж эхэлсэн цаг хугацааны цэг"@mn,
+		"مد دے شروع دی متی"@pnb,
+		"data de fundatzione, creatzione, istitutzione, fràigu o incumintzu de s'elementu"@sc,
+		"Kuanzishwa kwa kitu"@sw,
+		"ob'ekt mavjud bo'lishni boshlagan vaqt; rasmiy ochilish sanasi uchun P1619 dan foydalaning"@uz,
+		"ເວລາທີ່ສິ່ງນັ້ນເລິ່ມມີຢູ່ ສຳລັບວັນເປີດຢ່າງເປັນທາງການ ໃຊ້ P1619"@lo,
+		"fecha o puntu nel tiempu enque se crió o hundó la olganiçación u ojetu"@ext,
+		"дата, калі сутнасць пачала існаваць; для даты афіцыйнага адкрыцця ўжывайце P1619"@be,
+		"組織抑是事物成立、創建的時間"@nan-hani,
+		"cho͘-chit ia̍h-sī sū-bu̍t sêng-li̍p, chhòng-kiàn ê sî-kan"@nan,
+		"kande ol komencis existar"@io,
+		"time wen entity dey begin to exist; for date of official opening make you use P1619"@gpe,
+		"組織成立或者作品製作嘅時間點"@yue,
+		"time when an entity begins to exist; for date of official opening use P1619"@en-us,
+		"masa apabila suatu entiti itu mula wujud; untuk tarikh pembukaan rasmi, gunakan P1619"@ms,
+		"мӗнпур япала е организаци тунӑ вӑхӑт"@cv,
+		"ᱡᱟᱦᱟ ᱦᱤᱞᱳᱜ ᱜᱚᱱᱚᱴᱷᱚᱱ/ ᱥᱟᱛᱟᱢ ᱛᱷᱟᱯᱚᱱ/ ᱥᱤᱨᱡᱟᱹᱣ ᱞᱮᱱᱟ"@sat,
+		"wagere yelkaŋa bee boŋkaŋa naŋ piili eebo bee tona"@dga,
+		"د پام وړ بنسټ يا سازمان د پيلېدو نېټه"@ps,
+		"data del initio del existentia de un entitate (pro un data de apertura official, usa P1619)"@ia,
+		"དངོས་པོ་འགྲུབ་འགོ་བརྩམས་པའི་དུས་ཚོད།"@bo,
+		"momentul în care o entitate începe să existe; pentru data deschiderii oficiale, utilizați P1619"@ro,
+		"куэссь организация вай объект ля̄йй лыһкма"@sjd,
+		"datum de fundazion de na organisazion"@lld,
+		"bir qurumun və ya təşkilatın mövcud olmağa başladığı vaxt"@az,
+		"kaping atawa waktu hiji lembaga atawa objék kapanggih, dijieun, diciptakeun, atawa diadegkeun"@su ;
+	skos:altLabel "built"@en,
+		"commenced on date"@en,
+		"commencement date"@en,
+		"completed"@en,
+		"composed"@en,
+		"constructed"@en,
+		"construction end date"@en,
+		"created"@en,
+		"created in"@en,
+		"created in year"@en,
+		"created on"@en,
+		"created on date"@en,
+		"creation date"@en,
+		"creation year"@en,
+		"date commenced"@en,
+		"date constructed"@en,
+		"date created"@en,
+		"date first created"@en,
+		"date formed"@en,
+		"date founded"@en,
+		"date of commencement"@en,
+		"date of creation"@en,
+		"date of establishment"@en,
+		"date of foundation"@en,
+		"date of foundation or creation"@en,
+		"date of founding"@en,
+		"date of inception"@en,
+		"date of origin"@en,
+		"day of inception"@en,
+		"dedication date"@en,
+		"established"@en,
+		"established on date"@en,
+		"establishment date"@en,
+		"first created on"@en,
+		"first issue"@en,
+		"formation"@en,
+		"formation date"@en,
+		"formed at"@en,
+		"formed in"@en,
+		"formed in year"@en,
+		"formed on"@en,
+		"formed on date"@en,
+		"foundation"@en,
+		"foundation date"@en,
+		"foundation / creation date"@en,
+		"founded"@en,
+		"founded in"@en,
+		"founded on"@en,
+		"founded on date"@en,
+		"founding date"@en,
+		"inception date"@en,
+		"initial release date"@en,
+		"initiated"@en,
+		"installated in"@en,
+		"installated on"@en,
+		"installation date"@en,
+		"instantiation date"@en,
+		"introduced"@en,
+		"introduction"@en,
+		"launch date"@en,
+		"made in year"@en,
+		"made on"@en,
+		"start date"@en,
+		"starting date"@en,
+		"time of foundation or creation"@en,
+		"time of inception"@en,
+		"written on date"@en,
+		"year commenced"@en,
+		"year created"@en,
+		"year established"@en,
+		"year founded"@en,
+		"year of creation"@en,
+		"year of inception"@en,
+		"year written"@en,
+		"release date"@en,
+		"released"@en,
+		"released in"@en,
+		"date of release"@en,
+		"year of release"@en,
+		"manufactured on"@en,
+		"year of manufacture"@en,
+		"year of mfg"@en,
+		"date of manufacture"@en,
+		"date of work"@en,
+		"work date"@en,
+		"date of creation of work"@en,
+		"date of origin of work"@en,
+		"origin date"@en,
+		"gegründet"@de,
+		"erstellt"@de,
+		"Gründungsdatum"@de,
+		"Erstellungsdatum"@de,
+		"Datum der Gründung"@de,
+		"Datum der Erstellung"@de,
+		"Begründung"@de,
+		"erbaut"@de,
+		"Errichtung"@de,
+		"errichtet"@de,
+		"Baujahr"@de,
+		"Aufstellung"@de,
+		"angelegt"@de,
+		"entstanden"@de,
+		"Fertigstellung"@de,
+		"fertiggestellt"@de,
+		"Stiftungsdatum"@de,
+		"Erstellung"@de,
+		"Erstverleihung"@de,
+		"Markteinführung"@de,
+		"Entstehung"@de,
+		"Erbauung"@de,
+		"erste Durchführung"@de,
+		"Erstdurchführung"@de,
+		"Premierenveranstaltung"@de,
+		"Einführung"@de,
+		"data di fondazione"@it,
+		"fondazione"@it,
+		"data di creazione"@it,
+		"creazione"@it,
+		"fondato il"@it,
+		"fondato nel"@it,
+		"creato il"@it,
+		"creato nel"@it,
+		"costruito il"@it,
+		"costruito nel"@it,
+		"data di costruzione"@it,
+		"lavori iniziati"@it,
+		"scritto nel"@it,
+		"concepito nel"@it,
+		"stabilito nel"@it,
+		"siglato nel"@it,
+		"formato nell'anno"@it,
+		"dedicato in data"@it,
+		"ideato in data"@it,
+		"ideato nel"@it,
+		"ideato il"@it,
+		"coniato nel"@it,
+		"formato il"@it,
+		"anno di fondazione"@it,
+		"anno di apertura"@it,
+		"data di istituzione"@it,
+		"istituito il"@it,
+		"istituito nel"@it,
+		"data fondazione"@it,
+		"data di concepimento"@it,
+		"data concepimento"@it,
+		"formatosi nel"@it,
+		"formatosi il"@it,
+		"data di realizzazione"@it,
+		"realizzato il"@it,
+		"realizzato nel"@it,
+		"realizzata il"@it,
+		"realizzata nel"@it,
+		"data creazione"@it,
+		"data della creazione"@it,
+		"fondata il"@it,
+		"fondata nel"@it,
+		"creata il"@it,
+		"creata nel"@it,
+		"costruita il"@it,
+		"costruita nel"@it,
+		"siglata nel"@it,
+		"concepita nel"@it,
+		"formata il"@it,
+		"data di installazione"@it,
+		"data di collocazione"@it,
+		"installato il"@it,
+		"installato nel"@it,
+		"installata il"@it,
+		"installata nel"@it,
+		"anno di costruzione"@it,
+		"edificato il"@it,
+		"edificato nel"@it,
+		"edificata nel"@it,
+		"edificata il"@it,
+		"data di edificazione"@it,
+		"fecha de fundación"@es,
+		"fecha de creación"@es,
+		"fecha de fundación o creación"@es,
+		"fundación"@es,
+		"date de création"@fr,
+		"fondé en"@fr,
+		"créé en"@fr,
+		"fondé le"@fr,
+		"créé le"@fr,
+		"fondation"@fr,
+		"date de construction"@fr,
+		"construit le"@fr,
+		"construit en"@fr,
+		"formation"@fr,
+		"date de formation"@fr,
+		"formé en"@fr,
+		"formé le"@fr,
+		"date de la fondation"@fr,
+		"date de la création"@fr,
+		"stofndagsetning"@is,
+		"foi fundada"@pt,
+		"foi criada"@pt,
+		"data da criação"@pt,
+		"fundação"@pt,
+		"criação"@pt,
+		"dato de fondo"@eo,
+		"dato de kreo"@eo,
+		"fondodato"@eo,
+		"kreodato"@eo,
+		"kredato"@eo,
+		"время создания"@ru,
+		"выпуск"@ru,
+		"год основания"@ru,
+		"дата изготовления"@ru,
+		"дата основания"@ru,
+		"дата постройки"@ru,
+		"дата появления"@ru,
+		"дата происхождения"@ru,
+		"дата создания"@ru,
+		"дата сочинения"@ru,
+		"дата учреждения"@ru,
+		"день создания"@ru,
+		"запущено"@ru,
+		"издано"@ru,
+		"написано"@ru,
+		"начало"@ru,
+		"основан в"@ru,
+		"основана"@ru,
+		"основано в"@ru,
+		"пуск"@ru,
+		"пущено"@ru,
+		"рождение"@ru,
+		"сдано в эксплуатацию"@ru,
+		"создан в"@ru,
+		"создано в"@ru,
+		"старт"@ru,
+		"учрежден в"@ru,
+		"учреждена в"@ru,
+		"учреждено в"@ru,
+		"дата образования"@ru,
+		"дата строительства"@ru,
+		"дата стварэння"@be,
+		"skapades datum"@sv,
+		"bildades datum"@sv,
+		"stiftades datum"@sv,
+		"grundat"@sv,
+		"startat"@sv,
+		"instiftat"@sv,
+		"instiftningsdatum"@sv,
+		"grundades datum"@sv,
+		"byggd"@sv,
+		"tillkomst"@sv,
+		"tillkomsttid"@sv,
+		"tillkomstdatum"@sv,
+		"uppförd"@sv,
+		"설립일"@ko,
+		"수립일"@ko,
+		"생성일"@ko,
+		"창립일"@ko,
+		"창설일"@ko,
+		"창설된 날"@ko,
+		"생성된 날"@ko,
+		"설립된 날"@ko,
+		"설립한 날"@ko,
+		"수립한 날"@ko,
+		"수립된 날"@ko,
+		"개시된 날"@ko,
+		"개시일"@ko,
+		"개시한 날"@ko,
+		"창립된 날"@ko,
+		"창립된 날짜"@ko,
+		"생긴 날"@ko,
+		"생겨난 날"@ko,
+		"생긴 날짜"@ko,
+		"만들어진 날짜"@ko,
+		"세워진 날"@ko,
+		"세워진 날짜"@ko,
+		"세워진 때"@ko,
+		"창설된 시기"@ko,
+		"설립된 때"@ko,
+		"세워진 시기"@ko,
+		"만들어진 시기"@ko,
+		"창립된 때"@ko,
+		"창립된 시기"@ko,
+		"생긴 때"@ko,
+		"생긴 시기"@ko,
+		"수립된 때"@ko,
+		"수립된 시기"@ko,
+		"창설된 때"@ko,
+		"성립일"@ko,
+		"만들어진 때"@ko,
+		"ngày sáng lập"@vi,
+		"ngày sáng tác"@vi,
+		"ngày khởi tạo"@vi,
+		"ngày viết"@vi,
+		"ngày chụp"@vi,
+		"ngày ghi âm"@vi,
+		"ngày ghi hình"@vi,
+		"ngày thành lập"@vi,
+		"ngày tạo ra"@vi,
+		"дата заснаваньня"@be-tarask,
+		"дата стварэньня"@be-tarask,
+		"дата пачатку існаваньня"@be-tarask,
+		"స్థాపితం"@te,
+		"ସ୍ଥାପନ ତାରିଖ"@or,
+		"ଆରମ୍ଭ ତାରିଖ"@or,
+		"ଉଦ୍ଘାଟନ ଦିବସ"@or,
+		"ପ୍ରତିଷ୍ଠା"@or,
+		"opgericht"@nl,
+		"oprichtingsdatum"@nl,
+		"bouwjaar"@nl,
+		"bouwdatum"@nl,
+		"gebouwd in jaar"@nl,
+		"stichtingsdatum"@nl,
+		"datum van stichting"@nl,
+		"aangemaakt op"@nl,
+		"creatiedatum"@nl,
+		"datum van creatie"@nl,
+		"ίδρυση"@el,
+		"δημιουργία"@el,
+		"स्थापित"@hi,
+		"alapítva"@hu,
+		"alapítás dátuma"@hu,
+		"alapítás éve"@hu,
+		"létrehozva"@hu,
+		"megalakulás"@hu,
+		"kialakulásának ideje"@hu,
+		"alapítás ideje"@hu,
+		"keletkezés ideje"@hu,
+		"létrehozás ideje"@hu,
+		"indulás éve"@hu,
+		"kezdet ideje"@hu,
+		"megnyitás ideje"@hu,
+		"építés ideje"@hu,
+		"创立于"@zh,
+		"建立于"@zh,
+		"创建于"@zh,
+		"创始于"@zh,
+		"开工日期"@zh,
+		"開工日期"@zh,
+		"發佈日期"@zh,
+		"發表日期"@zh,
+		"成立或創建時間"@zh,
+		"創作年代"@zh,
+		"创作年份"@zh,
+		"始创时间"@zh,
+		"创建日期"@zh,
+		"成立于"@zh,
+		"建校日"@zh,
+		"创刊号"@zh,
+		"始建日期"@zh,
+		"竣工时间"@zh,
+		"安装日期"@zh,
+		"首发日期"@zh,
+		"启动日期"@zh,
+		"上线时间"@zh,
+		"datum vytvoření"@cs,
+		"datum vzniku"@cs,
+		"založeno"@cs,
+		"vytvořeno"@cs,
+		"vzniklo"@cs,
+		"datum výstavby"@cs,
+		"postaveno"@cs,
+		"datum založení"@cs,
+		"z roku"@cs,
+		"zřízeno"@cs,
+		"vznik"@cs,
+		"創立日"@ja,
+		"創設日"@ja,
+		"開設日"@ja,
+		"生成日"@ja,
+		"建立日"@ja,
+		"作成年"@ja,
+		"設立年"@ja,
+		"創立年"@ja,
+		"創設年"@ja,
+		"開設年"@ja,
+		"生成年"@ja,
+		"建立年"@ja,
+		"結成日"@ja,
+		"作成日"@ja,
+		"竣工日"@ja,
+		"完成日"@ja,
+		"設立日"@ja,
+		"創刊日"@ja,
+		"成立年"@ja,
+		"開始日"@ja,
+		"開始年"@ja,
+		"创立日期"@zh-hans,
+		"开工日期"@zh-hans,
+		"data założenia"@pl,
+		"data powstania"@pl,
+		"czas utworzenia"@pl,
+		"czas założenia"@pl,
+		"czas powstania"@pl,
+		"data utworzenia"@pl,
+		"powstał"@pl,
+		"powstała"@pl,
+		"powstało"@pl,
+		"założono"@pl,
+		"założony"@pl,
+		"założona"@pl,
+		"założone"@pl,
+		"powstały"@pl,
+		"utworzono"@pl,
+		"utworzone"@pl,
+		"utworzony"@pl,
+		"utworzona"@pl,
+		"निर्मिती"@mr,
+		"सुरूवात"@mr,
+		"date founded"@en-gb,
+		"date created"@en-gb,
+		"foundation"@en-gb,
+		"founded"@en-gb,
+		"created"@en-gb,
+		"date of foundation"@en-gb,
+		"date of creation"@en-gb,
+		"established"@en-gb,
+		"establishment date"@en-gb,
+		"foundation date"@en-gb,
+		"creation date"@en-gb,
+		"date of establishment"@en-gb,
+		"founding date"@en-gb,
+		"date of founding"@en-gb,
+		"date formed"@en-gb,
+		"formation date"@en-gb,
+		"formed on date"@en-gb,
+		"founded on date"@en-gb,
+		"established on date"@en-gb,
+		"created on date"@en-gb,
+		"commencement date"@en-gb,
+		"date commenced"@en-gb,
+		"commenced on date"@en-gb,
+		"date of commencement"@en-gb,
+		"time of foundation or creation"@en-gb,
+		"date of foundation or creation"@en-gb,
+		"foundation / creation date"@en-gb,
+		"created on"@en-gb,
+		"founded on"@en-gb,
+		"formed on"@en-gb,
+		"made on"@en-gb,
+		"created in"@en-gb,
+		"date of inception"@en-gb,
+		"inception date"@en-gb,
+		"year of inception"@en-gb,
+		"day of inception"@en-gb,
+		"year of creation"@en-gb,
+		"creation year"@en-gb,
+		"first created on"@en-gb,
+		"date first created"@en-gb,
+		"made in year"@en-gb,
+		"created in year"@en-gb,
+		"formed in year"@en-gb,
+		"osnovano"@hr,
+		"osnovan"@hr,
+		"utemeljeno"@hr,
+		"utemeljen"@hr,
+		"pokrenuto"@hr,
+		"pokrenut"@hr,
+		"godina osnivanja"@hr,
+		"godina utemeljenja"@hr,
+		"datum osnivanja"@hr,
+		"cychwynwyd"@cy,
+		"sefydlwyd"@cy,
+		"crëwyd"@cy,
+		"įkūrimas"@lt,
+		"sukūrimas"@lt,
+		"įkūrimo data"@lt,
+		"sukūrimo data"@lt,
+		"įkurtas"@lt,
+		"įkurta"@lt,
+		"pastatyta"@lt,
+		"fecha de fundación"@ast,
+		"fecha de creación"@ast,
+		"fundación"@ast,
+		"creación"@ast,
+		"fecha d'inauguración"@ast,
+		"inauguración"@ast,
+		"data de fundação"@pt-br,
+		"data de criação"@pt-br,
+		"criado em"@pt-br,
+		"fundado em"@pt-br,
+		"утворено"@uk,
+		"початок"@uk,
+		"зроблено"@uk,
+		"видано"@uk,
+		"збудовано"@uk,
+		"здано в експлуатацію"@uk,
+		"написано"@uk,
+		"час створення"@uk,
+		"точка в часі"@uk,
+		"рік створення / заснування"@uk,
+		"день створення / заснування"@uk,
+		"засновано"@uk,
+		"дата заснування / створення"@uk,
+		"дата заснування"@uk,
+		"дата розроблення"@uk,
+		"розроблено"@uk,
+		"rakentamisajankohta"@fi,
+		"rakennettu"@fi,
+		"luotu"@fi,
+		"perustettu"@fi,
+		"perustamispäivä"@fi,
+		"aloituspäivämäärä"@fi,
+		"rakennusvuosi"@fi,
+		"päiväys"@fi,
+		"dată înființării"@ro,
+		"dată apariției"@ro,
+		"înființat în"@ro,
+		"creat în"@ro,
+		"înființare"@ro,
+		"construit"@ro,
+		"dată de înființare/creare"@ro,
+		"a început la data"@ro,
+		"data începerii"@ro,
+		"finalizat"@ro,
+		"creat în anul"@ro,
+		"fondat"@ro,
+		"بداية"@ar,
+		"تأسيس"@ar,
+		"استهلال"@ar,
+		"تدشين"@ar,
+		"افتتاح"@ar,
+		"تنصيب"@ar,
+		"تقليد"@ar,
+		"תאריך יצירה"@he,
+		"תאריך הקמה"@he,
+		"תאריך הקמה / יצירה"@he,
+		"תאריך ייסוד"@he,
+		"הקמה"@he,
+		"fiantombohana"@mg,
+		"dibināšanas datums"@lv,
+		"radīšanas datums"@lv,
+		"radīšanas brīdis"@lv,
+		"dibināšanas brīdis"@lv,
+		"izveides brīdis"@lv,
+		"dibināts"@lv,
+		"izveidots"@lv,
+		"dibināta"@lv,
+		"byrjan"@fo,
+		"varð stovnað"@fo,
+		"tanggal pendirian"@id,
+		"tanggal pembuatan"@id,
+		"waktu pendirian"@id,
+		"tanggal penciptaan"@id,
+		"waktu penciptaan"@id,
+		"dibuat pada"@id,
+		"didirikan pada"@id,
+		"diciptakan pada"@id,
+		"waktu pembuatan"@id,
+		"data de fundació"@ca,
+		"data de creació"@ca,
+		"data de composició"@ca,
+		"data creació"@ca,
+		"поягузорӣ"@tg,
+		"асосгузорӣ"@tg,
+		"asutamise aeg"@et,
+		"loomise aeg"@et,
+		"kurulan tarih"@tr,
+		"kuruluş tarihi"@tr,
+		"oluşturulduğu tarih"@tr,
+		"temeli"@tr,
+		"inşa tarihi"@tr,
+		"açılışı"@tr,
+		"başlangıcı"@tr,
+		"açılış tarihi"@tr,
+		"kuruluş yılı"@tr,
+		"kuruluşu"@tr,
+		"grunnleggelsesdato"@nb,
+		"etableringsdato"@nb,
+		"fremstillingsdato"@nb,
+		"opprettelsesdato"@nb,
+		"dato opprettet"@nb,
+		"dato grunnlagt"@nb,
+		"dato etablert"@nb,
+		"dato fremstilt"@nb,
+		"oppstartsdato"@nb,
+		"dato for etablering"@nb,
+		"dato for fremstilling"@nb,
+		"startet å eksistere"@nb,
+		"skapelsesdato"@nb,
+		"opphavsdato"@nb,
+		"startdato"@nb,
+		"開工日期"@zh-hant,
+		"建立時間"@zh-hant,
+		"ойоштороу датаһы"@ba,
+		"төҙөү датаһы"@ba,
+		"нигеҙләнеү"@ba,
+		"нигеҙләнгән"@ba,
+		"нигеҙләү йылы"@ba,
+		"ойоштороу йылы"@ba,
+		"stiftet"@da,
+		"etableret"@da,
+		"oprettet"@da,
+		"dannet"@da,
+		"skabt"@da,
+		"grundlagt"@da,
+		"datum oblikovanja"@sl,
+		"leto ustanovitve"@sl,
+		"datum začetka"@sl,
+		"datum zasnovanja"@sl,
+		"datum osnovanja"@sl,
+		"ustanovitev"@sl,
+		"ustanovljeno"@sl,
+		"leto nastanka"@sl,
+		"zgrajeno"@sl,
+		"datum izgradnje"@sl,
+		"datum ustanovitve"@sl,
+		"datum nastanka"@sl,
+		"čas nastanka"@sl,
+		"čas izgradnje"@sl,
+		"załožene"@hsb,
+		"wutworjene"@hsb,
+		"sorrera"@eu,
+		"sortua"@eu,
+		"eraikia"@eu,
+		"fundazioa"@eu,
+		"eratze data"@eu,
+		"eraikuntza data"@eu,
+		"eraikuntza"@eu,
+		"زمان ایجاد"@fa,
+		"създаване"@bg,
+		"основаване"@bg,
+		"дата на основаване"@bg,
+		"data e themelimit"@sq,
+		"data e krijimit"@sq,
+		"inkorporuar"@sq,
+		"themeluar"@sq,
+		"krijuar"@sq,
+		"প্রতিষ্ঠার তারিখ"@bn,
+		"সৃষ্টির তারিখ"@bn,
+		"ভিত্তি"@bn,
+		"প্রতিষ্ঠিত"@bn,
+		"সংস্থাপিত"@bn,
+		"সূচনা"@bn,
+		"farko"@ha,
+		"วันเริ่มก่อตั้ง"@th,
+		"วันเริ่มกิจการ"@th,
+		"เริ่มก่อตั้ง"@th,
+		"ก่อตั้งเมื่อ"@th,
+		"เริ่มกิจการเมื่อ"@th,
+		"ก่อตั้งขึ้นเมื่อ"@th,
+		"วันที่ก่อตั้ง"@th,
+		"วันที่เริ่มกิจการ"@th,
+		"ก่อตั้ง"@th,
+		"วันที่สร้างสรรค์งาน"@th,
+		"วันเริ่มต้น"@th,
+		"วันเผยแพร่งาน"@th,
+		"วันที่สร้างขึ้น"@th,
+		"วันที่วาดขึ้น"@th,
+		"วาดขึ้นเมื่อ"@th,
+		"สร้างขึ้นเมื่อ"@th,
+		"գրվելու տարեթիվ"@hy,
+		"հիմնադրում"@hy,
+		"датум оснивања"@sr,
+		"cur air bhog"@gd,
+		"data de fundación"@gl,
+		"data de creación"@gl,
+		"data de construción"@gl,
+		"skipa"@nn,
+		"grunnlagt"@nn,
+		"ߜߘߌߛߌ߰ ߕߎߡߘߊ"@nqo,
+		"ߛߌ߲ߘߟߌ ߕߎ߬ߡߊ"@nqo,
+		"ߜߘߌߛߌ߮"@nqo,
+		"ആരംഭിച്ചത്"@ml,
+		"നിർമ്മിച്ചത്"@ml,
+		"deiziad krouidigezh"@br,
+		"ڕێکەوتی دروستکردن"@ckb,
+		"ڕێکەوتی دامەزران"@ckb,
+		"دروستبوون"@ckb,
+		"ڕێکەوتی کردنەوە"@ckb,
+		"osnovano"@sh,
+		"osnovan"@sh,
+		"utemeljeno"@sh,
+		"utemeljen"@sh,
+		"pokrenuto"@sh,
+		"pokrenut"@sh,
+		"godina osnivanja"@sh,
+		"godina utemeljenja"@sh,
+		"datum osnivanja"@sh,
+		"data założyniŏ"@szl,
+		"data nastōniŏ"@szl,
+		"ዕለት መሰረት"@ti,
+		"ዕለት ምፍጣር"@ti,
+		"ዕለት መሰረት ወይ ምፍጣር"@ti,
+		"መሰረት"@ti,
+		"ምፍጣር"@ti,
+		"ተሃኒጸ ኣብ"@ti,
+		"创刊时间"@zh-cn,
+		"首发时间"@zh-cn,
+		"成立时间"@zh-cn,
+		"创建时间"@zh-cn,
+		"上线时间"@zh-cn,
+		"建立事件"@zh-cn,
+		"创刊于"@zh-cn,
+		"кылдытэмын"@udm,
+		"инъямын"@udm,
+		"кутскытэмын"@udm,
+		"мытэмын"@udm,
+		"кылдӥз"@udm,
+		"кутскиз"@udm,
+		"Piligu dali"@dag,
+		"основано"@mk,
+		"датум на создавање"@mk,
+		"датум на основање"@mk,
+		"உருவான நாள்"@ta,
+		"စတင်ခြင်း"@my,
+		"ကနဦး"@my,
+		"кьучӀ лъуна"@av,
+		"кьучӀ лъураб сон"@av,
+		"гӀуцӀараб мех"@av,
+		"кьучӀ лъей"@av,
+		"хӀалтӀи байбихьи"@av,
+		"гӀуцӀи"@av,
+		"гьаби"@av,
+		"инцепция"@av,
+		"Afọ Mbido"@ig,
+		"Afọ nhiwe"@ig,
+		"tsa"@kcg,
+		"á̱ kpaat"@kcg,
+		"á̱ nok"@kcg,
+		"á̱ nyia̱"@kcg,
+		"á̱ jhyi"@kcg,
+		"á̱ bwuo"@kcg,
+		"a̱tuk bwoi"@kcg,
+		"a̱tyuk mat"@kcg,
+		"a̱tuk jhyi"@kcg,
+		"a̱tuk kpaat"@kcg,
+		"a̱tuk nok"@kcg,
+		"fundatzione"@sc,
+		"creatzione"@sc,
+		"creadu su"@sc,
+		"creada su"@sc,
+		"fundadu su"@sc,
+		"fundada su"@sc,
+		"data de istitutzione"@sc,
+		"incumintzu de sos traballos"@sc,
+		"incumintzu"@sc,
+		"data de incumintzu"@sc,
+		"date bunnit"@gv,
+		"bunneeaght"@gv,
+		"toshiaght"@gv,
+		"بداية"@ary,
+		"لبداية"@ary,
+		"لبدية"@ary,
+		"تأسيس"@ary,
+		"فوقاش بدا"@ary,
+		"فوقاش بان"@ary,
+		"ستھاپنا"@pnb,
+		"ਸਥਾਪਨਾ"@pa,
+		"تاسیس"@mzn,
+		"تأسیس"@mzn,
+		"بساته بین"@mzn,
+		"بسات"@mzn,
+		"آغاز"@mzn,
+		"شروع"@mzn,
+		"بنا"@mzn,
+		"fecha de hundación"@ext,
+		"fecha de criación"@ext,
+		"hundación"@ext,
+		"criación"@ext,
+		"創作日期"@yue,
+		"製作日期"@yue,
+		"олохтоммут күнэ"@sah,
+		"олохтоммут күнэ-дьыла"@sah,
+		"баар буолбут күнэ-дьыала"@sah,
+		"үөскээбит күнэ"@sah,
+		"үөскээбит күнэ-дьыла"@sah,
+		"айыллыбыт кэмэ"@sah,
+		"айыллыбыт күнэ-дьыла"@sah,
+		"date created"@en-us,
+		"Tarix"@tly,
+		"Baujoer"@lb,
+		"Grënnungsjoer"@lb,
+		"data meta beda"@mt,
+		"никӗсленӗ вӑхӑт"@cv,
+		"никӗсленӗ дата"@cv,
+		"никӗсленӳ дати"@cv,
+		"никӗсленӳ вӑхӑчӗ"@cv,
+		"йӗркеленӗ вӑхӑт"@cv,
+		"йӗркеленӗ дата"@cv,
+		"йӗркеленӳ дати"@cv,
+		"йӗркеленӳ вӑхӑчӗ"@cv,
+		"ᱛᱷᱟᱯᱚᱱ ᱢᱟᱹᱦᱤᱛ"@sat,
+		"ᱵᱩᱱᱭᱟᱹᱫᱽ ᱢᱟᱦᱟ"@sat,
+		"ἐκτίσθη"@grc,
+		"κτίσις"@grc,
+		"vuođđudanbeaivvi"@se,
+		"vuođđudanjahki"@se,
+		"vuáđudempeivi"@smn,
+		"vuáđudemihe"@smn,
+		"vuáđudempeivimeeri"@smn,
+		"data di criazzioni"@scn,
+		"quannu nascìu"@scn,
+		"tarikh penubuhan"@ms,
+		"tarikh penciptaan"@ms,
+		"dicipta pada"@ms,
+		"ditubuh pada"@ms,
+		"tarikh penemuan"@ms,
+		"ditemui pada"@ms,
+		"istismara qəbul tarixi"@az,
+		"quruluş tarixi"@az,
+		"tikilmə tarixi"@az,
+		"açılışı"@az,
+		"yarandığı tarix"@az,
+		"quruluşu"@az,
+		"起始日期"@zh-tw,
+		"成立日期"@zh-tw,
+		"創立日期"@zh-tw,
+		"pnhyuwan diyax"@trv,
+		"phyegan ali"@trv,
+		"data de initio"@ia,
+		"data de creation"@ia,
+		"data de fundation"@ia,
+		"data de formation"@ia,
+		"data de publication"@ia,
+		"བརྩམས་པའི་ལོ།"@bo,
+		"འདོན་པའི་ལོ།"@bo,
+		"དབུ་བརྙེས་པའི་དུས།"@bo,
+		"འདོན་ཐེངས་དང་པོ།"@bo,
+		"შექმნის თარიღი"@ka,
+		"დაარსების თარიღი"@ka,
+		"ಉಪಕ್ರಮ"@kn,
+		"ti saprak"@su,
+		"kaping diadegkeun"@su,
+		"kaping dijieun"@su,
+		"kaping diciptakeun"@su ;
+	wikibase:propertyType <http://wikiba.se/ontology#Time> ;
+	wikibase:directClaim wdt:P571 ;
+	wikibase:claim p:P571 ;
+	wikibase:statementProperty ps:P571 ;
+	wikibase:statementValue psv:P571 ;
+	wikibase:qualifier pq:P571 ;
+	wikibase:qualifierValue pqv:P571 ;
+	wikibase:reference pr:P571 ;
+	wikibase:referenceValue prv:P571 ;
+	wikibase:novalue wdno:P571 .
+
+p:P571 a owl:ObjectProperty .
+
+psv:P571 a owl:ObjectProperty .
+
+pqv:P571 a owl:ObjectProperty .
+
+prv:P571 a owl:ObjectProperty .
+
+wdt:P571 a owl:DatatypeProperty .
+
+ps:P571 a owl:DatatypeProperty .
+
+pq:P571 a owl:DatatypeProperty .
+
+pr:P571 a owl:DatatypeProperty .
+
+wdno:P571 a owl:Class ;
+	owl:complementOf _:ed4d9507645e2210d8e4ed14d3266267 .
+
+_:ed4d9507645e2210d8e4ed14d3266267 a owl:Restriction ;
+	owl:onProperty wdt:P571 ;
+	owl:someValuesFrom owl:Thing .
+
+wdv:59708a8083e1a8387c9929fe82801684 a wikibase:TimeValue ;
+	wikibase:timeValue "1539-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985786> .
+
+wdv:ed05533dbb4265ec73dc0d903b3dc69b a wikibase:TimeValue ;
+	wikibase:timeValue "1890-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "8"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:04f4de76064d2c1f16e72e37dad29788 a wikibase:TimeValue ;
+	wikibase:timeValue "1890-03-08T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:a33ccbba12ad5cdae1bf7c31afaa8bc2 a wikibase:TimeValue ;
+	wikibase:timeValue "1897-05-26T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:fa562ed1aed1c8aa910af9eb1fae5dc8 a wikibase:TimeValue ;
+	wikibase:timeValue "1300-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "7"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985786> .
+
+wdv:1bee2c3c0fc549a7b87ea056740686eb a wikibase:TimeValue ;
+	wikibase:timeValue "1836-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:443a7ee2eb1d27a45be0caef60b450fb a wikibase:TimeValue ;
+	wikibase:timeValue "0548-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985786> .
+
+wdv:f251a9a7b5a83918ae84531e364cbaab a wikibase:TimeValue ;
+	wikibase:timeValue "1758-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdref:d8756d0b7aed1a288b498ded4b26ed70fab325a0 a wikibase:Reference ;
+	pr:P2306 wd:P740 ;
+	pr:P3452 wd:Q11253593 ;
+	pr:P5997 "https://www.wikidata.org/w/index.php?title=Q11253593&diff=1793861258&oldid=1787141195" .

@@ -1,0 +1,888 @@
+{
+  "contract_version": 1,
+  "future_local_config": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "description": "Configuration contract only. No backend, file loading, downloads or inference are implemented.",
+    "properties": {
+      "context_tokens": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "contract_version": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "cpu_threads": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "grammar_sha256": {
+        "type": "string"
+      },
+      "max_output_tokens": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "model_path": {
+        "type": "string"
+      },
+      "model_sha256": {
+        "type": "string"
+      },
+      "runtime_revision": {
+        "type": "string"
+      },
+      "timeout_ms": {
+        "format": "uint64",
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "contract_version",
+      "model_path",
+      "model_sha256",
+      "runtime_revision",
+      "grammar_sha256",
+      "cpu_threads",
+      "context_tokens",
+      "max_output_tokens",
+      "timeout_ms"
+    ],
+    "title": "FutureLocalConfig",
+    "type": "object"
+  },
+  "parser_input": {
+    "$defs": {
+      "Catalog": {
+        "properties": {
+          "digest": {
+            "type": "string"
+          },
+          "entries": {
+            "additionalProperties": {
+              "$ref": "#/$defs/Entry"
+            },
+            "type": "object"
+          },
+          "profiles": {
+            "additionalProperties": {
+              "additionalProperties": {
+                "$ref": "#/$defs/Profile"
+              },
+              "type": "object"
+            },
+            "type": "object"
+          },
+          "scope": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "snapshot_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "snapshot_id",
+          "scope",
+          "entries",
+          "profiles",
+          "digest"
+        ],
+        "type": "object"
+      },
+      "Entry": {
+        "properties": {
+          "graphs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "labels": {
+            "items": {
+              "$ref": "#/$defs/Label"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "roles": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "roles",
+          "labels",
+          "graphs"
+        ],
+        "type": "object"
+      },
+      "Label": {
+        "properties": {
+          "datatype": {
+            "type": "string"
+          },
+          "language": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text",
+          "datatype"
+        ],
+        "type": "object"
+      },
+      "Profile": {
+        "properties": {
+          "ill_typed": {
+            "type": "boolean"
+          },
+          "object_types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "object_types",
+          "ill_typed"
+        ],
+        "type": "object"
+      }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "properties": {
+      "catalog": {
+        "$ref": "#/$defs/Catalog"
+      },
+      "context_trust": {
+        "type": "string"
+      },
+      "question": {
+        "type": "string"
+      },
+      "version": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "version",
+      "question",
+      "catalog",
+      "context_trust"
+    ],
+    "title": "ParserRequest",
+    "type": "object"
+  },
+  "parser_output": {
+    "$defs": {
+      "Compare": {
+        "enum": [
+          "eq",
+          "ne",
+          "lt",
+          "le",
+          "gt",
+          "ge"
+        ],
+        "type": "string"
+      },
+      "Direction": {
+        "enum": [
+          "forward",
+          "reverse"
+        ],
+        "type": "string"
+      },
+      "Filter": {
+        "additionalProperties": false,
+        "properties": {
+          "op": {
+            "$ref": "#/$defs/Compare"
+          },
+          "value": {
+            "$ref": "#/$defs/Value"
+          },
+          "variable": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "variable",
+          "op",
+          "value"
+        ],
+        "type": "object"
+      },
+      "Having": {
+        "additionalProperties": false,
+        "properties": {
+          "alias": {
+            "type": "string"
+          },
+          "op": {
+            "$ref": "#/$defs/Compare"
+          },
+          "value": {
+            "format": "uint32",
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "alias",
+          "op",
+          "value"
+        ],
+        "type": "object"
+      },
+      "Node": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "variable",
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "name"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "iri": {
+                "type": "string"
+              },
+              "kind": {
+                "const": "iri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "iri"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "literal",
+                "type": "string"
+              },
+              "value": {
+                "$ref": "#/$defs/Value"
+              }
+            },
+            "required": [
+              "kind",
+              "value"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "Pattern": {
+        "additionalProperties": false,
+        "properties": {
+          "direction": {
+            "$ref": "#/$defs/Direction"
+          },
+          "from": {
+            "$ref": "#/$defs/Node"
+          },
+          "graph": {
+            "type": "string"
+          },
+          "predicate": {
+            "type": "string"
+          },
+          "to": {
+            "$ref": "#/$defs/Node"
+          }
+        },
+        "required": [
+          "graph",
+          "from",
+          "predicate",
+          "direction",
+          "to"
+        ],
+        "type": "object"
+      },
+      "Plan": {
+        "additionalProperties": false,
+        "properties": {
+          "filters": {
+            "items": {
+              "$ref": "#/$defs/Filter"
+            },
+            "type": "array"
+          },
+          "group_by": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "having": {
+            "items": {
+              "$ref": "#/$defs/Having"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "format": "uint32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "patterns": {
+            "items": {
+              "$ref": "#/$defs/Pattern"
+            },
+            "type": "array"
+          },
+          "projection": {
+            "items": {
+              "$ref": "#/$defs/Projection"
+            },
+            "type": "array"
+          },
+          "scope": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "snapshot_id": {
+            "type": "string"
+          },
+          "version": {
+            "format": "uint32",
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "version",
+          "snapshot_id",
+          "scope",
+          "patterns",
+          "filters",
+          "projection",
+          "group_by",
+          "having",
+          "limit"
+        ],
+        "type": "object"
+      },
+      "Projection": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "variable",
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "name"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "alias": {
+                "type": "string"
+              },
+              "kind": {
+                "const": "count_distinct",
+                "type": "string"
+              },
+              "variable": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "variable",
+              "alias"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "Proposal": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "plan": {
+                "$ref": "#/$defs/Plan"
+              },
+              "status": {
+                "const": "candidate",
+                "type": "string"
+              }
+            },
+            "required": [
+              "status",
+              "plan"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "type": "string"
+              },
+              "status": {
+                "const": "needs_clarification",
+                "type": "string"
+              }
+            },
+            "required": [
+              "status",
+              "reason"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "type": "string"
+              },
+              "status": {
+                "const": "unsupported",
+                "type": "string"
+              }
+            },
+            "required": [
+              "status",
+              "reason"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "status": {
+                "const": "parsing_error",
+                "type": "string"
+              }
+            },
+            "required": [
+              "status",
+              "code",
+              "message"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "Value": {
+        "additionalProperties": false,
+        "properties": {
+          "datatype": {
+            "type": "string"
+          },
+          "language": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lexical": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "lexical",
+          "datatype"
+        ],
+        "type": "object"
+      }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "proposal": {
+        "$ref": "#/$defs/Proposal"
+      },
+      "version": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "version",
+      "proposal"
+    ],
+    "title": "ParserResponse",
+    "type": "object"
+  },
+  "plan": {
+    "$defs": {
+      "Compare": {
+        "enum": [
+          "eq",
+          "ne",
+          "lt",
+          "le",
+          "gt",
+          "ge"
+        ],
+        "type": "string"
+      },
+      "Direction": {
+        "enum": [
+          "forward",
+          "reverse"
+        ],
+        "type": "string"
+      },
+      "Filter": {
+        "additionalProperties": false,
+        "properties": {
+          "op": {
+            "$ref": "#/$defs/Compare"
+          },
+          "value": {
+            "$ref": "#/$defs/Value"
+          },
+          "variable": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "variable",
+          "op",
+          "value"
+        ],
+        "type": "object"
+      },
+      "Having": {
+        "additionalProperties": false,
+        "properties": {
+          "alias": {
+            "type": "string"
+          },
+          "op": {
+            "$ref": "#/$defs/Compare"
+          },
+          "value": {
+            "format": "uint32",
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "alias",
+          "op",
+          "value"
+        ],
+        "type": "object"
+      },
+      "Node": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "variable",
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "name"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "iri": {
+                "type": "string"
+              },
+              "kind": {
+                "const": "iri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "iri"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "literal",
+                "type": "string"
+              },
+              "value": {
+                "$ref": "#/$defs/Value"
+              }
+            },
+            "required": [
+              "kind",
+              "value"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "Pattern": {
+        "additionalProperties": false,
+        "properties": {
+          "direction": {
+            "$ref": "#/$defs/Direction"
+          },
+          "from": {
+            "$ref": "#/$defs/Node"
+          },
+          "graph": {
+            "type": "string"
+          },
+          "predicate": {
+            "type": "string"
+          },
+          "to": {
+            "$ref": "#/$defs/Node"
+          }
+        },
+        "required": [
+          "graph",
+          "from",
+          "predicate",
+          "direction",
+          "to"
+        ],
+        "type": "object"
+      },
+      "Projection": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "variable",
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "name"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "alias": {
+                "type": "string"
+              },
+              "kind": {
+                "const": "count_distinct",
+                "type": "string"
+              },
+              "variable": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "variable",
+              "alias"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "Value": {
+        "additionalProperties": false,
+        "properties": {
+          "datatype": {
+            "type": "string"
+          },
+          "language": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lexical": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "lexical",
+          "datatype"
+        ],
+        "type": "object"
+      }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "filters": {
+        "items": {
+          "$ref": "#/$defs/Filter"
+        },
+        "type": "array"
+      },
+      "group_by": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "having": {
+        "items": {
+          "$ref": "#/$defs/Having"
+        },
+        "type": "array"
+      },
+      "limit": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "patterns": {
+        "items": {
+          "$ref": "#/$defs/Pattern"
+        },
+        "type": "array"
+      },
+      "projection": {
+        "items": {
+          "$ref": "#/$defs/Projection"
+        },
+        "type": "array"
+      },
+      "scope": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "snapshot_id": {
+        "type": "string"
+      },
+      "version": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "version",
+      "snapshot_id",
+      "scope",
+      "patterns",
+      "filters",
+      "projection",
+      "group_by",
+      "having",
+      "limit"
+    ],
+    "title": "Plan",
+    "type": "object"
+  },
+  "policy": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "graphs": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "max_evidence": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "max_rows": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "timeout_ms": {
+        "format": "uint64",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "version": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "version",
+      "graphs",
+      "max_rows",
+      "max_evidence",
+      "timeout_ms"
+    ],
+    "title": "Policy",
+    "type": "object"
+  }
+}

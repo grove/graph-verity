@@ -1,0 +1,2218 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix data: <https://www.wikidata.org/wiki/Special:EntityData/> .
+@prefix wds: <http://www.wikidata.org/entity/statement/> .
+@prefix wdref: <http://www.wikidata.org/reference/> .
+@prefix wdv: <http://www.wikidata.org/value/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix wdtn: <http://www.wikidata.org/prop/direct-normalized/> .
+@prefix p: <http://www.wikidata.org/prop/> .
+@prefix ps: <http://www.wikidata.org/prop/statement/> .
+@prefix psv: <http://www.wikidata.org/prop/statement/value/> .
+@prefix psn: <http://www.wikidata.org/prop/statement/value-normalized/> .
+@prefix pq: <http://www.wikidata.org/prop/qualifier/> .
+@prefix pqv: <http://www.wikidata.org/prop/qualifier/value/> .
+@prefix pqn: <http://www.wikidata.org/prop/qualifier/value-normalized/> .
+@prefix pr: <http://www.wikidata.org/prop/reference/> .
+@prefix prv: <http://www.wikidata.org/prop/reference/value/> .
+@prefix prn: <http://www.wikidata.org/prop/reference/value-normalized/> .
+@prefix wdno: <http://www.wikidata.org/prop/novalue/> .
+
+data:P131 a schema:Dataset ;
+	schema:about wd:P131 ;
+	cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	schema:softwareVersion "1.0.0" ;
+	schema:version "2555801353"^^xsd:integer ;
+	schema:dateModified "2026-10-11T06:19:40Z"^^xsd:dateTime ;
+	wikibase:statements "81"^^xsd:integer .
+
+wd:P131 a wikibase:Property ;
+	wdt:P1629 wd:Q56061 ;
+	wdt:P1647 wd:P361,
+		wd:P276 ;
+	wdt:P31 wd:Q18615777,
+		wd:Q18647519,
+		wd:Q18647515,
+		wd:Q70564278 ;
+	wdt:P1659 wd:P706,
+		wd:P276,
+		wd:P206,
+		wd:P150,
+		wd:P1001,
+		wd:P3842,
+		wd:P5353,
+		wd:P5607,
+		wd:P159,
+		wd:P669,
+		wd:P1383,
+		wd:P8138,
+		wd:P7938,
+		wd:P17,
+		wd:P3018,
+		wd:P10254,
+		wd:P7959 ;
+	wdt:P1855 wd:Q5083,
+		wd:Q243,
+		wd:Q15312,
+		wd:Q2001177 ;
+	wdt:P2559 "You only need to add the most local admin territory, but check that item also has a P131, with the next level, and so on."@en,
+		"Es sollte nur die unterste Verwaltungsebene angegeben werden, diese sollte aber per P131 mit der nächsthöheren Ebene verknüpft sein. Für statistische Gebietseinheiten P276 verwenden."@de,
+		"Anda hanya perlu menambahkan wilayah paling kecil, namun harap cek apakah butir tersebut juga mempunyai atribut P131 untuk tingkat wilayah berikutnya, dan begitu seterusnya"@id,
+		"Stačí vyplnit administrativní jednotku nejnižší vyšší úrovně, ujistěte se však, že i tato jednotka má řádně vyplněnu vlastnost P131,"@cs,
+		"이 속성을 추가할 땐 가장 낮은 단계의 행정 구역 항목만 추가하세요. 그 항목이 이 P131을 가지고 있는지, 계속 P131의 항목을 거슬러 올라가다보면 최상위 행정 구역 항목이 나오는지도 확인해주세요. 또한, 행정 구역이 아닌 값을 쓰고 싶거나, 사건이 일어난 장소를 쓰고 싶다면 '위치'(P276) 속성을 대신 써주세요."@ko,
+		"Solmente le entitate territorial administrative le plus local debe esser specificate, sed per favor verifica que ille entitate etiam ha un P131 que indica le proxime nivello superior."@ia,
+		"Alleen de laagste bestuurlijke eenheid toevoegen (meestal de gemeente); en ervoor zorg dragen dat dit item ook een P131 bevat zodat er een correcte reeks ontstaat. Gebruik P276 voor wijken en buurten en P706 voor eilanden, bergen, bossen en andere natuurlijke objecten in het landschap."@nl,
+		"您只需要添加管理相关项的最低级行政单位，但请确保作为值的项也拥有P131，且连接到上级行政单位项中。"@zh-hans,
+		"Wystarczy dodać jednostkę najniższego rzędu (miejscowość lub jej część), ale upewnij się, że posiada ona zdefiniowaną właściwość P131 (jednostkę wyższego rzędu)."@pl,
+		"Det er kun den laveste administrative enheten som skal angis. Men enheten over skal også ha verdi  for  P131."@nb,
+		"sólo se debe añadir la  entidad territorial más local, pero compruebe que ese elemento también tiene un P131, con el siguiente nivel, y así sucesivamente."@es,
+		"Vous avez seulement besoin d'ajouter l'entité administrative la plus locale possible et vérifier que celle-ci est bien elle aussi reliée à des entités plus grandes via la P131"@fr,
+		"só se precisa achegar a entidade territorial inmediatamente superior, pero é necesario verificar que o elemento co que se liga xa estea ben ligado á súa vez co nivel inmediatamente superior facendo uso da propiedade P131"@gl,
+		"Det er kun den laveste administrative enhed som skal angives. Men enheden over skal også have en værdi for P131."@da,
+		"您只需要添加管理相關項的最低級行政單位，但請確保作為值的項也擁有P131，且連結到上級行政單位項中。"@zh-hant,
+		"Add the most local admin territory/territories, but check that item also has a P131, with the next level, and so on."@en-gb,
+		"Додайте найбільш локальну адміністративну територію (території), але переконайтесь, що той елемент також має P131, і т.д."@uk,
+		"もっとも詳細な行政区画の項目を指定します。追加する必要があるのは最小の行政区画の項目のみですが、その項目にも「位置する行政区画（P131）」が使用され、その項目より大きな行政区画が存在することなどを確認してください。"@ja,
+		"Треба да ја ставите само најмесната административна единица, но осигурајте се дека предметот исто така има P131, која пак го има следниот степен погоре итн."@mk,
+		"Yalnızca en yerel yönetim bölgesini eklemeniz gerekir, ancak bu öğenin bir sonraki seviyeyle birlikte bir P131'e sahip olup olmadığını kontrol edin."@tr,
+		"حدد المستوى الإداري الأقرب للعنصر، وتأكد من ربط المستوى الإداري الأعلى التالي عبر الخاصية P131."@ar,
+		"Anda hanya perlu menambah wilayah pentadbiran yang paling tempatan tetapi periksa butir itu juga mempunyai P131, dengan peringkat berikutnya, dan seterusnya."@ms,
+		"Þú þarft aðeins að bæta við neðstu stjórnsýslueiningunni, en athugaðu hvort þessi hlutur sé líka með P131 á næsta stigi, og svo framvegis."@is ;
+	wdt:P2875 wd:Q23908987 ;
+	wdt:P3254 <https://www.wikidata.org/wiki/Wikidata:Property_proposal/Archive/2#P131> ;
+	wdt:P2302 wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21502838,
+		wd:Q21503247,
+		wd:Q21503247,
+		wd:Q21510865,
+		wd:Q52558054,
+		wd:Q21510851,
+		wd:Q21510864,
+		wd:Q53869507,
+		wd:Q52004125,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054,
+		wd:Q52558054 ;
+	wdt:P3734 wd:Q42533293 ;
+	wdt:P2235 <https://d-nb.info/standards/elementset/gnd#hierarchicalSuperiorOfPlaceOrGeographicName>,
+		<https://schema.org/containedInPlace> ;
+	wdt:P1628 <https://dati.beniculturali.it/cis/GovernamentalAdministrativeArea>,
+		<https://pcp-on-web.de/ontology#locationCorporation> ;
+	wdt:P7087 wd:Q66004864 ;
+	wdt:P2668 wd:Q24025284 ;
+	wdt:P10787 "P1069" ;
+	wdt:P1813 "territory"@en ;
+	wdt:P1696 wd:P150 ;
+	p:P1629 wds:P131-6f8c0e15-4eb5-931c-d467-aafea9497c84 .
+
+wds:P131-6f8c0e15-4eb5-931c-d467-aafea9497c84 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1629 wd:Q56061 .
+
+wd:P131 p:P1647 wds:P131-cee8dddf-46a5-9931-b179-b445c9661dc4 .
+
+wds:P131-cee8dddf-46a5-9931-b179-b445c9661dc4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1647 wd:P361 .
+
+wd:P131 p:P1647 wds:P131-d30c7a2c-4204-07cc-3814-bbeb08b3cc01 .
+
+wds:P131-d30c7a2c-4204-07cc-3814-bbeb08b3cc01 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1647 wd:P276 .
+
+wd:P131 p:P31 wds:P131-bbea2c26-4fbe-11ba-abba-08baf0ace03a .
+
+wds:P131-bbea2c26-4fbe-11ba-abba-08baf0ace03a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q18615777 .
+
+wd:P131 p:P31 wds:P131-c358903c-4732-e431-da41-666cb5abd315 .
+
+wds:P131-c358903c-4732-e431-da41-666cb5abd315 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q18647519 .
+
+wd:P131 p:P31 wds:P131-87056cb2-4d82-757c-fb18-484c1d181ac8 .
+
+wds:P131-87056cb2-4d82-757c-fb18-484c1d181ac8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q18647515 .
+
+wd:P131 p:P31 wds:P131-57B682F9-5CA1-44B5-9CD3-9FA8377885A9 .
+
+wds:P131-57B682F9-5CA1-44B5-9CD3-9FA8377885A9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q70564278 .
+
+wd:P131 p:P1659 wds:P131-f045e5d3-4491-47a7-9343-7d8119b79c77 .
+
+wds:P131-f045e5d3-4491-47a7-9343-7d8119b79c77 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P706 .
+
+wd:P131 p:P1659 wds:P131-b653ea09-4708-7816-eeb3-0c7b327efbdc .
+
+wds:P131-b653ea09-4708-7816-eeb3-0c7b327efbdc a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P276 .
+
+wd:P131 p:P1659 wds:P131-a3a66d3c-4c84-8afd-6109-f5169d605864 .
+
+wds:P131-a3a66d3c-4c84-8afd-6109-f5169d605864 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P206 .
+
+wd:P131 p:P1659 wds:P131-64fac961-4297-05ad-c9be-a533256a3cff .
+
+wds:P131-64fac961-4297-05ad-c9be-a533256a3cff a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P150 .
+
+wd:P131 p:P1659 wds:P131-5314503e-4857-2ca5-71a0-9f08a4b29c3c .
+
+wds:P131-5314503e-4857-2ca5-71a0-9f08a4b29c3c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P1001 .
+
+wd:P131 p:P1659 wds:P131-a1e0b7cf-4089-9a77-cae3-318559054579 .
+
+wds:P131-a1e0b7cf-4089-9a77-cae3-318559054579 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P3842 .
+
+wd:P131 p:P1659 wds:P131-8fab15d7-46ca-35fe-a78e-5313d5bd8642 .
+
+wds:P131-8fab15d7-46ca-35fe-a78e-5313d5bd8642 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P5353 .
+
+wd:P131 p:P1659 wds:P131-3dc46f12-4485-8db7-e859-fa22eefb73c1 .
+
+wds:P131-3dc46f12-4485-8db7-e859-fa22eefb73c1 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P5607 .
+
+wd:P131 p:P1659 wds:P131-4b06af21-4542-f011-5de4-6d3d0e63bc9d .
+
+wds:P131-4b06af21-4542-f011-5de4-6d3d0e63bc9d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P159 .
+
+wd:P131 p:P1659 wds:P131-06de674c-4b96-851b-81bc-7b141ca7db59 .
+
+wds:P131-06de674c-4b96-851b-81bc-7b141ca7db59 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P669 .
+
+wd:P131 p:P1659 wds:P131-a2c6d88a-4f77-8879-96ed-926515b38dd7 .
+
+wds:P131-a2c6d88a-4f77-8879-96ed-926515b38dd7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P1383 .
+
+wd:P131 p:P1659 wds:P131-a51eebfe-4f21-828f-808f-d55668e8d3ee .
+
+wds:P131-a51eebfe-4f21-828f-808f-d55668e8d3ee a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P8138 .
+
+wd:P131 p:P1659 wds:P131-ecc56992-4331-a75a-c349-5a00419dbc2e .
+
+wds:P131-ecc56992-4331-a75a-c349-5a00419dbc2e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P7938 .
+
+wd:P131 p:P1659 wds:P131-89f6f359-40fd-4433-df7d-b64a6ed84315 .
+
+wds:P131-89f6f359-40fd-4433-df7d-b64a6ed84315 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P17 .
+
+wd:P131 p:P1659 wds:P131-030e5158-4642-780e-884b-7bf148a77352 .
+
+wds:P131-030e5158-4642-780e-884b-7bf148a77352 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P3018 .
+
+wd:P131 p:P1659 wds:P131-5215a544-4c86-dffe-b2ed-07678c66aa4c .
+
+wds:P131-5215a544-4c86-dffe-b2ed-07678c66aa4c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P10254 .
+
+wd:P131 p:P1659 wds:P131-AA23606B-BE54-431F-AFFD-70AA5C089673 .
+
+wds:P131-AA23606B-BE54-431F-AFFD-70AA5C089673 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1659 wd:P7959 .
+
+wd:P131 p:P1855 wds:P131-33804945-45b4-8132-65aa-d703a7b4dbc6 .
+
+wds:P131-33804945-45b4-8132-65aa-d703a7b4dbc6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q5083 ;
+	pq:P131 wd:Q108861 .
+
+wd:P131 p:P1855 wds:P131-52935663-44e2-d638-edcb-588271e0ed81 .
+
+wds:P131-52935663-44e2-d638-edcb-588271e0ed81 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q243 ;
+	pq:P131 wd:Q259463 .
+
+wd:P131 p:P1855 wds:P131-9aa9230a-4316-6b5c-ef17-3978e20aa08e .
+
+wds:P131-9aa9230a-4316-6b5c-ef17-3978e20aa08e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q15312 ;
+	pq:P131 wd:Q64011,
+		wd:Q70716 .
+
+wd:P131 p:P1855 wds:P131-98401cdf-472a-c527-fffb-4b60e887c4c7 .
+
+wds:P131-98401cdf-472a-c527-fffb-4b60e887c4c7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1855 wd:Q2001177 ;
+	pq:P131 wd:Q5083 .
+
+wd:P131 p:P2559 wds:P131-40c75a0d-4e12-52ac-8684-b03713162bc1 .
+
+wds:P131-40c75a0d-4e12-52ac-8684-b03713162bc1 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "You only need to add the most local admin territory, but check that item also has a P131, with the next level, and so on."@en .
+
+wd:P131 p:P2559 wds:P131-f7a52607-4b99-141d-061b-0d2913abcbe6 .
+
+wds:P131-f7a52607-4b99-141d-061b-0d2913abcbe6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Es sollte nur die unterste Verwaltungsebene angegeben werden, diese sollte aber per P131 mit der nächsthöheren Ebene verknüpft sein. Für statistische Gebietseinheiten P276 verwenden."@de .
+
+wd:P131 p:P2559 wds:P131-de1fc792-4042-db73-2a88-28559caa39ff .
+
+wds:P131-de1fc792-4042-db73-2a88-28559caa39ff a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Anda hanya perlu menambahkan wilayah paling kecil, namun harap cek apakah butir tersebut juga mempunyai atribut P131 untuk tingkat wilayah berikutnya, dan begitu seterusnya"@id .
+
+wd:P131 p:P2559 wds:P131-f1435341-400a-0713-72c2-eb58fc7a77a7 .
+
+wds:P131-f1435341-400a-0713-72c2-eb58fc7a77a7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Stačí vyplnit administrativní jednotku nejnižší vyšší úrovně, ujistěte se však, že i tato jednotka má řádně vyplněnu vlastnost P131,"@cs .
+
+wd:P131 p:P2559 wds:P131-c1c20a75-47a7-a3ec-3974-fafa6aca5e5b .
+
+wds:P131-c1c20a75-47a7-a3ec-3974-fafa6aca5e5b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "이 속성을 추가할 땐 가장 낮은 단계의 행정 구역 항목만 추가하세요. 그 항목이 이 P131을 가지고 있는지, 계속 P131의 항목을 거슬러 올라가다보면 최상위 행정 구역 항목이 나오는지도 확인해주세요. 또한, 행정 구역이 아닌 값을 쓰고 싶거나, 사건이 일어난 장소를 쓰고 싶다면 '위치'(P276) 속성을 대신 써주세요."@ko .
+
+wd:P131 p:P2559 wds:P131-800c1130-461c-2161-bde2-e1096982a888 .
+
+wds:P131-800c1130-461c-2161-bde2-e1096982a888 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Solmente le entitate territorial administrative le plus local debe esser specificate, sed per favor verifica que ille entitate etiam ha un P131 que indica le proxime nivello superior."@ia .
+
+wd:P131 p:P2559 wds:P131-c4bb7b3e-4ebc-3007-e8a2-659280dd08b6 .
+
+wds:P131-c4bb7b3e-4ebc-3007-e8a2-659280dd08b6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Alleen de laagste bestuurlijke eenheid toevoegen (meestal de gemeente); en ervoor zorg dragen dat dit item ook een P131 bevat zodat er een correcte reeks ontstaat. Gebruik P276 voor wijken en buurten en P706 voor eilanden, bergen, bossen en andere natuurlijke objecten in het landschap."@nl .
+
+wd:P131 p:P2559 wds:P131-2aef10cb-4c50-6aea-22c1-d2587b5f36b0 .
+
+wds:P131-2aef10cb-4c50-6aea-22c1-d2587b5f36b0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "您只需要添加管理相关项的最低级行政单位，但请确保作为值的项也拥有P131，且连接到上级行政单位项中。"@zh-hans .
+
+wd:P131 p:P2559 wds:P131-5a617971-41d0-23e3-ce30-20ccab90d828 .
+
+wds:P131-5a617971-41d0-23e3-ce30-20ccab90d828 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Wystarczy dodać jednostkę najniższego rzędu (miejscowość lub jej część), ale upewnij się, że posiada ona zdefiniowaną właściwość P131 (jednostkę wyższego rzędu)."@pl .
+
+wd:P131 p:P2559 wds:P131-ca1194a2-403d-7d86-46c4-2b9cb5578336 .
+
+wds:P131-ca1194a2-403d-7d86-46c4-2b9cb5578336 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Det er kun den laveste administrative enheten som skal angis. Men enheten over skal også ha verdi  for  P131."@nb .
+
+wd:P131 p:P2559 wds:P131-6c2358c0-4712-f678-f5f6-01c3cc7b4de4 .
+
+wds:P131-6c2358c0-4712-f678-f5f6-01c3cc7b4de4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "sólo se debe añadir la  entidad territorial más local, pero compruebe que ese elemento también tiene un P131, con el siguiente nivel, y así sucesivamente."@es .
+
+wd:P131 p:P2559 wds:P131-fb900e4d-4a29-feea-1c3d-1a2a590c1078 .
+
+wds:P131-fb900e4d-4a29-feea-1c3d-1a2a590c1078 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Vous avez seulement besoin d'ajouter l'entité administrative la plus locale possible et vérifier que celle-ci est bien elle aussi reliée à des entités plus grandes via la P131"@fr .
+
+wd:P131 p:P2559 wds:P131-7b0d766e-4a2e-0e39-6643-2e603007dbef .
+
+wds:P131-7b0d766e-4a2e-0e39-6643-2e603007dbef a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "só se precisa achegar a entidade territorial inmediatamente superior, pero é necesario verificar que o elemento co que se liga xa estea ben ligado á súa vez co nivel inmediatamente superior facendo uso da propiedade P131"@gl .
+
+wd:P131 p:P2559 wds:P131-5293f4ea-4c38-ecd7-8c39-5eab122631a1 .
+
+wds:P131-5293f4ea-4c38-ecd7-8c39-5eab122631a1 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Det er kun den laveste administrative enhed som skal angives. Men enheden over skal også have en værdi for P131."@da .
+
+wd:P131 p:P2559 wds:P131-50cd7691-4fe4-ab27-19dd-6dfdcc782ca3 .
+
+wds:P131-50cd7691-4fe4-ab27-19dd-6dfdcc782ca3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "您只需要添加管理相關項的最低級行政單位，但請確保作為值的項也擁有P131，且連結到上級行政單位項中。"@zh-hant .
+
+wd:P131 p:P2559 wds:P131-6220a7c6-45b3-97d8-cdd3-f040940400ef .
+
+wds:P131-6220a7c6-45b3-97d8-cdd3-f040940400ef a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Add the most local admin territory/territories, but check that item also has a P131, with the next level, and so on."@en-gb .
+
+wd:P131 p:P2559 wds:P131-2fca4008-45b9-4a1d-e148-05d43472bd83 .
+
+wds:P131-2fca4008-45b9-4a1d-e148-05d43472bd83 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Додайте найбільш локальну адміністративну територію (території), але переконайтесь, що той елемент також має P131, і т.д."@uk .
+
+wd:P131 p:P2559 wds:P131-5ff92bb5-4353-cb2f-e99b-1a860c50d750 .
+
+wds:P131-5ff92bb5-4353-cb2f-e99b-1a860c50d750 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "もっとも詳細な行政区画の項目を指定します。追加する必要があるのは最小の行政区画の項目のみですが、その項目にも「位置する行政区画（P131）」が使用され、その項目より大きな行政区画が存在することなどを確認してください。"@ja .
+
+wd:P131 p:P2559 wds:P131-79d40d83-4b01-e53d-2d78-8a95ddbd2f4e .
+
+wds:P131-79d40d83-4b01-e53d-2d78-8a95ddbd2f4e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Треба да ја ставите само најмесната административна единица, но осигурајте се дека предметот исто така има P131, која пак го има следниот степен погоре итн."@mk .
+
+wd:P131 p:P2559 wds:P131-6420bf5d-4984-2ea8-434d-2dd48bacdfe8 .
+
+wds:P131-6420bf5d-4984-2ea8-434d-2dd48bacdfe8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Yalnızca en yerel yönetim bölgesini eklemeniz gerekir, ancak bu öğenin bir sonraki seviyeyle birlikte bir P131'e sahip olup olmadığını kontrol edin."@tr .
+
+wd:P131 p:P2559 wds:P131-a0be85d5-40b5-b54d-37c9-b226ea3e6106 .
+
+wds:P131-a0be85d5-40b5-b54d-37c9-b226ea3e6106 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "حدد المستوى الإداري الأقرب للعنصر، وتأكد من ربط المستوى الإداري الأعلى التالي عبر الخاصية P131."@ar .
+
+wd:P131 p:P2559 wds:P131-f371155f-4b3c-fb16-ef2a-39d443ca20ae .
+
+wds:P131-f371155f-4b3c-fb16-ef2a-39d443ca20ae a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Anda hanya perlu menambah wilayah pentadbiran yang paling tempatan tetapi periksa butir itu juga mempunyai P131, dengan peringkat berikutnya, dan seterusnya."@ms .
+
+wd:P131 p:P2559 wds:P131-5c87554d-4c3e-821b-25c7-ceccccb5da97 .
+
+wds:P131-5c87554d-4c3e-821b-25c7-ceccccb5da97 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2559 "Þú þarft aðeins að bæta við neðstu stjórnsýslueiningunni, en athugaðu hvort þessi hlutur sé líka með P131 á næsta stigi, og svo framvegis."@is .
+
+wd:P131 p:P2875 wds:P131-708f8c6e-4733-fa6c-8838-f1fd672922b5 .
+
+wds:P131-708f8c6e-4733-fa6c-8838-f1fd672922b5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2875 wd:Q23908987 .
+
+wd:P131 p:P3254 wds:P131-672413CC-2C74-4E00-99D3-9EDDC3F67175 .
+
+wds:P131-672413CC-2C74-4E00-99D3-9EDDC3F67175 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3254 <https://www.wikidata.org/wiki/Wikidata:Property_proposal/Archive/2#P131> .
+
+wd:P131 p:P2302 wds:P131-DDCB8259-23E3-4319-9622-C0CEE0D4A0FF .
+
+wds:P131-DDCB8259-23E3-4319-9622-C0CEE0D4A0FF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P31 ;
+	pq:P2305 wd:Q5 .
+
+wd:P131 p:P2302 wds:P131-E30BC809-2447-40BF-A869-4A7D0B74274C .
+
+wds:P131-E30BC809-2447-40BF-A869-4A7D0B74274C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P31 ;
+	pq:P2305 wd:Q4167410 ;
+	pq:P2316 wd:Q21502408 .
+
+wd:P131 p:P2302 wds:P131-845D4F2A-AB77-4E4B-B949-090F36C7445E .
+
+wds:P131-845D4F2A-AB77-4E4B-B949-090F36C7445E a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21502838 ;
+	pq:P2306 wd:P31 ;
+	pq:P2305 wd:Q4167836,
+		wd:Q11266439,
+		wd:Q15184295 .
+
+wd:P131 p:P2302 wds:P131-2E2A3441-CD76-4E90-BC11-93BC8FDDB3F5 .
+
+wds:P131-2E2A3441-CD76-4E90-BC11-93BC8FDDB3F5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21503247 ;
+	pq:P2306 wd:P31 ;
+	pq:P2316 wd:Q62026391 .
+
+wd:P131 p:P2302 wds:P131-AE5223D3-C7F4-4A44-9B47-E24A088A649C .
+
+wds:P131-AE5223D3-C7F4-4A44-9B47-E24A088A649C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21503247 ;
+	pq:P2306 wd:P17 ;
+	pq:P2316 wd:Q62026391 .
+
+wd:P131 p:P2302 wds:P131-04FD905D-CD82-40BC-A0AC-112054B38377 .
+
+wds:P131-04FD905D-CD82-40BC-A0AC-112054B38377 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510865 ;
+	pq:P2308 wd:Q56061,
+		wd:Q64034456,
+		wd:Q30070324,
+		wd:Q15617994,
+		wd:Q245016,
+		wd:Q7275,
+		wd:Q19953632,
+		wd:Q269528,
+		wd:Q852446,
+		wd:Q15642541 ;
+	pq:P2309 wd:Q30208840 .
+
+wd:P131 p:P2302 wds:P131-B19F169E-1636-44F1-936C-130004127018 .
+
+wds:P131-B19F169E-1636-44F1-936C-130004127018 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q2,
+		wd:Q634099 ;
+	pq:P2316 wd:Q21502408 .
+
+wd:P131 p:P2302 wds:P131-49c6ce7d-4e6c-36cc-22e9-6842950bb713 .
+
+wds:P131-49c6ce7d-4e6c-36cc-22e9-6842950bb713 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510851 ;
+	pq:P2306 wd:P580,
+		wd:P582,
+		wd:P92,
+		wd:P3831,
+		wd:P518,
+		wd:P1310,
+		wd:P2241,
+		wd:P276,
+		wd:P3680,
+		wd:P585,
+		wd:P5102,
+		wd:P1107,
+		wd:P828,
+		wd:P654,
+		wd:P7452,
+		wd:P1011,
+		wd:P4856,
+		wd:P6529,
+		wd:P2868,
+		wd:P805,
+		wd:P8555,
+		wd:P1319,
+		wd:P8554,
+		wd:P1326,
+		wd:P1012,
+		wd:P1480,
+		wd:P1013,
+		wd:P1534,
+		wd:P10229,
+		wd:P281,
+		wd:P131,
+		wd:P17,
+		wd:P2043,
+		wd:P2046,
+		wd:P6375,
+		wd:P1001,
+		wd:P669,
+		wd:P670,
+		wd:P708,
+		wd:P12506 ;
+	prov:wasDerivedFrom wdref:995de0af3f3ed7f05c0852fb905dc7211d2a7cc0 .
+
+wd:P131 p:P2302 wds:P131-A425F94E-C88E-4F26-BDF6-0EDE4DF02217 .
+
+wds:P131-A425F94E-C88E-4F26-BDF6-0EDE4DF02217 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q21510864 ;
+	pq:P2306 wd:P17 ;
+	pq:P2303 wd:Q55182671 .
+
+wd:P131 p:P2302 wds:P131-32b653e2-4c6f-3f43-29c3-cb9f68dd360b .
+
+wds:P131-32b653e2-4c6f-3f43-29c3-cb9f68dd360b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q53869507 ;
+	pq:P5314 wd:Q54828448,
+		wd:Q54828449 .
+
+wd:P131 p:P2302 wds:P131-b447b990-4caa-bb14-d38c-9ca71904019a .
+
+wds:P131-b447b990-4caa-bb14-d38c-9ca71904019a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52004125 ;
+	pq:P2305 wd:Q29934200 .
+
+wd:P131 p:P2302 wds:P131-d4a0cda1-4f2e-74ea-2008-61d71eb47a0a .
+
+wds:P131-d4a0cda1-4f2e-74ea-2008-61d71eb47a0a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q41304,
+		wd:Q7318,
+		wd:Q43287,
+		wd:Q518617 ;
+	pq:P6607 "Use Q1206012 instead"@en,
+		"使用 Q1206012 代替"@zh,
+		"代わりにQ1206012を使用してください。"@ja ;
+	pq:P9729 wd:Q1206012 .
+
+wd:P131 p:P2302 wds:P131-65736660-179F-448E-8342-5CB7D45E9F8D .
+
+wds:P131-65736660-179F-448E-8342-5CB7D45E9F8D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q713750 ;
+	pq:P9729 wd:Q183 .
+
+wd:P131 p:P2302 wds:P131-166d77b8-43e7-d130-c859-2a44d0e90ec8 .
+
+wds:P131-166d77b8-43e7-d130-c859-2a44d0e90ec8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q12548 ;
+	pq:P6607 "please use \"instance of\" (P31) with  \"state in the Holy Roman Empire\"(Q26830017) instead"@en,
+		"benutze stattdessen bitte  \"ist ein(e)\" (P31) mit \"Territorium im Heiligen Römischen Reich\" (Q26830017)"@de,
+		"使用（P31）和 Q26830017 代替"@zh,
+		"代わりに「分類（P31）」の値にQ26830017を設定してください。"@ja .
+
+wd:P131 p:P2302 wds:P131-84273b91-4061-0c03-24e3-9b30616d24fe .
+
+wds:P131-84273b91-4061-0c03-24e3-9b30616d24fe a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q154741 ;
+	pq:P6607 "use \"instance of\" (P31) with Q26879769 instead"@en,
+		"benutze stattdessen \"ist ein(e)\" (P31) mit Q26879769"@de,
+		"请使用“是……的实例”（P31）属性，并将其值设置为 Q26879769。"@zh,
+		"代わりに「分類（P31）」の値にQ26879769を設定してください。"@ja .
+
+wd:P131 p:P2302 wds:P131-d37b68a2-4e79-3e8b-5ebf-a3ab06b626db .
+
+wds:P131-d37b68a2-4e79-3e8b-5ebf-a3ab06b626db a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q151624 ;
+	pq:P6607 "use \"instance of\" (P31) with Q113136497 instead"@en,
+		"benutze stattdessen \"ist ein(e)\" (P31) mit Q113136497"@de,
+		"请使用“instance of”（P31）属性，并将其值设置为 Q113136497。"@zh,
+		"代わりに「分類（P31）」の値にQ113136497を設定してください。"@ja .
+
+wd:P131 p:P2302 wds:P131-14294b53-4f87-5faf-ed85-71cd04114e7a .
+
+wds:P131-14294b53-4f87-5faf-ed85-71cd04114e7a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q650489 ;
+	pq:P9729 wd:Q131545583,
+		wd:Q20011161 .
+
+wd:P131 p:P2302 wds:P131-2d8fca14-4104-08d3-97b1-7a29787fa220 .
+
+wds:P131-2d8fca14-4104-08d3-97b1-7a29787fa220 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2302 wd:Q52558054 ;
+	pq:P2305 wd:Q219825,
+		wd:Q219817,
+		wd:Q877619 ;
+	pq:P9729 wd:Q58296 .
+
+wd:P131 p:P3734 wds:P131-B2BF5856-0C26-4D49-A6A4-F60EC4083820 .
+
+wds:P131-B2BF5856-0C26-4D49-A6A4-F60EC4083820 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3734 wd:Q42533293 .
+
+wd:P131 p:P2235 wds:P131-9e3315df-4bd1-d4aa-3192-21731b516c1f .
+
+wds:P131-9e3315df-4bd1-d4aa-3192-21731b516c1f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2235 <https://d-nb.info/standards/elementset/gnd#hierarchicalSuperiorOfPlaceOrGeographicName> .
+
+wd:P131 p:P2235 wds:P131-cf533c3e-4ec6-2825-92c2-ffdfd8feeef8 .
+
+wds:P131-cf533c3e-4ec6-2825-92c2-ffdfd8feeef8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2235 <https://schema.org/containedInPlace> .
+
+wd:P131 p:P1628 wds:P131-4b65988c-4afc-4fea-ac39-62c5ccdd3c55 .
+
+wds:P131-4b65988c-4afc-4fea-ac39-62c5ccdd3c55 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <https://dati.beniculturali.it/cis/GovernamentalAdministrativeArea> .
+
+wd:P131 p:P1628 wds:P131-bd6f3d0b-4ea5-f758-ddd8-f00155ff5629 .
+
+wds:P131-bd6f3d0b-4ea5-f758-ddd8-f00155ff5629 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1628 <https://pcp-on-web.de/ontology#locationCorporation> .
+
+wd:P131 p:P7087 wds:P131-de8c8505-4ff4-77af-a6d2-dc6b4da944aa .
+
+wds:P131-de8c8505-4ff4-77af-a6d2-dc6b4da944aa a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P7087 wd:Q66004864 .
+
+wd:P131 p:P2668 wds:P131-66c7b5fa-4d5b-78f5-3c58-f9449f5bfbed .
+
+wds:P131-66c7b5fa-4d5b-78f5-3c58-f9449f5bfbed a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2668 wd:Q24025284 .
+
+wd:P131 p:P10787 wds:P131-d2f4d808-4d9f-edf0-7095-ff15c649a780 .
+
+wds:P131-d2f4d808-4d9f-edf0-7095-ff15c649a780 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P10787 "P1069" .
+
+wd:P131 p:P1813 wds:P131-5c0cb189-4011-4ec5-39fc-cd6fe9a98ed9 .
+
+wds:P131-5c0cb189-4011-4ec5-39fc-cd6fe9a98ed9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1813 "territory"@en .
+
+wd:P131 p:P1696 wds:P131-34307110-4ae7-9413-4f75-a5346a692b61 .
+
+wds:P131-34307110-4ae7-9413-4f75-a5346a692b61 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1696 wd:P150 .
+
+wd:P131 rdfs:label "localisation administrative"@fr ;
+	skos:prefLabel "localisation administrative"@fr ;
+	schema:name "localisation administrative"@fr ;
+	rdfs:label "located in the administrative territorial entity"@en ;
+	skos:prefLabel "located in the administrative territorial entity"@en ;
+	schema:name "located in the administrative territorial entity"@en ;
+	rdfs:label "административно-территориальная единица"@ru ;
+	skos:prefLabel "административно-территориальная единица"@ru ;
+	schema:name "административно-территориальная единица"@ru ;
+	rdfs:label "位置する行政区画"@ja ;
+	skos:prefLabel "位置する行政区画"@ja ;
+	schema:name "位置する行政区画"@ja ;
+	rdfs:label "nachází se v administrativní jednotce"@cs ;
+	skos:prefLabel "nachází se v administrativní jednotce"@cs ;
+	schema:name "nachází se v administrativní jednotce"@cs ;
+	rdfs:label "unità amministrativa in cui è situato"@it ;
+	skos:prefLabel "unità amministrativa in cui è situato"@it ;
+	schema:name "unità amministrativa in cui è situato"@it ;
+	rdfs:label "liegt in der Verwaltungseinheit"@de ;
+	skos:prefLabel "liegt in der Verwaltungseinheit"@de ;
+	schema:name "liegt in der Verwaltungseinheit"@de ;
+	rdfs:label "liegt in"@de-at ;
+	skos:prefLabel "liegt in"@de-at ;
+	schema:name "liegt in"@de-at ;
+	rdfs:label "localizado na unidade administrativa"@pt-br ;
+	skos:prefLabel "localizado na unidade administrativa"@pt-br ;
+	schema:name "localizado na unidade administrativa"@pt-br ;
+	rdfs:label "다음 행정구역에 위치함"@ko ;
+	skos:prefLabel "다음 행정구역에 위치함"@ko ;
+	schema:name "다음 행정구역에 위치함"@ko ;
+	rdfs:label "localitzat a l'entitat territorial administrativa"@ca ;
+	skos:prefLabel "localitzat a l'entitat territorial administrativa"@ca ;
+	schema:name "localitzat a l'entitat territorial administrativa"@ca ;
+	rdfs:label "ligger i administrativ enhet"@nb ;
+	skos:prefLabel "ligger i administrativ enhet"@nb ;
+	schema:name "ligger i administrativ enhet"@nb ;
+	rdfs:label "adda iti administratibo a paset"@ilo ;
+	skos:prefLabel "adda iti administratibo a paset"@ilo ;
+	schema:name "adda iti administratibo a paset"@ilo ;
+	rdfs:label "موقعیت در تقسیمات کشوری"@fa ;
+	skos:prefLabel "موقعیت در تقسیمات کشوری"@fa ;
+	schema:name "موقعیت در تقسیمات کشوری"@fa ;
+	rdfs:label "адміністрацыйная адзінка"@be-tarask ;
+	skos:prefLabel "адміністрацыйная адзінка"@be-tarask ;
+	schema:name "адміністрацыйная адзінка"@be-tarask ;
+	rdfs:label "situado en la entidad territorial administrativa"@es ;
+	skos:prefLabel "situado en la entidad territorial administrativa"@es ;
+	schema:name "situado en la entidad territorial administrativa"@es ;
+	rdfs:label "адміністративна одиниця"@uk ;
+	skos:prefLabel "адміністративна одиниця"@uk ;
+	schema:name "адміністративна одиниця"@uk ;
+	rdfs:label "所在行政領土實體"@zh-hant ;
+	skos:prefLabel "所在行政領土實體"@zh-hant ;
+	schema:name "所在行政領土實體"@zh-hant ;
+	rdfs:label "所在行政领土实体"@zh-hans ;
+	skos:prefLabel "所在行政领土实体"@zh-hans ;
+	schema:name "所在行政领土实体"@zh-hans ;
+	rdfs:label "位于行政区划实体内"@zh ;
+	skos:prefLabel "位于行政区划实体内"@zh ;
+	schema:name "位于行政区划实体内"@zh ;
+	rdfs:label "atrodas administratīvajā vienībā"@lv ;
+	skos:prefLabel "atrodas administratīvajā vienībā"@lv ;
+	schema:name "atrodas administratīvajā vienībā"@lv ;
+	rdfs:label "יחידה מנהלית"@he ;
+	skos:prefLabel "יחידה מנהלית"@he ;
+	schema:name "יחידה מנהלית"@he ;
+	rdfs:label "gelegen in bestuurlijke eenheid"@nl ;
+	skos:prefLabel "gelegen in bestuurlijke eenheid"@nl ;
+	schema:name "gelegen in bestuurlijke eenheid"@nl ;
+	rdfs:label "localizado na unidade administrativa"@pt ;
+	skos:prefLabel "localizado na unidade administrativa"@pt ;
+	schema:name "localizado na unidade administrativa"@pt ;
+	rdfs:label "nalazi se u administrativnoj prostornoj jedinici"@hr ;
+	skos:prefLabel "nalazi se u administrativnoj prostornoj jedinici"@hr ;
+	schema:name "nalazi se u administrativnoj prostornoj jedinici"@hr ;
+	rdfs:label "у адміністрацыйнай адзінцы"@be ;
+	skos:prefLabel "у адміністрацыйнай адзінцы"@be ;
+	schema:name "у адміністрацыйнай адзінцы"@be ;
+	rdfs:label "procuratio superior"@la ;
+	skos:prefLabel "procuratio superior"@la ;
+	schema:name "procuratio superior"@la ;
+	rdfs:label "liggt in de Verwaltenseenheit"@nds ;
+	skos:prefLabel "liggt in de Verwaltenseenheit"@nds ;
+	schema:name "liggt in de Verwaltenseenheit"@nds ;
+	rdfs:label "situat în unitatea administrativă"@ro ;
+	skos:prefLabel "situat în unitatea administrativă"@ro ;
+	schema:name "situat în unitatea administrativă"@ro ;
+	rdfs:label "sijaitsee hallinnollisessa alueyksikössä"@fi ;
+	skos:prefLabel "sijaitsee hallinnollisessa alueyksikössä"@fi ;
+	schema:name "sijaitsee hallinnollisessa alueyksikössä"@fi ;
+	rdfs:label "nằm trong phạm vi của khu vực hành chính"@vi ;
+	skos:prefLabel "nằm trong phạm vi của khu vực hành chính"@vi ;
+	schema:name "nằm trong phạm vi của khu vực hành chính"@vi ;
+	rdfs:label "inom det administrativa området"@sv ;
+	skos:prefLabel "inom det administrativa området"@sv ;
+	schema:name "inom det administrativa området"@sv ;
+	rdfs:label "تقع في التقسيم الإداري"@ar ;
+	skos:prefLabel "تقع في التقسيم الإداري"@ar ;
+	schema:name "تقع في التقسيم الإداري"@ar ;
+	rdfs:label "ligg i administrativ eining"@nn ;
+	skos:prefLabel "ligg i administrativ eining"@nn ;
+	schema:name "ligg i administrativ eining"@nn ;
+	rdfs:label "terletak di daerah administratif"@id ;
+	skos:prefLabel "terletak di daerah administratif"@id ;
+	schema:name "terletak di daerah administratif"@id ;
+	rdfs:label "tingkek administratif"@min ;
+	skos:prefLabel "tingkek administratif"@min ;
+	schema:name "tingkek administratif"@min ;
+	rdfs:label "közigazgatási egység, ahol található"@hu ;
+	skos:prefLabel "közigazgatási egység, ahol található"@hu ;
+	schema:name "közigazgatási egység, ahol található"@hu ;
+	rdfs:label "управно-територијална јединица"@sr ;
+	skos:prefLabel "управно-територијална јединица"@sr ;
+	schema:name "управно-територијална јединица"@sr ;
+	rdfs:label "所在行政领土实体"@zh-cn ;
+	skos:prefLabel "所在行政领土实体"@zh-cn ;
+	schema:name "所在行政领土实体"@zh-cn ;
+	rdfs:label "znajduje się w jednostce administracyjnej"@pl ;
+	skos:prefLabel "znajduje się w jednostce administracyjnej"@pl ;
+	schema:name "znajduje się w jednostce administracyjnej"@pl ;
+	rdfs:label "所在行政領土實體"@zh-tw ;
+	skos:prefLabel "所在行政領土實體"@zh-tw ;
+	schema:name "所在行政領土實體"@zh-tw ;
+	rdfs:label "се наоѓа во"@mk ;
+	skos:prefLabel "се наоѓа во"@mk ;
+	schema:name "се наоѓа во"@mk ;
+	rdfs:label "βρίσκεται στη διοικητική οντότητα"@el ;
+	skos:prefLabel "βρίσκεται στη διοικητική οντότητα"@el ;
+	schema:name "βρίσκεται στη διοικητική οντότητα"@el ;
+	rdfs:label "geleë in administratiewe eenheid"@af ;
+	skos:prefLabel "geleë in administratiewe eenheid"@af ;
+	schema:name "geleë in administratiewe eenheid"@af ;
+	rdfs:label "მდებარეობს ადმინისტრაციულ ტერიტორიულ ერთეულში"@ka ;
+	skos:prefLabel "მდებარეობს ადმინისტრაციულ ტერიტორიულ ერთეულში"@ka ;
+	schema:name "მდებარეობს ადმინისტრაციულ ტერიტორიულ ერთეულში"@ka ;
+	rdfs:label "beliggende i det administrative område"@da ;
+	skos:prefLabel "beliggende i det administrative område"@da ;
+	schema:name "beliggende i det administrative område"@da ;
+	rdfs:label "joylashgan maʼmuriy birligi"@uz ;
+	skos:prefLabel "joylashgan maʼmuriy birligi"@uz ;
+	schema:name "joylashgan maʼmuriy birligi"@uz ;
+	rdfs:label "या राजकीय व प्रशासकीय सीमांतर्गत असणारे स्थान"@mr ;
+	skos:prefLabel "या राजकीय व प्रशासकीय सीमांतर्गत असणारे स्थान"@mr ;
+	schema:name "या राजकीय व प्रशासकीय सीमांतर्गत असणारे स्थान"@mr ;
+	rdfs:label "liegt in"@de-ch ;
+	skos:prefLabel "liegt in"@de-ch ;
+	schema:name "liegt in"@de-ch ;
+	rdfs:label "liegt in"@bar ;
+	skos:prefLabel "liegt in"@bar ;
+	schema:name "liegt in"@bar ;
+	rdfs:label "located in the administrative territorial entity"@en-ca ;
+	skos:prefLabel "located in the administrative territorial entity"@en-ca ;
+	schema:name "located in the administrative territorial entity"@en-ca ;
+	rdfs:label "located in the administrative territorial entity"@en-gb ;
+	skos:prefLabel "located in the administrative territorial entity"@en-gb ;
+	schema:name "located in the administrative territorial entity"@en-gb ;
+	rdfs:label "upravno-teritorijalna jedinica"@bs ;
+	skos:prefLabel "upravno-teritorijalna jedinica"@bs ;
+	schema:name "upravno-teritorijalna jedinica"@bs ;
+	rdfs:label "যে প্রশাসনিক অঞ্চলে অবস্থিত"@bn ;
+	skos:prefLabel "যে প্রশাসনিক অঞ্চলে অবস্থিত"@bn ;
+	schema:name "যে প্রশাসনিক অঞ্চলে অবস্থিত"@bn ;
+	rdfs:label "மாநிலம்"@ta ;
+	skos:prefLabel "மாநிலம்"@ta ;
+	schema:name "மாநிலம்"@ta ;
+	rdfs:label "e tiriad"@br ;
+	skos:prefLabel "e tiriad"@br ;
+	schema:name "e tiriad"@br ;
+	rdfs:label "ligt in"@nds-nl ;
+	skos:prefLabel "ligt in"@nds-nl ;
+	schema:name "ligt in"@nds-nl ;
+	rdfs:label "troviĝas en administra unuo"@eo ;
+	skos:prefLabel "troviĝas en administra unuo"@eo ;
+	schema:name "troviĝas en administra unuo"@eo ;
+	rdfs:label "situado na unidade administrativa"@gl ;
+	skos:prefLabel "situado na unidade administrativa"@gl ;
+	schema:name "situado na unidade administrativa"@gl ;
+	rdfs:label "دابەشکاریی کارگێڕی"@ckb ;
+	skos:prefLabel "دابەشکاریی کارگێڕی"@ckb ;
+	schema:name "دابەشکاریی کارگێڕی"@ckb ;
+	rdfs:label "içinde bulunduğu idari birim"@tr ;
+	skos:prefLabel "içinde bulunduğu idari birim"@tr ;
+	schema:name "içinde bulunduğu idari birim"@tr ;
+	rdfs:label "situé dans la circonscription de"@pcd ;
+	skos:prefLabel "situé dans la circonscription de"@pcd ;
+	schema:name "situé dans la circonscription de"@pcd ;
+	rdfs:label "asub haldusüksuse territooriumil"@et ;
+	skos:prefLabel "asub haldusüksuse territooriumil"@et ;
+	schema:name "asub haldusüksuse territooriumil"@et ;
+	rdfs:label "hè in l'elementu amministrativu"@co ;
+	skos:prefLabel "hè in l'elementu amministrativu"@co ;
+	schema:name "hè in l'elementu amministrativu"@co ;
+	rdfs:label "unitat administrativa"@oc ;
+	skos:prefLabel "unitat administrativa"@oc ;
+	schema:name "unitat administrativa"@oc ;
+	rdfs:label "is in the admeenistrative unit"@sco ;
+	skos:prefLabel "is in the admeenistrative unit"@sco ;
+	schema:name "is in the admeenistrative unit"@sco ;
+	rdfs:label "પ્રશાસન વિભાગમાં આવેલ છે"@gu ;
+	skos:prefLabel "પ્રશાસન વિભાગમાં આવેલ છે"@gu ;
+	schema:name "પ્રશાસન વિભાગમાં આવેલ છે"@gu ;
+	rdfs:label "ראיאן, פראווינץ, גובערניע, דיסטריקט"@yi ;
+	skos:prefLabel "ראיאן, פראווינץ, גובערניע, דיסטריקט"@yi ;
+	schema:name "ראיאן, פראווינץ, גובערניע, דיסטריקט"@yi ;
+	rdfs:label "terletak di entiti wilayah pentadbiran"@ms ;
+	skos:prefLabel "terletak di entiti wilayah pentadbiran"@ms ;
+	schema:name "terletak di entiti wilayah pentadbiran"@ms ;
+	rdfs:label "nasa pampangasiwaang teritoryo"@tl ;
+	skos:prefLabel "nasa pampangasiwaang teritoryo"@tl ;
+	schema:name "nasa pampangasiwaang teritoryo"@tl ;
+	rdfs:label "è en l'unitad d'administraziun"@rm ;
+	skos:prefLabel "è en l'unitad d'administraziun"@rm ;
+	schema:name "è en l'unitad d'administraziun"@rm ;
+	rdfs:label "je u administrativnoj jedinici"@sh ;
+	skos:prefLabel "je u administrativnoj jedinici"@sh ;
+	schema:name "je u administrativnoj jedinici"@sh ;
+	rdfs:label "Toerana fitantanana"@mg ;
+	skos:prefLabel "Toerana fitantanana"@mg ;
+	schema:name "Toerana fitantanana"@mg ;
+	rdfs:label "in dr Verwaltigsainhait"@gsw ;
+	skos:prefLabel "in dr Verwaltigsainhait"@gsw ;
+	schema:name "in dr Verwaltigsainhait"@gsw ;
+	rdfs:label "Verwaltungseenheet"@lb ;
+	skos:prefLabel "Verwaltungseenheet"@lb ;
+	schema:name "Verwaltungseenheet"@lb ;
+	rdfs:label "nachádza sa v administratívnej jednotke"@sk ;
+	skos:prefLabel "nachádza sa v administratívnej jednotke"@sk ;
+	schema:name "nachádza sa v administratívnej jednotke"@sk ;
+	rdfs:label "所在行政領土實體"@zh-hk ;
+	skos:prefLabel "所在行政領土實體"@zh-hk ;
+	schema:name "所在行政領土實體"@zh-hk ;
+	rdfs:label "వున్న పరిపాలనా ప్రాంతం"@te ;
+	skos:prefLabel "వున్న పరిపాలనా ప్రాంతం"@te ;
+	schema:name "వున్న పరిపాలనా ప్రాంతం"@te ;
+	rdfs:label "ପ୍ରଶାସନିକ ବିଭାଗ ଅନ୍ତର୍ଗତ"@or ;
+	skos:prefLabel "ପ୍ରଶାସନିକ ବିଭାଗ ଅନ୍ତର୍ଗତ"@or ;
+	schema:name "ପ୍ରଶାସନିକ ବିଭାଗ ଅନ୍ତର୍ଗତ"@or ;
+	rdfs:label "се налази у"@sr-ec ;
+	skos:prefLabel "се налази у"@sr-ec ;
+	schema:name "се налази у"@sr-ec ;
+	rdfs:label "se nalazi u"@sr-el ;
+	skos:prefLabel "se nalazi u"@sr-el ;
+	schema:name "se nalazi u"@sr-el ;
+	rdfs:label "انتظامی تقسیم میں مقام"@ur ;
+	skos:prefLabel "انتظامی تقسیم میں مقام"@ur ;
+	schema:name "انتظامی تقسیم میں مقام"@ur ;
+	rdfs:label "situate in le entitate territorial administrative"@ia ;
+	skos:prefLabel "situate in le entitate territorial administrative"@ia ;
+	schema:name "situate in le entitate territorial administrative"@ia ;
+	rdfs:label "je v"@sl ;
+	skos:prefLabel "je v"@sl ;
+	schema:name "je v"@sl ;
+	rdfs:label "litt em Verwalldongbezerek"@ksh ;
+	skos:prefLabel "litt em Verwalldongbezerek"@ksh ;
+	schema:name "litt em Verwalldongbezerek"@ksh ;
+	rdfs:label "si trova intra a l'entità tirrituriali ammistrativa"@scn ;
+	skos:prefLabel "si trova intra a l'entità tirrituriali ammistrativa"@scn ;
+	schema:name "si trova intra a l'entità tirrituriali ammistrativa"@scn ;
+	rdfs:label "honako erakunde administratiboan dago"@eu ;
+	skos:prefLabel "honako erakunde administratiboan dago"@eu ;
+	schema:name "honako erakunde administratiboan dago"@eu ;
+	rdfs:label "එය පිහිටා ඇති පරිපාලන ඒකකය"@si ;
+	skos:prefLabel "එය පිහිටා ඇති පරිපාලන ඒකකය"@si ;
+	schema:name "එය පිහිටා ඇති පරිපාලන ඒකකය"@si ;
+	rdfs:label "प्रशासनिक क्षेत्र अन्तर्गत  रहेको"@ne ;
+	skos:prefLabel "प्रशासनिक क्षेत्र अन्तर्गत  रहेको"@ne ;
+	schema:name "प्रशासनिक क्षेत्र अन्तर्गत  रहेको"@ne ;
+	rdfs:label "административ-территориаль берәмлек"@tt ;
+	skos:prefLabel "административ-территориаль берәмлек"@tt ;
+	schema:name "административ-территориаль берәмлек"@tt ;
+	rdfs:label "lleolir yn yr ardal weinyddol"@cy ;
+	skos:prefLabel "lleolir yn yr ardal weinyddol"@cy ;
+	schema:name "lleolir yn yr ardal weinyddol"@cy ;
+	rdfs:label "yra savivaldybės teritorijoje"@lt ;
+	skos:prefLabel "yra savivaldybės teritorijoje"@lt ;
+	schema:name "yra savivaldybės teritorijoje"@lt ;
+	rdfs:label "asitiáu na entidá alministrativa territorial"@ast ;
+	skos:prefLabel "asitiáu na entidá alministrativa territorial"@ast ;
+	schema:name "asitiáu na entidá alministrativa territorial"@ast ;
+	rdfs:label "leit diar uun"@frr ;
+	skos:prefLabel "leit diar uun"@frr ;
+	schema:name "leit diar uun"@frr ;
+	rdfs:label "dumunung ing laladan administrasi"@jv ;
+	skos:prefLabel "dumunung ing laladan administrasi"@jv ;
+	schema:name "dumunung ing laladan administrasi"@jv ;
+	rdfs:label "վարչատարածքային միավոր"@hy ;
+	skos:prefLabel "վարչատարածքային միավոր"@hy ;
+	schema:name "վարչատարածքային միավոր"@hy ;
+	rdfs:label "ಈ ಪ್ರದೇಶದಲ್ಲಿದೆ"@kn ;
+	skos:prefLabel "ಈ ಪ್ರದೇಶದಲ್ಲಿದೆ"@kn ;
+	schema:name "ಈ ಪ್ರದೇಶದಲ್ಲಿದೆ"@kn ;
+	rdfs:label "nadeńdźe so w zarjadniskej jednotce"@hsb ;
+	skos:prefLabel "nadeńdźe so w zarjadniskej jednotce"@hsb ;
+	schema:name "nadeńdźe so w zarjadniskej jednotce"@hsb ;
+	rdfs:label "в административно-териториалната единица"@bg ;
+	skos:prefLabel "в административно-териториалната единица"@bg ;
+	schema:name "в административно-териториалната единица"@bg ;
+	rdfs:label "സ്ഥിതിചെയ്യുന്ന ഭരണസ്ഥലം"@ml ;
+	skos:prefLabel "സ്ഥിതിചെയ്യുന്ന ഭരണസ്ഥലം"@ml ;
+	schema:name "സ്ഥിതിചെയ്യുന്ന ഭരണസ്ഥലം"@ml ;
+	rdfs:label "lonnaithe sa limistéar riaracháin"@ga ;
+	skos:prefLabel "lonnaithe sa limistéar riaracháin"@ga ;
+	schema:name "lonnaithe sa limistéar riaracháin"@ga ;
+	rdfs:label "воҳиди марзию маъмурӣ"@tg ;
+	skos:prefLabel "воҳиди марзию маъмурӣ"@tg ;
+	schema:name "воҳиди марзию маъмурӣ"@tg ;
+	rdfs:label "อยู่ในเขตการปกครองของ"@th ;
+	skos:prefLabel "อยู่ในเขตการปกครองของ"@th ;
+	schema:name "อยู่ในเขตการปกครองของ"@th ;
+	rdfs:label "e vendosur në entitetin territorial administrativ të"@sq ;
+	skos:prefLabel "e vendosur në entitetin territorial administrativ të"@sq ;
+	schema:name "e vendosur në entitetin territorial administrativ të"@sq ;
+	rdfs:label "所在行政領土實體"@zh-mo ;
+	skos:prefLabel "所在行政領土實體"@zh-mo ;
+	schema:name "所在行政領土實體"@zh-mo ;
+	rdfs:label "所在行政领土实体"@zh-sg ;
+	skos:prefLabel "所在行政领土实体"@zh-sg ;
+	schema:name "所在行政领土实体"@zh-sg ;
+	rdfs:label "административ-территориаль берәмек"@ba ;
+	skos:prefLabel "административ-территориаль берәмек"@ba ;
+	schema:name "административ-территориаль берәмек"@ba ;
+	rdfs:label "位處政區"@yue ;
+	skos:prefLabel "位處政區"@yue ;
+	schema:name "位處政區"@yue ;
+	rdfs:label "liechd in dä Värwôldungseihäd"@vmf ;
+	skos:prefLabel "liechd in dä Värwôldungseihäd"@vmf ;
+	schema:name "liechd in dä Värwôldungseihäd"@vmf ;
+	rdfs:label "административдик-аймактык бирдик"@ky ;
+	skos:prefLabel "административдик-аймактык бирдик"@ky ;
+	schema:name "административдик-аймактык бирдик"@ky ;
+	rdfs:label "Ìjoba ìbílè"@yo ;
+	skos:prefLabel "Ìjoba ìbílè"@yo ;
+	schema:name "Ìjoba ìbílè"@yo ;
+	rdfs:label "воҳиди марзию маъмурӣ"@tg-cyrl ;
+	skos:prefLabel "воҳиди марзию маъмурӣ"@tg-cyrl ;
+	schema:name "воҳиди марзию маъмурӣ"@tg-cyrl ;
+	rdfs:label "административ-территориаль берәмлек"@tt-cyrl ;
+	skos:prefLabel "административ-территориаль берәмлек"@tt-cyrl ;
+	schema:name "административ-территориаль берәмлек"@tt-cyrl ;
+	rdfs:label "administrativ-territorial' berämleq"@tt-latn ;
+	skos:prefLabel "administrativ-territorial' berämleq"@tt-latn ;
+	schema:name "administrativ-territorial' berämleq"@tt-latn ;
+	rdfs:label "𑂔𑂸𑂢𑂰 𑂣𑂹𑂩𑂬𑂰𑂮𑂢𑂱𑂍 𑂅𑂍𑂰𑂆 𑂧𑂵𑂁 𑂣𑂙𑂵 𑂪𑂰"@bho ;
+	skos:prefLabel "𑂔𑂸𑂢𑂰 𑂣𑂹𑂩𑂬𑂰𑂮𑂢𑂱𑂍 𑂅𑂍𑂰𑂆 𑂧𑂵𑂁 𑂣𑂙𑂵 𑂪𑂰"@bho ;
+	schema:name "𑂔𑂸𑂢𑂰 𑂣𑂹𑂩𑂬𑂰𑂮𑂢𑂱𑂍 𑂅𑂍𑂰𑂆 𑂧𑂵𑂁 𑂣𑂙𑂵 𑂪𑂰"@bho ;
+	rdfs:label "ځای د هېواد په برخه کې"@ps ;
+	skos:prefLabel "ځای د هېواد په برخه کې"@ps ;
+	schema:name "ځای د هېواد په برخه کې"@ps ;
+	rdfs:label "所在行政领土实体"@zh-my ;
+	skos:prefLabel "所在行政领土实体"@zh-my ;
+	schema:name "所在行政领土实体"@zh-my ;
+	rdfs:label "ici tipiritakok"@atj ;
+	skos:prefLabel "ici tipiritakok"@atj ;
+	schema:name "ici tipiritakok"@atj ;
+	rdfs:label "inzibati-ərazi vahidi"@az ;
+	skos:prefLabel "inzibati-ərazi vahidi"@az ;
+	schema:name "inzibati-ərazi vahidi"@az ;
+	rdfs:label "jacanta en l'administrala subdividuro"@io ;
+	skos:prefLabel "jacanta en l'administrala subdividuro"@io ;
+	schema:name "jacanta en l'administrala subdividuro"@io ;
+	rdfs:label "административан-мехкан дакъа"@ce ;
+	skos:prefLabel "административан-мехкан дакъа"@ce ;
+	schema:name "административан-мехкан дакъа"@ce ;
+	rdfs:label "တည်ရှိသည့် အုပ်ချုပ်ရေး နယ်မြေ ဒေသ"@my ;
+	skos:prefLabel "တည်ရှိသည့် အုပ်ချုပ်ရေး နယ်မြေ ဒေသ"@my ;
+	schema:name "တည်ရှိသည့် အုပ်ချုပ်ရေး နယ်မြေ ဒေသ"@my ;
+	rdfs:label "የሚገኝበት አስተዳደራዊ ክልል"@am ;
+	skos:prefLabel "የሚገኝበት አስተዳደራዊ ክልል"@am ;
+	schema:name "የሚገኝበት አስተዳደራዊ ክልል"@am ;
+	rdfs:label "ߕߌ߲߬ߞߎߘߎ߲"@nqo ;
+	skos:prefLabel "ߕߌ߲߬ߞߎߘߎ߲"@nqo ;
+	schema:name "ߕߌ߲߬ߞߎߘߎ߲"@nqo ;
+	rdfs:label "unità aministradiva de l'ełemento"@vec ;
+	skos:prefLabel "unità aministradiva de l'ełemento"@vec ;
+	schema:name "unità aministradiva de l'ełemento"@vec ;
+	rdfs:label "Merkezê idarey"@diq ;
+	skos:prefLabel "Merkezê idarey"@diq ;
+	schema:name "Merkezê idarey"@diq ;
+	rdfs:label "haldivollispaikalline miäry"@olo ;
+	skos:prefLabel "haldivollispaikalline miäry"@olo ;
+	schema:name "haldivollispaikalline miäry"@olo ;
+	rdfs:label "liet in de Verwaldungsänhäät"@pfl ;
+	skos:prefLabel "liet in de Verwaldungsänhäät"@pfl ;
+	schema:name "liet in de Verwaldungsänhäät"@pfl ;
+	rdfs:label "انتظامي علائقائي وجود ۾ مقام يا ماڳ"@sd ;
+	skos:prefLabel "انتظامي علائقائي وجود ۾ مقام يا ماڳ"@sd ;
+	schema:name "انتظامي علائقائي وجود ۾ مقام يا ماڳ"@sd ;
+	rdfs:label "je w jednotce administracyjnyj"@szl ;
+	skos:prefLabel "je w jednotce administracyjnyj"@szl ;
+	schema:name "je w jednotce administracyjnyj"@szl ;
+	rdfs:label "بتقع فى التقسيم الادارى"@arz ;
+	skos:prefLabel "بتقع فى التقسيم الادارى"@arz ;
+	schema:name "بتقع فى التقسيم الادارى"@arz ;
+	rdfs:label "unitæ aministratîva de localizaçión"@lij ;
+	skos:prefLabel "unitæ aministratîva de localizaçión"@lij ;
+	schema:name "unitæ aministratîva de localizaçión"@lij ;
+	rdfs:label "ترلتق دولايه اينتيتي ڤنتدبيرن"@ms-arab ;
+	skos:prefLabel "ترلتق دولايه اينتيتي ڤنتدبيرن"@ms-arab ;
+	schema:name "ترلتق دولايه اينتيتي ڤنتدبيرن"@ms-arab ;
+	rdfs:label "административон иуæг"@os ;
+	skos:prefLabel "административон иуæг"@os ;
+	schema:name "административон иуæг"@os ;
+	rdfs:label "li beşa îdarî ya"@ku ;
+	skos:prefLabel "li beşa îdarî ya"@ku ;
+	schema:name "li beşa îdarî ya"@ku ;
+	rdfs:label "din be shɛli polona"@dag ;
+	skos:prefLabel "din be shɛli polona"@dag ;
+	schema:name "din be shɛli polona"@dag ;
+	rdfs:label "администрациялык јерлерин бӧлӱктери"@alt ;
+	skos:prefLabel "администрациялык јерлерин бӧлӱктери"@alt ;
+	schema:name "администрациялык јерлерин бӧлӱктери"@alt ;
+	rdfs:label "ადმინისტრაციული ართული"@xmf ;
+	skos:prefLabel "ადმინისტრაციული ართული"@xmf ;
+	schema:name "ადმინისტრაციული ართული"@xmf ;
+	rdfs:label "magenah ring wawengkon administratif"@ban ;
+	skos:prefLabel "magenah ring wawengkon administratif"@ban ;
+	schema:name "magenah ring wawengkon administratif"@ban ;
+	rdfs:label "situá na teritorio administativo"@pap ;
+	skos:prefLabel "situá na teritorio administativo"@pap ;
+	schema:name "situá na teritorio administativo"@pap ;
+	rdfs:label "اِنتِظٲمی حِصَس مَنٛز"@ks ;
+	skos:prefLabel "اِنتِظٲمی حِصَس مَنٛز"@ks ;
+	schema:name "اِنتِظٲمی حِصَس مَنٛز"@ks ;
+	rdfs:label "sgìre riaghaltais ionadail"@gd ;
+	skos:prefLabel "sgìre riaghaltais ionadail"@gd ;
+	schema:name "sgìre riaghaltais ionadail"@gd ;
+	rdfs:label "entità amministrattiva territorjali fejn tinstab"@mt ;
+	skos:prefLabel "entità amministrattiva territorjali fejn tinstab"@mt ;
+	schema:name "entità amministrattiva territorjali fejn tinstab"@mt ;
+	rdfs:label "yn entita tiredhek menystrek"@kw ;
+	skos:prefLabel "yn entita tiredhek menystrek"@kw ;
+	schema:name "yn entita tiredhek menystrek"@kw ;
+	rdfs:label "edey de administrative territorial entity insyd"@gpe ;
+	skos:prefLabel "edey de administrative territorial entity insyd"@gpe ;
+	schema:name "edey de administrative territorial entity insyd"@gpe ;
+	rdfs:label "dake cikin yankin gudanarwar yankin"@ha ;
+	skos:prefLabel "dake cikin yankin gudanarwar yankin"@ha ;
+	schema:name "dake cikin yankin gudanarwar yankin"@ha ;
+	rdfs:label "аль засаг захиргааны этгээдэд байрладаг болох"@mn ;
+	skos:prefLabel "аль засаг захиргааны этгээдэд байрладаг болох"@mn ;
+	schema:name "аль засаг захиргааны этгээдэд байрладаг болох"@mn ;
+	rdfs:label "ਪ੍ਰਸ਼ਾਸਨਿਕ ਵਿਭਾਗ ਵਿੱਚ ਸਥਿਤ"@pa ;
+	skos:prefLabel "ਪ੍ਰਸ਼ਾਸਨਿਕ ਵਿਭਾਗ ਵਿੱਚ ਸਥਿਤ"@pa ;
+	schema:name "ਪ੍ਰਸ਼ਾਸਨਿਕ ਵਿਭਾਗ ਵਿੱਚ ਸਥਿਤ"@pa ;
+	rdfs:label "dị na ngalaba nhazi mpaghara"@ig ;
+	skos:prefLabel "dị na ngalaba nhazi mpaghara"@ig ;
+	schema:name "dị na ngalaba nhazi mpaghara"@ig ;
+	rdfs:label "адміністративна єдинка"@rue ;
+	skos:prefLabel "адміністративна єдинка"@rue ;
+	schema:name "адміністративна єдинка"@rue ;
+	rdfs:label "پرشاسنک وبھاگ وچ ستھت"@pnb ;
+	skos:prefLabel "پرشاسنک وبھاگ وچ ستھت"@pnb ;
+	schema:name "پرشاسنک وبھاگ وچ ستھت"@pnb ;
+	rdfs:label "nder laamoore"@ff ;
+	skos:prefLabel "nder laamoore"@ff ;
+	schema:name "nder laamoore"@ff ;
+	rdfs:label "kuávlulâš ohtâdâh"@smn ;
+	skos:prefLabel "kuávlulâš ohtâdâh"@smn ;
+	schema:name "kuávlulâš ohtâdâh"@smn ;
+	rdfs:label "ኣብ ምምሕዳራዊ ግዝኣታዊ ኣካል ዝርከብ"@ti ;
+	skos:prefLabel "ኣብ ምምሕዳራዊ ግዝኣታዊ ኣካል ዝርከብ"@ti ;
+	schema:name "ኣብ ምምሕዳራዊ ግዝኣታዊ ኣካል ዝርከብ"@ti ;
+	rdfs:label "اداری تقسیمات دله‌یِ موقعیت"@mzn ;
+	skos:prefLabel "اداری تقسیمات دله‌یِ موقعیت"@mzn ;
+	schema:name "اداری تقسیمات دله‌یِ موقعیت"@mzn ;
+	rdfs:label "район"@ady ;
+	skos:prefLabel "район"@ady ;
+	schema:name "район"@ady ;
+	rdfs:label "unità ministrativa che l'è localizad"@lmo ;
+	skos:prefLabel "unità ministrativa che l'è localizad"@lmo ;
+	schema:name "unità ministrativa che l'è localizad"@lmo ;
+	rdfs:label "shyia̱ di̱ fam tyok a̱byin"@kcg ;
+	skos:prefLabel "shyia̱ di̱ fam tyok a̱byin"@kcg ;
+	schema:name "shyia̱ di̱ fam tyok a̱byin"@kcg ;
+	rdfs:label "assitiau ena entidá almenistrativa territorial"@ext ;
+	skos:prefLabel "assitiau ena entidá almenistrativa territorial"@ext ;
+	schema:name "assitiau ena entidá almenistrativa territorial"@ext ;
+	rdfs:label "located in the administrative territorial entity"@en-us ;
+	skos:prefLabel "located in the administrative territorial entity"@en-us ;
+	schema:name "located in the administrative territorial entity"@en-us ;
+	rdfs:label "администрациллӗ-территориллӗ виҫе"@cv ;
+	skos:prefLabel "администрациллӗ-территориллӗ виҫе"@cv ;
+	schema:name "администрациллӗ-территориллӗ виҫе"@cv ;
+	rdfs:label "jaylasqan hákimshilik birligi"@kaa ;
+	skos:prefLabel "jaylasqan hákimshilik birligi"@kaa ;
+	schema:name "jaylasqan hákimshilik birligi"@kaa ;
+	rdfs:label "ಆಡಳಿತ ಪ್ರಾದೇಶಿಕ ಘಟಕಲೆಡ್ ಉಂಡು"@tcy ;
+	skos:prefLabel "ಆಡಳಿತ ಪ್ರಾದೇಶಿಕ ಘಟಕಲೆಡ್ ಉಂಡು"@tcy ;
+	schema:name "ಆಡಳಿತ ಪ್ರಾದೇಶಿಕ ಘಟಕಲೆಡ್ ಉಂಡು"@tcy ;
+	rdfs:label "İçinde bulunğan idariy birlem"@crh ;
+	skos:prefLabel "İçinde bulunğan idariy birlem"@crh ;
+	schema:name "İçinde bulunğan idariy birlem"@crh ;
+	rdfs:label "asdɣr amssugur"@shi ;
+	skos:prefLabel "asdɣr amssugur"@shi ;
+	schema:name "asdɣr amssugur"@shi ;
+	rdfs:label "staðsett í stjórnsýslueiningunni"@is ;
+	skos:prefLabel "staðsett í stjórnsýslueiningunni"@is ;
+	schema:name "staðsett í stjórnsýslueiningunni"@is ;
+	rdfs:label "Só͘-chāi ê hêng-chèng léng-thó͘ si̍t-thé"@nan-latn-pehoeji ;
+	skos:prefLabel "Só͘-chāi ê hêng-chèng léng-thó͘ si̍t-thé"@nan-latn-pehoeji ;
+	schema:name "Só͘-chāi ê hêng-chèng léng-thó͘ si̍t-thé"@nan-latn-pehoeji ;
+	rdfs:label "Só͘-chāi ê hêng-chèng léng-thó͘ si̍t-thé"@nan ;
+	skos:prefLabel "Só͘-chāi ê hêng-chèng léng-thó͘ si̍t-thé"@nan ;
+	schema:name "Só͘-chāi ê hêng-chèng léng-thó͘ si̍t-thé"@nan ;
+	rdfs:label "所在的行政領土實體"@nan-hani ;
+	skos:prefLabel "所在的行政領土實體"@nan-hani ;
+	schema:name "所在的行政領土實體"@nan-hani ;
+	rdfs:label "inziboti-ərozijə vohid"@tly ;
+	skos:prefLabel "inziboti-ərozijə vohid"@tly ;
+	schema:name "inziboti-ərozijə vohid"@tly ;
+	rdfs:label "所在的行政領土實體"@nan-hant ;
+	skos:prefLabel "所在的行政領土實體"@nan-hant ;
+	schema:name "所在的行政領土實體"@nan-hant ;
+	rdfs:label "Sóo-tsāi ê hîng-tsìng líng-thóo si̍t-thé"@nan-latn-tailo ;
+	skos:prefLabel "Sóo-tsāi ê hîng-tsìng líng-thóo si̍t-thé"@nan-latn-tailo ;
+	schema:name "Sóo-tsāi ê hîng-tsìng líng-thóo si̍t-thé"@nan-latn-tailo ;
+	rdfs:label "ꠎꠦ ꠄꠒꠝꠤꠘꠤꠡꠐꠦꠐꠤꠜ ꠐꠦꠞꠤꠐꠞꠤꠔ ꠙꠞꠍꠦ"@syl ;
+	skos:prefLabel "ꠎꠦ ꠄꠒꠝꠤꠘꠤꠡꠐꠦꠐꠤꠜ ꠐꠦꠞꠤꠐꠞꠤꠔ ꠙꠞꠍꠦ"@syl ;
+	schema:name "ꠎꠦ ꠄꠒꠝꠤꠘꠤꠡꠐꠦꠐꠤꠜ ꠐꠦꠞꠤꠐꠞꠤꠔ ꠙꠞꠍꠦ"@syl ;
+	rdfs:label "ᱡᱟᱦᱟ ᱪᱟᱪᱞᱟᱣ ᱴᱚᱴᱷᱟ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ"@sat ;
+	skos:prefLabel "ᱡᱟᱦᱟ ᱪᱟᱪᱞᱟᱣ ᱴᱚᱴᱷᱟ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ"@sat ;
+	schema:name "ᱡᱟᱦᱟ ᱪᱟᱪᱞᱟᱣ ᱴᱚᱴᱷᱟ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ"@sat ;
+	rdfs:label "ni li lon ma lawa seme"@tok ;
+	skos:prefLabel "ni li lon ma lawa seme"@tok ;
+	schema:name "ni li lon ma lawa seme"@tok ;
+	rdfs:label "nadejźo se w zastojnskej jadnotce"@dsb ;
+	skos:prefLabel "nadejźo se w zastojnskej jadnotce"@dsb ;
+	schema:name "nadejźo se w zastojnskej jadnotce"@dsb ;
+	rdfs:label "административ-территориалтә шара"@ab ;
+	skos:prefLabel "административ-территориалтә шара"@ab ;
+	schema:name "административ-территориалтә шара"@ab ;
+	rdfs:label "kaitiraan no sakowan"@ami ;
+	skos:prefLabel "kaitiraan no sakowan"@ami ;
+	schema:name "kaitiraan no sakowan"@ami ;
+	rdfs:label "ìkup me emen mkpulu"@ann ;
+	skos:prefLabel "ìkup me emen mkpulu"@ann ;
+	schema:name "ìkup me emen mkpulu"@ann ;
+	rdfs:label "Akenneng è ḍâèra administratif"@mad ;
+	skos:prefLabel "Akenneng è ḍâèra administratif"@mad ;
+	schema:name "Akenneng è ḍâèra administratif"@mad ;
+	rdfs:label "административ-территориалаб цвел"@av ;
+	skos:prefLabel "административ-территориалаб цвел"@av ;
+	schema:name "административ-территориалаб цвел"@av ;
+	rdfs:label "eena de adminischrietif ieriya a"@aig ;
+	skos:prefLabel "eena de adminischrietif ieriya a"@aig ;
+	schema:name "eena de adminischrietif ieriya a"@aig ;
+	rdfs:label "район"@lbe ;
+	skos:prefLabel "район"@lbe ;
+	schema:name "район"@lbe ;
+	rdfs:label "སྲིད་འཛིན་ས་ཁུལ།"@bo ;
+	skos:prefLabel "སྲིད་འཛིན་ས་ཁུལ།"@bo ;
+	schema:name "སྲིད་འཛིན་ས་ཁུལ།"@bo ;
+	rdfs:label "beettiyosaa"@wal ;
+	skos:prefLabel "beettiyosaa"@wal ;
+	schema:name "beettiyosaa"@wal ;
+	rdfs:label "административнэ э̄ххт"@sjd ;
+	skos:prefLabel "административнэ э̄ххт"@sjd ;
+	schema:name "административнэ э̄ххт"@sjd ;
+	rdfs:label "प्रशासनिक क्षेत्रीय एकाईमे स्थित"@mai ;
+	skos:prefLabel "प्रशासनिक क्षेत्रीय एकाईमे स्थित"@mai ;
+	schema:name "प्रशासनिक क्षेत्रीय एकाईमे स्थित"@mai ;
+	rdfs:label "प्रशासनिक क्षेत्रीय इकाई में स्थित"@hi ;
+	skos:prefLabel "प्रशासनिक क्षेत्रीय इकाई में स्थित"@hi ;
+	schema:name "प्रशासनिक क्षेत्रीय इकाई में स्थित"@hi ;
+	rdfs:label "ipo katika eneo la kiutawala"@sw ;
+	skos:prefLabel "ipo katika eneo la kiutawala"@sw ;
+	schema:name "ipo katika eneo la kiutawala"@sw ;
+	rdfs:label "ili mu chigaŵa"@tum ;
+	skos:prefLabel "ili mu chigaŵa"@tum ;
+	schema:name "ili mu chigaŵa"@tum ;
+	rdfs:label "Naromog ed sakey ya administratibon entidad"@pag ;
+	skos:prefLabel "Naromog ed sakey ya administratibon entidad"@pag ;
+	schema:name "Naromog ed sakey ya administratibon entidad"@pag ;
+	rdfs:label "جات ف التقسيم لإداري"@ary ;
+	skos:prefLabel "جات ف التقسيم لإداري"@ary ;
+	schema:name "جات ف التقسيم لإداري"@ary ;
+	schema:description "unité administrative où se situe/situait l'élément. Pour les administrations actuelles de choses disparues, utiliser P3842 (entité territoriale administrative actuelle)"@fr,
+		"the item is located on the territory of the following administrative entity. Use P276 for specifying locations that are non-administrative places and for items about events. Use P1382 if the item falls only partially into the administrative entity"@en,
+		"この項目は次の行政機関の領域に位置する。行政以外の場所やイベントに関する項目を指定する場合は「場所 （P276）」を使用する。項目が部分的にのみ政府機関・独立行政法人等に該当する場合は「部分的に重複（P1382）」を使用する。"@ja,
+		"jednotka, na jejímž území se objekt nachází Použij P276 (místo) pro jiné místo či území než administrativní celek, nebo pokud položka je o události. Použij P1382, pokud subjekt spadá do administrativního území pouze zčásti."@cs,
+		"unità amministrativa in cui è situato l'oggetto (solo il primo livello superiore). Usare P276 (luogo) per indicare un luogo che non è un'unità amministrativa e per item relativi ad eventi"@it,
+		"administratives Gebiet, auf dem sich das Subjekt befindet. Für andere Orte oder Gebiete, und für Veranstaltungen: benutze P276 (Ort). Fällt das Subjekt nur teilweise in das Gebiet, benutze P1382 (teilweise übereinstimmend)."@de,
+		"o item situa-se no território da seguinte unidade administrativa"@pt-br,
+		"entitat administrativa en què es troba l'element"@ca,
+		"elementet har beliggenhet i følgende administrative enhet"@nb,
+		"ti banag ket mabirukan idiay teritorio kadagiti sumaganad nga administratibo nga entidad"@ilo,
+		"liegt auf geographischer Verwaltungsebene"@de-at,
+		"objeto ubicado en el territorio de la siguiente entidad administrativa (nacional o subnacional). Use P276 (ubicación) para especificar la ubicación de lugares no administrativos y para artículos sobre eventos"@es,
+		"此項所地處的，代表領土一部分的上級行政實體。指定所處非行政性地點，或有關活動的項時，請使用P276（位置）"@zh-hant,
+		"此项所地处的，代表领土一部分的上级行政实体。指定所处非行政性地点，或有关活动的项时，请使用P276（位置）"@zh-hans,
+		"该项目位于行政区划实体的辖区内。对于非行政区域的地点以及与事件相关的项目，请使用 P276 属性。如果该项目仅部分位于该行政区划实体内，请使用 P1382 属性。"@zh,
+		"atrodas šīs administratīvās vienības teritorijā, ne-administratīvu un notikumu vietu apzīmēšanai jāizmanto P276"@lv,
+		"האזור המנהלי שהפריט נמצא בו"@he,
+		"o item situa-se no território da seguinte unidade administrativa"@pt,
+		"u kojoj se službenoj administrativnoj jedinici entitet nalazi"@hr,
+		"elementul este situat pe teritoriul următoarei unități administrative"@ro,
+		"butir tersebut berada di wilayah entitas administratif berikut. Gunakan P276 (lokasi) untuk menentukan lokasi tempat non-administratif dan untuk butir tentang peristiwa"@id,
+		"wilayah administrasi"@min,
+		"är i den administrativa enheten"@sv,
+		"адміністрацыйная адзінка, у якой знаходзіцца гэты аб’ект"@be-tarask,
+		"此项所地处的，代表领土一部分的上级行政实体。指定所处非行政性地点，或有关活动的项时，请使用P276（位置）"@zh-cn,
+		"此項所地處的，代表領土一部分的上級行政實體。指定所處非行政性地點，或有關活動的項時，請使用P276（位置）"@zh-tw,
+		"το αντικείμενο βρίσκεται στην περιοχή της ακόλουθης διοικητικής οντότητας"@el,
+		"आइटम निम्नलिखित प्रशासनिक इकाई के क्षेत्र में स्थित है। उन स्थानों को निर्दिष्ट करने के लिए जो गैर-प्रशासनिक स्थान हैं और घटनाओं के बारे में आइटम के लिए P276 का उपयोग करें। यदि आइटम केवल आंशिक रूप से प्रशासनिक इकाई में आता है तो P1382 ​​का उपयोग करें"@hi,
+		"вышестоящая единица, на территории которой расположен данный элемент. Используйте P276 («местонахождение») для указания места событий и неадминистративных мест. Если объект попадает на территорию лишь частично, используйте P1382"@ru,
+		"ставка се налази на територији следеће управне јединице. Користите P276 (локација) за одређивање положаја не-управних места и за ставке о догађајима"@sr,
+		"jednostka administracyjna, na której terytorium jest położony dany element"@pl,
+		"liegt in geographischer Verwaltungsebene"@de-ch,
+		"இந்த உருப்படி பின்வரும் நிருவாக ஆட்சிப்பகுதியில் உள்ளது"@ta,
+		"elfen melestradurel e-lec'h m'emañ an item"@br,
+		"bestuurlijk gebied waar het item zich in bevindt (vaak de gemeente) - gebruik P276 voor niet-bestuurlijke gebieden, zoals dorpen, gehuchten, buurten, wijken en stadsdelen, en de locatie van gebeurtenissen"@nl,
+		"qua bestuur, dus bv. gemeente xxx '''ligt in''' provinsie yy"@nds-nl,
+		"جایگاه آیتم مورد نظر در تقسیمات کشوری"@fa,
+		"адміністративна одиниця, на території якої розташований об'єкт"@uk,
+		"предметот се наоѓа на територијата на следнава административна единица"@mk,
+		"આ લેખ અહિં આપેલ પ્રશાસન વિભાગના રાજ્યમાં આવેલ છે"@gu,
+		"kohde sijaitsee mainitussa hallinnollisessa alueyksikössä. Käytä P276 ei-hallinnollisten sijaintien määrittämiseen sekä tapahtumista kertoville kohteille."@fi,
+		"emnet er beliggende i den følgende administrative enheds område"@da,
+		"항목 주제가 위치한 행정 구역 (행정 구역이 아닌 값을 쓰고 싶거나, 사건이 일어난 장소를 쓰고 싶다면 '위치'(P276) 속성을 대신 쓰세요)"@ko,
+		"此項所地處的，代表領土一部分的上級行政實體。指定所處非行政性地點，或有關活動的項時，請使用P276（位置）"@zh-hk,
+		"ставка се налази на територији следеће административне јединице"@sr-ec,
+		"stavka se nalazi na teritoriji sledeće administrativne jedinice"@sr-el,
+		"the item is located on the territory of the following administrative entity"@en-gb,
+		"dat Denge lidd, es, udder paßeert en däm Bezerek, dä verwalldt weed vun of vum"@ksh,
+		"a cosa si trova intra ô tirritoriu di sta entità tirrituriali amministrativa"@scn,
+		"elementua hurrengo erakunde administratiboan dago"@eu,
+		"පහත සදහන් පරිපාලන ආයතනය පිහිටි භූමිය"@si,
+		"कुनै पनि प्रशासनिक क्षेत्र भित्र रहेको"@ne,
+		"ang aytem ay matatagpuan sa sumusunod na pampangasiwaang teritoryo"@tl,
+		"l'elementu alcuéntrase nel territoriu de la siguiente entidá alministrativa"@ast,
+		"o elemento atópase no territorio da entidade administrativa seguinte. Use P276 (localización) para lugares non administrativos e sobre eventos. Para entidades desaparecidas use P3842. Se o elemento só coincide parcialmente na entidade admin.use P1382"@gl,
+		"ijèn iki dumunung ana ing laladan administrasi ngisor iki"@jv,
+		"वेगवेगळ्या राज्याच्या सीमा आलटून पालटून येतात"@mr,
+		"ಈ ಪ್ರದೇಶದಲ್ಲಿರುವ ಸ್ಥಳ"@kn,
+		"zarjadniska jednotka, w kotrejž so objekt nadeńdźe"@hsb,
+		"az elem az alábbi közigazgatási egység területén található. Nem közigazgatási egység, eseményhelyszín megadásához használd a P276 (hely) tulajdonságot."@hu,
+		"ტერიტორიულ ერთეული რომლის ტერიტორიაზეც მდებარეობს ეს ელემენტი"@ka,
+		"khoản mục nằm trong lãnh thổ của đơn vị hành chính sau. Sử dụng P276 (địa điểm) để chỉ những vị trí không phải là đơn vị hành chính và với những khoản mục về các sự kiện"@vi,
+		"此項所地處的，代表領土一部分的上級行政實體。指定所處非行政性地點，或有關活動的項時，請使用P276（位置）"@zh-mo,
+		"此项所地处的，代表领土一部分的上级行政实体。指定所处非行政性地点，或有关活动的项时，请使用P276（位置）"@zh-sg,
+		"呢個項目屬於呢個政區"@yue,
+		"موقع هذا العنصر في الإقليم الذي يتبعه إداريا. استخدم   الخاصية: P276 (المكان أو الموقع) لتحديد الأماكن أو المواقع غير الإدارية وأيضا للعناصر التي تتحدث عن أحداث جارية أو تاريخية"@ar,
+		"ögenin bulunduğu idari topraklar. idari olmayan yerler ve olaylar ile ilgili olarak P276 (konumu) kullanın"@tr,
+		"item terletak pada wilayah entiti pentadbiran berikut. Gunakan P276 (lokasi) untuk memperincikan lokasi tempat bukan pentadbiran dan untuk item tentang peristiwa"@ms,
+		"আইটেমটি নিম্নলিখিত প্রশাসনিক সত্তার অঞ্চলে অবস্থিত। অ-প্রশাসনিক স্থান এবং ইভেন্ট সম্পর্কিত আইটেমগুলির জন্য অবস্থানগুলি নির্দিষ্ট করার জন্য P276 ব্যবহার করুন৷ যদি আইটেমটি শুধুমাত্র আংশিকভাবে প্রশাসনিক সত্তার মধ্যে পড়ে তাহলে P1382 ​​ব্যবহার করুন"@bn,
+		"Verwaltungseenheet, zu där den Objet gehéiert oder gehéiert huet"@lb,
+		"teritorialna administrativna enota, v kateri se objekt nahaja"@sl,
+		"此项所地处的，代表领土一部分的上级行政实体。指定所处非行政性地点，或有关活动的项时，请使用P276（位置）"@zh-my,
+		"አስተዳደራዊ ክፍሎችን መለያ ስያሜ"@am,
+		"unità aministradiva andove chel se cata l'ełemento"@vec,
+		"Cayê idareyê obceyi. Ca ya zi serameya eleqeyıno se  P276 (lokasyoni) bıkarnê"@diq,
+		"شيءِ هيٺ ڏنل انتظامي اداري جي علائقي تي واقع آهي. جڳهن کي بيان ڪرڻ لاءِ پي 276 (جڳھه) کي استعمال ڪريو جيڪي غير انتظامي جڳھون ۽ واقعن بابت شيون آھن"@sd,
+		"آئٹم مندرجہ ذیل انتظامی ہستی کے علاقے پر واقع ہے۔ غیر انتظامی مقامات اور واقعات سے متعلق اشیاء کے لیے مقامات کی وضاحت کے لئے P276 (مقام) استعمال کریں"@ur,
+		"jednotka administracyjnŏ, na kerym terytorium je położōny dany elymynt"@szl,
+		"unitæ aministratîva de livéllo inmediataménte superiôre dónde o l'è l'ògètto"@lij,
+		"the item is located on the territory of the following administrative entity"@en-ca,
+		"ഇനിപ്പറയുന്ന അഡ്മിനിസ്ട്രേറ്റീവ് യൂണിറ്റിന്റെ പ്രദേശത്താണ് ഈ ഇനം സ്ഥിതിചെയ്യുന്നത്. അഡ്മിനിസ്ട്രേറ്റീവ് അല്ലാത്ത സ്ഥലങ്ങൾക്കും  ഇവന്റുകൾക്കും P276 ഉപയോഗിക്കുക. ഇനം അഡ്മിനിസ്ട്രേറ്റീവ് എന്റിറ്റിയിൽ ഭാഗികമായി മാത്രം വീണാൽ P1382 ​​ഉപയോഗിക്കുക."@ml,
+		"din be shɛli"@dag,
+		"тус зүйл нь дараах засаг захиргааны этгээдийн нутаг дэвсгэрт ажилладаг. P276-г ашиглан аль нэг засаг захиргаанд харьяалагддаггүй нутаг дэвсгэр болон өмнө нь болсон үйл явдлын байршлыг илтгэнэ үү."@mn,
+		"รายการตั้งอยู่ในอาณาเขตของหน่วยงานดูแลต่อไปนี้ ใช้ P276 เพื่อระบุสถานที่ที่ไม่ใช่สถานที่ดูแลและสำหรับรายการเกี่ยวกับกิจกรรม ใช้ P1382 ถ้ารายการอยู่ในการบริหารของหน่วยงานเพียงบางส่วน"@th,
+		"𑂄𑂅𑂗𑂧 𑂢𑂱𑂧𑂹𑂢𑂪𑂱𑂎𑂱𑂞 𑂣𑂹𑂩𑂬𑂰𑂮𑂢𑂱𑂍 𑂅𑂍𑂰𑂆 𑂍𑂵 𑂍𑂹𑂭𑂵𑂞𑂹𑂩 𑂧𑂵𑂁 𑂮𑂹𑂟𑂱𑂞 𑂥𑂰। 𑂃𑂅𑂮𑂢 𑂔𑂏𑂯 𑂥𑂞𑂰𑂫𑂵 𑂎𑂰𑂞𑂱𑂩 𑂄 𑂐𑂗𑂢𑂰 𑂍𑂵 𑂥𑂰𑂩𑂵 𑂧𑂵𑂁 𑂄𑂅𑂗𑂧 𑂎𑂰𑂞𑂱𑂩 P276 𑂍𑂵 𑂅𑂮𑂹𑂞𑂵𑂧𑂰𑂪 𑂍𑂩𑂲𑂁। 𑂃𑂏𑂩 𑂄𑂅𑂗𑂧"@bho,
+		"Обектът се намира на територията на следната административна област. Използва се за конкретизиране на местоположението на неадминистративни обекти и събития. Използвайте P1382 за обекти, разположени частично в дадена административна област"@bg,
+		"localizacion dins lo nivèl administratiu precedent"@oc,
+		"a̱ngga wu shyia̱ di̱ fam tyok a̱byin huni hwa. Nyia̱ ta̱m ma̱ng P276 mat a̱ka̱vwuo á̱ghyang na̱ nwai yet a̱ka̱vwuo tyok a̱ni mat a̱yaangga tazwa nyiá̱. Nyia̱ ta̱m ma̱ng P1382 ka̱nang a̱ngga wu kwa di̱n kap hwa  di̱ fam tyok hu."@kcg,
+		"el elementu s'alcuentra nel territoriu dela siguienti entidá almenistrativa"@ext,
+		"the item is located on the territory of the following administrative entity. Use P276 for specifying locations that are non-administrative places and for items about events. Use P1382 if the item falls only partially into the administrative entity."@en-us,
+		"Obiekt tómendegi basqarıw obiekt aymaǵında jaylasqan. Administrativlik bolmaǵan orınlardı belgilew hám waqıyalar haqqındaǵı elementler ushın P276 dan paydalanıń. Eger obiekt derlik basqarıw obiektke tússe, P1382 den paydalanıń."@kaa,
+		"de item dey locate for de territory of de administrative entity wey dey follow. Use P276 for specifying locations wey be non-administrative places den for items about events. Use P1382 if de item dey fall only partially into de administrative entity."@gpe,
+		"ಈ ಜಾಗೆಲೆಡ್ ಉಪ್ಪುನ"@tcy,
+		"Hāng-bo̍k tòa tī ē-kha ê léng-thó͘ lāi. Sú-iōng  P276 hō͘ te̍k-tēng ê só͘-chāi. Na-si kan-na chi̍t-kóa pō͘-hūn sī tī lāi, sú-iōng P1382."@nan-latn-pehoeji,
+		"Hāng-bo̍k tòa tī ē-kha ê léng-thó͘ lāi. Sú-iōng  P276 hō͘ te̍k-tēng ê só͘-chāi. Na-si kan-na chi̍t-kóa pō͘-hūn sī tī lāi, sú-iōng P1382."@nan,
+		"項目蹛佇下跤的領土內。使用P276予特定的所在。若是干焦一寡部份是佇內，使用P1382。"@nan-hani,
+		"項目蹛佇下跤的領土內。使用P276予特定的所在。若是干焦一寡部份是佇內，使用P1382。"@nan-hant,
+		"Hāng-bo̍k tuà tī ē-kha ê líng-thóo lāi. Sú-iōng P276 hōo ti̍k-tīng ê sóo-tsāi. Na-si kan-na tsi̍t-kuá pōo-hūn sī tī lāi, sú-iōng P1382."@nan-latn-tailo,
+		"ᱥᱟᱛᱟᱢ ᱫᱚ ᱱᱚᱣᱟ ᱪᱟᱪᱞᱟᱣ ᱴᱚᱴᱷᱟ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ᱾ ᱵᱮᱼᱪᱟᱪᱞᱟᱣ ᱴᱷᱟᱶ ᱥᱮ ᱜᱷᱚᱴᱚᱱ ᱵᱟᱵᱚᱛ ᱥᱟᱛᱟᱢ ᱠᱚ ᱴᱷᱟᱹᱣᱠᱟᱹᱭ ᱞᱟᱹᱜᱤᱫ P276 ᱵᱮᱵᱷᱟᱨ ᱢᱮ᱾ ᱡᱩᱫᱤ ᱥᱟᱛᱟᱢ ᱛᱮᱫ ᱠᱷᱟᱹᱞᱤ ᱱᱟᱥᱮ ᱪᱟᱪᱞᱟᱣ ᱴᱚᱴᱷᱟ ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ ᱮᱱᱠᱷᱟᱱ P1382 ᱵᱮᱵᱷᱟᱨ ᱢᱮ᱾"@sat,
+		"ਇਹ ਆਈਟਮ ਹੇਠ ਦਿੱਤੀ ਪ੍ਰਸ਼ਾਸਕੀ ਇਕਾਈ ਦੇ ਖੇਤਰ 'ਤੇ ਸਥਿਤ ਹੈ। ਗੈਰ-ਪ੍ਰਸ਼ਾਸਕੀ ਸਥਾਨਾਂ ਨੂੰ ਨਿਰਧਾਰਤ ਕਰਨ ਲਈ ਅਤੇ ਘਟਨਾਵਾਂ ਬਾਰੇ ਆਈਟਮਾਂ ਲਈ P276 ਦੀ ਵਰਤੋਂ ਕਰੋ। ਜੇਕਰ ਆਈਟਮ ਸਿਰਫ਼ ਅੰਸ਼ਕ ਤੌਰ 'ਤੇ ਪ੍ਰਸ਼ਾਸਕੀ ਇਕਾਈ ਵਿੱਚ ਆਉਂਦੀ ਹੈ ਤਾਂ P1382 ​​ਦੀ ਵਰਤੋਂ ਕਰੋ।"@pa,
+		"адміністрацыйная адзінка, да якой адносіцца гэты элемент"@be,
+		"butèr jârowa bâḍâ è wilayah èntitas administratif samarèna. Paghuna P276 (lokasi) kaangghuy nantoaghi lokasi kennengngan non-administratif bân kaangghuy butèr bhâb pokpara"@mad,
+		"Vondrom-pitantana izay misy/nisy ilay zavatra. Ho an'ny fitantanana ankehitriny an'ireo zavatra efa tsy misy intsony, ampiasao ny P3842 (vondrona mpitantana faritany ankehitriny)"@mg,
+		"imettidaagee beettiyo sohuwa"@wal,
+		"Kitu hiki kipo kwenye eneo la mamlaka ya kiutawala ifuatayo. Tumia P276 kuainisha maeneo ambayo si ya kiutawala na kwa vitu vinavyohusu matukio. Tumia P1382 ikiwa kitu hicho kinaangukia kwa kiasi fulani tu kwenye eneo hilo la kiutawala."@sw ;
+	skos:altLabel "územní jednotka"@cs,
+		"správní jednotka"@cs,
+		"je v"@cs,
+		"nadřazená jednotka"@cs,
+		"leží v"@cs,
+		"nachází se v administrativní jednotce"@cs,
+		"nachází se v"@cs,
+		"région"@fr,
+		"département"@fr,
+		"commune"@fr,
+		"ville"@fr,
+		"situation"@fr,
+		"subdivision territoriale de"@fr,
+		"situé dans le territoire de"@fr,
+		"situé dans l'entité administrative de"@fr,
+		"localisation territoriale"@fr,
+		"district"@fr,
+		"province"@fr,
+		"comté"@fr,
+		"municipalité"@fr,
+		"territoire"@fr,
+		"préfecture"@fr,
+		"localisé à"@fr,
+		"localisé dans"@fr,
+		"situé à"@fr,
+		"situé dans"@fr,
+		"état"@fr,
+		"located in the administrative unit"@en,
+		"located in administrative unit"@en,
+		"is in administrative unit"@en,
+		"is located in"@en,
+		"is in the state of"@en,
+		"is in the province of"@en,
+		"is in the county of"@en,
+		"is in the district of"@en,
+		"is in the department of"@en,
+		"is in the region of"@en,
+		"is in the borough of"@en,
+		"is in the city of"@en,
+		"is in the town of"@en,
+		"is in the village of"@en,
+		"is in the municipality of"@en,
+		"is in the territory of"@en,
+		"is in the prefecture of"@en,
+		"is in the voivodeship of"@en,
+		"is in the Indian reservation of"@en,
+		"is in the Indian reserve of"@en,
+		"is in the ward of"@en,
+		"is in the administrative region of"@en,
+		"is in the settlement of"@en,
+		"is in the local government area of"@en,
+		"is in the rural city of"@en,
+		"is in the shire of"@en,
+		"happens in"@en,
+		"is in the commune of"@en,
+		"in administrative unit"@en,
+		"in"@en,
+		"is in the administrative unit"@en,
+		"administrative territorial entity"@en,
+		"city"@en,
+		"town"@en,
+		"state"@en,
+		"Indian reservation"@en,
+		"in the administrative unit"@en,
+		"locality"@en,
+		"is in the parish of"@en,
+		"location (administrative territorial entity)"@en,
+		"is in the principal area of"@en,
+		"located in the territorial entity"@en,
+		"region"@en,
+		"is in the arrondissement of"@en,
+		"administrative territory"@en,
+		"territory"@en,
+		"comune"@it,
+		"provincia"@it,
+		"regione"@it,
+		"contea"@it,
+		"stato"@it,
+		"città"@it,
+		"paese"@it,
+		"מיקום"@he,
+		"עיר"@he,
+		"כפר"@he,
+		"מועצה מקומית"@he,
+		"עיירה"@he,
+		"מחוז"@he,
+		"מדינה"@he,
+		"אובלסט"@he,
+		"רשות מקומית"@he,
+		"מועצה אזורית"@he,
+		"נפה"@he,
+		"יחידה אדמיניסטרטיבית"@he,
+		"יחידה מינהלית"@he,
+		"מיקום (ישות)"@he,
+		"befindet sich in"@de,
+		"findet statt in"@de,
+		"administrativ übergeordnet"@de,
+		"Teil von Verwaltungseinheit"@de,
+		"liegt in Verwaltungseinheit"@de,
+		"ist in Verwaltungseinheit"@de,
+		"liegt in"@de,
+		"Region"@de,
+		"Stadt"@de,
+		"Department"@de,
+		"Provinz"@de,
+		"ist in"@de,
+		"Teil von"@de,
+		"Gemeinde"@de,
+		"Bezirk"@de,
+		"situada en la unidad administrativa"@es,
+		"localizado en la unidad administrativa"@es,
+		"localizada en la unidad administrativa"@es,
+		"situada en"@es,
+		"localizado en"@es,
+		"localizada en"@es,
+		"está en"@es,
+		"situado en"@es,
+		"ubicado en la unidad administrativa"@es,
+		"ubicada en la unidad administrativa"@es,
+		"se encuentra en"@es,
+		"está en el estado de"@es,
+		"está en la provincia de"@es,
+		"está en el distrito de"@es,
+		"está en el departamento de"@es,
+		"está en la región de"@es,
+		"está en el municipio de"@es,
+		"está en la ciudad de"@es,
+		"está en el pueblo de"@es,
+		"está en el territorio de"@es,
+		"está en la prefectura de"@es,
+		"está en la región administrativa de"@es,
+		"en la zona principal de"@es,
+		"locație"@ro,
+		"stat"@ro,
+		"provincie"@ro,
+		"județ"@ro,
+		"comitat"@ro,
+		"district"@ro,
+		"departament"@ro,
+		"regiune"@ro,
+		"voievodat"@ro,
+		"oblast"@ro,
+		"municipiu"@ro,
+		"oraș"@ro,
+		"comună"@ro,
+		"sat"@ro,
+		"teritoriu"@ro,
+		"municipalitate"@ro,
+		"regiune administrativă"@ro,
+		"localizare administrativă"@ro,
+		"nằm trong đơn vị hành chính"@vi,
+		"trực thuộc đơn vị hành chính"@vi,
+		"nằm trong lãnh thổ của đơn vị hành chính"@vi,
+		"provinsi"@id,
+		"kabupaten"@id,
+		"kotamadya"@id,
+		"kecamatan"@id,
+		"kelurahan"@id,
+		"desa"@id,
+		"nagari"@id,
+		"jorong"@id,
+		"kampung"@id,
+		"wilayah administrasi"@id,
+		"tingkat administrasi"@id,
+		"lokasi administrasi"@id,
+		"terletak di tingkat administrasi"@id,
+		"daerah"@id,
+		"terletak di"@id,
+		"terletak di entitas teritorial administratif"@id,
+		"provinsi"@min,
+		"kabupaten"@min,
+		"kotamadya"@min,
+		"kecamatan"@min,
+		"kelurahan"@min,
+		"desa"@min,
+		"nagari"@min,
+		"jorong"@min,
+		"kampuang"@min,
+		"вышестоящая административная единица"@ru,
+		"находится в административно-территориальной единице"@ru,
+		"АТЕ"@ru,
+		"город"@ru,
+		"регион"@ru,
+		"находится в"@ru,
+		"административно-территориально подчиняется"@ru,
+		"onderdeel van de bestuurlijke eenheid"@nl,
+		"provincie"@nl,
+		"county"@nl,
+		"district"@nl,
+		"gemeente"@nl,
+		"departement"@nl,
+		"regio"@nl,
+		"borough"@nl,
+		"deelstaat"@nl,
+		"bestuurlijke eenheid"@nl,
+		"staat (deel van land)"@nl,
+		"is gelegen in"@nl,
+		"locatie (binnen bestuurlijke gebied)"@nl,
+		"stad"@nl,
+		"Region"@de-at,
+		"Stadt"@de-at,
+		"Department"@de-at,
+		"Provinz"@de-at,
+		"ist in"@de-at,
+		"Teil von"@de-at,
+		"Region"@de-ch,
+		"Stadt"@de-ch,
+		"Department"@de-ch,
+		"Provinz"@de-ch,
+		"ist in"@de-ch,
+		"Teil von"@de-ch,
+		"область"@uk,
+		"район"@uk,
+		"провінція"@uk,
+		"штат"@uk,
+		"земля"@uk,
+		"округ"@uk,
+		"департамент (адміністративно-територіальна одиниця)"@uk,
+		"je u upravnoj jedinici"@sh,
+		"je u podnacionalnom entitetu"@sh,
+		"행정구역"@ko,
+		"행정 구역"@ko,
+		"소재 행정 구역"@ko,
+		"소재한 행정 구역"@ko,
+		"소재한 행정구역"@ko,
+		"소재 행정구역"@ko,
+		"소재지"@ko,
+		"소재한 곳"@ko,
+		"위치"@ko,
+		"위치한 곳"@ko,
+		"속해 있는 행정 구역"@ko,
+		"다음 행정 구역에 속함"@ko,
+		"다음 행정 구역에 속해 있음"@ko,
+		"속한 행정 구역"@ko,
+		"이 행정 구역에 있음"@ko,
+		"다음 행정구역에 있음"@ko,
+		"이 행정구역에 있음"@ko,
+		"다음 행정 구역에 있음"@ko,
+		"상위 행정구역"@ko,
+		"상위 행정 구역"@ko,
+		"다음 행정 구역에 위치함"@ko,
+		"위치한 행정 구역"@ko,
+		"위치한 행정구역"@ko,
+		"다음행정구역에 위치함"@ko,
+		"ligger i administrativt område"@sv,
+		"i delstaten"@sv,
+		"i provinsen"@sv,
+		"i distriktet"@sv,
+		"i kommunen"@sv,
+		"i departementet"@sv,
+		"i regionen"@sv,
+		"i staden"@sv,
+		"i socknen"@sv,
+		"i prefekturen"@sv,
+		"i häradet"@sv,
+		"inom region"@sv,
+		"inom administrativt område"@sv,
+		"inneholdt i"@nb,
+		"inngår i"@nb,
+		"er en del av"@nb,
+		"underlagt"@nb,
+		"tilhører administrativ enhet"@nb,
+		"i staten"@nb,
+		"i provinsen"@nb,
+		"i delen"@nb,
+		"da en del av"@nb,
+		"είναι στη διοικητική μονάδα"@el,
+		"είναι στη διοικητική διαίρεση"@el,
+		"ανήκει στην διοικητική διαίρεση"@el,
+		"διοικητική διαίρεση"@el,
+		"διοικητική μονάδα"@el,
+		"διοικητική οντότητα"@el,
+		"隶属"@zh,
+		"上级行政区"@zh,
+		"行政區"@zh,
+		"隸屬行政區"@zh,
+		"上級行政區"@zh,
+		"所屬行政區"@zh,
+		"隶属行政区"@zh,
+		"所在行政区"@zh,
+		"位于行政区"@zh,
+		"位於行政區"@zh,
+		"所在州份"@zh,
+		"所在省份"@zh,
+		"所在县份"@zh,
+		"所在縣份"@zh,
+		"所在市份"@zh,
+		"所在自治市"@zh,
+		"所在镇份"@zh,
+		"所在鎮份"@zh,
+		"所在村份"@zh,
+		"所在郡份"@zh,
+		"所在領地"@zh,
+		"所在领地"@zh,
+		"所在市镇"@zh,
+		"所在市鎮"@zh,
+		"所属行政区"@zh,
+		"行政区"@zh,
+		"省"@zh,
+		"直辖市"@zh,
+		"自治区"@zh,
+		"直轄市"@zh,
+		"自治區"@zh,
+		"市"@zh,
+		"区"@zh,
+		"區"@zh,
+		"县"@zh,
+		"縣"@zh,
+		"自治州"@zh,
+		"自治市"@zh,
+		"自治县"@zh,
+		"自治縣"@zh,
+		"市区"@zh,
+		"市區"@zh,
+		"町"@zh,
+		"乡"@zh,
+		"鄉"@zh,
+		"村"@zh,
+		"里"@zh,
+		"行政洞"@zh,
+		"乌帕齐拉"@zh,
+		"烏帕齊拉"@zh,
+		"镇"@zh,
+		"鎮"@zh,
+		"市镇"@zh,
+		"市鎮"@zh,
+		"自治共和国"@zh,
+		"自治共和國"@zh,
+		"自治政府"@zh,
+		"堂区"@zh,
+		"堂區"@zh,
+		"位于行政单位"@zh,
+		"位於行政領土實體"@zh,
+		"位於行政單位"@zh,
+		"所在州"@zh,
+		"所在省"@zh,
+		"所在县"@zh,
+		"所在縣"@zh,
+		"所在市"@zh,
+		"所在行政部门"@zh,
+		"所在行政部門"@zh,
+		"所在镇"@zh,
+		"所在鎮"@zh,
+		"所在村"@zh,
+		"所在市政当局"@zh,
+		"所在市政當局"@zh,
+		"所在郡"@zh,
+		"所在本地政府地区"@zh,
+		"所在本地政府地區"@zh,
+		"发生在"@zh,
+		"發生在"@zh,
+		"所在印度保留地"@zh,
+		"所在政治地區"@zh,
+		"所在政治地区"@zh,
+		"行政领土实体"@zh,
+		"行政領土實體"@zh,
+		"所在行政領土實體"@zh,
+		"县级市"@zh,
+		"縣級市"@zh,
+		"都道府县"@zh,
+		"都道府縣"@zh,
+		"市町村"@zh,
+		"所在自治政府"@zh,
+		"所在堂區"@zh,
+		"所在堂区"@zh,
+		"所在乡"@zh,
+		"所在鄉"@zh,
+		"所在里"@zh,
+		"所在町"@zh,
+		"所在行政洞"@zh,
+		"所在乌帕齐拉"@zh,
+		"所在烏帕齊拉"@zh,
+		"位于行政领土实体"@zh,
+		"si trova nta"@scn,
+		"si trova nna"@scn,
+		"leži v"@sl,
+		"leži na"@sl,
+		"spada k"@sl,
+		"spada pod"@sl,
+		"je na"@sl,
+		"所在地（行政区画）"@ja,
+		"所在地"@ja,
+		"所在する行政区画"@ja,
+		"administra unuo"@eo,
+		"regiono"@eo,
+		"ardal weinyddol"@cy,
+		"sir"@cy,
+		"rhanbarth"@cy,
+		"endid tiriogaethol gweinyddol"@cy,
+		"está no estado de"@pt-br,
+		"está na região de"@pt-br,
+		"está no distrito de"@pt-br,
+		"está na província de"@pt-br,
+		"está na unidade federativa de"@pt-br,
+		"ta nel estáu de"@ast,
+		"ta na provincia de"@ast,
+		"ta nel condáu de"@ast,
+		"ta nel distritu de"@ast,
+		"ta nel departamentu de"@ast,
+		"ta na ciudá de"@ast,
+		"ta na villa de"@ast,
+		"ta na prefectura de"@ast,
+		"ta nel voivodatu de"@ast,
+		"ta na comuna de"@ast,
+		"ta na reserva de"@ast,
+		"ta na parroquia de"@ast,
+		"ta nel partíu xudicial de"@ast,
+		"ta na rexón alministrativa de"@ast,
+		"asitiáu en"@ast,
+		"asitiada na entidá alministrativa territorial"@ast,
+		"asitiada en"@ast,
+		"dumunung ing propinsi"@jv,
+		"dumunung ing kabupatèn"@jv,
+		"dumunung ing dhistrik"@jv,
+		"dumunung ing kacamatan"@jv,
+		"dumunung ing kutha"@jv,
+		"dumunung ing kalurahan"@jv,
+		"dumunung ing désa"@jv,
+		"dumunung ing nagari"@jv,
+		"dumunung ing jorong"@jv,
+		"dumunung ing kampung"@jv,
+		"dumunung ing gampong"@jv,
+		"įsikūręs savivaldybės teritorijoje"@lt,
+		"esantis administraciniame vienete"@lt,
+		"seniūnija"@lt,
+		"apskritis"@lt,
+		"sritis"@lt,
+		"város"@hu,
+		"régió"@hu,
+		"megye"@hu,
+		"körzet"@hu,
+		"falu"@hu,
+		"állam"@hu,
+		"település"@hu,
+		"ರಾಜ್ಯದಲ್ಲಿರುವ ಸ್ಥಳ"@kn,
+		"ದೇಶದೊಳಗಿರುವ ಸ್ಥಳ"@kn,
+		"localització administrativa"@ca,
+		"situació administrativa"@ca,
+		"entitat administrativa"@ca,
+		"unitat administrativa"@ca,
+		"i vendosur në entitetin territorial administrativ të"@sq,
+		"i vendosur në rrethin e"@sq,
+		"i vendosur në"@sq,
+		"e vendosur në"@sq,
+		"e vendosur në rrethin e"@sq,
+		"i vendosur në qarkun e"@sq,
+		"e vendosur në qarkun e"@sq,
+		"jest w mieście"@pl,
+		"jest we wsi"@pl,
+		"miasto"@pl,
+		"miejscowość"@pl,
+		"lokalizacja"@pl,
+		"prowincja"@pl,
+		"gubernatorstwo"@pl,
+		"stan"@pl,
+		"gmina"@pl,
+		"powiat"@pl,
+		"województwo"@pl,
+		"jest w prowincji"@pl,
+		"jest w gubernatorstwie"@pl,
+		"jest w stanie"@pl,
+		"jest w gminie"@pl,
+		"jest w powiecie"@pl,
+		"jest w województwie"@pl,
+		"okręg"@pl,
+		"jest w okręgu"@pl,
+		"beliggende i provinsen"@da,
+		"beliggende i staten"@da,
+		"beliggende i grevskabet"@da,
+		"beliggende i region"@da,
+		"beliggende i byen"@da,
+		"beliggende i landsbyen"@da,
+		"beliggende i departementet"@da,
+		"beliggende i kommunen"@da,
+		"placeret i"@da,
+		"шәһәр"@tt,
+		"төбәк"@tt,
+		"АТБ"@tt,
+		"Ìpínlè"@yo,
+		"шәһәр"@tt-cyrl,
+		"төбәк"@tt-cyrl,
+		"АТБ"@tt-cyrl,
+		"şähär"@tt-latn,
+		"töbäk"@tt-latn,
+		"ATB"@tt-latn,
+		"komününde"@tr,
+		"bulunduğu il"@tr,
+		"bulunduğu ilçe"@tr,
+		"bulunduğu köy"@tr,
+		"bulunduğu belde"@tr,
+		"bulunduğu mahalle"@tr,
+		"bulunduğu idari teşkilat"@tr,
+		"yer aldığı idari birim"@tr,
+		"bulunduğu vilayet"@tr,
+		"ilçesinde"@tr,
+		"ilinde"@tr,
+		"köyünde"@tr,
+		"yönetim birimi içinde"@tr,
+		"yerel yönetiminde"@tr,
+		"مكانه في التقسيم الإداري"@ar,
+		"تقسيم إداري"@ar,
+		"التقسيم الإداري"@ar,
+		"المكان في التقسيم الإداري"@ar,
+		"الموقع في التقسيم الإداري"@ar,
+		"dalam unit pentadbiran"@ms,
+		"terletak dalam"@ms,
+		"dalam negeri"@ms,
+		"dalam wilayah"@ms,
+		"dalam daerah"@ms,
+		"dalam rantau"@ms,
+		"dalam mukim"@ms,
+		"dalam kawasan"@ms,
+		"dalam bandar"@ms,
+		"dalam pekan"@ms,
+		"dalam kampung"@ms,
+		"dalam kampong"@ms,
+		"dalam perbandaran"@ms,
+		"dalam kawasan pentadbiran"@ms,
+		"dalam kawasan penempatan"@ms,
+		"berada dalam unit pentadbiran"@ms,
+		"pertencente á unidade administrativa"@gl,
+		"налази се у административно-јединици"@sr,
+		"налази се у административно-територијалној јединици"@sr,
+		"налази се у управно-територијалној јединици"@sr,
+		"налази се у управно-јединици"@sr,
+		"савезна држава"@sr,
+		"провинција"@sr,
+		"губернија"@sr,
+		"регион"@sr,
+		"департман"@sr,
+		"резерват"@sr,
+		"префектура"@sr,
+		"комуна"@sr,
+		"покрајина"@sr,
+		"колонија"@sr,
+		"вилајет"@sr,
+		"пашалук"@sr,
+		"ในแขวง"@th,
+		"ในอำเภอ"@th,
+		"ในตำบล"@th,
+		"ในจังหวัด"@th,
+		"ในประเทศ"@th,
+		"ในเมือง"@th,
+		"ในกรุง"@th,
+		"ในเขต"@th,
+		"प्रशासकीय एककात स्थित"@mr,
+		"प्रशासकीय एककात आहे"@mr,
+		"मध्ये स्थित आहे"@mr,
+		"प्रांतात स्थित आहे"@mr,
+		"देशात स्थित आहे"@mr,
+		"या क्षेत्रात आहे"@mr,
+		"या शहरात आहे"@mr,
+		"या गावात आहे"@mr,
+		"is in the administrative unit"@en-ca,
+		"is in the administrative unit"@en-gb,
+		"இந்த இடத்தில்"@ta,
+		"இந்த நகரத்தில்"@ta,
+		"இந்த மாநிலத்தில்"@ta,
+		"இந்த நிருவாக அலகில்"@ta,
+		"இந்த நிருவாக இடவமைவில்"@ta,
+		"இங்கு அமைந்துள்ளது"@ta,
+		"இந்த நாட்டில்"@ta,
+		"இந்தத்துறையில்"@ta,
+		"இந்த மாவட்டத்தில்"@ta,
+		"இந்த மண்டிலத்தில்"@ta,
+		"இந்த ஊரில்"@ta,
+		"இந்த ஊராட்சியில்"@ta,
+		"இந்த மாநகராட்சியில்"@ta,
+		"இந்த நகராட்சில்"@ta,
+		"இந்த நகரியத்தில்"@ta,
+		"இந்த வாழிடத்தில்"@ta,
+		"நிர்வாகப்பகுதி"@ta,
+		"မြို့"@my,
+		"မြို့နယ်"@my,
+		"ပြည်နယ်"@my,
+		"တိုင်း"@my,
+		"အရပ်ဒေသ"@my,
+		"တည်ရှိသည်မှာ"@my,
+		"တည်နေရာမှာ"@my,
+		"ရပ်ကွက် တွင်"@my,
+		"ကျေးရွာအုပ်စု တွင်"@my,
+		"administrativ tilhøyrsel"@nn,
+		"n'tel distreto de"@vec,
+		"n'te ła rejon de"@vec,
+		"n'te ła çità de"@vec,
+		"n'tel stato de"@vec,
+		"n'tel munisipio de"@vec,
+		"el xé locà en"@vec,
+		"n'te ła provincia de"@vec,
+		"n'tel dipartimento de"@vec,
+		"n'tel teritorio de"@vec,
+		"n'tel comun de"@vec,
+		"n'tel paexe de"@vec,
+		"Dewe"@diq,
+		"Nahiye"@diq,
+		"Qeza"@diq,
+		"Wılayet"@diq,
+		"Eyalet"@diq,
+		"کەوتووەتە"@ckb,
+		"سەر بە"@ckb,
+		"udalerria"@eu,
+		"انتظامي يونٽ ۾ موجود آهي"@sd,
+		"جي رياست ۾"@sd,
+		"جي صوبي يا پرڳڻي ۾"@sd,
+		"جي ضلعي ۾"@sd,
+		"административна единица"@mk,
+		"управна единица"@mk,
+		"се наоѓа во административната единица"@mk,
+		"се наоѓа во управната единица"@mk,
+		"разьмешчана ў"@be-tarask,
+		"разьмешчанае ў"@be-tarask,
+		"разьмешчаная ў"@be-tarask,
+		"разьмешчаны ў"@be-tarask,
+		"разьмешчаныя ў"@be-tarask,
+		"ਪ੍ਰਸ਼ਾਸਨਿਕ ਵਿਭਾਗ 'ਚ ਸਥਿਤ"@pa,
+		"ਵਿੱਚ ਸਥਿਤ"@pa,
+		"ਖੇਤਰ"@pa,
+		"ਸ਼ਹਿਰ"@pa,
+		"ਰਾਜ"@pa,
+		"ਕਸਬਾ"@pa,
+		"ਪ੍ਰਸ਼ਾਸਨਿਕ ਵਿਭਾਗ ਇਕਾਈ"@pa,
+		"ਪ੍ਰਬੰਧਕੀ ਇਕਾਈ ਵਿੱਚ ਸਥਿਤ"@pa,
+		"پرشاسنِک وِبھاگ وِچّ سِتھت"@pnb,
+		"din be shɛli"@dag,
+		"намира се в административната териториална единица"@bg,
+		"намира се в"@bg,
+		"разположен  на територията на"@bg,
+		"на територият  на"@bg,
+		"в границите на"@bg,
+		"region"@oc,
+		"comuna"@oc,
+		"ciutat"@oc,
+		"vila"@oc,
+		"país"@oc,
+		"estat"@oc,
+		"canton"@oc,
+		"província"@oc,
+		"vigariá"@oc,
+		"departament"@oc,
+		"fam"@kcg,
+		"si̱tet"@kcg,
+		"pi̱rovin"@kcg,
+		"a̱keang"@kcg,
+		"a̱bakeang"@kcg,
+		"a̱gba̱ndang a̱keang"@kcg,
+		"located in the administrative unit"@en-us,
+		"located in administrative unit"@en-us,
+		"is in administrative unit"@en-us,
+		"is located in"@en-us,
+		"is in the state of"@en-us,
+		"is in the province of"@en-us,
+		"is in the county of"@en-us,
+		"is in the district of"@en-us,
+		"is in the department of"@en-us,
+		"is in the region of"@en-us,
+		"is in the borough of"@en-us,
+		"is in the city of"@en-us,
+		"is in the town of"@en-us,
+		"is in the village of"@en-us,
+		"is in the municipality of"@en-us,
+		"is in the territory of"@en-us,
+		"is in the prefecture of"@en-us,
+		"is in the voivodeship of"@en-us,
+		"is in the Indian reservation of"@en-us,
+		"is in the ward of"@en-us,
+		"is in the administrative region of"@en-us,
+		"hallinnollinen yksikkö"@fi,
+		"hallinnollinen alueyksikkö"@fi,
+		"paikan hallinnollinen yksikkö"@fi,
+		"sijaitsee hallinnollisessa yksikössä"@fi,
+		"paikan hallinnollinen alueyksikkö"@fi,
+		"kunta"@fi,
+		"kaupunki"@fi,
+		"piirikunta"@fi,
+		"maakunta"@fi,
+		"provinssi"@fi,
+		"osavaltio"@fi,
+		"hallintoalue"@fi,
+		"alue"@fi,
+		"ರಾಜ್ಯೋಡುಪ್ಪುನ"@tcy,
+		"ದೇಶೊಡುಪ್ಪುನ"@tcy,
+		"läit an der Verwaltungseenheet"@lb,
+		"ᱨᱮ ᱢᱮᱱᱟᱜᱼᱟ"@sat,
+		"ᱥᱟᱥᱚᱱ ᱴᱚᱴᱷᱟ"@sat,
+		"ᱪᱟᱪᱞᱟᱣ ᱮᱞᱟᱠᱟ"@sat,
+		"знаходзіцца ў адміністрацыйнай адзінцы"@be,
+		"está no estado de"@pt,
+		"está no distrito de"@pt,
+		"está na província de"@pt,
+		"está na unidade federativa de"@pt,
+		"está na região de"@pt,
+		"所在行政区"@zh-hans,
+		"所在行政区"@zh-cn,
+		"所在地"@zh-cn,
+		"所在行政区"@zh-sg,
+		"所在行政區"@zh-hant,
+		"所在行政區"@zh-hk,
+		"所在行政區"@zh-mo,
+		"所在行政區"@zh-tw,
+		"所在行政区"@zh-my,
+		"ზემდგომი ადმინისტრაციული ერთეული"@ka ;
+	wikibase:propertyType <http://wikiba.se/ontology#WikibaseItem> ;
+	wikibase:directClaim wdt:P131 ;
+	wikibase:claim p:P131 ;
+	wikibase:statementProperty ps:P131 ;
+	wikibase:statementValue psv:P131 ;
+	wikibase:qualifier pq:P131 ;
+	wikibase:qualifierValue pqv:P131 ;
+	wikibase:reference pr:P131 ;
+	wikibase:referenceValue prv:P131 ;
+	wikibase:novalue wdno:P131 .
+
+p:P131 a owl:ObjectProperty .
+
+psv:P131 a owl:ObjectProperty .
+
+pqv:P131 a owl:ObjectProperty .
+
+prv:P131 a owl:ObjectProperty .
+
+wdt:P131 a owl:ObjectProperty .
+
+ps:P131 a owl:ObjectProperty .
+
+pq:P131 a owl:ObjectProperty .
+
+pr:P131 a owl:ObjectProperty .
+
+wdno:P131 a owl:Class ;
+	owl:complementOf _:1d2a8f0c3b3451be4d4228f97153e08d .
+
+_:1d2a8f0c3b3451be4d4228f97153e08d a owl:Restriction ;
+	owl:onProperty wdt:P131 ;
+	owl:someValuesFrom owl:Thing .
+
+wdref:995de0af3f3ed7f05c0852fb905dc7211d2a7cc0 a wikibase:Reference ;
+	pr:P2306 wd:P131 ;
+	pr:P3452 wd:Q11511498 ;
+	pr:P5997 "https://www.wikidata.org/w/index.php?title=Q11511498&action=history" .

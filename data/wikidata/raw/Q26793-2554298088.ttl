@@ -1,0 +1,3734 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix wikibase: <http://wikiba.se/ontology#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix schema: <http://schema.org/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix data: <https://www.wikidata.org/wiki/Special:EntityData/> .
+@prefix wds: <http://www.wikidata.org/entity/statement/> .
+@prefix wdref: <http://www.wikidata.org/reference/> .
+@prefix wdv: <http://www.wikidata.org/value/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix wdtn: <http://www.wikidata.org/prop/direct-normalized/> .
+@prefix p: <http://www.wikidata.org/prop/> .
+@prefix ps: <http://www.wikidata.org/prop/statement/> .
+@prefix psv: <http://www.wikidata.org/prop/statement/value/> .
+@prefix psn: <http://www.wikidata.org/prop/statement/value-normalized/> .
+@prefix pq: <http://www.wikidata.org/prop/qualifier/> .
+@prefix pqv: <http://www.wikidata.org/prop/qualifier/value/> .
+@prefix pqn: <http://www.wikidata.org/prop/qualifier/value-normalized/> .
+@prefix pr: <http://www.wikidata.org/prop/reference/> .
+@prefix prv: <http://www.wikidata.org/prop/reference/value/> .
+@prefix prn: <http://www.wikidata.org/prop/reference/value-normalized/> .
+@prefix wdno: <http://www.wikidata.org/prop/novalue/> .
+
+data:Q26793 a schema:Dataset ;
+	schema:about wd:Q26793 ;
+	cc:license <http://creativecommons.org/publicdomain/zero/1.0/> ;
+	schema:softwareVersion "1.0.0" ;
+	schema:version "2554298088"^^xsd:integer ;
+	schema:dateModified "2026-10-07T02:36:42Z"^^xsd:dateTime ;
+	wikibase:statements "168"^^xsd:integer ;
+	wikibase:sitelinks "149"^^xsd:integer ;
+	wikibase:identifiers "90"^^xsd:integer .
+
+wd:Q26793 a wikibase:Item .
+
+<https://af.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "af" ;
+	schema:isPartOf <https://af.wikipedia.org/> ;
+	schema:name "Bergen"@af ;
+	wikibase:badge wd:Q17437796 .
+
+<https://af.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://als.wikipedia.org/wiki/Bergen_(Norwegen)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "gsw" ;
+	schema:isPartOf <https://als.wikipedia.org/> ;
+	schema:name "Bergen (Norwegen)"@gsw .
+
+<https://als.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://am.wikipedia.org/wiki/%E1%89%A0%E1%88%AD%E1%8C%8D%E1%8A%95> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "am" ;
+	schema:isPartOf <https://am.wikipedia.org/> ;
+	schema:name "በርግን"@am .
+
+<https://am.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://an.wikipedia.org/wiki/Bergen_(Noruega)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "an" ;
+	schema:isPartOf <https://an.wikipedia.org/> ;
+	schema:name "Bergen (Noruega)"@an .
+
+<https://an.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ar.wikipedia.org/wiki/%D8%A8%D8%B1%D8%BA%D9%86> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ar" ;
+	schema:isPartOf <https://ar.wikipedia.org/> ;
+	schema:name "برغن"@ar .
+
+<https://ar.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://arz.wikipedia.org/wiki/%D8%A8%D8%B1%D8%AC%D9%86> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "arz" ;
+	schema:isPartOf <https://arz.wikipedia.org/> ;
+	schema:name "برجن"@arz .
+
+<https://arz.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ast.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ast" ;
+	schema:isPartOf <https://ast.wikipedia.org/> ;
+	schema:name "Bergen"@ast .
+
+<https://ast.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://azb.wikipedia.org/wiki/%D8%A8%D8%B1%D9%82%D9%86> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "azb" ;
+	schema:isPartOf <https://azb.wikipedia.org/> ;
+	schema:name "برقن"@azb .
+
+<https://azb.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://az.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "az" ;
+	schema:isPartOf <https://az.wikipedia.org/> ;
+	schema:name "Bergen"@az .
+
+<https://az.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bat-smg.wikipedia.org/wiki/Bergens> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "sgs" ;
+	schema:isPartOf <https://bat-smg.wikipedia.org/> ;
+	schema:name "Bergens"@sgs .
+
+<https://bat-smg.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://be-tarask.wikipedia.org/wiki/%D0%91%D1%8D%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "be-tarask" ;
+	schema:isPartOf <https://be-tarask.wikipedia.org/> ;
+	schema:name "Бэрген"@be-tarask .
+
+<https://be-tarask.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://be.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "be" ;
+	schema:isPartOf <https://be.wikipedia.org/> ;
+	schema:name "Берген"@be .
+
+<https://be.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bg.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "bg" ;
+	schema:isPartOf <https://bg.wikipedia.org/> ;
+	schema:name "Берген"@bg .
+
+<https://bg.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bjn.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "bjn" ;
+	schema:isPartOf <https://bjn.wikipedia.org/> ;
+	schema:name "Bergen"@bjn .
+
+<https://bjn.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bpy.wikipedia.org/wiki/%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A6%97%E0%A7%87%E0%A6%A8> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "bpy" ;
+	schema:isPartOf <https://bpy.wikipedia.org/> ;
+	schema:name "বারগেন"@bpy .
+
+<https://bpy.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://br.wikipedia.org/wiki/Bergen_(Norvegia)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "br" ;
+	schema:isPartOf <https://br.wikipedia.org/> ;
+	schema:name "Bergen (Norvegia)"@br .
+
+<https://br.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bs.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "bs" ;
+	schema:isPartOf <https://bs.wikipedia.org/> ;
+	schema:name "Bergen"@bs .
+
+<https://bs.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ceb.wikipedia.org/wiki/Bergen_(kapital_sa_lalawigan)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ceb" ;
+	schema:isPartOf <https://ceb.wikipedia.org/> ;
+	schema:name "Bergen (kapital sa lalawigan)"@ceb .
+
+<https://ceb.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ce.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ce" ;
+	schema:isPartOf <https://ce.wikipedia.org/> ;
+	schema:name "Берген"@ce .
+
+<https://ce.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ckb.wikipedia.org/wiki/%D8%A8%D8%A7%D8%B1%DA%AF%D9%86> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ckb" ;
+	schema:isPartOf <https://ckb.wikipedia.org/> ;
+	schema:name "بارگن"@ckb .
+
+<https://ckb.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://cs.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "cs" ;
+	schema:isPartOf <https://cs.wikipedia.org/> ;
+	schema:name "Bergen"@cs .
+
+<https://cs.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://cs.wikiquote.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "cs" ;
+	schema:isPartOf <https://cs.wikiquote.org/> ;
+	schema:name "Bergen"@cs .
+
+<https://cs.wikiquote.org/> wikibase:wikiGroup "wikiquote" .
+
+<https://cy.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "cy" ;
+	schema:isPartOf <https://cy.wikipedia.org/> ;
+	schema:name "Bergen"@cy .
+
+<https://cy.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://da.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "da" ;
+	schema:isPartOf <https://da.wikipedia.org/> ;
+	schema:name "Bergen"@da .
+
+<https://da.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://de.wikisource.org/wiki/Bergen_(Norwegen)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "de" ;
+	schema:isPartOf <https://de.wikisource.org/> ;
+	schema:name "Bergen (Norwegen)"@de .
+
+<https://de.wikisource.org/> wikibase:wikiGroup "wikisource" .
+
+<https://de.wikivoyage.org/wiki/Bergen_(Norwegen)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "de" ;
+	schema:isPartOf <https://de.wikivoyage.org/> ;
+	schema:name "Bergen (Norwegen)"@de ;
+	wikibase:badge wd:Q17559452 .
+
+<https://de.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://diq.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "diq" ;
+	schema:isPartOf <https://diq.wikipedia.org/> ;
+	schema:name "Bergen"@diq .
+
+<https://diq.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://el.wikipedia.org/wiki/%CE%9C%CF%80%CE%AD%CF%81%CE%B3%CE%BA%CE%B5%CE%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "el" ;
+	schema:isPartOf <https://el.wikipedia.org/> ;
+	schema:name "Μπέργκεν"@el .
+
+<https://el.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://en.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "en" ;
+	schema:isPartOf <https://en.wikipedia.org/> ;
+	schema:name "Bergen"@en .
+
+<https://en.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://en.wikivoyage.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "en" ;
+	schema:isPartOf <https://en.wikivoyage.org/> ;
+	schema:name "Bergen"@en ;
+	wikibase:badge wd:Q17437798 .
+
+<https://en.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://eo.wikipedia.org/wiki/Bergen_(Norvegio)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "eo" ;
+	schema:isPartOf <https://eo.wikipedia.org/> ;
+	schema:name "Bergen (Norvegio)"@eo .
+
+<https://eo.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://es.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "es" ;
+	schema:isPartOf <https://es.wikipedia.org/> ;
+	schema:name "Bergen"@es .
+
+<https://es.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://es.wikivoyage.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "es" ;
+	schema:isPartOf <https://es.wikivoyage.org/> ;
+	schema:name "Bergen"@es .
+
+<https://es.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://et.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "et" ;
+	schema:isPartOf <https://et.wikipedia.org/> ;
+	schema:name "Bergen"@et .
+
+<https://et.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://eu.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "eu" ;
+	schema:isPartOf <https://eu.wikipedia.org/> ;
+	schema:name "Bergen"@eu .
+
+<https://eu.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fa.wikipedia.org/wiki/%D8%A8%D8%B1%DA%AF%D9%86> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "fa" ;
+	schema:isPartOf <https://fa.wikipedia.org/> ;
+	schema:name "برگن"@fa .
+
+<https://fa.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fa.wikivoyage.org/wiki/%D8%A8%D8%B1%DA%AF%D9%86> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "fa" ;
+	schema:isPartOf <https://fa.wikivoyage.org/> ;
+	schema:name "برگن"@fa .
+
+<https://fa.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://fi.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "fi" ;
+	schema:isPartOf <https://fi.wikipedia.org/> ;
+	schema:name "Bergen"@fi .
+
+<https://fi.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fi.wikivoyage.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "fi" ;
+	schema:isPartOf <https://fi.wikivoyage.org/> ;
+	schema:name "Bergen"@fi .
+
+<https://fi.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://fo.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "fo" ;
+	schema:isPartOf <https://fo.wikipedia.org/> ;
+	schema:name "Bergen"@fo .
+
+<https://fo.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://frr.wikipedia.org/wiki/Bergen_(Norweegen)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "frr" ;
+	schema:isPartOf <https://frr.wikipedia.org/> ;
+	schema:name "Bergen (Norweegen)"@frr .
+
+<https://frr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fr.wikipedia.org/wiki/Bergen_(Norv%C3%A8ge)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "fr" ;
+	schema:isPartOf <https://fr.wikipedia.org/> ;
+	schema:name "Bergen (Norvège)"@fr ;
+	wikibase:badge wd:Q17437796 .
+
+<https://fr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://fr.wikivoyage.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "fr" ;
+	schema:isPartOf <https://fr.wikivoyage.org/> ;
+	schema:name "Bergen"@fr .
+
+<https://fr.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://fy.wikipedia.org/wiki/Bergen_(Noarwegen)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "fy" ;
+	schema:isPartOf <https://fy.wikipedia.org/> ;
+	schema:name "Bergen (Noarwegen)"@fy .
+
+<https://fy.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ga.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ga" ;
+	schema:isPartOf <https://ga.wikipedia.org/> ;
+	schema:name "Bergen"@ga .
+
+<https://ga.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://gl.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "gl" ;
+	schema:isPartOf <https://gl.wikipedia.org/> ;
+	schema:name "Bergen"@gl .
+
+<https://gl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ha.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ha" ;
+	schema:isPartOf <https://ha.wikipedia.org/> ;
+	schema:name "Bergen"@ha .
+
+<https://ha.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://he.wikipedia.org/wiki/%D7%91%D7%A8%D7%92%D7%9F> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "he" ;
+	schema:isPartOf <https://he.wikipedia.org/> ;
+	schema:name "ברגן"@he .
+
+<https://he.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://he.wikiquote.org/wiki/%D7%91%D7%A8%D7%92%D7%9F> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "he" ;
+	schema:isPartOf <https://he.wikiquote.org/> ;
+	schema:name "ברגן"@he .
+
+<https://he.wikiquote.org/> wikibase:wikiGroup "wikiquote" .
+
+<https://he.wikivoyage.org/wiki/%D7%91%D7%A8%D7%92%D7%9F> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "he" ;
+	schema:isPartOf <https://he.wikivoyage.org/> ;
+	schema:name "ברגן"@he .
+
+<https://he.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://hr.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "hr" ;
+	schema:isPartOf <https://hr.wikipedia.org/> ;
+	schema:name "Bergen"@hr .
+
+<https://hr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://hsb.wikipedia.org/wiki/Bergen_(Norwegska)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "hsb" ;
+	schema:isPartOf <https://hsb.wikipedia.org/> ;
+	schema:name "Bergen (Norwegska)"@hsb .
+
+<https://hsb.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://hu.wikipedia.org/wiki/Bergen_(Norv%C3%A9gia)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "hu" ;
+	schema:isPartOf <https://hu.wikipedia.org/> ;
+	schema:name "Bergen (Norvégia)"@hu .
+
+<https://hu.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://hy.wikipedia.org/wiki/%D4%B2%D5%A5%D6%80%D5%A3%D5%A5%D5%B6> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "hy" ;
+	schema:isPartOf <https://hy.wikipedia.org/> ;
+	schema:name "Բերգեն"@hy .
+
+<https://hy.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://hyw.wikipedia.org/wiki/%D5%8A%D5%A7%D6%80%D5%AF%D5%A8%D5%B6> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "hyw" ;
+	schema:isPartOf <https://hyw.wikipedia.org/> ;
+	schema:name "Պէրկըն"@hyw .
+
+<https://hyw.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ia.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ia" ;
+	schema:isPartOf <https://ia.wikipedia.org/> ;
+	schema:name "Bergen"@ia .
+
+<https://ia.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://id.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "id" ;
+	schema:isPartOf <https://id.wikipedia.org/> ;
+	schema:name "Bergen"@id .
+
+<https://id.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ie.wikipedia.org/wiki/Bergen_(Norvegia)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ie" ;
+	schema:isPartOf <https://ie.wikipedia.org/> ;
+	schema:name "Bergen (Norvegia)"@ie .
+
+<https://ie.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://io.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "io" ;
+	schema:isPartOf <https://io.wikipedia.org/> ;
+	schema:name "Bergen"@io .
+
+<https://io.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://is.wikipedia.org/wiki/Bj%C3%B6rgvin> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "is" ;
+	schema:isPartOf <https://is.wikipedia.org/> ;
+	schema:name "Björgvin"@is .
+
+<https://is.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://it.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "it" ;
+	schema:isPartOf <https://it.wikipedia.org/> ;
+	schema:name "Bergen"@it .
+
+<https://it.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ja.wikipedia.org/wiki/%E3%83%99%E3%83%AB%E3%82%B2%E3%83%B3> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ja" ;
+	schema:isPartOf <https://ja.wikipedia.org/> ;
+	schema:name "ベルゲン"@ja .
+
+<https://ja.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://jv.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "jv" ;
+	schema:isPartOf <https://jv.wikipedia.org/> ;
+	schema:name "Bergen"@jv .
+
+<https://jv.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ka.wikipedia.org/wiki/%E1%83%91%E1%83%94%E1%83%A0%E1%83%92%E1%83%94%E1%83%9C%E1%83%98> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ka" ;
+	schema:isPartOf <https://ka.wikipedia.org/> ;
+	schema:name "ბერგენი"@ka .
+
+<https://ka.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ko.wikipedia.org/wiki/%EB%B2%A0%EB%A5%B4%EA%B2%90> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ko" ;
+	schema:isPartOf <https://ko.wikipedia.org/> ;
+	schema:name "베르겐"@ko .
+
+<https://ko.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://la.wikipedia.org/wiki/Berga> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "la" ;
+	schema:isPartOf <https://la.wikipedia.org/> ;
+	schema:name "Berga"@la .
+
+<https://la.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://lb.wikipedia.org/wiki/Bergen_(Norwegen)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "lb" ;
+	schema:isPartOf <https://lb.wikipedia.org/> ;
+	schema:name "Bergen (Norwegen)"@lb .
+
+<https://lb.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://li.wikipedia.org/wiki/Bergen_(N%C3%B3rwaeg)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "li" ;
+	schema:isPartOf <https://li.wikipedia.org/> ;
+	schema:name "Bergen (Nórwaeg)"@li .
+
+<https://li.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://lmo.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "lmo" ;
+	schema:isPartOf <https://lmo.wikipedia.org/> ;
+	schema:name "Bergen"@lmo .
+
+<https://lmo.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://lt.wikipedia.org/wiki/Bergenas> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "lt" ;
+	schema:isPartOf <https://lt.wikipedia.org/> ;
+	schema:name "Bergenas"@lt .
+
+<https://lt.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://lv.wikipedia.org/wiki/Bergena> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "lv" ;
+	schema:isPartOf <https://lv.wikipedia.org/> ;
+	schema:name "Bergena"@lv .
+
+<https://lv.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mi.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "mi" ;
+	schema:isPartOf <https://mi.wikipedia.org/> ;
+	schema:name "Bergen"@mi .
+
+<https://mi.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mk.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "mk" ;
+	schema:isPartOf <https://mk.wikipedia.org/> ;
+	schema:name "Берген"@mk .
+
+<https://mk.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mr.wikipedia.org/wiki/%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%8D%E0%A4%97%E0%A4%A8> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "mr" ;
+	schema:isPartOf <https://mr.wikipedia.org/> ;
+	schema:name "बार्गन"@mr .
+
+<https://mr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ms.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ms" ;
+	schema:isPartOf <https://ms.wikipedia.org/> ;
+	schema:name "Bergen"@ms .
+
+<https://ms.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://myv.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD_%D0%BE%D1%88> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "myv" ;
+	schema:isPartOf <https://myv.wikipedia.org/> ;
+	schema:name "Берген ош"@myv .
+
+<https://myv.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://nds-nl.wikipedia.org/wiki/Bargen_(Noorwegen)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "nds-NL" ;
+	schema:isPartOf <https://nds-nl.wikipedia.org/> ;
+	schema:name "Bargen (Noorwegen)"@nds-NL .
+
+<https://nds-nl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://nds.wikipedia.org/wiki/Bargen_(Noorwegen)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "nds" ;
+	schema:isPartOf <https://nds.wikipedia.org/> ;
+	schema:name "Bargen (Noorwegen)"@nds .
+
+<https://nds.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://nl.wikipedia.org/wiki/Bergen_(Noorwegen)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "nl" ;
+	schema:isPartOf <https://nl.wikipedia.org/> ;
+	schema:name "Bergen (Noorwegen)"@nl .
+
+<https://nl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://nl.wikivoyage.org/wiki/Bergen_(Noorwegen)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "nl" ;
+	schema:isPartOf <https://nl.wikivoyage.org/> ;
+	schema:name "Bergen (Noorwegen)"@nl .
+
+<https://nl.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://nn.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "nn" ;
+	schema:isPartOf <https://nn.wikipedia.org/> ;
+	schema:name "Bergen"@nn .
+
+<https://nn.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://no.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "nb" ;
+	schema:isPartOf <https://no.wikipedia.org/> ;
+	schema:name "Bergen"@nb .
+
+<https://no.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://oc.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "oc" ;
+	schema:isPartOf <https://oc.wikipedia.org/> ;
+	schema:name "Bergen"@oc .
+
+<https://oc.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://os.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "os" ;
+	schema:isPartOf <https://os.wikipedia.org/> ;
+	schema:name "Берген"@os .
+
+<https://os.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://pl.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "pl" ;
+	schema:isPartOf <https://pl.wikipedia.org/> ;
+	schema:name "Bergen"@pl .
+
+<https://pl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://pl.wikivoyage.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "pl" ;
+	schema:isPartOf <https://pl.wikivoyage.org/> ;
+	schema:name "Bergen"@pl .
+
+<https://pl.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://pms.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "pms" ;
+	schema:isPartOf <https://pms.wikipedia.org/> ;
+	schema:name "Bergen"@pms .
+
+<https://pms.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://pnb.wikipedia.org/wiki/%D8%A8%D8%B1%DA%AF%D9%86> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "pnb" ;
+	schema:isPartOf <https://pnb.wikipedia.org/> ;
+	schema:name "برگن"@pnb .
+
+<https://pnb.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ps.wikipedia.org/wiki/%D8%A8%D8%B1%DA%AB%D9%8A%D9%86> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ps" ;
+	schema:isPartOf <https://ps.wikipedia.org/> ;
+	schema:name "برګين"@ps .
+
+<https://ps.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ps.wikivoyage.org/wiki/%D8%A8%D8%B1%DA%AB%D9%8A%D9%86> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ps" ;
+	schema:isPartOf <https://ps.wikivoyage.org/> ;
+	schema:name "برګين"@ps .
+
+<https://ps.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://pt.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "pt" ;
+	schema:isPartOf <https://pt.wikipedia.org/> ;
+	schema:name "Bergen"@pt .
+
+<https://pt.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://pt.wikivoyage.org/wiki/Berga> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "pt" ;
+	schema:isPartOf <https://pt.wikivoyage.org/> ;
+	schema:name "Berga"@pt ;
+	wikibase:badge wd:Q17437798 .
+
+<https://pt.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://ro.wikipedia.org/wiki/Bergen,_Norvegia> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ro" ;
+	schema:isPartOf <https://ro.wikipedia.org/> ;
+	schema:name "Bergen, Norvegia"@ro .
+
+<https://ro.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ro.wikivoyage.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ro" ;
+	schema:isPartOf <https://ro.wikivoyage.org/> ;
+	schema:name "Bergen"@ro .
+
+<https://ro.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://ru.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ru" ;
+	schema:isPartOf <https://ru.wikipedia.org/> ;
+	schema:name "Берген"@ru .
+
+<https://ru.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ru.wikinews.org/wiki/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%8F:%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ru" ;
+	schema:isPartOf <https://ru.wikinews.org/> ;
+	schema:name "Категория:Берген"@ru .
+
+<https://ru.wikinews.org/> wikibase:wikiGroup "wikinews" .
+
+<https://ru.wikivoyage.org/wiki/%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ru" ;
+	schema:isPartOf <https://ru.wikivoyage.org/> ;
+	schema:name "Берген"@ru .
+
+<https://ru.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://sco.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "sco" ;
+	schema:isPartOf <https://sco.wikipedia.org/> ;
+	schema:name "Bergen"@sco .
+
+<https://sco.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://se.wikipedia.org/wiki/Birgon> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "se" ;
+	schema:isPartOf <https://se.wikipedia.org/> ;
+	schema:name "Birgon"@se .
+
+<https://se.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sh.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "sh" ;
+	schema:isPartOf <https://sh.wikipedia.org/> ;
+	schema:name "Bergen"@sh .
+
+<https://sh.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://simple.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "en-simple" ;
+	schema:isPartOf <https://simple.wikipedia.org/> ;
+	schema:name "Bergen"@en-simple .
+
+<https://simple.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sk.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "sk" ;
+	schema:isPartOf <https://sk.wikipedia.org/> ;
+	schema:name "Bergen"@sk .
+
+<https://sk.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sl.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "sl" ;
+	schema:isPartOf <https://sl.wikipedia.org/> ;
+	schema:name "Bergen"@sl .
+
+<https://sl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sq.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "sq" ;
+	schema:isPartOf <https://sq.wikipedia.org/> ;
+	schema:name "Bergen"@sq .
+
+<https://sq.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sr.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "sr" ;
+	schema:isPartOf <https://sr.wikipedia.org/> ;
+	schema:name "Берген"@sr .
+
+<https://sr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sr.wikinews.org/wiki/%D0%9A%D0%B0%D1%82%D0%B5%D0%B3%D0%BE%D1%80%D0%B8%D1%98%D0%B0:%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "sr" ;
+	schema:isPartOf <https://sr.wikinews.org/> ;
+	schema:name "Категорија:Берген"@sr .
+
+<https://sr.wikinews.org/> wikibase:wikiGroup "wikinews" .
+
+<https://sv.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "sv" ;
+	schema:isPartOf <https://sv.wikipedia.org/> ;
+	schema:name "Bergen"@sv .
+
+<https://sv.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://sv.wikivoyage.org/wiki/Bergen,_Norge> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "sv" ;
+	schema:isPartOf <https://sv.wikivoyage.org/> ;
+	schema:name "Bergen, Norge"@sv .
+
+<https://sv.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://sw.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "sw" ;
+	schema:isPartOf <https://sw.wikipedia.org/> ;
+	schema:name "Bergen"@sw .
+
+<https://sw.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://szl.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "szl" ;
+	schema:isPartOf <https://szl.wikipedia.org/> ;
+	schema:name "Bergen"@szl .
+
+<https://szl.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ta.wikipedia.org/wiki/%E0%AE%AA%E0%AF%87%E0%AE%B0%E0%AF%8D%E0%AE%95%E0%AE%A9%E0%AF%8D> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ta" ;
+	schema:isPartOf <https://ta.wikipedia.org/> ;
+	schema:name "பேர்கன்"@ta .
+
+<https://ta.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://th.wikipedia.org/wiki/%E0%B8%9A%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B9%80%E0%B8%81%E0%B8%B4%E0%B8%99> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "th" ;
+	schema:isPartOf <https://th.wikipedia.org/> ;
+	schema:name "บาร์เกิน"@th .
+
+<https://th.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://tr.wikipedia.org/wiki/Bergen,_Norve%C3%A7> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "tr" ;
+	schema:isPartOf <https://tr.wikipedia.org/> ;
+	schema:name "Bergen, Norveç"@tr .
+
+<https://tr.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://tt.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "tt" ;
+	schema:isPartOf <https://tt.wikipedia.org/> ;
+	schema:name "Берген"@tt .
+
+<https://tt.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://tum.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "tum" ;
+	schema:isPartOf <https://tum.wikipedia.org/> ;
+	schema:name "Bergen"@tum .
+
+<https://tum.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://uk.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "uk" ;
+	schema:isPartOf <https://uk.wikipedia.org/> ;
+	schema:name "Берген"@uk .
+
+<https://uk.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://ur.wikipedia.org/wiki/%D8%A8%D8%B1%DA%AF%D9%86> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ur" ;
+	schema:isPartOf <https://ur.wikipedia.org/> ;
+	schema:name "برگن"@ur .
+
+<https://ur.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://uz.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "uz" ;
+	schema:isPartOf <https://uz.wikipedia.org/> ;
+	schema:name "Bergen"@uz .
+
+<https://uz.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://vec.wikipedia.org/wiki/Bergen_(Norveja)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "vec" ;
+	schema:isPartOf <https://vec.wikipedia.org/> ;
+	schema:name "Bergen (Norveja)"@vec .
+
+<https://vec.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://vep.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "vep" ;
+	schema:isPartOf <https://vep.wikipedia.org/> ;
+	schema:name "Bergen"@vep .
+
+<https://vep.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://vi.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "vi" ;
+	schema:isPartOf <https://vi.wikipedia.org/> ;
+	schema:name "Bergen"@vi .
+
+<https://vi.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://vi.wikivoyage.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "vi" ;
+	schema:isPartOf <https://vi.wikivoyage.org/> ;
+	schema:name "Bergen"@vi .
+
+<https://vi.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://vls.wikipedia.org/wiki/Bergn_(N%C3%B4orweegn)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "vls" ;
+	schema:isPartOf <https://vls.wikipedia.org/> ;
+	schema:name "Bergn (Nôorweegn)"@vls .
+
+<https://vls.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://vo.wikipedia.org/wiki/Bergen_(Norg%C3%A4n)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "vo" ;
+	schema:isPartOf <https://vo.wikipedia.org/> ;
+	schema:name "Bergen (Norgän)"@vo .
+
+<https://vo.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://war.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "war" ;
+	schema:isPartOf <https://war.wikipedia.org/> ;
+	schema:name "Bergen"@war .
+
+<https://war.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://wuu.wikipedia.org/wiki/%E5%8D%91%E5%B0%94%E6%A0%B9> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "wuu" ;
+	schema:isPartOf <https://wuu.wikipedia.org/> ;
+	schema:name "卑尔根"@wuu .
+
+<https://wuu.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://zea.wikipedia.org/wiki/Bergen_(Noorwegen)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "zea" ;
+	schema:isPartOf <https://zea.wikipedia.org/> ;
+	schema:name "Bergen (Noorwegen)"@zea .
+
+<https://zea.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://zh-min-nan.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "nan" ;
+	schema:isPartOf <https://zh-min-nan.wikipedia.org/> ;
+	schema:name "Bergen"@nan .
+
+<https://zh-min-nan.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://zh-yue.wikipedia.org/wiki/%E5%8D%91%E7%88%BE%E6%A0%B9> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "yue" ;
+	schema:isPartOf <https://zh-yue.wikipedia.org/> ;
+	schema:name "卑爾根"@yue .
+
+<https://zh-yue.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://zh.wikipedia.org/wiki/%E5%8D%91%E7%88%BE%E6%A0%B9> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "zh" ;
+	schema:isPartOf <https://zh.wikipedia.org/> ;
+	schema:name "卑爾根"@zh .
+
+<https://zh.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://commons.wikimedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "en" ;
+	schema:isPartOf <https://commons.wikimedia.org/> ;
+	schema:name "Bergen"@en .
+
+<https://commons.wikimedia.org/> wikibase:wikiGroup "commons" .
+
+<https://it.wikivoyage.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "it" ;
+	schema:isPartOf <https://it.wikivoyage.org/> ;
+	schema:name "Bergen"@it ;
+	wikibase:badge wd:Q17437798 .
+
+<https://it.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://ca.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ca" ;
+	schema:isPartOf <https://ca.wikipedia.org/> ;
+	schema:name "Bergen"@ca ;
+	wikibase:badge wd:Q17437796 .
+
+<https://ca.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mdf.wikipedia.org/wiki/%D0%91%D1%8D%D1%80%D0%B3%D1%8D%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "mdf" ;
+	schema:isPartOf <https://mdf.wikipedia.org/> ;
+	schema:name "Бэргэн"@mdf .
+
+<https://mdf.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mt.wikipedia.org/wiki/Bergen_(Norve%C4%A1ja)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "mt" ;
+	schema:isPartOf <https://mt.wikipedia.org/> ;
+	schema:name "Bergen (Norveġja)"@mt .
+
+<https://mt.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://kaa.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "kaa" ;
+	schema:isPartOf <https://kaa.wikipedia.org/> ;
+	schema:name "Bergen"@kaa .
+
+<https://kaa.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mg.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "mg" ;
+	schema:isPartOf <https://mg.wikipedia.org/> ;
+	schema:name "Bergen"@mg .
+
+<https://mg.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://hi.wikipedia.org/wiki/%E0%A4%AC%E0%A4%B0%E0%A5%8D%E0%A4%97%E0%A5%87%E0%A4%A8> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "hi" ;
+	schema:isPartOf <https://hi.wikipedia.org/> ;
+	schema:name "बर्गेन"@hi .
+
+<https://hi.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bn.wikipedia.org/wiki/%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%87%E0%A6%A8> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "bn" ;
+	schema:isPartOf <https://bn.wikipedia.org/> ;
+	schema:name "বার্গেন"@bn .
+
+<https://bn.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://gu.wikipedia.org/wiki/%E0%AA%AC%E0%AA%B0%E0%AB%8D%E0%AA%97%E0%AB%87%E0%AA%A8> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "gu" ;
+	schema:isPartOf <https://gu.wikipedia.org/> ;
+	schema:name "બર્ગેન"@gu .
+
+<https://gu.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://te.wikipedia.org/wiki/%E0%B0%AC%E0%B0%B0%E0%B1%8D%E0%B0%97%E0%B1%86%E0%B0%A8%E0%B1%8D> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "te" ;
+	schema:isPartOf <https://te.wikipedia.org/> ;
+	schema:name "బర్గెన్"@te .
+
+<https://te.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://bn.wikivoyage.org/wiki/%E0%A6%AC%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%97%E0%A7%87%E0%A6%A8> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "bn" ;
+	schema:isPartOf <https://bn.wikivoyage.org/> ;
+	schema:name "বার্গেন"@bn .
+
+<https://bn.wikivoyage.org/> wikibase:wikiGroup "wikivoyage" .
+
+<https://ban.wikipedia.org/wiki/Bergen> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "ban" ;
+	schema:isPartOf <https://ban.wikipedia.org/> ;
+	schema:name "Bergen"@ban .
+
+<https://ban.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://tok.wikipedia.org/wiki/ma_tomo_Peken> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "tok" ;
+	schema:isPartOf <https://tok.wikipedia.org/> ;
+	schema:name "ma tomo Peken"@tok .
+
+<https://tok.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://cu.wikipedia.org/wiki/%D0%91%D0%B5%CC%81%D1%80%D0%B3%D0%B5%CC%81%D0%BD%D1%8A> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "cu" ;
+	schema:isPartOf <https://cu.wikipedia.org/> ;
+	schema:name "Бе́рге́нъ"@cu .
+
+<https://cu.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://got.wikipedia.org/wiki/%F0%90%8C%B1%F0%90%8C%B0%F0%90%8C%B9%F0%90%8D%82%F0%90%8C%B2%F0%90%8C%B0%F0%90%8D%85%F0%90%8C%B9%F0%90%8C%BD%F0%90%8C%BE%F0%90%8C%B0> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "got" ;
+	schema:isPartOf <https://got.wikipedia.org/> ;
+	schema:name "𐌱𐌰𐌹𐍂𐌲𐌰𐍅𐌹𐌽𐌾𐌰"@got .
+
+<https://got.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://mn.wikipedia.org/wiki/%D0%91%D0%B5%D1%80%D0%B3%D0%B5%D0%BD> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "mn" ;
+	schema:isPartOf <https://mn.wikipedia.org/> ;
+	schema:name "Берген"@mn .
+
+<https://mn.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://zh-classical.wikipedia.org/wiki/%E5%8D%91%E7%88%BE%E6%A0%B9> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "lzh" ;
+	schema:isPartOf <https://zh-classical.wikipedia.org/> ;
+	schema:name "卑爾根"@lzh .
+
+<https://zh-classical.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+<https://de.wikipedia.org/wiki/Bergen_(Norwegen)> a schema:Article ;
+	schema:about wd:Q26793 ;
+	schema:inLanguage "de" ;
+	schema:isPartOf <https://de.wikipedia.org/> ;
+	schema:name "Bergen (Norwegen)"@de .
+
+<https://de.wikipedia.org/> wikibase:wikiGroup "wikipedia" .
+
+wd:Q26793 wdt:P190 wd:Q5083,
+		wd:Q2843,
+		wd:Q25319,
+		wd:Q52502,
+		wd:Q1425428,
+		wd:Q2861,
+		wd:Q225641,
+		wd:Q38511,
+		wd:Q105037 ;
+	wdt:P131 wd:Q10428388 ;
+	wdt:P373 "Bergen, Norway" ;
+	wdt:P17 wd:Q20 ;
+	wdt:P625 "Point(5.3233333333333 60.3925)"^^geo:wktLiteral ;
+	wdt:P948 <http://commons.wikimedia.org/wiki/Special:FilePath/Brygge%20Norway%202005-08-18.jpg> ;
+	wdt:P31 wd:Q515,
+		wd:Q1549591 ;
+	wdt:P998 "Regional/Europe/Norway/Hordaland/Bergen/" ;
+	wdt:P982 "34268a86-54ec-487d-afa3-1afe3266a382" ;
+	wdtn:P982 <http://musicbrainz.org/area/34268a86-54ec-487d-afa3-1afe3266a382> ;
+	wdt:P646 "/m/0fm7s" ;
+	wdt:P227 "1027742-0" ;
+	wdtn:P227 <https://d-nb.info/gnd/1027742-0> ;
+	wdt:P1464 wd:Q7478157 ;
+	wdt:P1465 wd:Q7478159 ;
+	wdt:P1566 "3161732" ;
+	wdtn:P1566 <https://sws.geonames.org/3161732/> ;
+	wdt:P166 wd:Q18910363,
+		wd:Q15081040,
+		wd:Q116754129 ;
+	wdt:P1740 wd:Q19363047 ;
+	wdt:P1792 wd:Q6398600 ;
+	wdt:P1376 wd:Q10428388,
+		wd:Q11034723,
+		wd:Q17414354,
+		wd:Q31281141,
+		wd:Q50625,
+		wd:Q56407177 ;
+	wdt:P214 "149552590" ;
+	wdtn:P214 <http://viaf.org/viaf/149552590> ;
+	wdt:P244 "n79021216" ;
+	wdtn:P244 <http://id.loc.gov/authorities/names/n79021216> ;
+	wdt:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/00%204400%20View%20over%20the%20store%20Lungeg%C3%A5rdsvann%20-%20Bergen%20%28Norway%29.jpg> ;
+	wdt:P1997 "106562399381316" ;
+	wdt:P1281 "857105" ;
+	wdt:P1082 "+291189"^^xsd:decimal ;
+	wdt:P2046 "+87.17"^^xsd:decimal ;
+	wdt:P41 <http://commons.wikimedia.org/wiki/Special:FilePath/Flag%20of%20Bergen%2C%20Norway.svg> ;
+	wdt:P281 "5003–5098" ;
+	wdt:P1151 wd:Q28709513 ;
+	wdt:P213 "0000000403755599" ;
+	wdt:P3500 "1656" ;
+	wdt:P3417 "Bergen-Norway" ;
+	wdt:P2347 "126694" ;
+	wdtn:P2347 <http://www.yso.fi/onto/yso/p126694> ;
+	wdt:P571 "1070-01-01T00:00:00Z"^^xsd:dateTime ;
+	wdt:P1225 "10045215" ;
+	wdt:P4672 "b9329e05-d72c-46af-8bb9-b5263f57c908" ;
+	wdt:P1549 "bergenser"@nb,
+		"bergensar"@nn ;
+	wdt:P4342 "Bergen" ;
+	wdt:P1791 wd:Q32381894 ;
+	wdt:P5173 "bergen-1983" ;
+	wdt:P2427 "grid.457997.1" ;
+	wdt:P1417 "place/Bergen-Norway" ;
+	wdt:P5573 "7382" ;
+	wdt:P2924 "3211066" ;
+	wdt:P1850 "551660" ;
+	wdt:P402 "404159" ;
+	wdtn:P402 <https://www.openstreetmap.org/relation/404159> ;
+	wdt:P6782 "022b9d096" ;
+	wdt:P6520 "Bergen" ;
+	wdt:P1343 wd:Q602358,
+		wd:Q19180675,
+		wd:Q3181656,
+		wd:Q867541,
+		wd:Q20078554,
+		wd:Q3351707 ;
+	wdt:P2044 "+5"^^xsd:decimal ;
+	wdt:P1296 "0223015" ;
+	wdt:P1889 wd:Q10428388 ;
+	wdt:P910 wd:Q6541566 ;
+	wdt:P6821 "alvin-place:1787" ;
+	wdtn:P6821 <http://www.alvin-portal.org/alvin/view.jsf?pid=alvin-place:1787> ;
+	wdt:P6766 "101751923" ;
+	wdt:P7867 wd:Q84042424 ;
+	wdt:P1937 "NOBGO" ;
+	wdt:P691 "ge260682" ;
+	wdt:P6058 "ville/wd/108463" ;
+	wdt:P6262 "norway:Bergen" ;
+	wdt:P6706 "Bergen+(Norvegia)" ;
+	wdt:P8402 wd:Q97025608 ;
+	wdt:P8406 "T008081" ;
+	wdtn:P8406 <http://dx.doi.org/10.1093/gao/9781884446054.article.T008081> ;
+	wdt:P94 <http://commons.wikimedia.org/wiki/Special:FilePath/Bergen%20v%C3%A5pen.svg> ;
+	wdt:P898 "[ˈbæ̀rɡ(ə)n]" ;
+	wdt:P8519 "4775" ;
+	wdtn:P8519 <https://data.rkd.nl/thesau/4775> ;
+	wdt:P5063 "i82944" ;
+	wdtn:P5063 <https://globalwordnet.github.io/cili/i82944> ;
+	wdt:P8974 "p/5302e253-ed81-433b-b0d7-41af8bf3d620" ;
+	wdtn:P8974 <http://data.performing-arts.ch/p/5302e253-ed81-433b-b0d7-41af8bf3d620> ;
+	wdt:P9100 "bergen" ;
+	wdt:P8814 "08783148-n" ;
+	wdtn:P8814 <https://en-word.net/id/oewn-08783148-n> ;
+	wdt:P8168 "Q82934" ;
+	wdtn:P8168 <https://database.factgrid.de/entity/Q82934> ;
+	wdt:P1705 "Bergen"@no ;
+	wdt:P1448 "Bergen"@no ;
+	wdt:P37 wd:Q9043 ;
+	wdt:P463 wd:Q1139352,
+		wd:Q734958 ;
+	wdt:P8189 "987007554811005171" ;
+	wdt:P9957 "9850" ;
+	wdt:P3984 "bergen",
+		"Bergen" ;
+	wdt:P8313 "Bergen" ;
+	wdt:P7305 "3876252" ;
+	wdt:P9318 "bergen" ;
+	wdt:P269 "110143531" ;
+	wdtn:P269 <http://www.idref.fr/110143531/id> ;
+	wdt:P935 "Bergen" ;
+	wdt:P30 wd:Q46 ;
+	wdt:P1943 <http://commons.wikimedia.org/wiki/Special:FilePath/Bergen%20boroughs.png> ;
+	wdt:P2581 "00010008n" ;
+	wdtn:P2581 <http://babelnet.org/rdf/s00010008n> ;
+	wdt:P242 <http://commons.wikimedia.org/wiki/Special:FilePath/Norway%20Hordaland%20-%20Bergen.svg> ;
+	wdt:P9495 "geo/85243033-6FF9-411F-A457-52231CD76641" ;
+	wdt:P11693 "21261083" ;
+	wdt:P10565 "510962" ;
+	wdt:P6621 "Bergen" ;
+	wdt:P12086 "Bergen_(Noorwegen)" ;
+	wdt:P1015 "90086066" ;
+	wdtn:P1015 <https://livedata.bibsys.no/authority/90086066> ;
+	wdt:P9984 "981058614935106706" ;
+	wdt:P268 "145918168" ;
+	wdtn:P268 <http://data.bnf.fr/ark:/12148/cb145918168#about> ;
+	wdt:P8179 "ncf12010514" ;
+	wdt:P2163 "1204538" ;
+	wdtn:P2163 <http://id.worldcat.org/fast/1204538> ;
+	wdt:P7039 "000098575" ;
+	wdt:P12385 "bergen-7" ;
+	wdt:P2326 "-252873" ;
+	wdt:P1667 "7007059" ;
+	wdtn:P1667 <http://vocab.getty.edu/tgn/7007059> ;
+	wdt:P10832 "E39PBJxmM4VdfVDpbQ8D4pT8md" ;
+	wdt:P4640 <http://commons.wikimedia.org/wiki/Special:FilePath/Bergen%20%E2%80%93%20Panorama%20%28Greg%20Zaal%20via%20Poly%20Haven%29.jpg> ;
+	wdt:P12749 "Q1710" ;
+	wdt:P12187 "ZQIZXRY5LVD7PPNESZJUVQ7KQA" ;
+	wdt:P8593 "22639" ;
+	wdt:P13030 "location/756" ;
+	wdt:P5337 "CAAqIQgKIhtDQkFTRGdvSUwyMHZNR1p0TjNNU0FtNXZLQUFQAQ" ;
+	wdt:P13061 "13294283" ;
+	wdt:P3134 "190502" ;
+	wdt:P8592 <http://commons.wikimedia.org/wiki/Special:FilePath/Aerial%20of%20Bergen%20op%20Zoom1.jpg> ;
+	wdt:P5252 <http://commons.wikimedia.org/wiki/Special:FilePath/View%20Bergen%20Floibanen%20Floyen%20Winter%202009.JPG> ;
+	wdt:P3451 <http://commons.wikimedia.org/wiki/Special:FilePath/Bergen%20night%20tunliweb.jpg> ;
+	wdt:P2716 <http://commons.wikimedia.org/wiki/Special:FilePath/BergenComposite.jpg> ;
+	wdt:P2013 "bergenkommune" ;
+	wdt:P2003 "bergenkommune_ung" ;
+	wdt:P4264 "bergenkommune" ;
+	wdt:P3365 "bergen" ;
+	wdt:P4223 "bergen" ;
+	wdt:P9850 "bergen" ;
+	wdt:P13591 "place/d2964ac4-5241-4271-80c9-e5ed043d2219" ;
+	wdt:P1617 "f8e479f6-46de-4cc1-b57f-e4abf3425308" ;
+	wdtn:P1617 <http://www.bbc.co.uk/things/f8e479f6-46de-4cc1-b57f-e4abf3425308#id> ;
+	wdt:P2184 wd:Q23042624 ;
+	wdt:P13750 "2529" ;
+	wdt:P14075 "48645" ;
+	wdt:P13204 "qk595qz8" ;
+	wdt:P396 "MILV441908" ;
+	wdt:P9322 "0269510-Bergen-Norsko" ;
+	wdt:P14586 "90330" ;
+	wdt:P14541 "2CGqUs" ;
+	wdt:P14470 "Locations/Bergen" ;
+	p:P1036 wds:Q26793-4518e5f6-49fe-3f30-e87d-1114ff3aea40 .
+
+wds:Q26793-4518e5f6-49fe-3f30-e87d-1114ff3aea40 a wikibase:Statement ;
+	wikibase:rank wikibase:DeprecatedRank ;
+	ps:P1036 "2--4836" .
+
+wd:Q26793 p:P190 wds:Q26793-a204c81f-480c-9b2b-54f0-7bce0006042b .
+
+wds:Q26793-a204c81f-480c-9b2b-54f0-7bce0006042b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q5083 .
+
+wd:Q26793 p:P190 wds:Q26793-ee894dee-45d2-2c6c-7f24-a1ec2f9a9e2c .
+
+wds:Q26793-ee894dee-45d2-2c6c-7f24-a1ec2f9a9e2c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q2843 .
+
+wd:Q26793 p:P190 wds:Q26793-1F23621A-83E4-4527-8152-87677BD36E3E .
+
+wds:Q26793-1F23621A-83E4-4527-8152-87677BD36E3E a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q25319 .
+
+wd:Q26793 p:P190 wds:Q26793-09213FF5-C36F-49F4-BAAA-C0F1D0E0E60B .
+
+wds:Q26793-09213FF5-C36F-49F4-BAAA-C0F1D0E0E60B a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q52502 ;
+	pq:P580 "1946-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:eed7fc4ae31e1b80982f969260dd3458 ;
+	prov:wasDerivedFrom wdref:2909cafc6f9c15863c5a45af2bf26698ccfda37c .
+
+wd:Q26793 p:P190 wds:Q26793-BEB68D81-F50E-472A-8688-906D96888A65 .
+
+wds:Q26793-BEB68D81-F50E-472A-8688-906D96888A65 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q1425428 ;
+	pq:P580 "1968-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:23a11f433153417fd4e9f924c08d94c5 ;
+	prov:wasDerivedFrom wdref:9ce15527a2c28e2a84046a2bbec58bd8031e6a3c .
+
+wd:Q26793 p:P190 wds:Q26793-809acaac-4595-05c8-6713-9e076c0e077a .
+
+wds:Q26793-809acaac-4595-05c8-6713-9e076c0e077a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q2861 ;
+	pq:P580 "1965-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:11be56eabd530095ce0bf39d2564d4a0 ;
+	prov:wasDerivedFrom wdref:5fc5507cb4902a442400bc615713204cf1511a06 .
+
+wd:Q26793 p:P190 wds:Q26793-300ad73a-4cb4-ec40-c8ba-82083c0c65fd .
+
+wds:Q26793-300ad73a-4cb4-ec40-c8ba-82083c0c65fd a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q225641 .
+
+wd:Q26793 p:P190 wds:Q26793-aa1f290f-4016-e62e-0865-ea25df238476 .
+
+wds:Q26793-aa1f290f-4016-e62e-0865-ea25df238476 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q38511 ;
+	pq:P580 "1946-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:5e18c83c88166026dd5e577bb10cc628 ;
+	prov:wasDerivedFrom wdref:53d76719929a6d09db5b6aecbeb260fc5fb14808 .
+
+wd:Q26793 p:P190 wds:Q26793-4bd636f8-4308-0f6b-4fe6-81b2195fa6a9 .
+
+wds:Q26793-4bd636f8-4308-0f6b-4fe6-81b2195fa6a9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P190 wd:Q105037 .
+
+wd:Q26793 p:P131 wds:Q26793-f29a8ee3-4836-d2d8-12fc-5673eef55906 .
+
+wds:Q26793-f29a8ee3-4836-d2d8-12fc-5673eef55906 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P131 wd:Q10428388 .
+
+wd:Q26793 p:P373 wds:q26793-AB70C174-8950-41C2-84E3-2189C54E02CB .
+
+wds:q26793-AB70C174-8950-41C2-84E3-2189C54E02CB a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P373 "Bergen, Norway" .
+
+wd:Q26793 p:P17 wds:q26793-F70156F3-DAE2-418F-9FA2-FD815962FE42 .
+
+wds:q26793-F70156F3-DAE2-418F-9FA2-FD815962FE42 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P17 wd:Q20 ;
+	pq:P580 "1905-06-07T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:ea502f00c7e55f65029d34e4dbbebe03 ;
+	prov:wasDerivedFrom wdref:c456dc5cd2117249948c288206ff3f8b1bf574f0 .
+
+wd:Q26793 p:P17 wds:Q26793-06ee1284-42ea-0dd8-06d6-77c3a9ab0a6c .
+
+wds:Q26793-06ee1284-42ea-0dd8-06d6-77c3a9ab0a6c a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P17 wd:Q62589 ;
+	pq:P580 "1814-11-04T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:ece863bfbfb37ec947d1c52b58268086 ;
+	pq:P582 "1905-06-06T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:476319c9dc1e3277ae5a9a3e31fa5c32 .
+
+wd:Q26793 p:P17 wds:Q26793-13d1e5ee-4b75-eae7-e87a-26a26591268a .
+
+wds:Q26793-13d1e5ee-4b75-eae7-e87a-26a26591268a a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P17 wd:Q2597352 ;
+	pq:P582 "1814-11-03T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:997904faf91fe99701097723258a3f21 ;
+	pq:P580 "1814-01-14T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:8e70b3797ad8b620f22da8e17e1fd1c1 .
+
+wd:Q26793 p:P17 wds:Q26793-ee94f16f-4161-e27d-71d0-cb461b633744 .
+
+wds:Q26793-ee94f16f-4161-e27d-71d0-cb461b633744 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P17 wd:Q62651 ;
+	pq:P582 "1814-01-13T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:903a3b29e4b11b0a34a27b5e8e9ce5d2 .
+
+wd:Q26793 p:P625 wds:q26793-3339D302-730B-4148-B0AF-9BAE98B535A5 .
+
+wds:q26793-3339D302-730B-4148-B0AF-9BAE98B535A5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P625 "Point(5.3233333333333 60.3925)"^^geo:wktLiteral ;
+	psv:P625 wdv:8e80e9035f70e61bbe7037f57074cf7b ;
+	prov:wasDerivedFrom wdref:288ab581e7d2d02995a26dfa8b091d96e78457fc .
+
+wd:Q26793 p:P948 wds:Q26793-8C8952F5-57D7-4A34-BBFC-381C06466846 .
+
+wds:Q26793-8C8952F5-57D7-4A34-BBFC-381C06466846 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P948 <http://commons.wikimedia.org/wiki/Special:FilePath/Brygge%20Norway%202005-08-18.jpg> .
+
+wd:Q26793 p:P31 wds:Q26793-818f99a6-434f-aac9-6094-17a5bab26b8e .
+
+wds:Q26793-818f99a6-434f-aac9-6094-17a5bab26b8e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q515 .
+
+wd:Q26793 p:P31 wds:Q26793-2CF92959-0416-4A91-B68E-8208ECE1F48D .
+
+wds:Q26793-2CF92959-0416-4A91-B68E-8208ECE1F48D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P31 wd:Q1549591 .
+
+wd:Q26793 p:P998 wds:Q26793-B3333DD1-304E-4C81-BECB-5FEC097857D7 .
+
+wds:Q26793-B3333DD1-304E-4C81-BECB-5FEC097857D7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P998 "Regional/Europe/Norway/Hordaland/Bergen/" .
+
+wd:Q26793 p:P982 wds:Q26793-59BD9C8E-D4D8-4A3D-98C4-E3388AC22AFD .
+
+wds:Q26793-59BD9C8E-D4D8-4A3D-98C4-E3388AC22AFD a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P982 "34268a86-54ec-487d-afa3-1afe3266a382" ;
+	psn:P982 <http://musicbrainz.org/area/34268a86-54ec-487d-afa3-1afe3266a382> ;
+	prov:wasDerivedFrom wdref:706208b3024200fd0a39ad499808dd0d98d74065 .
+
+wd:Q26793 p:P646 wds:Q26793-0443B851-062C-4F6D-B072-B6026E4798B6 .
+
+wds:Q26793-0443B851-062C-4F6D-B072-B6026E4798B6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P646 "/m/0fm7s" ;
+	pq:P1810 "Bergen" ;
+	prov:wasDerivedFrom wdref:2b00cb481cddcac7623114367489b5c194901c4a .
+
+wd:Q26793 p:P227 wds:Q26793-BEC8568C-350E-40E3-8A4B-873BB4200B1C .
+
+wds:Q26793-BEC8568C-350E-40E3-8A4B-873BB4200B1C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P227 "1027742-0" ;
+	psn:P227 <https://d-nb.info/gnd/1027742-0> ;
+	prov:wasDerivedFrom wdref:9a24f7c0208b05d6be97077d855671d1dfdbc0dd .
+
+wd:Q26793 p:P1464 wds:Q26793-B0A315C9-992C-4D22-89C0-12829E2C3DC0 .
+
+wds:Q26793-B0A315C9-992C-4D22-89C0-12829E2C3DC0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1464 wd:Q7478157 .
+
+wd:Q26793 p:P1465 wds:Q26793-9573D5DB-8660-4523-A8FB-7E83EF7F1A66 .
+
+wds:Q26793-9573D5DB-8660-4523-A8FB-7E83EF7F1A66 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1465 wd:Q7478159 .
+
+wd:Q26793 p:P1566 wds:Q26793-5600BBA5-89A7-46B3-B91B-6D2CF3964CF7 .
+
+wds:Q26793-5600BBA5-89A7-46B3-B91B-6D2CF3964CF7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1566 "3161732" ;
+	psn:P1566 <https://sws.geonames.org/3161732/> ;
+	pq:P2868 wd:Q3257686 .
+
+wd:Q26793 p:P166 wds:Q26793-bb3f916f-4184-3651-1275-807a895f89d1 .
+
+wds:Q26793-bb3f916f-4184-3651-1275-807a895f89d1 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P166 wd:Q18910363 ;
+	pq:P585 "2013-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:ac3f54d758c2b8d235d9d0e9fbf2f43a ;
+	pq:P1706 wd:Q104400 .
+
+wd:Q26793 p:P166 wds:Q26793-4a9fb04a-4105-e62a-6689-c43088d53f7f .
+
+wds:Q26793-4a9fb04a-4105-e62a-6689-c43088d53f7f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P166 wd:Q15081040 ;
+	pq:P585 "1994-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:6d4a0c802fc82784e8c8bc0e977700ec .
+
+wd:Q26793 p:P166 wds:Q26793-df693de6-4b61-187f-d3de-2944b7f8d245 .
+
+wds:Q26793-df693de6-4b61-187f-d3de-2944b7f8d245 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P166 wd:Q116754129 ;
+	prov:wasDerivedFrom wdref:297228b5e41c07a1c43bf3159afc063b3c874a7a .
+
+wd:Q26793 p:P1740 wds:Q26793-f14646c5-4edf-4986-081f-5f9cd786cefe .
+
+wds:Q26793-f14646c5-4edf-4986-081f-5f9cd786cefe a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1740 wd:Q19363047 .
+
+wd:Q26793 p:P1792 wds:Q26793-4F98CAAB-5091-4DED-AC77-FBC6476ECCBC .
+
+wds:Q26793-4F98CAAB-5091-4DED-AC77-FBC6476ECCBC a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1792 wd:Q6398600 .
+
+wd:Q26793 p:P1376 wds:Q26793-7ED5A0F1-D5B6-4C86-8511-98EE7D4F479E .
+
+wds:Q26793-7ED5A0F1-D5B6-4C86-8511-98EE7D4F479E a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1376 wd:Q10428388 ;
+	prov:wasDerivedFrom wdref:a46b69d438e856c4e810028d39f1794b5a9bd3cc .
+
+wd:Q26793 p:P1376 wds:Q26793-72a121f2-4b28-4ba7-4d56-91605b26145f .
+
+wds:Q26793-72a121f2-4b28-4ba7-4d56-91605b26145f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1376 wd:Q11034723 ;
+	pq:P580 "1763-09-19T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:3c5683b2da77b11f3430ed9b518741af ;
+	pq:P582 "1830-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:1f0070e1cc22ddca9fc530d06fd37993 .
+
+wd:Q26793 p:P1376 wds:Q26793-CB70E89F-7A39-4783-9753-3967B823D476 .
+
+wds:Q26793-CB70E89F-7A39-4783-9753-3967B823D476 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1376 wd:Q17414354 ;
+	pq:P580 "1831-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:c5db5a465ade38b7672a18f330e33a3f ;
+	pq:P582 "1918-12-31T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:22ded9ee0b158b25bce0a5baf416d6fd .
+
+wd:Q26793 p:P1376 wds:Q26793-8bcb4a97-4530-11f8-9226-ad3187fcac4d .
+
+wds:Q26793-8bcb4a97-4530-11f8-9226-ad3187fcac4d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1376 wd:Q31281141 ;
+	pq:P580 "1919-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:88c097edfb701f2f37b2c68446202f7e ;
+	pq:P582 "1971-12-31T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:930857a0f7a29a66a2da3d5344a35596 .
+
+wd:Q26793 p:P1376 wds:Q26793-1278879a-4410-196a-43ca-54fcba6f1553 .
+
+wds:Q26793-1278879a-4410-196a-43ca-54fcba6f1553 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1376 wd:Q50625 ;
+	pq:P580 "1972-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:a0b645488450a518b0c16e414b476429 ;
+	pq:P582 "2019-12-31T00:00:00Z"^^xsd:dateTime ;
+	pqv:P582 wdv:e1bc22867995c9ded39820f209e1ab5b .
+
+wd:Q26793 p:P1376 wds:Q26793-529b75d7-4dc2-b0ae-0f75-a034efd6d690 .
+
+wds:Q26793-529b75d7-4dc2-b0ae-0f75-a034efd6d690 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1376 wd:Q56407177 ;
+	pq:P580 "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:86d08cb380a7d361151c510ebb4a98ec .
+
+wd:Q26793 p:P214 wds:Q26793-5C698BA1-C76A-4778-95BC-439CB62E2DD0 .
+
+wds:Q26793-5C698BA1-C76A-4778-95BC-439CB62E2DD0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P214 "149552590" ;
+	psn:P214 <http://viaf.org/viaf/149552590> ;
+	prov:wasDerivedFrom wdref:9a24f7c0208b05d6be97077d855671d1dfdbc0dd .
+
+wd:Q26793 p:P244 wds:Q26793-27834447-B70F-47EA-B965-D0915E5C8AA8 .
+
+wds:Q26793-27834447-B70F-47EA-B965-D0915E5C8AA8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P244 "n79021216" ;
+	psn:P244 <http://id.loc.gov/authorities/names/n79021216> ;
+	prov:wasDerivedFrom wdref:9a24f7c0208b05d6be97077d855671d1dfdbc0dd .
+
+wd:Q26793 p:P18 wds:Q26793-CD7FCD49-B141-40BC-BB4B-107A46839F02 .
+
+wds:Q26793-CD7FCD49-B141-40BC-BB4B-107A46839F02 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/Vista%20de%20Bergen%20desde%20la%20monta%C3%B1a%20Fl%C3%B8yen%2C%20Noruega%2C%202019-09-08%2C%20DD%2027-31%20PAN.jpg> .
+
+wd:Q26793 p:P18 wds:Q26793-8053384b-4477-20a7-5296-5877d7a25fcf .
+
+wds:Q26793-8053384b-4477-20a7-5296-5877d7a25fcf a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P18 <http://commons.wikimedia.org/wiki/Special:FilePath/00%204400%20View%20over%20the%20store%20Lungeg%C3%A5rdsvann%20-%20Bergen%20%28Norway%29.jpg> .
+
+wd:Q26793 p:P1997 wds:Q26793-13ceceae-4e71-ca35-28b3-6bac5e8be7fc .
+
+wds:Q26793-13ceceae-4e71-ca35-28b3-6bac5e8be7fc a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1997 "106562399381316" .
+
+wd:Q26793 p:P2504 wds:Q26793-af1c43eb-432c-5fa7-71b8-53653b7d2bd9 .
+
+wds:Q26793-af1c43eb-432c-5fa7-71b8-53653b7d2bd9 a wikibase:Statement ;
+	wikibase:rank wikibase:DeprecatedRank ;
+	ps:P2504 "1201" ;
+	pq:P2241 wd:Q75801665 .
+
+wd:Q26793 p:P1281 wds:Q26793-DE0A2A70-390E-41C0-B003-D3B836941EB8 .
+
+wds:Q26793-DE0A2A70-390E-41C0-B003-D3B836941EB8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1281 "857105" ;
+	prov:wasDerivedFrom wdref:d4767d15e44afe8795350d71c4aaf13e1067eea5 .
+
+wd:Q26793 p:P1082 wds:Q26793-0F42AA19-1CF5-4318-9E38-06DDE5B496F6 .
+
+wds:Q26793-0F42AA19-1CF5-4318-9E38-06DDE5B496F6 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+257087"^^xsd:decimal ;
+	psv:P1082 wdv:ee9c8445744af7c9920454ac276412ca ;
+	pq:P585 "2019-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:1c9551a398cfb51623c28b80416004d3 ;
+	pq:P459 wd:Q791801 ;
+	prov:wasDerivedFrom wdref:90f9c663e4d91a493500b1139133aca75b5f1709 .
+
+wd:Q26793 p:P1082 wds:Q26793-ada16172-401a-cb89-28f8-44562b99443f .
+
+wds:Q26793-ada16172-401a-cb89-28f8-44562b99443f a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+267117"^^xsd:decimal ;
+	psv:P1082 wdv:25e94e8b6ea36068d41250614352d82d ;
+	pq:P459 wd:Q791801 ;
+	pq:P585 "2022-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:f0a794f755c96023755b4684ff262fe8 ;
+	prov:wasDerivedFrom wdref:4fa67aff90cf7b9d34d76377c8f71ad78353d611 .
+
+wd:Q26793 p:P1082 wds:Q26793-58a6acaa-4bb2-27d7-039a-b2489c0f7627 .
+
+wds:Q26793-58a6acaa-4bb2-27d7-039a-b2489c0f7627 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:PreferredRank ;
+	ps:P1082 "+291189"^^xsd:decimal ;
+	psv:P1082 wdv:3527ca4f5b1fead9cf98f649e2141fd8 ;
+	pq:P585 "2023-09-30T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:c577795817fe82c286584221013dc082 ;
+	pq:P459 wd:Q37113960 .
+
+wd:Q26793 p:P1082 wds:Q26793-7166e7d8-4c1e-0a72-3fef-19e552d50210 .
+
+wds:Q26793-7166e7d8-4c1e-0a72-3fef-19e552d50210 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+117000"^^xsd:decimal ;
+	psv:P1082 wdv:2b544fb9f25590f2263732ad190b89c0 ;
+	pq:P459 wd:Q791801 ;
+	pq:P585 "1968-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:23a11f433153417fd4e9f924c08d94c5 ;
+	prov:wasDerivedFrom wdref:8dd3222d9117cdb1b9ff3f2f030a503413b465df .
+
+wd:Q26793 p:P1082 wds:Q26793-5a760cee-4056-ba1a-870a-fbb0d5561c1f .
+
+wds:Q26793-5a760cee-4056-ba1a-870a-fbb0d5561c1f a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+275000"^^xsd:decimal ;
+	psv:P1082 wdv:f41ecac5b04cc65c94943108fdbdd162 ;
+	pq:P459 wd:Q791801 ;
+	pq:P585 "2015-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:418aedfba643e02a5ba758952f8f7765 ;
+	prov:wasDerivedFrom wdref:6308ad1c64c5c891aefb391ac3866dc4fc7af046 .
+
+wd:Q26793 p:P1082 wds:Q26793-50aaeaea-40da-a6e8-fe13-50ccb6b71925 .
+
+wds:Q26793-50aaeaea-40da-a6e8-fe13-50ccb6b71925 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+224000"^^xsd:decimal ;
+	psv:P1082 wdv:d96acbc6d027dfaa75870301b4e14bec ;
+	pq:P459 wd:Q791801 ;
+	pq:P585 "1997-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:7eca85bb7139467b8a00957d652cc79c .
+
+wd:Q26793 p:P1082 wds:Q26793-cda0499f-4d2e-6971-a90d-c1aa353faea6 .
+
+wds:Q26793-cda0499f-4d2e-6971-a90d-c1aa353faea6 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+208000"^^xsd:decimal ;
+	psv:P1082 wdv:718004fa7eb945c83c35e3037871dcfb ;
+	pq:P459 wd:Q791801 ;
+	pq:P585 "1986-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:b0b85edda40019fb5082aa68d172521b .
+
+wd:Q26793 p:P1082 wds:Q26793-9cf665fc-49f2-40ac-ddfb-6ca7a4c1cb84 .
+
+wds:Q26793-9cf665fc-49f2-40ac-ddfb-6ca7a4c1cb84 a wikibase:Statement ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1082 "+95889"^^xsd:decimal ;
+	psv:P1082 wdv:fd0af75e64b66101848e3bdd87089401 ;
+	pq:P585 "1923-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P585 wdv:edc1948380ac4c4627ad82e8b95875e7 ;
+	prov:wasDerivedFrom wdref:abe6689936b6e0a8b111a85dad72feaafb40cf35 .
+
+wd:Q26793 p:P2046 wds:Q26793-4B9EFD01-AB66-49E6-8A82-8A50B4431428 .
+
+wds:Q26793-4B9EFD01-AB66-49E6-8A82-8A50B4431428 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2046 "+87.17"^^xsd:decimal ;
+	psv:P2046 wdv:29584c79f7d2f24d12a36a00ae8b515f ;
+	psn:P2046 wdv:b07f42cceed026527e91b572cf3ffc1e ;
+	prov:wasDerivedFrom wdref:54a18688c4271d5c28d1386d8d22d9fda8412751 .
+
+wd:Q26793 p:P41 wds:Q26793-49534EF0-4CE6-43BD-8E03-5E0D17F1DA3D .
+
+wds:Q26793-49534EF0-4CE6-43BD-8E03-5E0D17F1DA3D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P41 <http://commons.wikimedia.org/wiki/Special:FilePath/Flag%20of%20Bergen%2C%20Norway.svg> ;
+	prov:wasDerivedFrom wdref:fa278ebfc458360e5aed63d5058cca83c46134f1 .
+
+wd:Q26793 p:P281 wds:Q26793-9BEAAD78-8616-4831-B2E9-F6F1C25FE193 .
+
+wds:Q26793-9BEAAD78-8616-4831-B2E9-F6F1C25FE193 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P281 "5003–5098" ;
+	prov:wasDerivedFrom wdref:d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3 .
+
+wd:Q26793 p:P1151 wds:Q26793-c80a970e-4e52-91c9-bcd9-25d34d04bd9d .
+
+wds:Q26793-c80a970e-4e52-91c9-bcd9-25d34d04bd9d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1151 wd:Q28709513 ;
+	prov:wasDerivedFrom wdref:8f6d2b4a0e3da23aca841c5dfe6b7ed894bd315a .
+
+wd:Q26793 p:P213 wds:Q26793-A4132AEB-1BDA-4148-8CC1-7896BB475D94 .
+
+wds:Q26793-A4132AEB-1BDA-4148-8CC1-7896BB475D94 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P213 "0000000403755599" ;
+	prov:wasDerivedFrom wdref:fe30c3d8276dce76f79eeb1b32fe76c537a259fa .
+
+wd:Q26793 p:P3500 wds:Q26793-BF49A8DA-C917-4756-98C4-E62BC3D510A4 .
+
+wds:Q26793-BF49A8DA-C917-4756-98C4-E62BC3D510A4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3500 "1656" ;
+	prov:wasDerivedFrom wdref:2834ac5da275724a6354a73d2d2a89ae956042a9 .
+
+wd:Q26793 p:P3417 wds:Q26793-D6E3963C-E762-446C-8A57-C7E9D10684FF .
+
+wds:Q26793-D6E3963C-E762-446C-8A57-C7E9D10684FF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3417 "Bergen-Norway" ;
+	prov:wasDerivedFrom wdref:3b0a5bb3c1f955edce73740124f7d935698092ad .
+
+wd:Q26793 p:P2347 wds:Q26793-7135C2C3-7A0C-408C-94EA-5FD5DB9905FF .
+
+wds:Q26793-7135C2C3-7A0C-408C-94EA-5FD5DB9905FF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2347 "126694" ;
+	psn:P2347 <http://www.yso.fi/onto/yso/p126694> ;
+	pq:P14457 "Bergen"@en,
+		"Bergen"@sv,
+		"Bergen"@fi .
+
+wd:Q26793 p:P571 wds:Q26793-69A5F8E3-60C2-4066-88EE-23416696E36D .
+
+wds:Q26793-69A5F8E3-60C2-4066-88EE-23416696E36D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P571 "1070-01-01T00:00:00Z"^^xsd:dateTime ;
+	psv:P571 wdv:01f923c58da1151c075278ac4d9d26b1 .
+
+wd:Q26793 p:P1225 wds:Q26793-9409FFD7-CE13-4179-8C4F-27FF9C227F6D .
+
+wds:Q26793-9409FFD7-CE13-4179-8C4F-27FF9C227F6D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1225 "10045215" .
+
+wd:Q26793 p:P4672 wds:Q26793-C4A01FBF-5D9A-44D5-A075-7FADEF43CBCF .
+
+wds:Q26793-C4A01FBF-5D9A-44D5-A075-7FADEF43CBCF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P4672 "b9329e05-d72c-46af-8bb9-b5263f57c908" .
+
+wd:Q26793 p:P1549 wds:Q26793-E7D109FC-286E-4DBD-ABBF-2759494DB8F5 .
+
+wds:Q26793-E7D109FC-286E-4DBD-ABBF-2759494DB8F5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1549 "bergenser"@nb ;
+	prov:wasDerivedFrom wdref:0b359ffcf4bed77c43653653754aac1f2705ef14 .
+
+wd:Q26793 p:P1549 wds:Q26793-58B67C24-7B47-469D-92B5-FE0F4512FA91 .
+
+wds:Q26793-58B67C24-7B47-469D-92B5-FE0F4512FA91 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1549 "bergensar"@nn ;
+	prov:wasDerivedFrom wdref:0b359ffcf4bed77c43653653754aac1f2705ef14 .
+
+wd:Q26793 p:P4342 wds:Q26793-FF6E2A46-2860-49E4-8828-C4845A218932 .
+
+wds:Q26793-FF6E2A46-2860-49E4-8828-C4845A218932 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P4342 "Bergen" ;
+	pq:P4390 wd:Q39893449 ;
+	pq:P1810 "Bergen" ;
+	pq:P407 wd:Q9043 .
+
+wd:Q26793 p:P1791 wds:Q26793-379F8C2E-FF37-4B1C-9BD9-AA128442652D .
+
+wds:Q26793-379F8C2E-FF37-4B1C-9BD9-AA128442652D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1791 wd:Q32381894 .
+
+wd:Q26793 p:P5173 wds:Q26793-0ec638ec-43f1-abd8-8c7a-239d8288a2c7 .
+
+wds:Q26793-0ec638ec-43f1-abd8-8c7a-239d8288a2c7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P5173 "bergen-1983" .
+
+wd:Q26793 p:P2427 wds:Q26793-13C64469-3AD4-4506-8D4A-CC3010215A1C .
+
+wds:Q26793-13C64469-3AD4-4506-8D4A-CC3010215A1C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2427 "grid.457997.1" ;
+	prov:wasDerivedFrom wdref:56a0410f161434baeaf149d4c06314ea35abaed8 .
+
+wd:Q26793 p:P1417 wds:Q26793-609B2156-937F-4F14-9062-1F868B74AE46 .
+
+wds:Q26793-609B2156-937F-4F14-9062-1F868B74AE46 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1417 "place/Bergen-Norway" ;
+	pq:P1810 "Bergen" .
+
+wd:Q26793 p:P5573 wds:Q26793-36FFCEC3-8AF6-444C-9D5F-144EADDADE83 .
+
+wds:Q26793-36FFCEC3-8AF6-444C-9D5F-144EADDADE83 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P5573 "7382" ;
+	prov:wasDerivedFrom wdref:21494d78c86d729112257391ca4131a84f73b44b .
+
+wd:Q26793 p:P2924 wds:Q26793-9EA4ABE0-9E77-491A-A77C-80EEA38D18B8 .
+
+wds:Q26793-9EA4ABE0-9E77-491A-A77C-80EEA38D18B8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2924 "3211066" ;
+	pq:P1810 "БЕРГЕН" .
+
+wd:Q26793 p:P2924 wds:Q26793-24BBD406-AD92-4349-9D9E-68F97A977B50 .
+
+wds:Q26793-24BBD406-AD92-4349-9D9E-68F97A977B50 a wikibase:Statement ;
+	wikibase:rank wikibase:DeprecatedRank ;
+	ps:P2924 "1859368" ;
+	pq:P2241 wd:Q45403344 .
+
+wd:Q26793 p:P1850 wds:Q26793-73dddc31-4752-c118-cc5d-fd1fad2b41e3 .
+
+wds:Q26793-73dddc31-4752-c118-cc5d-fd1fad2b41e3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1850 "551660" .
+
+wd:Q26793 p:P402 wds:Q26793-e1226085-4ba8-28f6-829c-d05bef27d849 .
+
+wds:Q26793-e1226085-4ba8-28f6-829c-d05bef27d849 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P402 "404159" ;
+	psn:P402 <https://www.openstreetmap.org/relation/404159> .
+
+wd:Q26793 p:P6782 wds:Q26793-E9DADF4E-A2E0-4E36-8A51-AE75250135EE .
+
+wds:Q26793-E9DADF4E-A2E0-4E36-8A51-AE75250135EE a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6782 "022b9d096" .
+
+wd:Q26793 p:P6520 wds:Q26793-fd00e32f-41d8-55e6-4100-d264fe507020 .
+
+wds:Q26793-fd00e32f-41d8-55e6-4100-d264fe507020 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6520 "Bergen" .
+
+wd:Q26793 p:P1343 wds:Q26793-dcb41d70-4019-4678-9875-81a51022a4d8 .
+
+wds:Q26793-dcb41d70-4019-4678-9875-81a51022a4d8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q602358 ;
+	pq:P805 wd:Q24345224 .
+
+wd:Q26793 p:P1343 wds:Q26793-e2419d84-fa4e-42a0-ac84-4de2fe58d8a6 .
+
+wds:Q26793-e2419d84-fa4e-42a0-ac84-4de2fe58d8a6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q19180675 ;
+	pq:P805 wd:Q24752426 .
+
+wd:Q26793 p:P1343 wds:Q26793-6005ef3b-465e-6d8b-029c-62925c1ffd36 .
+
+wds:Q26793-6005ef3b-465e-6d8b-029c-62925c1ffd36 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q3181656 ;
+	pq:P1810 "Bergen" .
+
+wd:Q26793 p:P1343 wds:Q26793-632E31E2-6587-406A-8E0D-8571737C01D2 .
+
+wds:Q26793-632E31E2-6587-406A-8E0D-8571737C01D2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q867541 ;
+	pq:P805 wd:Q84664517 .
+
+wd:Q26793 p:P1343 wds:Q26793-6f3fbbd8-4cf7-0312-ad30-e1578257c43f .
+
+wds:Q26793-6f3fbbd8-4cf7-0312-ad30-e1578257c43f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q20078554 ;
+	pq:P805 wd:Q43455046 .
+
+wd:Q26793 p:P1343 wds:Q26793-f5b008b4-4ee6-d086-c1b7-55dac75af5af .
+
+wds:Q26793-f5b008b4-4ee6-d086-c1b7-55dac75af5af a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1343 wd:Q3351707 ;
+	pq:P478 "1" .
+
+wd:Q26793 p:P2044 wds:Q26793-E4779946-C785-46FF-B224-6F9D8833CE47 .
+
+wds:Q26793-E4779946-C785-46FF-B224-6F9D8833CE47 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2044 "+5"^^xsd:decimal ;
+	psv:P2044 wdv:91c88ed558e938af4f87d1bbf9e1e9b0 ;
+	psn:P2044 wdv:91c88ed558e938af4f87d1bbf9e1e9b0 .
+
+wd:Q26793 p:P1296 wds:Q26793-54E114A1-39F1-4C0F-A2A9-0B3E32CF6482 .
+
+wds:Q26793-54E114A1-39F1-4C0F-A2A9-0B3E32CF6482 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1296 "0223015" .
+
+wd:Q26793 p:P1889 wds:Q26793-c2fbcadf-4884-8447-4a0b-b09a60c441fc .
+
+wds:Q26793-c2fbcadf-4884-8447-4a0b-b09a60c441fc a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1889 wd:Q10428388 .
+
+wd:Q26793 p:P910 wds:Q26793-B7500695-8155-4AD7-A00D-C8B29F8BD4A8 .
+
+wds:Q26793-B7500695-8155-4AD7-A00D-C8B29F8BD4A8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P910 wd:Q6541566 .
+
+wd:Q26793 p:P6821 wds:Q26793-c7af9a5b-406b-86d7-901f-425d4a05ed8c .
+
+wds:Q26793-c7af9a5b-406b-86d7-901f-425d4a05ed8c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6821 "alvin-place:1787" ;
+	psn:P6821 <http://www.alvin-portal.org/alvin/view.jsf?pid=alvin-place:1787> .
+
+wd:Q26793 p:P6766 wds:Q26793-96F66B0A-EE29-4B4D-A057-41DB6C3C9AE6 .
+
+wds:Q26793-96F66B0A-EE29-4B4D-A057-41DB6C3C9AE6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6766 "101751923" .
+
+wd:Q26793 p:P7867 wds:Q26793-5b7afa00-78f6-4caa-a8f7-e5aaf43021ad .
+
+wds:Q26793-5b7afa00-78f6-4caa-a8f7-e5aaf43021ad a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P7867 wd:Q84042424 .
+
+wd:Q26793 p:P1937 wds:Q26793-ed887fa6-4944-ed68-f25f-4fe43f266638 .
+
+wds:Q26793-ed887fa6-4944-ed68-f25f-4fe43f266638 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1937 "NOBGO" .
+
+wd:Q26793 p:P691 wds:Q26793-C296AF9E-C0BA-4BBA-9334-AE470A5D360C .
+
+wds:Q26793-C296AF9E-C0BA-4BBA-9334-AE470A5D360C a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P691 "ge260682" ;
+	pq:P1810 "Bergen (Norsko)" .
+
+wd:Q26793 p:P6058 wds:Q26793-e27002d0-41b0-c65c-ebbb-24ebc42a4bae .
+
+wds:Q26793-e27002d0-41b0-c65c-ebbb-24ebc42a4bae a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6058 "ville/wd/108463" .
+
+wd:Q26793 p:P6262 wds:Q26793-b2e1f758-49c0-1bb8-fc28-26a35e80ac3b .
+
+wds:Q26793-b2e1f758-49c0-1bb8-fc28-26a35e80ac3b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6262 "norway:Bergen" ;
+	pq:P407 wd:Q1860 ;
+	pq:P1810 "Bergen" ;
+	pq:P9675 "2094" .
+
+wd:Q26793 p:P6706 wds:Q26793-5AC3A14F-05AA-4E2C-B9F1-4ACDD2E8F6F9 .
+
+wds:Q26793-5AC3A14F-05AA-4E2C-B9F1-4ACDD2E8F6F9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6706 "Bergen+(Norvegia)" ;
+	pq:P1810 "Bergen (Norvegia)" .
+
+wd:Q26793 p:P8402 wds:Q26793-7df87b0f-4d21-5a03-0ddb-cc95dcde0f90 .
+
+wds:Q26793-7df87b0f-4d21-5a03-0ddb-cc95dcde0f90 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8402 wd:Q97025608 .
+
+wd:Q26793 p:P8406 wds:Q26793-47884EA8-9368-4C55-BE46-EDA93084A580 .
+
+wds:Q26793-47884EA8-9368-4C55-BE46-EDA93084A580 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8406 "T008081" ;
+	psn:P8406 <http://dx.doi.org/10.1093/gao/9781884446054.article.T008081> .
+
+wd:Q26793 p:P94 wds:Q26793-f643f568-43c9-75fc-1acf-d30513762028 .
+
+wds:Q26793-f643f568-43c9-75fc-1acf-d30513762028 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P94 <http://commons.wikimedia.org/wiki/Special:FilePath/Bergen%20v%C3%A5pen.svg> ;
+	prov:wasDerivedFrom wdref:ddbe8e1876e07898f3c5b332438b9435152b9d8a,
+		wdref:aea329c6bfbf27e2c1def264719cf25341d19fcd,
+		wdref:6d01d7ab510b04ed29225fa11f3bfb3c6a89fabc .
+
+wd:Q26793 p:P898 wds:Q26793-6f3f7305-49c6-8f5b-5dbe-c8adcee67000 .
+
+wds:Q26793-6f3f7305-49c6-8f5b-5dbe-c8adcee67000 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P898 "[ˈbæ̀rɡ(ə)n]" .
+
+wd:Q26793 p:P8519 wds:Q26793-44e26921-d809-4fe8-b906-f376a5c9ffcc .
+
+wds:Q26793-44e26921-d809-4fe8-b906-f376a5c9ffcc a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8519 "4775" ;
+	psn:P8519 <https://data.rkd.nl/thesau/4775> .
+
+wd:Q26793 p:P5063 wds:Q26793-0FD30564-C2A8-45F9-A3FF-ED89F6684CE4 .
+
+wds:Q26793-0FD30564-C2A8-45F9-A3FF-ED89F6684CE4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P5063 "i82944" ;
+	psn:P5063 <https://globalwordnet.github.io/cili/i82944> .
+
+wd:Q26793 p:P8974 wds:Q26793-F0E4BDA2-386A-45E9-A049-8F6AA808A5C2 .
+
+wds:Q26793-F0E4BDA2-386A-45E9-A049-8F6AA808A5C2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8974 "p/5302e253-ed81-433b-b0d7-41af8bf3d620" ;
+	psn:P8974 <http://data.performing-arts.ch/p/5302e253-ed81-433b-b0d7-41af8bf3d620> .
+
+wd:Q26793 p:P9100 wds:Q26793-6cb0c6d2-48c5-049f-8e54-d1290c00df48 .
+
+wds:Q26793-6cb0c6d2-48c5-049f-8e54-d1290c00df48 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P9100 "bergen" .
+
+wd:Q26793 p:P8814 wds:Q26793-AAB64FBB-E8F4-466E-AF5D-E4E0719A4122 .
+
+wds:Q26793-AAB64FBB-E8F4-466E-AF5D-E4E0719A4122 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8814 "08783148-n" ;
+	psn:P8814 <https://en-word.net/id/oewn-08783148-n> .
+
+wd:Q26793 p:P8168 wds:Q26793-FD6012BB-FD27-486C-90F9-BC318B8F68E6 .
+
+wds:Q26793-FD6012BB-FD27-486C-90F9-BC318B8F68E6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8168 "Q82934" ;
+	psn:P8168 <https://database.factgrid.de/entity/Q82934> .
+
+wd:Q26793 p:P1705 wds:Q26793-90b32c3f-4746-6c59-33ee-2fdc262cd7ae .
+
+wds:Q26793-90b32c3f-4746-6c59-33ee-2fdc262cd7ae a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1705 "Bergen"@no ;
+	pq:P443 <http://commons.wikimedia.org/wiki/Special:FilePath/Bergen.ogg> ;
+	prov:wasDerivedFrom wdref:d678152f9266543fa247bd466d6b16e48ec31291 .
+
+wd:Q26793 p:P1448 wds:Q26793-9efd834f-4f2a-75d1-5de2-acad701ca84a .
+
+wds:Q26793-9efd834f-4f2a-75d1-5de2-acad701ca84a a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1448 "Bergen"@no ;
+	prov:wasDerivedFrom wdref:d678152f9266543fa247bd466d6b16e48ec31291 .
+
+wd:Q26793 p:P37 wds:Q26793-f1c4fe2c-452f-f566-8415-054b9ecda085 .
+
+wds:Q26793-f1c4fe2c-452f-f566-8415-054b9ecda085 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P37 wd:Q9043 ;
+	prov:wasDerivedFrom wdref:d678152f9266543fa247bd466d6b16e48ec31291 .
+
+wd:Q26793 p:P463 wds:Q26793-DBD402CD-5870-4362-A38C-9A67B99C21DD .
+
+wds:Q26793-DBD402CD-5870-4362-A38C-9A67B99C21DD a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P463 wd:Q1139352 ;
+	pq:P2868 wd:Q60617577 ;
+	pq:P580 "2015-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P580 wdv:418aedfba643e02a5ba758952f8f7765 .
+
+wd:Q26793 p:P463 wds:Q26793-D5CAA4DA-EDA9-499A-857E-998D1C6931D5 .
+
+wds:Q26793-D5CAA4DA-EDA9-499A-857E-998D1C6931D5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P463 wd:Q734958 ;
+	prov:wasDerivedFrom wdref:8cde831cbddc1c876529d8ffec6d52c4c3d874ea .
+
+wd:Q26793 p:P8189 wds:Q26793-D3C6E89D-6294-4672-B965-E7F5D1423CE8 .
+
+wds:Q26793-D3C6E89D-6294-4672-B965-E7F5D1423CE8 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8189 "987007554811005171" .
+
+wd:Q26793 p:P9957 wds:Q26793-36B3327C-97DF-40D5-95BB-A49ED3F146B1 .
+
+wds:Q26793-36B3327C-97DF-40D5-95BB-A49ED3F146B1 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P9957 "9850" ;
+	prov:wasDerivedFrom wdref:190527dca615f4510213808b0e1cb81522b247f6 .
+
+wd:Q26793 p:P3984 wds:Q26793-1478636a-a002-4842-9e7f-c44a3911ddb4 .
+
+wds:Q26793-1478636a-a002-4842-9e7f-c44a3911ddb4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3984 "bergen" ;
+	pq:P407 wd:Q9043,
+		wd:Q1860 .
+
+wd:Q26793 p:P3984 wds:Q26793-7BF7EBB4-FA90-4B00-B90A-E07FC77DD883 .
+
+wds:Q26793-7BF7EBB4-FA90-4B00-B90A-E07FC77DD883 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3984 "Bergen" .
+
+wd:Q26793 p:P8313 wds:Q26793-9F19D1C8-973E-412D-9585-BBE7058616D7 .
+
+wds:Q26793-9F19D1C8-973E-412D-9585-BBE7058616D7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8313 "Bergen" .
+
+wd:Q26793 p:P7305 wds:Q26793-c57989e4-4ed3-70d6-b3b4-b7594015b435 .
+
+wds:Q26793-c57989e4-4ed3-70d6-b3b4-b7594015b435 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P7305 "3876252" .
+
+wd:Q26793 p:P9318 wds:Q26793-46244139-4e10-34f2-2058-1dfec79585a6 .
+
+wds:Q26793-46244139-4e10-34f2-2058-1dfec79585a6 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P9318 "bergen" .
+
+wd:Q26793 p:P269 wds:Q26793-E6A83A86-F368-412B-85B8-E4076A68F238 .
+
+wds:Q26793-E6A83A86-F368-412B-85B8-E4076A68F238 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P269 "110143531" ;
+	psn:P269 <http://www.idref.fr/110143531/id> ;
+	prov:wasDerivedFrom wdref:5f01cbda489483af70b971f6d08a98dc3e2fd89a .
+
+wd:Q26793 p:P935 wds:Q26793-2e6cf1aa-4514-1095-6584-6c3e3418e023 .
+
+wds:Q26793-2e6cf1aa-4514-1095-6584-6c3e3418e023 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P935 "Bergen" .
+
+wd:Q26793 p:P30 wds:Q26793-56006ca2-482a-36ca-5168-0cbc145ebebe .
+
+wds:Q26793-56006ca2-482a-36ca-5168-0cbc145ebebe a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P30 wd:Q46 .
+
+wd:Q26793 p:P1943 wds:Q26793-67c6b058-4ade-905f-a447-5c4fb1924d27 .
+
+wds:Q26793-67c6b058-4ade-905f-a447-5c4fb1924d27 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1943 <http://commons.wikimedia.org/wiki/Special:FilePath/Bergen%20boroughs.png> .
+
+wd:Q26793 p:P2581 wds:Q26793-5955e4f0-440c-74d9-cc60-6cefb2802696 .
+
+wds:Q26793-5955e4f0-440c-74d9-cc60-6cefb2802696 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2581 "00010008n" ;
+	psn:P2581 <http://babelnet.org/rdf/s00010008n> .
+
+wd:Q26793 p:P242 wds:Q26793-70b5c0e0-4363-da6c-dfec-01f25ae5cf3f .
+
+wds:Q26793-70b5c0e0-4363-da6c-dfec-01f25ae5cf3f a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P242 <http://commons.wikimedia.org/wiki/Special:FilePath/Norway%20Hordaland%20-%20Bergen.svg> .
+
+wd:Q26793 p:P9495 wds:Q26793-ECE931B2-4F6E-433D-B90F-4336E5DDF037 .
+
+wds:Q26793-ECE931B2-4F6E-433D-B90F-4336E5DDF037 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P9495 "geo/85243033-6FF9-411F-A457-52231CD76641" .
+
+wd:Q26793 p:P11693 wds:Q26793-E9152868-8B55-4295-BCFC-E12AC77F5DA7 .
+
+wds:Q26793-E9152868-8B55-4295-BCFC-E12AC77F5DA7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P11693 "21261083" .
+
+wd:Q26793 p:P10565 wds:Q26793-694FEF75-CE66-411C-B974-77BBC0F9CFD9 .
+
+wds:Q26793-694FEF75-CE66-411C-B974-77BBC0F9CFD9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P10565 "510962" .
+
+wd:Q26793 p:P6621 wds:Q26793-73220ce2-4789-1e57-330c-a5613e8059f9 .
+
+wds:Q26793-73220ce2-4789-1e57-330c-a5613e8059f9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P6621 "Bergen" .
+
+wd:Q26793 p:P12086 wds:Q26793-58F04021-4D3C-4680-99A8-292F5003972F .
+
+wds:Q26793-58F04021-4D3C-4680-99A8-292F5003972F a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P12086 "Bergen_(Noorwegen)" ;
+	pq:P9675 "30342" .
+
+wd:Q26793 p:P1015 wds:q26793-98b7e97e-4252-3a5a-943b-9f4363cd7ece .
+
+wds:q26793-98b7e97e-4252-3a5a-943b-9f4363cd7ece a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1015 "90086066" ;
+	psn:P1015 <https://livedata.bibsys.no/authority/90086066> ;
+	prov:wasDerivedFrom wdref:bf2cde1ea79ba16c15c24d882672401b5e691dc6 .
+
+wd:Q26793 p:P9984 wds:q26793-041eec6e-4510-0c77-f307-175ad1b8c598 .
+
+wds:q26793-041eec6e-4510-0c77-f307-175ad1b8c598 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P9984 "981058614935106706" ;
+	prov:wasDerivedFrom wdref:bf2cde1ea79ba16c15c24d882672401b5e691dc6 .
+
+wd:Q26793 p:P268 wds:q26793-8f734c9d-45da-b0ec-73c8-36a8d3696f8b .
+
+wds:q26793-8f734c9d-45da-b0ec-73c8-36a8d3696f8b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P268 "145918168" ;
+	psn:P268 <http://data.bnf.fr/ark:/12148/cb145918168#about> ;
+	prov:wasDerivedFrom wdref:bf2cde1ea79ba16c15c24d882672401b5e691dc6 .
+
+wd:Q26793 p:P8179 wds:q26793-3b0791ba-4d98-b5de-3d1a-f385868dd2b2 .
+
+wds:q26793-3b0791ba-4d98-b5de-3d1a-f385868dd2b2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8179 "ncf12010514" ;
+	prov:wasDerivedFrom wdref:bf2cde1ea79ba16c15c24d882672401b5e691dc6 .
+
+wd:Q26793 p:P2163 wds:q26793-abb0c909-456e-6739-ea5a-d5a5a445a919 .
+
+wds:q26793-abb0c909-456e-6739-ea5a-d5a5a445a919 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2163 "1204538" ;
+	psn:P2163 <http://id.worldcat.org/fast/1204538> ;
+	prov:wasDerivedFrom wdref:bf2cde1ea79ba16c15c24d882672401b5e691dc6 .
+
+wd:Q26793 p:P7039 wds:q26793-58a75ccd-4d99-6fb7-f30d-c6176808c156 .
+
+wds:q26793-58a75ccd-4d99-6fb7-f30d-c6176808c156 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P7039 "000098575" ;
+	prov:wasDerivedFrom wdref:bf2cde1ea79ba16c15c24d882672401b5e691dc6 .
+
+wd:Q26793 p:P12385 wds:Q26793-a3f611d0-76af-45ed-8616-07ca02bc85ea .
+
+wds:Q26793-a3f611d0-76af-45ed-8616-07ca02bc85ea a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P12385 "bergen-7" .
+
+wd:Q26793 p:P2326 wds:Q26793-A46D36C2-7349-4842-BC2F-4370213ACC6D .
+
+wds:Q26793-A46D36C2-7349-4842-BC2F-4370213ACC6D a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2326 "-252873" .
+
+wd:Q26793 p:P1667 wds:Q26793-af5273de-4227-fe90-c910-118bac50b1f0 .
+
+wds:Q26793-af5273de-4227-fe90-c910-118bac50b1f0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1667 "7007059" ;
+	psn:P1667 <http://vocab.getty.edu/tgn/7007059> .
+
+wd:Q26793 p:P10832 wds:Q26793-641BBB36-93DA-4EC8-AE5A-5686B744E462 .
+
+wds:Q26793-641BBB36-93DA-4EC8-AE5A-5686B744E462 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P10832 "E39PBJxmM4VdfVDpbQ8D4pT8md" ;
+	prov:wasDerivedFrom wdref:d12b9924c96f0f5eea91ef2f744822a090a0979f .
+
+wd:Q26793 p:P4640 wds:Q26793-05bed30b-45e6-8f3d-25a7-2acb9b8af44d .
+
+wds:Q26793-05bed30b-45e6-8f3d-25a7-2acb9b8af44d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P4640 <http://commons.wikimedia.org/wiki/Special:FilePath/Bergen%20%E2%80%93%20Panorama%20%28Greg%20Zaal%20via%20Poly%20Haven%29.jpg> .
+
+wd:Q26793 p:P12749 wds:Q26793-0E42EDC8-BC2F-426E-A559-52C026380583 .
+
+wds:Q26793-0E42EDC8-BC2F-426E-A559-52C026380583 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P12749 "Q1710" .
+
+wd:Q26793 p:P12187 wds:Q26793-07199d97-432d-1d50-f18e-57c18c959d9c .
+
+wds:Q26793-07199d97-432d-1d50-f18e-57c18c959d9c a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P12187 "ZQIZXRY5LVD7PPNESZJUVQ7KQA" .
+
+wd:Q26793 p:P8593 wds:Q26793-4f3bb8d2-4c06-a038-43da-535cdb9fc8b3 .
+
+wds:Q26793-4f3bb8d2-4c06-a038-43da-535cdb9fc8b3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8593 "22639" .
+
+wd:Q26793 p:P13030 wds:Q26793-FFD31E8A-ACB3-4954-B25B-98A46C8E6D34 .
+
+wds:Q26793-FFD31E8A-ACB3-4954-B25B-98A46C8E6D34 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13030 "location/756" .
+
+wd:Q26793 p:P5337 wds:Q26793-7ae817d3-4603-6065-0b95-0ec41ba85209 .
+
+wds:Q26793-7ae817d3-4603-6065-0b95-0ec41ba85209 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P5337 "CAAqIQgKIhtDQkFTRGdvSUwyMHZNR1p0TjNNU0FtNXZLQUFQAQ" .
+
+wd:Q26793 p:P13061 wds:Q26793-e89b4bf5-451e-207f-8767-3d631a41b9c0 .
+
+wds:Q26793-e89b4bf5-451e-207f-8767-3d631a41b9c0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13061 "13294283" .
+
+wd:Q26793 p:P3134 wds:Q26793-87C085AA-C704-4F1B-9A07-5F7A023E2BBA .
+
+wds:Q26793-87C085AA-C704-4F1B-9A07-5F7A023E2BBA a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3134 "190502" .
+
+wd:Q26793 p:P8592 wds:Q26793-e597524b-4cb9-96b5-275d-821537e08724 .
+
+wds:Q26793-e597524b-4cb9-96b5-275d-821537e08724 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P8592 <http://commons.wikimedia.org/wiki/Special:FilePath/Aerial%20of%20Bergen%20op%20Zoom1.jpg> .
+
+wd:Q26793 p:P5252 wds:Q26793-bffad351-4ab7-cb46-5370-a427868f7f8e .
+
+wds:Q26793-bffad351-4ab7-cb46-5370-a427868f7f8e a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P5252 <http://commons.wikimedia.org/wiki/Special:FilePath/View%20Bergen%20Floibanen%20Floyen%20Winter%202009.JPG> .
+
+wd:Q26793 p:P3451 wds:Q26793-7e162dc5-449c-f22c-ee43-203782142ab9 .
+
+wds:Q26793-7e162dc5-449c-f22c-ee43-203782142ab9 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3451 <http://commons.wikimedia.org/wiki/Special:FilePath/Bergen%20night%20tunliweb.jpg> .
+
+wd:Q26793 p:P2716 wds:Q26793-ebe26293-4e6c-531d-eb98-59d3f352501d .
+
+wds:Q26793-ebe26293-4e6c-531d-eb98-59d3f352501d a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2716 <http://commons.wikimedia.org/wiki/Special:FilePath/BergenComposite.jpg> .
+
+wd:Q26793 p:P2013 wds:Q26793-40ae4752-4e10-4d7e-8f44-f6f2a007f964 .
+
+wds:Q26793-40ae4752-4e10-4d7e-8f44-f6f2a007f964 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2013 "bergenkommune" .
+
+wd:Q26793 p:P2003 wds:Q26793-97ba4f0e-41b3-be7a-d5f3-8bc535a825d4 .
+
+wds:Q26793-97ba4f0e-41b3-be7a-d5f3-8bc535a825d4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2003 "bergenkommune_ung" .
+
+wd:Q26793 p:P4264 wds:Q26793-c785982e-4945-8f0b-9364-55806d1019d4 .
+
+wds:Q26793-c785982e-4945-8f0b-9364-55806d1019d4 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P4264 "bergenkommune" .
+
+wd:Q26793 p:P3365 wds:Q26793-573e821a-44a4-5725-43a4-4957f99bfff2 .
+
+wds:Q26793-573e821a-44a4-5725-43a4-4957f99bfff2 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P3365 "bergen" ;
+	pq:P1810 "Bergen" .
+
+wd:Q26793 p:P4223 wds:Q26793-98ad830e-49c1-2725-b2f1-bc2e178b50fc .
+
+wds:Q26793-98ad830e-49c1-2725-b2f1-bc2e178b50fc a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P4223 "bergen" ;
+	pq:P577 "1930-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P577 wdv:dbd0be1d7c1dc59596f8f5fa3fc01747 ;
+	pq:P1810 "BERGEN" ;
+	pq:P2093 "Hans W. AHLMANN",
+		"Giovanni BACH",
+		"Astrid SCHJOLDAGER BUGGE" .
+
+wd:Q26793 p:P9850 wds:Q26793-be0f7fad-4e20-2344-bf25-ea8cfa6b94ad .
+
+wds:Q26793-be0f7fad-4e20-2344-bf25-ea8cfa6b94ad a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P9850 "bergen" ;
+	pq:P577 "1992-01-01T00:00:00Z"^^xsd:dateTime ;
+	pqv:P577 wdv:b7d2f0cd6078582b7912deb83efe6450 ;
+	pq:P1810 "BERGEN" ;
+	pq:P2093 "P.J. Nordhagen" .
+
+wd:Q26793 p:P13591 wds:Q26793-EA7A3BEE-75F7-4C42-961A-5C5A0EB6993E .
+
+wds:Q26793-EA7A3BEE-75F7-4C42-961A-5C5A0EB6993E a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13591 "place/d2964ac4-5241-4271-80c9-e5ed043d2219" .
+
+wd:Q26793 p:P1617 wds:Q26793-a1bc571a-6eda-4217-a7b6-4b59ed29dc9b .
+
+wds:Q26793-a1bc571a-6eda-4217-a7b6-4b59ed29dc9b a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P1617 "f8e479f6-46de-4cc1-b57f-e4abf3425308" ;
+	psn:P1617 <http://www.bbc.co.uk/things/f8e479f6-46de-4cc1-b57f-e4abf3425308#id> ;
+	prov:wasDerivedFrom wdref:8582d8416671f1f2567247201bac753552435ca5 .
+
+wd:Q26793 p:P2184 wds:Q26793-3F4B4329-35E5-4120-B623-8DE442332BF0 .
+
+wds:Q26793-3F4B4329-35E5-4120-B623-8DE442332BF0 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P2184 wd:Q23042624 .
+
+wd:Q26793 p:P13750 wds:Q26793-BD920283-920D-4EBE-AFA8-A9A5198C42B3 .
+
+wds:Q26793-BD920283-920D-4EBE-AFA8-A9A5198C42B3 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13750 "2529" .
+
+wd:Q26793 p:P14075 wds:Q26793-43F78D1B-2039-49EB-9AF3-0F27111C3DAF .
+
+wds:Q26793-43F78D1B-2039-49EB-9AF3-0F27111C3DAF a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P14075 "48645" .
+
+wd:Q26793 p:P13204 wds:Q26793-C3A9864F-C459-41C2-BB27-9C7E11F37CE5 .
+
+wds:Q26793-C3A9864F-C459-41C2-BB27-9C7E11F37CE5 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P13204 "qk595qz8" .
+
+wd:Q26793 p:P396 wds:Q26793-6E09F19F-41A7-43BC-9CD7-664BD2F5D8B7 .
+
+wds:Q26793-6E09F19F-41A7-43BC-9CD7-664BD2F5D8B7 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P396 "MILV441908" ;
+	pq:P1810 "Bergen kommune" ;
+	prov:wasDerivedFrom wdref:48e03729f15eff567cff827416fb4ff16093f243 .
+
+wd:Q26793 p:P9322 wds:Q26793-84F103FC-EF0D-4F18-A7EE-5749C3EC3770 .
+
+wds:Q26793-84F103FC-EF0D-4F18-A7EE-5749C3EC3770 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P9322 "0269510-Bergen-Norsko" .
+
+wd:Q26793 p:P14586 wds:Q26793-1CF08AE1-A197-4BE1-9A2D-908A90BCD153 .
+
+wds:Q26793-1CF08AE1-A197-4BE1-9A2D-908A90BCD153 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P14586 "90330" .
+
+wd:Q26793 p:P14541 wds:Q26793-31787D84-F1A5-422E-8C0B-6C40AADF4973 .
+
+wds:Q26793-31787D84-F1A5-422E-8C0B-6C40AADF4973 a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P14541 "2CGqUs" ;
+	pq:P1810 "卑尔根" ;
+	pq:P5017 "2023-05-25T00:00:00Z"^^xsd:dateTime ;
+	pqv:P5017 wdv:7ce76a67ed20fa3a49d4de17a2dabd8f .
+
+wd:Q26793 p:P14470 wds:Q26793-1d23db30-4a72-c6a1-735d-44251413d9de .
+
+wds:Q26793-1d23db30-4a72-c6a1-735d-44251413d9de a wikibase:Statement,
+		wikibase:BestRank ;
+	wikibase:rank wikibase:NormalRank ;
+	ps:P14470 "Locations/Bergen" ;
+	pq:P1810 "Bergen" ;
+	pq:P9675 "262871" .
+
+wd:Q26793 rdfs:label "Bergen"@lb ;
+	skos:prefLabel "Bergen"@lb ;
+	schema:name "Bergen"@lb ;
+	rdfs:label "卑爾根"@zh ;
+	skos:prefLabel "卑爾根"@zh ;
+	schema:name "卑爾根"@zh ;
+	rdfs:label "Bergen"@pl ;
+	skos:prefLabel "Bergen"@pl ;
+	schema:name "Bergen"@pl ;
+	rdfs:label "Bergen"@eu ;
+	skos:prefLabel "Bergen"@eu ;
+	schema:name "Bergen"@eu ;
+	rdfs:label "Bergen"@bs ;
+	skos:prefLabel "Bergen"@bs ;
+	schema:name "Bergen"@bs ;
+	rdfs:label "Bergen"@es ;
+	skos:prefLabel "Bergen"@es ;
+	schema:name "Bergen"@es ;
+	rdfs:label "Bergen"@mi ;
+	skos:prefLabel "Bergen"@mi ;
+	schema:name "Bergen"@mi ;
+	rdfs:label "Bergen"@vo ;
+	skos:prefLabel "Bergen"@vo ;
+	schema:name "Bergen"@vo ;
+	rdfs:label "பேர்கன்"@ta ;
+	skos:prefLabel "பேர்கன்"@ta ;
+	schema:name "பேர்கன்"@ta ;
+	rdfs:label "Bergen"@af ;
+	skos:prefLabel "Bergen"@af ;
+	schema:name "Bergen"@af ;
+	rdfs:label "Bergen"@oc ;
+	skos:prefLabel "Bergen"@oc ;
+	schema:name "Bergen"@oc ;
+	rdfs:label "Bergen"@hu ;
+	skos:prefLabel "Bergen"@hu ;
+	schema:name "Bergen"@hu ;
+	rdfs:label "Bergen"@sw ;
+	skos:prefLabel "Bergen"@sw ;
+	schema:name "Bergen"@sw ;
+	rdfs:label "Bergen"@et ;
+	skos:prefLabel "Bergen"@et ;
+	schema:name "Bergen"@et ;
+	rdfs:label "Bergen"@sq ;
+	skos:prefLabel "Bergen"@sq ;
+	schema:name "Bergen"@sq ;
+	rdfs:label "Bergen"@br ;
+	skos:prefLabel "Bergen"@br ;
+	schema:name "Bergen"@br ;
+	rdfs:label "Μπέργκεν"@el ;
+	skos:prefLabel "Μπέργκεν"@el ;
+	schema:name "Μπέργκεν"@el ;
+	rdfs:label "Bergen"@ia ;
+	skos:prefLabel "Bergen"@ia ;
+	schema:name "Bergen"@ia ;
+	rdfs:label "برگن"@pnb ;
+	skos:prefLabel "برگن"@pnb ;
+	schema:name "برگن"@pnb ;
+	rdfs:label "Bergen"@sv ;
+	skos:prefLabel "Bergen"@sv ;
+	schema:name "Bergen"@sv ;
+	rdfs:label "Bergen"@nl ;
+	skos:prefLabel "Bergen"@nl ;
+	schema:name "Bergen"@nl ;
+	rdfs:label "برغن"@ar ;
+	skos:prefLabel "برغن"@ar ;
+	schema:name "برغن"@ar ;
+	rdfs:label "Bergen"@pt ;
+	skos:prefLabel "Bergen"@pt ;
+	schema:name "Bergen"@pt ;
+	rdfs:label "Björgvin"@is ;
+	skos:prefLabel "Björgvin"@is ;
+	schema:name "Björgvin"@is ;
+	rdfs:label "Bergen"@eo ;
+	skos:prefLabel "Bergen"@eo ;
+	schema:name "Bergen"@eo ;
+	rdfs:label "Берген"@ru ;
+	skos:prefLabel "Берген"@ru ;
+	schema:name "Берген"@ru ;
+	rdfs:label "Берген"@sr ;
+	skos:prefLabel "Берген"@sr ;
+	schema:name "Берген"@sr ;
+	rdfs:label "Bergen"@tr ;
+	skos:prefLabel "Bergen"@tr ;
+	schema:name "Bergen"@tr ;
+	rdfs:label "Birgon"@se ;
+	skos:prefLabel "Birgon"@se ;
+	schema:name "Birgon"@se ;
+	rdfs:label "Bergen"@kl ;
+	skos:prefLabel "Bergen"@kl ;
+	schema:name "Bergen"@kl ;
+	rdfs:label "Bergen"@fi ;
+	skos:prefLabel "Bergen"@fi ;
+	schema:name "Bergen"@fi ;
+	rdfs:label "Берген"@uk ;
+	skos:prefLabel "Берген"@uk ;
+	schema:name "Берген"@uk ;
+	rdfs:label "Bergen"@nn ;
+	skos:prefLabel "Bergen"@nn ;
+	schema:name "Bergen"@nn ;
+	rdfs:label "Bergen"@zea ;
+	skos:prefLabel "Bergen"@zea ;
+	schema:name "Bergen"@zea ;
+	rdfs:label "Bergen"@sco ;
+	skos:prefLabel "Bergen"@sco ;
+	schema:name "Bergen"@sco ;
+	rdfs:label "Bergen"@az ;
+	skos:prefLabel "Bergen"@az ;
+	schema:name "Bergen"@az ;
+	rdfs:label "Bergen"@hr ;
+	skos:prefLabel "Bergen"@hr ;
+	schema:name "Bergen"@hr ;
+	rdfs:label "বারগেন"@bpy ;
+	skos:prefLabel "বারগেন"@bpy ;
+	schema:name "বারগেন"@bpy ;
+	rdfs:label "Bergen"@lmo ;
+	skos:prefLabel "Bergen"@lmo ;
+	schema:name "Bergen"@lmo ;
+	rdfs:label "Bergen"@da ;
+	skos:prefLabel "Bergen"@da ;
+	schema:name "Bergen"@da ;
+	rdfs:label "Bergen"@vec ;
+	skos:prefLabel "Bergen"@vec ;
+	schema:name "Bergen"@vec ;
+	rdfs:label "Bergen"@gsw ;
+	skos:prefLabel "Bergen"@gsw ;
+	schema:name "Bergen"@gsw ;
+	rdfs:label "Bergen"@pms ;
+	skos:prefLabel "Bergen"@pms ;
+	schema:name "Bergen"@pms ;
+	rdfs:label "Bergen"@nah ;
+	skos:prefLabel "Bergen"@nah ;
+	schema:name "Bergen"@nah ;
+	rdfs:label "Берген"@be ;
+	skos:prefLabel "Берген"@be ;
+	schema:name "Берген"@be ;
+	rdfs:label "ברגן"@he ;
+	skos:prefLabel "ברגן"@he ;
+	schema:name "ברגן"@he ;
+	rdfs:label "베르겐"@ko ;
+	skos:prefLabel "베르겐"@ko ;
+	schema:name "베르겐"@ko ;
+	rdfs:label "Bergen"@fr ;
+	skos:prefLabel "Bergen"@fr ;
+	schema:name "Bergen"@fr ;
+	rdfs:label "Bergen"@ie ;
+	skos:prefLabel "Bergen"@ie ;
+	schema:name "Bergen"@ie ;
+	rdfs:label "Bergena"@lv ;
+	skos:prefLabel "Bergena"@lv ;
+	schema:name "Bergena"@lv ;
+	rdfs:label "Bergen"@it ;
+	skos:prefLabel "Bergen"@it ;
+	schema:name "Bergen"@it ;
+	rdfs:label "Bergen"@gl ;
+	skos:prefLabel "Bergen"@gl ;
+	schema:name "Bergen"@gl ;
+	rdfs:label "Bergen"@id ;
+	skos:prefLabel "Bergen"@id ;
+	schema:name "Bergen"@id ;
+	rdfs:label "Bergen"@de ;
+	skos:prefLabel "Bergen"@de ;
+	schema:name "Bergen"@de ;
+	rdfs:label "ベルゲン"@ja ;
+	skos:prefLabel "ベルゲン"@ja ;
+	schema:name "ベルゲン"@ja ;
+	rdfs:label "Bergen"@vi ;
+	skos:prefLabel "Bergen"@vi ;
+	schema:name "Bergen"@vi ;
+	rdfs:label "Bergen"@en ;
+	skos:prefLabel "Bergen"@en ;
+	schema:name "Bergen"@en ;
+	rdfs:label "Bergen"@sh ;
+	skos:prefLabel "Bergen"@sh ;
+	schema:name "Bergen"@sh ;
+	rdfs:label "Bergen"@sk ;
+	skos:prefLabel "Bergen"@sk ;
+	schema:name "Bergen"@sk ;
+	rdfs:label "Bergen"@fy ;
+	skos:prefLabel "Bergen"@fy ;
+	schema:name "Bergen"@fy ;
+	rdfs:label "บาร์เกิน"@th ;
+	skos:prefLabel "บาร์เกิน"@th ;
+	schema:name "บาร์เกิน"@th ;
+	rdfs:label "Bergen"@ro ;
+	skos:prefLabel "Bergen"@ro ;
+	schema:name "Bergen"@ro ;
+	rdfs:label "Bergen"@ca ;
+	skos:prefLabel "Bergen"@ca ;
+	schema:name "Bergen"@ca ;
+	rdfs:label "Berga"@la ;
+	skos:prefLabel "Berga"@la ;
+	schema:name "Berga"@la ;
+	rdfs:label "Bergen"@fo ;
+	skos:prefLabel "Bergen"@fo ;
+	schema:name "Bergen"@fo ;
+	rdfs:label "Bergen"@cy ;
+	skos:prefLabel "Bergen"@cy ;
+	schema:name "Bergen"@cy ;
+	rdfs:label "Bergen"@war ;
+	skos:prefLabel "Bergen"@war ;
+	schema:name "Bergen"@war ;
+	rdfs:label "Bergen"@sl ;
+	skos:prefLabel "Bergen"@sl ;
+	schema:name "Bergen"@sl ;
+	rdfs:label "Берген"@os ;
+	skos:prefLabel "Берген"@os ;
+	schema:name "Берген"@os ;
+	rdfs:label "Bergens"@sgs ;
+	skos:prefLabel "Bergens"@sgs ;
+	schema:name "Bergens"@sgs ;
+	rdfs:label "Bergen"@cs ;
+	skos:prefLabel "Bergen"@cs ;
+	schema:name "Bergen"@cs ;
+	rdfs:label "برگن"@fa ;
+	skos:prefLabel "برگن"@fa ;
+	schema:name "برگن"@fa ;
+	rdfs:label "बार्गन"@mr ;
+	skos:prefLabel "बार्गन"@mr ;
+	schema:name "बार्गन"@mr ;
+	rdfs:label "Берген"@bg ;
+	skos:prefLabel "Берген"@bg ;
+	schema:name "Берген"@bg ;
+	rdfs:label "ბერგენი"@ka ;
+	skos:prefLabel "ბერგენი"@ka ;
+	schema:name "ბერგენი"@ka ;
+	rdfs:label "Bergn"@vls ;
+	skos:prefLabel "Bergn"@vls ;
+	schema:name "Bergn"@vls ;
+	rdfs:label "Bargen"@nds ;
+	skos:prefLabel "Bargen"@nds ;
+	schema:name "Bargen"@nds ;
+	rdfs:label "Bergenas"@lt ;
+	skos:prefLabel "Bergenas"@lt ;
+	schema:name "Bergenas"@lt ;
+	rdfs:label "Bergen"@nb ;
+	skos:prefLabel "Bergen"@nb ;
+	schema:name "Bergen"@nb ;
+	rdfs:label "Бэрген"@be-tarask ;
+	skos:prefLabel "Бэрген"@be-tarask ;
+	schema:name "Бэрген"@be-tarask ;
+	rdfs:label "Bergen"@en-ca ;
+	skos:prefLabel "Bergen"@en-ca ;
+	schema:name "Bergen"@en-ca ;
+	rdfs:label "Bergen"@en-gb ;
+	skos:prefLabel "Bergen"@en-gb ;
+	schema:name "Bergen"@en-gb ;
+	rdfs:label "Bergen"@frr ;
+	skos:prefLabel "Bergen"@frr ;
+	schema:name "Bergen"@frr ;
+	rdfs:label "Bergen"@pt-br ;
+	skos:prefLabel "Bergen"@pt-br ;
+	schema:name "Bergen"@pt-br ;
+	rdfs:label "Bergen"@de-ch ;
+	skos:prefLabel "Bergen"@de-ch ;
+	schema:name "Bergen"@de-ch ;
+	rdfs:label "Берген"@ce ;
+	skos:prefLabel "Берген"@ce ;
+	schema:name "Берген"@ce ;
+	rdfs:label "Բերգեն"@hy ;
+	skos:prefLabel "Բերգեն"@hy ;
+	schema:name "Բերգեն"@hy ;
+	rdfs:label "Берген"@mk ;
+	skos:prefLabel "Берген"@mk ;
+	schema:name "Берген"@mk ;
+	rdfs:label "Bergen"@ms ;
+	skos:prefLabel "Bergen"@ms ;
+	schema:name "Bergen"@ms ;
+	rdfs:label "Bargen"@nds-nl ;
+	skos:prefLabel "Bargen"@nds-nl ;
+	schema:name "Bargen"@nds-nl ;
+	rdfs:label "Берген ош"@myv ;
+	skos:prefLabel "Берген ош"@myv ;
+	schema:name "Берген ош"@myv ;
+	rdfs:label "Bergen"@li ;
+	skos:prefLabel "Bergen"@li ;
+	schema:name "Bergen"@li ;
+	rdfs:label "Bergen"@nan ;
+	skos:prefLabel "Bergen"@nan ;
+	schema:name "Bergen"@nan ;
+	rdfs:label "बर्गन"@ne ;
+	skos:prefLabel "बर्गन"@ne ;
+	schema:name "बर्गन"@ne ;
+	rdfs:label "Bergen"@tum ;
+	skos:prefLabel "Bergen"@tum ;
+	schema:name "Bergen"@tum ;
+	rdfs:label "卑爾根"@yue ;
+	skos:prefLabel "卑爾根"@yue ;
+	schema:name "卑爾根"@yue ;
+	rdfs:label "برگن"@ur ;
+	skos:prefLabel "برگن"@ur ;
+	schema:name "برگن"@ur ;
+	rdfs:label "Bergen"@uz ;
+	skos:prefLabel "Bergen"@uz ;
+	schema:name "Bergen"@uz ;
+	rdfs:label "Bergen"@szl ;
+	skos:prefLabel "Bergen"@szl ;
+	schema:name "Bergen"@szl ;
+	rdfs:label "Bergen"@hsb ;
+	skos:prefLabel "Bergen"@hsb ;
+	schema:name "Bergen"@hsb ;
+	rdfs:label "卑尔根"@zh-hans ;
+	skos:prefLabel "卑尔根"@zh-hans ;
+	schema:name "卑尔根"@zh-hans ;
+	rdfs:label "बेर्गेन"@hi ;
+	skos:prefLabel "बेर्गेन"@hi ;
+	schema:name "बेर्गेन"@hi ;
+	rdfs:label "బర్గెన్"@te ;
+	skos:prefLabel "బర్గెన్"@te ;
+	schema:name "బర్గెన్"@te ;
+	rdfs:label "বার্গেন"@bn ;
+	skos:prefLabel "বার্গেন"@bn ;
+	schema:name "বার্গেন"@bn ;
+	rdfs:label "බර්ගන්"@si ;
+	skos:prefLabel "බර්ගන්"@si ;
+	schema:name "බර්ගන්"@si ;
+	rdfs:label "બર્ગન"@gu ;
+	skos:prefLabel "બર્ગન"@gu ;
+	schema:name "બર્ગન"@gu ;
+	rdfs:label "ಬೆರ್ಗೆನ್"@kn ;
+	skos:prefLabel "ಬೆರ್ಗೆನ್"@kn ;
+	schema:name "ಬೆರ್ಗೆನ್"@kn ;
+	rdfs:label "Bergen"@io ;
+	skos:prefLabel "Bergen"@io ;
+	schema:name "Bergen"@io ;
+	rdfs:label "Bergen"@ceb ;
+	skos:prefLabel "Bergen"@ceb ;
+	schema:name "Bergen"@ceb ;
+	rdfs:label "Bergen"@jv ;
+	skos:prefLabel "Bergen"@jv ;
+	schema:name "Bergen"@jv ;
+	rdfs:label "Bergen"@ga ;
+	skos:prefLabel "Bergen"@ga ;
+	schema:name "Bergen"@ga ;
+	rdfs:label "Bergen"@ast ;
+	skos:prefLabel "Bergen"@ast ;
+	schema:name "Bergen"@ast ;
+	rdfs:label "برګين"@ps ;
+	skos:prefLabel "برګين"@ps ;
+	schema:name "برګين"@ps ;
+	rdfs:label "በርግን"@am ;
+	skos:prefLabel "በርግን"@am ;
+	schema:name "በርግን"@am ;
+	rdfs:label "Берген"@tt ;
+	skos:prefLabel "Берген"@tt ;
+	schema:name "Берген"@tt ;
+	rdfs:label "برقن"@azb ;
+	skos:prefLabel "برقن"@azb ;
+	schema:name "برقن"@azb ;
+	rdfs:label "Պէրկըն"@hyw ;
+	skos:prefLabel "Պէրկըն"@hyw ;
+	schema:name "Պէրկըն"@hyw ;
+	rdfs:label "Bergen"@ha ;
+	skos:prefLabel "Bergen"@ha ;
+	schema:name "Bergen"@ha ;
+	rdfs:label "卑爾根"@zh-hant ;
+	skos:prefLabel "卑爾根"@zh-hant ;
+	schema:name "卑爾根"@zh-hant ;
+	rdfs:label "بارگن"@ckb ;
+	skos:prefLabel "بارگن"@ckb ;
+	schema:name "بارگن"@ckb ;
+	rdfs:label "卑尔根"@wuu ;
+	skos:prefLabel "卑尔根"@wuu ;
+	schema:name "卑尔根"@wuu ;
+	rdfs:label "Bergen"@diq ;
+	skos:prefLabel "Bergen"@diq ;
+	schema:name "Bergen"@diq ;
+	rdfs:label "Bergen"@vep ;
+	skos:prefLabel "Bergen"@vep ;
+	schema:name "Bergen"@vep ;
+	rdfs:label "Bergen"@bjn ;
+	skos:prefLabel "Bergen"@bjn ;
+	schema:name "Bergen"@bjn ;
+	rdfs:label "برجن"@arz ;
+	skos:prefLabel "برجن"@arz ;
+	schema:name "برجن"@arz ;
+	rdfs:label "Bergun"@sje ;
+	skos:prefLabel "Bergun"@sje ;
+	schema:name "Bergun"@sje ;
+	rdfs:label "Bergen"@na ;
+	skos:prefLabel "Bergen"@na ;
+	schema:name "Bergen"@na ;
+	rdfs:label "Peruna"@fkv ;
+	skos:prefLabel "Peruna"@fkv ;
+	schema:name "Peruna"@fkv ;
+	rdfs:label "Берген"@tg ;
+	skos:prefLabel "Берген"@tg ;
+	schema:name "Берген"@tg ;
+	rdfs:label "Bergen (Noruega)"@an ;
+	skos:prefLabel "Bergen (Noruega)"@an ;
+	schema:name "Bergen (Noruega)"@an ;
+	rdfs:label "卑尔根"@zh-cn ;
+	skos:prefLabel "卑尔根"@zh-cn ;
+	schema:name "卑尔根"@zh-cn ;
+	rdfs:label "ma tomo Peken"@tok ;
+	skos:prefLabel "ma tomo Peken"@tok ;
+	schema:name "ma tomo Peken"@tok ;
+	rdfs:label "Bergen"@mt ;
+	skos:prefLabel "Bergen"@mt ;
+	schema:name "Bergen"@mt ;
+	rdfs:label "Бэргэн"@mdf ;
+	skos:prefLabel "Бэргэн"@mdf ;
+	schema:name "Бэргэн"@mdf ;
+	rdfs:label "Bergen"@kaa ;
+	skos:prefLabel "Bergen"@kaa ;
+	schema:name "Bergen"@kaa ;
+	rdfs:label "Bergen"@mg ;
+	skos:prefLabel "Bergen"@mg ;
+	schema:name "Bergen"@mg ;
+	rdfs:label "Bergen"@mul ;
+	skos:prefLabel "Bergen"@mul ;
+	schema:name "Bergen"@mul ;
+	rdfs:label "Bergen"@smn ;
+	skos:prefLabel "Bergen"@smn ;
+	schema:name "Bergen"@smn ;
+	rdfs:label "Бе́рге́нъ"@cu ;
+	skos:prefLabel "Бе́рге́нъ"@cu ;
+	schema:name "Бе́рге́нъ"@cu ;
+	rdfs:label "𐌱𐌰𐌹𐍂𐌲𐌰𐍅𐌹𐌽𐌾𐌰"@got ;
+	skos:prefLabel "𐌱𐌰𐌹𐍂𐌲𐌰𐍅𐌹𐌽𐌾𐌰"@got ;
+	schema:name "𐌱𐌰𐌹𐍂𐌲𐌰𐍅𐌹𐌽𐌾𐌰"@got ;
+	rdfs:label "Берген"@mn ;
+	skos:prefLabel "Берген"@mn ;
+	schema:name "Берген"@mn ;
+	rdfs:label "Beorgƿinn"@ang ;
+	skos:prefLabel "Beorgƿinn"@ang ;
+	schema:name "Beorgƿinn"@ang ;
+	rdfs:label "卑爾根"@lzh ;
+	skos:prefLabel "卑爾根"@lzh ;
+	schema:name "卑爾根"@lzh ;
+	schema:description "Norwegian city in Vestland, Norway"@en,
+		"by i Vestland, Norge"@nb,
+		"Stadt in Norwegen, Hauptstadt der gleichnamigen Kommune in der Provinz Hordaland sowie deren Verwaltungssitz"@de,
+		"by i Vestland"@nn,
+		"by i Norge"@da,
+		"stad i Vestland fylke i Norge"@sv,
+		"manisipaa ya Vestland katika Norwei"@sw,
+		"comună în Vestland în Norvegia"@ro,
+		"municipio en Vestland, Noruega"@es,
+		"komunumo en la provinco Vestland de Norvegio, ĝis 2019 en Hordaland"@eo,
+		"plaats in Noorwegen"@nl,
+		"город в Норвегии, административный центр фюльке Хордаланн"@ru,
+		"città e comune norvegese"@it,
+		"ville norvégienne dans le comté de Vestland"@fr,
+		"kaupunki Hordalandin läänissä, Norjassa"@fi,
+		"עיר הנמל השנייה בגודלה בנורווגיה, והיא בירת חבל הפיורדים"@he,
+		"sídlo v kraji Vestland v Norsku"@cs,
+		"місто на південному заході Норвегії"@uk,
+		"mesto v Nórsku"@sk,
+		"miasto w Norwegii"@pl,
+		"ثاني أكبر مدينة في النرويج"@ar,
+		"pilsēta Norvēģijā, Hordalannes filkē"@lv,
+		"挪威城市"@zh,
+		"Norveç'te bir kent"@tr,
+		"دومین شهر بزرگ نروژ"@fa,
+		"cidade norueguesa no condado de Vestland"@pt-br,
+		"مدينه فى بيرجين مونيسيپاليتى"@arz,
+		"নরওয়ের শহর"@bn,
+		"ciutat de Noruega"@ca,
+		"kota di Norwegia"@id,
+		"ノルウェーの都市"@ja,
+		"város Norvégiában"@hu,
+		"grad u Norveškoj"@hr,
+		"belt Norveġiża"@mt,
+		"ошсь Норвегияса"@mdf,
+		"горад у Нарвегіі"@be,
+		"Норвешки град у Вестланду, Норвешка"@sr,
+		"citate in Norvega"@ia,
+		"Πόλη της Νορβηγίας"@el,
+		"నార్వే లోని నగరం"@te,
+		"مدينة جات ف نورڤيج"@ary,
+		"dinas, Norwy"@cy,
+		"Stad in Noorweë"@af,
+		"Stad an Norwegen"@lb,
+		"buruh on Norþƿege"@ang,
+		"borg í Noregi"@is ;
+	skos:altLabel "卑尔根"@zh,
+		"Bjorgvin"@es,
+		"பெர்கென்"@ta,
+		"பெர்கன்"@ta,
+		"Bergen,Norvegio"@eo,
+		"Bergeno"@eo,
+		"Бьёргвин"@ru,
+		"Tettstaden Bergen"@nn,
+		"Bergen by"@da,
+		"Flesland"@fr,
+		"Bergue"@fr,
+		"Bergen, Na Uy"@vi,
+		"แบร์เกน"@th,
+		"Категорија:Берген"@sr,
+		"Bergen, Norge"@sv,
+		"Berguna"@sje,
+		"Bjørgvin"@mul,
+		"Beorgwinn"@ang,
+		"Beorgƿynn"@ang,
+		"Beorgwynn"@ang,
+		"Beorgenn"@ang,
+		"Bergen"@is .
+
+wdv:8e80e9035f70e61bbe7037f57074cf7b a wikibase:GlobecoordinateValue ;
+	wikibase:geoLatitude "60.3925"^^xsd:double ;
+	wikibase:geoLongitude "5.3233333333333"^^xsd:double ;
+	wikibase:geoPrecision "0.00027777777777778"^^xsd:double ;
+	wikibase:geoGlobe <http://www.wikidata.org/entity/Q2> .
+
+wdv:ee9c8445744af7c9920454ac276412ca a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+257087"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:25e94e8b6ea36068d41250614352d82d a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+267117"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:3527ca4f5b1fead9cf98f649e2141fd8 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+291189"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:2b544fb9f25590f2263732ad190b89c0 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+117000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:f41ecac5b04cc65c94943108fdbdd162 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+275000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:d96acbc6d027dfaa75870301b4e14bec a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+224000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:718004fa7eb945c83c35e3037871dcfb a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+208000"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:fd0af75e64b66101848e3bdd87089401 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+95889"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q199> .
+
+wdv:29584c79f7d2f24d12a36a00ae8b515f a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+87.17"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q712226> .
+
+wdv:b07f42cceed026527e91b572cf3ffc1e a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+87170000.00"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q25343> ;
+	wikibase:quantityNormalized wdv:b07f42cceed026527e91b572cf3ffc1e .
+
+wdv:29584c79f7d2f24d12a36a00ae8b515f wikibase:quantityNormalized wdv:b07f42cceed026527e91b572cf3ffc1e .
+
+wdv:91c88ed558e938af4f87d1bbf9e1e9b0 a wikibase:QuantityValue ;
+	wikibase:quantityAmount "+5"^^xsd:decimal ;
+	wikibase:quantityUnit <http://www.wikidata.org/entity/Q11573> ;
+	wikibase:quantityNormalized wdv:91c88ed558e938af4f87d1bbf9e1e9b0 .
+
+wdv:eed7fc4ae31e1b80982f969260dd3458 a wikibase:TimeValue ;
+	wikibase:timeValue "1946-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:23a11f433153417fd4e9f924c08d94c5 a wikibase:TimeValue ;
+	wikibase:timeValue "1968-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:11be56eabd530095ce0bf39d2564d4a0 a wikibase:TimeValue ;
+	wikibase:timeValue "1965-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:5e18c83c88166026dd5e577bb10cc628 a wikibase:TimeValue ;
+	wikibase:timeValue "1946-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ea502f00c7e55f65029d34e4dbbebe03 a wikibase:TimeValue ;
+	wikibase:timeValue "1905-06-07T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ece863bfbfb37ec947d1c52b58268086 a wikibase:TimeValue ;
+	wikibase:timeValue "1814-11-04T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:476319c9dc1e3277ae5a9a3e31fa5c32 a wikibase:TimeValue ;
+	wikibase:timeValue "1905-06-06T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:997904faf91fe99701097723258a3f21 a wikibase:TimeValue ;
+	wikibase:timeValue "1814-11-03T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:8e70b3797ad8b620f22da8e17e1fd1c1 a wikibase:TimeValue ;
+	wikibase:timeValue "1814-01-14T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:903a3b29e4b11b0a34a27b5e8e9ce5d2 a wikibase:TimeValue ;
+	wikibase:timeValue "1814-01-13T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:f987783e1f9c9fa0cb0b774d330af52d a wikibase:TimeValue ;
+	wikibase:timeValue "2013-10-28T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ac3f54d758c2b8d235d9d0e9fbf2f43a a wikibase:TimeValue ;
+	wikibase:timeValue "2013-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:6d4a0c802fc82784e8c8bc0e977700ec a wikibase:TimeValue ;
+	wikibase:timeValue "1994-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ab1f641b3bfd7f8b1d8dfa783897da35 a wikibase:TimeValue ;
+	wikibase:timeValue "2023-02-10T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:3c5683b2da77b11f3430ed9b518741af a wikibase:TimeValue ;
+	wikibase:timeValue "1763-09-19T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:1f0070e1cc22ddca9fc530d06fd37993 a wikibase:TimeValue ;
+	wikibase:timeValue "1830-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "8"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:c5db5a465ade38b7672a18f330e33a3f a wikibase:TimeValue ;
+	wikibase:timeValue "1831-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:22ded9ee0b158b25bce0a5baf416d6fd a wikibase:TimeValue ;
+	wikibase:timeValue "1918-12-31T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:88c097edfb701f2f37b2c68446202f7e a wikibase:TimeValue ;
+	wikibase:timeValue "1919-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:930857a0f7a29a66a2da3d5344a35596 a wikibase:TimeValue ;
+	wikibase:timeValue "1971-12-31T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:a0b645488450a518b0c16e414b476429 a wikibase:TimeValue ;
+	wikibase:timeValue "1972-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:e1bc22867995c9ded39820f209e1ab5b a wikibase:TimeValue ;
+	wikibase:timeValue "2019-12-31T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:86d08cb380a7d361151c510ebb4a98ec a wikibase:TimeValue ;
+	wikibase:timeValue "2020-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:1c9551a398cfb51623c28b80416004d3 a wikibase:TimeValue ;
+	wikibase:timeValue "2019-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:f0a794f755c96023755b4684ff262fe8 a wikibase:TimeValue ;
+	wikibase:timeValue "2022-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:c577795817fe82c286584221013dc082 a wikibase:TimeValue ;
+	wikibase:timeValue "2023-09-30T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:418aedfba643e02a5ba758952f8f7765 a wikibase:TimeValue ;
+	wikibase:timeValue "2015-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:03c343feef8eabb3b7ab8e7a27b51586 a wikibase:TimeValue ;
+	wikibase:timeValue "2024-05-25T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:7eca85bb7139467b8a00957d652cc79c a wikibase:TimeValue ;
+	wikibase:timeValue "1997-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:b0b85edda40019fb5082aa68d172521b a wikibase:TimeValue ;
+	wikibase:timeValue "1986-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:edc1948380ac4c4627ad82e8b95875e7 a wikibase:TimeValue ;
+	wikibase:timeValue "1923-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:01f923c58da1151c075278ac4d9d26b1 a wikibase:TimeValue ;
+	wikibase:timeValue "1070-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985786> .
+
+wdv:6cde31469eac5bbc2d06754f883c8534 a wikibase:TimeValue ;
+	wikibase:timeValue "2025-03-16T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:7488c67169f63bb9b57929cf9869fa4b a wikibase:TimeValue ;
+	wikibase:timeValue "2018-08-05T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:ebfbf449f843154fd5cf457b06f95760 a wikibase:TimeValue ;
+	wikibase:timeValue "2023-12-31T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:f0faa0684efa9eda2e9e3aa2bad9dec1 a wikibase:TimeValue ;
+	wikibase:timeValue "2022-07-06T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:63d712cad14bd45d9caa070213da7ab0 a wikibase:TimeValue ;
+	wikibase:timeValue "2024-01-02T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:023461be7c78a1ac3bb779b68e676b2f a wikibase:TimeValue ;
+	wikibase:timeValue "2024-04-24T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:dbd0be1d7c1dc59596f8f5fa3fc01747 a wikibase:TimeValue ;
+	wikibase:timeValue "1930-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:b7d2f0cd6078582b7912deb83efe6450 a wikibase:TimeValue ;
+	wikibase:timeValue "1992-01-01T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "9"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:abb0bb9cb21f46ac2da8e4bac398d957 a wikibase:TimeValue ;
+	wikibase:timeValue "2026-03-20T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdv:7ce76a67ed20fa3a49d4de17a2dabd8f a wikibase:TimeValue ;
+	wikibase:timeValue "2023-05-25T00:00:00Z"^^xsd:dateTime ;
+	wikibase:timePrecision "11"^^xsd:integer ;
+	wikibase:timeTimezone "0"^^xsd:integer ;
+	wikibase:timeCalendarModel <http://www.wikidata.org/entity/Q1985727> .
+
+wdref:2909cafc6f9c15863c5a45af2bf26698ccfda37c a wikibase:Reference ;
+	pr:P854 <http://goteborg.se/wps/portal/invanare/kommun-o-politik/internationellt-samarbete/nordiskt-samarbete/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziQw0NAi2cDB0NDEJ9nQw8_czDnDyd_Q09Q8z1wwkpiAJKG-AAjgb6BbmhigCASA6r/dz/d5/L2dBISEvZ0FBIS9nQSEh/> .
+
+wdref:9ce15527a2c28e2a84046a2bbec58bd8031e6a3c a wikibase:Reference ;
+	pr:P854 <https://www.newcastle.gov.uk/our-city/newcastles-international-relationships> .
+
+wdref:5fc5507cb4902a442400bc615713204cf1511a06 a wikibase:Reference ;
+	pr:P854 <https://rathaus.rostock.de/de/bergen_norwegen/278484> .
+
+wdref:53d76719929a6d09db5b6aecbeb260fc5fb14808 a wikibase:Reference ;
+	pr:P854 <https://www.turku.fi/turku-tieto/turun-ystavyyskaupungit> .
+
+wdref:c456dc5cd2117249948c288206ff3f8b1bf574f0 a wikibase:Reference ;
+	pr:P143 wd:Q8449 .
+
+wdref:288ab581e7d2d02995a26dfa8b091d96e78457fc a wikibase:Reference ;
+	pr:P143 wd:Q206855 .
+
+wdref:706208b3024200fd0a39ad499808dd0d98d74065 a wikibase:Reference ;
+	pr:P248 wd:Q14005 .
+
+wdref:2b00cb481cddcac7623114367489b5c194901c4a a wikibase:Reference ;
+	pr:P248 wd:Q15241312 ;
+	pr:P577 "2013-10-28T00:00:00Z"^^xsd:dateTime ;
+	prv:P577 wdv:f987783e1f9c9fa0cb0b774d330af52d .
+
+wdref:9a24f7c0208b05d6be97077d855671d1dfdbc0dd a wikibase:Reference ;
+	pr:P143 wd:Q48183 .
+
+wdref:297228b5e41c07a1c43bf3159afc063b3c874a7a a wikibase:Reference ;
+	pr:P854 <https://www.uci.org/bike-city-label/1LNLr3tV8qojqvAMcGJ2Hh> ;
+	pr:P1476 "UCI Bike City Label"@en-gb ;
+	pr:P407 wd:Q7979 ;
+	pr:P813 "2023-02-10T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:ab1f641b3bfd7f8b1d8dfa783897da35 .
+
+wdref:a46b69d438e856c4e810028d39f1794b5a9bd3cc a wikibase:Reference ;
+	pr:P3452 wd:Q10428388 .
+
+wdref:d4767d15e44afe8795350d71c4aaf13e1067eea5 a wikibase:Reference ;
+	pr:P248 wd:Q24010939 .
+
+wdref:90f9c663e4d91a493500b1139133aca75b5f1709 a wikibase:Reference ;
+	pr:P854 <https://www.ssb.no/befolkning/statistikker/beftett/aar> ;
+	pr:P123 wd:Q2367019 ;
+	pr:P1476 "Tettsteders befolkning og areal"@nb .
+
+wdref:4fa67aff90cf7b9d34d76377c8f71ad78353d611 a wikibase:Reference ;
+	pr:P854 <https://www.ssb.no/befolkning/folketall/statistikk/tettsteders-befolkning-og-areal> .
+
+wdref:8dd3222d9117cdb1b9ff3f2f030a503413b465df a wikibase:Reference ;
+	pr:P248 wd:Q17378135 ;
+	pr:P478 "3" ;
+	pr:P304 "207" .
+
+wdref:6308ad1c64c5c891aefb391ac3866dc4fc7af046 a wikibase:Reference ;
+	pr:P248 wd:Q1768199 ;
+	pr:P854 <https://old.bigenc.ru/geography/text/3211066> ;
+	pr:P813 "2024-05-25T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:03c343feef8eabb3b7ab8e7a27b51586 .
+
+wdref:abe6689936b6e0a8b111a85dad72feaafb40cf35 a wikibase:Reference ;
+	pr:P854 <https://ru.wikisource.org/wiki/БСЭ1/Берген,_город_в_Норвегии> ;
+	pr:P248 wd:Q20078554 ;
+	pr:P478 "4" ;
+	pr:P3903 "575" .
+
+wdref:54a18688c4271d5c28d1386d8d22d9fda8412751 a wikibase:Reference ;
+	pr:P143 wd:Q2349453 .
+
+wdref:fa278ebfc458360e5aed63d5058cca83c46134f1 a wikibase:Reference ;
+	pr:P143 wd:Q328 .
+
+wdref:d5847b9b6032aa8b13dae3c2dfd9ed5d114d21b3 a wikibase:Reference ;
+	pr:P143 wd:Q11920 .
+
+wdref:8f6d2b4a0e3da23aca841c5dfe6b7ed894bd315a a wikibase:Reference ;
+	pr:P143 wd:Q191769 .
+
+wdref:fe30c3d8276dce76f79eeb1b32fe76c537a259fa a wikibase:Reference ;
+	pr:P248 wd:Q28527677 .
+
+wdref:2834ac5da275724a6354a73d2d2a89ae956042a9 a wikibase:Reference ;
+	pr:P248 wd:Q64159407 .
+
+wdref:3b0a5bb3c1f955edce73740124f7d935698092ad a wikibase:Reference ;
+	pr:P248 wd:Q51711 .
+
+wdref:0b359ffcf4bed77c43653653754aac1f2705ef14 a wikibase:Reference ;
+	pr:P854 <https://sprakradet.no/stedsnavn-og-navn-pa-statsorgan/navnelister-norsk-skrivemate/innbyggjarnamn> ;
+	pr:P1476 "Innbyggjarnamn"@nn ;
+	pr:P407 wd:Q25164 ;
+	pr:P813 "2025-03-16T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:6cde31469eac5bbc2d06754f883c8534 .
+
+wdref:56a0410f161434baeaf149d4c06314ea35abaed8 a wikibase:Reference ;
+	pr:P248 wd:Q30142332 .
+
+wdref:21494d78c86d729112257391ca4131a84f73b44b a wikibase:Reference ;
+	pr:P854 <https://www.archinform.net/service/wd_aiort.php> ;
+	pr:P248 wd:Q265049 ;
+	pr:P813 "2018-08-05T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:7488c67169f63bb9b57929cf9869fa4b .
+
+wdref:ddbe8e1876e07898f3c5b332438b9435152b9d8a a wikibase:Reference ;
+	pr:P854 <https://www.bergen.kommune.no/styringsdokument/5863624> .
+
+wdref:aea329c6bfbf27e2c1def264719cf25341d19fcd a wikibase:Reference ;
+	pr:P854 <https://www.bergen.kommune.no/innbyggerhjelpen/kultur-idrett-og-fritid/kultur/arkiv/bruk-av-bergens-flagg-vapen-og-segl> .
+
+wdref:6d01d7ab510b04ed29225fa11f3bfb3c6a89fabc a wikibase:Reference ;
+	pr:P854 <https://www.bergen.kommune.no/api/rest/filer/V63074> .
+
+wdref:d678152f9266543fa247bd466d6b16e48ec31291 a wikibase:Reference ;
+	pr:P143 wd:Q206855 ;
+	pr:P4656 <https://ru.wikipedia.org/?oldid=114020369> .
+
+wdref:8cde831cbddc1c876529d8ffec6d52c4c3d874ea a wikibase:Reference ;
+	pr:P854 <https://www.ovpm.org/wp-content/uploads/2024/03/liste-villes-en-regle-pour-page-web12-03-2024.pdf> ;
+	pr:P813 "2023-12-31T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:ebfbf449f843154fd5cf457b06f95760 ;
+	pr:P1065 <https://web.archive.org/web/20240528143447/https://www.ovpm.org/members/cities/> .
+
+wdref:190527dca615f4510213808b0e1cb81522b247f6 a wikibase:Reference ;
+	pr:P248 wd:Q1360745 .
+
+wdref:5f01cbda489483af70b971f6d08a98dc3e2fd89a a wikibase:Reference ;
+	pr:P248 wd:Q54919 ;
+	pr:P813 "2022-07-06T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:f0faa0684efa9eda2e9e3aa2bad9dec1 ;
+	pr:P214 "149552590" ;
+	prn:P214 <http://viaf.org/viaf/149552590> .
+
+wdref:bf2cde1ea79ba16c15c24d882672401b5e691dc6 a wikibase:Reference ;
+	pr:P248 wd:Q54919 ;
+	pr:P214 "149552590" ;
+	prn:P214 <http://viaf.org/viaf/149552590> ;
+	pr:P813 "2024-01-02T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:63d712cad14bd45d9caa070213da7ab0 .
+
+wdref:d12b9924c96f0f5eea91ef2f744822a090a0979f a wikibase:Reference ;
+	pr:P11797 wd:Q13219454 ;
+	pr:P244 "n79021216" ;
+	prn:P244 <http://id.loc.gov/authorities/names/n79021216> ;
+	pr:P813 "2024-04-24T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:023461be7c78a1ac3bb779b68e676b2f .
+
+wdref:8582d8416671f1f2567247201bac753552435ca5 a wikibase:Reference ;
+	pr:P248 wd:Q18336371 .
+
+wdref:48e03729f15eff567cff827416fb4ff16093f243 a wikibase:Reference ;
+	pr:P887 wd:Q138859152 ;
+	pr:P213 "0000000403755599" ;
+	pr:P813 "2026-03-20T00:00:00Z"^^xsd:dateTime ;
+	prv:P813 wdv:abb0bb9cb21f46ac2da8e4bac398d957 .
