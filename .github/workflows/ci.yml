@@ -1,0 +1,38 @@
+name: Rust CI
+on:
+  push:
+    branches: [main, 'feat/**']
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: rust-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install pinned Rust toolchain
+        run: rustup show
+      - name: Resolve dependencies (bootstrap only; lockfile will be committed)
+        run: cargo generate-lockfile
+      - name: Formatting
+        run: cargo fmt --all --check
+      - name: Clippy
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - name: Tests
+        run: cargo test --workspace --locked
+      - name: Smoke CLI
+        run: cargo run --locked -p verity_cli -- smoke tests/fixtures/smoke.trig trig
+      - name: Bootstrap lockfile for review
+        if: always()
+        run: |
+          if [ -f Cargo.lock ]; then
+            echo 'BEGIN_REVIEW_CARGO_LOCK'
+            cat Cargo.lock
+            echo 'END_REVIEW_CARGO_LOCK'
+          fi

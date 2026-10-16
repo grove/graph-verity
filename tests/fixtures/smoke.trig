@@ -1,0 +1,14 @@
+# Original synthetic regression data, Apache-2.0. Not a real-domain benchmark.
+@prefix ex: <https://example.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+ex:public {
+  ex:municipality a ex:Municipality ; rdfs:label "Eksempel kommune"@nb ; ex:owns ex:company .
+  ex:company a ex:Company ; rdfs:label "Eksempel AS"@nb ; ex:employees 51 ; ex:contract ex:c1, ex:c2 .
+  ex:c1 a ex:Contract ; ex:start "2024-01-01"^^xsd:date ; ex:value "12.50"^^xsd:decimal .
+  ex:c2 a ex:Contract ; ex:start "2025-01-01"^^xsd:date .
+}
+ex:private {
+  ex:company ex:secret "not authorized" .
+}

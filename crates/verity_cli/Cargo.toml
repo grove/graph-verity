@@ -1,0 +1,14 @@
+[package]
+name = "verity_cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "verity"
+path = "src/main.rs"
+
+[dependencies]
+verity_core = { path = "../verity_core" }
+serde_json.workspace = true
