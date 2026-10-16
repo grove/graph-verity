@@ -1,0 +1,3945 @@
+{
+  "version": 1,
+  "name": "geonames-schemaorg-cross-ontology-development-probes-v1",
+  "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+  "cases": [
+    {
+      "id": "gn-dev-001",
+      "question": "Hvilket registrert navn har Oslo-stedet med GeoNames-ID 3143244?",
+      "interpretation": "Lookup the one explicit s:name statement for GeoNames feature 3143244. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "identity_label",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:NO"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:NO"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:NO",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/3143244/"
+            },
+            "predicate": "https://schema.org/name",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "name"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "name"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?name WHERE { GRAPH <urn:graph-verity:worldcities:transfer:NO> { <https://sws.geonames.org/3143244/> s:name ?name . } } ",
+      "expected_bindings": [
+        {
+          "name": {
+            "kind": "literal",
+            "value": "Oslo",
+            "datatype": "http://www.w3.org/2001/XMLSchema#string",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-002",
+      "question": "Hvilken administrativ region er Bergen med ID 3161732 oppført under?",
+      "interpretation": "Traverse the direct containedInPlace edge from city 3161732 to the importer-assigned region IRI. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "direct_region",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:NO"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:NO"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:NO",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/3161732/"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "region"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?region WHERE { GRAPH <urn:graph-verity:worldcities:transfer:NO> { <https://sws.geonames.org/3161732/> s:containedInPlace ?region . } } ",
+      "expected_bindings": [
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Vestland"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-003",
+      "question": "Hvilket land ligger Oslo i når vi følger regiontilknytningen i grafen?",
+      "interpretation": "Follow two explicit containedInPlace edges, first city to region, then region to country. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "two_hop_country",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:NO"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:NO"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:NO",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/3143244/"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          },
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:NO",
+            "from": {
+              "kind": "variable",
+              "name": "region"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "country"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "country"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country WHERE { GRAPH <urn:graph-verity:worldcities:transfer:NO> { <https://sws.geonames.org/3143244/> s:containedInPlace ?region . ?region s:containedInPlace ?country . } } ",
+      "expected_bindings": [
+        {
+          "country": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:country:NO"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-004",
+      "question": "Hvilke byressurser peker mot regionen Vestland som administrativ tilknytning?",
+      "interpretation": "Find city subjects with an incoming containedInPlace relationship to the selected region. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "inverse_region",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:NO"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:NO"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:NO",
+            "from": {
+              "kind": "iri",
+              "iri": "urn:graph-verity:worldcities:admin:NO:Vestland"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "reverse",
+            "to": {
+              "kind": "variable",
+              "name": "city"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "city"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?city WHERE { GRAPH <urn:graph-verity:worldcities:transfer:NO> { ?city s:containedInPlace <urn:graph-verity:worldcities:admin:NO:Vestland> . } } ",
+      "expected_bindings": [
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3144631/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3161732/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3162778/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/6697344/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-005",
+      "question": "Hvor mange ulike byressurser har type Schema.org City i NO-grafen?",
+      "interpretation": "Count distinct subjects with explicit rdf:type schema:City in the country graph. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "distinct_city_count",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:NO"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:NO"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:NO",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "direction": "forward",
+            "to": {
+              "kind": "iri",
+              "iri": "https://schema.org/City"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "count_distinct",
+            "variable": "city",
+            "alias": "count"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT (COUNT(DISTINCT ?city) AS ?count) WHERE { GRAPH <urn:graph-verity:worldcities:transfer:NO> { ?city a s:City . } } ",
+      "expected_bindings": [
+        {
+          "count": {
+            "kind": "literal",
+            "value": "42",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-006",
+      "question": "Hvilke administrative regioner i NO-utvalget har minst to ulike byressurser, og hvor mange?",
+      "interpretation": "Group explicitly typed cities by region and retain each group having at least two different cities. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "group_having",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:NO"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:NO"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:NO",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "direction": "forward",
+            "to": {
+              "kind": "iri",
+              "iri": "https://schema.org/City"
+            }
+          },
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:NO",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "region"
+          },
+          {
+            "kind": "count_distinct",
+            "variable": "city",
+            "alias": "count"
+          }
+        ],
+        "group_by": [
+          "region"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 2
+          }
+        ],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?region (COUNT(DISTINCT ?city) AS ?count) WHERE { GRAPH <urn:graph-verity:worldcities:transfer:NO> { ?city a s:City ; s:containedInPlace ?region . } } GROUP BY ?region HAVING (COUNT(DISTINCT ?city) >= 2)",
+      "expected_bindings": [
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Trondelag"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Troms"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Vestfold"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "4",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Rogaland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "5",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Telemark"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Ostfold"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "4",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Vestland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "4",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:More%20og%20Romsdal"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Nordland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Akershus"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Innlandet"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Agder"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:NO:Buskerud"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-007",
+      "question": "Hvilke byressurser i NO-grafen har en GeoNames-identifikator større enn 3147698?",
+      "interpretation": "Compare typed integer geoname identifiers to 3147698; this is not a population comparison. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "numeric_identifier",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:NO"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:NO"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:NO",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "https://schema.org/identifier",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "identifier"
+            }
+          }
+        ],
+        "filters": [
+          {
+            "variable": "identifier",
+            "op": "gt",
+            "value": {
+              "lexical": "3147698",
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "language": null
+            }
+          }
+        ],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "city"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?city WHERE { GRAPH <urn:graph-verity:worldcities:transfer:NO> { ?city s:identifier ?identifier . FILTER (?identifier > 3147698) } } ",
+      "expected_bindings": [
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3148129/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3149312/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3149318/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3149563/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3151770/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3153623/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3153823/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3154084/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3154209/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3155041/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3155573/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3156529/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3159016/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3160881/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3161732/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3162657/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3162778/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3162955/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3163392/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/6697344/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-008",
+      "question": "Hvilket registrert navn har Stockholm-stedet med GeoNames-ID 2673730?",
+      "interpretation": "Lookup the one explicit s:name statement for GeoNames feature 2673730. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "identity_label",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:SE"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:SE"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:SE",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/2673730/"
+            },
+            "predicate": "https://schema.org/name",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "name"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "name"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?name WHERE { GRAPH <urn:graph-verity:worldcities:transfer:SE> { <https://sws.geonames.org/2673730/> s:name ?name . } } ",
+      "expected_bindings": [
+        {
+          "name": {
+            "kind": "literal",
+            "value": "Stockholm",
+            "datatype": "http://www.w3.org/2001/XMLSchema#string",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-009",
+      "question": "Hvilken administrativ region er Uppsala med ID 2666199 oppført under?",
+      "interpretation": "Traverse the direct containedInPlace edge from city 2666199 to the importer-assigned region IRI. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "direct_region",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:SE"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:SE"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:SE",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/2666199/"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "region"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?region WHERE { GRAPH <urn:graph-verity:worldcities:transfer:SE> { <https://sws.geonames.org/2666199/> s:containedInPlace ?region . } } ",
+      "expected_bindings": [
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Uppsala"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-010",
+      "question": "Hvilket land ligger Stockholm i når vi følger regiontilknytningen i grafen?",
+      "interpretation": "Follow two explicit containedInPlace edges, first city to region, then region to country. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "two_hop_country",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:SE"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:SE"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:SE",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/2673730/"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          },
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:SE",
+            "from": {
+              "kind": "variable",
+              "name": "region"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "country"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "country"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country WHERE { GRAPH <urn:graph-verity:worldcities:transfer:SE> { <https://sws.geonames.org/2673730/> s:containedInPlace ?region . ?region s:containedInPlace ?country . } } ",
+      "expected_bindings": [
+        {
+          "country": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:country:SE"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-011",
+      "question": "Hvilke byressurser peker mot regionen Uppsala som administrativ tilknytning?",
+      "interpretation": "Find city subjects with an incoming containedInPlace relationship to the selected region. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "inverse_region",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:SE"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:SE"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:SE",
+            "from": {
+              "kind": "iri",
+              "iri": "urn:graph-verity:worldcities:admin:SE:Uppsala"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "reverse",
+            "to": {
+              "kind": "variable",
+              "name": "city"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "city"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?city WHERE { GRAPH <urn:graph-verity:worldcities:transfer:SE> { ?city s:containedInPlace <urn:graph-verity:worldcities:admin:SE:Uppsala> . } } ",
+      "expected_bindings": [
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2666199/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2712993/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2716166/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-012",
+      "question": "Hvor mange ulike byressurser har type Schema.org City i SE-grafen?",
+      "interpretation": "Count distinct subjects with explicit rdf:type schema:City in the country graph. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "distinct_city_count",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:SE"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:SE"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:SE",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "direction": "forward",
+            "to": {
+              "kind": "iri",
+              "iri": "https://schema.org/City"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "count_distinct",
+            "variable": "city",
+            "alias": "count"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT (COUNT(DISTINCT ?city) AS ?count) WHERE { GRAPH <urn:graph-verity:worldcities:transfer:SE> { ?city a s:City . } } ",
+      "expected_bindings": [
+        {
+          "count": {
+            "kind": "literal",
+            "value": "111",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-013",
+      "question": "Hvilke administrative regioner i SE-utvalget har minst to ulike byressurser, og hvor mange?",
+      "interpretation": "Group explicitly typed cities by region and retain each group having at least two different cities. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "group_having",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:SE"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:SE"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:SE",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "direction": "forward",
+            "to": {
+              "kind": "iri",
+              "iri": "https://schema.org/City"
+            }
+          },
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:SE",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "region"
+          },
+          {
+            "kind": "count_distinct",
+            "variable": "city",
+            "alias": "count"
+          }
+        ],
+        "group_by": [
+          "region"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 2
+          }
+        ],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?region (COUNT(DISTINCT ?city) AS ?count) WHERE { GRAPH <urn:graph-verity:worldcities:transfer:SE> { ?city a s:City ; s:containedInPlace ?region . } } GROUP BY ?region HAVING (COUNT(DISTINCT ?city) >= 2)",
+      "expected_bindings": [
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Vaesterbotten"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Norrbotten"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "4",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Skane"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "12",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Kronoberg"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Vaestra%20Goetaland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "19",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Kalmar"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Vaestmanland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Stockholm"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "32",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Joenkoeping"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "4",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Halland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "4",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Uppsala"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Vaesternorrland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Gaevleborg"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:OErebro"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Soedermanland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:OEstergoetland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Dalarna"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Vaermland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:SE:Blekinge"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-014",
+      "question": "Hvilke byressurser i SE-grafen har en GeoNames-identifikator større enn 2693678?",
+      "interpretation": "Compare typed integer geoname identifiers to 2693678; this is not a population comparison. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "numeric_identifier",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:SE"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:SE"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:SE",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "https://schema.org/identifier",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "identifier"
+            }
+          }
+        ],
+        "filters": [
+          {
+            "variable": "identifier",
+            "op": "gt",
+            "value": {
+              "lexical": "2693678",
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "language": null
+            }
+          }
+        ],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "city"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?city WHERE { GRAPH <urn:graph-verity:worldcities:transfer:SE> { ?city s:identifier ?identifier . FILTER (?identifier > 2693678) } } ",
+      "expected_bindings": [
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2693759/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2694560/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2694762/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2695019/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2696329/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2696334/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2696503/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2697720/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2698691/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2698729/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2698739/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2698767/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2699282/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2699310/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2699791/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2700839/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2701223/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2701680/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2701713/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2701715/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2701727/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2702261/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2702979/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2703396/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2704136/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2704613/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2704620/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2706767/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2707399/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2707462/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2707684/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2707953/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2708365/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2709628/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2711537/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2712414/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2712993/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2715459/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2715568/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2715573/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2715946/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2715953/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2716166/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2718000/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2719111/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2720383/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2720501/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2721259/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2721946/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2725201/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2725901/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2726756/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2727234/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/6619708/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/7304427/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-015",
+      "question": "Hvilket registrert navn har Helsinki-stedet med GeoNames-ID 658225?",
+      "interpretation": "Lookup the one explicit s:name statement for GeoNames feature 658225. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "identity_label",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:FI"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:FI"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:FI",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/658225/"
+            },
+            "predicate": "https://schema.org/name",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "name"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "name"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?name WHERE { GRAPH <urn:graph-verity:worldcities:transfer:FI> { <https://sws.geonames.org/658225/> s:name ?name . } } ",
+      "expected_bindings": [
+        {
+          "name": {
+            "kind": "literal",
+            "value": "Helsinki",
+            "datatype": "http://www.w3.org/2001/XMLSchema#string",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-016",
+      "question": "Hvilken administrativ region er Turku med ID 633679 oppført under?",
+      "interpretation": "Traverse the direct containedInPlace edge from city 633679 to the importer-assigned region IRI. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "direct_region",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:FI"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:FI"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:FI",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/633679/"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "region"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?region WHERE { GRAPH <urn:graph-verity:worldcities:transfer:FI> { <https://sws.geonames.org/633679/> s:containedInPlace ?region . } } ",
+      "expected_bindings": [
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:Southwest%20Finland"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-017",
+      "question": "Hvilket land ligger Helsinki i når vi følger regiontilknytningen i grafen?",
+      "interpretation": "Follow two explicit containedInPlace edges, first city to region, then region to country. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "two_hop_country",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:FI"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:FI"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:FI",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/658225/"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          },
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:FI",
+            "from": {
+              "kind": "variable",
+              "name": "region"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "country"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "country"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country WHERE { GRAPH <urn:graph-verity:worldcities:transfer:FI> { <https://sws.geonames.org/658225/> s:containedInPlace ?region . ?region s:containedInPlace ?country . } } ",
+      "expected_bindings": [
+        {
+          "country": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:country:FI"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-018",
+      "question": "Hvilke byressurser peker mot regionen Southwest Finland som administrativ tilknytning?",
+      "interpretation": "Find city subjects with an incoming containedInPlace relationship to the selected region. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "inverse_region",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:FI"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:FI"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:FI",
+            "from": {
+              "kind": "iri",
+              "iri": "urn:graph-verity:worldcities:admin:FI:Southwest%20Finland"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "reverse",
+            "to": {
+              "kind": "variable",
+              "name": "city"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "city"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?city WHERE { GRAPH <urn:graph-verity:worldcities:transfer:FI> { ?city s:containedInPlace <urn:graph-verity:worldcities:admin:FI:Southwest%20Finland> . } } ",
+      "expected_bindings": [
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/633679/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/637948/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/640124/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/645211/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/647731/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/648056/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/655130/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/7911309/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-019",
+      "question": "Hvor mange ulike byressurser har type Schema.org City i FI-grafen?",
+      "interpretation": "Count distinct subjects with explicit rdf:type schema:City in the country graph. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "distinct_city_count",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:FI"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:FI"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:FI",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "direction": "forward",
+            "to": {
+              "kind": "iri",
+              "iri": "https://schema.org/City"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "count_distinct",
+            "variable": "city",
+            "alias": "count"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT (COUNT(DISTINCT ?city) AS ?count) WHERE { GRAPH <urn:graph-verity:worldcities:transfer:FI> { ?city a s:City . } } ",
+      "expected_bindings": [
+        {
+          "count": {
+            "kind": "literal",
+            "value": "102",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-020",
+      "question": "Hvilke administrative regioner i FI-utvalget har minst to ulike byressurser, og hvor mange?",
+      "interpretation": "Group explicitly typed cities by region and retain each group having at least two different cities. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "group_having",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:FI"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:FI"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:FI",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "direction": "forward",
+            "to": {
+              "kind": "iri",
+              "iri": "https://schema.org/City"
+            }
+          },
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:FI",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "region"
+          },
+          {
+            "kind": "count_distinct",
+            "variable": "city",
+            "alias": "count"
+          }
+        ],
+        "group_by": [
+          "region"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 2
+          }
+        ],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?region (COUNT(DISTINCT ?city) AS ?count) WHERE { GRAPH <urn:graph-verity:worldcities:transfer:FI> { ?city a s:City ; s:containedInPlace ?region . } } GROUP BY ?region HAVING (COUNT(DISTINCT ?city) >= 2)",
+      "expected_bindings": [
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:Pirkanmaa"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "11",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:North%20Ostrobothnia"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "4",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:Uusimaa"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "38",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:North%20Savo"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "4",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:Ostrobothnia"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:Southwest%20Finland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "8",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:Lapland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:South%20Ostrobothnia"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:South%20Savo"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:Kanta-Haeme"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "4",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:Satakunta"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:Paijat-Hame"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "4",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:Central%20Finland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "4",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:South%20Karelia"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:Kymenlaakso"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "5",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:FI:North%20Karelia"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-021",
+      "question": "Hvilke byressurser i FI-grafen har en GeoNames-identifikator større enn 650224?",
+      "interpretation": "Compare typed integer geoname identifiers to 650224; this is not a population comparison. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "numeric_identifier",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:FI"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:FI"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:FI",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "https://schema.org/identifier",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "identifier"
+            }
+          }
+        ],
+        "filters": [
+          {
+            "variable": "identifier",
+            "op": "gt",
+            "value": {
+              "lexical": "650224",
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "language": null
+            }
+          }
+        ],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "city"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?city WHERE { GRAPH <urn:graph-verity:worldcities:transfer:FI> { ?city s:identifier ?identifier . FILTER (?identifier > 650224) } } ",
+      "expected_bindings": [
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/650859/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/650946/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/651299/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/651659/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/651943/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/652305/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/653185/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/653281/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/653616/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/654137/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/654440/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/654706/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/654899/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/655130/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/655143/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/655194/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/655808/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/655958/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/656073/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/656083/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/656130/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/656688/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/656820/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/656913/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/657531/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/658120/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/658132/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/658225/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/658288/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/658629/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/659169/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/659180/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/659717/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/659935/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/660158/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/660407/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/660561/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/661164/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/662095/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/798763/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/843404/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/847422/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/847506/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/847507/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/6940573/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/7521636/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/7911309/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/8198723/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/11962456/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/12747032/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-022",
+      "question": "Hvilket registrert navn har Copenhagen-stedet med GeoNames-ID 2618425?",
+      "interpretation": "Lookup the one explicit s:name statement for GeoNames feature 2618425. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "identity_label",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:DK"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:DK"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:DK",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/2618425/"
+            },
+            "predicate": "https://schema.org/name",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "name"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "name"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?name WHERE { GRAPH <urn:graph-verity:worldcities:transfer:DK> { <https://sws.geonames.org/2618425/> s:name ?name . } } ",
+      "expected_bindings": [
+        {
+          "name": {
+            "kind": "literal",
+            "value": "Copenhagen",
+            "datatype": "http://www.w3.org/2001/XMLSchema#string",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-023",
+      "question": "Hvilken administrativ region er Odense med ID 2615876 oppført under?",
+      "interpretation": "Traverse the direct containedInPlace edge from city 2615876 to the importer-assigned region IRI. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "direct_region",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:DK"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:DK"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:DK",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/2615876/"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "region"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?region WHERE { GRAPH <urn:graph-verity:worldcities:transfer:DK> { <https://sws.geonames.org/2615876/> s:containedInPlace ?region . } } ",
+      "expected_bindings": [
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:DK:South%20Denmark"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-024",
+      "question": "Hvilket land ligger Copenhagen i når vi følger regiontilknytningen i grafen?",
+      "interpretation": "Follow two explicit containedInPlace edges, first city to region, then region to country. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "two_hop_country",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:DK"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:DK"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:DK",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/2618425/"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          },
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:DK",
+            "from": {
+              "kind": "variable",
+              "name": "region"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "country"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "country"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country WHERE { GRAPH <urn:graph-verity:worldcities:transfer:DK> { <https://sws.geonames.org/2618425/> s:containedInPlace ?region . ?region s:containedInPlace ?country . } } ",
+      "expected_bindings": [
+        {
+          "country": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:country:DK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-025",
+      "question": "Hvilke byressurser peker mot regionen South Denmark som administrativ tilknytning?",
+      "interpretation": "Find city subjects with an incoming containedInPlace relationship to the selected region. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "inverse_region",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:DK"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:DK"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:DK",
+            "from": {
+              "kind": "iri",
+              "iri": "urn:graph-verity:worldcities:admin:DK:South%20Denmark"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "reverse",
+            "to": {
+              "kind": "variable",
+              "name": "city"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "city"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?city WHERE { GRAPH <urn:graph-verity:worldcities:transfer:DK> { ?city s:containedInPlace <urn:graph-verity:worldcities:admin:DK:South%20Denmark> . } } ",
+      "expected_bindings": [
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2610613/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2611497/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2612045/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2613102/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2615876/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2616015/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2616933/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2618528/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2620964/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2621951/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2622447/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2625070/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-026",
+      "question": "Hvor mange ulike byressurser har type Schema.org City i DK-grafen?",
+      "interpretation": "Count distinct subjects with explicit rdf:type schema:City in the country graph. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "distinct_city_count",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:DK"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:DK"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:DK",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "direction": "forward",
+            "to": {
+              "kind": "iri",
+              "iri": "https://schema.org/City"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "count_distinct",
+            "variable": "city",
+            "alias": "count"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT (COUNT(DISTINCT ?city) AS ?count) WHERE { GRAPH <urn:graph-verity:worldcities:transfer:DK> { ?city a s:City . } } ",
+      "expected_bindings": [
+        {
+          "count": {
+            "kind": "literal",
+            "value": "67",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-027",
+      "question": "Hvilke administrative regioner i DK-utvalget har minst to ulike byressurser, og hvor mange?",
+      "interpretation": "Group explicitly typed cities by region and retain each group having at least two different cities. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "group_having",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:DK"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:DK"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:DK",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "direction": "forward",
+            "to": {
+              "kind": "iri",
+              "iri": "https://schema.org/City"
+            }
+          },
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:DK",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "region"
+          },
+          {
+            "kind": "count_distinct",
+            "variable": "city",
+            "alias": "count"
+          }
+        ],
+        "group_by": [
+          "region"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 2
+          }
+        ],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?region (COUNT(DISTINCT ?city) AS ?count) WHERE { GRAPH <urn:graph-verity:worldcities:transfer:DK> { ?city a s:City ; s:containedInPlace ?region . } } GROUP BY ?region HAVING (COUNT(DISTINCT ?city) >= 2)",
+      "expected_bindings": [
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:DK:Zealand"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "12",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:DK:Capital%20Region"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "28",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:DK:Central%20Jutland"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "11",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:DK:South%20Denmark"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "12",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:DK:North%20Denmark"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "4",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-028",
+      "question": "Hvilke byressurser i DK-grafen har en GeoNames-identifikator større enn 2619097?",
+      "interpretation": "Compare typed integer geoname identifiers to 2619097; this is not a population comparison. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "numeric_identifier",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:DK"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:DK"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:DK",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "https://schema.org/identifier",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "identifier"
+            }
+          }
+        ],
+        "filters": [
+          {
+            "variable": "identifier",
+            "op": "gt",
+            "value": {
+              "lexical": "2619097",
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "language": null
+            }
+          }
+        ],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "city"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?city WHERE { GRAPH <urn:graph-verity:worldcities:transfer:DK> { ?city s:identifier ?identifier . FILTER (?identifier > 2619097) } } ",
+      "expected_bindings": [
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2619154/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2619377/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2619528/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2619771/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2619856/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2620046/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2620147/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2620214/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2620320/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2620425/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2620473/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2620583/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2620587/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2620964/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2621215/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2621356/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2621912/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2621927/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2621942/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2621951/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2622306/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2622447/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2623188/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2623340/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2624112/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2624341/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2624427/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2624652/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2624843/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2624886/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2624906/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2625070/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/6949461/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-029",
+      "question": "Hvilket registrert navn har Reykjavík-stedet med GeoNames-ID 3413829?",
+      "interpretation": "Lookup the one explicit s:name statement for GeoNames feature 3413829. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "identity_label",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:IS"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:IS"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:IS",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/3413829/"
+            },
+            "predicate": "https://schema.org/name",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "name"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "name"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?name WHERE { GRAPH <urn:graph-verity:worldcities:transfer:IS> { <https://sws.geonames.org/3413829/> s:name ?name . } } ",
+      "expected_bindings": [
+        {
+          "name": {
+            "kind": "literal",
+            "value": "Reykjavík",
+            "datatype": "http://www.w3.org/2001/XMLSchema#string",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-030",
+      "question": "Hvilken administrativ region er Akureyri med ID 2633274 oppført under?",
+      "interpretation": "Traverse the direct containedInPlace edge from city 2633274 to the importer-assigned region IRI. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "direct_region",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:IS"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:IS"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:IS",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/2633274/"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "region"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?region WHERE { GRAPH <urn:graph-verity:worldcities:transfer:IS> { <https://sws.geonames.org/2633274/> s:containedInPlace ?region . } } ",
+      "expected_bindings": [
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:IS:Northeast"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-031",
+      "question": "Hvilket land ligger Reykjavík i når vi følger regiontilknytningen i grafen?",
+      "interpretation": "Follow two explicit containedInPlace edges, first city to region, then region to country. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "two_hop_country",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:IS"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:IS"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:IS",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/3413829/"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          },
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:IS",
+            "from": {
+              "kind": "variable",
+              "name": "region"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "country"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "country"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?country WHERE { GRAPH <urn:graph-verity:worldcities:transfer:IS> { <https://sws.geonames.org/3413829/> s:containedInPlace ?region . ?region s:containedInPlace ?country . } } ",
+      "expected_bindings": [
+        {
+          "country": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:country:IS"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-032",
+      "question": "Hvilke byressurser peker mot regionen Northeast som administrativ tilknytning?",
+      "interpretation": "Find city subjects with an incoming containedInPlace relationship to the selected region. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "inverse_region",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:IS"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:IS"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:IS",
+            "from": {
+              "kind": "iri",
+              "iri": "urn:graph-verity:worldcities:admin:IS:Northeast"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "reverse",
+            "to": {
+              "kind": "variable",
+              "name": "city"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "city"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?city WHERE { GRAPH <urn:graph-verity:worldcities:transfer:IS> { ?city s:containedInPlace <urn:graph-verity:worldcities:admin:IS:Northeast> . } } ",
+      "expected_bindings": [
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/2633274/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-033",
+      "question": "Hvor mange ulike byressurser har type Schema.org City i IS-grafen?",
+      "interpretation": "Count distinct subjects with explicit rdf:type schema:City in the country graph. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "distinct_city_count",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:IS"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:IS"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:IS",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "direction": "forward",
+            "to": {
+              "kind": "iri",
+              "iri": "https://schema.org/City"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "count_distinct",
+            "variable": "city",
+            "alias": "count"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT (COUNT(DISTINCT ?city) AS ?count) WHERE { GRAPH <urn:graph-verity:worldcities:transfer:IS> { ?city a s:City . } } ",
+      "expected_bindings": [
+        {
+          "count": {
+            "kind": "literal",
+            "value": "6",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-034",
+      "question": "Hvilke administrative regioner i IS-utvalget har minst to ulike byressurser, og hvor mange?",
+      "interpretation": "Group explicitly typed cities by region and retain each group having at least two different cities. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "group_having",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:IS"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:IS"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:IS",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "direction": "forward",
+            "to": {
+              "kind": "iri",
+              "iri": "https://schema.org/City"
+            }
+          },
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:IS",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "https://schema.org/containedInPlace",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "region"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "region"
+          },
+          {
+            "kind": "count_distinct",
+            "variable": "city",
+            "alias": "count"
+          }
+        ],
+        "group_by": [
+          "region"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 2
+          }
+        ],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT ?region (COUNT(DISTINCT ?city) AS ?count) WHERE { GRAPH <urn:graph-verity:worldcities:transfer:IS> { ?city a s:City ; s:containedInPlace ?region . } } GROUP BY ?region HAVING (COUNT(DISTINCT ?city) >= 2)",
+      "expected_bindings": [
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:IS:Capital%20Region"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "3",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        },
+        {
+          "region": {
+            "kind": "iri",
+            "value": "urn:graph-verity:worldcities:admin:IS:Southern%20Peninsula"
+          },
+          "count": {
+            "kind": "literal",
+            "value": "2",
+            "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+            "language": null
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-035",
+      "question": "Hvilke byressurser i IS-grafen har en GeoNames-identifikator større enn 3415496?",
+      "interpretation": "Compare typed integer geoname identifiers to 3415496; this is not a population comparison. Results refer only to pinned GeoNames-derived Schema.org N-Quads within the explicit country graph; absence is unknown.",
+      "family": "numeric_identifier",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Source: datasets/world-cities @ 73c9f54ab9f305168c76d0802db151e30a157b28, CC-BY-4.0; independently designed query structure; gold requires human review",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:IS"
+      ],
+      "expected_status": "executed",
+      "gold": {
+        "version": 1,
+        "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+        "scope": [
+          "urn:graph-verity:worldcities:transfer:IS"
+        ],
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:worldcities:transfer:IS",
+            "from": {
+              "kind": "variable",
+              "name": "city"
+            },
+            "predicate": "https://schema.org/identifier",
+            "direction": "forward",
+            "to": {
+              "kind": "variable",
+              "name": "identifier"
+            }
+          }
+        ],
+        "filters": [
+          {
+            "variable": "identifier",
+            "op": "gt",
+            "value": {
+              "lexical": "3415496",
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "language": null
+            }
+          }
+        ],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "city"
+          }
+        ],
+        "group_by": [],
+        "having": [],
+        "limit": 500
+      },
+      "reference_sparql": "PREFIX s: <https://schema.org/>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nSELECT DISTINCT ?city WHERE { GRAPH <urn:graph-verity:worldcities:transfer:IS> { ?city s:identifier ?identifier . FILTER (?identifier > 3415496) } } ",
+      "expected_bindings": [
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/3416706/"
+          }
+        },
+        {
+          "city": {
+            "kind": "iri",
+            "value": "https://sws.geonames.org/8644037/"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gn-dev-036",
+      "question": "Hva er det nøyaktige innbyggertallet i Oslo akkurat nå?",
+      "interpretation": "This source contains no population attribute or current time-qualified observation; refuse to invent it.",
+      "family": "missing_population",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Proposed abstention candidate; no model tested; source World Cities CC-BY-4.0",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:NO"
+      ],
+      "expected_status": "unsupported",
+      "gold": null,
+      "reference_sparql": null,
+      "expected_bindings": null
+    },
+    {
+      "id": "gn-dev-037",
+      "question": "Hvilke svenske byer mangler alle registreringer i verden?",
+      "interpretation": "Global closed-world negation is unsupported and the capture is not the world.",
+      "family": "open_world_negation",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Proposed abstention candidate; no model tested; source World Cities CC-BY-4.0",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:SE"
+      ],
+      "expected_status": "unsupported",
+      "gold": null,
+      "reference_sparql": null,
+      "expected_bindings": null
+    },
+    {
+      "id": "gn-dev-038",
+      "question": "Hvilken dansk by er best å bo i?",
+      "interpretation": "Best requires a user-defined measure, external attributes and scope.",
+      "family": "subjective_criterion",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Proposed abstention candidate; no model tested; source World Cities CC-BY-4.0",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:DK"
+      ],
+      "expected_status": "needs_clarification",
+      "gold": null,
+      "reference_sparql": null,
+      "expected_bindings": null
+    },
+    {
+      "id": "gn-dev-039",
+      "question": "Hvilke selskaper eier Helsingfors kommune?",
+      "interpretation": "The GeoNames-derived city ontology has no company ownership predicates.",
+      "family": "missing_ownership_domain",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Proposed abstention candidate; no model tested; source World Cities CC-BY-4.0",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:FI"
+      ],
+      "expected_status": "unsupported",
+      "gold": null,
+      "reference_sparql": null,
+      "expected_bindings": null
+    },
+    {
+      "id": "gn-dev-040",
+      "question": "Hvilket sted er størst på Island?",
+      "interpretation": "Size is unspecified and city identifiers do not measure population or area.",
+      "family": "ambiguous_largest",
+      "split": "transfer_dev",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "provenance": "Proposed abstention candidate; no model tested; source World Cities CC-BY-4.0",
+      "scope": [
+        "urn:graph-verity:worldcities:transfer:IS"
+      ],
+      "expected_status": "needs_clarification",
+      "gold": null,
+      "reference_sparql": null,
+      "expected_bindings": null
+    }
+  ]
+}

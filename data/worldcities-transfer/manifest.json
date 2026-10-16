@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "source": {
+    "package": "datasets/world-cities",
+    "upstream_commit": "73c9f54ab9f305168c76d0802db151e30a157b28",
+    "upstream_csv_blob_sha": "f5a9bdb7cd04dbf0a86695c67d2039c9ab904e18",
+    "path": "data/world-cities.csv",
+    "source_url": "https://github.com/datasets/world-cities/blob/73c9f54ab9f305168c76d0802db151e30a157b28/data/world-cities.csv",
+    "dataset_origin": "GeoNames, repackaged by datasets/world-cities",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "GeoNames (www.geonames.org), datasets/world-cities; filtered and mapped to Schema.org RDF by Graph Verity",
+    "notice": "Country, region, city names are source claims. City classification and administrative-area IRIs are derived mappings, not upstream RDF assertions."
+  },
+  "extraction": {
+    "country_codes": [
+      "DK",
+      "FI",
+      "IS",
+      "NO",
+      "SE"
+    ],
+    "source_rows": 328,
+    "regions": 62,
+    "named_graphs": 5,
+    "quads": 1508,
+    "serialization": "N-Quads",
+    "locale": "English labels only",
+    "input_file": "data/worldcities-transfer/source.csv",
+    "input_sha256": "f61a6770d9f1f076bb92e87921f0a66e9755c22b852403b029debd6157bdb58e",
+    "output_file": "data/worldcities-transfer/snapshot.nq",
+    "output_sha256": "2ee4af13fb312c006c126f9239bdbb25b2e4be10b40bff3adc5d67076f068f13",
+    "graph_snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601"
+  },
+  "semantics": {
+    "entailment": "none",
+    "missing_data": "unknown_not_false",
+    "named_graphs_origin": "importer_generated_per_country",
+    "uri_policy": "geonames_city_ids_original; region_and_country_iris_synthetic",
+    "supplied_values": "Source CSV version as archived, not contemporary verified facts."
+  }
+}

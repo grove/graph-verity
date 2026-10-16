@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "created_on": "2026-10-16",
+  "bundle_name": "graph-verity-sealed-holdout-candidate.zip",
+  "bundle_sha256": "67bcc9d21fdf2a2d1ca15b5b8bbb727794bbec59ef9fdd0854dac67388111085",
+  "benchmark_sha256": "653c2fe30fd0911f91c17db1ace9f46ae5b36ce5bffb0212dd37e9dbcf822e6b",
+  "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+  "split": "locked_holdout",
+  "cases": 60,
+  "executable": 50,
+  "expected_abstentions_not_tested": 10,
+  "storage": "EXTERNAL_TO_PUBLIC_REPOSITORY",
+  "status": "SEALED_AI_AUTHORED_CANDIDATE_NOT_INDEPENDENTLY_EXPERT_APPROVED",
+  "publication_policy": "Only checksum/metadata are public. Bundle must be kept separate from parser-development agents and prompts; do not commit it to this public repository.",
+  "limitations": [
+    "Same Schema.org vocabulary is also represented in publicly exposed transfer_dev examples; this is case-level holdout only, not a never-exposed-ontology test.",
+    "AI authored gold and reference queries are not independently expert reviewed.",
+    "No model, holdout inference, or final Phase 0 gating has occurred.",
+    "Project owner approved a prior AI audit, not the new private cases."
+  ]
+}

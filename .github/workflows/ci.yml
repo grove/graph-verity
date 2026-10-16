@@ -27,6 +27,10 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: pre-llm-verification-${{ github.sha }}
-          path: artifacts/pre-llm/
+          path: |
+            artifacts/pre-llm/
+            data/worldcities-transfer/source.csv
+            data/worldcities-transfer/snapshot.nq
+            data/worldcities-transfer/manifest.json
           if-no-files-found: warn
           retention-days: 30

@@ -2,16 +2,16 @@
 
 **Ask naturally. Verify against the graph.**
 
-Graph Verity is a local-first RDF question-answering project. Its **deterministic pre-LLM core is implemented on the feature-branch PR stack**: manually authored or fixture-supplied typed plans are validated in Rust, compiled into read-only SPARQL, and executed in embedded Oxigraph with scoped RDF evidence.
+Graph Verity is a local-first RDF question-answering project. Its **deterministic pre-LLM core is implemented on `main`**: manually authored or fixture-supplied typed plans are validated in Rust, compiled into read-only SPARQL, and executed in embedded Oxigraph with scoped RDF evidence.
 
 **Natural-language interpretation, local model inference, embeddings, Find/search, SHACL validation and HTTP serving are not implemented.** Successful graph execution does not establish that a question was understood or that the graph's statements are true in the world.
 
 ## Try the implemented pipeline
 
-The complete implementation is on `feat/pre-llm-readiness` until the stacked PRs are reviewed and merged. Install Rust through rustup and Python 3.12 on Linux; the checked-in toolchain and dependency files pin the versions used by CI. Linux x86-64 / Ubuntu 24.04 is the tested target, not a claim of verification on every platform.
+The deterministic implementation is on `main`; the separate real-data transfer work is in the issue #5 follow-up PR. Install Rust through rustup and Python 3.12 on Linux; the checked-in toolchain and dependency files pin the versions used by CI. Linux x86-64 / Ubuntu 24.04 is the tested target, not a claim of verification on every platform.
 
 ```sh
-git clone --branch feat/pre-llm-readiness https://github.com/grove/graph-verity.git
+git clone https://github.com/grove/graph-verity.git
 cd graph-verity
 rustup install
 python3 -m venv .venv
@@ -52,6 +52,14 @@ The benchmark contains **130 machine-authored candidate questions**: 46 developm
 
 See [benchmark review and evaluation](docs/benchmark-review.md), [proposed numerical gates](configs/phase-0-gates.proposed.json), and [pre-LLM readiness](docs/pre-llm-readiness.md). Compiler-oracle results are not natural-language accuracy or a Phase 0 go decision.
 
+## Real cross-ontology and sealed holdout preparation
+
+A separate CC BY 4.0 **GeoNames-derived Nordic city** snapshot is available at [data/worldcities-transfer](data/worldcities-transfer/README.md): 328 real city records, 62 administrative regions and 1,508 Schema.org N-Quads in five country-named graphs. It is independently sourced from the Wikidata pilot, but the RDF relationship mapping is explicitly an importer transformation. The public [transfer-development benchmark](benchmarks/worldcities-transfer.json) contains 35 executable no-model reference cases and 5 non-model-tested abstention proposals. **These publicly exposed cases are not a locked test set or human-expert gold.**
+
+The private **60-case candidate holdout** is intentionally distributed *outside this public repository*, with only its SHA256 and metadata pinned in [configs/locked-holdout-commitment.json](configs/locked-holdout-commitment.json). Its questions, gold IR and answer bindings must not be placed in the repo, CI artifacts, parser prompts or a coding agent's context. An opt-in, local, metadata-only checksum verifier is in [tools/verify_sealed_holdout.py](tools/verify_sealed_holdout.py). It has not been evaluated on a model or independently expert-reviewed; it also cannot be called a never-seen-ontology test, because Schema.org transfer probes are public development material.
+
+The project owner explicitly approved the prior AI audit and authorized the additional work, as recorded in [issue #5 owner sign-off](docs/issue-5-owner-approval.md). This approval is **not** a claim of expert sign-off on all case-specific gold or on newly created private cases.
+
 ## Next: the local semantic-parser experiment
 
 After explicit authorization, implement the local inference backend behind `SemanticParser`, pin and test the actual runtime/grammar/model combination, and preserve independent Rust validation. First evaluate development questions with authorized vocabulary; freeze the approved protocol and independent holdout before making feasibility claims. [The integration handoff](docs/local-parser-handoff.md) records prerequisites and pending measurements.
@@ -60,6 +68,6 @@ The longer-term design has two distinct modes: **Find** ranks vocabulary/entitie
 
 ## Review and contribution
 
-Review the stacked changes in order: [foundation #11](https://github.com/grove/graph-verity/pull/11), [core #12](https://github.com/grove/graph-verity/pull/12), [dataset/benchmark #13](https://github.com/grove/graph-verity/pull/13), then the readiness/verification PR. No PR is automatically merged. Human RDF/benchmark review is still needed before closing the related Phase 0 acceptance gates.
+The model-independent foundation was merged through PRs [#11](https://github.com/grove/graph-verity/pull/11)–[#14](https://github.com/grove/graph-verity/pull/14); benchmark review tooling and the AI audit were added through [#15](https://github.com/grove/graph-verity/pull/15) and [#16](https://github.com/grove/graph-verity/pull/16). Human RDF/benchmark review is still required before closing Phase 0 expert-gold acceptance gates.
 
 Code and original fixtures use [Apache-2.0](LICENSE). Retained Wikidata structured RDF is CC0-1.0 as documented with the dataset. Model/runtime licenses will require separate review when a model is selected.
