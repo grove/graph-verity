@@ -60,6 +60,12 @@ The private **60-case candidate holdout** is intentionally distributed *outside 
 
 The project owner explicitly approved the prior AI audit and authorized the additional work, as recorded in [issue #5 owner sign-off](docs/issue-5-owner-approval.md). This approval is **not** a claim of expert sign-off on all case-specific gold or on newly created private cases.
 
+## Evaluation standard for the resource-constrained prototype
+
+The project owner has **authorized proceeding without a paid independent human gold reviewer**. The 130 Wikidata candidates were machine-authored and source-audited by AI, and the separate Schema.org transfer cases and external 60-case holdout candidates are **not human-expert validated**. This is an explicitly accepted development limitation, not an achieved expert-review gate.
+
+The human reviewer ledger stays empty and its `review --require-reviewed` checks are not bypassed. The next local-model experiment may compare against the exposed development cases; any later externally held candidate evaluation must be pre-frozen and described as **AI-reference agreement**, not verified Norwegian semantic accuracy. See [Phase 0 risk acceptance](docs/phase-0-ai-gold-risk-acceptance.md) and [benchmark review](docs/benchmark-review.md).
+
 ## Next: the local semantic-parser experiment
 
 After explicit authorization, implement the local inference backend behind `SemanticParser`, pin and test the actual runtime/grammar/model combination, and preserve independent Rust validation. First evaluate development questions with authorized vocabulary; freeze the approved protocol and independent holdout before making feasibility claims. [The integration handoff](docs/local-parser-handoff.md) records prerequisites and pending measurements.
@@ -68,6 +74,6 @@ The longer-term design has two distinct modes: **Find** ranks vocabulary/entitie
 
 ## Review and contribution
 
-The model-independent foundation was merged through PRs [#11](https://github.com/grove/graph-verity/pull/11)–[#14](https://github.com/grove/graph-verity/pull/14); benchmark review tooling and the AI audit were added through [#15](https://github.com/grove/graph-verity/pull/15) and [#16](https://github.com/grove/graph-verity/pull/16). Human RDF/benchmark review is still required before closing Phase 0 expert-gold acceptance gates.
+The model-independent foundation was merged through PRs [#11](https://github.com/grove/graph-verity/pull/11)–[#14](https://github.com/grove/graph-verity/pull/14); benchmark review tooling and the AI audit were added through [#15](https://github.com/grove/graph-verity/pull/15) and [#16](https://github.com/grove/graph-verity/pull/16). The owner explicitly waived expert review for issue #5's **engineering-readiness milestone**; the missing independent evaluation evidence remains a disclosed limitation, not a model-feasibility pass.
 
 Code and original fixtures use [Apache-2.0](LICENSE). Retained Wikidata structured RDF is CC0-1.0 as documented with the dataset. Model/runtime licenses will require separate review when a model is selected.
