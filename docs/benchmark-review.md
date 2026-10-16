@@ -4,7 +4,7 @@
 
 `benchmarks/wikidata.json` has 130 candidate questions: 46 `dev`, 76 `review_candidate`, and 8 `transfer_candidate`. The development split has 38 executable queries and eight expected clarification/unsupported entries. Its query families include label/entity lookups, direct/inverse relations, two hops, numeric/date comparisons, conjunction, distinct counting, grouping/HAVING and named-graph scoping.
 
-Questions, interpretations and reference SPARQL were machine-authored. RDFLib computed the frozen reference bindings; the Rust oracle independently compiles IR and compares both reference-SPARQL execution and expected bindings. Mechanical agreement can detect compiler defects but cannot prove that the Norwegian question and gold describe the same intended meaning. **All gold needs independent human review.**
+Questions, interpretations and reference SPARQL were machine-authored. RDFLib computed the frozen reference bindings; the Rust oracle independently compiles IR and compares both reference-SPARQL execution and expected bindings. Mechanical agreement can detect compiler defects but cannot prove that the Norwegian question and gold describe the same intended meaning. **Independent human review is required for an expert-validated gold claim.** The project owner has explicitly waived a paid independent reviewer for the *exploratory development spike* only; see [the owner-accepted AI-gold risk exception](phase-0-ai-gold-risk-acceptance.md). The source review status remains AI-only, not human approved.
 
 The 76 review candidates reuse development templates. They must not be promoted to an independent locked holdout by changing a split label. The eight transfer candidates use the same Wikidata ontology in another country; they are not cross-ontology evidence. The retained earlier Oslo source is a regression asset, not a coherent historical snapshot of all entities. No holdout performance is claimed.
 
@@ -30,7 +30,15 @@ An additional **60-case Norwegian holdout candidate** (50 executable and 10 expe
 
 The owner/reviewer must securely store the external archive, independently adjudicate each gold case and record human approvals in a **separate external** append-only ledger, resolve exclusions without reusing test data in tuning, then freeze model/runtime/grammar and numerical acceptance thresholds before the **first** hidden-set inference. If the private case set becomes exposed to a coding agent or used in prompt tuning, treat it as compromised and commission a new holdout. Schema.org is also represented in the public transfer-development set, so the archive is separated at the *case* level and is **not** an unseen-ontology holdout.
 
-No model-dependent Phase 0 accuracy, abstention, injection-resilience or transfer gate can be marked passed from these no-model oracle results. #5 remains open until genuinely independent specialist review and protected final material have been accepted.
+No model-dependent Phase 0 accuracy, abstention, injection-resilience or transfer gate can be marked passed from these no-model oracle results. **Owner-approved scope update (16 October 2026):** issue #5 may be closed as *AI-audited engineering preparation with a documented review waiver*; that closure is **not** independent expert validation. Preserve existing human-review gates. See [the explicit risk acceptance](phase-0-ai-gold-risk-acceptance.md).
+
+
+## Two review standards, not interchangeable
+
+1. **Exploratory engineering baseline (owner accepted):** machine-authored and AI-audited questions, pinned reference SPARQL, case hashes, an exposed development split and a sequestered AI-authored candidate holdout are sufficient to *start* local-model development. Use only the public development data for tuning. Model agreement with AI gold is a **proxy** for semantic correctness, not independently adjudicated correctness.
+2. **Independent gold / generalization claims (not available):** true case-by-case specialist review, independently verified answers, guaranteed lineage separation and a protected final holdout have not been completed. The `--require-reviewed initial|final` commands must remain false. Nothing in a GitHub issue closure, project-owner waiver or Rust CI can turn proxy accuracy into validated ground truth.
+
+The phase-0 feasibility gates still require measured local-model results, scoped safety checks, real CPU measurements and a candid go/revise/stop decision. Review waivers and their potential effects on conclusions must be disclosed in that decision.
 
 ## Review records and gates
 
