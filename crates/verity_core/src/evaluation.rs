@@ -6,13 +6,14 @@ use crate::{
     parser::{decode_response, Proposal, SemanticParser},
     reject, snapshot_id, Result, Snapshot,
 };
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use std::{
     collections::{BTreeMap, BTreeSet},
     time::Instant,
 };
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Case {
     pub id: String,
@@ -29,7 +30,7 @@ pub struct Case {
     pub expected_bindings: Option<Vec<Row>>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Benchmark {
     pub version: u32,

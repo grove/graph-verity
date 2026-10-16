@@ -1,4 +1,450 @@
 {
+  "benchmark": {
+    "$defs": {
+      "Case": {
+        "additionalProperties": false,
+        "properties": {
+          "expected_bindings": {
+            "items": {
+              "additionalProperties": {
+                "$ref": "#/$defs/RdfTerm"
+              },
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "expected_status": {
+            "type": "string"
+          },
+          "family": {
+            "type": "string"
+          },
+          "gold": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/Plan"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "interpretation": {
+            "type": "string"
+          },
+          "provenance": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string"
+          },
+          "reference_sparql": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "review_status": {
+            "type": "string"
+          },
+          "scope": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "split": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "question",
+          "interpretation",
+          "family",
+          "split",
+          "review_status",
+          "provenance",
+          "scope",
+          "expected_status"
+        ],
+        "type": "object"
+      },
+      "Compare": {
+        "enum": [
+          "eq",
+          "ne",
+          "lt",
+          "le",
+          "gt",
+          "ge"
+        ],
+        "type": "string"
+      },
+      "Direction": {
+        "enum": [
+          "forward",
+          "reverse"
+        ],
+        "type": "string"
+      },
+      "Filter": {
+        "additionalProperties": false,
+        "properties": {
+          "op": {
+            "$ref": "#/$defs/Compare"
+          },
+          "value": {
+            "$ref": "#/$defs/Value"
+          },
+          "variable": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "variable",
+          "op",
+          "value"
+        ],
+        "type": "object"
+      },
+      "Having": {
+        "additionalProperties": false,
+        "properties": {
+          "alias": {
+            "type": "string"
+          },
+          "op": {
+            "$ref": "#/$defs/Compare"
+          },
+          "value": {
+            "format": "uint32",
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "alias",
+          "op",
+          "value"
+        ],
+        "type": "object"
+      },
+      "Node": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "variable",
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "name"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "iri": {
+                "type": "string"
+              },
+              "kind": {
+                "const": "iri",
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "iri"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "literal",
+                "type": "string"
+              },
+              "value": {
+                "$ref": "#/$defs/Value"
+              }
+            },
+            "required": [
+              "kind",
+              "value"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "Pattern": {
+        "additionalProperties": false,
+        "properties": {
+          "direction": {
+            "$ref": "#/$defs/Direction"
+          },
+          "from": {
+            "$ref": "#/$defs/Node"
+          },
+          "graph": {
+            "type": "string"
+          },
+          "predicate": {
+            "type": "string"
+          },
+          "to": {
+            "$ref": "#/$defs/Node"
+          }
+        },
+        "required": [
+          "graph",
+          "from",
+          "predicate",
+          "direction",
+          "to"
+        ],
+        "type": "object"
+      },
+      "Plan": {
+        "additionalProperties": false,
+        "properties": {
+          "filters": {
+            "items": {
+              "$ref": "#/$defs/Filter"
+            },
+            "type": "array"
+          },
+          "group_by": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "having": {
+            "items": {
+              "$ref": "#/$defs/Having"
+            },
+            "type": "array"
+          },
+          "limit": {
+            "format": "uint32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "patterns": {
+            "items": {
+              "$ref": "#/$defs/Pattern"
+            },
+            "type": "array"
+          },
+          "projection": {
+            "items": {
+              "$ref": "#/$defs/Projection"
+            },
+            "type": "array"
+          },
+          "scope": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "snapshot_id": {
+            "type": "string"
+          },
+          "version": {
+            "format": "uint32",
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "version",
+          "snapshot_id",
+          "scope",
+          "patterns",
+          "filters",
+          "projection",
+          "group_by",
+          "having",
+          "limit"
+        ],
+        "type": "object"
+      },
+      "Projection": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "variable",
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "name"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "alias": {
+                "type": "string"
+              },
+              "kind": {
+                "const": "count_distinct",
+                "type": "string"
+              },
+              "variable": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "variable",
+              "alias"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "RdfTerm": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "iri",
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "value"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "blank_node",
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "value"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "datatype": {
+                "type": "string"
+              },
+              "kind": {
+                "const": "literal",
+                "type": "string"
+              },
+              "language": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "value",
+              "datatype"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "Value": {
+        "additionalProperties": false,
+        "properties": {
+          "datatype": {
+            "type": "string"
+          },
+          "language": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lexical": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "lexical",
+          "datatype"
+        ],
+        "type": "object"
+      }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "cases": {
+        "items": {
+          "$ref": "#/$defs/Case"
+        },
+        "type": "array"
+      },
+      "name": {
+        "type": "string"
+      },
+      "snapshot_id": {
+        "type": "string"
+      },
+      "version": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "version",
+      "name",
+      "snapshot_id",
+      "cases"
+    ],
+    "title": "Benchmark",
+    "type": "object"
+  },
   "contract_version": 1,
   "future_local_config": {
     "$schema": "https://json-schema.org/draft/2020-12/schema",

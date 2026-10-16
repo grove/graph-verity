@@ -99,7 +99,7 @@ def main() -> int:
         run("initial-clean-tree", ["git", "diff", "--exit-code", "HEAD"])
         state["rustc"] = run("rust-version", ["rustc", "-Vv"]).strip()
         run("reporting-tests", [sys.executable, "-m", "unittest", "discover",
-                                "-s", "tools", "-p", "test_verify_pre_llm.py", "-v"])
+                                "-s", "tools", "-p", "test_*.py", "-v"])
         run("dependency-fetch", ["cargo", "fetch", "--locked"])
         run("format", ["cargo", "fmt", "--all", "--check"])
         run("clippy", ["cargo", "clippy", "--workspace", "--all-targets", "--locked",
@@ -112,6 +112,8 @@ def main() -> int:
         require(rebuilt.read_bytes() == (ROOT / "data/wikidata/snapshot.nq").read_bytes(),
                 "Derived snapshot is not byte-reproducible")
         run("gold-verify", [sys.executable, "tools/benchmark.py", "verify"])
+        review = json.loads(run("review-report", [sys.executable, "tools/benchmark.py", "review"]))
+        state["benchmark_review"] = {k: v for k, v in review.items() if k != "case_sha256"}
         schema = json.loads(cli("schema", "schema"))
         require(schema == json.loads((ROOT / "schemas/contracts-v1.json").read_text()),
                 "Committed JSON contracts differ from Rust types")

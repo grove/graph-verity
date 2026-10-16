@@ -3,12 +3,15 @@
 from __future__ import annotations
 import argparse
 import copy
+from contextlib import redirect_stdout
 from decimal import Decimal
 import json
+import sys
 from pathlib import Path
 import rdflib
 from rdflib import Dataset, Literal, URIRef
 from dataset import DATA, ROOT, DIRECT, WD, WB, dump, sha, snapshot_id, verify as verify_data
+from benchmark_review import review_summary
 
 rdflib.NORMALIZE_LITERALS = False
 XSD = "http://www.w3.org/2001/XMLSchema#"
@@ -19,6 +22,17 @@ TRANSFER = "urn:graph-verity:wikidata:transfer"
 PATH = ROOT / "benchmarks" / "wikidata.json"
 PREFIX = f"PREFIX wd: <{WD}>\nPREFIX wdt: <{DIRECT}>\nPREFIX wikibase: <{WB}>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <{XSD}>\n"
 REVIEW = "machine_authored_machine_checked_human_review_pending"
+
+
+def candidate_groups(cases: list[dict]) -> dict[str, list[str]]:
+    """Keep the existing exposed templates together, including geographic variants."""
+    shared = {"having": "grouping", "transfer_scope": "inventory", "distinct_count": "inventory",
+              "named_graph_scope": "inventory", "transfer_relation": "capital_relation",
+              "inverse_relation": "capital_relation", "two_hop": "capital_relation"}
+    groups = {}
+    for case in cases:
+        groups.setdefault(shared.get(case["family"], case["family"]), []).append(case["id"])
+    return groups
 
 
 def node(value: str) -> dict:
@@ -184,8 +198,14 @@ def create() -> None:
     benchmark = {"version": 1, "name": "wikidata-nordic-candidate-v1", "snapshot_id": snapshot, "cases": cases}
     dump(PATH, benchmark)
     splits = {split: [case["id"] for case in cases if case["split"] == split] for split in sorted({case["split"] for case in cases})}
-    dump(ROOT / "benchmarks" / "split-manifest.json", {"benchmark_sha256": sha(PATH.read_bytes()), "splits": splits,
+    groups = candidate_groups(cases)
+    dump(ROOT / "benchmarks" / "split-manifest.json", {"version": 1,
+        "benchmark_sha256": sha(PATH.read_bytes()), "splits": splits, "groups": groups,
+        "exposed_groups": sorted(groups),
         "holdout_status": "prospective_candidate_pools_not_independent_or_human_approved; do_not_tune_on_candidates; reviewer_must_author_and_freeze_final_holdout"})
+    review_path = ROOT / "benchmarks" / "reviews.json"
+    if not review_path.exists():
+        dump(review_path, {"version": 1, "records": []})
     policy = {"version": 1, "graphs": [DEV, TRANSFER], "max_rows": 1000, "max_evidence": 10000, "timeout_ms": 10000}
     dump(DATA / "policy.json", policy)
     dump(DATA / "scope.json", [DEV])
@@ -199,7 +219,7 @@ def create() -> None:
     print(json.dumps({"candidate_questions": len(cases), "splits": {k: len(v) for k, v in splits.items()}}, ensure_ascii=False))
 
 
-def verify() -> None:
+def verify() -> dict:
     verify_data()
     benchmark = json.loads(PATH.read_text(encoding="utf-8"))
     manifest = json.loads((ROOT / "benchmarks" / "split-manifest.json").read_text(encoding="utf-8"))
@@ -207,22 +227,33 @@ def verify() -> None:
         raise ValueError("Frozen benchmark checksum changed")
     if benchmark["snapshot_id"] != snapshot_id((DATA / "snapshot.nq").read_bytes()):
         raise ValueError("Benchmark snapshot mismatch")
+    reviews = json.loads((ROOT / "benchmarks" / "reviews.json").read_text(encoding="utf-8"))
+    summary = review_summary(benchmark, manifest, reviews)
     rdf = dataset()
-    ids = [case["id"] for case in benchmark["cases"]]
-    if len(ids) != len(set(ids)):
-        raise ValueError("Duplicate question ID")
     for case in benchmark["cases"]:
-        if case["id"] not in manifest["splits"][case["split"]] or case["review_status"] != REVIEW:
-            raise ValueError("Split or review state requires approval")
         if case["split"] == "dev" and case["reference_sparql"] is not None:
             actual = bindings(rdf, case["reference_sparql"])
             if actual != case["expected_bindings"]:
                 raise ValueError(f"Independent reference mismatch: {case['id']}")
-    print("Frozen development reference queries and bindings verified with RDFLib; gold was not rewritten")
+    return summary
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["create", "verify"])
+    parser.add_argument("command", choices=["create", "verify", "review"])
+    parser.add_argument("--require-reviewed", choices=["initial", "final"],
+                        help="Fail unless the requested human-review gate is ready (review only)")
     args = parser.parse_args()
-    create() if args.command == "create" else verify()
+    if args.require_reviewed and args.command != "review":
+        parser.error("--require-reviewed requires the review command")
+    if args.command == "create":
+        create()
+    elif args.command == "review":
+        with redirect_stdout(sys.stderr):
+            summary = verify()
+        print(json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True))
+        if args.require_reviewed and not summary[f"{args.require_reviewed}_ready"]:
+            raise SystemExit(f"Human-review gate not ready: {args.require_reviewed}")
+    else:
+        verify()
+        print("Frozen development reference queries, bindings, splits and review records verified; gold was not rewritten")
