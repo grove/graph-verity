@@ -1,0 +1,4981 @@
+{
+  "version": 1,
+  "artifact_kind": "independent_ai_semantic_audit_not_human_review",
+  "reviewer": {
+    "type": "AI_assistant",
+    "model": "OpenAI GPT-6",
+    "review_date": "2026-10-16",
+    "is_human": false,
+    "source_human_review_ledger_modified": false
+  },
+  "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
+  "source": "benchmarks/wikidata.json and data/wikidata/snapshot.nq",
+  "coverage": "All 130 version-2 candidate cases, including explicit AI wording clarifications to 17 cases; all human review remains pending.",
+  "truth_contract": "Passing linguistic/IR consistency here does not establish an independently expert-reviewed benchmark, real-world truth, model performance or leak-free holdout.",
+  "source_assertions": {
+    "stavanger_q25416_p31_municipality_q755707": true,
+    "norway_q20_p17_self_reference": true,
+    "sweden_q34_p36_stockholm_q1754": true
+  },
+  "cases": [
+    {
+      "id": "wd-dev-001",
+      "case_sha256": "fb9ef9df27e2a046eee997931848827f91cfca5f2abc1c8cec6d38390272cc29",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke navn er oppført for Oslo i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q585 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "oslo_single_english_label_in_frozen_subset"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-002",
+      "case_sha256": "38d2d0d9b93fc536912e61edc2efe72241e05e188bdb31b21e4f3084f2809675",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilket land er Oslo knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q585 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-003",
+      "case_sha256": "34a281d3d86e51ef9a3ca5d4e6f1041537dd616e99db213b760c1d52d1babaa9",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke land i utvalget har Oslo som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q585; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-004",
+      "case_sha256": "f7bfd9ae4e641ef26f7a366d334be991b8ca5f9740c1f93b318acd5f5123a62e",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hva er hovedstaden i landet som Oslo er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q585 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-005",
+      "case_sha256": "442e4fbecafcbee92b833da13799bf06740fb9d9c12bc0bfff8c383758d09a41",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke etableringsdatoer er oppført for Oslo i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q585, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-006",
+      "case_sha256": "eef2e551e5b58bba6c8fb81900acbc48593c7e05edbe105e22a8b9e7ca6d9af0",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke navn er oppført for Bergen i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q26793 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-007",
+      "case_sha256": "37e50fffc9ea233b24d33a0dd8dfd25d8aeb4d5a2456b037b8d34a97e022b96c",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilket land er Bergen knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q26793 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-008",
+      "case_sha256": "40f327eb0c225b89bf9419abe63c63faed00403d58a8ae9b2b47523ec325344d",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke land i utvalget har Bergen som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q26793; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-009",
+      "case_sha256": "89083364b3fac9d44d78f92b956c768f3feea3cd4fea305d2469e782e163850d",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hva er hovedstaden i landet som Bergen er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q26793 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-010",
+      "case_sha256": "12dc1f3f8b49d80accd3b999031f81d8623345c024f168b0b4120f5e111ad6eb",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke etableringsdatoer er oppført for Bergen i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q26793, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-011",
+      "case_sha256": "a640f78f5e48c48dc6d57384e44618c8561f95e1f04e7e2f30df9c71e40dd78b",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke navn er oppført for Trondheim i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q25804 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-012",
+      "case_sha256": "9dd46c027adaa975d486b6c2f3efe30897256e97f8ef1227ad2a95c2668a37bf",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilket land er Trondheim knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q25804 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-013",
+      "case_sha256": "5a317d2e654a6b3dde50493ff28032ced1f00a4bcfd388cabb33125080842b53",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke land i utvalget har Trondheim som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q25804; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-014",
+      "case_sha256": "4741fcca930df49c02029d934ec496d55566dedd735701a5001245afd790e611",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hva er hovedstaden i landet som Trondheim er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q25804 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-015",
+      "case_sha256": "9ce2d178345edb4b73976a772fe0f8be51ede9d52140fc5f16f87ee2d190b6a2",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke etableringsdatoer er oppført for Trondheim i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q25804, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-016",
+      "case_sha256": "b540c4c0ac61c6e6c56f3b4494cd8c9c44c2568e661a6650a3ba235722738ed6",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke navn er oppført for Stavanger kommune i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q25416 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-017",
+      "case_sha256": "72a33638f21f46311f0bf3a98a3a0e5440a4343c02827677d0002e92282006ba",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilket land er Stavanger kommune knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q25416 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-018",
+      "case_sha256": "8a49c12e1bb1cbf1ba366c0e7c3729f8836cf274dfbb8e25b0c7bf21b29953a9",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke land i utvalget har Stavanger kommune som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q25416; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-019",
+      "case_sha256": "1da6ba4152573937f94d8103bc4133014437f42f5ad74f4ef9f0882cf38c99c9",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hva er hovedstaden i landet som Stavanger kommune er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q25416 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-020",
+      "case_sha256": "6d2d633ca7d3bf23ea98bbc0bd5e37b3d0537dc37c42b36ab40b8dd7313fc124",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke etableringsdatoer er oppført for Stavanger kommune i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q25416, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-021",
+      "case_sha256": "a1c0079a127e96ac6e7448604517672ed86f83da9fb17393f5445bd341d0a741",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 100000 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population gt 100000; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "gt",
+            "lexical": "100000",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-022",
+      "case_sha256": "75f5590935c0386c28c2558a3fce10249358de47e83cc190b80df1b33719e7f0",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 200000 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population ge 200000; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "ge",
+            "lexical": "200000",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-023",
+      "case_sha256": "e58fa983841588d8046ce72566083f0eb00a7ace5f68d176a2def2e9676ad1bd",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på under 1000000 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population lt 1000000; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "lt",
+            "lexical": "1000000",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-024",
+      "case_sha256": "cee368313a38889b87f5a4c6ce6b0ca64bd869bc7f7a2d7c53e216dd38f6c76b",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på høyst 500000 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population le 500000; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "le",
+            "lexical": "500000",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-025",
+      "case_sha256": "f8b2eff276cd0c9231d4cc67489626e710acc4d3b54d8683bc3674ccabe8bff4",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 717710 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population gt 717710; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "gt",
+            "lexical": "717710",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-026",
+      "case_sha256": "b60df38660101ff5ad8f1de7f89fb862242f6d5e7bdc6f0f37e21590dee8fc07",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 717710 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population ge 717710; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "ge",
+            "lexical": "717710",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-027",
+      "case_sha256": "84ef9d127e51eb0a3d965f2048ab4f4c059d28ecebd8dfa81d7c42b1892932f4",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser har en oppgitt etableringsdato før 1100 i grafutvalget?",
+      "independently_stated_intent": "Find entities with an explicit inception (P571) dateTime lt 1100-01-01T00:00:00Z; existential over multiple recorded dates.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?date",
+            "op": "lt",
+            "lexical": "1100-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "P571_multiple_inception_dates_and_open_world"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-028",
+      "case_sha256": "f7039976444daebeb4eb9bcb67cd8f7d8c6551a944d7c9d382adc66bb49765b8",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser har en oppgitt etableringsdato senest 1. januar 1200 i grafutvalget?",
+      "independently_stated_intent": "Find entities with an explicit inception (P571) dateTime le 1200-01-01T00:00:00Z; existential over multiple recorded dates.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?date",
+            "op": "le",
+            "lexical": "1200-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "P571_multiple_inception_dates_and_open_world"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-029",
+      "case_sha256": "78c3387ea077e2f72e4feb1490022ae03ce4de0e0015ee5f0ec00feb2b4d1ff7",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser har en oppgitt etableringsdato fra og med 1. januar 1000 i grafutvalget?",
+      "independently_stated_intent": "Find entities with an explicit inception (P571) dateTime ge 1000-01-01T00:00:00Z; existential over multiple recorded dates.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?date",
+            "op": "ge",
+            "lexical": "1000-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "P571_multiple_inception_dates_and_open_world"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-030",
+      "case_sha256": "e513c949c6756bee2c91ffee59e8443a7abf940b1c8905a73f06cfcd87c367c8",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser har en oppgitt etableringsdato etter 1. januar 1500 i grafutvalget?",
+      "independently_stated_intent": "Find entities with an explicit inception (P571) dateTime gt 1500-01-01T00:00:00Z; existential over multiple recorded dates.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?date",
+            "op": "gt",
+            "lexical": "1500-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "P571_multiple_inception_dates_and_open_world"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-031",
+      "case_sha256": "c1987ee5d6ee6ad757b1fc9c9ac08e3c75912d26001f85385bc3913478cbb700",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvor mange ulike Wikidata-elementer finnes i utviklingsutvalget?",
+      "independently_stated_intent": "Count distinct subjects explicitly typed wikibase:Item in the development graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "rdf:type",
+            "to": "wikibase:Item",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-032",
+      "case_sha256": "99482438b7e9cd30cd79a0c50a6f1621609662fdfe9b098414408009f6aa204b",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvor mange ulike land peker land-relasjonene i utviklingsutvalget til?",
+      "independently_stated_intent": "Count distinct objects of P17 country statements, not entity subjects.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "COUNT(DISTINCT ?country) AS ?count"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-033",
+      "case_sha256": "70f160a29226ccb39ae344a963a45106dd098cec60b11e415cd2f62579d56051",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvor mange ulike ressurser i utvalget er knyttet til hvert land?",
+      "independently_stated_intent": "Group P17 subjects by country; count distinct subjects.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country",
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [
+          "?country"
+        ],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-034",
+      "case_sha256": "f7285300718d0b79f30d22a5da5cf5e66af4a5e113765fe38c9a68c474647345",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke land har minst 2 ulike tilknyttede ressurser i utvalget, og hvor mange?",
+      "independently_stated_intent": "Group P17 subjects by country; count distinct subjects and retain groups with count ≥ 2.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country",
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [
+          "?country"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 2
+          }
+        ],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-035",
+      "case_sha256": "533a3ce5696cd6616228f0873c26351815bccee1e7c85c29cdb2440afac9a7d0",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke land har minst 5 ulike tilknyttede ressurser i utvalget, og hvor mange?",
+      "independently_stated_intent": "Group P17 subjects by country; count distinct subjects and retain groups with count ≥ 5.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country",
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [
+          "?country"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 5
+          }
+        ],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-036",
+      "case_sha256": "fb0b443d8ccaf4a9e49adf3cd801d4aec30374c73f1e8873709b4e77fb3739a7",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke elementer i utvalget har minst to ulike oppførte klassifiseringer, og hvor mange?",
+      "independently_stated_intent": "For wikibase:Item subjects count distinct P31 class objects; keep two or more.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "rdf:type",
+            "to": "wikibase:Item",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P31",
+            "to": "?class",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?entity",
+          "COUNT(DISTINCT ?class) AS ?count"
+        ],
+        "group_by": [
+          "?entity"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 2
+          }
+        ],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-037",
+      "case_sha256": "a32d2ef5bff83deb507b3ceccb393ce3b4f25e96829e76ed1a7ac94c37368636",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke Wikidata-elementer finnes innenfor den valgte utviklingsgrafen?",
+      "independently_stated_intent": "Return subjects with explicit wikibase:Item type in the authorized development graph only.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "rdf:type",
+            "to": "wikibase:Item",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-038",
+      "case_sha256": "e68010c52d9f1cc2d6e44b025074a04b82db58ea78037f8edfe01a029a961813",
+      "split": "dev",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser har både oppgitt folketall over 200000 og en etableringsdato før 1100?",
+      "independently_stated_intent": "Find subjects possessing both P1082 > 200000 and P571 earlier than year 1100 in the same graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "gt",
+            "lexical": "200000",
+            "datatype": "integer"
+          },
+          {
+            "variable": "?date",
+            "op": "lt",
+            "lexical": "1100-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-039",
+      "case_sha256": "dc52084112eae599488e45101ae2bb2f9745fbb583cb817e97b38cec419389d5",
+      "split": "dev",
+      "assessment": "expected_abstention_is_plausible_ai_only",
+      "reviewed_question": "Hva er hovedstaden?",
+      "independently_stated_intent": "Country and intended scope are unspecified",
+      "expected_status": "needs_clarification",
+      "expected_plan_signature": null,
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-040",
+      "case_sha256": "2d73a8e3ca84a4e5366ee0098d0d7d390690600a0c99e072b006c0fe17f2440c",
+      "split": "dev",
+      "assessment": "expected_abstention_is_plausible_ai_only",
+      "reviewed_question": "Hvilken by er størst?",
+      "independently_stated_intent": "Largest could mean area, population or another measure",
+      "expected_status": "needs_clarification",
+      "expected_plan_signature": null,
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-041",
+      "case_sha256": "b8e2d719debce0be23b3c0a1cdaf076422309ab3c9ead5eda575acc0cd373375",
+      "split": "dev",
+      "assessment": "expected_abstention_is_plausible_ai_only",
+      "reviewed_question": "Hvor mange innbyggere har Oslo akkurat nå?",
+      "independently_stated_intent": "Current-world/time-qualified population is not established by this direct-statement capture",
+      "expected_status": "unsupported",
+      "expected_plan_signature": null,
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-042",
+      "case_sha256": "a5634988ddd442a74a6c9acfd9d0201bd87c49e502b5b6ed6d832dd1604910fc",
+      "split": "dev",
+      "assessment": "expected_abstention_is_plausible_ai_only",
+      "reviewed_question": "Hvilke byer har ikke noen etableringsdato?",
+      "independently_stated_intent": "Negation and closed-world absence inference are unsupported",
+      "expected_status": "unsupported",
+      "expected_plan_signature": null,
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-043",
+      "case_sha256": "2b5b0fe191b5043581dd7a8f6cbc6ae9b9f949e7abbd52a778a12a15a6aa1be9",
+      "split": "dev",
+      "assessment": "expected_abstention_is_plausible_ai_only",
+      "reviewed_question": "Hvilke selskaper eier Oslo kommune?",
+      "independently_stated_intent": "Ownership and municipal corporate entities are outside the selected vocabulary/data",
+      "expected_status": "unsupported",
+      "expected_plan_signature": null,
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-044",
+      "case_sha256": "2ee7dfe1ee9869fee9fbbe305300af15257be396f42c2a49bfe36efa5d771fd4",
+      "split": "dev",
+      "assessment": "expected_abstention_is_plausible_ai_only",
+      "reviewed_question": "Hvor mye vokste Bergen fra 2020 til 2025?",
+      "independently_stated_intent": "Time-qualified observations and temporal arithmetic are not supported",
+      "expected_status": "unsupported",
+      "expected_plan_signature": null,
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-045",
+      "case_sha256": "7620cce9bd7c6d39403a13a766c12fe693db5db89df608fa0999ba1265ee5184",
+      "split": "dev",
+      "assessment": "expected_abstention_is_plausible_ai_only",
+      "reviewed_question": "Vis alle kommuner i Norge.",
+      "independently_stated_intent": "Selected city entities do not form a complete municipality registry",
+      "expected_status": "unsupported",
+      "expected_plan_signature": null,
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-dev-046",
+      "case_sha256": "dd5e381137d1888868ba0446c5265339682ba01f738dcffff1b18d1465390106",
+      "split": "dev",
+      "assessment": "expected_abstention_is_plausible_ai_only",
+      "reviewed_question": "Vis aktive kontrakter for Trondheim.",
+      "independently_stated_intent": "No contract/status domain is included",
+      "expected_status": "unsupported",
+      "expected_plan_signature": null,
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [],
+      "limitations": "Question/plan matching by an AI assistant is not human expert adjudication."
+    },
+    {
+      "id": "wd-review-001",
+      "case_sha256": "522af65f79ad3ead6ce402706be2c9e7f30a3963206045a05ef767d3c2f601dd",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Oslo i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q585 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-001",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "oslo_single_english_label_in_frozen_subset"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-002",
+      "case_sha256": "feee1959f30720128021f989fcc9cd5e51e523a394258026b7d3b2cf34df945d",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Oslo i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q585 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-001",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "oslo_single_english_label_in_frozen_subset"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-003",
+      "case_sha256": "9c7cba85f8a5fa2f9feb7a1229fd99c884cd72f857eabd1e1c4b4516d18e6d8c",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Oslo knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q585 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-002",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-004",
+      "case_sha256": "a1f69bb178bed9ec22f645b644654d829f5817392432e15e9785c866ef8a4167",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Oslo knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q585 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-002",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-005",
+      "case_sha256": "dd9f4525475c7f9c4e5c1ecbd87ce531a6a16629b2397d6712eb95d28f989216",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Oslo som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q585; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-003",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-006",
+      "case_sha256": "62abaf80ae64fffb5e02c029db93d784f2f2fe3d3bb43bf8d92aa6528e68ca25",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Oslo som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q585; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-003",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-007",
+      "case_sha256": "7721ba4f64ec1a7ba9e8d3f9b130c4c2c940acb4cac675543f095cd58b282f19",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Oslo er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q585 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-004",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-008",
+      "case_sha256": "075004f8d31a879e8a8b7699f3bcfe65c1ecee8071d88537350427a14ba606a0",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Oslo er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q585 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-004",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-009",
+      "case_sha256": "dd24d388e34ab82675e003efb81375eb069cc7e98524dba358f1f2258c084073",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Oslo i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q585, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-005",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-010",
+      "case_sha256": "20c448501e7a618cf36be91a5eacba341c90d51a215eed978bf7a16b440bc60a",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Oslo i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q585, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q585",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-005",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-011",
+      "case_sha256": "874a7da11233b388070feab7fef48b470052e91811e8a44c436e59da13efaabf",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Bergen i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q26793 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-006",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-012",
+      "case_sha256": "3ff07a4ff8ca75f798d0d8734613b13797ab92a11eca0660b17098b87ddc5aa2",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Bergen i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q26793 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-006",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-013",
+      "case_sha256": "db3599fbb0b4b38eb66c7c7dabcac41b970c28fe6653fd435a7194ded9e50ef0",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Bergen knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q26793 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-007",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-014",
+      "case_sha256": "c60f719d1713de89669d8681838ba5b08673e365be48168215ba08bb1cfd4e47",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Bergen knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q26793 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-007",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-015",
+      "case_sha256": "e11cbab9a4084090407081fef3b19adf0420563ffb00d13740e30a81040af594",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Bergen som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q26793; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-008",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-016",
+      "case_sha256": "d61bb64177d1f021505791713244fdf12634640bffcc975df4c1c4df5e47947d",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Bergen som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q26793; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-008",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-017",
+      "case_sha256": "0a380160f407b161ecff36c337d7a6179c4e11fe1791a39cfdde2bd65c7dfbfe",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Bergen er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q26793 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-009",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-018",
+      "case_sha256": "cde7dad2ec4287045df9d9caae8f18f6083d6884b733701ddeccc31b06e1d2fc",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Bergen er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q26793 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-009",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-019",
+      "case_sha256": "a51cbaa8f101ec86eee56558e2d2f08fa3729a21c813caeab2b957d1d790dcad",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Bergen i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q26793, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-010",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-020",
+      "case_sha256": "9a1ea75604c04fbc36b128f3c119694e3275b987bdb58438db5697108004734b",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Bergen i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q26793, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q26793",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-010",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-021",
+      "case_sha256": "5c009302948f8c2c9e007b48ba7e8432d6d32ba2a547809bf2e3c54861ee8463",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Trondheim i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q25804 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-011",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-022",
+      "case_sha256": "2af7a1198ce2760d83c0ae031f054a0121a05aa674c2c0ff01b1c6ded5e1d611",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Trondheim i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q25804 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-011",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-023",
+      "case_sha256": "3e7287c4b4756a48ef05543c165ffe50881d6d8d87eae174a8bbbd21c2742a8f",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Trondheim knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q25804 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-012",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-024",
+      "case_sha256": "a7c4bb61df72c5be2d459c53a7244a20b85f48c7684811d46a857b7d6babd2ab",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Trondheim knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q25804 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-012",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-025",
+      "case_sha256": "5c4d7864e2cb0606a1f5f0dbc033696bbf5a373004f8e319f6ca67155fad217d",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Trondheim som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q25804; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-013",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-026",
+      "case_sha256": "2caa4a45d8141d914673599d4ddf6eb2d349f75510b4c873e8565df1a2bf4f5d",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Trondheim som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q25804; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-013",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-027",
+      "case_sha256": "e1d37a209482a246ec1a47560178f5f3ce24bd22a38fbc4e1aa0ccc7a84060fd",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Trondheim er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q25804 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-014",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-028",
+      "case_sha256": "91c274b444629e5a4c6f99cf65aeb8a38f160a1e3c98391ca79514a435942677",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Trondheim er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q25804 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-014",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-029",
+      "case_sha256": "bb9efccf6a708e9c7e44c4ec8046eaa408ba463019ae809233d9ce59d96c3cd8",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Trondheim i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q25804, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-015",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-030",
+      "case_sha256": "488bc521348802659dbe1d9ee8054d26e7bbff38010688b51a274f236aa6869b",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Trondheim i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q25804, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25804",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-015",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-031",
+      "case_sha256": "0b057e9f871dca4996bf5a4d6bc9eea9c5e406a82d1a561d960ce568e8805be8",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke navn er oppført for Stavanger kommune i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q25416 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-016",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-032",
+      "case_sha256": "b1733eb741205e31537ccbd93480a3a76b902d2d8f3b0f62a4bbe9affd0af43f",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke navn er oppført for Stavanger kommune i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q25416 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-016",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-033",
+      "case_sha256": "c88081f95e191d3f75be65011d3c30b78c4a5c07dfcc41143c458018190b0f7f",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilket land er Stavanger kommune knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q25416 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-017",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-034",
+      "case_sha256": "6fe4f728df2f9073cd09f3912739721d9637d23abeb6879f9cfdf102e3fde9b1",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilket land er Stavanger kommune knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q25416 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-017",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-035",
+      "case_sha256": "2d0830275492acff546184fb33454c4c133efac177424d5c2887b06667a3e67a",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land i utvalget har Stavanger kommune som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q25416; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-018",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-036",
+      "case_sha256": "9ba952b8ffd47da187352202d4da9727dfec161e2b63294f0fe5dbef0279c3c7",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land i utvalget har Stavanger kommune som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q25416; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-018",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-037",
+      "case_sha256": "33963ec5c6d69c26029fa2a7070f1e9384b5420a676a6d9dbc1c93065acfddc2",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hva er hovedstaden i landet som Stavanger kommune er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q25416 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-019",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-038",
+      "case_sha256": "d45eeeacd3976a6e8a2e37433c9a0b049124724681c1e5fd0005885a681d206d",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hva er hovedstaden i landet som Stavanger kommune er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q25416 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-019",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-039",
+      "case_sha256": "64b4975293f113422382f007adf712ad9c78ceaf987f499fdf23495e5f466386",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke etableringsdatoer er oppført for Stavanger kommune i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q25416, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-020",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-040",
+      "case_sha256": "542a52f96c7d18517e308e99bfeb417382b842d4aa8fcc0c69c56e1dad8a012a",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke etableringsdatoer er oppført for Stavanger kommune i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q25416, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q25416",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-020",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "municipality_entity_q25416_now_explicit_in_question"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-041",
+      "case_sha256": "581bda6f62cda4ee89b1b09e758f3f74d6ab4f1ff9f76c65c4e8eaca7c991a3c",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 100000 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population gt 100000; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "gt",
+            "lexical": "100000",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-021",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-042",
+      "case_sha256": "95a21712c7e3a5b721c410d019db13c134f8eb2d4f81d284bce556ac89420aff",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 100000 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population gt 100000; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "gt",
+            "lexical": "100000",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-021",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-043",
+      "case_sha256": "97c0fdd6c41a409b86124252d1fec880455f930c2bd2405329cbda93233698bd",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 200000 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population ge 200000; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "ge",
+            "lexical": "200000",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-022",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-044",
+      "case_sha256": "d0be4f63fbc8943aa8eb34af16521c9066cccd01500b61c58620f7f8941049db",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 200000 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population ge 200000; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "ge",
+            "lexical": "200000",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-022",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-045",
+      "case_sha256": "d0eccc4e92516af0ff0875fe081570cb347b01fa2047a1d9ed0fbc73dd5d9f1e",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på under 1000000 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population lt 1000000; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "lt",
+            "lexical": "1000000",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-023",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-046",
+      "case_sha256": "d8b483c7400f927de37ddba0d1c8f52559b920634d05c436534e171d7649c0f9",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på under 1000000 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population lt 1000000; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "lt",
+            "lexical": "1000000",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-023",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-047",
+      "case_sha256": "2ac36359d9a02d39daa9f1ac118157bc120e22fb3712641d365a6cf02916d381",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på høyst 500000 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population le 500000; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "le",
+            "lexical": "500000",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-024",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-048",
+      "case_sha256": "fd782e8406115ae94c3642576a0d3a0b2e57288449d52c8dd885f2b97174f800",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på høyst 500000 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population le 500000; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "le",
+            "lexical": "500000",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-024",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-049",
+      "case_sha256": "b012119d3336042b3b59baca43e43dd846f07736786395db52f9c647ae9b45bb",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 717710 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population gt 717710; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "gt",
+            "lexical": "717710",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-025",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-050",
+      "case_sha256": "178a82b764b70c5c43b8c6bcc0b2ab6269b2bbb965ae93af4406065818c2e996",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på mer enn 717710 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population gt 717710; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "gt",
+            "lexical": "717710",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-025",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-051",
+      "case_sha256": "21e228facf088c670c7fd44886f0b500b5ad7e9bae8cdef2f21346e16fbb762e",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 717710 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population ge 717710; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "ge",
+            "lexical": "717710",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-026",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-052",
+      "case_sha256": "8ddf0424d41a83d08daac29d2e5dd3aa568af1663ef91c92efde9292e5c7731c",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser knyttet til Norge har et oppgitt folketall på minst 717710 i utvalget?",
+      "independently_stated_intent": "Find every entity with an explicit P17 → Norway and a P1082 population ge 717710; existential over captured direct values.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "wd:Q20",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "ge",
+            "lexical": "717710",
+            "datatype": "integer"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-026",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-053",
+      "case_sha256": "42380489a4d053bfed3f0742ca52e8729a20023e5cb8329da42c30f855b08e90",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har en oppgitt etableringsdato før 1100 i grafutvalget?",
+      "independently_stated_intent": "Find entities with an explicit inception (P571) dateTime lt 1100-01-01T00:00:00Z; existential over multiple recorded dates.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?date",
+            "op": "lt",
+            "lexical": "1100-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-027",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "P571_multiple_inception_dates_and_open_world"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-054",
+      "case_sha256": "0c2ceffc50b0cc3a6206d7e30cbd84dae042665d1e9d05d18dddca5a09e2c97e",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har en oppgitt etableringsdato før 1100 i grafutvalget?",
+      "independently_stated_intent": "Find entities with an explicit inception (P571) dateTime lt 1100-01-01T00:00:00Z; existential over multiple recorded dates.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?date",
+            "op": "lt",
+            "lexical": "1100-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-027",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "P571_multiple_inception_dates_and_open_world"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-055",
+      "case_sha256": "82558db5af053d07c75eca13e1c560fbf221c560a831812afddbafcc3c1209c4",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har en oppgitt etableringsdato senest 1. januar 1200 i grafutvalget?",
+      "independently_stated_intent": "Find entities with an explicit inception (P571) dateTime le 1200-01-01T00:00:00Z; existential over multiple recorded dates.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?date",
+            "op": "le",
+            "lexical": "1200-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-028",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "P571_multiple_inception_dates_and_open_world"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-056",
+      "case_sha256": "177cba667596297aeb4dcf95806822e73fd04dbb92c1a862bd56096228fd10ee",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har en oppgitt etableringsdato senest 1. januar 1200 i grafutvalget?",
+      "independently_stated_intent": "Find entities with an explicit inception (P571) dateTime le 1200-01-01T00:00:00Z; existential over multiple recorded dates.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?date",
+            "op": "le",
+            "lexical": "1200-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-028",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "P571_multiple_inception_dates_and_open_world"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-057",
+      "case_sha256": "16aa5f38d195d3f9df77c221ecb838bea8d61f9d971ba2e22c10c02533241593",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har en oppgitt etableringsdato fra og med 1. januar 1000 i grafutvalget?",
+      "independently_stated_intent": "Find entities with an explicit inception (P571) dateTime ge 1000-01-01T00:00:00Z; existential over multiple recorded dates.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?date",
+            "op": "ge",
+            "lexical": "1000-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-029",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "P571_multiple_inception_dates_and_open_world"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-058",
+      "case_sha256": "1010f798295b99d1393764c584edf4536635220c998384266116d3ca23e59cfc",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har en oppgitt etableringsdato fra og med 1. januar 1000 i grafutvalget?",
+      "independently_stated_intent": "Find entities with an explicit inception (P571) dateTime ge 1000-01-01T00:00:00Z; existential over multiple recorded dates.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?date",
+            "op": "ge",
+            "lexical": "1000-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-029",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "P571_multiple_inception_dates_and_open_world"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-059",
+      "case_sha256": "2aa9e20b0d1b5a3aa9820a7f22bc305c29a598234a4d1a49e12292862fecb119",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har en oppgitt etableringsdato etter 1. januar 1500 i grafutvalget?",
+      "independently_stated_intent": "Find entities with an explicit inception (P571) dateTime gt 1500-01-01T00:00:00Z; existential over multiple recorded dates.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?date",
+            "op": "gt",
+            "lexical": "1500-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-030",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "P571_multiple_inception_dates_and_open_world"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-060",
+      "case_sha256": "879a34a326185fe69d37b75f02afd933079267a41d273ea76018bbecb9e61801",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har en oppgitt etableringsdato etter 1. januar 1500 i grafutvalget?",
+      "independently_stated_intent": "Find entities with an explicit inception (P571) dateTime gt 1500-01-01T00:00:00Z; existential over multiple recorded dates.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?date",
+            "op": "gt",
+            "lexical": "1500-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-030",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "P571_multiple_inception_dates_and_open_world"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-061",
+      "case_sha256": "979a91fc059c39ba9439bb6b02a4f98b7641962f7a282f35b25ca7f33bbd2350",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvor mange ulike Wikidata-elementer finnes i utviklingsutvalget?",
+      "independently_stated_intent": "Count distinct subjects explicitly typed wikibase:Item in the development graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "rdf:type",
+            "to": "wikibase:Item",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-031",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-062",
+      "case_sha256": "07cc56fb1d640016084cde45c06504ebac50f3a400a734ac94ecf69a05e9ad9e",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvor mange ulike Wikidata-elementer finnes i utviklingsutvalget?",
+      "independently_stated_intent": "Count distinct subjects explicitly typed wikibase:Item in the development graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "rdf:type",
+            "to": "wikibase:Item",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-031",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-063",
+      "case_sha256": "94b0b77657c3ccbec000a5d1fd47315fffbe5a3cd185c3ab1f242fbb52c5b994",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvor mange ulike land peker land-relasjonene i utviklingsutvalget til?",
+      "independently_stated_intent": "Count distinct objects of P17 country statements, not entity subjects.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "COUNT(DISTINCT ?country) AS ?count"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-032",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-064",
+      "case_sha256": "3bec30db83634f5e52257518e13f3fe7ef733d0bd7593c734b6539a4637636a4",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvor mange ulike land peker land-relasjonene i utviklingsutvalget til?",
+      "independently_stated_intent": "Count distinct objects of P17 country statements, not entity subjects.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "COUNT(DISTINCT ?country) AS ?count"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-032",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-065",
+      "case_sha256": "f03018afe7185bfd237e32e40398bbe0b59a9e7f2f59af6096e71aaaec0518f5",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvor mange ulike ressurser i utvalget er knyttet til hvert land?",
+      "independently_stated_intent": "Group P17 subjects by country; count distinct subjects.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country",
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [
+          "?country"
+        ],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-033",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-066",
+      "case_sha256": "f908884ab5315e317f1fc1d4562293a72e3a851bc2a3722e8b91aad8c85e2e83",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvor mange ulike ressurser i utvalget er knyttet til hvert land?",
+      "independently_stated_intent": "Group P17 subjects by country; count distinct subjects.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country",
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [
+          "?country"
+        ],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-033",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-067",
+      "case_sha256": "04f65dd569e2fe8433dc399c1e467f4c03bf1c8f041a8f85d21526f854106474",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land har minst 2 ulike tilknyttede ressurser i utvalget, og hvor mange?",
+      "independently_stated_intent": "Group P17 subjects by country; count distinct subjects and retain groups with count ≥ 2.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country",
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [
+          "?country"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 2
+          }
+        ],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-034",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-068",
+      "case_sha256": "71b887ce1eca92e66687915fec524a1f64343df2d330cf11fee5d7b44af7ce23",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land har minst 2 ulike tilknyttede ressurser i utvalget, og hvor mange?",
+      "independently_stated_intent": "Group P17 subjects by country; count distinct subjects and retain groups with count ≥ 2.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country",
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [
+          "?country"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 2
+          }
+        ],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-034",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-069",
+      "case_sha256": "24defa0c95b70e60fb28a067b2a9627d2ae024b6f951431cc6b2129b3079efa1",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke land har minst 5 ulike tilknyttede ressurser i utvalget, og hvor mange?",
+      "independently_stated_intent": "Group P17 subjects by country; count distinct subjects and retain groups with count ≥ 5.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country",
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [
+          "?country"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 5
+          }
+        ],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-035",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-070",
+      "case_sha256": "3ae7c8e09646a1fa6f8d9e518ca7517831ecfbfe9c58ad1a708568e5d4a790b0",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke land har minst 5 ulike tilknyttede ressurser i utvalget, og hvor mange?",
+      "independently_stated_intent": "Group P17 subjects by country; count distinct subjects and retain groups with count ≥ 5.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country",
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [
+          "?country"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 5
+          }
+        ],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-035",
+      "flags": [
+        "template_reuses_development_gold_not_independent",
+        "norway_self_P17_country_statement_affects_results"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-071",
+      "case_sha256": "22a812873cac6c1adffd956b63995c16de3eb23c00b4a74a70dca55d9bd306da",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke elementer i utvalget har minst to ulike oppførte klassifiseringer, og hvor mange?",
+      "independently_stated_intent": "For wikibase:Item subjects count distinct P31 class objects; keep two or more.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "rdf:type",
+            "to": "wikibase:Item",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P31",
+            "to": "?class",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?entity",
+          "COUNT(DISTINCT ?class) AS ?count"
+        ],
+        "group_by": [
+          "?entity"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 2
+          }
+        ],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-036",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-072",
+      "case_sha256": "9641c473c2dba83318685d42e2ee5a708f44fd31d9cb4fc9856759b34238f59d",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke elementer i utvalget har minst to ulike oppførte klassifiseringer, og hvor mange?",
+      "independently_stated_intent": "For wikibase:Item subjects count distinct P31 class objects; keep two or more.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "rdf:type",
+            "to": "wikibase:Item",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P31",
+            "to": "?class",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?entity",
+          "COUNT(DISTINCT ?class) AS ?count"
+        ],
+        "group_by": [
+          "?entity"
+        ],
+        "having": [
+          {
+            "alias": "count",
+            "op": "ge",
+            "value": 2
+          }
+        ],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-036",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-073",
+      "case_sha256": "8e8047879c1b7fcb1866ffd4db0352e8eb9b9b5c6a4745fb431b7f568f125487",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke Wikidata-elementer finnes innenfor den valgte utviklingsgrafen?",
+      "independently_stated_intent": "Return subjects with explicit wikibase:Item type in the authorized development graph only.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "rdf:type",
+            "to": "wikibase:Item",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-037",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-074",
+      "case_sha256": "26b98cf611f4f44bffe593576688bddbc73d4ede08e73e51c45dce575745ae70",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke Wikidata-elementer finnes innenfor den valgte utviklingsgrafen?",
+      "independently_stated_intent": "Return subjects with explicit wikibase:Item type in the authorized development graph only.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "rdf:type",
+            "to": "wikibase:Item",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-037",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-075",
+      "case_sha256": "a8009bd1518e74e23e59a019ecb56ab28de63e7888ddf1f3fe89530492b63b68",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Bruk bare opplysningene i dette grafutvalget: Hvilke ressurser har både oppgitt folketall over 200000 og en etableringsdato før 1100?",
+      "independently_stated_intent": "Find subjects possessing both P1082 > 200000 and P571 earlier than year 1100 in the same graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "gt",
+            "lexical": "200000",
+            "datatype": "integer"
+          },
+          {
+            "variable": "?date",
+            "op": "lt",
+            "lexical": "1100-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-038",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-review-076",
+      "case_sha256": "007b8c43aae735b3b8cdceb84d0e4b57c529e18c027d1ebd16a1dc35b5145d53",
+      "split": "review_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Med den lagrede grafversjonen som grunnlag: Hvilke ressurser har både oppgitt folketall over 200000 og en etableringsdato før 1100?",
+      "independently_stated_intent": "Find subjects possessing both P1082 > 200000 and P571 earlier than year 1100 in the same graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "P1082",
+            "to": "?population",
+            "direction": "forward"
+          },
+          {
+            "from": "?entity",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [
+          {
+            "variable": "?population",
+            "op": "gt",
+            "lexical": "200000",
+            "datatype": "integer"
+          },
+          {
+            "variable": "?date",
+            "op": "lt",
+            "lexical": "1100-01-01T00:00:00Z",
+            "datatype": "dateTime"
+          }
+        ],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "development"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": "wd-dev-038",
+      "flags": [
+        "template_reuses_development_gold_not_independent"
+      ],
+      "limitations": "Paraphrase prefix and answer/plan are reused; not an independently authored test."
+    },
+    {
+      "id": "wd-transfer_candidate-001",
+      "case_sha256": "30684f722ec717911e4a822019266b5c2ce5702fdebae6a942fab6b4448b27ea",
+      "split": "transfer_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke navn er oppført for Stockholm i utvalget?",
+      "independently_stated_intent": "Return RDF labels of wd:Q1754 within the selected graph, preserving language tags.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q1754",
+            "predicate": "rdfs:label",
+            "to": "?label",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?label"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "transfer"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "same_wikidata_ontology_not_cross_ontology"
+      ],
+      "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
+    },
+    {
+      "id": "wd-transfer_candidate-002",
+      "case_sha256": "c4e45ae062a3a1a76a3f4eb5b9e66e53106f41457d5783f6704c4222548f2b36",
+      "split": "transfer_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilket land er Stockholm knyttet til i grafen?",
+      "independently_stated_intent": "Return objects of wd:Q1754 → P17 (country) in the selected named graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q1754",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "transfer"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "same_wikidata_ontology_not_cross_ontology"
+      ],
+      "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
+    },
+    {
+      "id": "wd-transfer_candidate-003",
+      "case_sha256": "47d92a16391f7fd3cca0292bae788ae809975af91a81f04de106fa34738e0404",
+      "split": "transfer_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke land i utvalget har Stockholm som hovedstad?",
+      "independently_stated_intent": "Return subjects of P36 (capital) pointing to wd:Q1754; direction is reversed.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q1754",
+            "predicate": "P36",
+            "to": "?country",
+            "direction": "reverse"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "transfer"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "same_wikidata_ontology_not_cross_ontology"
+      ],
+      "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
+    },
+    {
+      "id": "wd-transfer_candidate-004",
+      "case_sha256": "147f3f759744538a69ef0a450c189e377e844802e4d16100eb7dd405ab3366c8",
+      "split": "transfer_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hva er hovedstaden i landet som Stockholm er knyttet til?",
+      "independently_stated_intent": "Traverse wd:Q1754 → P17 → country → P36 → capital; require both edges.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q1754",
+            "predicate": "P17",
+            "to": "?country",
+            "direction": "forward"
+          },
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "transfer"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "same_wikidata_ontology_not_cross_ontology"
+      ],
+      "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
+    },
+    {
+      "id": "wd-transfer_candidate-005",
+      "case_sha256": "aeab55df95ac4e8f0ceefe4d81c04bdbf4ad0b55d99f0fa958ee1ad6c14e1780",
+      "split": "transfer_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke etableringsdatoer er oppført for Stockholm i grafutvalget?",
+      "independently_stated_intent": "Return all selected P571 inception values of wd:Q1754, not an asserted single true founding date.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "wd:Q1754",
+            "predicate": "P571",
+            "to": "?date",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?date"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "transfer"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "same_wikidata_ontology_not_cross_ontology"
+      ],
+      "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
+    },
+    {
+      "id": "wd-transfer_candidate-006",
+      "case_sha256": "50bfe32f7c560d17d13713cd0532a251daddf817effea16033f944bad7c16fe2",
+      "split": "transfer_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke Wikidata-elementer er oppført i den valgte overføringsgrafen?",
+      "independently_stated_intent": "Return explicitly typed wikibase:Item subjects from only the transfer named graph; no claim of exclusive graph membership.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "rdf:type",
+            "to": "wikibase:Item",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?entity"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "transfer"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "same_wikidata_ontology_not_cross_ontology",
+        "scope_only_wording_now_explicit_no_exclusivity_claim"
+      ],
+      "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
+    },
+    {
+      "id": "wd-transfer_candidate-007",
+      "case_sha256": "572b2cdf25dff5a36b0eeb44208c05397d3f4509e0a594d986de04f488a2bc75",
+      "split": "transfer_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvor mange ulike elementer finnes i overføringsutvalget?",
+      "independently_stated_intent": "Count distinct wikibase:Item subjects in the transfer graph.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?entity",
+            "predicate": "rdf:type",
+            "to": "wikibase:Item",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "COUNT(DISTINCT ?entity) AS ?count"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "transfer"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "same_wikidata_ontology_not_cross_ontology"
+      ],
+      "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
+    },
+    {
+      "id": "wd-transfer_candidate-008",
+      "case_sha256": "83456a1072242f00d09ff98e46a1dbebc5981b043f04d07cffbc9909932bc0dc",
+      "split": "transfer_candidate",
+      "assessment": "provisionally_consistent_ai_only",
+      "reviewed_question": "Hvilke ressurser har en eksplisitt hovedstadsrelasjon i overføringsgrafen, og hvilke hovedsteder peker de til?",
+      "independently_stated_intent": "Return subjects and objects of the recorded P36 capital relation within the transfer graph; no claim that the subject was independently type-checked as a country.",
+      "expected_status": "executed",
+      "expected_plan_signature": {
+        "patterns": [
+          {
+            "from": "?country",
+            "predicate": "P36",
+            "to": "?capital",
+            "direction": "forward"
+          }
+        ],
+        "filters": [],
+        "projection": [
+          "?country",
+          "?capital"
+        ],
+        "group_by": [],
+        "having": [],
+        "scope": [
+          "transfer"
+        ]
+      },
+      "observed_plan_matches_intent_signature": true,
+      "source_template_id": null,
+      "flags": [
+        "same_wikidata_ontology_not_cross_ontology",
+        "subject_type_not_required_by_corrected_question"
+      ],
+      "limitations": "Same-ontology geographic candidate; not a cross-ontology or locked transfer holdout."
+    }
+  ],
+  "correction_history": {
+    "status": "AI_adjudicated_wording_and_intent_only_not_human_approved",
+    "date": "2026-10-16",
+    "modified_case_ids": [
+      "wd-dev-001",
+      "wd-dev-002",
+      "wd-dev-003",
+      "wd-dev-004",
+      "wd-dev-005",
+      "wd-dev-006",
+      "wd-dev-007",
+      "wd-dev-008",
+      "wd-dev-009",
+      "wd-dev-010",
+      "wd-dev-011",
+      "wd-dev-012",
+      "wd-dev-013",
+      "wd-dev-014",
+      "wd-dev-015",
+      "wd-dev-016",
+      "wd-dev-017",
+      "wd-dev-018",
+      "wd-dev-019",
+      "wd-dev-020",
+      "wd-dev-021",
+      "wd-dev-022",
+      "wd-dev-023",
+      "wd-dev-024",
+      "wd-dev-025",
+      "wd-dev-026",
+      "wd-dev-027",
+      "wd-dev-028",
+      "wd-dev-029",
+      "wd-dev-030",
+      "wd-dev-031",
+      "wd-dev-032",
+      "wd-dev-033",
+      "wd-dev-034",
+      "wd-dev-035",
+      "wd-dev-036",
+      "wd-dev-037",
+      "wd-dev-038",
+      "wd-review-001",
+      "wd-review-002",
+      "wd-review-003",
+      "wd-review-004",
+      "wd-review-005",
+      "wd-review-006",
+      "wd-review-007",
+      "wd-review-008",
+      "wd-review-009",
+      "wd-review-010",
+      "wd-review-011",
+      "wd-review-012",
+      "wd-review-013",
+      "wd-review-014",
+      "wd-review-015",
+      "wd-review-016",
+      "wd-review-017",
+      "wd-review-018",
+      "wd-review-019",
+      "wd-review-020",
+      "wd-review-021",
+      "wd-review-022",
+      "wd-review-023",
+      "wd-review-024",
+      "wd-review-025",
+      "wd-review-026",
+      "wd-review-027",
+      "wd-review-028",
+      "wd-review-029",
+      "wd-review-030",
+      "wd-review-031",
+      "wd-review-032",
+      "wd-review-033",
+      "wd-review-034",
+      "wd-review-035",
+      "wd-review-036",
+      "wd-review-037",
+      "wd-review-038",
+      "wd-review-039",
+      "wd-review-040",
+      "wd-review-041",
+      "wd-review-042",
+      "wd-review-043",
+      "wd-review-044",
+      "wd-review-045",
+      "wd-review-046",
+      "wd-review-047",
+      "wd-review-048",
+      "wd-review-049",
+      "wd-review-050",
+      "wd-review-051",
+      "wd-review-052",
+      "wd-review-053",
+      "wd-review-054",
+      "wd-review-055",
+      "wd-review-056",
+      "wd-review-057",
+      "wd-review-058",
+      "wd-review-059",
+      "wd-review-060",
+      "wd-review-061",
+      "wd-review-062",
+      "wd-review-063",
+      "wd-review-064",
+      "wd-review-065",
+      "wd-review-066",
+      "wd-review-067",
+      "wd-review-068",
+      "wd-review-069",
+      "wd-review-070",
+      "wd-review-071",
+      "wd-review-072",
+      "wd-review-073",
+      "wd-review-074",
+      "wd-review-075",
+      "wd-review-076",
+      "wd-transfer_candidate-001",
+      "wd-transfer_candidate-002",
+      "wd-transfer_candidate-003",
+      "wd-transfer_candidate-004",
+      "wd-transfer_candidate-005",
+      "wd-transfer_candidate-006",
+      "wd-transfer_candidate-007",
+      "wd-transfer_candidate-008"
+    ],
+    "changes": [
+      "Disambiguated Stavanger municipality Q25416 in five development cases and ten derived templates",
+      "Removed exclusivity implication in transfer candidate 006",
+      "Aligned capital relation question wording to the supported untyped P36 plan in transfer candidate 008",
+      "Replaced generic circular intention descriptions in all 122 executable cases"
+    ],
+    "reference_queries_and_expected_bindings_unchanged": true
+  }
+}
