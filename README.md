@@ -2,189 +2,64 @@
 
 **Ask naturally. Verify against the graph.**
 
-Graph Verity is an open-source, **local-first RDF search and question-answering engine** being designed to turn everyday questions into answers backed by actual knowledge-graph facts.
+Graph Verity is a local-first RDF question-answering project. Its **deterministic pre-LLM core is implemented on the feature-branch PR stack**: manually authored or fixture-supplied typed plans are validated in Rust, compiled into read-only SPARQL, and executed in embedded Oxigraph with scoped RDF evidence.
 
-It combines **semantic search to understand what you're looking for** with **SPARQL to check what the graph really says**. For multi-part questions, a small local language model helps build a query plan—but a deterministic Rust compiler, not the model, produces the SPARQL.
+**Natural-language interpretation, local model inference, embeddings, Find/search, SHACL validation and HTTP serving are not implemented.** Successful graph execution does not establish that a question was understood or that the graph's statements are true in the world.
 
-> **Project status: design / early development.** The implementation plan is available; the APIs, CLI and model integrations shown below are **planned**, not yet runnable.
+## Try the implemented pipeline
 
-## Why build it?
+The complete implementation is on `feat/pre-llm-readiness` until the stacked PRs are reviewed and merged. Install Rust through rustup and Python 3.12 on Linux; the checked-in toolchain and dependency files pin the versions used by CI. Linux x86-64 / Ubuntu 24.04 is the tested target, not a claim of verification on every platform.
 
-A normal search engine matches words. A semantic search engine understands similar meanings. A **knowledge graph** also records *relationships*—who owns what, which contract belongs to which supplier, or which regulation applies to a service.
+```sh
+git clone --branch feat/pre-llm-readiness https://github.com/grove/graph-verity.git
+cd graph-verity
+rustup install
+python3 -m venv .venv
+.venv/bin/pip install -r tools/requirements.txt
+.venv/bin/python tools/verify_pre_llm.py
+```
 
-Imagine this (fictional) RDF dataset:
+The verification command acquires locked Cargo dependencies, checks formatting and Clippy, runs Rust and reporting tests, verifies retained source hashes, rebuilds the dataset byte-for-byte, checks independently written reference queries, checks schema/catalog determinism, runs the development oracle, and demonstrates manual execution, fixture replay and rejected/unsupported proposals. It never refreshes RDF sources, rewrites gold, evaluates review/transfer candidates, downloads a model or invokes inference.
 
-~~~text
-Oslo Municipality ──owns──────────> North Energy AS
-North Energy AS ────supplies───────> Public Agency
-North Energy AS ────hasContract────> Contract A (active)
-North Energy AS ────hasContract────> Contract B (active)
-North Energy AS ────hasContract────> Contract C (active)
-~~~
+Results and command logs are written to `artifacts/pre-llm/`, including `verification.json`, `summary.md`, and `oracle/report.json` / `oracle/report.md`. CI preserves the directory as a workflow artifact. Build dependencies need network access on a first checkout; data verification and the query runtime use checked-in data locally.
 
-You ask in Norwegian or English:
+### Manual plan and fixture replay
 
-> **Which municipality-owned companies have at least three active contracts?**
+```sh
+cargo run --locked -p verity_cli -- inspect data/wikidata/snapshot.nq nquads
+cargo run --locked -p verity_cli -- run data/wikidata/snapshot.nq nquads data/wikidata/policy.json examples/manual-plan.json
+cargo run --locked -p verity_cli -- replay data/wikidata/snapshot.nq nquads data/wikidata/policy.json data/wikidata/scope.json examples/question.txt examples/fixture-response.json
+cargo run --locked -p verity_cli -- evaluate data/wikidata/snapshot.nq nquads data/wikidata/policy.json benchmarks/wikidata.json dev artifacts/oracle
+```
 
-Finding words that resemble the question is not enough. The engine must identify the right concepts and directed relationships, traverse the RDF graph, **count distinct contracts**, and show why each result qualifies.
+The supplied two-hop example follows Oslo's recorded country relationship and that country's recorded capital relationship. The result is an RDF identifier plus the contributing source statements, query plan, snapshot and scope. The fixture adapter replays a recorded response; it does not understand new Norwegian questions.
 
-That's what Graph Verity aims to do—without requiring every user to write SPARQL.
+Other implemented commands are `schema`, `smoke`, `catalog` and exact `resolve`. The [query contract](docs/query-contract.md) describes the arguments, IR and limitations. [Example plans and responses](examples/) are executable inputs, not proposed APIs.
 
-## Two ways to use Graph Verity
+## What is implemented
 
-| Mode | Ask | What it does |
-| --- | --- | --- |
-| **Find** | “Which company operates district heating in Oslo?” | Find likely entities, predicates, classes or SHACL shapes using multilingual semantic and keyword search. Optionally verify specific graph facts. |
-| **Ask** | “Which municipality-owned suppliers have more than 50 employees and at least three active contracts?” | Interpret supported conditions, build a **typed query plan**, then execute exact, read-only SPARQL over the requested graph scope. |
+`verity_core` contains bounded RDF ingestion, immutable byte-addressed snapshots, an authorized observed-vocabulary catalog, strict versioned JSON contracts, deterministic query compilation, local execution/evidence, a fixture-backed parser boundary and shared oracle/proposal evaluation. `verity_cli` is a thin local driver.
 
-**The distinction matters:** a vector search result is a *candidate*, not proof. And checking only the top 20 candidates does not establish that every matching entity has been found. For structured questions, the engine must run a formal graph query rather than limit the answer to vector hits.
+Supported plans include entity/class references, forward/reverse edges, connected one- and two-hop joins, conjunctions, numeric/date comparisons, projection, `COUNT(DISTINCT)`, `GROUP BY`, `HAVING` and explicit named graphs. Unsupported query syntax, identifiers, types, bindings and graph scopes fail validation. There is no public raw-SPARQL or write endpoint. See [the full contract and resource limits](docs/query-contract.md).
 
-## How it works
+Results distinguish `executed`, `truncated`, abstention and errors. They disclose manual/fixture origin, `interpretation_correctness: not_assessed`, `real_world_truth: not_established`, result completeness and separately bounded evidence. Missing graph facts do not imply false real-world statements.
 
-~~~mermaid
-flowchart TD
-    Q["Question in natural language"] --> R["Discover RDF entities and vocabulary<br/>EmbeddingGemma 2 + BM25"]
-    R --> D{"Find or Ask?"}
-    D -->|Find| C["Candidate ranking<br/>optional local reranker"]
-    D -->|Ask| P["Small local semantic parser<br/>grammar-constrained JSON"]
-    P --> T["Typed IR validation<br/>ontology + permissions + scope"]
-    T --> S["Deterministic IR → SPARQL"]
-    C --> V["Evidence / constraint checks"]
-    S --> O[("Oxigraph · local RDF graph")]
-    O --> V
-    V --> A["Answer + RDF evidence + provenance"]
-~~~
+## Real data and benchmark status
 
-### Understanding the question
+The first retained real dataset is a **600-quad bounded Wikidata geography capture**, with revision-addressed raw RDF, source hashes, original RDF identifiers and literal metadata. It is not a synthetic procurement dataset and is not representative of the planned serving scale. Norwegian organizational RDF was evaluated as a closer domain fit but was not reproducibly captured in this implementation. See [dataset selection, licensing and extraction](data/wikidata/README.md).
 
-**EmbeddingGemma 2** maps questions and RDF descriptions into vectors for multilingual retrieval. **BM25** adds exact matches for organization names, identifiers and technical terms. The resulting catalog helps the engine find the *actual* predicates, entity IDs, classes and shapes in your RDF dataset.
+The benchmark contains **130 machine-authored candidate questions**: 46 development cases, 76 templated review candidates and 8 geographic-transfer candidates. Development includes **38 executable queries and 8 recorded clarification/unsupported cases**. Those eight cases are bookkeeping, not demonstrated model abstention. Template reuse does not create independent semantic evidence. None of the gold is represented as expert-approved; no independently reviewed locked holdout has been completed.
 
-For a complex question, a **small, quantized local generative model** (the first integration to evaluate is llama.cpp) receives a restricted selection of those ontology terms. It proposes structured JSON such as *traverse this relation, filter by this number, count those contracts*.
+See [benchmark review and evaluation](docs/benchmark-review.md), [proposed numerical gates](configs/phase-0-gates.proposed.json), and [pre-LLM readiness](docs/pre-llm-readiness.md). Compiler-oracle results are not natural-language accuracy or a Phase 0 go decision.
 
-The generative model **never writes raw SPARQL**. Rust validates the proposed **typed intermediate representation (IR)**, checks permissions, types and edge directions, and compiles only supported operations into a read-only query.
+## Next: the local semantic-parser experiment
 
-Grammar-constrained JSON is not automatically correct: the model can still choose the wrong operator or relationship. Graph Verity will test its *semantic* accuracy against expert-authored RDF queries and explicitly reject questions it cannot interpret safely.
+After explicit authorization, implement the local inference backend behind `SemanticParser`, pin and test the actual runtime/grammar/model combination, and preserve independent Rust validation. First evaluate development questions with authorized vocabulary; freeze the approved protocol and independent holdout before making feasibility claims. [The integration handoff](docs/local-parser-handoff.md) records prerequisites and pending measurements.
 
-### Checking the answer
+The longer-term design has two distinct modes: **Find** ranks vocabulary/entities and may miss answers; **Ask** executes a validated formal plan within a declared graph scope. Retrieval, model inference, SHACL, production serving and hardening remain future work. The [implementation plan](docs/implementation-plan.md) and [Phase 0 feasibility protocol](docs/phase-0-feasibility.md) describe those design goals; this README and readiness report describe the runnable implementation.
 
-**Oxigraph** executes the compiled SPARQL over the selected graph scope. **SHACL** describes formal RDF constraints such as required fields, allowed value types and cardinalities. Graph Verity will **reuse an existing SHACL library where possible**, with a carefully tested subset as a fallback—not reimplement the whole SHACL standard.
+## Review and contribution
 
-A successful SPARQL execution validates the **executed plan against the chosen graph**, not that the model understood the user's intended question or that the graph's claims are true in the world. Expose the resolved plan, selected relations, scope and evidence, and assess semantic interpretation accuracy separately. Results should include their source graph, snapshot and supporting facts, and distinguish **verified**, **not conformant**, **unsupported**, **ambiguous**, and **unknown** cases. Missing RDF data does not automatically mean a claim is false.
+Review the stacked changes in order: [foundation #11](https://github.com/grove/graph-verity/pull/11), [core #12](https://github.com/grove/graph-verity/pull/12), [dataset/benchmark #13](https://github.com/grove/graph-verity/pull/13), then the readiness/verification PR. No PR is automatically merged. Human RDF/benchmark review is still needed before closing the related Phase 0 acceptance gates.
 
-## Guiding principles
-
-- **Evidence before confidence.** Similarity is useful for finding things; RDF, SPARQL and applicable SHACL rules determine what is actually supported.
-- **Local-first.** One Rust serving process, local models, local indexes and Oxigraph—no hosted inference API or separate database server.
-- **Ontology-aware, not ontology-inventing.** The parser selects from real, authorized graph vocabulary instead of hallucinating predicate names.
-- **Multilingual.** Initially focus on Norwegian questions over Norwegian- and English-labeled RDF graphs.
-- **Safe by construction.** Strict query IR, read-only SPARQL, permission-aware graph scopes and resource limits.
-- **Honest uncertainty.** Unsupported questions and incomplete graphs must not result in fabricated certainty.
-- **Benchmark before complexity.** Prefer a strong text+keyword baseline, with optional reranking; postpone graph-neural-network research until it demonstrates measurable value.
-
-## Planned technology stack
-
-| Component | Technology | Why |
-| --- | --- | --- |
-| RDF and SPARQL | [Oxigraph](https://github.com/oxigraph/oxigraph) | Embedded RDF quad store and exact graph querying. |
-| Semantic retrieval | **EmbeddingGemma 2** | Multilingual text embeddings, initially truncated to 256 dimensions. |
-| Keyword retrieval | **BM25** | Exact identifiers and technical vocabulary. |
-| Retrieval reranking | **Optional** local multilingual cross-encoder | Improve ranking *if* tests justify its CPU latency and RAM. |
-| Semantic parsing | Small local generative model; evaluate [llama.cpp](https://github.com/ggml-org/llama.cpp) | Grammar-constrained proposals for typed JSON IR. |
-| Query compiler | Rust typed-IR validator + compiler | Produce safe, scoped, read-only SPARQL—not free-form model-generated queries. |
-| SHACL validation | Evaluate [Rudof](https://github.com/rudof-project/rudof) / Rust `shacl` first | Reuse established parsing/validation; test supported semantics against reference fixtures. |
-| Serving runtime | **Rust**, two initial crates (`verity_core` and `verity_cli`) | Local, simple deployment without premature workspace fragmentation. |
-| Text inference | [ONNX Runtime](https://onnxruntime.ai/) | Local CPU embedding inference, with model/runtime parity tests. |
-| Graph ML | CompGCN / R-GCN **after MVP, if justified** | Optional research; not required for the first working product. |
-
-**Delivery assumptions:** A working prototype might take 4–8 weeks; a limited-domain MVP 3–5 months; a hardened pilot 6–9 months, contingent on expertise, hardware, dataset quality and Phase 0 evaluation. These are planning ranges, not commitments. An unrestricted question-answering system is not a bounded MVP deliverable.
-
-**Scope for the first release:** a clearly defined RDF domain with approximately **10,000–100,000 searchable resources**, backed by a reproducible benchmark. Inference times and reranking gains are **not guaranteed** until tested on the target CPU.
-
-## Planned developer experience
-
-A future exploratory search could look like:
-
-~~~http
-POST /v1/search
-Content-Type: application/json
-
-{
-  "question": "Who owns North Energy?",
-  "k": 10
-}
-~~~
-
-And a structured question could look like:
-
-~~~http
-POST /v1/ask
-Content-Type: application/json
-
-{
-  "question": "Which suppliers have at least three active contracts with Oslo Municipality?"
-}
-~~~
-
-The proposed responses include resolved RDF identifiers, the scope/snapshot queried, a readable plan summary, evidence and a clear completeness status **when a full formal query supports it**.
-
-**These are illustrative API designs, not implemented endpoints.** Installation, CLI examples and a hands-on tutorial will follow the first executable milestone.
-
-## Roadmap
-
-- [ ] **Phase 0 — Benchmark and feasibility spike:** select one real, imperfect RDF domain; author 100–200 expert-reviewed Norwegian questions with gold IR/SPARQL and known answers; implement a tiny deterministic IR→SPARQL compiler; benchmark a small local grammar-constrained parser immediately. Establish stop/go criteria before committing to the full architecture.
-- [ ] **Phase 1 — RDF ingestion:** load Oxigraph, preserve provenance, discover predicates/classes/shapes and evaluate existing SHACL tooling.
-- [ ] **Phase 2 — Hybrid search:** EmbeddingGemma 2, BM25, 256-dimensional vector index and `/v1/search`.
-- [ ] **Phase 3 — Verification:** graph evidence, supported SHACL rules and differential conformance tests.
-- [ ] **Phase 4 — Expand validated question families:** productionize the local semantic parser proven in Phase 0; improve ontology-aware context, typed IR, safe SPARQL and `/v1/ask`.
-- [ ] **Phase 5 — Optional reranking:** benchmark a local cross-encoder on top 10/20/50 candidates; adopt it only if quality justifies cost.
-- [ ] **Phase 6 — Pilot and hardening:** coherent versioned bundles, graph updates, offline packaging, limits, authorization and rollback.
-
-**CompGCN/R-GCN are deliberately deferred to post-MVP research**, not scheduled as the fifth MVP phase.
-
-See the **[Phase 0 feasibility protocol](docs/phase-0-feasibility.md)** for benchmark composition, go/no-go tests, cross-ontology transfer, and safety checks.
-
-Read the **[detailed implementation plan](docs/implementation-plan.md)** for architecture, query IR, data provenance, testing, phase gates, SHACL semantics and design trade-offs.
-
-## Repository layout (planned)
-
-~~~text
-graph-verity/
-├── README.md
-├── LICENSE
-├── docs/
-│   ├── implementation-plan.md
-│   └── phase-0-feasibility.md
-├── crates/
-│   ├── verity_core/       # Engine library and internal modules
-│   └── verity_cli/        # CLI and optional HTTP server
-├── ml/                    # Offline model export and evaluation
-├── tests/                 # RDF/SHACL fixtures and golden queries
-└── configs/               # Planned runtime and evaluation configuration
-~~~
-
-The runtime code directories above are **planned**, not necessarily present in the repository yet.
-
-## Correctness and limitations
-
-Graph Verity does **not** claim that embedding similarity proves a fact, that local language models understand every question, or that RDF data is complete.
-
-- **Find** offers ranked candidates; these results may omit valid matches.
-- **Ask** aims to produce a complete result **within an explicitly defined graph scope and supported query semantics**, after validated query planning and SPARQL execution.
-- **SHACL** checks constraints. Violating a rule may itself be a relevant answer to a data-quality question.
-- **Unsupported or ambiguous questions** should produce explicit statuses, not plausible but unverified answers.
-
-This is a core design principle—not just an implementation detail.
-
-## Contributing
-
-Graph Verity is at the design stage. Contributions are welcome around RDF example datasets, ontology vocabulary resolution, Norwegian↔English retrieval tests, local semantic parsing, SHACL conformance, safe SPARQL compilation, performance and developer experience.
-
-Please read the [implementation plan](docs/implementation-plan.md) and open a GitHub issue to discuss substantial architecture changes before implementing them.
-
-## License
-
-See [LICENSE](LICENSE) for the repository license. Models, datasets and native runtime dependencies may have separate license terms.
-
----
-
-**Graph Verity** · *Ask naturally. Verify against the graph.*
+Code and original fixtures use [Apache-2.0](LICENSE). Retained Wikidata structured RDF is CC0-1.0 as documented with the dataset. Model/runtime licenses will require separate review when a model is selected.

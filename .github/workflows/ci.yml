@@ -11,21 +11,22 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
       - name: Install pinned Rust toolchain
         run: rustup install
-      - name: Formatting
-        run: cargo fmt --all --check
-      - name: Clippy
-        if: ${{ !cancelled() }}
-        run: cargo clippy --workspace --all-targets --locked -- -D warnings
-      - name: Tests
-        if: ${{ !cancelled() }}
-        run: cargo test --workspace --locked
-      - name: Smoke CLI
-        if: ${{ !cancelled() }}
-        run: cargo run --locked -p verity_cli -- smoke tests/fixtures/smoke.trig trig
+      - name: Install pinned reference-query dependencies
+        run: python3 -m venv .venv && .venv/bin/pip install -r tools/requirements.txt
+      - name: Verify the complete pre-LLM pipeline without refreshing data or gold
+        run: .venv/bin/python tools/verify_pre_llm.py
+      - name: Preserve verification results, including failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: pre-llm-verification-${{ github.sha }}
+          path: artifacts/pre-llm/
+          if-no-files-found: warn
+          retention-days: 30

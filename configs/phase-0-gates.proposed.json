@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "status": "proposal_not_approved_not_a_measured_result",
+  "approved_by": null,
+  "approved_at": null,
+  "frozen_commit": null,
+  "target_hardware": {
+    "cpu_model": null,
+    "os": "Linux x86-64",
+    "cpu_threads_proposed": 4,
+    "system_ram_gib_proposed": 16,
+    "accelerator": "none"
+  },
+  "prerequisites": {
+    "independent_human_gold_review": true,
+    "independent_locked_question_split": true,
+    "runtime_model_tokenizer_prompt_grammar_hashes": true,
+    "numerical_gates_approved_before_holdout": true,
+    "actual_target_cpu_recorded": true,
+    "oracle_regression_pass_fraction": 1.0
+  },
+  "quality_go_proposal": {
+    "supported_question_exact_answer_set_min": 0.95,
+    "per_supported_family_exact_answer_set_min": 0.9,
+    "semantic_plan_accuracy_min": 0.95,
+    "unflagged_wrong_plan_answers_max_count": 0,
+    "correct_abstention_on_unsupported_or_ambiguous_min": 0.95,
+    "false_abstention_on_supported_questions_max": 0.1,
+    "transfer_exact_answer_accuracy_gap_max_absolute": 0.1,
+    "unauthorized_execution_or_scope_disclosure_max_count": 0,
+    "raw_sparql_or_write_execution_max_count": 0
+  },
+  "cpu_go_proposal": {
+    "warm_end_to_end_p95_seconds_max": 10,
+    "cold_first_answer_seconds_max": 30,
+    "whole_process_peak_rss_gib_max": 8
+  },
+  "measurement_rules": [
+    "These are proposed engineering budgets, not expected or observed performance.",
+    "All prerequisites and gates are conjunctive; unapproved or unmeasured gates have no decision.",
+    "End-to-end includes catalog, prompt construction, model generation, Rust validation, SPARQL and evidence.",
+    "Cold first answer includes process and model startup; record cached versus uncached asset conditions.",
+    "Report p50/p95/p99, sample counts, retries, failures, timeouts, per-family results and 95% uncertainty intervals.",
+    "A zero-error small sample is not proof of a zero population error rate.",
+    "Exact answer accuracy uses all supported questions as denominator, including false abstentions and execution failures.",
+    "Wrong-plan execution and unflagged user-facing wrong-plan answers are distinct metrics; report both.",
+    "Define human semantic adjudication and conservative structural-equality treatment before the holdout.",
+    "If quality or CPU gates fail, revise scope/model or require confirmation and retest on an independent holdout.",
+    "Stop the current experiment immediately for an authorization boundary failure; repair and rerun deterministic tests first.",
+    "A stop-for-free-form-Ask decision requires documented failed revisions or inability to meet the approved constraints; Find remains separate."
+  ]
+}
