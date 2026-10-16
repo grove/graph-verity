@@ -108,7 +108,6 @@ class AIAuditTests(unittest.TestCase):
         self.assertIs(self.audit["reviewer"]["source_human_review_ledger_modified"], False)
         self.assertEqual({r["assessment"] for r in self.audit["cases"]}, {
             "provisionally_consistent_ai_only",
-            "needs_question_or_plan_adjudication",
             "expected_abstention_is_plausible_ai_only",
         })
         self.assertEqual(sum(r["assessment"] == "needs_question_or_plan_adjudication"
