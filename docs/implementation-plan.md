@@ -432,12 +432,14 @@ CompGCN and R-GCN are **not MVP benchmarks**. After release, compare them agains
 | Phase | Indicative timing | Deliverables | Exit criterion |
 |---|---|---|---|
 | **0. Benchmark + parser feasibility** | Weeks 1–4 (overlapping prototype work) | Real RDF domain, 100–200 gold questions, tiny typed IR→SPARQL compiler and oracle; local parser grammar/runtime spike on target CPU; unsupported-question and transfer tests. | Documented go / revise / stop decision based on locked end-to-end answer correctness, wrong-plan risk, abstention and CPU/RAM. |
-| **1. RDF ingestion and vocabulary** | Weeks 3–4 | Oxigraph, deterministic graph/named graphs, ontology catalog, verbalization, SHACL library assessment. | Reproducible import and vocabulary ID tests. |
-| **2. Hybrid search** | Weeks 5–7 | EmbeddingGemma ONNX, Rust parity, flat vector index, BM25, `/v1/search`. | B2 retrieval quality, pre-rerank Recall@50 and CPU measurements. |
-| **3. RDF/SHACL verification** | Weeks 8–10 | Existing validator integration or bounded cached SPARQL constraint templates; evidence. | Differential parity for supported SHACL fixtures. |
+| **1. RDF ingestion and vocabulary** | After Phase 0 go decision | Oxigraph, deterministic graph/named graphs, ontology catalog, verbalization, SHACL library assessment. | Reproducible import and vocabulary ID tests. |
+| **2. Hybrid search** | MVP implementation | EmbeddingGemma ONNX, Rust parity, flat vector index, BM25, `/v1/search`. | B2 retrieval quality, pre-rerank Recall@50 and CPU measurements. |
+| **3. RDF/SHACL verification** | MVP implementation | Existing validator integration or bounded cached SPARQL constraint templates; evidence. | Differential parity for supported SHACL fixtures. |
 | **4. Expand parser + query compiler** | After proven Phase 0 spike | Improve ontology-scoped context, harden validated IR compiler, add supported families and `/v1/ask`. | Held-out Norwegian families pass accuracy, transfer, calibration and safe-abstention gates on target CPU. |
-| **5. Optional reranker + error analysis** | Weeks 16–17 | B3 comparison on 10/20/50 candidates, latency/RAM, retrieval failure analysis. | Explicit adopt/reject decision vs B2. |
-| **6. Hardening and pilot** | Weeks 18–20 | Compatible bundle activation, delta updates, permissions, offline packaging, load/rollback tests. | Pilot definition of done. |
+| **5. Optional reranker + error analysis** | After working baseline | B3 comparison on 10/20/50 candidates, latency/RAM, retrieval failure analysis. | Explicit adopt/reject decision vs B2. |
+| **6. Hardening and pilot** | Pilot stage (6–9 month planning range overall) | Compatible bundle activation, delta updates, permissions, offline packaging, load/rollback tests. | Pilot definition of done. |
+
+**These phases are sequential dependencies, not a fixed 20-week calendar;** parallelism and iteration depend on benchmark gates, data quality and capacity. The feasibility spike may justify a narrower Find-only release.
 
 **Deferred:** CompGCN/R-GCN training, relational vector refresh, and model alignment **after** the MVP. Preserve the experimental recipe in Appendix A without committing MVP weeks to it.
 
