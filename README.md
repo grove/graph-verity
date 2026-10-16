@@ -69,7 +69,7 @@ Grammar-constrained JSON is not automatically correct: the model can still choos
 
 **Oxigraph** executes the compiled SPARQL over the selected graph scope. **SHACL** describes formal RDF constraints such as required fields, allowed value types and cardinalities. Graph Verity will **reuse an existing SHACL library where possible**, with a carefully tested subset as a fallback—not reimplement the whole SHACL standard.
 
-Results should include their source graph, snapshot and supporting facts, and distinguish **verified**, **not conformant**, **unsupported**, **ambiguous**, and **unknown** cases. Missing RDF data does not automatically mean a claim is false.
+A successful SPARQL execution validates the **executed plan against the chosen graph**, not that the model understood the user's intended question or that the graph's claims are true in the world. Expose the resolved plan, selected relations, scope and evidence, and assess semantic interpretation accuracy separately. Results should include their source graph, snapshot and supporting facts, and distinguish **verified**, **not conformant**, **unsupported**, **ambiguous**, and **unknown** cases. Missing RDF data does not automatically mean a claim is false.
 
 ## Guiding principles
 
@@ -95,6 +95,8 @@ Results should include their source graph, snapshot and supporting facts, and di
 | Serving runtime | **Rust**, two initial crates (`verity_core` and `verity_cli`) | Local, simple deployment without premature workspace fragmentation. |
 | Text inference | [ONNX Runtime](https://onnxruntime.ai/) | Local CPU embedding inference, with model/runtime parity tests. |
 | Graph ML | CompGCN / R-GCN **after MVP, if justified** | Optional research; not required for the first working product. |
+
+**Delivery assumptions:** A working prototype might take 4–8 weeks; a limited-domain MVP 3–5 months; a hardened pilot 6–9 months, contingent on expertise, hardware, dataset quality and Phase 0 evaluation. These are planning ranges, not commitments. An unrestricted question-answering system is not a bounded MVP deliverable.
 
 **Scope for the first release:** a clearly defined RDF domain with approximately **10,000–100,000 searchable resources**, backed by a reproducible benchmark. Inference times and reranking gains are **not guaranteed** until tested on the target CPU.
 
@@ -129,15 +131,17 @@ The proposed responses include resolved RDF identifiers, the scope/snapshot quer
 
 ## Roadmap
 
-- [ ] **Phase 0 — Benchmark and query contract:** choose a domain; build Norwegian questions and gold SPARQL; define typed IR and target hardware.
+- [ ] **Phase 0 — Benchmark and feasibility spike:** select one real, imperfect RDF domain; author 100–200 expert-reviewed Norwegian questions with gold IR/SPARQL and known answers; implement a tiny deterministic IR→SPARQL compiler; benchmark a small local grammar-constrained parser immediately. Establish stop/go criteria before committing to the full architecture.
 - [ ] **Phase 1 — RDF ingestion:** load Oxigraph, preserve provenance, discover predicates/classes/shapes and evaluate existing SHACL tooling.
 - [ ] **Phase 2 — Hybrid search:** EmbeddingGemma 2, BM25, 256-dimensional vector index and `/v1/search`.
 - [ ] **Phase 3 — Verification:** graph evidence, supported SHACL rules and differential conformance tests.
-- [ ] **Phase 4 — Natural-language query planning:** local constrained semantic parser, ontology-aware context, validated IR, safe SPARQL and `/v1/ask`.
+- [ ] **Phase 4 — Expand validated question families:** productionize the local semantic parser proven in Phase 0; improve ontology-aware context, typed IR, safe SPARQL and `/v1/ask`.
 - [ ] **Phase 5 — Optional reranking:** benchmark a local cross-encoder on top 10/20/50 candidates; adopt it only if quality justifies cost.
 - [ ] **Phase 6 — Pilot and hardening:** coherent versioned bundles, graph updates, offline packaging, limits, authorization and rollback.
 
 **CompGCN/R-GCN are deliberately deferred to post-MVP research**, not scheduled as the fifth MVP phase.
+
+See the **[Phase 0 feasibility protocol](docs/phase-0-feasibility.md)** for benchmark composition, go/no-go tests, cross-ontology transfer, and safety checks.
 
 Read the **[detailed implementation plan](docs/implementation-plan.md)** for architecture, query IR, data provenance, testing, phase gates, SHACL semantics and design trade-offs.
 
@@ -148,7 +152,8 @@ graph-verity/
 ├── README.md
 ├── LICENSE
 ├── docs/
-│   └── implementation-plan.md
+│   ├── implementation-plan.md
+│   └── phase-0-feasibility.md
 ├── crates/
 │   ├── verity_core/       # Engine library and internal modules
 │   └── verity_cli/        # CLI and optional HTTP server
