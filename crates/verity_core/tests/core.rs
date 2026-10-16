@@ -357,6 +357,69 @@ fn validator_rejects_bad_scopes_versions_ids_and_bindings() {
 }
 
 #[test]
+fn constants_must_be_graph_local_entities_with_compatible_ranges() {
+    let g = graph();
+    let mut authorized = policy();
+    authorized.graphs.push(PRIVATE.into());
+
+    // An IRI seen as a predicate is not automatically a known entity.
+    let mut p = base(&g);
+    p.patterns[0].from = Node::Iri {
+        iri: "https://example.org/employees".into(),
+    };
+    assert!(g.compile(&p, &policy()).is_err());
+
+    // A value from another authorized graph is not authorized as a constant
+    // in this pattern's graph simply because the overall scope includes it.
+    let mut p = base(&g);
+    p.scope.push(PRIVATE.into());
+    p.patterns.push(Pattern {
+        graph: PRIVATE.into(),
+        from: id("company"),
+        predicate: "https://example.org/secret".into(),
+        direction: Direction::Forward,
+        to: var("secret"),
+    });
+    p.patterns[0].to = id("secret");
+    assert!(g.compile(&p, &authorized).is_err());
+
+    // Predicate profiles for literal-only objects reject IRI constants.
+    let mut p = base(&g);
+    p.patterns
+        .push(edge(var("company"), "employees", id("company")));
+    assert!(g.compile(&p, &policy()).is_err());
+
+    // A shared entity observed in both graphs remains valid.
+    let mut p = base(&g);
+    p.scope.push(PRIVATE.into());
+    p.patterns.push(Pattern {
+        graph: PRIVATE.into(),
+        from: var("company"),
+        predicate: "https://example.org/secret".into(),
+        direction: Direction::Forward,
+        to: var("secret"),
+    });
+    assert_eq!(
+        g.execute(&p, &authorized, PlanOrigin::Fixture)
+            .unwrap()
+            .bindings
+            .len(),
+        1
+    );
+}
+
+#[test]
+fn execution_evidence_is_explicitly_snapshot_verified() {
+    let g = graph();
+    let result = g
+        .execute(&base(&g), &policy(), PlanOrigin::Fixture)
+        .unwrap();
+    assert_eq!(result.evidence_verification, "verified_against_snapshot");
+    assert_eq!(result.interpretation_correctness, "not_assessed");
+    assert_eq!(result.real_world_truth, "not_established");
+}
+
+#[test]
 fn invalid_datatypes_and_aggregation_are_rejected_before_execution() {
     let g = graph();
     let mut p = numeric_plan(&g, Compare::Ge);

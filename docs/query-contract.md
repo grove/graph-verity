@@ -6,7 +6,8 @@ graphs. Labels are data, not executable instructions. Exact-label resolution rep
 
 `verity schema` emits JSON Schema derived from the same Rust types used for strict decoding.
 Structural schema validity is necessary, not sufficient: Rust additionally checks version, snapshot,
-authorization, vocabulary, variable binding, inferred datatype compatibility, and complexity.
+authorization, graph-local entity roles, predicate-range compatibility, variable binding, inferred
+datatype compatibility, and complexity.
 
 A plan contains `version`, `snapshot_id`, `scope`, `patterns`, `filters`, `projection`, `group_by`,
 `having`, and `limit`. Every collection must be supplied, including empty collections. Unknown
@@ -36,7 +37,16 @@ The compiler uses RDF library serialization for IRIs/literals and a strict varia
 text cannot be supplied by a model. Compilation returns an opaque value, and execution revalidates
 against the live immutable snapshot and operator policy. An extra row detects truncation; a LIMIT
 alone never implies completeness. Evidence is the union of contributing BGP statements for returned
-rows/groups and has an independent cap. Positive statements alone do not prove an exact count;
+rows/groups and has an independent cap. Execution labels its query evidence `verified_against_snapshot`: this means that the scoped
+query was executed against the pinned RDF snapshot, **not** that an intended interpretation
+or a fact about the real world was verified. Entity/class constants must actually occur as
+resource terms in the pattern's own named graph; an IRI known only as a predicate, or
+only from another graph, is insufficient. IRI object constants are rejected for
+literal-only predicates. Graph-specific checks retain shared entities explicitly
+observed in each graph. All such invalid constants are rejected during compilation, before
+any SPARQL query is executed.
+
+Positive statements alone do not prove an exact count;
 the full scoped query and snapshot are part of aggregate evidence.
 
 A valid but reversed relationship or wrong numeric operator can still execute. The validator cannot
