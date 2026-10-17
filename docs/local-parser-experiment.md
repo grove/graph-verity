@@ -4,7 +4,10 @@ This is a bounded **development experiment**, using public `dev` and `transfer_d
 questions and AI-authored reference plans. It is not independently verified Norwegian
 accuracy, a locked holdout evaluation, or a Phase 0 feasibility decision. The owner
 authorized implementation/inference and this Mac as the development measurement CPU
-in the issue #7 implementation request. Numerical gates in #8 remain unapproved.
+in the issue #7 implementation request. The owner subsequently approved the exact
+experimental budgets and M1 Pro target on 17 October 2026; see the
+[pending preregistration](phase-0-evaluation.md#numerical-proposals-approval-and-freeze).
+This does not retroactively preregister the development run.
 
 The completed 86-question M1 Pro run, failures and hardware measurements are in
 [the development results](../reports/local-parser-development/README.md). The selected

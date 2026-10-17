@@ -157,17 +157,34 @@ No deployment CPU has been separately designated. No CI-host timing is substitut
 
 ## Numerical proposals, approval and freeze
 
-[The numerical proposals](../configs/phase-0-gates.proposed.json) remain unchanged and
-unapproved. [The protocol](../configs/phase-0-protocol.json) versions scoring and
+[The numerical proposals](../configs/phase-0-gates.proposed.json) remain unchanged.
+On 17 October 2026 the owner approved these exact experimental budgets, protocol v3,
+and the measured M1 Pro target for an `ai_reference_only` experiment in conversation.
+[The recorded decision](../configs/phase-0-approval.json) pins their canonical JSON
+digests, the existing owner waiver, experiment assets and source revision
+`d3984494c9dd4a6938eb2a3591f6cd1d13768172`. The target is Apple M1 Pro, macOS 26.6.2
+arm64, 10 logical cores, 32 GiB RAM, four CPU threads and no accelerator. This is an
+experimental target, not a claim that the original Linux/16 GiB proposal was measured.
+
+The approval status is `owner_approved_pending_external_split_integrity`: the required
+external split-integrity review and its SHA256 are still missing. It is **not a
+completed preregistration**, and `freeze` must still fail. Do not fill the absent
+evidence with a checksum of a template or a self-certified independence assertion.
+The proposal files retain their original proposal labels; this separate decision
+records what was approved without rewriting their bytes or historical evidence.
+
+[The protocol](../configs/phase-0-protocol.json) versions scoring and
 adds explicitly proposed sample minimums: 100 supported and 20 abstention questions
-per dataset, five supported cases per family. These counts require human approval
-and do not make zero-error observations proof of negligible risk. The 60-case AI
+per dataset, five supported cases per family. The owner approved keeping these
+formal minimums unchanged; they do not make zero-error observations proof of
+negligible risk. The 60-case AI
 candidate alone cannot satisfy an independent, expert-validated GO.
 
-[The approval record](../configs/phase-0-approval.json) is deliberately empty. An
-actual approver must supply identity, timezone-qualified date, authorization provenance,
-canonical JSON SHA256 of the exact gates and protocol, actual hardware and complete
-experiment identities. Hardware fields are `cpu_model`, `os`, `architecture`,
+[The approval record](../configs/phase-0-approval.json) now includes the owner's
+identity/provenance and approval recording time, exact gate/protocol hashes, actual
+hardware and known experiment identities. Its missing external evidence must be
+supplied before it can become an approved freeze input. Hardware fields are
+`cpu_model`, `os`, `architecture`,
 `logical_cores`, `threads`, `system_ram_bytes`, `accelerator`, and
 `measurement_configuration`. Experiment fields are `model_sha256`,
 `tokenizer_identity`, `quantization`, `runtime_revision`, `runtime_binary_sha256`, `compiler_binary_sha256`,
@@ -200,7 +217,47 @@ old runs keep their gate/protocol bindings and cannot retroactively become prere
 passes. Commit threshold/experiment changes with reasons; do not replace old receipts.
 The frozen inputs also include the owner waiver and external-bundle verifier source,
 so either changing invalidates admission. Protocol v3 records this evidence-class
-choice while retaining scoring v2; existing proposal files remain unapproved.
+choice while retaining scoring v2.
+
+The current owner decision is bound to the exact source revision above. Once the
+external review exists, preserve the pending record, create a separate completed
+approval file, and run `freeze --approval /path/to/completed-approval.json` from a
+clean checkout of that pinned revision. A newer source/configuration requires a new
+versioned decision rather than silently changing `compiler_revision`. The separate
+post-freeze operator authorization remains required. The real sealed bundle has
+not been opened or evaluated by this approval-recording work.
+
+### Recovering the missing external review
+
+The [issue #5 preparation record](https://github.com/grove/graph-verity/issues/5)
+states that the unencrypted `graph-verity-sealed-holdout-candidate.zip` was delivered
+directly to the owner outside GitHub. A filename-only search of the common local
+document/download/project locations and temporary directories did not locate that
+ZIP or a task-specific split-integrity review. This does not establish that no
+external copy exists. The public commitment is not itself a completed review.
+
+Recover the original delivery in an isolated reviewer/operator environment. A reviewer
+needs the sealed candidate, the public benchmark/split records and its authoring/group
+lineage before making these assertions. The reviewer may supply only this metadata
+to the development session, with actual reviewed values replacing the nulls:
+
+```json
+{
+  "benchmark_sha256": "653c2fe30fd0911f91c17db1ace9f46ae5b36ce5bffb0212dd37e9dbcf822e6b",
+  "public_cases_disjoint": null,
+  "public_lineage_disjoint": null,
+  "exposed_groups_excluded": null,
+  "reviewer": null,
+  "provenance": null
+}
+```
+
+Keep failed or uncertain findings explicit. Do not set all three assertions true
+without evidence; public Schema.org examples already prevent an unseen-ontology
+claim. This is an integrity review, not a fabricated human gold-review ledger or an
+expertise claim. If lineage independence cannot be established, the current locked
+path must remain unavailable; disclose the limitation and separately decide whether
+to commission a fresh holdout. No reviewer has been invented or contacted by this work.
 
 `assess` verifies its source report manifest and deterministically explains every
 configured threshold. Unknown gates fail closed. All approved gates/prerequisites
@@ -293,10 +350,11 @@ production readiness. The human-only review ledger remains unchanged.
 Complete: public reproducible evaluator/replay, path and failure separation,
 component and binding scores, denominator/uncertainty regression coverage, stage
 measurement hooks, versioned gates/protocol/approval/freeze/admission mechanisms,
-manifest verification/comparison, CI demonstration and truthful negative baseline.
+manifest verification/comparison, CI demonstration and truthful negative baseline;
+owner approval of exact experimental numerical/protocol budgets and the M1 Pro target.
 
-Outstanding: genuine numerical/protocol approval, designated deployment CPU and its
-measurements, independent specialist review/evaluation, an authorized external locked
+Outstanding: external split-integrity evidence and immutable freeze, new measurements
+on the approved target, independent specialist review/evaluation for formal GO, an authorized external locked
 run, and measured user-interface false confidence/disclosure behavior. Keep
 issue #8 open for these acceptance boundaries; merging infrastructure does not finish
 them. [The baseline](../reports/phase-0-baseline/summary.md) misses proposed 95%

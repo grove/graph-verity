@@ -1,14 +1,54 @@
 {
   "version": 1,
   "revision": 1,
-  "status": "proposal_not_approved",
-  "reference_policy": "independent_human_review",
-  "approved_by": null,
-  "approved_at": null,
-  "provenance": null,
-  "gates_sha256": null,
-  "protocol_sha256": null,
-  "target_hardware": null,
-  "experiment_identity": null,
+  "status": "owner_approved_pending_external_split_integrity",
+  "reference_policy": "ai_reference_only",
+  "approved_by": "Graph Verity project owner (conversation approval)",
+  "approved_at": "2026-10-17T08:59:26.708429+00:00",
+  "provenance": "Current conversation: owner answered the exact candidate approval question with \"Approve this exact experimental candidate on the M1 Pro\".",
+  "gates_sha256": "9efb790bd9b9997ac47048083912d8d0d62d8c3bf953dd5d9eab3e39e14fd146",
+  "protocol_sha256": "df7e9804d9360023a089e39247261117ce6ccb5cf8d66ddaa7d821cb9f40835d",
+  "target_hardware": {
+    "cpu_model": "Apple M1 Pro",
+    "os": "macOS-26.6.2-arm64-arm-64bit",
+    "architecture": "arm64",
+    "logical_cores": 10,
+    "threads": 4,
+    "system_ram_bytes": 34359738368,
+    "accelerator": "none",
+    "measurement_configuration": {
+      "build_flags": [
+        "-DGGML_METAL=OFF",
+        "-DGGML_BLAS=OFF",
+        "-DGGML_ACCELERATE=OFF",
+        "-DLLAMA_CURL=OFF",
+        "-DLLAMA_BUILD_TESTS=OFF",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_SHARED_LIBS=OFF"
+      ],
+      "cpu_only": true,
+      "rss_interval_ms": 200,
+      "rss_method": "runner and descendant sampling; may miss spikes and double-count shared pages",
+      "cache_condition": "new server; OS page cache not evicted; prompt-prefix caching enabled",
+      "cold_timing": "server and Rust/snapshot startup plus first answer; excludes asset verification and grammar probes",
+      "warm_timing": "all attempts after first case; full catalog/prompt/generation/validation/query/evidence pipeline",
+      "retries": 0,
+      "timeout_seconds": 120
+    }
+  },
+  "experiment_identity": {
+    "model_sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+    "runtime_revision": "74d4f5b041ad837153b0e90fc864b8290e01d8d5",
+    "prompt_sha256": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5",
+    "grammar_sha256": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+    "schema_sha256": "988b32e4a0b5369ed035bfd561c07e3f0944bacd1b6f0bc54ba5927d839838d2",
+    "tokenizer_identity": "embedded_in_gguf_sha256:6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+    "quantization": "Q4_K_M",
+    "runtime_binary_sha256": "4353db648294cf6558050f5ddeadc3942b6d219d752697cbea72e8cde12de08f",
+    "compiler_binary_sha256": "389f53bf27c3f903d9502f352673b2114013f81a77c0616c2629ebabeb184630",
+    "compiler_revision": "d3984494c9dd4a6938eb2a3591f6cd1d13768172",
+    "owner_ai_gold_waiver_sha256": "36522e4293e2833e4e04765751cd5d5169be2543ce256a5bafc8ed48c4b7c56c",
+    "split_integrity_evidence_sha256": null
+  },
   "change_reason": null
 }
