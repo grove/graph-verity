@@ -579,6 +579,7 @@ def summarize(freeze_dir, run_dir):
                 request = read(frozen / "request.json")
                 record = case_record(c, reference, runtime, request, prompt, raw, False)
                 record.update(dataset=dataset, language="nb", components_exact=c["components_exact"],
+                    generation_attempted=(folder / "completion-request.json").exists(),
                     vocabulary_selection_ms=read(folder / "selection.json")["ms"],
                     grammar_accepted=read(folder / "grammar.json")["accepted"] if (folder / "grammar.json").exists() else None,
                     valid_but_misleading=c["contract_valid"] is True and c["proposal_status"] == "candidate" and not record["strict_complete_exact"],
@@ -594,7 +595,8 @@ def summarize(freeze_dir, run_dir):
         supported = [c for c in records if c["expected_status"] == "executed"]
         summary["components_exact"] = {key: rate(sum(c["components_exact"].get(key) is True for c in supported), len(supported))
             for key in sorted({key for c in supported for key in c["components_exact"]})}
-        summary.update(cases=records, warm_end_to_end_ms=percentiles([c["end_to_end_ms"] for c in records]),
+        summary.update(cases=records, warm_end_to_end_ms=percentiles([c["end_to_end_ms"] for c in records if c["generation_attempted"]]),
+            generation_attempts=sum(c["generation_attempted"] for c in records),
             per_ontology={d: metrics([c for c in records if c["dataset"] == d]) for d, _ in DATASETS},
             per_family={f: metrics([c for c in records if c["family"] == f]) for f in sorted({c["family"] for c in records})},
             language="all 30 questions Norwegian nb; paired ontologies are correlated", peak_rss_kib=state.get("peak_rss_kib"))

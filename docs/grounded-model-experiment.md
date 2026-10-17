@@ -145,6 +145,9 @@ Metrics retain exact denominators, descriptive Wilson intervals, per-family and
 per-ontology results, individual component agreement and retrieval misses. Warm
 p50/p95/p99 and end-to-end include Rust catalog/validation/query/evidence and
 generation; startup and first answer are separate process-cold measurements.
+Warm timing percentiles include attempted generation requests (including failed
+requests); cases not attempted after a stopped backend remain in semantic and
+backend-failure denominators rather than making generation look artificially fast.
 OS page cache is not evicted. Cold first-smoke time includes startup, grammar
 checks and native/template parity checks; scored cases follow the controls in
 the same warm process. Completion receives the exact tokenized template with no

@@ -175,6 +175,8 @@ class GroundedModelTests(unittest.TestCase):
                 self.assertEqual(summary["strict_complete_exact"]["denominator"], 24)
                 self.assertEqual(summary["correct_status_abstention"]["denominator"], 6)
                 self.assertEqual(len(summary["cases"]), 30)
+                self.assertEqual(summary["generation_attempts"], 0)
+                self.assertIsNone(summary["warm_end_to_end_ms"]["p50"])
             replay(cfg, frozen, run, folder / "replay")
 
 
