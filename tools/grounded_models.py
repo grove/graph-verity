@@ -251,6 +251,7 @@ class Runtime:
         self.cfg, self.assets, self.key, self.out = cfg, assets, key, out
         self.process = None
         self.generation_attempts = self.generation_completed = 0
+        self.candidate_bytes_received = 0
         self.template_prefix = ""
 
     def post(self, endpoint, body, name):
@@ -296,6 +297,7 @@ class Runtime:
                     piece = event.get("content", "")
                     require(isinstance(piece, str), "Invalid completion delta")
                     proposal.write(piece.encode())
+                    self.candidate_bytes_received += len(piece.encode())
                     pieces.append(piece)
                     if event.get("stop") is True:
                         event["content"] = "".join(pieces)
@@ -587,7 +589,9 @@ def infer(cfg, assets, key, freeze_dir, out):
         state.update(peak_rss_kib=memory.peak_kib, rss_samples=memory.samples, rss_error=memory.error)
         state["generation_attempts"] = runtime.generation_attempts if runtime else 0
         state["generation_completed"] = runtime.generation_completed if runtime else 0
-        state["inference_performed"] = state["generation_completed"] > 0
+        state["candidate_bytes_received"] = runtime.candidate_bytes_received if runtime else 0
+        state["inference_attempted"] = state["generation_attempts"] > 0
+        state["inference_performed"] = state["generation_completed"] > 0 or state["candidate_bytes_received"] > 0
         state["available_memory_after"] = subprocess.check_output(["vm_stat"], text=True)
         dump(out / "run.json", state)
         dump(out / "audit.json", audit_files(out))

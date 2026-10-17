@@ -128,6 +128,7 @@ class GroundedModelTests(unittest.TestCase):
                 with self.assertRaises(TimeoutError):
                     runtime.stream_completion({"stream": True}, folder)
             self.assertEqual((folder / "proposal.txt").read_bytes(), b'{"version":1,')
+            self.assertGreater(runtime.candidate_bytes_received, 0)
             self.assertIn(b'"stop":false', (folder / "completion.http.sse").read_bytes())
             response.readline.side_effect = [b'data: {"content":"{}","stop":false}\n',
                                            b'data: {"content":"","stop":true,"tokens_predicted":2}\n']
