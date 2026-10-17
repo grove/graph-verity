@@ -22,6 +22,7 @@ SCORING = "phase0-v2-complete-answer-and-binding-set"
 GATES = ROOT / "configs/phase-0-gates.proposed.json"
 PROTOCOL = ROOT / "configs/phase-0-protocol.json"
 APPROVAL = ROOT / "configs/phase-0-approval.json"
+AI_GOLD_WAIVER = ROOT / "docs/phase-0-ai-gold-risk-acceptance.md"
 COMPONENTS = ["entity", "predicate", "direction", "variables", "operator", "datatype", "number", "date_operand", "aggregation", "group_by", "having", "projection", "scope", "snapshot", "literal", "limit"]
 ABSTENTIONS = {"unsupported", "needs_clarification", "parsing_error"}
 
@@ -230,7 +231,7 @@ def replay(evidence, out):
 
 
 def artifact_paths():
-    return [GATES, PROTOCOL, ROOT / "configs/local-parser.json", ROOT / "configs/local-parser.prompt.txt",
+    return [GATES, PROTOCOL, AI_GOLD_WAIVER, ROOT / "tools/verify_sealed_holdout.py", ROOT / "configs/local-parser.json", ROOT / "configs/local-parser.prompt.txt",
             ROOT / "configs/local-parser.gbnf", ROOT / "schemas/contracts-v1.json", ROOT / "Cargo.lock",
             ROOT / "rust-toolchain.toml", ROOT / "benchmarks/split-manifest.json", ROOT / "configs/locked-holdout-commitment.json",
             ROOT / "tools/phase0.py", ROOT / "tools/local_parser.py", ROOT / "tools/locked_phase0.py",
@@ -304,6 +305,10 @@ def assess(summary, gates, approval):
                    "actual": summary.get("preregistration_sha256"), "threshold": "frozen_before_first_holdout",
                    "reason": "Later threshold approvals cannot retroactively pass an earlier run"})
     matrix.append({"gate": "approval", "status": "pass" if approved else "unavailable", "actual": approval.get("status"), "threshold": "approved_bound_thresholds", "reason": "Proposal comparisons cannot authorize GO"})
+    reference_policy = approval.get("reference_policy", "independent_human_review")
+    matrix.append({"gate": "reference_evidence_class", "status": "pass" if reference_policy == "independent_human_review" else "unavailable",
+                   "actual": reference_policy, "threshold": "independent_human_review",
+                   "reason": "An owner-approved AI-reference comparison cannot establish formal GO"})
     stop = any((summary["safety"].get(key) or 0) > 0 for key in ["unauthorized_execution_or_disclosure_count", "prohibited_execution_count"])
     decision = "STOP" if stop else "NOT READY" if any(r["status"] == "unavailable" for r in matrix) else "REVISE" if any(r["status"] == "fail" for r in matrix) else "GO"
     explanations = {"GO": "All applicable approved gates and prerequisites pass for this registered run.",
@@ -312,6 +317,24 @@ def assess(summary, gates, approval):
                     "NOT READY": "Required approval, preregistration or evaluation evidence is unavailable; no formal readiness decision."}
     return {"decision": decision, "gates_sha256": digest(gates), "matrix": matrix,
             "explanation": explanations[decision]}
+
+
+def audit_executions(datasets):
+    """Observed scope violations force STOP; a partial audit cannot certify zero leaks."""
+    violations, audited = 0, 0
+    for d in datasets.values():
+        for case in d["cases"]:
+            execution = case.get("execution")
+            if execution:
+                audited += 1
+                scope = set(case["requested_scope"])
+                violations += int(set(execution["scope"]) != scope or execution["snapshot_id"] != d["snapshot_id"]
+                                  or any(e["source_graph"].get("value") not in scope for e in execution["evidence"]))
+    return {"unauthorized_execution_or_disclosure_count": violations if violations else None,
+            "observed_execution_scope_violations": violations, "executions_with_scope_and_evidence_audited": audited,
+            "prohibited_execution_count": None,
+            "reason": "No full disclosure/authorization audit receipt; rejections are not boundary violations",
+            "structural_wrong_plan_proxy_count": sum(c["wrong_plan_successful_execution"] for d in datasets.values() for c in d["cases"])}
 
 
 def build_report(evidence, out, replayed=False):
@@ -334,15 +357,6 @@ def build_report(evidence, out, replayed=False):
         bounds = [rate(d["metrics"]["exact_answer"]["numerator"], d["metrics"]["exact_answer"]["denominator"], 2.2414)["wilson_95"] for d in datasets.values()]
         lo, hi = bounds[0][0] - bounds[1][1], bounds[0][1] - bounds[1][0]
         gap_interval = [0 if lo <= 0 <= hi else min(abs(lo), abs(hi)), max(abs(lo), abs(hi))]
-    violations, audited = 0, 0
-    for d in datasets.values():
-        for case in d["cases"]:
-            execution = case.get("execution")
-            if execution:
-                audited += 1
-                scope = set(case["requested_scope"])
-                violations += int(set(execution["scope"]) != scope or execution["snapshot_id"] != d["snapshot_id"]
-                                  or any(e["source_graph"].get("value") not in scope for e in execution["evidence"]))
     summary = {"version": 1, "scoring_version": SCORING, "evidence_class": "public_development_AI_reference_agreement_only",
                "datasets": datasets, "aggregate": statistics([c for d in datasets.values() for c in d["cases"]], model_measurement),
                "development_transfer_gap_absolute": gap, "development_transfer_gap_absolute_interval_95": gap_interval,
@@ -352,10 +366,7 @@ def build_report(evidence, out, replayed=False):
                                           "environment": {k: v for k, v in historical.items() if k != "results"},
                                           "results": historical.get("results", {}) if not replayed else {}},
                "target_cpu_measurements": {"status": "not_measured_no_separately_designated_target_cpu"},
-               "safety": {"unauthorized_execution_or_disclosure_count": violations if violations else None,
-                          "observed_execution_scope_violations": violations, "executions_with_scope_and_evidence_audited": audited, "prohibited_execution_count": None,
-                          "reason": "No full disclosure/authorization audit receipt; rejections are not boundary violations",
-                          "structural_wrong_plan_proxy_count": sum(c["wrong_plan_successful_execution"] for d in datasets.values() for c in d["cases"])},
+               "safety": audit_executions(datasets),
                "user_facing_measurement": {"status": "not_measured", "unflagged_wrong_plan_answers": None},
                "prerequisites": {"independent_human_gold_review": False, "independent_locked_question_split": False,
                                  "runtime_model_tokenizer_prompt_grammar_hashes": historical.get("grammar_probes_passed", False),
@@ -466,8 +477,13 @@ def validate_approval(approval, gates, protocol):
     require(timestamp(approval["approved_at"]) <= dt.datetime.now(dt.timezone.utc), "Future approval")
     required = {"cpu_model", "os", "architecture", "logical_cores", "threads", "system_ram_bytes", "accelerator", "measurement_configuration"}
     require(required <= approval["target_hardware"].keys() and all(approval["target_hardware"][k] is not None for k in required), "Incomplete actual target CPU")
-    identity = {"model_sha256", "tokenizer_identity", "quantization", "runtime_revision", "runtime_binary_sha256", "compiler_binary_sha256", "prompt_sha256", "grammar_sha256", "compiler_revision", "schema_sha256", "split_integrity_evidence_sha256", "independent_review_evidence_sha256"}
+    reference_policy = approval.get("reference_policy", "independent_human_review")
+    require(reference_policy in {"independent_human_review", "ai_reference_only"}, "Unknown reference policy")
+    review_identity = "owner_ai_gold_waiver_sha256" if reference_policy == "ai_reference_only" else "independent_review_evidence_sha256"
+    identity = {"model_sha256", "tokenizer_identity", "quantization", "runtime_revision", "runtime_binary_sha256", "compiler_binary_sha256", "prompt_sha256", "grammar_sha256", "compiler_revision", "schema_sha256", "split_integrity_evidence_sha256", review_identity}
     require(identity <= approval["experiment_identity"].keys() and all(approval["experiment_identity"][k] for k in identity), "Incomplete experiment identities")
+    if reference_policy == "ai_reference_only":
+        require(approval["experiment_identity"][review_identity] == sha(AI_GOLD_WAIVER), "AI-reference approval must bind the exact owner gold-risk waiver")
     cfg = read(ROOT / "configs/local-parser.json")
     identity = approval["experiment_identity"]
     for key in ["model_sha256", "runtime_revision", "prompt_sha256", "grammar_sha256", "schema_sha256"]:

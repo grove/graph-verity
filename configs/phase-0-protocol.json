@@ -1,13 +1,13 @@
 {
-  "version": 2,
-  "change_reason": "Require complete query results for exact-answer gates; retain raw binding agreement separately and distinguish truncated results, incomplete evidence, reference failures and unknown graph coverage.",
+  "version": 3,
+  "change_reason": "Add explicitly approved, waiver-bound AI-reference-only external evaluation, preserving independent human review as a formal GO prerequisite. Retain v2 complete-answer scoring.",
   "status": "proposal_not_approved",
   "scoring_version": "phase0-v2-complete-answer-and-binding-set",
   "public_splits": {
     "wikidata": "dev",
     "worldcities-transfer": "transfer_dev"
   },
-  "reference_policy": "AI-authored/AI-reviewed development agreement; independent expert review remains a formal GO prerequisite",
+  "reference_policy": "AI-authored/AI-reviewed agreement; an approved ai_reference_only experiment must bind the owner gold-risk waiver SHA256 and is never eligible for formal GO. independent_human_review remains the default and a formal GO prerequisite; human-only review ledgers are unchanged.",
   "structural_policy": "Exact ordered IR, variable-name-sensitive; no unreviewed equivalence normalization",
   "binding_policy": "Exact RDF-term and variable-name binding sets; duplicates ignored; exact-answer gates additionally require complete_within_scope=true, with missing execution completeness unavailable; raw binding agreement remains separate; macro P/R/F1 over ALL supported cases, failed attempts score zero",
   "abstention_policy": "Correct only for matching expected status; parsing_error is not correct unsupported/clarification; all supported cases remain in answer denominators",
@@ -17,7 +17,7 @@
   "missing_fact_policy": "Empty graph bindings do not establish real-world falsity; unknown without independent completeness annotation",
   "timing_policy": "All attempts, failures and timeouts; warm excludes first case; cold adds model and Rust/snapshot startup; OS cache explicitly recorded, never assume uncached disk",
   "safety_policy": "STOP on observed unauthorized execution/disclosure or prohibited query/write, including before approvals; rejected proposals do not count as boundary violations",
-  "locked_policy": "Public Rust and Python runners refuse locked evaluation. The isolated locked_phase0.py operator adapter requires approved versioned freeze, exact commitment, subsequent explicit operator authorization, frozen target hardware/model/compiler/runtime, complete external case reviews and split-integrity evidence. It remaps only private transport copies to reuse the same Rust scorer, restores original locked identities in reports, refuses CI and keeps all private payloads/logs outside the public repository. One-shot custody across hosts remains the external operator responsibility.",
+  "locked_policy": "Public Rust and Python runners refuse locked evaluation. The isolated locked_phase0.py operator adapter requires approved versioned freeze, exact commitment, subsequent explicit operator authorization, frozen target hardware/model/compiler/runtime and split-integrity evidence. independent_human_review requires complete external case reviews; explicitly approved ai_reference_only requires the exact owner gold-risk waiver and reports the absent independent review. It remaps only private transport copies to reuse the same Rust scorer, restores original locked identities in reports, refuses CI and keeps all private payloads/logs outside the public repository. One-shot custody across hosts remains the external operator responsibility.",
   "change_policy": "Append new approval revision, reason and previous freeze SHA256; fresh independent evaluation required after exposure. Prior receipts and decisions are never rewritten. Checksums provide integrity, not authenticated signatures.",
   "minimum_samples_proposed": {
     "supported_per_dataset": 100,
