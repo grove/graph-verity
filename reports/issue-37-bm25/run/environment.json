@@ -1,0 +1,36 @@
+{
+  "platform": "Linux-7.0.14-linuxkit-x86_64-with-glibc2.41",
+  "machine": "x86_64",
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "cpu_affinity": [
+    0
+  ],
+  "thread_budget": 1,
+  "cpu_description": "Apple M1 Pro host, 10 cores, 32GiB; Docker Desktop Linux amd64 emulation; CPU affinity 0, one CPU quota, 4GiB cgroup; image sha256:8d0446c21ab3273b55c045a39c49120e9d7cde8e970954c3f81e7bee194fad95",
+  "binary_sha256": "09e7e05f8721883ecff432a0dc7f53b62f1721c22ab23198a16e513d6c77f732",
+  "manifest_sha256": "ca0fab2a9a89f36b59fce73bdd9215ac7470bc3f921fff826aea4a4b6c3f2e88",
+  "code_sha256": {
+    "tools/retrieval.py": "4e220b3e9df17e9d16fa5572564a33c4ed0aab90a274d1c9d3cd95e663684ad8",
+    "crates/verity_core/src/find.rs": "44b565eb6b73ba11de38ecf090f8eaa14aab77c124b9bf5876256468033900f2",
+    "crates/verity_cli/src/main.rs": "b547697abed2500ed98bf1da64abffd2d514faf772aaba2463ade7bb7087352f",
+    "Cargo.lock": "b86b68fc472e2178f4815cfc86a3477713bd3ad74c6872bd70dfbfcbff3cf5d0",
+    "rust-toolchain.toml": "f715f440167e20fd8ea9afa0498c3d1ab80174cfcb8cbc895f106a34d907a1e1"
+  },
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13), x86_64-unknown-linux-gnu",
+  "cold_repetitions": 30,
+  "warm_queries": 200,
+  "cold_definition": "fresh process + RDF import + index build + one query + JSON IO; OS page cache not evicted",
+  "warm_definition": "in-process find only, includes result construction; excludes JSON serialization/IO",
+  "intervals": "2000 query-level percentile bootstrap resamples, seed 37; descriptive only; correlated public formulations",
+  "limitations": [
+    "AI judgments require human review before stakeholder claims",
+    "Public evaluation shares target intents with development; not independent holdout",
+    "Synthetic 10000-resource load does not establish real-domain scale",
+    "RSS sums process high-water marks, conservative aggregate upper bound; no child workers",
+    "No-match means no lexical candidates, not semantic absence; ambiguous flags cover exact collisions only"
+  ],
+  "proc_cpuinfo": "processor\t: 0\nvendor_id\t: VirtualApple\ncpu family\t: 6\nmodel\t\t: 142\nmodel name\t: VirtualApple @ 2.50GHz\nstepping\t: 10\ncpu MHz\t\t: 2502.057\ncache size\t: 6144 KB\nphysical id\t: 0\nsiblings\t: 10\ncore id\t\t: 0\ncpu cores\t: 10\napicid\t\t: 0\ninitial apicid\t: 0\nfpu\t\t: yes\nfpu_exception\t: no\ncpuid level\t: 22\nwp\t\t: yes\nflags\t\t: fpu tsc de cx8 apic sep cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm rep_good nopl pni cpuid pclmulqdq ssse3 cx16 sse4_1 popcnt sse4_2 aes lahf_lm movbe fma avx f16c rdrand bmi1 avx2 bmi2\nbugs\t\t:\nbogomips\t: 5184.11\nclflush size\t: 64\ncache_alignment\t: 64\naddress sizes\t: 39 bits physical, 48 bits virtual\npower management:",
+  "cli_peak_rss_bytes": 160591872,
+  "controller_peak_rss_bytes": 108015616,
+  "aggregate_rss_upper_bound_bytes": 268607488
+}

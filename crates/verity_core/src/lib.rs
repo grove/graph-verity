@@ -7,6 +7,7 @@ pub mod compiler;
 pub mod discovery;
 pub mod evaluation;
 pub mod execution;
+pub mod find;
 pub mod ir;
 pub mod parser;
 
