@@ -53,7 +53,9 @@ families and degenerate intervals do not establish generalization or truth.
 ## Fresh native measurements
 
 Apple M1 Pro, 10 cores, 32 GiB RAM; native macOS 26.6.2 arm64; Python 3.12.14;
-Rust 1.99.1 (`58cf8f9c3`), release build, locked dependencies. Worker environment
+Rust 1.99.1 (`58cf8f9c3`), release build, locked dependencies. The optional debug-info
+stripping step warned about a local `rust-objcopy` LLVM library path; the executable
+built successfully and its measured hash is retained. Worker environment
 budget one; host scheduler with **no CPU affinity/quota**. This run is a native
 local observation, not fresh pinned-CPU acceptance or a deployment-hardware test.
 The [prior pinned Linux/emulation run](../issue-37-bm25/README.md#pinned-cpu-measurements)
@@ -61,16 +63,16 @@ remains historical evidence with its own binary and limitations.
 
 | Corpus | Graph-qualified resources | Index bytes | Build ms | Cold p50 / p95 / p99 ms | Warm p50 / p95 / p99 ms |
 | --- | ---: | ---: | ---: | --- | --- |
-| Wikidata | 40 | 141,290 | 2.094 | 8.913 / 10.164 / 10.628 | .041 / .051 / .060 |
-| GeoNames cities | 430 | 491,885 | 7.301 | 16.907 / 18.054 / 18.685 | .057 / .062 / .080 |
-| Descriptions | 9 | 19,610 | .474 | 5.970 / 7.266 / 8.995 | .032 / .038 / .061 |
-| Synthetic scale | 10,000 | 11,980,742 | 173.828 | 247.845 / 301.844 / 510.565 | 7.503 / 7.893 / 8.191 |
+| Wikidata | 40 | 141,290 | 2.035 | 9.264 / 11.864 / 19.097 | .042 / .053 / .059 |
+| GeoNames cities | 430 | 491,885 | 7.351 | 17.944 / 76.870 / 78.755 | .058 / .065 / .084 |
+| Descriptions | 9 | 19,610 | .452 | 5.982 / 6.756 / 7.051 | .031 / .035 / .047 |
+| Synthetic scale | 10,000 | 11,980,742 | 174.771 | 255.769 / 363.631 / 412.731 | 7.636 / 8.487 / 9.992 |
 
 There are 30 fresh-process cold and 200 resident warm samples per corpus. Cold
 includes import/build/query/JSON I/O with OS caches retained; p99 is the sample
 maximum. Warm includes ranking and the new explanation/result construction, but
 excludes JSON serialization/I/O. Index build excludes RDF import. Aggregate RSS
-upper bound is **349,028,352 bytes (332.86 MiB)**, summing CLI/controller process
+upper bound is **336,904,192 bytes (321.30 MiB)**, summing CLI/controller process
 high-water marks, including RDF import, index construction and retained results.
 Observed synthetic warm p95 is below 500ms and memory below 4GiB. The lightweight
 byte-frozen 19,996-quad corpus does not validate real-domain 10,000-resource scale,
@@ -79,7 +81,7 @@ failure is retained in #37 and has not been hidden by increasing index limits.
 
 The [four-process smoke transcript](smoke.json) demonstrates fresh offline
 Norwegian `Norge` and English `Norway` → Q20 → outgoing P36 → Q585 → incoming
-source triple. Observed end-to-end times were 17.189 / 8.588 / 10.711 / 8.634ms,
+source triple. Observed end-to-end times were 16.975 / 9.147 / 12.605 / 9.386ms,
 including import, index build and JSON. These four small-snapshot samples establish
 the walkthrough, not latency percentiles. Assertions check the exact edge,
 graph/license and matching immutable snapshot IDs.
@@ -107,7 +109,8 @@ formatting, Clippy, Rust tests, schema parity, independent reference queries,
 oracle/manual/fixture evidence and historical negative-result checks.
 
 New tests cover directed incoming/outgoing pages, no gaps or duplicate edges across
-pages, linked unlabeled entities, empty/unknown states, graph-local labels, original
+pages (including equal numeric values with distinct datatypes across fresh imports),
+linked unlabeled entities, empty/unknown states, graph-local labels, original
 language/datatype/blank-node witnesses, explicit output/row/evidence/offset limits,
 policy/index/snapshot mismatches, invalid IRIs, raw-query fields, private ID/text/
 source/count canaries in results and stderr, and no partial stdout on errors.

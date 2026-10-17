@@ -97,7 +97,11 @@ are preserved. Source records and graph hashes are restricted to the request sco
 Missing labels stay missing; labels are never borrowed across graphs. RDF text,
 including markup and instructions, remains untrusted JSON data.
 
-Page order is graph, subject, predicate, object using the RDF engine's term order.
+Page order is graph, subject, predicate, then object kind, lexical form, language
+and datatype (with RDF term order as a final tie-break). Equal numeric values with
+different datatypes receive stable page positions. Oxigraph may canonicalize
+numeric spellings on import; evidence is RDF-store output, not byte-exact source
+extraction. The snapshot ID binds the original release bytes.
 `next_offset` is non-null only when a one-edge lookahead finds more. `truncated`
 means more edges in this direction; it does not describe the opposite direction.
 `no_relationships_on_page` distinguishes a known resource with an empty direction

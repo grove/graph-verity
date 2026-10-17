@@ -279,3 +279,50 @@ fn oversized_entity_evidence_fails_without_echoing_literal_text() {
     assert!(error.starts_with("output_limit:"));
     assert!(!error.contains("CANARY"));
 }
+
+#[test]
+fn pages_distinguish_equal_valued_literal_datatypes_across_fresh_imports() {
+    let rdf = format!(
+        r#"<urn:x> <urn:p> "1"^^<http://www.w3.org/2001/XMLSchema#integer> <{A}> .
+<urn:x> <urn:p> "1.0E0"^^<http://www.w3.org/2001/XMLSchema#double> <{A}> .
+<urn:x> <urn:p> "1.0"^^<http://www.w3.org/2001/XMLSchema#decimal> <{A}> ."#
+    );
+    let s = Snapshot::from_bytes(rdf.as_bytes(), "nquads").unwrap();
+    let (_, p, mut c) = fixture();
+    c.snapshot_id = s.id().into();
+    let index = s.build_discovery(&[A.into()], &p, &c).unwrap();
+    let all = serde_json::to_value(s.entity(&index, &request(&s, "urn:x"), &p).unwrap()).unwrap();
+    let edges = all["evidence"].as_array().unwrap();
+    assert_eq!(edges.len(), 3);
+    assert_eq!(
+        edges
+            .iter()
+            .map(|e| e["object"]["datatype"].as_str().unwrap())
+            .collect::<std::collections::BTreeSet<_>>()
+            .len(),
+        3
+    );
+    let mut paged = Vec::new();
+    for offset in 0..3 {
+        let s = Snapshot::from_bytes(rdf.as_bytes(), "nquads").unwrap();
+        let (_, p, mut c) = fixture();
+        c.snapshot_id = s.id().into();
+        let index = s.build_discovery(&[A.into()], &p, &c).unwrap();
+        let page = serde_json::to_value(
+            s.entity(
+                &index,
+                &EntityRequest {
+                    limit: 1,
+                    offset,
+                    ..request(&s, "urn:x")
+                },
+                &p,
+            )
+            .unwrap(),
+        )
+        .unwrap();
+        paged.push(page["evidence"][0].clone());
+        assert_eq!(page["truncated"], offset < 2, "offset {offset}: {page}");
+    }
+    assert_eq!(&paged, edges);
+}
