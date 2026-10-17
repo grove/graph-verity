@@ -125,7 +125,9 @@ def prepare(cfg, assets, key, python):
         "converter_environment": subprocess.check_output([python, "-m", "pip", "freeze", "--all"], text=True),
         "compiler": subprocess.check_output(["c++", "--version"], text=True),
         "cmake": subprocess.check_output(["cmake", "--version"], text=True),
-        "files": {str(p.relative_to(assets)): {"sha256": sha(p), "bytes": p.stat().st_size} for p in paths}})
+        "files": {str(p.relative_to(assets)): {"sha256": sha(p), "bytes": p.stat().st_size,
+                  "retained": p != converted} for p in paths}})
+    converted.unlink()
 
 
 def cli(*args):
@@ -461,7 +463,8 @@ def infer(cfg, assets, key, freeze_dir, out):
         receipt = read(assets / f"{key}-receipt.json")
         require(receipt["config_sha256"] == sha(CONFIG), "Prepared assets belong to another protocol")
         for name, identity in receipt["files"].items():
-            require(sha(assets / name) == identity["sha256"], f"Changed prepared asset: {name}")
+            if identity.get("retained", True):
+                require(sha(assets / name) == identity["sha256"], f"Changed prepared asset: {name}")
         state["receipt"] = receipt
         attempt = assets / "attempts" / state["freeze_sha256"] / f"{key}.json"
         attempt.parent.mkdir(parents=True, exist_ok=True)

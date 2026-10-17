@@ -36,7 +36,9 @@ prompt caching enabled, 300-second startup/request deadline. These budgets and
 the new runtime are **not** an equal-configuration comparison with Qwen2.5-1.5B.
 Both native checkpoints are converted to text-only F16 GGUF and then Q4_K_M with
 the same pinned converter/quantizer. Their receipts separately record commands,
-environment, executable hashes, F16/Q4 hashes and disk sizes. A different
+environment, executable hashes, F16/Q4 hashes and disk sizes. The temporary F16
+file is removed after its full hash is recorded and Q4 quantization succeeds;
+native weights, Q4 weights and all receipts remain. A different
 precision, model, runtime, thinking mode or Metal run requires a new variant.
 
 Each stage has the existing 30 paired public adversarial probes: 15 source
