@@ -1,0 +1,46 @@
+[git-revision] git rev-parse HEAD
+[initial-clean-tree] git diff --exit-code HEAD
+[rust-version] rustc -Vv
+[dependency-fetch] cargo fetch --locked
+[reporting-tests] /Users/grove/projects/graph-verity/.venv/bin/python -m unittest discover -s tools -p test_*.py -v
+[retrieval-freeze] /Users/grove/projects/graph-verity/.venv/bin/python tools/retrieval.py verify
+[issue9-forensics] /Users/grove/projects/graph-verity/.venv/bin/python tools/issue9_forensics.py verify --out /Users/grove/projects/graph-verity/artifacts/pre-llm/issue9-forensics.json
+[format] cargo fmt --all --check
+[clippy] cargo clippy --workspace --all-targets --locked --offline -- -D warnings
+[rust-tests] cargo test --workspace --locked --offline
+[hybrid-source-scope-canary] /Users/grove/projects/graph-verity/.venv/bin/python tools/hybrid_retrieval.py scope-canary --binary target/debug/verity
+[hybrid-native-lexical-replay] /Users/grove/projects/graph-verity/.venv/bin/python tools/hybrid_retrieval.py verify-lexical --binary target/debug/verity --out reports/issue-50-real-rdf-hybrid/run
+[selective-hybrid-replay] /Users/grove/projects/graph-verity/.venv/bin/python tools/selective_hybrid.py verify-report --freeze reports/issue-53-selective-hybrid/freeze --out reports/issue-53-selective-hybrid/run --binary target/debug/examples/retrieval_session
+[smoke] cargo run --locked --offline --quiet -p verity_cli -- smoke tests/fixtures/smoke.trig trig
+[dataset-verify] /Users/grove/projects/graph-verity/.venv/bin/python tools/dataset.py verify
+[dataset-rebuild] /Users/grove/projects/graph-verity/.venv/bin/python tools/dataset.py rebuild /Users/grove/projects/graph-verity/artifacts/pre-llm/rebuilt.nq
+[gold-verify] /Users/grove/projects/graph-verity/.venv/bin/python tools/benchmark.py verify
+[worldcities-transfer-source] /Users/grove/projects/graph-verity/.venv/bin/python tools/worldcities_transfer.py verify
+[worldcities-transfer-reference] /Users/grove/projects/graph-verity/.venv/bin/python tools/verify_worldcities_benchmark.py verify
+[review-report] /Users/grove/projects/graph-verity/.venv/bin/python tools/benchmark.py review
+[schema] cargo run --locked --offline --quiet -p verity_cli -- schema
+[inspect] cargo run --locked --offline --quiet -p verity_cli -- inspect data/wikidata/snapshot.nq nquads
+[catalog-first] cargo run --locked --offline --quiet -p verity_cli -- catalog data/wikidata/snapshot.nq nquads data/wikidata/policy.json data/wikidata/scope.json
+[catalog-second] cargo run --locked --offline --quiet -p verity_cli -- catalog data/wikidata/snapshot.nq nquads data/wikidata/policy.json data/wikidata/scope.json
+[oracle] cargo run --locked --offline --quiet -p verity_cli -- evaluate data/wikidata/snapshot.nq nquads data/wikidata/policy.json benchmarks/wikidata.json dev /Users/grove/projects/graph-verity/artifacts/pre-llm/oracle
+[worldcities-transfer-oracle] cargo run --locked --offline --quiet -p verity_cli -- evaluate data/worldcities-transfer/snapshot.nq nquads data/worldcities-transfer/policy.json benchmarks/worldcities-transfer.json transfer_dev /Users/grove/projects/graph-verity/artifacts/pre-llm/worldcities-transfer-oracle
+[locked-evaluation-denied] cargo run --locked --offline --quiet -p verity_cli -- evaluate data/wikidata/snapshot.nq nquads data/wikidata/policy.json PRIVATE_NOT_PRESENT_DO_NOT_OPEN locked_holdout /Users/grove/projects/graph-verity/artifacts/pre-llm/never-created
+[phase0-historical-report] /Users/grove/projects/graph-verity/.venv/bin/python tools/phase0.py report --out /Users/grove/projects/graph-verity/artifacts/pre-llm/phase0-49_ng5ki/baseline
+[phase0-rust-replay] /Users/grove/projects/graph-verity/.venv/bin/python tools/phase0.py replay --out /Users/grove/projects/graph-verity/artifacts/pre-llm/phase0-49_ng5ki/replay
+[phase0-baseline-integrity] /Users/grove/projects/graph-verity/.venv/bin/python tools/phase0.py verify /Users/grove/projects/graph-verity/artifacts/pre-llm/phase0-49_ng5ki/baseline/manifest.json --check-inputs
+[phase0-replay-integrity] /Users/grove/projects/graph-verity/.venv/bin/python tools/phase0.py verify /Users/grove/projects/graph-verity/artifacts/pre-llm/phase0-49_ng5ki/replay/manifest.json --check-inputs
+[phase0-run-comparison] /Users/grove/projects/graph-verity/.venv/bin/python tools/phase0.py compare /Users/grove/projects/graph-verity/artifacts/pre-llm/phase0-49_ng5ki/baseline /Users/grove/projects/graph-verity/artifacts/pre-llm/phase0-49_ng5ki/replay
+[manual] cargo run --locked --offline --quiet -p verity_cli -- run data/wikidata/snapshot.nq nquads data/wikidata/policy.json examples/manual-plan.json
+[replay] cargo run --locked --offline --quiet -p verity_cli -- replay data/wikidata/snapshot.nq nquads data/wikidata/policy.json data/wikidata/scope.json examples/question.txt examples/fixture-response.json
+[invalid-response] cargo run --locked --offline --quiet -p verity_cli -- replay data/wikidata/snapshot.nq nquads data/wikidata/policy.json data/wikidata/scope.json examples/question.txt examples/invalid-response.json
+[unsupported-response] cargo run --locked --offline --quiet -p verity_cli -- replay data/wikidata/snapshot.nq nquads data/wikidata/policy.json data/wikidata/scope.json examples/question.txt examples/unsupported-response.json
+[final-clean-tree] git diff --exit-code HEAD
+{
+  "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
+  "executable_checks_passed": 38,
+  "executable_checks_total": 38,
+  "recorded_abstention_cases_not_model_tested": 8,
+  "model_accuracy": null,
+  "model_abstention_accuracy": null,
+  "interpretation": "compiler_oracle_against_machine_authored_human_review_pending_gold"
+}

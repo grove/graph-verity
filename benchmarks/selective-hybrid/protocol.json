@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "status": "preregistered",
+  "cases": "benchmarks/selective-hybrid/cases.json",
+  "model": "google/embeddinggemma-2",
+  "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+  "corpus": {
+    "rdf": "data/gemet/snapshot.nq",
+    "format": "nquads",
+    "policy": "data/gemet/policy.json",
+    "scope": "data/gemet/scope.json",
+    "config": "data/gemet/discovery.json"
+  },
+  "selective": {
+    "dense_min_score": 0.73,
+    "lexical_head": 3,
+    "limit": 50
+  },
+  "parameters": {
+    "limit": 50,
+    "k1": 1.2,
+    "b": 0.75,
+    "max_tokens": 256
+  },
+  "adoption": {
+    "recall10_gain": 0.05,
+    "mrr10_gain": 0.03,
+    "max_language_regression": 0.02,
+    "max_no_match_return_increase": 0,
+    "warm_p95_ms": 1000,
+    "rss_bytes": 4294967296,
+    "resources_max": 10000
+  },
+  "cold_case_indices": [
+    0,
+    40,
+    66,
+    122,
+    171
+  ],
+  "split_counts": {
+    "regression": 122,
+    "evaluation": 50
+  },
+  "lineage": "No new relevant target resource overlaps the 122 exposed #50 targets; some new evaluation targets repeat within evaluation, retaining resource lineages. This is public AI-reference exploratory evidence, not a clean human holdout.",
+  "sha256": {
+    "benchmarks/embeddinggemma/manifest.json": "ee1dc53af42be51a7b532c3932734080648793830ccd6600fe4f280270ea7cce",
+    "benchmarks/hybrid/cases.json": "8fcaaa16c7c991f3ed52ea5b93fd7fc569bfb01291a6ca383d19f22a91efa906",
+    "benchmarks/hybrid/queries.tsv": "bbc4aaa75ec51e3cc63f8edf4852cd9eb4a268261ee421ff3900dec56083ccec",
+    "data/gemet/discovery.json": "050736e69ea1164495ef9b8adeee59ffba7fec665488f883e16b0166edd9da8d",
+    "data/gemet/manifest.json": "0230b6049f465e0c62b4a9f2d6f179be38ebd85e4ead0dbc5a51757408d62fe8",
+    "data/gemet/policy.json": "54870f5f76d1a8075689986ab4b272c52896541b394c96f22081f75293804a0d",
+    "data/gemet/scope.json": "58707821d63dd6ffdc94c995ee72fc17044d577ad775bad0303f9856a125f7d6",
+    "data/gemet/snapshot.nq": "0d3f1c7e412940ffbedd83c703ab6a62e6be619fa0c2ca2cd9523a1806c3eaed",
+    "data/gemet/source/download.html": "f4ed449554d0e159b7452cba0b974de9c8cd4f937e538a150bf85d5ebe87e59a",
+    "data/gemet/source/gemet-4.2.3.rdf.gz": "96002bb7cd1f89bccb05ee174fb834a04dd7342bdd1428f32105cd47fd6b73b6",
+    "data/gemet/source/skos.rdf": "e79633b8d0564816cee8a99f5c9acf9a0e6fc7257c7209acd684ecad53a89dd6",
+    "data/gemet/source/w3c-license.html": "5497437f8e227f2a64def93edfccc6a85088a5c8e1924cacf419090e57c7c058",
+    "data/gemet/stats.json": "0ced3e6619e504ecefb50503d1045b6540ae63fb00197027397d78f0c020fc64",
+    "tools/gemet.py": "144a6d04b9f242fe932519fc06c273832bd026638cf8b8c07b31e0b271675fea",
+    "benchmarks/hybrid/protocol.json": "807b517b7b426c31a8297ae476e703e2056cf982802425285b3c482fdf5e8ff6",
+    "benchmarks/selective-hybrid/cases.json": "cb3d12609723a8ece865542f786c3dc337c11a8942e26e46709f4644a098a30b",
+    "benchmarks/selective-hybrid/calibration.json": "97b621b0fec3f40d30f2cfb6be169009c64e0e15fb69c9a9b2d1fd34aca5da98",
+    "benchmarks/selective-hybrid/README.md": "fd532b1417e75620f1711a5013739ae90d7a0654d602c5b8de2317954cc12ad5"
+  }
+}

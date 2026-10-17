@@ -1,0 +1,35 @@
+{
+  "model_asset_bytes": 1525808822,
+  "asset_tensor_elements": 744371992,
+  "weight_file_bytes": 1488915288,
+  "runtime_allocated_disk_bytes": 1164124160,
+  "runtime_disk_definition": "du -sk allocated blocks for pinned environment; excludes shared base interpreter/system libraries",
+  "tensor_definition": "Actual CPU Encoder parameters/buffers numel * element_size after the timed experiment; nominal tensor storage, not exclusive RSS. Original upstream BF16 assets unchanged; text-only FP32 runtime excludes audio/vision.",
+  "variants": {
+    "bm25-46": {
+      "resources": 2215,
+      "vector_raw_bytes": 6804480,
+      "vector_gzip_bytes": 6332269,
+      "export_gzip_bytes": 77309,
+      "serialized_lexical_index_bytes": 2497151,
+      "source_character_truncated_texts": 0,
+      "token_truncated_documents": 0
+    },
+    "skos-definitions-v1": {
+      "resources": 2215,
+      "vector_raw_bytes": 6804480,
+      "vector_gzip_bytes": 6331609,
+      "export_gzip_bytes": 258599,
+      "serialized_lexical_index_bytes": 5560063,
+      "source_character_truncated_texts": 74,
+      "token_truncated_documents": 0
+    }
+  },
+  "text_model_parameter_bytes": 1084010496,
+  "text_model_buffer_bytes": 3172,
+  "text_model_tensor_dtypes": {
+    "torch.float32": 389
+  },
+  "text_model_parameter_tensors": 389,
+  "allocation_probe_inference_performed": false
+}
