@@ -52,6 +52,12 @@ The benchmark contains **130 machine-authored candidate questions**: 46 developm
 
 Use the [Phase 0 evaluator and preregistration commands](docs/phase-0-evaluation.md) to rescore saved parser outputs, replay them through Rust, verify manifests and assess proposed gates. The baseline is **NOT READY**; see [its decision matrix](reports/phase-0-baseline/summary.md).
 
+The isolated external operator can preregister either independent-human-review evidence
+or an explicitly approved, owner-waiver-bound AI-reference comparison. The latter
+reports the missing expert review and cannot establish formal GO. Numerical budgets,
+target hardware and the actual locked run still require the recorded approvals;
+public runners and normal CI keep the holdout sealed.
+
 See [benchmark review and evaluation](docs/benchmark-review.md), [proposed numerical gates](configs/phase-0-gates.proposed.json), and [pre-LLM readiness](docs/pre-llm-readiness.md). Compiler-oracle results are not natural-language accuracy or a Phase 0 go decision.
 
 ## Real cross-ontology and sealed holdout preparation

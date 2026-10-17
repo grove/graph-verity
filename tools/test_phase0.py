@@ -6,9 +6,9 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from phase0 import (APPROVAL, GATES, PROTOCOL, ROOT, annotate, assess, authorize_locked,
+from phase0 import (AI_GOLD_WAIVER, APPROVAL, GATES, PROTOCOL, ROOT, annotate, assess, authorize_locked,
                     build_report, digest, freeze, rate, read, seal, sha, statistics, summarize,
-                    unseal, verify_manifest, write_new)
+                    unseal, validate_approval, verify_manifest, write_new)
 
 
 class Phase0Tests(unittest.TestCase):
@@ -271,6 +271,30 @@ class Phase0Tests(unittest.TestCase):
             self.assertFalse((p / "admission.json").exists())
             # Admission validates metadata before any private file operation is possible.
             self.assertNotIn("holdout_path", authorize_locked.__code__.co_varnames)
+
+    def test_ai_reference_approval_requires_explicit_policy_and_exact_waiver(self):
+        approved = self.approved()
+        del approved["experiment_identity"]["independent_review_evidence_sha256"]
+        with self.assertRaisesRegex(ValueError, "Incomplete experiment"):
+            validate_approval(approved, self.gates, read(PROTOCOL))
+        approved["reference_policy"] = "ai_reference_only"
+        for waiver in [None, "wrong-waiver"]:
+            approved["experiment_identity"]["owner_ai_gold_waiver_sha256"] = waiver
+            with self.assertRaises(ValueError):
+                validate_approval(approved, self.gates, read(PROTOCOL))
+        approved["experiment_identity"]["owner_ai_gold_waiver_sha256"] = sha(AI_GOLD_WAIVER)
+        validate_approval(approved, self.gates, read(PROTOCOL))
+        s = self.ready_summary()
+        s["user_facing_measurement"] = {"unflagged_wrong_plan_answers": 0}
+        result = assess(s, self.gates, approved)
+        self.assertEqual(result["decision"], "NOT READY")
+        self.assertEqual(next(row for row in result["matrix"] if row["gate"] == "approval")["status"], "pass")
+        self.assertEqual(next(row for row in result["matrix"] if row["gate"] == "reference_evidence_class")["status"], "unavailable")
+        s["safety"]["unauthorized_execution_or_disclosure_count"] = 1
+        self.assertEqual(assess(s, self.gates, approved)["decision"], "STOP")
+        approved["reference_policy"] = "invented"
+        with self.assertRaisesRegex(ValueError, "Unknown reference policy"):
+            validate_approval(approved, self.gates, read(PROTOCOL))
 
     def test_locked_admission_binds_freeze_commitment_and_explicit_action(self):
         with tempfile.TemporaryDirectory() as tmp:
