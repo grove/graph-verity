@@ -4,6 +4,7 @@
 pub mod catalog;
 pub mod compact;
 pub mod compiler;
+pub mod discovery;
 pub mod evaluation;
 pub mod execution;
 pub mod ir;
