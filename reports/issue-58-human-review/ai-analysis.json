@@ -1,0 +1,3501 @@
+{
+  "version": 1,
+  "protocol_id": "6223e88dbca50cbc9e09b3eb8c0fa4034fe4f55ba8405e66318b37a633c84354",
+  "evidence": "AI source-anchor analysis; not human or exhaustive relevance gold",
+  "independent_of_query_author": false,
+  "post_rank_relabeling": false,
+  "human_reviewers": 0,
+  "human_judgments": 0,
+  "recommendation": "defer",
+  "automatic_promotion": false,
+  "confidence_and_false_confidence": "unmeasured; no participant ratings",
+  "new_anchor_recall10_wins": [
+    "HR-01",
+    "HR-02",
+    "HR-05",
+    "HR-07",
+    "HR-08",
+    "HR-13"
+  ],
+  "both_methods_miss_at10": [
+    "HR-03",
+    "HR-06",
+    "HR-20"
+  ],
+  "summaries": {
+    "overall": {
+      "queries": 20,
+      "relevant_reference_cases": 16,
+      "metrics": {
+        "bm25": {
+          "recall@1": {
+            "n": 16,
+            "mean": 0.28125,
+            "descriptive_95": [
+              0.0625,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 16,
+            "mean": 0.4375,
+            "descriptive_95": [
+              0.1875,
+              0.6875
+            ]
+          },
+          "recall@10": {
+            "n": 16,
+            "mean": 0.4375,
+            "descriptive_95": [
+              0.1875,
+              0.6875
+            ]
+          },
+          "mrr@10": {
+            "n": 16,
+            "mean": 0.3645833333333333,
+            "descriptive_95": [
+              0.15625,
+              0.59375
+            ]
+          }
+        },
+        "selective": {
+          "recall@1": {
+            "n": 16,
+            "mean": 0.28125,
+            "descriptive_95": [
+              0.0625,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 16,
+            "mean": 0.78125,
+            "descriptive_95": [
+              0.59375,
+              0.96875
+            ]
+          },
+          "recall@10": {
+            "n": 16,
+            "mean": 0.8125,
+            "descriptive_95": [
+              0.625,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 16,
+            "mean": 0.4583333333333333,
+            "descriptive_95": [
+              0.28125,
+              0.65625
+            ]
+          }
+        }
+      },
+      "paired_delta": {
+        "recall@1": {
+          "n": 16,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 16,
+          "mean": 0.34375,
+          "descriptive_95": [
+            0.125,
+            0.5625
+          ]
+        },
+        "recall@10": {
+          "n": 16,
+          "mean": 0.375,
+          "descriptive_95": [
+            0.125,
+            0.625
+          ]
+        },
+        "mrr@10": {
+          "n": 16,
+          "mean": 0.09375,
+          "descriptive_95": [
+            0.03125,
+            0.15625
+          ]
+        }
+      },
+      "no_match_false_candidate_rate": {
+        "bm25": {
+          "n": 4,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        },
+        "selective": {
+          "n": 4,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "exact_first": {
+        "probes": 4,
+        "preserved": 4
+      }
+    },
+    "language/en": {
+      "queries": 10,
+      "relevant_reference_cases": 8,
+      "metrics": {
+        "bm25": {
+          "recall@1": {
+            "n": 8,
+            "mean": 0.25,
+            "descriptive_95": [
+              0.0,
+              0.625
+            ]
+          },
+          "recall@5": {
+            "n": 8,
+            "mean": 0.375,
+            "descriptive_95": [
+              0.0,
+              0.75
+            ]
+          },
+          "recall@10": {
+            "n": 8,
+            "mean": 0.375,
+            "descriptive_95": [
+              0.0,
+              0.75
+            ]
+          },
+          "mrr@10": {
+            "n": 8,
+            "mean": 0.3125,
+            "descriptive_95": [
+              0.0,
+              0.625
+            ]
+          }
+        },
+        "selective": {
+          "recall@1": {
+            "n": 8,
+            "mean": 0.25,
+            "descriptive_95": [
+              0.0,
+              0.625
+            ]
+          },
+          "recall@5": {
+            "n": 8,
+            "mean": 0.8125,
+            "descriptive_95": [
+              0.5625,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 8,
+            "mean": 0.875,
+            "descriptive_95": [
+              0.625,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 8,
+            "mean": 0.4375,
+            "descriptive_95": [
+              0.21875,
+              0.6875
+            ]
+          }
+        }
+      },
+      "paired_delta": {
+        "recall@1": {
+          "n": 8,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 8,
+          "mean": 0.4375,
+          "descriptive_95": [
+            0.125,
+            0.75
+          ]
+        },
+        "recall@10": {
+          "n": 8,
+          "mean": 0.5,
+          "descriptive_95": [
+            0.125,
+            0.875
+          ]
+        },
+        "mrr@10": {
+          "n": 8,
+          "mean": 0.125,
+          "descriptive_95": [
+            0.03125,
+            0.21875
+          ]
+        }
+      },
+      "no_match_false_candidate_rate": {
+        "bm25": {
+          "n": 2,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        },
+        "selective": {
+          "n": 2,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "exact_first": {
+        "probes": 2,
+        "preserved": 2
+      }
+    },
+    "language/no": {
+      "queries": 10,
+      "relevant_reference_cases": 8,
+      "metrics": {
+        "bm25": {
+          "recall@1": {
+            "n": 8,
+            "mean": 0.3125,
+            "descriptive_95": [
+              0.0625,
+              0.625
+            ]
+          },
+          "recall@5": {
+            "n": 8,
+            "mean": 0.5,
+            "descriptive_95": [
+              0.125,
+              0.875
+            ]
+          },
+          "recall@10": {
+            "n": 8,
+            "mean": 0.5,
+            "descriptive_95": [
+              0.125,
+              0.875
+            ]
+          },
+          "mrr@10": {
+            "n": 8,
+            "mean": 0.4166666666666667,
+            "descriptive_95": [
+              0.125,
+              0.75
+            ]
+          }
+        },
+        "selective": {
+          "recall@1": {
+            "n": 8,
+            "mean": 0.3125,
+            "descriptive_95": [
+              0.0625,
+              0.625
+            ]
+          },
+          "recall@5": {
+            "n": 8,
+            "mean": 0.75,
+            "descriptive_95": [
+              0.375,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 8,
+            "mean": 0.75,
+            "descriptive_95": [
+              0.375,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 8,
+            "mean": 0.4791666666666667,
+            "descriptive_95": [
+              0.19791666666666666,
+              0.78125
+            ]
+          }
+        }
+      },
+      "paired_delta": {
+        "recall@1": {
+          "n": 8,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 8,
+          "mean": 0.25,
+          "descriptive_95": [
+            0.0,
+            0.625
+          ]
+        },
+        "recall@10": {
+          "n": 8,
+          "mean": 0.25,
+          "descriptive_95": [
+            0.0,
+            0.625
+          ]
+        },
+        "mrr@10": {
+          "n": 8,
+          "mean": 0.0625,
+          "descriptive_95": [
+            0.0,
+            0.15625
+          ]
+        }
+      },
+      "no_match_false_candidate_rate": {
+        "bm25": {
+          "n": 2,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        },
+        "selective": {
+          "n": 2,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "exact_first": {
+        "probes": 2,
+        "preserved": 2
+      }
+    },
+    "family/ambiguous": {
+      "queries": 2,
+      "relevant_reference_cases": 2,
+      "metrics": {
+        "bm25": {
+          "recall@1": {
+            "n": 2,
+            "mean": 0.25,
+            "descriptive_95": [
+              0.0,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 2,
+            "mean": 0.5,
+            "descriptive_95": [
+              0.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 2,
+            "mean": 0.5,
+            "descriptive_95": [
+              0.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 2,
+            "mean": 0.5,
+            "descriptive_95": [
+              0.0,
+              1.0
+            ]
+          }
+        },
+        "selective": {
+          "recall@1": {
+            "n": 2,
+            "mean": 0.25,
+            "descriptive_95": [
+              0.0,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 2,
+            "mean": 0.75,
+            "descriptive_95": [
+              0.5,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 2,
+            "mean": 0.625,
+            "descriptive_95": [
+              0.25,
+              1.0
+            ]
+          }
+        }
+      },
+      "paired_delta": {
+        "recall@1": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 2,
+          "mean": 0.25,
+          "descriptive_95": [
+            0.0,
+            0.5
+          ]
+        },
+        "recall@10": {
+          "n": 2,
+          "mean": 0.5,
+          "descriptive_95": [
+            0.0,
+            1.0
+          ]
+        },
+        "mrr@10": {
+          "n": 2,
+          "mean": 0.125,
+          "descriptive_95": [
+            0.0,
+            0.25
+          ]
+        }
+      },
+      "no_match_false_candidate_rate": {
+        "bm25": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        },
+        "selective": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        }
+      },
+      "exact_first": {
+        "probes": 0,
+        "preserved": 0
+      }
+    },
+    "family/exact_label": {
+      "queries": 2,
+      "relevant_reference_cases": 2,
+      "metrics": {
+        "bm25": {
+          "recall@1": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "selective": {
+          "recall@1": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        }
+      },
+      "paired_delta": {
+        "recall@1": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "no_match_false_candidate_rate": {
+        "bm25": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        },
+        "selective": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        }
+      },
+      "exact_first": {
+        "probes": 2,
+        "preserved": 2
+      }
+    },
+    "family/identifier": {
+      "queries": 2,
+      "relevant_reference_cases": 2,
+      "metrics": {
+        "bm25": {
+          "recall@1": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "selective": {
+          "recall@1": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 2,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        }
+      },
+      "paired_delta": {
+        "recall@1": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "no_match_false_candidate_rate": {
+        "bm25": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        },
+        "selective": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        }
+      },
+      "exact_first": {
+        "probes": 2,
+        "preserved": 2
+      }
+    },
+    "family/no_match": {
+      "queries": 4,
+      "relevant_reference_cases": 0,
+      "metrics": {
+        "bm25": {
+          "recall@1": {
+            "n": 0,
+            "mean": null,
+            "descriptive_95": [
+              null,
+              null
+            ]
+          },
+          "recall@5": {
+            "n": 0,
+            "mean": null,
+            "descriptive_95": [
+              null,
+              null
+            ]
+          },
+          "recall@10": {
+            "n": 0,
+            "mean": null,
+            "descriptive_95": [
+              null,
+              null
+            ]
+          },
+          "mrr@10": {
+            "n": 0,
+            "mean": null,
+            "descriptive_95": [
+              null,
+              null
+            ]
+          }
+        },
+        "selective": {
+          "recall@1": {
+            "n": 0,
+            "mean": null,
+            "descriptive_95": [
+              null,
+              null
+            ]
+          },
+          "recall@5": {
+            "n": 0,
+            "mean": null,
+            "descriptive_95": [
+              null,
+              null
+            ]
+          },
+          "recall@10": {
+            "n": 0,
+            "mean": null,
+            "descriptive_95": [
+              null,
+              null
+            ]
+          },
+          "mrr@10": {
+            "n": 0,
+            "mean": null,
+            "descriptive_95": [
+              null,
+              null
+            ]
+          }
+        }
+      },
+      "paired_delta": {
+        "recall@1": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        },
+        "recall@5": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        },
+        "recall@10": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        },
+        "mrr@10": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        }
+      },
+      "no_match_false_candidate_rate": {
+        "bm25": {
+          "n": 4,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        },
+        "selective": {
+          "n": 4,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "exact_first": {
+        "probes": 0,
+        "preserved": 0
+      }
+    },
+    "family/paraphrase": {
+      "queries": 8,
+      "relevant_reference_cases": 8,
+      "metrics": {
+        "bm25": {
+          "recall@1": {
+            "n": 8,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "recall@5": {
+            "n": 8,
+            "mean": 0.125,
+            "descriptive_95": [
+              0.0,
+              0.375
+            ]
+          },
+          "recall@10": {
+            "n": 8,
+            "mean": 0.125,
+            "descriptive_95": [
+              0.0,
+              0.375
+            ]
+          },
+          "mrr@10": {
+            "n": 8,
+            "mean": 0.041666666666666664,
+            "descriptive_95": [
+              0.0,
+              0.125
+            ]
+          }
+        },
+        "selective": {
+          "recall@1": {
+            "n": 8,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "recall@5": {
+            "n": 8,
+            "mean": 0.75,
+            "descriptive_95": [
+              0.375,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 8,
+            "mean": 0.75,
+            "descriptive_95": [
+              0.375,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 8,
+            "mean": 0.19791666666666666,
+            "descriptive_95": [
+              0.11458333333333333,
+              0.2708333333333333
+            ]
+          }
+        }
+      },
+      "paired_delta": {
+        "recall@1": {
+          "n": 8,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 8,
+          "mean": 0.625,
+          "descriptive_95": [
+            0.25,
+            1.0
+          ]
+        },
+        "recall@10": {
+          "n": 8,
+          "mean": 0.625,
+          "descriptive_95": [
+            0.25,
+            1.0
+          ]
+        },
+        "mrr@10": {
+          "n": 8,
+          "mean": 0.15625,
+          "descriptive_95": [
+            0.0625,
+            0.25
+          ]
+        }
+      },
+      "no_match_false_candidate_rate": {
+        "bm25": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        },
+        "selective": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        }
+      },
+      "exact_first": {
+        "probes": 0,
+        "preserved": 0
+      }
+    },
+    "family/predicate_direction": {
+      "queries": 2,
+      "relevant_reference_cases": 2,
+      "metrics": {
+        "bm25": {
+          "recall@1": {
+            "n": 2,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "recall@5": {
+            "n": 2,
+            "mean": 0.5,
+            "descriptive_95": [
+              0.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 2,
+            "mean": 0.5,
+            "descriptive_95": [
+              0.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 2,
+            "mean": 0.25,
+            "descriptive_95": [
+              0.0,
+              0.5
+            ]
+          }
+        },
+        "selective": {
+          "recall@1": {
+            "n": 2,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "recall@5": {
+            "n": 2,
+            "mean": 0.5,
+            "descriptive_95": [
+              0.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 2,
+            "mean": 0.5,
+            "descriptive_95": [
+              0.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 2,
+            "mean": 0.25,
+            "descriptive_95": [
+              0.0,
+              0.5
+            ]
+          }
+        }
+      },
+      "paired_delta": {
+        "recall@1": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 2,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "no_match_false_candidate_rate": {
+        "bm25": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        },
+        "selective": {
+          "n": 0,
+          "mean": null,
+          "descriptive_95": [
+            null,
+            null
+          ]
+        }
+      },
+      "exact_first": {
+        "probes": 0,
+        "preserved": 0
+      }
+    }
+  },
+  "cases": [
+    {
+      "task_id": "HR-01",
+      "query": "designing structures to withstand earthquakes",
+      "language": "en",
+      "family": "paraphrase",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10055"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/2004/02/skos/core#definition> \"The study of the behavior of foundations and structures relative to seismic ground motion, and the attempt to mitigate the effect of earthquakes on structures.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/2004/02/skos/core#prefLabel> \"seismic engineering\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/2004/02/skos/core#prefLabel> \"seismoteknologi\"@no <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "recall@50": 0.0,
+          "mrr@10": 0.0
+        },
+        "selective": {
+          "recall@1": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 0.25
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15030"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/23"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5777"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5778"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9324"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9325"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4049"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7197"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13285"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3291"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15030"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/23"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5777"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10055"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7578"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5778"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9324"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9325"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4049"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7197"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.25
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-02",
+      "query": "konstruksjon av bygg som tåler jordskjelv",
+      "language": "no",
+      "family": "paraphrase",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10055"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/2004/02/skos/core#definition> \"The study of the behavior of foundations and structures relative to seismic ground motion, and the attempt to mitigate the effect of earthquakes on structures.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/2004/02/skos/core#prefLabel> \"seismic engineering\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/2004/02/skos/core#prefLabel> \"seismoteknologi\"@no <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "recall@50": 0.0,
+          "mrr@10": 0.0
+        },
+        "selective": {
+          "recall@1": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 0.25
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1730"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/419"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7630"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11199"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10512"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10548"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11069"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11082"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11224"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11375"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1730"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/419"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7630"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10055"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6953"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1054"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1058"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1728"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7578"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8163"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.25
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-03",
+      "query": "the oldest neighbourhood at the heart of a town",
+      "language": "en",
+      "family": "paraphrase",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10066"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#definition> \"That part of a town or city in which the principal public and historic buildings are located.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#prefLabel> \"historic centre\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#prefLabel> \"historisk senter\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#related> <http://www.eionet.europa.eu/gemet/concept/3977> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/3977> <http://www.w3.org/2004/02/skos/core#related> <http://www.eionet.europa.eu/gemet/concept/10066> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "recall@50": 0.0,
+          "mrr@10": 0.0
+        },
+        "selective": {
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "recall@50": 0.0,
+          "mrr@10": 0.0
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8069"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#prefLabel"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8434"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13329"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#altLabel"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6953"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9373"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2566"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13285"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/12098"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8069"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#prefLabel"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8434"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13329"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#altLabel"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6953"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9373"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2566"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13285"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/12098"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "mrr@10": 0.0
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-04",
+      "query": "den eldste bykjernen med historisk bebyggelse",
+      "language": "no",
+      "family": "paraphrase",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10066"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#definition> \"That part of a town or city in which the principal public and historic buildings are located.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#prefLabel> \"historic centre\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#prefLabel> \"historisk senter\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#related> <http://www.eionet.europa.eu/gemet/concept/3977> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/3977> <http://www.w3.org/2004/02/skos/core#related> <http://www.eionet.europa.eu/gemet/concept/10066> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 0.3333333333333333
+        },
+        "selective": {
+          "recall@1": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 0.3333333333333333
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4062"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13329"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10066"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3971"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3974"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3977"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10711"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5282"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7630"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1730"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4062"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13329"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10066"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3977"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5858"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8841"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13121"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3971"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6285"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3974"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "mrr@10": 0.0
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-05",
+      "query": "evaluating threats from natural hazards",
+      "language": "en",
+      "family": "paraphrase",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10103"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/2004/02/skos/core#definition> \"Analysis of the probability of occurrence, within a specific period of time in a given area, of a potentially damaging phenomenon of nature.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/2004/02/skos/core#prefLabel> \"natural risk analysis\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/2004/02/skos/core#prefLabel> \"naturrisikoanalyse\"@no <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "recall@50": 0.0,
+          "mrr@10": 0.0
+        },
+        "selective": {
+          "recall@1": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 0.25
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6749"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1958"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15234"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15236"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15237"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15273"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5496"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5502"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5503"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5507"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6749"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1958"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15234"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10103"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15118"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15171"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2823"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5496"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15173"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11061"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.25
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-06",
+      "query": "vurdere farer fra naturhendelser",
+      "language": "no",
+      "family": "paraphrase",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10103"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/2004/02/skos/core#definition> \"Analysis of the probability of occurrence, within a specific period of time in a given area, of a potentially damaging phenomenon of nature.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/2004/02/skos/core#prefLabel> \"natural risk analysis\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/2004/02/skos/core#prefLabel> \"naturrisikoanalyse\"@no <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "recall@50": 0.0,
+          "mrr@10": 0.0
+        },
+        "selective": {
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "recall@50": 0.0,
+          "mrr@10": 0.0
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1505"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1591"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/434"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4626"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9008"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6749"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8446"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10017"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2831"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2833"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1505"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1591"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/434"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4626"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9008"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6749"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8446"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10017"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2831"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2833"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "mrr@10": 0.0
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-07",
+      "query": "the organisation of courts and justice",
+      "language": "en",
+      "family": "paraphrase",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10085"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#definition> \"Entire network of courts in a particular jurisdiction.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/11587> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/11623> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/5776> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6583> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6799> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/8283> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "recall@50": 0.0,
+          "mrr@10": 0.0
+        },
+        "selective": {
+          "recall@1": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 0.25
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13285"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#altLabel"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#prefLabel"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8069"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10837"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13157"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8434"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13329"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11583"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13286"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13285"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#altLabel"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#prefLabel"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10085"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13286"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11583"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6384"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8069"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10837"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13157"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.25
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-08",
+      "query": "hvordan domstoler og rettspleie er organisert",
+      "language": "no",
+      "family": "paraphrase",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10085"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#definition> \"Entire network of courts in a particular jurisdiction.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/11587> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/11623> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/5776> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6583> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6799> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/8283> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "recall@50": 0.0,
+          "mrr@10": 0.0
+        },
+        "selective": {
+          "recall@1": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 0.25
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1728"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/552"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2684"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8566"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11427"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13098"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1384"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4603"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11243"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11322"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1728"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/552"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2684"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10085"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8566"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11427"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13098"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1384"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4603"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11243"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 0.25
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-09",
+      "query": "http://www.eionet.europa.eu/gemet/concept/10003",
+      "language": "en",
+      "family": "identifier",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10003"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/5161> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#prefLabel> \"animal life\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#prefLabel> \"dyreliv\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/5161> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/10003> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/867> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/10003> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 1.0
+        },
+        "selective": {
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 1.0
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10003"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15051"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15072"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15113"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15291"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15292"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15311"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15335"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15338"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3006"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10003"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15051"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15072"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15113"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2282"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3006"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3983"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/79"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10890"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2284"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "mrr@10": 0.0
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": true,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-10",
+      "query": "http://www.eionet.europa.eu/gemet/concept/10043",
+      "language": "no",
+      "family": "identifier",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10043"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/3022> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6211> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#prefLabel> \"plant life\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#prefLabel> \"planteliv\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/3022> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/10043> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/6211> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/10043> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 1.0
+        },
+        "selective": {
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 1.0
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10043"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15051"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15072"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15113"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15291"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15292"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15311"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15335"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15338"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3006"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10043"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15051"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15072"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15113"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2282"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3983"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/79"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3006"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1449"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2284"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "mrr@10": 0.0
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": true,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-11",
+      "query": "information transfer",
+      "language": "en",
+      "family": "exact_label",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10024"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10024> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10024> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/23> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10024> <http://www.w3.org/2004/02/skos/core#definition> \"The communication or conveyance of data or materials for the purpose of enhancing knowledge from one person, place or position to another.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10024> <http://www.w3.org/2004/02/skos/core#prefLabel> \"informasjonsoverføring\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10024> <http://www.w3.org/2004/02/skos/core#prefLabel> \"information transfer\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/23> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/10024> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 1.0
+        },
+        "selective": {
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 1.0
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10024"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8342"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13060"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/14856"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1739"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4309"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4311"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13053"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/14879"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/14880"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10024"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8342"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13060"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/14856"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4398"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4309"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5777"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4311"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/14880"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15311"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "mrr@10": 0.0
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": true,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-12",
+      "query": "samfunnsvitenskap",
+      "language": "no",
+      "family": "exact_label",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10057"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#definition> \"The study of society and of the relationship of individual members within society, including economics, history, political science, psychology, anthropology, and sociology.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/10971> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/7831> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#prefLabel> \"samfunnsvitenskap\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#prefLabel> \"social science\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10971> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/10057> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/7831> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/10057> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 1.0
+        },
+        "selective": {
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 1.0
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10057"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10057"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7831"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10971"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7472"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7823"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10972"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7807"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/496"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7791"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2922"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "mrr@10": 0.0
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": true,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-13",
+      "query": "regions grouped by their weather patterns",
+      "language": "en",
+      "family": "ambiguous",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/1476"
+        },
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/15099"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/2004/02/skos/core#altLabel> \"climatic zone\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/2004/02/skos/core#definition> \"A belt of the earth's surface within which the climate is generally homogeneous in some respect; an elemental region of a simple climatic classification.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6364> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/8693> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/2004/02/skos/core#prefLabel> \"climate zone\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/2004/02/skos/core#prefLabel> \"klimasone\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/15099> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "recall@50": 0.0,
+          "mrr@10": 0.0
+        },
+        "selective": {
+          "recall@1": 0.0,
+          "recall@5": 0.5,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 0.25
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1421"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9274"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9276"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9278"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1421"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9274"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9276"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1476"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7059"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15099"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9278"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 0.5,
+        "recall@10": 1.0,
+        "mrr@10": 0.25
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-14",
+      "query": "fart eller hastighet i en fysisk sammenheng",
+      "language": "no",
+      "family": "ambiguous",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/11130"
+        },
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/7994"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/11130> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/11130> <http://www.w3.org/2004/02/skos/core#definition> \"The amount of change in some quantity during a time interval divided by the length of the time interval.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/11130> <http://www.w3.org/2004/02/skos/core#prefLabel> \"hastighet\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/11130> <http://www.w3.org/2004/02/skos/core#prefLabel> \"rate\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/7994> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/7994> <http://www.w3.org/2004/02/skos/core#definition> \"A scalar measure of the rate of movement of a body expressed either as the distance travelled divided by the time taken (average speed) or the rate of change of position with respect to time at a particular point (instantaneous speed). It is measured in metres per second, miles per hour, etc.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/7994> <http://www.w3.org/2004/02/skos/core#prefLabel> \"hastighet\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/7994> <http://www.w3.org/2004/02/skos/core#prefLabel> \"speed\"@en <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 0.5,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 1.0
+        },
+        "selective": {
+          "recall@1": 0.5,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 1.0
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11130"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7994"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10166"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/12606"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6221"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6224"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/12605"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/12226"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/12277"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1419"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11130"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7994"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10166"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6221"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11692"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6235"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/10039"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/7996"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/12606"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6224"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "mrr@10": 0.0
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-15",
+      "query": "lunar bakery taxation office",
+      "language": "en",
+      "family": "no_match",
+      "source_anchors": [],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {},
+        "selective": {}
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5810"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6812"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5810"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6812"
+          }
+        ]
+      },
+      "paired_delta": {},
+      "no_match_reference": true,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-16",
+      "query": "kommunal avgift for månebakerier",
+      "language": "no",
+      "family": "no_match",
+      "source_anchors": [],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {},
+        "selective": {}
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1426"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4884"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5430"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1881"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4788"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8326"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3345"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/12905"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9178"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1229"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1426"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4884"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5430"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5432"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1636"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/5433"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1817"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/11359"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1881"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4788"
+          }
+        ]
+      },
+      "paired_delta": {},
+      "no_match_reference": true,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-17",
+      "query": "telepathic dragon licensing register",
+      "language": "en",
+      "family": "no_match",
+      "source_anchors": [],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {},
+        "selective": {}
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2672"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4644"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4603"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/2672"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4644"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4603"
+          }
+        ]
+      },
+      "paired_delta": {},
+      "no_match_reference": true,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-18",
+      "query": "konsesjonsregister for telepatiske drager",
+      "language": "no",
+      "family": "no_match",
+      "source_anchors": [],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {},
+        "selective": {}
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1881"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4788"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8326"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3345"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/12905"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9178"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1229"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/12321"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13261"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/15360"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1881"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/4788"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/8326"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/6773"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/3345"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/12905"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/9178"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/1229"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/12321"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.eionet.europa.eu/gemet/concept/13261"
+          }
+        ]
+      },
+      "paired_delta": {},
+      "no_match_reference": true,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-19",
+      "query": "a concept pointing to its more specific concepts",
+      "language": "en",
+      "family": "predicate_direction",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.w3.org/2004/02/skos/core#narrower"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/5161> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/3022> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6211> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/10971> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/7831> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10073> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/5239> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10076> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/13231> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10084> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/1590> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 0.5
+        },
+        "selective": {
+          "recall@1": 0.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "recall@50": 1.0,
+          "mrr@10": 0.5
+        }
+      },
+      "hits": {
+        "bm25": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#broader"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#narrower"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#prefLabel"
+          }
+        ],
+        "selective": [
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#broader"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#narrower"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#prefLabel"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2004/02/skos/core#definition"
+          },
+          {
+            "graph": "urn:graph-verity:gemet:4.2.3",
+            "iri": "http://www.w3.org/2000/01/rdf-schema#comment"
+          }
+        ]
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "mrr@10": 0.0
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": true,
+        "selective": true
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    },
+    {
+      "task_id": "HR-20",
+      "query": "fra et begrep til det overordnede begrepet",
+      "language": "no",
+      "family": "predicate_direction",
+      "source_anchors": [
+        {
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.w3.org/2004/02/skos/core#broader"
+        }
+      ],
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10017> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/2564> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1001> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/8590> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10024> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/23> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10058> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/9195> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10078> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/8579> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10089> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/6402> <urn:graph-verity:gemet:4.2.3> ."
+      ],
+      "metrics": {
+        "bm25": {
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "recall@50": 0.0,
+          "mrr@10": 0.0
+        },
+        "selective": {
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "recall@50": 0.0,
+          "mrr@10": 0.0
+        }
+      },
+      "hits": {
+        "bm25": [],
+        "selective": []
+      },
+      "paired_delta": {
+        "recall@1": 0.0,
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "mrr@10": 0.0
+      },
+      "no_match_reference": false,
+      "returned_candidates": {
+        "bm25": false,
+        "selective": false
+      },
+      "exact_first_probe": false,
+      "exact_first_preserved": true
+    }
+  ],
+  "limitations": [
+    "Zero actual participants/reviewers at preregistration; genuine human validation blocked.",
+    "AI-authored source anchors are not relevance gold; no-match references need full authorized retrievable catalog review.",
+    "New target families chosen without consulting their ranks; exposed targets only in declared ambiguity/direction probes. Both languages share families.",
+    "Public source corpus and exposed #50/#53 demo remain regressions; neither is an untouched holdout.",
+    "Human identity/consent are operator attestations, not cryptographic proof; anonymous IDs must not be reused across people or duplicated for one person.",
+    "Small convenience sample and correlated queries limit descriptive intervals; no product rollout or Confirmed Ask integration is authorized.",
+    "Metrics use preregistered AI source anchors, not a newly adjudicated exhaustive relevance set.",
+    "Source-target judgments were authored by the same AI as the queries; no independent human assessments or usability evidence.",
+    "Quantitative labels remain unchanged after rank inspection; qualitative source audit is post-capture and explicitly AI-authored."
+  ]
+}
