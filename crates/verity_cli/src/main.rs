@@ -7,6 +7,7 @@ use std::{
 use verity_core::{
     catalog::Policy,
     compact::decode_intent,
+    discovery::{DiscoveryConfig, MAX_INDEX_BYTES},
     evaluation::Benchmark,
     execution::PlanOrigin,
     ir::decode_plan,
@@ -14,7 +15,7 @@ use verity_core::{
     read_limited, reject, Result, Snapshot,
 };
 
-const USAGE: &str = "verity schema | schema-compact | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local|evaluate-local-compact RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT | compact-context RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT | compact RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT INTENT_FILE\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, PLAN and BENCHMARK are JSON files. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
+const USAGE: &str = "verity schema | schema-compact | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | index-build RDF FORMAT POLICY SCOPE CONFIG | index-inspect RDF FORMAT POLICY SCOPE CONFIG INDEX | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local|evaluate-local-compact RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT | compact-context RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT | compact RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT INTENT_FILE\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, CONFIG, INDEX, PLAN and BENCHMARK are JSON files. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
 
 // The parent owns llama.cpp, deadlines and process cleanup; model bytes stay inside response.
 struct LlamaCppBridge {
@@ -116,6 +117,21 @@ fn run() -> Result<()> {
     }
     let policy: Policy = serde_json::from_value(json(&args[3])?)?;
     match (args[0].as_str(), args.len()) {
+        ("index-build", 6) | ("index-inspect", 7) => {
+            let scope: Vec<String> = serde_json::from_value(json(&args[4])?)?;
+            let config: DiscoveryConfig = serde_json::from_value(json(&args[5])?)?;
+            let index = if args[0] == "index-build" {
+                graph.build_discovery(&scope, &policy, &config)?
+            } else {
+                graph.load_discovery(
+                    &read_limited(&args[6], MAX_INDEX_BYTES)?,
+                    &scope,
+                    &policy,
+                    &config,
+                )?
+            };
+            print_json(&index)
+        }
         ("compact-context", 7) | ("compact", 8) => {
             let scope: Vec<String> = serde_json::from_value(json(&args[4])?)?;
             let question = String::from_utf8(read_limited(&args[5], 4096)?)

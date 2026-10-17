@@ -4,7 +4,7 @@
 
 Graph Verity is a local-first RDF exploration project. **Phase 0 selected a Find-first MVP and stopped unattended free-form Ask with the tested Qwen2.5-1.5B v1/compact-v2 configurations.** See the [decision, evidence and roadmap](docs/phase-0-decision.md) and [machine-readable record](docs/phase-0-decision.json). Find is the next build scope, not an implemented feature. Its **deterministic pre-LLM core is implemented on `main`**: manually authored or fixture-supplied typed plans are validated in Rust, compiled into read-only SPARQL, and executed in embedded Oxigraph with scoped RDF evidence.
 
-An opt-in **CPU-only local semantic-parser experiment** is implemented behind the same Rust validation boundary. It evaluates public development questions with oracle vocabulary, reports AI-reference agreement separately from JSON validity and query execution, and preserves model/grammar/prompt/output artifacts. See [the experiment and reproduction command](docs/local-parser-experiment.md). Embeddings, Find/search, SHACL validation and product HTTP serving remain unimplemented. Successful graph execution does not establish that a question was understood or that the graph's statements are true in the world.
+An opt-in **CPU-only local semantic-parser experiment** is implemented behind the same Rust validation boundary. It evaluates public development questions with oracle vocabulary, reports AI-reference agreement separately from JSON validity and query execution, and preserves model/grammar/prompt/output artifacts. See [the experiment and reproduction command](docs/local-parser-experiment.md). The [authorized discovery catalog](docs/discovery-catalog.md) now builds deterministic graph-scoped lexical postings from retained snapshots. Embeddings, ranked Find/search, SHACL validation and product HTTP serving remain unimplemented. Successful graph execution does not establish that a question was understood or that the graph's statements are true in the world.
 
 ## Try the implemented pipeline
 
@@ -35,6 +35,8 @@ cargo run --locked -p verity_cli -- evaluate data/wikidata/snapshot.nq nquads da
 The supplied two-hop example follows Oslo's recorded country relationship and that country's recorded capital relationship. The result is an RDF identifier plus the contributing source statements, query plan, snapshot and scope. The fixture adapter replays a recorded response; it does not understand new Norwegian questions.
 
 Other implemented commands are `schema`, `smoke`, `catalog` and exact `resolve`. The [query contract](docs/query-contract.md) describes the arguments, IR and limitations. [Example plans and responses](examples/) are executable inputs, not proposed APIs.
+
+Use `index-build` and `index-inspect` for the [versioned discovery catalog and manifest](docs/discovery-catalog.md), including Norwegian/English labels, observed aliases, identifiers and bounded descriptions. Each resource retains its original RDF IRI and graph provenance; all postings and statistics are authorized before construction.
 
 The separate [compact intent v2 contract](docs/compact-intent-v2.md) adds indexed
 proposals, trusted request context and deterministic expansion into the same validated
