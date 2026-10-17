@@ -1,6 +1,7 @@
 //! Deterministic local RDF execution; no model runtime or public raw-SPARQL API.
 #![forbid(unsafe_code)]
 
+pub mod ask;
 pub mod catalog;
 pub mod compact;
 pub mod compiler;

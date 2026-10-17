@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
+  "scope": [
+    "urn:graph-verity:wikidata:development"
+  ],
+  "limit": 10,
+  "template": {
+    "kind": "follow_path",
+    "start": "http://www.wikidata.org/entity/Q20",
+    "steps": [
+      {
+        "graph": "urn:graph-verity:wikidata:development",
+        "predicate": "http://www.wikidata.org/prop/direct/P36",
+        "direction": "forward"
+      }
+    ],
+    "filter": null,
+    "output": "count_distinct"
+  }
+}
