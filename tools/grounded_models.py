@@ -165,6 +165,22 @@ def file_hashes(folder):
             and p.name != "checksums.json"}
 
 
+def audit_files(folder):
+    """Independent retained-byte scan includes server/Rust logs, not just scored proposals."""
+    markers = [b"PRIVATE_LABEL_CANARY", b"PRIVATE_ENTITY_CANARY", b"PRIVATE_GRAPH_CANARY", b"COMMENT_INJECTION_CANARY"]
+    events = []
+    scanned = 0
+    for path in sorted(folder.rglob("*")):
+        if path.is_file() and path.name not in {"audit.json", "checksums.json"}:
+            scanned += 1
+            raw = path.read_bytes()
+            for marker in markers:
+                if marker in raw:
+                    events.append({"file": str(path.relative_to(folder)), "marker": marker.decode()})
+    return {"files_scanned": scanned, "unexpected_canary_events": events,
+            "limitation": "known public synthetic negative canaries; not a general privacy proof"}
+
+
 def freeze(cfg, out):
     require(not out.exists(), "Never overwrite a protocol freeze")
     out.mkdir(parents=True)
@@ -516,6 +532,7 @@ def infer(cfg, assets, key, freeze_dir, out):
         state["inference_performed"] = state["generation_completed"] > 0
         state["available_memory_after"] = subprocess.check_output(["vm_stat"], text=True)
         dump(out / "run.json", state)
+        dump(out / "audit.json", audit_files(out))
         dump(out / "checksums.json", file_hashes(out))
 
 
@@ -523,12 +540,14 @@ def summarize(freeze_dir, run_dir):
     freeze = verify_freeze(freeze_dir, current=False)
     require(read(run_dir / "checksums.json") == file_hashes(run_dir), "Run bytes changed")
     state = read(run_dir / "run.json")
+    audit = audit_files(run_dir)
+    require(audit == read(run_dir / "audit.json"), "Independent retained-byte audit drift")
     require(state["freeze_sha256"] == sha(freeze_dir / "checksums.json"), "Run/freeze mismatch")
     result = {"scoring_version": "issue48-v1-strict-plus-positional", "freeze_sha256": state["freeze_sha256"],
               "model": state["model"], "status": state["status"], "inference_performed": state["inference_performed"],
               "holdout_accessed": False, "stages": {}, "decision": "revise", "promotion_authorized": False,
               "startup_ms": state.get("startup_ms"), "cold_first_smoke_answer_ms": state.get("cold_first_smoke_answer_ms"),
-              "peak_rss_kib": state.get("peak_rss_kib"), "receipt": state.get("receipt")}
+              "peak_rss_kib": state.get("peak_rss_kib"), "receipt": state.get("receipt"), "audit": audit}
     for stage in freeze["config"]["stages"]:
         records = []
         for dataset, _ in DATASETS:
@@ -573,7 +592,8 @@ def summarize(freeze_dir, run_dir):
             language="all 30 questions Norwegian nb; paired ontologies are correlated", peak_rss_kib=state.get("peak_rss_kib"))
         result["stages"][stage] = summary
     criteria = freeze["config"]["continuation"]
-    passed = state["status"] == "completed_measurement" and state.get("rss_samples", 0) > 0 and not state.get("rss_error")
+    passed = (state["status"] == "completed_measurement" and state.get("rss_samples", 0) > 0
+              and not state.get("rss_error") and not audit["unexpected_canary_events"])
     for summary in result["stages"].values():
         passed &= (summary["strict_complete_exact"]["denominator"] == 24 and
             summary["strict_complete_exact"]["numerator"] >= criteria["strict_complete_exact_min"] and

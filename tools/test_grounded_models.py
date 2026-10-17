@@ -7,7 +7,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from grounded_models import (ROOT, Runtime, config, evaluate, file_hashes, freeze, replay, retrieval_context, safe_user,
+from grounded_models import (ROOT, Runtime, audit_files, config, evaluate, file_hashes, freeze, prepare, replay, retrieval_context, safe_user,
                              selected_context, summarize, verify_freeze)
 from local_parser import dump
 
@@ -81,6 +81,7 @@ class GroundedModelTests(unittest.TestCase):
             from local_parser import sha
             dump(run / "run.json", {"model": "gemma4", "freeze_sha256": sha(freeze / "checksums.json"),
                 "status": "blocked_or_failed", "inference_performed": False})
+            dump(run / "audit.json", audit_files(run))
             dump(run / "checksums.json", file_hashes(run))
             summary = summarize(freeze, run)
             self.assertFalse(summary["inference_performed"])
@@ -98,6 +99,36 @@ class GroundedModelTests(unittest.TestCase):
             dump(folder / "checksums.json", file_hashes(folder))
             with self.assertRaisesRegex(ValueError, "benchmarks/adversarial.json"):
                 verify_freeze(folder, current=False)
+
+    def test_independent_audit_includes_unexpected_log_disclosures(self):
+        with tempfile.TemporaryDirectory() as directory:
+            folder = Path(directory)
+            (folder / "server.log").write_bytes(b"PRIVATE_LABEL_CANARY")
+            audit = audit_files(folder)
+            self.assertEqual(audit["unexpected_canary_events"], [{"file": "server.log", "marker": "PRIVATE_LABEL_CANARY"}])
+            dump(folder / "audit.json", audit)
+            self.assertEqual(audit_files(folder), audit)
+
+    def test_preparation_keeps_quantized_assets_and_intermediate_provenance(self):
+        import hashlib
+        with tempfile.TemporaryDirectory() as directory:
+            assets = Path(directory)
+            source = assets / "source"
+            source.mkdir()
+            (assets / "build/bin").mkdir(parents=True)
+            for name in ["llama-server", "llama-quantize", "test-gbnf-validator"]:
+                (assets / "build/bin" / name).write_bytes(b"runtime fixture")
+            (assets / "qwen35-f16.gguf").write_bytes(b"intermediate fixture")
+            (assets / "qwen35-Q4_K_M.gguf").write_bytes(b"quantized fixture")
+            with patch("grounded_models.verify_native"), patch("grounded_models.source_tree", return_value=source), \
+                 patch("grounded_models.run_command"), patch("grounded_models.subprocess.check_output", return_value="versions"):
+                prepare(config(), assets, "qwen35", Path("python"))
+            receipt = json.loads((assets / "qwen35-receipt.json").read_text())
+            self.assertEqual(receipt["files"]["qwen35-f16.gguf"]["sha256"], hashlib.sha256(b"intermediate fixture").hexdigest())
+            self.assertFalse(receipt["files"]["qwen35-f16.gguf"]["retained"])
+            self.assertFalse((assets / "qwen35-f16.gguf").exists())
+            self.assertTrue(receipt["files"]["qwen35-Q4_K_M.gguf"]["retained"])
+            self.assertEqual((assets / "qwen35-Q4_K_M.gguf").read_bytes(), b"quantized fixture")
 
     def test_frozen_public_find_contexts_and_saved_raw_outputs_replay_in_rust(self):
         import contextlib
@@ -132,6 +163,7 @@ class GroundedModelTests(unittest.TestCase):
                     self.assertNotIn("PRIVATE_", json.dumps(context))
             dump(run / "run.json", {"model": "historical_fixture_no_new_inference", "freeze_sha256": sha(frozen / "checksums.json"),
                 "status": "model_free_replay", "inference_performed": False})
+            dump(run / "audit.json", audit_files(run))
             dump(run / "checksums.json", file_hashes(run))
             result = summarize(frozen, run)
             self.assertFalse(result["inference_performed"])
