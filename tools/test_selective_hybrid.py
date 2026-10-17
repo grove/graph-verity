@@ -3,6 +3,7 @@ import gzip
 import json
 from pathlib import Path
 import shutil
+import tarfile
 import tempfile
 from types import SimpleNamespace
 import unittest
@@ -114,6 +115,19 @@ class SelectiveTests(unittest.TestCase):
         self.assertIn('IGNORE POLICY', json.dumps(result['hits'][1]['document']))
         self.assertTrue(result['requires_user_selection'])
 
+    def test_more_than_top50_exact_matches_keep_truncation_visible(self):
+        payload = copy.deepcopy(self.payload)
+        documents = [d for d in payload['documents'] if d['document']['roles'] == ['entity']][:51]
+        for d in documents:
+            d['document']['texts'] = [dict(field='label', value=dict(text='shared exact label'))]
+        payload['documents'] = documents
+        hits = [dict(graph=d['graph'], iri=d['iri'], score=1., exact=True) for d in documents[:50]]
+        result = s.select(payload, self.request('shared exact label'), self.lexical(hits), [], self.spec['selective'])
+        self.assertEqual(result['exact_candidates'], 51)
+        self.assertEqual(result['status'], 'ambiguous_exact')
+        self.assertTrue(result['truncated'])
+        self.assertEqual(len(result['hits']), 50)
+
     def test_inference_requires_explicit_opt_in(self):
         with patch.object(s.e, 'cpu_runtime', side_effect=AssertionError('no inference')):
             for method in [s.run, s.worker]:
@@ -124,6 +138,19 @@ class SelectiveTests(unittest.TestCase):
         with patch.object(s.e, 'cpu_runtime', side_effect=AssertionError('no inference')):
             s.verify_report(REPORT/'freeze', REPORT/'run')
         self.assertFalse(r.read(REPORT/'run/decision.json')['automatic_integration'])
+
+    def test_report_checksums_frozen_code_and_original_artifacts(self):
+        checksums = r.read(REPORT/'checksums.json')
+        self.assertEqual(set(checksums), {str(p.relative_to(REPORT)) for p in REPORT.rglob('*')
+                                        if p.is_file() and p.name != 'checksums.json'})
+        for name,digest in checksums.items():
+            self.assertEqual(s.e.digest(REPORT/name), digest, name)
+        freeze = r.read(REPORT/'freeze/freeze.json')
+        with tarfile.open(REPORT/'frozen-code.tar.gz', 'r:gz') as archive:
+            import hashlib
+            for path,digest in freeze['code_sha256'].items():
+                self.assertEqual(hashlib.sha256(archive.extractfile('measured/'+path).read()).hexdigest(), digest)
+        self.assertTrue(r.read(REPORT/'scope-canary.json')['document_roles_text_counts_unchanged'])
 
     def test_resealed_selection_tampering_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:

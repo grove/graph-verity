@@ -98,7 +98,8 @@ def select(payload, request, lexical, dense, policy):
                                    component_scores=components[key], document=d['document']))
     status = ('ambiguous_exact' if len(exact_ids) > 1 else 'ranked' if exact_ids else h.state(len(ranked)))
     return dict(snapshot_id=manifest['snapshot_id'], manifest=manifest, status=status,
-                exact_candidates=len(exact_ids), candidate_count=len(seen), truncated=len(seen) > request['limit'],
+                exact_candidates=len(exact_ids), candidate_count=len(seen),
+                truncated=len(seen) > request['limit'] or len(exact_ids) > len(exact_hits),
                 requires_user_selection=True, interpretation_correctness='not_assessed',
                 hits=ranked[:request['limit']])
 
