@@ -8,7 +8,7 @@
     "independent_humans": 0,
     "owner_humans": 0,
     "human_judgments": 0,
-    "new_query_inference_runs": 0
+    "new_query_inference_runs": 1
   },
   "new_cases": 20,
   "missing_review_tasks": [
@@ -96,9 +96,10 @@
   "disagreements": null,
   "exclusions": [],
   "performance": {
-    "new_query_warm_p95_ms": null,
-    "new_query_conservative_rss_bytes": null,
-    "new_query_cold_start_ms": null
+    "new_query_warm_p95_ms": 110.33820826560259,
+    "new_query_conservative_rss_bytes": 2091040768,
+    "new_query_cold_start_ms": 6994.298375211656,
+    "cold_start_limit": "Cold sample measures model/index/vector initialization through first query; excludes earlier interpreter/runtime initialization and asset verification. One sample is not a cold p95."
   },
   "source_snapshot": "sha256:527035784bcfb80148e517519fd5d253859546b9e6a628fd1db4736f7010517e",
   "graph_unchanged": true,
@@ -113,5 +114,9 @@
     "Public source corpus and exposed #50/#53 demo remain regressions; neither is an untouched holdout.",
     "Human identity/consent are operator attestations, not cryptographic proof; anonymous IDs must not be reused across people or duplicated for one person.",
     "Small convenience sample and correlated queries limit descriptive intervals; no product rollout or Confirmed Ask integration is authorized."
-  ]
+  ],
+  "resource_evidence": "capture-summary.json",
+  "ai_analysis": "ai-analysis.json",
+  "ai_source_audit": "ai-source-audit.json",
+  "evidence_separation": "Human metrics remain unmeasured. AI anchor metrics and unblinded AI qualitative judgments are separate artifacts."
 }

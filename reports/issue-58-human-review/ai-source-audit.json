@@ -1,0 +1,285 @@
+{
+  "version": 1,
+  "authorship": "Codex AI; source-audited qualitative assessment",
+  "human_reviewers": 0,
+  "human_judgments": 0,
+  "independent_of_query_author": false,
+  "blinded": false,
+  "exhaustive_relevance_adjudication": false,
+  "warning": "AI judgments must not be counted as human, owner or independent participant assessments.",
+  "cases": [
+    {
+      "task_id": "HR-01",
+      "query": "designing structures to withstand earthquakes",
+      "ai_preference": "selective",
+      "assessment": "Seismic engineering directly matches earthquake-resistant structural design; recovered at rank 4. Seismic monitoring is only related and does not itself mean designing structures.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/2004/02/skos/core#definition> \"The study of the behavior of foundations and structures relative to seismic ground motion, and the attempt to mitigate the effect of earthquakes on structures.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/2004/02/skos/core#prefLabel> \"seismic engineering\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/2004/02/skos/core#prefLabel> \"seismoteknologi\"@no <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-02",
+      "query": "konstruksjon av bygg som tåler jordskjelv",
+      "ai_preference": "selective",
+      "assessment": "The Norwegian construction query recovers seismic engineering at rank 4. Generic construction/recycled-material and subsidence candidates do not establish earthquake-resistant design.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/2004/02/skos/core#definition> \"The study of the behavior of foundations and structures relative to seismic ground motion, and the attempt to mitigate the effect of earthquakes on structures.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/2004/02/skos/core#prefLabel> \"seismic engineering\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10055> <http://www.w3.org/2004/02/skos/core#prefLabel> \"seismoteknologi\"@no <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-03",
+      "query": "the oldest neighbourhood at the heart of a town",
+      "ai_preference": "tie",
+      "assessment": "Both top tens miss historic centre. Its dense score 0.704642 is below the frozen 0.73 fill threshold. The source definition mentions principal historic buildings, not explicitly the oldest neighbourhood; target adequacy itself needs human review.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#definition> \"That part of a town or city in which the principal public and historic buildings are located.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#prefLabel> \"historic centre\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#prefLabel> \"historisk senter\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#related> <http://www.eionet.europa.eu/gemet/concept/3977> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/3977> <http://www.w3.org/2004/02/skos/core#related> <http://www.eionet.europa.eu/gemet/concept/10066> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-04",
+      "query": "den eldste bykjernen med historisk bebyggelse",
+      "ai_preference": "tie",
+      "assessment": "Historic centre remains rank 3 in both lists. Added historical-site and urban-settlement candidates are related, not proof of the oldest city core.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#definition> \"That part of a town or city in which the principal public and historic buildings are located.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#prefLabel> \"historic centre\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#prefLabel> \"historisk senter\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10066> <http://www.w3.org/2004/02/skos/core#related> <http://www.eionet.europa.eu/gemet/concept/3977> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/3977> <http://www.w3.org/2004/02/skos/core#related> <http://www.eionet.europa.eu/gemet/concept/10066> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-05",
+      "query": "evaluating threats from natural hazards",
+      "ai_preference": "selective",
+      "assessment": "Natural risk analysis directly concerns the occurrence probability of damaging natural phenomena and is recovered at rank 4. Disaster risk is a related additional concept, not automatically a second exhaustive relevant judgment.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/2004/02/skos/core#definition> \"Analysis of the probability of occurrence, within a specific period of time in a given area, of a potentially damaging phenomenon of nature.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/2004/02/skos/core#prefLabel> \"natural risk analysis\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/2004/02/skos/core#prefLabel> \"naturrisikoanalyse\"@no <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-06",
+      "query": "vurdere farer fra naturhendelser",
+      "ai_preference": "tie",
+      "assessment": "Both lists miss natural risk analysis for the Norwegian wording. Its dense score 0.693826 is below 0.73; the irrelevant lexical head remains. Thresholds are not changed post hoc.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/2004/02/skos/core#definition> \"Analysis of the probability of occurrence, within a specific period of time in a given area, of a potentially damaging phenomenon of nature.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/2004/02/skos/core#prefLabel> \"natural risk analysis\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10103> <http://www.w3.org/2004/02/skos/core#prefLabel> \"naturrisikoanalyse\"@no <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-07",
+      "query": "the organisation of courts and justice",
+      "ai_preference": "selective",
+      "assessment": "Judicial system means the entire network of courts and is recovered at rank 4. Access to the courts, ranked first, describes a right of access rather than that network.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#definition> \"Entire network of courts in a particular jurisdiction.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/11587> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/11623> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/5776> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6583> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6799> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/8283> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-08",
+      "query": "hvordan domstoler og rettspleie er organisert",
+      "ai_preference": "selective",
+      "assessment": "The Norwegian courts/justice-organisation wording recovers judicial system at rank 4. The first three lexical suggestions remain unrelated to the intended organisation.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#definition> \"Entire network of courts in a particular jurisdiction.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/11587> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/11623> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/5776> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6583> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6799> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10085> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/8283> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-09",
+      "query": "http://www.eionet.europa.eu/gemet/concept/10003",
+      "ai_preference": "tie",
+      "assessment": "The original animal-life IRI is first in both methods. Extra identifier-similar or document/history candidates are not additional exact identities.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/5161> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#prefLabel> \"animal life\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#prefLabel> \"dyreliv\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/5161> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/10003> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/867> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/10003> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-10",
+      "query": "http://www.eionet.europa.eu/gemet/concept/10043",
+      "ai_preference": "tie",
+      "assessment": "The original plant-life IRI is first in both methods. Semantic tail suggestions do not change exact identity or establish relevance to this identifier.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/3022> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6211> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#prefLabel> \"plant life\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#prefLabel> \"planteliv\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/3022> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/10043> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/6211> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/10043> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-11",
+      "query": "information transfer",
+      "ai_preference": "tie",
+      "assessment": "Information transfer is first in both lists. Related electronic-data interchange may be useful for exploration but is not an independently judged relevant addition.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10024> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10024> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/23> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10024> <http://www.w3.org/2004/02/skos/core#definition> \"The communication or conveyance of data or materials for the purpose of enhancing knowledge from one person, place or position to another.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10024> <http://www.w3.org/2004/02/skos/core#prefLabel> \"informasjonsoverføring\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10024> <http://www.w3.org/2004/02/skos/core#prefLabel> \"information transfer\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/23> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/10024> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-12",
+      "query": "samfunnsvitenskap",
+      "ai_preference": "tie",
+      "assessment": "Social science remains first. Added sociology/social-psychology concepts are narrower or related; no human has judged whether that expansion is helpful or confusing.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#definition> \"The study of society and of the relationship of individual members within society, including economics, history, political science, psychology, anthropology, and sociology.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/10971> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/7831> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#prefLabel> \"samfunnsvitenskap\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#prefLabel> \"social science\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10971> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/10057> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/7831> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/10057> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-13",
+      "query": "regions grouped by their weather patterns",
+      "ai_preference": "selective",
+      "assessment": "Both distinct climate-zone IRIs are recovered at ranks 4 and 6. Their original definitions differ; shared English labels must not merge identities. The first three suggestions remain poor matches.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/2004/02/skos/core#altLabel> \"climatic zone\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/2004/02/skos/core#definition> \"A belt of the earth's surface within which the climate is generally homogeneous in some respect; an elemental region of a simple climatic classification.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6364> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/8693> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/2004/02/skos/core#prefLabel> \"climate zone\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1476> <http://www.w3.org/2004/02/skos/core#prefLabel> \"klimasone\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/15099> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-14",
+      "query": "fart eller hastighet i en fysisk sammenheng",
+      "ai_preference": "tie",
+      "assessment": "Rate and speed remain ranks 1 and 2. The source for rate is general quantity change, while speed is physical motion; the frozen two-anchor reference may over-credit rate for this wording and needs adjudication.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/11130> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/11130> <http://www.w3.org/2004/02/skos/core#definition> \"The amount of change in some quantity during a time interval divided by the length of the time interval.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/11130> <http://www.w3.org/2004/02/skos/core#prefLabel> \"hastighet\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/11130> <http://www.w3.org/2004/02/skos/core#prefLabel> \"rate\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/7994> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/7994> <http://www.w3.org/2004/02/skos/core#definition> \"A scalar measure of the rate of movement of a body expressed either as the distance travelled divided by the time taken (average speed) or the rate of change of position with respect to time at a particular point (instantaneous speed). It is measured in metres per second, miles per hour, etc.\"@en <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/7994> <http://www.w3.org/2004/02/skos/core#prefLabel> \"hastighet\"@no <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/7994> <http://www.w3.org/2004/02/skos/core#prefLabel> \"speed\"@en <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-15",
+      "query": "lunar bakery taxation office",
+      "ai_preference": "neither",
+      "assessment": "Office and public-prosecutor office do not identify a lunar-bakery taxation office. Both methods return false candidates under the frozen fictional no-match reference.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-16",
+      "query": "kommunal avgift for månebakerier",
+      "ai_preference": "neither",
+      "assessment": "Municipal-finance/law and other local-government candidates do not establish a fee for lunar bakeries. Both methods return suggestions despite the fictional no-match reference.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-17",
+      "query": "telepathic dragon licensing register",
+      "ai_preference": "neither",
+      "assessment": "Emission and land registers do not identify a telepathic-dragon licensing register. Both methods return false candidates under the frozen reference.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-18",
+      "query": "konsesjonsregister for telepatiske drager",
+      "ai_preference": "neither",
+      "assessment": "Both methods return unrelated suggestions for the fictional licensing query. The semantic psychic-effect addition is not evidence for telepathic dragons or a licensing register.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-19",
+      "query": "a concept pointing to its more specific concepts",
+      "ai_preference": "tie",
+      "assessment": "Narrower is the requested direction and ranks 2 in both methods. Broader is first and points in the opposite direction; a user choosing rank one could encode the wrong formal relation.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/5161> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/3022> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/6211> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/10971> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10057> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/7831> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10073> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/5239> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10076> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/13231> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10084> <http://www.w3.org/2004/02/skos/core#narrower> <http://www.eionet.europa.eu/gemet/concept/1590> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    },
+    {
+      "task_id": "HR-20",
+      "query": "fra et begrep til det overordnede begrepet",
+      "ai_preference": "neither",
+      "assessment": "Neither method returns a predicate for the Norwegian broader-concept direction. The broader score is 0.687337, below 0.73. This remains a bilingual direction failure.",
+      "source_quads": [
+        "<http://www.eionet.europa.eu/gemet/concept/10003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10017> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/2564> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/1001> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/8590> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10024> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/23> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10043> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/867> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10058> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/9195> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10078> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/8579> <urn:graph-verity:gemet:4.2.3> .",
+        "<http://www.eionet.europa.eu/gemet/concept/10089> <http://www.w3.org/2004/02/skos/core#broader> <http://www.eionet.europa.eu/gemet/concept/6402> <urn:graph-verity:gemet:4.2.3> ."
+      ]
+    }
+  ]
+}

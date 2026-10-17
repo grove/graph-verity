@@ -1,0 +1,360 @@
+{
+  "version": 1,
+  "protocol_id": "6223e88dbca50cbc9e09b3eb8c0fa4034fe4f55ba8405e66318b37a633c84354",
+  "implementation_commit": "95500ee6d81811f126ce6ef7c94d4dbdeecb7728",
+  "preregistered_at_utc": "2026-10-17T21:26:52Z",
+  "model_queries_executed": true,
+  "unique_queries": 20,
+  "passes": 4,
+  "human_reviewers": 0,
+  "human_judgments": 0,
+  "recommendation": "defer",
+  "resource_screen_pass": true,
+  "snapshot_id": "sha256:527035784bcfb80148e517519fd5d253859546b9e6a628fd1db4736f7010517e",
+  "saved_results_sha256": "d1b62739104c107ed1096f956183625b0f7ffaafa35b26227517cc234f746467",
+  "runtime": {
+    "python": "3.14.8 (main, Sep 30 2026, 17:55:09) [Clang 21.0.0 (clang-2100.3.34.2)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "threads": 4,
+    "interop_threads": 1
+  },
+  "capture": {
+    "kind": "pinned-local-inference",
+    "receipt_sha256": "7e810ac9448c180621606709f3914d88e73290c58602380fdf4d29a82c205976",
+    "hardware": "Apple M1 Pro, 32 GiB per retained host declaration; macOS 26.6.2 arm64; CPU-only 4 intra-op / 1 inter-op threads; native scheduler; OS caches retained; no affinity or quota; concurrent desktop workload uncontrolled",
+    "cold_first_query_ms": 6994.298375211656,
+    "cold_samples": 1,
+    "cold_limit": "One cold startup, not a cold p95; historical vector build reused",
+    "warm": {
+      "bm25": {
+        "n": 60,
+        "p50": 0.9539574384689331,
+        "p95": 5.822041071951389,
+        "p99": 11.551417410373688
+      },
+      "selective": {
+        "n": 60,
+        "p50": 75.05420781672001,
+        "p95": 110.33820826560259,
+        "p99": 161.20358370244503
+      }
+    },
+    "samples": [
+      {
+        "task_id": "HR-01",
+        "bm25": 0.8405419066548347,
+        "selective": 104.07191701233387
+      },
+      {
+        "task_id": "HR-02",
+        "bm25": 1.8029175698757172,
+        "selective": 89.4520003348589
+      },
+      {
+        "task_id": "HR-03",
+        "bm25": 1.6381246969103813,
+        "selective": 106.63845762610435
+      },
+      {
+        "task_id": "HR-04",
+        "bm25": 1.2036245316267014,
+        "selective": 82.70879182964563
+      },
+      {
+        "task_id": "HR-05",
+        "bm25": 1.024625264108181,
+        "selective": 77.07925047725439
+      },
+      {
+        "task_id": "HR-06",
+        "bm25": 0.9071249514818192,
+        "selective": 96.28550056368113
+      },
+      {
+        "task_id": "HR-07",
+        "bm25": 1.6353754326701164,
+        "selective": 75.16879122704268
+      },
+      {
+        "task_id": "HR-08",
+        "bm25": 0.9539574384689331,
+        "selective": 73.00708256661892
+      },
+      {
+        "task_id": "HR-09",
+        "bm25": 5.328374914824963,
+        "selective": 99.9421663582325
+      },
+      {
+        "task_id": "HR-10",
+        "bm25": 5.822041071951389,
+        "selective": 83.70308298617601
+      },
+      {
+        "task_id": "HR-11",
+        "bm25": 1.0733334347605705,
+        "selective": 71.29837572574615
+      },
+      {
+        "task_id": "HR-12",
+        "bm25": 0.802542082965374,
+        "selective": 116.27883277833462
+      },
+      {
+        "task_id": "HR-13",
+        "bm25": 0.9663328528404236,
+        "selective": 75.05420781672001
+      },
+      {
+        "task_id": "HR-14",
+        "bm25": 1.0055424645543098,
+        "selective": 71.63775060325861
+      },
+      {
+        "task_id": "HR-15",
+        "bm25": 0.8350834250450134,
+        "selective": 89.87045846879482
+      },
+      {
+        "task_id": "HR-16",
+        "bm25": 1.182875595986843,
+        "selective": 76.30612514913082
+      },
+      {
+        "task_id": "HR-17",
+        "bm25": 0.8277911692857742,
+        "selective": 72.10879120975733
+      },
+      {
+        "task_id": "HR-18",
+        "bm25": 0.9732916951179504,
+        "selective": 68.65120772272348
+      },
+      {
+        "task_id": "HR-19",
+        "bm25": 0.5474993959069252,
+        "selective": 82.49050006270409
+      },
+      {
+        "task_id": "HR-20",
+        "bm25": 0.37566665560007095,
+        "selective": 67.71433353424072
+      },
+      {
+        "task_id": "HR-01",
+        "bm25": 0.8749589323997498,
+        "selective": 67.48720910400152
+      },
+      {
+        "task_id": "HR-02",
+        "bm25": 1.2095831334590912,
+        "selective": 160.60362476855516
+      },
+      {
+        "task_id": "HR-03",
+        "bm25": 1.340624876320362,
+        "selective": 71.80816773325205
+      },
+      {
+        "task_id": "HR-04",
+        "bm25": 0.9104171767830849,
+        "selective": 110.33820826560259
+      },
+      {
+        "task_id": "HR-05",
+        "bm25": 0.9294161573052406,
+        "selective": 161.20358370244503
+      },
+      {
+        "task_id": "HR-06",
+        "bm25": 0.9283749386668205,
+        "selective": 69.46320831775665
+      },
+      {
+        "task_id": "HR-07",
+        "bm25": 1.2269169092178345,
+        "selective": 66.50499999523163
+      },
+      {
+        "task_id": "HR-08",
+        "bm25": 11.551417410373688,
+        "selective": 91.19245782494545
+      },
+      {
+        "task_id": "HR-09",
+        "bm25": 5.630875006318092,
+        "selective": 77.60979142040014
+      },
+      {
+        "task_id": "HR-10",
+        "bm25": 5.189167335629463,
+        "selective": 75.94316732138395
+      },
+      {
+        "task_id": "HR-11",
+        "bm25": 0.9190412238240242,
+        "selective": 84.10029113292694
+      },
+      {
+        "task_id": "HR-12",
+        "bm25": 0.8135838434100151,
+        "selective": 66.78716745227575
+      },
+      {
+        "task_id": "HR-13",
+        "bm25": 0.742708332836628,
+        "selective": 65.8404165878892
+      },
+      {
+        "task_id": "HR-14",
+        "bm25": 0.9436653926968575,
+        "selective": 92.97883231192827
+      },
+      {
+        "task_id": "HR-15",
+        "bm25": 0.8326247334480286,
+        "selective": 68.53599939495325
+      },
+      {
+        "task_id": "HR-16",
+        "bm25": 0.9688334539532661,
+        "selective": 66.98941625654697
+      },
+      {
+        "task_id": "HR-17",
+        "bm25": 0.8722925558686256,
+        "selective": 66.44320860505104
+      },
+      {
+        "task_id": "HR-18",
+        "bm25": 10.965459048748016,
+        "selective": 90.6201247125864
+      },
+      {
+        "task_id": "HR-19",
+        "bm25": 0.6906250491738319,
+        "selective": 63.73291555792093
+      },
+      {
+        "task_id": "HR-20",
+        "bm25": 0.2671247348189354,
+        "selective": 65.40141720324755
+      },
+      {
+        "task_id": "HR-01",
+        "bm25": 0.8848747238516808,
+        "selective": 87.5611249357462
+      },
+      {
+        "task_id": "HR-02",
+        "bm25": 1.2764167040586472,
+        "selective": 69.64999996125698
+      },
+      {
+        "task_id": "HR-03",
+        "bm25": 1.5683751553297043,
+        "selective": 66.46250002086163
+      },
+      {
+        "task_id": "HR-04",
+        "bm25": 0.8553750813007355,
+        "selective": 93.95608305931091
+      },
+      {
+        "task_id": "HR-05",
+        "bm25": 0.9661251679062843,
+        "selective": 69.63683292269707
+      },
+      {
+        "task_id": "HR-06",
+        "bm25": 0.8246675133705139,
+        "selective": 67.74237472563982
+      },
+      {
+        "task_id": "HR-07",
+        "bm25": 1.4422498643398285,
+        "selective": 65.44704083353281
+      },
+      {
+        "task_id": "HR-08",
+        "bm25": 0.8694585412740707,
+        "selective": 89.07950017601252
+      },
+      {
+        "task_id": "HR-09",
+        "bm25": 5.485666915774345,
+        "selective": 76.35283377021551
+      },
+      {
+        "task_id": "HR-10",
+        "bm25": 5.041875876486301,
+        "selective": 75.37725009024143
+      },
+      {
+        "task_id": "HR-11",
+        "bm25": 0.8900417014956474,
+        "selective": 86.83750033378601
+      },
+      {
+        "task_id": "HR-12",
+        "bm25": 0.7994584739208221,
+        "selective": 71.02658320218325
+      },
+      {
+        "task_id": "HR-13",
+        "bm25": 0.8260002359747887,
+        "selective": 66.3158344104886
+      },
+      {
+        "task_id": "HR-14",
+        "bm25": 0.9598340839147568,
+        "selective": 66.90120883286
+      },
+      {
+        "task_id": "HR-15",
+        "bm25": 10.339166037738323,
+        "selective": 88.77249993383884
+      },
+      {
+        "task_id": "HR-16",
+        "bm25": 1.0322919115424156,
+        "selective": 68.09925008565187
+      },
+      {
+        "task_id": "HR-17",
+        "bm25": 0.7939590141177177,
+        "selective": 65.4104994609952
+      },
+      {
+        "task_id": "HR-18",
+        "bm25": 1.0332921519875526,
+        "selective": 90.88320843875408
+      },
+      {
+        "task_id": "HR-19",
+        "bm25": 0.7835403084754944,
+        "selective": 64.9706656113267
+      },
+      {
+        "task_id": "HR-20",
+        "bm25": 0.2742083743214607,
+        "selective": 63.379792496562004
+      }
+    ],
+    "memory": {
+      "process_peak_bytes": 2060959744,
+      "lexical_child_peak_bytes": 30081024,
+      "sampled_tree_peak_bytes": 2029404160,
+      "sampling_error": null,
+      "conservative_bound_bytes": 2091040768
+    },
+    "model_load_ms": 6347.331915982068,
+    "checkpoint_bytes": 1525808822,
+    "reused_vectors_sha256": "295649272f7a55209e3a035d4e203155e812757564cb2137777ac321d0dbd93d"
+  },
+  "limitations": [
+    "No human judgments collected; resource limits alone do not establish relevance or authorize promotion.",
+    "Cold sample measures model/index/vector initialization through first query; excludes earlier interpreter/runtime initialization and asset verification. One sample is not a cold p95.",
+    "Reused pinned document vectors; historical vector-building cost is not remeasured. Concurrent desktop workload and OS caches are uncontrolled."
+  ]
+}
