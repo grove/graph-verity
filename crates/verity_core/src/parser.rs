@@ -73,11 +73,13 @@ fn phrase_in_question(question: &str, label: &str) -> bool {
     }
     let question = question.to_lowercase();
     let label = label.to_lowercase();
-    question.match_indices(label.as_str()).any(|(start, matched)| {
-        let before = question[..start].chars().next_back();
-        let after = question[start + matched.len()..].chars().next();
-        !before.is_some_and(char::is_alphanumeric) && !after.is_some_and(char::is_alphanumeric)
-    })
+    question
+        .match_indices(label.as_str())
+        .any(|(start, matched)| {
+            let before = question[..start].chars().next_back();
+            let after = question[start + matched.len()..].chars().next();
+            !before.is_some_and(char::is_alphanumeric) && !after.is_some_and(char::is_alphanumeric)
+        })
 }
 
 /// A deliberately small *negative safety* filter, not a natural-language solver.
@@ -108,9 +110,10 @@ pub fn preflight(request: &ParserRequest) -> Option<PreflightBlock> {
             }
         }
     }
-    if by_label.iter().any(|(label, ids)| {
-        ids.len() > 1 && phrase_in_question(&request.question, label)
-    }) {
+    if by_label
+        .iter()
+        .any(|(label, ids)| ids.len() > 1 && phrase_in_question(&request.question, label))
+    {
         return Some(PreflightBlock::AmbiguousEntityLabel);
     }
     None
@@ -158,10 +161,18 @@ impl ParserRequest {
 #[derive(Debug, Serialize)]
 #[serde(tag = "status", rename_all = "snake_case")]
 pub enum ParserOutcome {
-    Executed { result: Box<Execution> },
-    Abstained { proposal: Proposal },
+    Executed {
+        result: Box<Execution>,
+    },
+    Abstained {
+        proposal: Proposal,
+    },
     /// Origin is explicitly deterministic, never falsely attributed to model understanding.
-    Guarded { origin: &'static str, code: &'static str, proposal: Proposal },
+    Guarded {
+        origin: &'static str,
+        code: &'static str,
+        proposal: Proposal,
+    },
 }
 
 pub fn decode_response(bytes: &[u8]) -> Result<ParserResponse> {
