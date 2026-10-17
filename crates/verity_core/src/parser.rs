@@ -73,7 +73,7 @@ fn phrase_in_question(question: &str, label: &str) -> bool {
     }
     let question = question.to_lowercase();
     let label = label.to_lowercase();
-    question.match_indices(&label).any(|(start, matched)| {
+    question.match_indices(label.as_str()).any(|(start, matched)| {
         let before = question[..start].chars().next_back();
         let after = question[start + matched.len()..].chars().next();
         !before.is_some_and(char::is_alphanumeric) && !after.is_some_and(char::is_alphanumeric)
@@ -214,12 +214,17 @@ impl Snapshot {
         policy: &Policy,
     ) -> Result<ParserOutcome> {
         let request = self.parser_request(question, scope, policy)?;
-        if let Some(block) = preflight(&request) {
-            return Ok(ParserOutcome::Guarded {
-                origin: "deterministic_preflight_not_model",
-                code: block.code(),
-                proposal: block.proposal(),
-            });
+        // Fixture replay must remain exact for independent gold/CI auditing.
+        // Only the future user-facing local-model path applies this advisory
+        // guard; offline evaluate-local still scores the raw model response.
+        if matches!(parser.origin(), PlanOrigin::LocalModel) {
+            if let Some(block) = preflight(&request) {
+                return Ok(ParserOutcome::Guarded {
+                    origin: "deterministic_preflight_not_model",
+                    code: block.code(),
+                    proposal: block.proposal(),
+                });
+            }
         }
         let response = decode_response(&parser.propose(&request)?)?;
         match response.proposal {
