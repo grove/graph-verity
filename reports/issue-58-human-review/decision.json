@@ -99,7 +99,37 @@
     "new_query_warm_p95_ms": 110.33820826560259,
     "new_query_conservative_rss_bytes": 2091040768,
     "new_query_cold_start_ms": 6994.298375211656,
-    "cold_start_limit": "Cold sample measures model/index/vector initialization through first query; excludes earlier interpreter/runtime initialization and asset verification. One sample is not a cold p95."
+    "cold_start_limit": "Cold sample measures model/index/vector initialization through first query; excludes earlier interpreter/runtime initialization and asset verification. One sample is not a cold p95.",
+    "full_process_cold_start": {
+      "bm25": {
+        "first_result_ms": {
+          "n": 15,
+          "p50": 210.172916,
+          "p95": 232.647125,
+          "p99": 232.647125
+        },
+        "process_exit_ms": {
+          "n": 15,
+          "p50": 231.732125,
+          "p95": 255.111833,
+          "p99": 255.111833
+        }
+      },
+      "selective": {
+        "first_result_ms": {
+          "n": 15,
+          "p50": 6615.803625,
+          "p95": 9957.687125,
+          "p99": 9957.687125
+        },
+        "process_exit_ms": {
+          "n": 15,
+          "p50": 7374.782791,
+          "p95": 10766.117917,
+          "p99": 10766.117917
+        }
+      }
+    }
   },
   "source_snapshot": "sha256:527035784bcfb80148e517519fd5d253859546b9e6a628fd1db4736f7010517e",
   "graph_unchanged": true,
@@ -118,5 +148,10 @@
   "resource_evidence": "capture-summary.json",
   "ai_analysis": "ai-analysis.json",
   "ai_source_audit": "ai-source-audit.json",
-  "evidence_separation": "Human metrics remain unmeasured. AI anchor metrics and unblinded AI qualitative judgments are separate artifacts."
+  "evidence_separation": "Human metrics remain unmeasured. AI anchor metrics and unblinded AI qualitative judgments are separate artifacts.",
+  "full_process_cold_evidence": "cold-start/results.json",
+  "resource_measurement_runs": {
+    "original_warm_capture": 1,
+    "supplemental_process_cold_run": 1
+  }
 }
