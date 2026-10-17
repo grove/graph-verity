@@ -1,0 +1,573 @@
+[
+  {
+    "id": "F01",
+    "type": "bilingual_label",
+    "kind": "find",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Find the country labelled Norway. Select its exact graph-qualified identifier.",
+      "nb": "Finn landet med etiketten Norge. Velg den eksakte identifikatoren og grafen."
+    },
+    "target": "http://www.wikidata.org/entity/Q20 in development graph; Norway@en / Norge@nb",
+    "checks": [
+      "entity",
+      "scope"
+    ],
+    "decision": null,
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2000/01/rdf-schema#label> \"Noreg\"@nn <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2000/01/rdf-schema#label> \"Norge\"@nb <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2000/01/rdf-schema#label> \"Norway\"@en <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2004/02/skos/core#altLabel> \"Kingdom of Norway\"@en <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2004/02/skos/core#altLabel> \"Kongeriket Noreg\"@nn <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2004/02/skos/core#altLabel> \"Kongeriket Norge\"@nb <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2004/02/skos/core#altLabel> \"Kongeriket Norge/Noreg\"@nb <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "F02",
+    "type": "alias",
+    "kind": "find",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Find the country using the alias Kingdom of Norway; explain whether an alias proves identity outside this snapshot.",
+      "nb": "Finn landet med aliaset Kongeriket Norge; forklar om et alias beviser identitet utenfor dette øyeblikksbildet."
+    },
+    "target": "Q20; exact observed alias; identity only as stored",
+    "checks": [
+      "entity",
+      "unknown"
+    ],
+    "decision": null,
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2000/01/rdf-schema#label> \"Noreg\"@nn <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2000/01/rdf-schema#label> \"Norge\"@nb <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2000/01/rdf-schema#label> \"Norway\"@en <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2004/02/skos/core#altLabel> \"Kingdom of Norway\"@en <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2004/02/skos/core#altLabel> \"Kongeriket Noreg\"@nn <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2004/02/skos/core#altLabel> \"Kongeriket Norge\"@nb <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2004/02/skos/core#altLabel> \"Kongeriket Norge/Noreg\"@nb <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "F03",
+    "type": "exact_iri",
+    "kind": "find",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Open http://www.wikidata.org/entity/Q585 using Find, keeping its graph identity.",
+      "nb": "Åpne http://www.wikidata.org/entity/Q585 via Find og behold grafidentiteten."
+    },
+    "target": "Q585, development graph",
+    "checks": [
+      "entity",
+      "scope"
+    ],
+    "decision": null,
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q585> <http://www.wikidata.org/prop/direct/P1082> \"+717710\"^^<http://www.w3.org/2001/XMLSchema#decimal> <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "F04",
+    "type": "predicate",
+    "kind": "find",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "As a data analyst, find the predicate labelled capital; explain the original label subject and mapped predicate.",
+      "nb": "Som dataanalytiker: finn predikatet merket hovedstad; forklar det opprinnelige etikettsubjektet og det tilknyttede predikatet."
+    },
+    "target": "entity/P36 label maps via wikibase:directClaim to prop/direct/P36; no invented label triple",
+    "checks": [
+      "predicate",
+      "provenance"
+    ],
+    "decision": null,
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/P36> <http://wikiba.se/ontology#directClaim> <http://www.wikidata.org/prop/direct/P36> <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "F05",
+    "type": "navigation_provenance",
+    "kind": "find",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "From Norway, inspect the relationship naming its capital, open the city, and identify source, license and the actual source triple. Does this prove a current real-world fact?",
+      "nb": "Fra Norge: undersøk relasjonen til hovedstaden, åpne byen og finn kilde, lisens og faktisk kildetrippel. Beviser dette et nåværende faktum i verden?"
+    },
+    "target": "Q20 -> direct/P36 -> Q585; Wikidata CC0-1.0; graph/snapshot evidence, not verified current truth",
+    "checks": [
+      "entity",
+      "predicate",
+      "provenance",
+      "evidence_truth"
+    ],
+    "decision": null,
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q20> <http://www.wikidata.org/prop/direct/P36> <http://www.wikidata.org/entity/Q585> <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "F06",
+    "type": "paraphrase_partial",
+    "kind": "find",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Find the place that serves as the Norwegian capital. You may reformulate the search. Explain whether the first ranked candidate settles your intent.",
+      "nb": "Finn stedet som fungerer som norsk hovedstad. Du kan omformulere søket. Forklar om første rangerte kandidat avgjør hensikten din."
+    },
+    "target": "Q585 via exact source evidence; retrieval relevance is participant-rated, no assumed top-k success",
+    "checks": [
+      "entity",
+      "ambiguity"
+    ],
+    "decision": null,
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q20> <http://www.wikidata.org/prop/direct/P36> <http://www.wikidata.org/entity/Q585> <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "F07",
+    "type": "no_match",
+    "kind": "find",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Search zzznomatchzzz. What can you conclude about existence outside this scoped snapshot?",
+      "nb": "Søk etter zzznomatchzzz. Hva kan du konkludere om eksistens utenfor dette avgrensede øyeblikksbildet?"
+    },
+    "target": "No lexical match; factual absence unknown",
+    "checks": [
+      "unknown"
+    ],
+    "decision": null,
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "F08",
+    "type": "out_of_scope",
+    "kind": "find",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Find Stockholm (http://www.wikidata.org/entity/Q1754) with only the development graph enabled. Explain why the result does not decide whether the place exists.",
+      "nb": "Finn Stockholm (http://www.wikidata.org/entity/Q1754) med bare utviklingsgrafen aktivert. Forklar hvorfor resultatet ikke avgjør om stedet finnes."
+    },
+    "target": "Q1754 is outside authorized study scope; do not broaden scope; no factual absence claim",
+    "checks": [
+      "scope",
+      "unknown"
+    ],
+    "decision": null,
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q1754> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://wikiba.se/ontology#Item> <urn:graph-verity:wikidata:transfer> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "F09",
+    "type": "geonames_provenance",
+    "kind": "find",
+    "bundle": "worldcities",
+    "prompt": {
+      "en": "Find Oslo by its exact GeoNames IRI https://sws.geonames.org/3143244/. Navigate to its administrative area; explain who created the Schema.org relation.",
+      "nb": "Finn Oslo med eksakt GeoNames-IRI https://sws.geonames.org/3143244/. Naviger til administrativt område; forklar hvem som laget Schema.org-relasjonen."
+    },
+    "target": "3143244 -> schema:containedInPlace -> urn:graph-verity:worldcities:admin:NO:Oslo; GeoNames / datasets/world-cities CC BY 4.0; importer-mapped RDF, not upstream RDF",
+    "checks": [
+      "entity",
+      "provenance",
+      "evidence_truth"
+    ],
+    "decision": null,
+    "snapshot": "data/worldcities-transfer/snapshot.nq",
+    "witnesses": [
+      "<https://sws.geonames.org/3143244/> <https://schema.org/containedInPlace> <urn:graph-verity:worldcities:admin:NO:Oslo> <urn:graph-verity:worldcities:transfer:NO> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "F10",
+    "type": "ambiguity",
+    "kind": "find",
+    "bundle": "synthetic",
+    "prompt": {
+      "en": "Search Workshop. Can you select a unique resource from this label alone? Explain the alternatives.",
+      "nb": "Søk etter Workshop. Kan du velge en entydig ressurs bare fra etiketten? Forklar alternativene."
+    },
+    "target": "Both urn:pilot:start and urn:pilot:other have exact label; seek clarification; no unique target",
+    "checks": [
+      "ambiguity"
+    ],
+    "decision": null,
+    "snapshot": "studies/pilot-v1/snapshot.nq",
+    "witnesses": [
+      "<urn:pilot:start> <http://www.w3.org/2000/01/rdf-schema#label> \"Workshop\"@en <urn:pilot:graph> .",
+      "<urn:pilot:other> <http://www.w3.org/2000/01/rdf-schema#label> \"Workshop\"@en <urn:pilot:graph> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "F11",
+    "type": "partial_label",
+    "kind": "find",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Search Kingdom as part of a country alias. Inspect the candidate and explain whether a partial lexical match proves which entity you intended.",
+      "nb": "Søk etter Kongeriket som en del av et landsalias. Undersøk kandidaten og forklar om et delvis leksikalsk treff beviser hvilken entitet du mente."
+    },
+    "queries": {
+      "en": "Kingdom",
+      "nb": "Kongeriket"
+    },
+    "target": "Q20 in the development graph is one non-exact, low_confidence candidate through the observed Kingdom of Norway / Kongeriket Norge alias. Inspect the original alias; a partial lexical match does not prove intended identity. BM25 token matching does not imply arbitrary substring or prefix matching.",
+    "checks": [
+      "ambiguity"
+    ],
+    "decision": null,
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2004/02/skos/core#altLabel> \"Kingdom of Norway\"@en <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2004/02/skos/core#altLabel> \"Kongeriket Norge\"@nb <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Even a lone non-exact alias candidate does not establish intended identity; participant relevance remains subjective",
+    "lineage": "Pre-enrollment v1.1 correction after the task author's exposed AI adapter rehearsal found that v1's Nor query returns no_match. Uses whole tokens from original source aliases; not independent gold or a human observation."
+  },
+  {
+    "id": "A01",
+    "type": "inverse",
+    "kind": "ask",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Starting at Oslo Q585, preview the stored incoming capital relation to countries. Explain the actual RDF direction before approving.",
+      "nb": "Start fra Oslo Q585 og forhåndsvis den lagrede inngående hovedstadrelasjonen til land. Forklar faktisk RDF-retning før godkjenning."
+    },
+    "target": "start Q585; direct/P36 reverse; terminal Q20, country -> P36 -> Oslo",
+    "checks": [
+      "entity",
+      "predicate",
+      "scope",
+      "direction",
+      "evidence_truth",
+      "approval"
+    ],
+    "decision": "approved",
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q20> <http://www.wikidata.org/prop/direct/P36> <http://www.wikidata.org/entity/Q585> <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "Adapted from public #56 walkthrough; exposed regression, not fresh independent evaluation"
+  },
+  {
+    "id": "A02",
+    "type": "two_hop_filter",
+    "kind": "ask",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "From Norway, preview capital then population, terminal values greater than decimal 700000. Explain terminal variable, exact datatype and threshold before approving.",
+      "nb": "Fra Norge: forhåndsvis hovedstad og deretter befolkning, sluttverdier større enn desimal 700000. Forklar sluttvariabel, eksakt datatype og terskel før godkjenning."
+    },
+    "target": "Q20 -> P36 forward -> P1082 forward; gt xsd:decimal 700000; terminal decimal 717710 (source +717710), not Q585",
+    "checks": [
+      "entity",
+      "predicate",
+      "scope",
+      "direction",
+      "evidence_truth",
+      "two_hop",
+      "filter",
+      "approval"
+    ],
+    "decision": "approved",
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q20> <http://www.wikidata.org/prop/direct/P36> <http://www.wikidata.org/entity/Q585> <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q585> <http://www.wikidata.org/prop/direct/P1082> \"+717710\"^^<http://www.w3.org/2001/XMLSchema#decimal> <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "Adapted from public #56 walkthrough; exposed regression, not independent intent gold"
+  },
+  {
+    "id": "A03",
+    "type": "distinct_shared_paths",
+    "kind": "ask",
+    "bundle": "synthetic",
+    "prompt": {
+      "en": "From urn:pilot:start follow owns then value. Preview distinct values, then a fresh distinct count. Explain whether shared paths to 60 count twice before approving the count.",
+      "nb": "Fra urn:pilot:start: følg owns og deretter value. Forhåndsvis distinkte verdier og deretter et nytt distinkt antall. Forklar om delte stier til 60 telles to ganger før du godkjenner antallet."
+    },
+    "target": "Three paths produce integer 60 and 70; COUNT(DISTINCT terminal RDF terms)=2, not 3",
+    "checks": [
+      "entity",
+      "predicate",
+      "scope",
+      "direction",
+      "evidence_truth",
+      "two_hop",
+      "count",
+      "approval"
+    ],
+    "decision": "approved",
+    "snapshot": "studies/pilot-v1/snapshot.nq",
+    "witnesses": [
+      "<urn:pilot:start> <urn:pilot:owns> <urn:pilot:a> <urn:pilot:graph> .",
+      "<urn:pilot:start> <urn:pilot:owns> <urn:pilot:b> <urn:pilot:graph> .",
+      "<urn:pilot:a> <urn:pilot:value> \"60\"^^<http://www.w3.org/2001/XMLSchema#integer> <urn:pilot:graph> .",
+      "<urn:pilot:a> <urn:pilot:value> \"70\"^^<http://www.w3.org/2001/XMLSchema#integer> <urn:pilot:graph> .",
+      "<urn:pilot:b> <urn:pilot:value> \"60\"^^<http://www.w3.org/2001/XMLSchema#integer> <urn:pilot:graph> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "A04",
+    "type": "cancellation",
+    "kind": "ask",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Preview Norway to capital. Explain it, then deliberately cancel without executing.",
+      "nb": "Forhåndsvis Norge til hovedstad. Forklar planen og avbryt bevisst uten kjøring."
+    },
+    "target": "Cancel; no answer execution; successful cancellation is task completion",
+    "checks": [
+      "entity",
+      "predicate",
+      "scope",
+      "direction",
+      "evidence_truth",
+      "approval"
+    ],
+    "decision": "cancelled",
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q20> <http://www.wikidata.org/prop/direct/P36> <http://www.wikidata.org/entity/Q585> <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "A05",
+    "type": "scope_invalidation",
+    "kind": "ask",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Preview Norway to capital. The operator now changes graph scope. Explain whether old approval can execute; do not approve a new plan.",
+      "nb": "Forhåndsvis Norge til hovedstad. Operatøren endrer nå grafomfang. Forklar om gammel godkjenning kan kjøre; ikke godkjenn en ny plan."
+    },
+    "target": "Old approval invalid; re-resolve and review exact new graph/snapshot/policy; no execution",
+    "checks": [
+      "entity",
+      "predicate",
+      "scope",
+      "direction",
+      "evidence_truth",
+      "approval"
+    ],
+    "decision": "no_approval",
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q20> <http://www.wikidata.org/prop/direct/P36> <http://www.wikidata.org/entity/Q585> <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "A06",
+    "type": "snapshot_invalidation",
+    "kind": "ask",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Preview Norway to capital. The operator now changes snapshot. Explain whether old approval can execute; do not approve a new plan.",
+      "nb": "Forhåndsvis Norge til hovedstad. Operatøren endrer nå øyeblikksbilde. Forklar om gammel godkjenning kan kjøre; ikke godkjenn en ny plan."
+    },
+    "target": "Old approval invalid; re-resolve and review exact new graph/snapshot/policy; no execution",
+    "checks": [
+      "entity",
+      "predicate",
+      "scope",
+      "direction",
+      "evidence_truth",
+      "approval"
+    ],
+    "decision": "no_approval",
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q20> <http://www.wikidata.org/prop/direct/P36> <http://www.wikidata.org/entity/Q585> <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "A07",
+    "type": "policy_invalidation",
+    "kind": "ask",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Preview Norway to capital. The operator now changes operator policy. Explain whether old approval can execute; do not approve a new plan.",
+      "nb": "Forhåndsvis Norge til hovedstad. Operatøren endrer nå operatørpolicy. Forklar om gammel godkjenning kan kjøre; ikke godkjenn en ny plan."
+    },
+    "target": "Old approval invalid; re-resolve and review exact new graph/snapshot/policy; no execution",
+    "checks": [
+      "entity",
+      "predicate",
+      "scope",
+      "direction",
+      "evidence_truth",
+      "approval"
+    ],
+    "decision": "no_approval",
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q20> <http://www.wikidata.org/prop/direct/P36> <http://www.wikidata.org/entity/Q585> <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "A08",
+    "type": "truncation",
+    "kind": "ask",
+    "bundle": "clipped",
+    "prompt": {
+      "en": "With the restricted synthetic bundle, preview owns then value, values output. Explain row vs evidence limits before approving, then explain both truncation flags.",
+      "nb": "Med begrenset syntetisk datasett: forhåndsvis owns og deretter value, med verdiutdata. Forklar rad- og bevisgrenser før godkjenning, og deretter begge avkortingsflagg."
+    },
+    "target": "max_rows=1 and max_evidence=1; row and evidence flags independent; clipped rows/evidence do not show completeness",
+    "checks": [
+      "entity",
+      "predicate",
+      "scope",
+      "direction",
+      "evidence_truth",
+      "truncation",
+      "two_hop",
+      "approval"
+    ],
+    "decision": "approved",
+    "snapshot": "studies/pilot-v1/snapshot.nq",
+    "witnesses": [
+      "<urn:pilot:start> <urn:pilot:owns> <urn:pilot:a> <urn:pilot:graph> .",
+      "<urn:pilot:start> <urn:pilot:owns> <urn:pilot:b> <urn:pilot:graph> .",
+      "<urn:pilot:a> <urn:pilot:value> \"60\"^^<http://www.w3.org/2001/XMLSchema#integer> <urn:pilot:graph> .",
+      "<urn:pilot:a> <urn:pilot:value> \"70\"^^<http://www.w3.org/2001/XMLSchema#integer> <urn:pilot:graph> .",
+      "<urn:pilot:b> <urn:pilot:value> \"60\"^^<http://www.w3.org/2001/XMLSchema#integer> <urn:pilot:graph> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  },
+  {
+    "id": "A09",
+    "type": "open_world_unknown",
+    "kind": "ask",
+    "bundle": "wikidata",
+    "prompt": {
+      "en": "Preview Norway -> capital -> population greater than decimal 999999999, distinct count. Explain what a zero count means before approving, then explain whether the city truly has no population.",
+      "nb": "Forhåndsvis Norge -> hovedstad -> befolkning større enn desimal 999999999, distinkt antall. Forklar nullresultat før godkjenning, og deretter om byen virkelig ikke har befolkning."
+    },
+    "target": "No matching stored values: count 0; no real-world negation, completeness or absence established",
+    "checks": [
+      "entity",
+      "predicate",
+      "scope",
+      "direction",
+      "evidence_truth",
+      "filter",
+      "count",
+      "unknown",
+      "approval"
+    ],
+    "decision": "approved",
+    "snapshot": "data/wikidata/snapshot.nq",
+    "witnesses": [
+      "<http://www.wikidata.org/entity/Q20> <http://www.wikidata.org/prop/direct/P36> <http://www.wikidata.org/entity/Q585> <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q585> <http://www.wikidata.org/prop/direct/P1082> \"+717710\"^^<http://www.w3.org/2001/XMLSchema#decimal> <urn:graph-verity:wikidata:development> ."
+    ],
+    "author": "AI coding agent",
+    "reviewer": null,
+    "judgment_status": "unreviewed_exploratory",
+    "ambiguity": "Human intent/relevance and rubric judgments require actual operator assessment; unresolved until reviewed",
+    "lineage": "New pilot wording over exposed public development RDF; AI-authored, not independent gold"
+  }
+]

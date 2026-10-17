@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "preregistration_version": "pilot-v1.1",
+  "supersedes": {
+    "preregistration_version": "pilot-v1",
+    "git_commit": "017dd3653aa5258b200bbbe35d8752088cd709d5",
+    "protocol_id": "69f0c6cd1a6ddd4bfa0d07744a5cc89b5baa8097eb50d14d6894e9f825afd0d1"
+  },
+  "amendment": "Before any human enrollment: correct F11's unsupported Nor substring assumption to source-backed Kingdom / Kongeriket partial alias tokens, after an exposed AI adapter rehearsal. No human sessions are affected. Recruitment, task order, rubric, thresholds, UI/source commit and datasets are unchanged. Schema version remains 1; forms bind the new freeze hash and cannot mix with the superseded protocol.",
+  "issue": 57,
+  "source_ui_commit": "9a1c663349d9594ccf7a108016ab3284046a78d3",
+  "status": "preregistered_kit_no_enrollment",
+  "target_participants": [
+    5,
+    8
+  ],
+  "actual_participants": 0,
+  "actual_task_attempts": 0,
+  "independent_task_reviewers": 0,
+  "order": [
+    "F01",
+    "F02",
+    "F03",
+    "F04",
+    "F05",
+    "F06",
+    "F07",
+    "F08",
+    "F09",
+    "F10",
+    "F11",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "A08",
+    "A09"
+  ],
+  "recruitment": "Voluntary adults who plausibly explore RDF for analysis/research; include beginners and experienced RDF users and Norwegian/English proficiency; convenience sample, no schedule promised",
+  "languages": [
+    "en",
+    "nb"
+  ],
+  "gemet_in_scope": false,
+  "gemet_reason": "Keep first pilot small: Wikidata and GeoNames-derived RDF plus separately labelled synthetic ambiguity/shared-path cases",
+  "training": "Show launch/controls on Q20, unscored; record assistance on every later task. Fixed order and overlaps cause learning; not independent tasks.",
+  "product_readiness_hypotheses": {
+    "min_participants": 5,
+    "unassisted_success_per_planned_at_least": 0.8,
+    "assessed_comprehension_correct_at_least": 0.8,
+    "confident_wrong_observations_stop_at": 1,
+    "missing_or_unassessed_blocks_readiness": true,
+    "no_automatic_release_go": true
+  },
+  "rubric": {
+    "confidence": "Explicit participant 1 not confident to 5 very confident; null if declined",
+    "relevance": "Find only, participant 1 not relevant to 5 very relevant; null if declined; never top-k accuracy",
+    "success": "Completed with every required check true and actual assessor; assistance reported separately; deliberate cancellation may succeed",
+    "confident_wrong": "Confidence >=4 and at least one observed false rubric check or wrong decision; unassessed confidence remains visible",
+    "time": "Operator elapsed whole seconds; include assistance; no timestamps or keystroke traces",
+    "missing": "Missing records and not_attempted tasks stay in planned denominator; no success inferred",
+    "abandoned_excluded": "Keep attempted, time, assistance and any observed failures; never successful",
+    "review": "All task references AI-authored; no human review claimed. Actual local assessor ID and role required for judgments; no names published"
+  },
+  "retention_days": 30,
+  "raw_queries": false,
+  "quotes": false,
+  "screen_recording": false,
+  "public_participant_submission": false
+}

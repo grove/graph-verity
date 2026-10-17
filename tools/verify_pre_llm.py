@@ -11,6 +11,7 @@ import os
 import platform
 import subprocess
 import sys
+import tempfile
 import time
 from pathlib import Path
 
@@ -101,6 +102,10 @@ def main() -> int:
         run("dependency-fetch", ["cargo", "fetch", "--locked"])
         run("reporting-tests", [sys.executable, "-m", "unittest", "discover",
                                 "-s", "tools", "-p", "test_*.py", "-v"])
+        run("pilot-study-freeze", [sys.executable, "tools/pilot_study.py", "verify"])
+        pilot_out = Path(tempfile.mkdtemp(prefix="pilot-rehearsal-", dir=OUT))
+        run("pilot-study-rehearsal", [sys.executable, "tools/pilot_study.py", "rehearse",
+                                      "--out", str(pilot_out / "report.json")])
         run("retrieval-freeze", [sys.executable, "tools/retrieval.py", "verify"])
         run("issue9-forensics", [sys.executable, "tools/issue9_forensics.py", "verify",
                                  "--out", str(OUT / "issue9-forensics.json")])
@@ -174,7 +179,6 @@ def main() -> int:
         require("Private evaluation is disabled" in (OUT / "locked-evaluation-denied.stderr.txt").read_text(),
                 "Locked evaluation was not rejected before benchmark access")
         # Fresh artifact subdirectories preserve prior reports and permit repeated verification.
-        import tempfile
         phase0_out = Path(tempfile.mkdtemp(prefix="phase0-", dir=OUT))
         run("phase0-historical-report", [sys.executable, "tools/phase0.py", "report", "--out", str(phase0_out / "baseline")])
         run("phase0-rust-replay", [sys.executable, "tools/phase0.py", "replay", "--out", str(phase0_out / "replay")])
