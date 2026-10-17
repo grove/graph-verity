@@ -10,6 +10,17 @@ use verity_core::{
 const PUBLIC: &str = "https://example.org/public";
 const PRIVATE: &str = "https://example.org/private";
 const RDF: &[u8] = include_bytes!("../../../tests/fixtures/smoke.trig");
+/// Panics if inference is invoked: guarded cases must be intercepted first.
+struct NoOpModel;
+impl verity_core::parser::SemanticParser for NoOpModel {
+    fn origin(&self) -> PlanOrigin {
+        PlanOrigin::LocalModel
+    }
+    fn propose(&self, _: &verity_core::parser::ParserRequest) -> verity_core::Result<Vec<u8>> {
+        panic!("Deterministic preflight failed to intercept a known unsupported request")
+    }
+}
+
 fn graph() -> Snapshot {
     Snapshot::from_bytes(RDF, "trig").unwrap()
 }
@@ -702,7 +713,7 @@ fn deterministic_preflight_blocks_explicit_negation_without_running_a_model() {
     let scope = vec![PUBLIC.to_owned()];
     let fixture = FixtureParser::default(); // no response registered
     let outcome = g.run_parser(
-        &fixture,
+        &NoOpModel,
         "Hvilke selskaper har ingen kontrakter?",
         &scope,
         &policy(),
@@ -736,7 +747,7 @@ fn deterministic_preflight_blocks_duplicate_authorized_labels_only() {
     let scope = vec![PUBLIC.to_owned()];
     let fixture = FixtureParser::default();
     let outcome = g.run_parser(
-        &fixture,
+        &NoOpModel,
         "Hva er antall ansatte for Felles AS?",
         &scope,
         &policy(),
