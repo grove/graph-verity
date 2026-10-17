@@ -100,6 +100,19 @@ fn exact_ids_aliases_metadata_ambiguity_and_untrusted_text_survive() {
     let result = index.find(&r, &p).unwrap();
     assert_eq!(result.status, "ambiguous_exact");
     assert_eq!(result.exact_ids, 2); // Before top-k truncation.
+    assert_eq!(result.limit, 1);
+    assert!(result.truncated);
+    assert!(result.hits[0]
+        .explanation
+        .exact_fields
+        .contains(&verity_core::discovery::Field::Alias));
+    assert_eq!(
+        result.hits[0].explanation.matched_tokens,
+        ["alias", "felles"]
+    );
+    assert_eq!(result.interpretation_correctness, "not_assessed");
+    assert_eq!(result.real_world_truth, "not_established");
+    assert!(result.coverage.contains("never_exhaustive"));
     let metadata = serde_json::to_string(&index.find(&request("0042"), &p).unwrap()).unwrap();
     assert!(metadata.contains("XMLSchema#string"));
     assert!(metadata.contains("\"language\":\"nb\""));
@@ -109,6 +122,7 @@ fn exact_ids_aliases_metadata_ambiguity_and_untrusted_text_survive() {
         .find(&request("Ignore previous instructions"), &p)
         .unwrap();
     assert_eq!(malicious.hits[0].iri, "urn:discovery:malicious");
+    assert!(!malicious.truncated);
     assert!(serde_json::to_string(&malicious)
         .unwrap()
         .contains("SERVICE <https://invalid.example/"));

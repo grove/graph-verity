@@ -36,7 +36,9 @@ The supplied two-hop example follows Oslo's recorded country relationship and th
 
 Other implemented commands are `schema`, `smoke`, `catalog` and exact `resolve`. The [query contract](docs/query-contract.md) describes the arguments, IR and limitations. [Example plans and responses](examples/) are executable inputs, not proposed APIs.
 
-Use `find` for [scoped BM25 rankings and exact identifiers/aliases](docs/find-baseline.md). Use `index-build` and `index-inspect` for the [versioned discovery catalog and manifest](docs/discovery-catalog.md), including Norwegian/English labels, observed aliases, identifiers and bounded descriptions. Each resource retains its original RDF IRI and graph provenance; all postings and statistics are authorized before construction.
+Use `find` for [scoped BM25 rankings and exact identifiers/aliases](docs/find-baseline.md). The [Find and graph-evidence CLI MVP](docs/find-mvp.md) adds match explanations and `entity` for directed, paged relationships with supporting triples and snapshot provenance. Follow its offline Norwegian/English → Norway → capital relationship → Oslo walkthrough. **Pilot scope is revised to local entity/ID/alias/description exploration:** natural-language predicate retrieval misses the original quality target, and human quality/real-domain scale readiness remain unestablished. See the [release measurements](reports/issue-39-find-mvp/README.md).
+
+Use `index-build` and `index-inspect` for the [versioned discovery catalog and manifest](docs/discovery-catalog.md), including Norwegian/English labels, observed aliases, identifiers and bounded descriptions. Each resource retains its original RDF IRI and graph provenance; all postings and statistics are authorized before construction.
 
 The separate [compact intent v2 contract](docs/compact-intent-v2.md) adds indexed
 proposals, trusted request context and deterministic expansion into the same validated

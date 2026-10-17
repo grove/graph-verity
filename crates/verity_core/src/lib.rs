@@ -9,6 +9,7 @@ pub mod evaluation;
 pub mod execution;
 pub mod find;
 pub mod ir;
+pub mod navigation;
 pub mod parser;
 
 use oxigraph::io::RdfFormat;
@@ -93,7 +94,8 @@ impl Snapshot {
         let store = Store::new().map_err(|e| Error::Store(e.to_string()))?;
         store
             .load_from_reader(rdf_format, bytes)
-            .map_err(|e| Error::Store(e.to_string()))?;
+            // Parser diagnostics can quote data from graphs the caller cannot access.
+            .map_err(|_| Error::Store("RDF input could not be parsed".into()))?;
         if store.len().map_err(|e| Error::Store(e.to_string()))? > 100_000 {
             return Err(reject("quad_limit", "Snapshot exceeds 100,000 quads"));
         }

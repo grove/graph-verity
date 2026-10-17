@@ -1,0 +1,33 @@
+{
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.12.14 (main, Aug 14 2026, 15:24:41) [Clang 22.1.3 ]",
+  "cpu_affinity": null,
+  "thread_budget": 1,
+  "cpu_description": "Apple M1 Pro, 10 cores, 32 GiB RAM; native macOS; host scheduler, no CPU affinity/quota; worker environment budget 1",
+  "binary_sha256": "e33a218d564f326b7f85d0080e65439b14acfee51840693ef2c7250d2ee15f92",
+  "manifest_sha256": "ca0fab2a9a89f36b59fce73bdd9215ac7470bc3f921fff826aea4a4b6c3f2e88",
+  "code_sha256": {
+    "tools/retrieval.py": "4e220b3e9df17e9d16fa5572564a33c4ed0aab90a274d1c9d3cd95e663684ad8",
+    "crates/verity_core/src/find.rs": "246ada05d3b889e066ca0c5274694425c48e41bcfabd4160dc99928f76e0022e",
+    "crates/verity_cli/src/main.rs": "b64db3fee55e40c2ed96704792e1edef2d167965b54a02ab6ad6d46dfc16cf6e",
+    "Cargo.lock": "b86b68fc472e2178f4815cfc86a3477713bd3ad74c6872bd70dfbfcbff3cf5d0",
+    "rust-toolchain.toml": "f715f440167e20fd8ea9afa0498c3d1ab80174cfcb8cbc895f106a34d907a1e1"
+  },
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13), aarch64-apple-darwin; release, locked offline",
+  "cold_repetitions": 30,
+  "warm_queries": 200,
+  "cold_definition": "fresh process + RDF import + index build + one query + JSON IO; OS page cache not evicted",
+  "warm_definition": "in-process find only, includes result construction; excludes JSON serialization/IO",
+  "intervals": "2000 query-level percentile bootstrap resamples, seed 37; descriptive only; correlated public formulations",
+  "limitations": [
+    "AI judgments require human review before stakeholder claims",
+    "Public evaluation shares target intents with development; not independent holdout",
+    "Synthetic 10000-resource load does not establish real-domain scale",
+    "RSS sums process high-water marks, conservative aggregate upper bound; no child workers",
+    "No-match means no lexical candidates, not semantic absence; ambiguous flags cover exact collisions only"
+  ],
+  "cli_peak_rss_bytes": 208748544,
+  "controller_peak_rss_bytes": 140279808,
+  "aggregate_rss_upper_bound_bytes": 349028352
+}

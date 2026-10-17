@@ -51,6 +51,19 @@ pub struct DiscoveryIndex {
 }
 
 impl DiscoveryIndex {
+    pub(crate) fn authorize(&self, scope: &[String], policy: &Policy) -> Result<()> {
+        policy.authorize(scope)?;
+        if self.manifest.policy_hash != hash(policy, "discovery-policy-v1")?
+            || scope.iter().any(|g| !self.graphs.contains_key(g))
+        {
+            return Err(reject(
+                "scope",
+                "Index does not cover this policy and scope",
+            ));
+        }
+        Ok(())
+    }
+
     pub fn manifest(&self) -> &Manifest {
         &self.manifest
     }

@@ -70,6 +70,21 @@ pub struct Statement {
     pub source_graph: RdfTerm,
 }
 
+impl Statement {
+    pub(crate) fn from_row(mut row: Row) -> Result<Self> {
+        let mut take = |key: &str| {
+            row.remove(key)
+                .ok_or_else(|| reject("evidence", "Unbound witness term"))
+        };
+        Ok(Self {
+            subject: take("__s")?,
+            predicate: take("__p")?,
+            object: take("__o")?,
+            source_graph: take("__g")?,
+        })
+    }
+}
+
 #[derive(Debug, Serialize)]
 pub struct Execution {
     pub status: &'static str,
@@ -94,7 +109,7 @@ pub struct Execution {
 }
 
 /// Cooperative cancellation; the watchdog is joined and never left sleeping after a query.
-struct Deadline {
+pub(crate) struct Deadline {
     token: CancellationToken,
     done: Option<mpsc::Sender<()>>,
     worker: Option<thread::JoinHandle<()>>,
@@ -102,7 +117,7 @@ struct Deadline {
     duration: Duration,
 }
 impl Deadline {
-    fn new(milliseconds: u64) -> Self {
+    pub(crate) fn new(milliseconds: u64) -> Self {
         let token = CancellationToken::new();
         let other = token.clone();
         let (send, receive) = mpsc::channel();
@@ -142,7 +157,12 @@ impl Drop for Deadline {
     }
 }
 
-fn select(store: &Store, query: &str, cap: usize, deadline: &Deadline) -> Result<Vec<Row>> {
+pub(crate) fn select(
+    store: &Store,
+    query: &str,
+    cap: usize,
+    deadline: &Deadline,
+) -> Result<Vec<Row>> {
     deadline.check()?;
     let result = SparqlEvaluator::new()
         .with_cancellation_token(deadline.token.clone())
@@ -200,19 +220,10 @@ impl Snapshot {
         )?;
         let evidence_complete = witnesses.len() <= policy.max_evidence as usize;
         witnesses.truncate(policy.max_evidence as usize);
-        let mut evidence = Vec::new();
-        for mut row in witnesses {
-            let mut take = |key: &str| {
-                row.remove(key)
-                    .ok_or_else(|| reject("evidence", "Unbound witness term"))
-            };
-            evidence.push(Statement {
-                subject: take("__s")?,
-                predicate: take("__p")?,
-                object: take("__o")?,
-                source_graph: take("__g")?,
-            });
-        }
+        let evidence = witnesses
+            .into_iter()
+            .map(Statement::from_row)
+            .collect::<Result<_>>()?;
         let execution = Execution {
             status: if complete { "executed" } else { "truncated" }, origin,
             interpretation_correctness: "not_assessed", real_world_truth: "not_established",

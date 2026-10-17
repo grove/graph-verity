@@ -10,6 +10,30 @@ import retrieval as r
 
 
 class RetrievalTests(unittest.TestCase):
+    def test_find_mvp_release_preserves_frozen_ranks_and_walkthrough_provenance(self):
+        report = r.ROOT / 'reports/issue-39-find-mvp'
+        r.verify_report(report / 'run')
+        def ranks(path):
+            with gzip.open(path / 'ranks.jsonl.gz', 'rt', encoding='utf-8') as stream:
+                return [{k: row[k] for k in ['id', 'split', 'hits', 'metrics', 'result_status']}
+                        for row in map(json.loads, stream)
+                        if row['split'] in {'development', 'evaluation'}]
+        self.assertEqual(ranks(report / 'run'), ranks(r.ROOT / 'reports/issue-37-bm25/run'))
+        release = r.read(report / 'release.json')
+        self.assertEqual(r.sha(report / 'smoke.json'), release['smoke_sha256'])
+        smoke = r.read(report / 'smoke.json')
+        self.assertFalse(smoke['network_used'])
+        self.assertFalse(smoke['model_used'])
+        no, en, country, city = [s['result'] for s in smoke['steps']]
+        self.assertEqual(no['hits'][0]['iri'], country['iri'])
+        self.assertEqual(no['hits'][0]['iri'], en['hits'][0]['iri'])
+        self.assertEqual(len({s['result']['snapshot_id'] for s in smoke['steps']}), 1)
+        edge = next(e for e in country['evidence']
+                    if e['predicate']['value'] == 'http://www.wikidata.org/prop/direct/P36')
+        self.assertEqual(edge['object']['value'], city['iri'])
+        self.assertIn(edge, city['evidence'])
+        self.assertEqual(r.read(report / 'run/environment.json')['binary_sha256'], release['binary_sha256'])
+
     def test_frozen_inputs_and_scale_recipe(self):
         manifest, cases = r.verify()
         self.assertEqual(len(cases), 80)
