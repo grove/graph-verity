@@ -28,7 +28,7 @@ def _read(path: Path):
 def audit() -> dict:
     summary = _read(BASE / "adversarial-summary.json")
     manifest = _read(BASE / "adversarial-manifest.json")
-    assert manifest["version"] == 1
+    assert manifest["payload"]["version"] == 1
     digest = (BASE / "evidence.sha256").read_text().split()[0]
     with (BASE / "evidence.tar.gz").open("rb") as stream:
         if sha256(stream.read()).hexdigest() != digest:
