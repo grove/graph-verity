@@ -9,7 +9,8 @@ use std::collections::{BTreeMap, BTreeSet};
 
 pub const MAX_INDEX_BYTES: usize = 64 * 1024 * 1024;
 const DESCRIPTION_CHARS: usize = 512;
-const RULES: &str = "unicode-lowercase-alphanumeric-v1; no NFC, stemming, transliteration or stopwords; IRI plus observed text; en/no/nb/nn language families and untagged; descriptions first 512 Unicode scalars";
+const RULES: &str = "unicode-lowercase-alphanumeric-v1; no NFC, stemming, transliteration or stopwords; IRI plus observed text; en/no/nb/nn language families and untagged; descriptions first 512 Unicode scalars; graph-local explicit wikibase:directClaim label/alias retrieval via source statements, observed predicates only, no inference or chaining";
+pub const DIRECT_CLAIM: &str = "http://wikiba.se/ontology#directClaim";
 
 /// Operator-supplied provenance, bound to immutable snapshot bytes. Never model input.
 #[derive(Debug, Serialize, Deserialize)]
@@ -97,12 +98,21 @@ pub enum Field {
     Description,
 }
 
-#[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Serialize)]
+#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Serialize)]
 pub struct ObservedText {
     pub field: Field,
     pub predicate: String,
     pub value: Label,
     pub truncated: bool,
+    /// Retrieval association only: source_iri has this text and links to the document IRI.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub via: Option<PredicateMapping>,
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Serialize)]
+pub struct PredicateMapping {
+    pub source_iri: String,
+    pub predicate: String,
 }
 
 #[derive(Debug, Default, Serialize)]
@@ -276,7 +286,50 @@ impl Snapshot {
                         datatype: literal.datatype().as_str().into(),
                     },
                     truncated,
+                    via: None,
                 });
+        }
+        // Both witnesses must be in this authorized graph; IRI spelling is never evidence.
+        for quad in self.store.iter() {
+            let quad = quad.map_err(|e| Error::Store(e.to_string()))?;
+            let Some(index) = graph_id(&quad.graph_name).and_then(|g| graphs.get_mut(g)) else {
+                continue;
+            };
+            let (NamedOrBlankNode::NamedNode(source), Term::NamedNode(target)) =
+                (&quad.subject, &quad.object)
+            else {
+                continue;
+            };
+            if quad.predicate.as_str() != DIRECT_CLAIM
+                || !index.documents[target.as_str()].roles.contains("predicate")
+            {
+                continue;
+            }
+            let mut texts = BTreeSet::new();
+            for text in &index.documents[source.as_str()].texts {
+                if text.via.is_none() && matches!(text.field, Field::Label | Field::Alias) {
+                    reserve(
+                        &mut budget,
+                        6 * (text.value.text.len()
+                            + text.predicate.len()
+                            + source.as_str().len()
+                            + DIRECT_CLAIM.len())
+                            + 768,
+                    )?;
+                    let mut text = text.clone();
+                    text.via = Some(PredicateMapping {
+                        source_iri: source.as_str().into(),
+                        predicate: DIRECT_CLAIM.into(),
+                    });
+                    texts.insert(text);
+                }
+            }
+            index
+                .documents
+                .get_mut(target.as_str())
+                .unwrap()
+                .texts
+                .extend(texts);
         }
         for index in graphs.values_mut() {
             for (iri, document) in &mut index.documents {

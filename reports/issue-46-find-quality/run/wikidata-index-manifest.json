@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
+  "scope": [
+    "urn:graph-verity:wikidata:development"
+  ],
+  "policy_hash": "sha256:246574c074c507479a64507a1349a361392cd9dec71a9f457b44c5ee5855fbfc",
+  "config_hash": "sha256:c951fb04db8c6ce10da3bbbf7806ac5ea6d13965d87585709e939b3aa3be656d",
+  "index_revision": "sha256:bfb02b7aba168c2f1390280b4f119150ee3bf2df5a7fda8b7518259693f197b2",
+  "rules": "unicode-lowercase-alphanumeric-v1; no NFC, stemming, transliteration or stopwords; IRI plus observed text; en/no/nb/nn language families and untagged; descriptions first 512 Unicode scalars; graph-local explicit wikibase:directClaim label/alias retrieval via source statements, observed predicates only, no inference or chaining",
+  "sources": {
+    "urn:graph-verity:wikidata:development": {
+      "source": "Wikidata structured entity RDF; https://www.wikidata.org/wiki/Wikidata:Licensing",
+      "license": "CC0-1.0",
+      "source_revision": "manifest-sha256:b3152d97b094f1c5d355a9f12ef0aaeba5de0699573621495b94ad57f13a99e4",
+      "importer_revision": "sha256:5ec78c099befa2cc3fef215be5aaa494f86318483f80cc7afed3ae2faa080524"
+    }
+  },
+  "graph_hashes": {
+    "urn:graph-verity:wikidata:development": "sha256:5bedbe20f2e5fbe799c0512b1348bd28b8665813872a216e93a202b19e07cdc7"
+  }
+}

@@ -149,12 +149,12 @@ def run(args):
                     cpu_affinity=sorted(os.sched_getaffinity(0)) if hasattr(os, 'sched_getaffinity') else None,
                     thread_budget=1, cpu_description=args.cpu_description,
                     binary_sha256=sha(binary), manifest_sha256=sha(MANIFEST),
-                    code_sha256={str(p.relative_to(ROOT)): sha(p) for p in [ROOT / 'tools/retrieval.py', ROOT / 'crates/verity_core/src/find.rs', ROOT / 'crates/verity_cli/src/main.rs', ROOT / 'Cargo.lock', ROOT / 'rust-toolchain.toml']},
+                    code_sha256={str(p.relative_to(ROOT)): sha(p) for p in [ROOT / 'tools/retrieval.py', ROOT / 'crates/verity_core/src/find.rs', ROOT / 'crates/verity_core/src/discovery.rs', ROOT / 'crates/verity_core/src/compiler.rs', ROOT / 'crates/verity_core/src/navigation.rs', ROOT / 'crates/verity_cli/src/main.rs', ROOT / 'Cargo.lock', ROOT / 'rust-toolchain.toml']},
                     compiler=args.compiler, cold_repetitions=args.cold, warm_queries=args.warm,
                     cold_definition='fresh process + RDF import + index build + one query + JSON IO; OS page cache not evicted',
                     warm_definition='in-process find only, includes result construction; excludes JSON serialization/IO',
                     intervals='2000 query-level percentile bootstrap resamples, seed 37; descriptive only; correlated public formulations',
-                    limitations=['AI judgments require human review before stakeholder claims', 'Public evaluation shares target intents with development; not independent holdout', 'Synthetic 10000-resource load does not establish real-domain scale', 'RSS sums process high-water marks, conservative aggregate upper bound; no child workers', 'No-match means no lexical candidates, not semantic absence; ambiguous flags cover exact collisions only'])
+                    limitations=['AI judgments require human review before stakeholder claims', 'Public evaluation shares target intents with development; not independent holdout', 'Synthetic 10000-resource load does not establish real-domain scale', 'RSS sums process high-water marks, conservative aggregate upper bound; no child workers', 'No-match means no lexical candidates, not semantic absence; conservative outcome states do not calibrate confidence'])
     cpuinfo = Path('/proc/cpuinfo')
     if cpuinfo.exists():
         metadata['proc_cpuinfo'] = cpuinfo.read_text().split('\n\n')[0]
@@ -182,6 +182,7 @@ def run(args):
                    query=query, relevant=case['relevant'], result_status=result.get('status'),
                    elapsed_ms=response.get('elapsed_ms'), snapshot_id=result.get('snapshot_id'),
                    documents=result.get('documents'), matches=result.get('matches'), exact_ids=result.get('exact_ids'),
+                   exact_candidates=result.get('exact_candidates'), outcome_policy=result.get('outcome_policy'),
                    hits=[{k: h[k] for k in ['iri', 'graph', 'score', 'exact']} for h in result.get('hits', [])])
         if 'error' in response:
             row['error'] = response['error']

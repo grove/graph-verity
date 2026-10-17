@@ -40,15 +40,19 @@ IRI)`, including duplicate IRIs across graphs. Each unique normalized query toke
 contributes `ln(1 + (N - df + 0.5)/(df + 0.5)) * tf * (k1 + 1) /
 (tf + k1 * (1 - b + b * length/average_length))`, with fixed `k1=1.2`, `b=0.75`.
 It uses #36's unweighted full-IRI/observed-text postings and Unicode tokenization,
-without stemming, translation, stopwords, label propagation or synonym inference.
+without stemming, translation, stopwords or synonym inference. Issue #46 adds
+[explicit graph-local predicate label/alias associations](find-quality.md), retaining
+both original statements via `via` metadata; no RDF fact is propagated.
 Repeated query tokens do not multiply scores. Nonmatching documents are omitted.
 
 Exact original IRIs and case-folded exact observed labels, aliases and identifiers
 form a tier before BM25 scores; descriptions do not get this tier. Trimmed query
 text is used for matching. Ties sort by original IRI, then source graph. Several
-exact distinct IDs produce `ambiguous_exact` even when top-k hides candidates.
-Other responses say `ranked` or `no_match`. Partial lexical ambiguity is not
-automatically detected; no candidate does not establish semantic absence.
+exact graph-qualified hits produce `ambiguous_exact` even when top-k hides
+candidates. One exact hit says `ranked`; no candidates says `no_match`. Without
+exact hits, multiple candidates say `ambiguous_candidates` and a lone candidate
+says `low_confidence`. These conservative states use no score cutoff and do not
+calibrate confidence or establish semantic absence. See the [precise policy](find-quality.md).
 
 Hits retain graph-qualified IDs, scores, exact-match flags, roles and bounded
 observed text with original predicates, literal datatypes/languages and truncation

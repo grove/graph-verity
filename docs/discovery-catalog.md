@@ -4,6 +4,9 @@ Issue #36 adds local, model-free discovery data for the retained Wikidata and
 GeoNames-derived snapshots. It extends `Snapshot::catalog`: each named graph gets
 its own documents, roles, observed text, inverted postings and statistics. The same
 IRI in two graphs remains two graph-qualified records. Issue #37 adds [scoped BM25 ranking and exact matching](find-baseline.md).
+Issue #46 adds [explicit graph-local predicate label/alias retrieval associations](find-quality.md);
+`via` retains the source resource and mapping predicate without asserting new RDF
+labels. Index revision checks require rebuilding older persisted indexes.
 
 ## Build and inspect
 

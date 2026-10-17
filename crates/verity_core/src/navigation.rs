@@ -14,6 +14,7 @@ use std::collections::BTreeMap;
 pub enum EdgeDirection {
     Incoming,
     Outgoing,
+    Predicate,
 }
 
 #[derive(Debug, Deserialize)]

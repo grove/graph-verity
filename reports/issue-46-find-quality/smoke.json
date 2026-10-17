@@ -1,0 +1,1915 @@
+{
+  "network_used": false,
+  "model_used": false,
+  "steps": [
+    {
+      "argv": [
+        "target/release/verity",
+        "find",
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "data/wikidata/scope.json",
+        "data/wikidata/discovery.json",
+        "examples/find/predicate-no.json"
+      ],
+      "elapsed_ms": 27.534333989024162,
+      "result": {
+        "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
+        "scope": [
+          "urn:graph-verity:wikidata:development"
+        ],
+        "role": "predicate",
+        "rules": "bm25-v1; k1=1.2 b=0.75; unique query tokens; scoped graph-qualified documents; role before statistics; exact IRI/label/alias/identifier tier; ties IRI then graph",
+        "ranking_revision": "sha256:feaf220230cdf2fed3a0b093bbfb13e217524ab8c49b47f741995d1fc47c0ae0",
+        "index_revision": "sha256:bfb02b7aba168c2f1390280b4f119150ee3bf2df5a7fda8b7518259693f197b2",
+        "graph_hashes": {
+          "urn:graph-verity:wikidata:development": "sha256:5bedbe20f2e5fbe799c0512b1348bd28b8665813872a216e93a202b19e07cdc7"
+        },
+        "sources": {
+          "urn:graph-verity:wikidata:development": {
+            "source": "Wikidata structured entity RDF; https://www.wikidata.org/wiki/Wikidata:Licensing",
+            "license": "CC0-1.0",
+            "source_revision": "manifest-sha256:b3152d97b094f1c5d355a9f12ef0aaeba5de0699573621495b94ad57f13a99e4",
+            "importer_revision": "sha256:5ec78c099befa2cc3fef215be5aaa494f86318483f80cc7afed3ae2faa080524"
+          }
+        },
+        "status": "ranked",
+        "outcome_policy": "find-outcomes-v1; before clipping: >1 graph-qualified exact hits ambiguous_exact; 1 exact hit ranked; 0 hits no_match; >1 nonexact hits ambiguous_candidates; 1 nonexact hit low_confidence; no score cutoff or automatic selection; candidates never establish facts or absence",
+        "exact_candidates": 1,
+        "documents": 10,
+        "matches": 1,
+        "exact_ids": 1,
+        "limit": 10,
+        "truncated": false,
+        "coverage": "top_k_lexical_candidates_never_exhaustive_semantic_answers",
+        "interpretation_correctness": "not_assessed",
+        "real_world_truth": "not_established",
+        "absence_policy": "open_world_missing_facts_are_not_false",
+        "hits": [
+          {
+            "iri": "http://www.wikidata.org/prop/direct/P36",
+            "graph": "urn:graph-verity:wikidata:development",
+            "score": 2.2471757138507207,
+            "exact": true,
+            "explanation": {
+              "exact_iri": false,
+              "exact_fields": [
+                "label"
+              ],
+              "matched_tokens": [
+                "hovedstad"
+              ]
+            },
+            "document": {
+              "roles": [
+                "entity",
+                "predicate"
+              ],
+              "texts": [
+                {
+                  "field": "label",
+                  "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                  "value": {
+                    "text": "capital",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "label",
+                  "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                  "value": {
+                    "text": "hovedstad",
+                    "language": "nb",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "label",
+                  "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                  "value": {
+                    "text": "hovudstad",
+                    "language": "nn",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "administrasjonssenter",
+                    "language": "nb",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "administrative capital",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "administrative center",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "administrative centre",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "administrative headquarters",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "administrative seat",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "capital city",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "capital town",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "chef-lieu",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "county seat",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "county town",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "court residence",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "government capital",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "government seat",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "has capital",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "location of capital",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "principal place",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "seat",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "seat of government",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                }
+              ],
+              "token_count": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "argv": [
+        "target/release/verity",
+        "find",
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "data/wikidata/scope.json",
+        "data/wikidata/discovery.json",
+        "examples/find/predicate-en.json"
+      ],
+      "elapsed_ms": 13.664000201970339,
+      "result": {
+        "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
+        "scope": [
+          "urn:graph-verity:wikidata:development"
+        ],
+        "role": "predicate",
+        "rules": "bm25-v1; k1=1.2 b=0.75; unique query tokens; scoped graph-qualified documents; role before statistics; exact IRI/label/alias/identifier tier; ties IRI then graph",
+        "ranking_revision": "sha256:feaf220230cdf2fed3a0b093bbfb13e217524ab8c49b47f741995d1fc47c0ae0",
+        "index_revision": "sha256:bfb02b7aba168c2f1390280b4f119150ee3bf2df5a7fda8b7518259693f197b2",
+        "graph_hashes": {
+          "urn:graph-verity:wikidata:development": "sha256:5bedbe20f2e5fbe799c0512b1348bd28b8665813872a216e93a202b19e07cdc7"
+        },
+        "sources": {
+          "urn:graph-verity:wikidata:development": {
+            "source": "Wikidata structured entity RDF; https://www.wikidata.org/wiki/Wikidata:Licensing",
+            "license": "CC0-1.0",
+            "source_revision": "manifest-sha256:b3152d97b094f1c5d355a9f12ef0aaeba5de0699573621495b94ad57f13a99e4",
+            "importer_revision": "sha256:5ec78c099befa2cc3fef215be5aaa494f86318483f80cc7afed3ae2faa080524"
+          }
+        },
+        "status": "ranked",
+        "outcome_policy": "find-outcomes-v1; before clipping: >1 graph-qualified exact hits ambiguous_exact; 1 exact hit ranked; 0 hits no_match; >1 nonexact hits ambiguous_candidates; 1 nonexact hit low_confidence; no score cutoff or automatic selection; candidates never establish facts or absence",
+        "exact_candidates": 1,
+        "documents": 10,
+        "matches": 1,
+        "exact_ids": 1,
+        "limit": 10,
+        "truncated": false,
+        "coverage": "top_k_lexical_candidates_never_exhaustive_semantic_answers",
+        "interpretation_correctness": "not_assessed",
+        "real_world_truth": "not_established",
+        "absence_policy": "open_world_missing_facts_are_not_false",
+        "hits": [
+          {
+            "iri": "http://www.wikidata.org/prop/direct/P36",
+            "graph": "urn:graph-verity:wikidata:development",
+            "score": 3.8592578216502833,
+            "exact": true,
+            "explanation": {
+              "exact_iri": false,
+              "exact_fields": [
+                "label"
+              ],
+              "matched_tokens": [
+                "capital"
+              ]
+            },
+            "document": {
+              "roles": [
+                "entity",
+                "predicate"
+              ],
+              "texts": [
+                {
+                  "field": "label",
+                  "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                  "value": {
+                    "text": "capital",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "label",
+                  "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                  "value": {
+                    "text": "hovedstad",
+                    "language": "nb",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "label",
+                  "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                  "value": {
+                    "text": "hovudstad",
+                    "language": "nn",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "administrasjonssenter",
+                    "language": "nb",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "administrative capital",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "administrative center",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "administrative centre",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "administrative headquarters",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "administrative seat",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "capital city",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "capital town",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "chef-lieu",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "county seat",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "county town",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "court residence",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "government capital",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "government seat",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "has capital",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "location of capital",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "principal place",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "seat",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                },
+                {
+                  "field": "alias",
+                  "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                  "value": {
+                    "text": "seat of government",
+                    "language": "en",
+                    "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                  },
+                  "truncated": false,
+                  "via": {
+                    "source_iri": "http://www.wikidata.org/entity/P36",
+                    "predicate": "http://wikiba.se/ontology#directClaim"
+                  }
+                }
+              ],
+              "token_count": 48
+            }
+          }
+        ]
+      }
+    },
+    {
+      "argv": [
+        "target/release/verity",
+        "entity",
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "data/wikidata/scope.json",
+        "data/wikidata/discovery.json",
+        "examples/find/predicate-triples.json"
+      ],
+      "elapsed_ms": 14.653624966740608,
+      "result": {
+        "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
+        "scope": [
+          "urn:graph-verity:wikidata:development"
+        ],
+        "iri": "http://www.wikidata.org/prop/direct/P36",
+        "documents": {
+          "urn:graph-verity:wikidata:development": {
+            "roles": [
+              "entity",
+              "predicate"
+            ],
+            "texts": [
+              {
+                "field": "label",
+                "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                "value": {
+                  "text": "capital",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "label",
+                "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                "value": {
+                  "text": "hovedstad",
+                  "language": "nb",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "label",
+                "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                "value": {
+                  "text": "hovudstad",
+                  "language": "nn",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "administrasjonssenter",
+                  "language": "nb",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "administrative capital",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "administrative center",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "administrative centre",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "administrative headquarters",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "administrative seat",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "capital city",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "capital town",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "chef-lieu",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "county seat",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "county town",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "court residence",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "government capital",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "government seat",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "has capital",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "location of capital",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "principal place",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "seat",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "seat of government",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false,
+                "via": {
+                  "source_iri": "http://www.wikidata.org/entity/P36",
+                  "predicate": "http://wikiba.se/ontology#directClaim"
+                }
+              }
+            ],
+            "token_count": 48
+          }
+        },
+        "sources": {
+          "urn:graph-verity:wikidata:development": {
+            "source": "Wikidata structured entity RDF; https://www.wikidata.org/wiki/Wikidata:Licensing",
+            "license": "CC0-1.0",
+            "source_revision": "manifest-sha256:b3152d97b094f1c5d355a9f12ef0aaeba5de0699573621495b94ad57f13a99e4",
+            "importer_revision": "sha256:5ec78c099befa2cc3fef215be5aaa494f86318483f80cc7afed3ae2faa080524"
+          }
+        },
+        "graph_hashes": {
+          "urn:graph-verity:wikidata:development": "sha256:5bedbe20f2e5fbe799c0512b1348bd28b8665813872a216e93a202b19e07cdc7"
+        },
+        "status": "observed",
+        "direction": "predicate",
+        "offset": 0,
+        "limit": 50,
+        "next_offset": null,
+        "truncated": false,
+        "evidence": [
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/Q20"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/prop/direct/P36"
+            },
+            "object": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/Q585"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/Q25416"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/prop/direct/P36"
+            },
+            "object": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/Q26772333"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          }
+        ],
+        "evidence_verification": "verified_against_snapshot",
+        "evidence_semantics": "one_page_of_explicit_directed_statements_only; no_inference_or_recursive_expansion",
+        "interpretation_correctness": "not_assessed",
+        "real_world_truth": "not_established",
+        "absence_policy": "open_world_missing_facts_are_not_false"
+      }
+    },
+    {
+      "argv": [
+        "target/release/verity",
+        "entity",
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "data/wikidata/scope.json",
+        "data/wikidata/discovery.json",
+        "examples/find/property-source.json"
+      ],
+      "elapsed_ms": 10.669666808098555,
+      "result": {
+        "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
+        "scope": [
+          "urn:graph-verity:wikidata:development"
+        ],
+        "iri": "http://www.wikidata.org/entity/P36",
+        "documents": {
+          "urn:graph-verity:wikidata:development": {
+            "roles": [
+              "entity"
+            ],
+            "texts": [
+              {
+                "field": "label",
+                "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                "value": {
+                  "text": "capital",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "label",
+                "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                "value": {
+                  "text": "hovedstad",
+                  "language": "nb",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "label",
+                "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+                "value": {
+                  "text": "hovudstad",
+                  "language": "nn",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "administrasjonssenter",
+                  "language": "nb",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "administrative capital",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "administrative center",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "administrative centre",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "administrative headquarters",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "administrative seat",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "capital city",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "capital town",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "chef-lieu",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "county seat",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "county town",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "court residence",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "government capital",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "government seat",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "has capital",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "location of capital",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "principal place",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "seat",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              },
+              {
+                "field": "alias",
+                "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+                "value": {
+                  "text": "seat of government",
+                  "language": "en",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+                },
+                "truncated": false
+              }
+            ],
+            "token_count": 47
+          }
+        },
+        "sources": {
+          "urn:graph-verity:wikidata:development": {
+            "source": "Wikidata structured entity RDF; https://www.wikidata.org/wiki/Wikidata:Licensing",
+            "license": "CC0-1.0",
+            "source_revision": "manifest-sha256:b3152d97b094f1c5d355a9f12ef0aaeba5de0699573621495b94ad57f13a99e4",
+            "importer_revision": "sha256:5ec78c099befa2cc3fef215be5aaa494f86318483f80cc7afed3ae2faa080524"
+          }
+        },
+        "graph_hashes": {
+          "urn:graph-verity:wikidata:development": "sha256:5bedbe20f2e5fbe799c0512b1348bd28b8665813872a216e93a202b19e07cdc7"
+        },
+        "status": "observed",
+        "direction": "outgoing",
+        "offset": 0,
+        "limit": 50,
+        "next_offset": null,
+        "truncated": false,
+        "evidence": [
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://wikiba.se/ontology#directClaim"
+            },
+            "object": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/prop/direct/P36"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            },
+            "object": {
+              "kind": "iri",
+              "value": "http://wikiba.se/ontology#Property"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2000/01/rdf-schema#label"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "capital",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2000/01/rdf-schema#label"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "hovedstad",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "nb"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2000/01/rdf-schema#label"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "hovudstad",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "nn"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "administrasjonssenter",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "nb"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "administrative capital",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "administrative center",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "administrative centre",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "administrative headquarters",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "administrative seat",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "capital city",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "capital town",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "chef-lieu",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "county seat",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "county town",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "court residence",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "government capital",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "government seat",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "has capital",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "location of capital",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "principal place",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "seat",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          },
+          {
+            "subject": {
+              "kind": "iri",
+              "value": "http://www.wikidata.org/entity/P36"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "http://www.w3.org/2004/02/skos/core#altLabel"
+            },
+            "object": {
+              "kind": "literal",
+              "value": "seat of government",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:graph-verity:wikidata:development"
+            }
+          }
+        ],
+        "evidence_verification": "verified_against_snapshot",
+        "evidence_semantics": "one_page_of_explicit_directed_statements_only; no_inference_or_recursive_expansion",
+        "interpretation_correctness": "not_assessed",
+        "real_world_truth": "not_established",
+        "absence_policy": "open_world_missing_facts_are_not_false"
+      }
+    }
+  ]
+}

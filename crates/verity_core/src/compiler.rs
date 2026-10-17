@@ -21,10 +21,12 @@ pub(crate) fn entity_query(request: &crate::navigation::EntityRequest) -> Result
     let binding = match request.direction {
         EdgeDirection::Outgoing => format!("BIND({entity} AS ?__s)"),
         EdgeDirection::Incoming => format!("BIND({entity} AS ?__o)"),
+        EdgeDirection::Predicate => format!("BIND({entity} AS ?__p)"),
     };
     let triple = match request.direction {
         EdgeDirection::Outgoing => format!("{entity} ?__p ?__o"),
         EdgeDirection::Incoming => format!("?__s ?__p {entity}"),
+        EdgeDirection::Predicate => format!("?__s {entity} ?__o"),
     };
     // Term keys keep equal-valued literals with different datatypes on stable pages.
     Ok(format!("SELECT ?__s ?__p ?__o ?__g WHERE {{ VALUES ?__g {{ {graphs} }} GRAPH ?__g {{ {triple} }} {binding} }} ORDER BY ?__g ?__s ?__p (isBlank(?__o)) (isIRI(?__o)) (STR(?__o)) (LANG(?__o)) (DATATYPE(?__o)) ?__o LIMIT {} OFFSET {}", request.limit + 1, request.offset))

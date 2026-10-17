@@ -171,3 +171,88 @@ fn cli_private_canaries_stay_out_of_output_and_errors_and_stale_bundles_fail() {
     }
     fs::remove_dir_all(dir).unwrap();
 }
+
+#[test]
+fn predicate_walkthrough_keeps_both_mapping_witnesses_and_bounded_usage_triples() {
+    let common = [
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "data/wikidata/scope.json",
+        "data/wikidata/discovery.json",
+    ];
+    let index = std::env::temp_dir().join(format!(
+        "verity-predicate-index-{}.json",
+        std::process::id()
+    ));
+    let built = result(cli(&[&["index-build"][..], &common].concat()));
+    fs::write(&index, built.to_string()).unwrap();
+    result(cli(&[
+        &["index-inspect"][..],
+        &common,
+        &[index.to_str().unwrap()],
+    ]
+    .concat()));
+    let run = |command: &str, request: &str| {
+        result(cli(&[
+            &[command][..],
+            &common,
+            &[request, index.to_str().unwrap()],
+        ]
+        .concat()))
+    };
+    let no = run("find", "examples/find/predicate-no.json");
+    let en = run("find", "examples/find/predicate-en.json");
+    let usage = run("entity", "examples/find/predicate-triples.json");
+    let source = run("entity", "examples/find/property-source.json");
+    let predicate = "http://www.wikidata.org/prop/direct/P36";
+    let property = "http://www.wikidata.org/entity/P36";
+    let graph = "urn:graph-verity:wikidata:development";
+    for found in [&no, &en] {
+        assert_eq!(found["status"], "ranked");
+        assert_eq!(found["hits"][0]["iri"], predicate);
+        assert_eq!(found["hits"][0]["graph"], graph);
+        for text in found["hits"][0]["document"]["texts"].as_array().unwrap() {
+            assert_eq!(text["via"]["source_iri"], property);
+            assert_eq!(
+                text["via"]["predicate"],
+                "http://wikiba.se/ontology#directClaim"
+            );
+            assert!(source["evidence"]
+                .as_array()
+                .unwrap()
+                .iter()
+                .any(|e| e["subject"]["value"] == property
+                    && e["predicate"]["value"] == text["predicate"]
+                    && e["object"]["value"] == text["value"]["text"]
+                    && e["object"]["language"] == text["value"]["language"]
+                    && e["object"]["datatype"] == text["value"]["datatype"]));
+        }
+    }
+    assert!(source["evidence"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .any(|e| e["subject"]["value"] == property
+            && e["predicate"]["value"] == "http://wikiba.se/ontology#directClaim"
+            && e["object"]["value"] == predicate));
+    assert!(usage["evidence"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .any(
+            |e| e["subject"]["value"] == "http://www.wikidata.org/entity/Q20"
+                && e["predicate"]["value"] == predicate
+                && e["object"]["value"] == "http://www.wikidata.org/entity/Q585"
+        ));
+    for page in [&no, &en, &usage, &source] {
+        assert_eq!(page["snapshot_id"], no["snapshot_id"]);
+        assert_eq!(page["sources"][graph]["license"], "CC0-1.0");
+    }
+    assert!(usage["evidence"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .all(|e| e["predicate"]["value"] == predicate && e["source_graph"]["value"] == graph));
+    fs::remove_file(index).unwrap();
+}

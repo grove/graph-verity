@@ -1,0 +1,4621 @@
+{
+  "systems": {
+    "bm25": {
+      "metrics": {
+        "overall": {
+          "recall@1": {
+            "n": 60,
+            "mean": 0.9111111111111111,
+            "descriptive_95": [
+              0.8555555555555556,
+              0.9583333333333334
+            ]
+          },
+          "recall@5": {
+            "n": 60,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 60,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 60,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 60,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language/no": {
+          "recall@1": {
+            "n": 30,
+            "mean": 0.9111111111111111,
+            "descriptive_95": [
+              0.8333333333333334,
+              0.9666666666666667
+            ]
+          },
+          "recall@5": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language/en": {
+          "recall@1": {
+            "n": 30,
+            "mean": 0.9111111111111111,
+            "descriptive_95": [
+              0.8333333333333334,
+              0.9666666666666667
+            ]
+          },
+          "recall@5": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/alias": {
+          "recall@1": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/alias": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/alias": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/description": {
+          "recall@1": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/description": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/description": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/entity": {
+          "recall@1": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/entity": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/entity": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/identifier": {
+          "recall@1": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/identifier": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/identifier": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/multi_relevant": {
+          "recall@1": {
+            "n": 10,
+            "mean": 0.4666666666666667,
+            "descriptive_95": [
+              0.4166666666666667,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/multi_relevant": {
+          "recall@1": {
+            "n": 5,
+            "mean": 0.4666666666666667,
+            "descriptive_95": [
+              0.4,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/multi_relevant": {
+          "recall@1": {
+            "n": 5,
+            "mean": 0.4666666666666667,
+            "descriptive_95": [
+              0.4,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/predicate": {
+          "recall@1": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/predicate": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/predicate": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        }
+      },
+      "behavior": {
+        "ambiguous/all": {
+          "n": 10,
+          "errors": 0,
+          "returned_candidates": 10,
+          "exact_ambiguity_flags": 2,
+          "all_relevant_at_50": 10,
+          "mean_candidates": 2.6,
+          "candidate_return_rate": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 10,
+            "mean": 0.2,
+            "descriptive_95": [
+              0.0,
+              0.5
+            ]
+          },
+          "all_relevant_at_50_rate": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "ambiguous/no": {
+          "n": 5,
+          "errors": 0,
+          "returned_candidates": 5,
+          "exact_ambiguity_flags": 1,
+          "all_relevant_at_50": 5,
+          "mean_candidates": 2.0,
+          "candidate_return_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 5,
+            "mean": 0.2,
+            "descriptive_95": [
+              0.0,
+              0.6
+            ]
+          },
+          "all_relevant_at_50_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "ambiguous/en": {
+          "n": 5,
+          "errors": 0,
+          "returned_candidates": 5,
+          "exact_ambiguity_flags": 1,
+          "all_relevant_at_50": 5,
+          "mean_candidates": 3.2,
+          "candidate_return_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 5,
+            "mean": 0.2,
+            "descriptive_95": [
+              0.0,
+              0.6
+            ]
+          },
+          "all_relevant_at_50_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "no_match/all": {
+          "n": 10,
+          "errors": 0,
+          "returned_candidates": 0,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 0,
+          "mean_candidates": 0.0,
+          "candidate_return_rate": {
+            "n": 10,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 10,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": null
+        },
+        "no_match/no": {
+          "n": 5,
+          "errors": 0,
+          "returned_candidates": 0,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 0,
+          "mean_candidates": 0.0,
+          "candidate_return_rate": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": null
+        },
+        "no_match/en": {
+          "n": 5,
+          "errors": 0,
+          "returned_candidates": 0,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 0,
+          "mean_candidates": 0.0,
+          "candidate_return_rate": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": null
+        }
+      },
+      "errors": 0,
+      "pilot_targets": {
+        "overall": true,
+        "language/no": true,
+        "language/en": true
+      },
+      "interpretation": "AI-judged exploratory agreement, not stakeholder quality or Phase 0 approval"
+    },
+    "embedding": {
+      "metrics": {
+        "overall": {
+          "recall@1": {
+            "n": 60,
+            "mean": 0.711111111111111,
+            "descriptive_95": [
+              0.6083333333333333,
+              0.8138888888888889
+            ]
+          },
+          "recall@5": {
+            "n": 60,
+            "mean": 0.8666666666666667,
+            "descriptive_95": [
+              0.7833333333333333,
+              0.95
+            ]
+          },
+          "recall@10": {
+            "n": 60,
+            "mean": 0.8666666666666667,
+            "descriptive_95": [
+              0.7833333333333333,
+              0.95
+            ]
+          },
+          "recall@50": {
+            "n": 60,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 60,
+            "mean": 0.8291666666666667,
+            "descriptive_95": [
+              0.7416666666666667,
+              0.9166666666666666
+            ]
+          }
+        },
+        "language/no": {
+          "recall@1": {
+            "n": 30,
+            "mean": 0.711111111111111,
+            "descriptive_95": [
+              0.5666666666666667,
+              0.85
+            ]
+          },
+          "recall@5": {
+            "n": 30,
+            "mean": 0.9,
+            "descriptive_95": [
+              0.7666666666666667,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 30,
+            "mean": 0.9,
+            "descriptive_95": [
+              0.7666666666666667,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 30,
+            "mean": 0.8416666666666667,
+            "descriptive_95": [
+              0.7166666666666667,
+              0.95
+            ]
+          }
+        },
+        "language/en": {
+          "recall@1": {
+            "n": 30,
+            "mean": 0.711111111111111,
+            "descriptive_95": [
+              0.5666666666666667,
+              0.85
+            ]
+          },
+          "recall@5": {
+            "n": 30,
+            "mean": 0.8333333333333334,
+            "descriptive_95": [
+              0.7,
+              0.9666666666666667
+            ]
+          },
+          "recall@10": {
+            "n": 30,
+            "mean": 0.8333333333333334,
+            "descriptive_95": [
+              0.7,
+              0.9666666666666667
+            ]
+          },
+          "recall@50": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 30,
+            "mean": 0.8166666666666667,
+            "descriptive_95": [
+              0.6666666666666666,
+              0.9333333333333333
+            ]
+          }
+        },
+        "family/alias": {
+          "recall@1": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/alias": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/alias": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/description": {
+          "recall@1": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/description": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/description": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/entity": {
+          "recall@1": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/entity": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/entity": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/identifier": {
+          "recall@1": {
+            "n": 10,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 0.2,
+            "descriptive_95": [
+              0.0,
+              0.5
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 0.2,
+            "descriptive_95": [
+              0.0,
+              0.5
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 0.075,
+            "descriptive_95": [
+              0.0,
+              0.175
+            ]
+          }
+        },
+        "language-family/no/identifier": {
+          "recall@1": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 0.4,
+            "descriptive_95": [
+              0.0,
+              0.8
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 0.4,
+            "descriptive_95": [
+              0.0,
+              0.8
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 0.15,
+            "descriptive_95": [
+              0.0,
+              0.35
+            ]
+          }
+        },
+        "language-family/en/identifier": {
+          "recall@1": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "family/multi_relevant": {
+          "recall@1": {
+            "n": 10,
+            "mean": 0.4666666666666667,
+            "descriptive_95": [
+              0.4166666666666667,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/multi_relevant": {
+          "recall@1": {
+            "n": 5,
+            "mean": 0.4666666666666667,
+            "descriptive_95": [
+              0.4,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/multi_relevant": {
+          "recall@1": {
+            "n": 5,
+            "mean": 0.4666666666666667,
+            "descriptive_95": [
+              0.4,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/predicate": {
+          "recall@1": {
+            "n": 10,
+            "mean": 0.8,
+            "descriptive_95": [
+              0.5,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 0.9,
+            "descriptive_95": [
+              0.75,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/predicate": {
+          "recall@1": {
+            "n": 5,
+            "mean": 0.8,
+            "descriptive_95": [
+              0.4,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 0.9,
+            "descriptive_95": [
+              0.7,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/predicate": {
+          "recall@1": {
+            "n": 5,
+            "mean": 0.8,
+            "descriptive_95": [
+              0.4,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 0.9,
+            "descriptive_95": [
+              0.7,
+              1.0
+            ]
+          }
+        }
+      },
+      "behavior": {
+        "ambiguous/all": {
+          "n": 10,
+          "errors": 0,
+          "returned_candidates": 10,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 10,
+          "mean_candidates": 9.0,
+          "candidate_return_rate": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 10,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "ambiguous/no": {
+          "n": 5,
+          "errors": 0,
+          "returned_candidates": 5,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 5,
+          "mean_candidates": 9.0,
+          "candidate_return_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "ambiguous/en": {
+          "n": 5,
+          "errors": 0,
+          "returned_candidates": 5,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 5,
+          "mean_candidates": 9.0,
+          "candidate_return_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "no_match/all": {
+          "n": 10,
+          "errors": 0,
+          "returned_candidates": 10,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 0,
+          "mean_candidates": 40.0,
+          "candidate_return_rate": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 10,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": null
+        },
+        "no_match/no": {
+          "n": 5,
+          "errors": 0,
+          "returned_candidates": 5,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 0,
+          "mean_candidates": 40.0,
+          "candidate_return_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": null
+        },
+        "no_match/en": {
+          "n": 5,
+          "errors": 0,
+          "returned_candidates": 5,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 0,
+          "mean_candidates": 40.0,
+          "candidate_return_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": null
+        }
+      },
+      "errors": 0,
+      "pilot_targets": {
+        "overall": false,
+        "language/no": true,
+        "language/en": true
+      },
+      "interpretation": "AI-judged exploratory agreement, not stakeholder quality or Phase 0 approval"
+    },
+    "fusion": {
+      "metrics": {
+        "overall": {
+          "recall@1": {
+            "n": 60,
+            "mean": 0.7777777777777778,
+            "descriptive_95": [
+              0.6805555555555556,
+              0.8666666666666667
+            ]
+          },
+          "recall@5": {
+            "n": 60,
+            "mean": 0.9,
+            "descriptive_95": [
+              0.8166666666666667,
+              0.9666666666666667
+            ]
+          },
+          "recall@10": {
+            "n": 60,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 60,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 60,
+            "mean": 0.8892592592592592,
+            "descriptive_95": [
+              0.815,
+              0.9574074074074074
+            ]
+          }
+        },
+        "language/no": {
+          "recall@1": {
+            "n": 30,
+            "mean": 0.8111111111111111,
+            "descriptive_95": [
+              0.6888888888888889,
+              0.9166666666666666
+            ]
+          },
+          "recall@5": {
+            "n": 30,
+            "mean": 0.9,
+            "descriptive_95": [
+              0.7666666666666667,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 30,
+            "mean": 0.9107407407407407,
+            "descriptive_95": [
+              0.7925925925925926,
+              1.0
+            ]
+          }
+        },
+        "language/en": {
+          "recall@1": {
+            "n": 30,
+            "mean": 0.7444444444444444,
+            "descriptive_95": [
+              0.6,
+              0.8777777777777778
+            ]
+          },
+          "recall@5": {
+            "n": 30,
+            "mean": 0.9,
+            "descriptive_95": [
+              0.7666666666666667,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 30,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 30,
+            "mean": 0.8677777777777779,
+            "descriptive_95": [
+              0.7533333333333334,
+              0.9700000000000001
+            ]
+          }
+        },
+        "family/alias": {
+          "recall@1": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/alias": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/alias": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/description": {
+          "recall@1": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/description": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/description": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/entity": {
+          "recall@1": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/entity": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/entity": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/identifier": {
+          "recall@1": {
+            "n": 10,
+            "mean": 0.2,
+            "descriptive_95": [
+              0.0,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 0.4,
+            "descriptive_95": [
+              0.1,
+              0.7
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 0.33555555555555555,
+            "descriptive_95": [
+              0.1411111111111111,
+              0.5633333333333334
+            ]
+          }
+        },
+        "language-family/no/identifier": {
+          "recall@1": {
+            "n": 5,
+            "mean": 0.4,
+            "descriptive_95": [
+              0.0,
+              0.8
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 0.4,
+            "descriptive_95": [
+              0.0,
+              0.8
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 0.4644444444444445,
+            "descriptive_95": [
+              0.10666666666666666,
+              0.8222222222222222
+            ]
+          }
+        },
+        "language-family/en/identifier": {
+          "recall@1": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 0.4,
+            "descriptive_95": [
+              0.0,
+              0.8
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 0.20666666666666664,
+            "descriptive_95": [
+              0.11333333333333333,
+              0.3
+            ]
+          }
+        },
+        "family/multi_relevant": {
+          "recall@1": {
+            "n": 10,
+            "mean": 0.4666666666666667,
+            "descriptive_95": [
+              0.4166666666666667,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/multi_relevant": {
+          "recall@1": {
+            "n": 5,
+            "mean": 0.4666666666666667,
+            "descriptive_95": [
+              0.4,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/multi_relevant": {
+          "recall@1": {
+            "n": 5,
+            "mean": 0.4666666666666667,
+            "descriptive_95": [
+              0.4,
+              0.5
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "family/predicate": {
+          "recall@1": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/no/predicate": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "language-family/en/predicate": {
+          "recall@1": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@5": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "recall@50": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "mrr@10": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        }
+      },
+      "behavior": {
+        "ambiguous/all": {
+          "n": 10,
+          "errors": 0,
+          "returned_candidates": 10,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 10,
+          "mean_candidates": 9.0,
+          "candidate_return_rate": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 10,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "ambiguous/no": {
+          "n": 5,
+          "errors": 0,
+          "returned_candidates": 5,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 5,
+          "mean_candidates": 9.0,
+          "candidate_return_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "ambiguous/en": {
+          "n": 5,
+          "errors": 0,
+          "returned_candidates": 5,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 5,
+          "mean_candidates": 9.0,
+          "candidate_return_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          }
+        },
+        "no_match/all": {
+          "n": 10,
+          "errors": 0,
+          "returned_candidates": 10,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 0,
+          "mean_candidates": 40.0,
+          "candidate_return_rate": {
+            "n": 10,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 10,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": null
+        },
+        "no_match/no": {
+          "n": 5,
+          "errors": 0,
+          "returned_candidates": 5,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 0,
+          "mean_candidates": 40.0,
+          "candidate_return_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": null
+        },
+        "no_match/en": {
+          "n": 5,
+          "errors": 0,
+          "returned_candidates": 5,
+          "exact_ambiguity_flags": 0,
+          "all_relevant_at_50": 0,
+          "mean_candidates": 40.0,
+          "candidate_return_rate": {
+            "n": 5,
+            "mean": 1.0,
+            "descriptive_95": [
+              1.0,
+              1.0
+            ]
+          },
+          "exact_ambiguity_rate": {
+            "n": 5,
+            "mean": 0.0,
+            "descriptive_95": [
+              0.0,
+              0.0
+            ]
+          },
+          "all_relevant_at_50_rate": null
+        }
+      },
+      "errors": 0,
+      "pilot_targets": {
+        "overall": true,
+        "language/no": true,
+        "language/en": true
+      },
+      "interpretation": "AI-judged exploratory agreement, not stakeholder quality or Phase 0 approval"
+    }
+  },
+  "outcomes": {
+    "bm25": {
+      "all": {
+        "n": 80,
+        "states": {
+          "ambiguous_candidates": 37,
+          "ambiguous_exact": 2,
+          "low_confidence": 21,
+          "no_match": 10,
+          "ranked": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 80,
+          "mean": 0.875,
+          "descriptive_95": [
+            0.8,
+            0.9375
+          ]
+        }
+      },
+      "language/en": {
+        "n": 40,
+        "states": {
+          "ambiguous_candidates": 19,
+          "ambiguous_exact": 1,
+          "low_confidence": 10,
+          "no_match": 5,
+          "ranked": 5
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 40,
+          "mean": 0.875,
+          "descriptive_95": [
+            0.75,
+            0.975
+          ]
+        }
+      },
+      "language/no": {
+        "n": 40,
+        "states": {
+          "ambiguous_candidates": 18,
+          "ambiguous_exact": 1,
+          "low_confidence": 11,
+          "no_match": 5,
+          "ranked": 5
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 40,
+          "mean": 0.875,
+          "descriptive_95": [
+            0.75,
+            0.975
+          ]
+        }
+      },
+      "family/alias": {
+        "n": 10,
+        "states": {
+          "ranked": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/ambiguous": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 8,
+          "ambiguous_exact": 2
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/description": {
+        "n": 10,
+        "states": {
+          "low_confidence": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/entity": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 1,
+          "low_confidence": 9
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/identifier": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/multi_relevant": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/no_match": {
+        "n": 10,
+        "states": {
+          "no_match": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "family/predicate": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 8,
+          "low_confidence": 2
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "status/ambiguous": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 8,
+          "ambiguous_exact": 2
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "status/no_match": {
+        "n": 10,
+        "states": {
+          "no_match": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "status/relevant": {
+        "n": 60,
+        "states": {
+          "ambiguous_candidates": 29,
+          "low_confidence": 21,
+          "ranked": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 60,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      }
+    },
+    "embedding": {
+      "all": {
+        "n": 80,
+        "states": {
+          "ambiguous_candidates": 80
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 80,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "language/en": {
+        "n": 40,
+        "states": {
+          "ambiguous_candidates": 40
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 40,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "language/no": {
+        "n": 40,
+        "states": {
+          "ambiguous_candidates": 40
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 40,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/alias": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/ambiguous": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/description": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/entity": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/identifier": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/multi_relevant": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/no_match": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/predicate": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "status/ambiguous": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "status/no_match": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "status/relevant": {
+        "n": 60,
+        "states": {
+          "ambiguous_candidates": 60
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 60,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      }
+    },
+    "fusion": {
+      "all": {
+        "n": 80,
+        "states": {
+          "ambiguous_candidates": 80
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 80,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "language/en": {
+        "n": 40,
+        "states": {
+          "ambiguous_candidates": 40
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 40,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "language/no": {
+        "n": 40,
+        "states": {
+          "ambiguous_candidates": 40
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 40,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/alias": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/ambiguous": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/description": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/entity": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/identifier": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/multi_relevant": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/no_match": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "family/predicate": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "status/ambiguous": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "status/no_match": {
+        "n": 10,
+        "states": {
+          "ambiguous_candidates": 10
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 10,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "status/relevant": {
+        "n": 60,
+        "states": {
+          "ambiguous_candidates": 60
+        },
+        "errors": 0,
+        "returned_candidates": {
+          "n": 60,
+          "mean": 1.0,
+          "descriptive_95": [
+            1.0,
+            1.0
+          ]
+        }
+      }
+    }
+  },
+  "paired_gain": {
+    "embedding": {
+      "overall": {
+        "recall@1": {
+          "n": 60,
+          "mean": -0.2,
+          "descriptive_95": [
+            -0.3,
+            -0.1
+          ]
+        },
+        "recall@5": {
+          "n": 60,
+          "mean": -0.13333333333333333,
+          "descriptive_95": [
+            -0.21666666666666667,
+            -0.05
+          ]
+        },
+        "recall@10": {
+          "n": 60,
+          "mean": -0.13333333333333333,
+          "descriptive_95": [
+            -0.21666666666666667,
+            -0.05
+          ]
+        },
+        "recall@50": {
+          "n": 60,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 60,
+          "mean": -0.17083333333333334,
+          "descriptive_95": [
+            -0.25833333333333336,
+            -0.08333333333333333
+          ]
+        }
+      },
+      "language/no": {
+        "recall@1": {
+          "n": 30,
+          "mean": -0.2,
+          "descriptive_95": [
+            -0.36666666666666664,
+            -0.06666666666666667
+          ]
+        },
+        "recall@5": {
+          "n": 30,
+          "mean": -0.1,
+          "descriptive_95": [
+            -0.23333333333333334,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 30,
+          "mean": -0.1,
+          "descriptive_95": [
+            -0.23333333333333334,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 30,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 30,
+          "mean": -0.15833333333333333,
+          "descriptive_95": [
+            -0.2833333333333333,
+            -0.05
+          ]
+        }
+      },
+      "language/en": {
+        "recall@1": {
+          "n": 30,
+          "mean": -0.2,
+          "descriptive_95": [
+            -0.36666666666666664,
+            -0.06666666666666667
+          ]
+        },
+        "recall@5": {
+          "n": 30,
+          "mean": -0.16666666666666666,
+          "descriptive_95": [
+            -0.3,
+            -0.03333333333333333
+          ]
+        },
+        "recall@10": {
+          "n": 30,
+          "mean": -0.16666666666666666,
+          "descriptive_95": [
+            -0.3,
+            -0.03333333333333333
+          ]
+        },
+        "recall@50": {
+          "n": 30,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 30,
+          "mean": -0.18333333333333332,
+          "descriptive_95": [
+            -0.3333333333333333,
+            -0.06666666666666667
+          ]
+        }
+      },
+      "family/alias": {
+        "recall@1": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "family/description": {
+        "recall@1": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "family/entity": {
+        "recall@1": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "family/identifier": {
+        "recall@1": {
+          "n": 10,
+          "mean": -1.0,
+          "descriptive_95": [
+            -1.0,
+            -1.0
+          ]
+        },
+        "recall@5": {
+          "n": 10,
+          "mean": -0.8,
+          "descriptive_95": [
+            -1.0,
+            -0.5
+          ]
+        },
+        "recall@10": {
+          "n": 10,
+          "mean": -0.8,
+          "descriptive_95": [
+            -1.0,
+            -0.5
+          ]
+        },
+        "recall@50": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 10,
+          "mean": -0.925,
+          "descriptive_95": [
+            -1.0,
+            -0.825
+          ]
+        }
+      },
+      "family/multi_relevant": {
+        "recall@1": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "family/predicate": {
+        "recall@1": {
+          "n": 10,
+          "mean": -0.2,
+          "descriptive_95": [
+            -0.5,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 10,
+          "mean": -0.1,
+          "descriptive_95": [
+            -0.25,
+            0.0
+          ]
+        }
+      }
+    },
+    "fusion": {
+      "overall": {
+        "recall@1": {
+          "n": 60,
+          "mean": -0.13333333333333333,
+          "descriptive_95": [
+            -0.21666666666666667,
+            -0.05
+          ]
+        },
+        "recall@5": {
+          "n": 60,
+          "mean": -0.1,
+          "descriptive_95": [
+            -0.18333333333333332,
+            -0.03333333333333333
+          ]
+        },
+        "recall@10": {
+          "n": 60,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 60,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 60,
+          "mean": -0.11074074074074075,
+          "descriptive_95": [
+            -0.185,
+            -0.04259259259259259
+          ]
+        }
+      },
+      "language/no": {
+        "recall@1": {
+          "n": 30,
+          "mean": -0.1,
+          "descriptive_95": [
+            -0.23333333333333334,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 30,
+          "mean": -0.1,
+          "descriptive_95": [
+            -0.23333333333333334,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 30,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 30,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 30,
+          "mean": -0.08925925925925925,
+          "descriptive_95": [
+            -0.20740740740740737,
+            0.0
+          ]
+        }
+      },
+      "language/en": {
+        "recall@1": {
+          "n": 30,
+          "mean": -0.16666666666666666,
+          "descriptive_95": [
+            -0.3,
+            -0.03333333333333333
+          ]
+        },
+        "recall@5": {
+          "n": 30,
+          "mean": -0.1,
+          "descriptive_95": [
+            -0.23333333333333334,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 30,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 30,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 30,
+          "mean": -0.1322222222222222,
+          "descriptive_95": [
+            -0.24666666666666667,
+            -0.030000000000000002
+          ]
+        }
+      },
+      "family/alias": {
+        "recall@1": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "family/description": {
+        "recall@1": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "family/entity": {
+        "recall@1": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "family/identifier": {
+        "recall@1": {
+          "n": 10,
+          "mean": -0.8,
+          "descriptive_95": [
+            -1.0,
+            -0.5
+          ]
+        },
+        "recall@5": {
+          "n": 10,
+          "mean": -0.6,
+          "descriptive_95": [
+            -0.9,
+            -0.3
+          ]
+        },
+        "recall@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 10,
+          "mean": -0.6644444444444445,
+          "descriptive_95": [
+            -0.8588888888888888,
+            -0.4366666666666667
+          ]
+        }
+      },
+      "family/multi_relevant": {
+        "recall@1": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "family/predicate": {
+        "recall@1": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@5": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "recall@50": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        },
+        "mrr@10": {
+          "n": 10,
+          "mean": 0.0,
+          "descriptive_95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  },
+  "decision": "defer fusion; no independent relevance review; development-only, no rollout or performance claim"
+}

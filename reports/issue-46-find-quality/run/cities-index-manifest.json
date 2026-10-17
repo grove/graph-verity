@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "snapshot_id": "sha256:b43faf6ee61a1b775a3837108331de59486dc232f0ab331dcd9934a8168e5601",
+  "scope": [
+    "urn:graph-verity:worldcities:transfer:DK",
+    "urn:graph-verity:worldcities:transfer:FI",
+    "urn:graph-verity:worldcities:transfer:IS",
+    "urn:graph-verity:worldcities:transfer:NO",
+    "urn:graph-verity:worldcities:transfer:SE"
+  ],
+  "policy_hash": "sha256:7cbeb519c37cfa68b8619766138079a8551e5ed8658c2e168608ea87cc3480bd",
+  "config_hash": "sha256:82be2b9a31fb8f021ca87f4f7bacffc0297139225da64ac27fd37a127e55da2e",
+  "index_revision": "sha256:bfb02b7aba168c2f1390280b4f119150ee3bf2df5a7fda8b7518259693f197b2",
+  "rules": "unicode-lowercase-alphanumeric-v1; no NFC, stemming, transliteration or stopwords; IRI plus observed text; en/no/nb/nn language families and untagged; descriptions first 512 Unicode scalars; graph-local explicit wikibase:directClaim label/alias retrieval via source statements, observed predicates only, no inference or chaining",
+  "sources": {
+    "urn:graph-verity:worldcities:transfer:DK": {
+      "source": "https://github.com/datasets/world-cities/blob/73c9f54ab9f305168c76d0802db151e30a157b28/data/world-cities.csv; GeoNames (www.geonames.org), datasets/world-cities; filtered and mapped to Schema.org RDF by Graph Verity",
+      "license": "CC-BY-4.0",
+      "source_revision": "manifest-sha256:885999e36258461932eb5237d17c9c0806d2a00b38763db6b3a0d432dc9cf39c",
+      "importer_revision": "sha256:5f60418e76bc7ade98591dc395043ebf43ec6d8f6a0e4342c99c6b0e5817c881"
+    },
+    "urn:graph-verity:worldcities:transfer:FI": {
+      "source": "https://github.com/datasets/world-cities/blob/73c9f54ab9f305168c76d0802db151e30a157b28/data/world-cities.csv; GeoNames (www.geonames.org), datasets/world-cities; filtered and mapped to Schema.org RDF by Graph Verity",
+      "license": "CC-BY-4.0",
+      "source_revision": "manifest-sha256:885999e36258461932eb5237d17c9c0806d2a00b38763db6b3a0d432dc9cf39c",
+      "importer_revision": "sha256:5f60418e76bc7ade98591dc395043ebf43ec6d8f6a0e4342c99c6b0e5817c881"
+    },
+    "urn:graph-verity:worldcities:transfer:IS": {
+      "source": "https://github.com/datasets/world-cities/blob/73c9f54ab9f305168c76d0802db151e30a157b28/data/world-cities.csv; GeoNames (www.geonames.org), datasets/world-cities; filtered and mapped to Schema.org RDF by Graph Verity",
+      "license": "CC-BY-4.0",
+      "source_revision": "manifest-sha256:885999e36258461932eb5237d17c9c0806d2a00b38763db6b3a0d432dc9cf39c",
+      "importer_revision": "sha256:5f60418e76bc7ade98591dc395043ebf43ec6d8f6a0e4342c99c6b0e5817c881"
+    },
+    "urn:graph-verity:worldcities:transfer:NO": {
+      "source": "https://github.com/datasets/world-cities/blob/73c9f54ab9f305168c76d0802db151e30a157b28/data/world-cities.csv; GeoNames (www.geonames.org), datasets/world-cities; filtered and mapped to Schema.org RDF by Graph Verity",
+      "license": "CC-BY-4.0",
+      "source_revision": "manifest-sha256:885999e36258461932eb5237d17c9c0806d2a00b38763db6b3a0d432dc9cf39c",
+      "importer_revision": "sha256:5f60418e76bc7ade98591dc395043ebf43ec6d8f6a0e4342c99c6b0e5817c881"
+    },
+    "urn:graph-verity:worldcities:transfer:SE": {
+      "source": "https://github.com/datasets/world-cities/blob/73c9f54ab9f305168c76d0802db151e30a157b28/data/world-cities.csv; GeoNames (www.geonames.org), datasets/world-cities; filtered and mapped to Schema.org RDF by Graph Verity",
+      "license": "CC-BY-4.0",
+      "source_revision": "manifest-sha256:885999e36258461932eb5237d17c9c0806d2a00b38763db6b3a0d432dc9cf39c",
+      "importer_revision": "sha256:5f60418e76bc7ade98591dc395043ebf43ec6d8f6a0e4342c99c6b0e5817c881"
+    }
+  },
+  "graph_hashes": {
+    "urn:graph-verity:worldcities:transfer:DK": "sha256:551d5f968831e1f87719266e03da777b5a82e35f2234caf87ced9de9a7a0f043",
+    "urn:graph-verity:worldcities:transfer:FI": "sha256:1bbbb3892be4f2696a048245b859244001c8c406edc35211cdbb113be47d8f6c",
+    "urn:graph-verity:worldcities:transfer:IS": "sha256:1c7e992b0fbc67ca27ab4b85f81a93ca360c7474dd91bb250f145b0fff7c0948",
+    "urn:graph-verity:worldcities:transfer:NO": "sha256:9f0ffcd9586743388e528415368316bdc723e6ff4ab9e83481c666cacb18fdf5",
+    "urn:graph-verity:worldcities:transfer:SE": "sha256:7445ffe110e930e4cc88a3f915ed3fd0089291f14be91a737663c964466f805b"
+  }
+}
