@@ -113,6 +113,10 @@ def main() -> int:
         run("hybrid-native-lexical-replay", [sys.executable, "tools/hybrid_retrieval.py", "verify-lexical",
                                             "--binary", "target/debug/verity", "--out",
                                             "reports/issue-50-real-rdf-hybrid/run"])
+        run("selective-hybrid-replay", [sys.executable, "tools/selective_hybrid.py", "verify-report",
+                                      "--freeze", "reports/issue-53-selective-hybrid/freeze",
+                                      "--out", "reports/issue-53-selective-hybrid/run",
+                                      "--binary", "target/debug/examples/retrieval_session"])
         cli("smoke", "smoke", "tests/fixtures/smoke.trig", "trig")
         run("dataset-verify", [sys.executable, "tools/dataset.py", "verify"])
         rebuilt = OUT / "rebuilt.nq"
