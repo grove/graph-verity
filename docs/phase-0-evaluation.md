@@ -1,6 +1,6 @@
 # Phase 0 evaluation framework (issue #8)
 
-The framework works without model weights. The formal baseline decision is **NOT READY**.
+The framework works without model weights. Formal feasibility remains **NOT READY**. The [final engineering decision](phase-0-decision.md) is **STOP tested unattended Ask / REVISE Find-first**, with full measurements, identities and next issues.
 Working evaluation infrastructure is an engineering result, separate from parser quality,
 independent semantic validation, holdout readiness and production readiness.
 
@@ -353,19 +353,12 @@ measurement hooks, versioned gates/protocol/approval/freeze/admission mechanisms
 manifest verification/comparison, CI demonstration and truthful negative baseline;
 owner approval of exact experimental numerical/protocol budgets and the M1 Pro target.
 
-Outstanding: external split-integrity evidence and immutable freeze, new measurements
-on the approved target, independent specialist review/evaluation for formal GO, an authorized external locked
-run, and measured user-interface false confidence/disclosure behavior. Keep
-issue #8 open for these acceptance boundaries; merging infrastructure does not finish
-them. [The baseline](../reports/phase-0-baseline/summary.md) misses proposed 95%
+Not achieved for formal GO: external split-integrity evidence and immutable freeze, an approved-boundary external locked run, independent specialist review/evaluation, and measured user-interface false confidence/disclosure behavior. Public M1 Pro measurements exist, including the compact-v2 comparison; they do not supply these missing requirements. GitHub #8 is closed as engineering infrastructure, and #9 is closed with failed model behavior retained. The final #10 STOP/REVISE decision reconciles those boundaries; closure does not imply a passing model or completed formal preregistration. [The baseline](../reports/phase-0-baseline/summary.md) misses proposed 95%
 structural, exact-answer and correct-abstention thresholds and the 10-second historical
 warm p95 budget. A small false-abstention count of zero cannot establish safety.
 
 Recommendation for **the PR #20 measured configuration**: revise model/scope and
 abandon unattended unrestricted Ask with that configuration. Keep deterministic
 exact identifier/label resolution and manual typed plans, which already use scoped
-Rust validation/execution. Issue #9 should make interpretation confirmation and
-execution-evidence/truth limits explicit and measurable. Issue #10 should choose a
-bounded experiment/Find-first/manual-plan continuation separately from any formal
-feasibility or production GO. A negative, reproducible evaluation is a successful
+Rust validation/execution. The [Find-first continuation](phase-0-decision.md#selected-next-scope-a-find-first-mvp) is now selected. Optional confirmed Ask must measure interpretation and execution-evidence/truth limits separately from formal feasibility or production GO. A negative, reproducible evaluation is a successful
 harness run and an unsuccessful model-quality result.

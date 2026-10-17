@@ -1,13 +1,13 @@
 # Pre-LLM engineering readiness
 
 Historical report for the deterministic milestone. The subsequently authorized
-local-model experiment is documented in [local-parser-experiment.md](local-parser-experiment.md).
+local-model experiment is documented in [local-parser-experiment.md](local-parser-experiment.md). Current status: [Phase 0 STOP tested unattended Ask / REVISE Find-first](phase-0-decision.md). The observations below retain their original dates and counts.
 
 ## Scope and status
 
 The deterministic chain is implemented and has passed clean-checkout verification: **manual/fixture IR -> Rust validation -> deterministic SPARQL -> Oxigraph -> scoped evidence -> oracle report**. No model inference is implemented or authorized by this milestone. This is readiness for a first local development experiment, not a Phase 0 feasibility pass, production release, independently reviewed benchmark or authorization to start inference.
 
-Review order is [foundation #11](https://github.com/grove/graph-verity/pull/11), [core #12](https://github.com/grove/graph-verity/pull/12), [dataset/benchmark #13](https://github.com/grove/graph-verity/pull/13), then [readiness/verification #14](https://github.com/grove/graph-verity/pull/14). Each PR targets its predecessor's branch; the cumulative implementation is `feat/pre-llm-readiness`. Nothing is merged automatically and `main` is not modified by this work.
+Review order is [foundation #11](https://github.com/grove/graph-verity/pull/11), [core #12](https://github.com/grove/graph-verity/pull/12), [dataset/benchmark #13](https://github.com/grove/graph-verity/pull/13), then [readiness/verification #14](https://github.com/grove/graph-verity/pull/14). Those stacked PRs have all merged into main; the historical observations below describe the tested readiness commit.
 
 ## Implemented components
 
@@ -59,12 +59,12 @@ Cancellation is cooperative, not hard memory isolation; adversarial intermediate
 
 Review the Rust authorization/compiler/evidence boundary and PR diffs. Independently review Norwegian questions, graph interpretation, missing-data cases and gold SPARQL/results. Confirm the source/domain is suitable for the first experiment and plan a larger realistic domain before a pilot. Create an independently authored locked holdout with paraphrase/template separation; approve and freeze numerical gates and actual target hardware. Confirm model/runtime licenses when choosing a checkpoint.
 
-Issues #3–#9 remain open for PR review and any unmet acceptance criteria; the model-dependent portions of #7/#8/#9, expert gold in #5/#6, meaningful transfer and true locked holdout are not represented as complete. Parent #2 and decision #10 cannot be closed on compiler results alone.
+Issues #3–#9 are now closed as engineering workstreams. Public model measurements subsequently failed; expert gold, independent transfer/locked evaluation and formal preregistration were not achieved. The final #10 STOP/REVISE decision reconciles these limits and the #2 exit on actual negative model evidence, rather than compiler results alone.
 
 ## Reproduce
 
 ```sh
-git clone --branch feat/pre-llm-readiness https://github.com/grove/graph-verity.git
+git clone https://github.com/grove/graph-verity.git
 cd graph-verity
 rustup install
 python3 -m venv .venv
@@ -74,6 +74,6 @@ python3 -m venv .venv
 
 For the exact recorded implementation, check out commit `86257d58a2dfe203b17c66a4a1eda94303503cb8` before running the commands. For only the oracle: `cargo run --locked -p verity_cli -- evaluate data/wikidata/snapshot.nq nquads data/wikidata/policy.json benchmarks/wikidata.json dev artifacts/oracle`.
 
-## Exact next task
+## Next task after Phase 0
 
-After explicit authorization, integrate one bounded local llama.cpp proposal backend behind `SemanticParser`, with pinned artifacts, real grammar enforcement tests and honest model origin/metadata, then run development-only semantic comparisons. See the handoff. Before that authorization, no inference step should be executed. Full feasibility additionally depends on the human/holdout/target-device gates above.
+The local backend and public experiments have since been implemented. The [final decision](phase-0-decision.md) stops the tested unattended Ask configurations and schedules the Find-first catalog, lexical baseline, embedding evaluation and provenance/navigation MVP in #36–#39. Optional confirmed Ask is #40; no new inference is needed to publish this decision.
