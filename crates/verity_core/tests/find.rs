@@ -232,3 +232,217 @@ fn equal_scores_tie_by_original_iri_then_graph() {
     );
     assert_eq!(result.hits[0].score, result.hits[2].score);
 }
+
+#[test]
+fn outcomes_are_conservative_before_clipping_and_graph_qualified() {
+    let (s, p, c) = fixture();
+    let index = s.build_discovery(&p.graphs, &p, &c).unwrap();
+    for (query, status) in [
+        ("unfindablecanary", "no_match"),
+        ("Observed", "low_confidence"),
+        ("island extra", "ambiguous_candidates"),
+        ("Felles alias", "ambiguous_exact"),
+        ("0042", "ranked"),
+    ] {
+        let result = index
+            .find(
+                &FindRequest {
+                    limit: 1,
+                    ..request(query)
+                },
+                &p,
+            )
+            .unwrap();
+        assert_eq!(result.status, status, "{query}");
+        assert!(result.outcome_policy.contains("no score cutoff"));
+    }
+    let result = index
+        .find(
+            &FindRequest {
+                scope: p.graphs.clone(),
+                limit: 1,
+                ..request("urn:discovery:shared")
+            },
+            &p,
+        )
+        .unwrap();
+    assert_eq!(result.status, "ambiguous_exact");
+    assert_eq!(result.exact_ids, 1);
+    assert_eq!(result.exact_candidates, 2);
+}
+
+#[test]
+fn predicate_labels_require_two_local_witnesses_without_chaining_or_role_inference() {
+    use verity_core::{
+        discovery::DIRECT_CLAIM,
+        navigation::{EdgeDirection, EntityRequest},
+    };
+    let (_, p, mut c) = fixture();
+    let s = Snapshot::from_bytes(
+        include_bytes!("../../../tests/fixtures/predicate-discovery.trig"),
+        "trig",
+    )
+    .unwrap();
+    c.snapshot_id = s.id().into();
+    let broad = s.build_discovery(&p.graphs, &p, &c).unwrap();
+    let narrow = s.build_discovery(&[A.into()], &p, &c).unwrap();
+    for query in ["hovedstad", "Capital", "capital city"] {
+        let r = FindRequest {
+            role: Some("predicate".into()),
+            ..request(query)
+        };
+        let result = broad.find(&r, &p).unwrap();
+        assert_eq!(
+            serde_json::to_value(&result).unwrap(),
+            serde_json::to_value(narrow.find(&r, &p).unwrap()).unwrap()
+        );
+        assert_eq!(result.hits[0].iri, "urn:discovery:predicate");
+        assert_eq!(result.hits[0].graph, A);
+        assert!(result.hits[0].exact);
+        for text in &result.hits[0].document.texts {
+            let via = text.via.as_ref().unwrap();
+            assert_eq!(via.source_iri, "urn:discovery:property");
+            assert_eq!(via.predicate, DIRECT_CLAIM);
+            assert_eq!(
+                text.value.datatype,
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+            );
+            assert!(matches!(text.value.language.as_deref(), Some("nb" | "en")));
+        }
+        let page = s
+            .entity(
+                &broad,
+                &EntityRequest {
+                    snapshot_id: result.snapshot_id.into(),
+                    scope: r.scope.clone(),
+                    iri: result.hits[0].iri.into(),
+                    direction: EdgeDirection::Predicate,
+                    offset: 0,
+                    limit: 1,
+                },
+                &p,
+            )
+            .unwrap();
+        assert_eq!(page.evidence.len(), 1);
+        assert!(page.truncated);
+        assert_eq!(page.next_offset, Some(1));
+        let json = serde_json::to_string(&page).unwrap();
+        assert!(json.contains("urn:discovery:country"));
+        for canary in ["PRIVATE_", "CROSS_", B, PRIVATE] {
+            assert!(!json.contains(canary));
+        }
+    }
+    for query in [
+        "PRIVATE_MAPPING_CANARY",
+        "CROSS_GRAPH_CANARY",
+        "CROSS_LINK_CANARY",
+        "Hauptstadt",
+        "Missing link",
+        "Unused link",
+    ] {
+        let result = broad
+            .find(
+                &FindRequest {
+                    role: Some("predicate".into()),
+                    ..request(query)
+                },
+                &p,
+            )
+            .unwrap();
+        assert_eq!(result.status, "no_match", "{query}");
+    }
+    let result = broad
+        .find(
+            &FindRequest {
+                role: Some("predicate".into()),
+                ..request("PRIVATE_LABEL_CANARY")
+            },
+            &p,
+        )
+        .unwrap();
+    // The public rdfs:label IRI shares a token; no private witness may be returned.
+    assert!(!serde_json::to_string(&result).unwrap().contains("PRIVATE_"));
+    let graph = &narrow.graphs()[A];
+    assert!(graph.documents["urn:discovery:unknownPredicate"]
+        .texts
+        .is_empty());
+    assert!(graph.documents["urn:discovery:crossGraphPredicate"]
+        .texts
+        .is_empty());
+    assert!(graph.documents["urn:discovery:chainedProperty"]
+        .texts
+        .is_empty());
+    assert!(!graph.documents["urn:discovery:unused"]
+        .roles
+        .contains("predicate"));
+    assert!(graph.documents["urn:discovery:unused"].texts.is_empty());
+    assert!(graph.documents["urn:discovery:property"]
+        .texts
+        .iter()
+        .all(|t| t.via.is_none()));
+}
+
+#[test]
+fn original_development_predicate_failure_family_now_finds_original_iris() {
+    use std::path::Path;
+    let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+    let s = Snapshot::from_bytes(
+        &std::fs::read(root.join("data/wikidata/snapshot.nq")).unwrap(),
+        "nquads",
+    )
+    .unwrap();
+    let p: Policy =
+        serde_json::from_slice(&std::fs::read(root.join("data/wikidata/policy.json")).unwrap())
+            .unwrap();
+    let c: DiscoveryConfig =
+        serde_json::from_slice(&std::fs::read(root.join("data/wikidata/discovery.json")).unwrap())
+            .unwrap();
+    let scope: Vec<String> =
+        serde_json::from_slice(&std::fs::read(root.join("data/wikidata/scope.json")).unwrap())
+            .unwrap();
+    let index = s.build_discovery(&scope, &p, &c).unwrap();
+    let judgments: serde_json::Value = serde_json::from_slice(
+        &std::fs::read(root.join("benchmarks/retrieval/judgments.json")).unwrap(),
+    )
+    .unwrap();
+    let queries: serde_json::Value = serde_json::from_slice(
+        &std::fs::read(root.join("benchmarks/retrieval/development.json")).unwrap(),
+    )
+    .unwrap();
+    let mut tested = 0;
+    for case in judgments["cases"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .filter(|c| c["family"] == "predicate")
+    {
+        let query = queries["queries"]
+            .as_array()
+            .unwrap()
+            .iter()
+            .find(|q| q["id"] == case["id"])
+            .unwrap()["query"]
+            .as_str()
+            .unwrap();
+        let result = index
+            .find(
+                &FindRequest {
+                    query: query.into(),
+                    scope: scope.clone(),
+                    role: Some("predicate".into()),
+                    limit: 10,
+                },
+                &p,
+            )
+            .unwrap();
+        assert!(
+            result
+                .hits
+                .iter()
+                .any(|h| h.iri == case["relevant"][0]["iri"].as_str().unwrap()),
+            "{query}"
+        );
+        tested += 1;
+    }
+    assert_eq!(tested, 10);
+}

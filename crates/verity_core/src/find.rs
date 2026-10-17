@@ -8,6 +8,7 @@ use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
 
 pub const RULES: &str = "bm25-v1; k1=1.2 b=0.75; unique query tokens; scoped graph-qualified documents; role before statistics; exact IRI/label/alias/identifier tier; ties IRI then graph";
+pub const OUTCOME_POLICY: &str = "find-outcomes-v1; before clipping: >1 graph-qualified exact hits ambiguous_exact; 1 exact hit ranked; 0 hits no_match; >1 nonexact hits ambiguous_candidates; 1 nonexact hit low_confidence; no score cutoff or automatic selection; candidates never establish facts or absence";
 
 #[derive(Debug, Deserialize)]
 #[serde(deny_unknown_fields)]
@@ -47,6 +48,8 @@ pub struct FindResult<'a> {
     pub graph_hashes: BTreeMap<&'a str, &'a str>,
     pub sources: BTreeMap<&'a str, &'a Source>,
     pub status: &'static str,
+    pub outcome_policy: &'static str,
+    pub exact_candidates: usize,
     pub documents: usize,
     pub matches: usize,
     pub exact_ids: usize,
@@ -216,13 +219,19 @@ impl DiscoveryIndex {
                 })
                 .collect(),
             scope,
-            status: if exact_ids > 1 {
+            status: if exact.len() > 1 {
                 "ambiguous_exact"
+            } else if exact.len() == 1 {
+                "ranked"
             } else if matches == 0 {
                 "no_match"
+            } else if matches > 1 {
+                "ambiguous_candidates"
             } else {
-                "ranked"
+                "low_confidence"
             },
+            outcome_policy: OUTCOME_POLICY,
+            exact_candidates: exact.len(),
             documents,
             matches,
             exact_ids,

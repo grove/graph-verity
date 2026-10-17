@@ -4,14 +4,15 @@ The CLI MVP uses the authorized #36 discovery index, #37 BM25 ranking, and the
 [#38 decision](../reports/issue-38-embeddinggemma/README.md): reject embeddings
 alone and defer fusion for human review and a no-match policy. No model is needed.
 
-**Revised pilot scope:** local exploration of the retained Wikidata/GeoNames
-snapshots, emphasizing exact IDs, entity names, observed aliases and descriptions.
-Natural-language predicate discovery is experimental and misses the frozen quality
-target. Use original predicate IRIs from relationships when navigating. This is
+**Pilot scope:** local exploration of the retained Wikidata/GeoNames snapshots,
+including [explicit predicate-label retrieval with mapping provenance](find-quality.md).
+Predicates without graph-local mapping evidence remain limited to original-IRI
+retrieval. Conservative outcome states require human inspection and selection. This is
 an engineering MVP, with no stakeholder quality or real-domain scale readiness
-claim. The full frozen retrieval evaluation retains the failing predicate family;
+claim. The full frozen retrieval evaluation retains the original predicate family;
 the revised product scope does not remove cases or lower the original targets.
-See the [measured release report](../reports/issue-39-find-mvp/README.md).
+See the [original release report](../reports/issue-39-find-mvp/README.md) and the
+[fresh #46 comparison](../reports/issue-46-find-quality/README.md).
 
 ## Fresh local offline walkthrough
 
@@ -68,8 +69,10 @@ retains labels, aliases, literal language/datatype and description truncation.
 The score measures lexical relevance, not confidence or interpretation accuracy.
 `limit` and `truncated` describe candidate clipping. Even `truncated: false` means
 only that all lexical matches were returned; top-k is never an exhaustive semantic
-answer. `ambiguous_exact` covers distinct exact IDs before clipping; other
-ambiguity requires a person to choose. `no_match` means no lexical candidates.
+answer. [The outcome policy](find-quality.md#fixed-representation-and-policy-before-evaluation)
+flags graph-qualified exact collisions (`ambiguous_exact`), multiple partial
+candidates (`ambiguous_candidates`) and a lone partial match (`low_confidence`)
+before clipping. `no_match` means no lexical candidates, never real-world absence.
 
 `entity RDF FORMAT POLICY SCOPE CONFIG REQUEST_JSON [INDEX]` accepts exactly:
 
@@ -86,15 +89,18 @@ ambiguity requires a person to choose. `no_match` means no lexical candidates.
 
 Use `incoming` for statements whose object is this IRI; `outgoing` selects
 statements whose subject is this IRI. Literal properties are included. There is
-no inferred inverse relationship, predicate mapping, generated question plan or
-public raw-SPARQL input. Unknown fields, invalid IRIs, incompatible snapshot/index
+no inferred inverse relationship, generated question plan or public raw-SPARQL
+input. Direction `predicate` pages statements using the chosen IRI as predicate;
+explicit discovery mapping associations retain both source witnesses. Unknown fields, invalid IRIs, incompatible snapshot/index
 or policy, unauthorized scope and excessive bounds fail before results are printed.
 
 Pages contain graph-qualified documents for the chosen IRI and directed supporting
 `evidence` statements, using the existing `RdfTerm`/`Statement` representation.
 Datatypes, languages, original endpoints, graph and immutable snapshot identity
 are preserved. Source records and graph hashes are restricted to the request scope.
-Missing labels stay missing; labels are never borrowed across graphs. RDF text,
+Missing labels stay missing unless an explicit graph-local `directClaim` witness
+permits a retrieval association; its `via` records the original label subject.
+Labels are never borrowed across graphs. RDF text,
 including markup and instructions, remains untrusted JSON data.
 
 Page order is graph, subject, predicate, then object kind, lexical form, language

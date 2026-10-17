@@ -1,0 +1,27 @@
+@prefix ex: <urn:discovery:> .
+@prefix wb: <http://wikiba.se/ontology#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+ex:a {
+    ex:property wb:directClaim ex:predicate ;
+        rdfs:label "Hovedstad"@nb, "Capital"@en, "Hauptstadt"@de ;
+        skos:altLabel "Capital city"@en .
+    ex:country ex:predicate ex:city, ex:otherCity .
+    ex:unknownProperty rdfs:label "Missing link"@en .
+    ex:country ex:unknownPredicate ex:city ; ex:crossGraphPredicate ex:city .
+    ex:unusedProperty wb:directClaim ex:unused ; rdfs:label "Unused link"@en .
+    ex:chainedProperty wb:directClaim ex:property .
+    ex:country ex:property ex:city ; ex:chainedProperty ex:city .
+    ex:property wb:directClaim "not an IRI", [] .
+}
+ex:b {
+    ex:property rdfs:label "CROSS_GRAPH_CANARY"@en .
+    ex:crossGraphProperty wb:directClaim ex:crossGraphPredicate ;
+        rdfs:label "CROSS_LINK_CANARY"@en .
+}
+ex:private {
+    ex:property rdfs:label "PRIVATE_LABEL_CANARY"@en .
+    ex:privateProperty wb:directClaim ex:predicate ;
+        rdfs:label "PRIVATE_MAPPING_CANARY"@en .
+}

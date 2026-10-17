@@ -132,7 +132,11 @@ fn authorization_precedes_navigation_text_counts_and_provenance() {
         "urn:discovery:link",
         "urn:discovery:malicious",
     ] {
-        for direction in [EdgeDirection::Incoming, EdgeDirection::Outgoing] {
+        for direction in [
+            EdgeDirection::Incoming,
+            EdgeDirection::Outgoing,
+            EdgeDirection::Predicate,
+        ] {
             let r = EntityRequest {
                 direction,
                 ..request(&s, iri)
@@ -143,7 +147,12 @@ fn authorization_precedes_navigation_text_counts_and_provenance() {
                 serde_json::to_value(s.entity(&narrow, &r, &p).unwrap()).unwrap()
             );
             let text = result.to_string();
-            for canary in ["PRIVATE_", "Only second graph", PRIVATE, B] {
+            for canary in [
+                "PRIVATE_",
+                "Only second graph",
+                PRIVATE,
+                "\"urn:discovery:b\"",
+            ] {
                 assert!(!text.contains(canary), "{text}");
             }
             if iri.contains("PRIVATE_") {
