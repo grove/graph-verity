@@ -159,3 +159,13 @@ descriptions with their original predicate/language/datatype witnesses. This
 changes the index rules identity; old persisted indexes require rebuilding.
 BM25 remains the shipping Find backend. Neither historical reports nor fixtures
 are retuned. See the [new protocol](../benchmarks/hybrid/README.md).
+
+The follow-up [selective hybrid experiment #53](../reports/issue-53-selective-hybrid/README.md)
+freezes exact-first lexical/semantic budgets and a conservative dense cutoff on
+exposed regressions before scoring 50 new retrieval questions. It preserves
+exact rank one and fits the conservative full-process memory budget, but the
+historical-text variant increases no-match candidate returns and loses the
+exposed Norwegian overfishing match. The separate definition ablation passes
+the numerical screen; external relevance review remains inadequate. Keep BM25;
+the hybrid remains an explicitly invoked local experiment, pending a separate
+owner release/promotion decision.

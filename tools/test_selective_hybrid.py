@@ -151,6 +151,18 @@ class SelectiveTests(unittest.TestCase):
             for path,digest in freeze['code_sha256'].items():
                 self.assertEqual(hashlib.sha256(archive.extractfile('measured/'+path).read()).hexdigest(), digest)
         self.assertTrue(r.read(REPORT/'scope-canary.json')['document_roles_text_counts_unchanged'])
+        comparison = r.read(REPORT/'repeat-comparison.json')
+        self.assertTrue(comparison['identical_all_hits_scores_routes_states_metrics_and_summaries'])
+        with tarfile.open(REPORT/'first-run.tar.gz', 'r:gz') as archive:
+            self.assertEqual(json.load(archive.extractfile('run/summary.json')), r.read(REPORT/'run/summary.json'))
+            previous = json.load(archive.extractfile('freeze/freeze.json'))
+            self.assertEqual(previous['protocol_sha256'], freeze['protocol_sha256'])
+            self.assertEqual(previous['model'], freeze['model'])
+            self.assertEqual(previous['exports_sha256'], freeze['exports_sha256'])
+        decision = r.read(REPORT/'run/decision.json')
+        self.assertFalse(decision['variants']['bm25-46']['checks']['no_match_nonregression'])
+        self.assertTrue(decision['variants']['skos-definitions-v1']['continuation_screen_pass'])
+        self.assertFalse(decision['independent_human_review'])
 
     def test_resealed_selection_tampering_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:

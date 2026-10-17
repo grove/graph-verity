@@ -1,0 +1,33 @@
+{
+  "recommendation": "keep BM25; defer hybrid promotion",
+  "variants": {
+    "bm25-46": {
+      "checks": {
+        "gain": true,
+        "language_nonregression": true,
+        "exact_rank_one": true,
+        "no_match_nonregression": false,
+        "resident_p95": true,
+        "conservative_memory": true,
+        "no_failures": true
+      },
+      "continuation_screen_pass": false
+    },
+    "skos-definitions-v1": {
+      "checks": {
+        "gain": true,
+        "language_nonregression": true,
+        "exact_rank_one": true,
+        "no_match_nonregression": true,
+        "resident_p95": true,
+        "conservative_memory": true,
+        "no_failures": true
+      },
+      "continuation_screen_pass": true
+    }
+  },
+  "evidence": "AI-reference exploratory",
+  "independent_human_review": false,
+  "automatic_integration": false,
+  "retrieval_is_interpretation": false
+}
