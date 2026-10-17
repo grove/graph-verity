@@ -130,3 +130,19 @@ Reproduce without models or participant data:
 .venv/bin/python tools/hybrid_review_ai.py --out artifacts/issue-58-ai-analysis.json
 .venv/bin/python -m unittest discover -s tools -p test_hybrid_review_capture.py -v
 ```
+
+## Full fresh-process startup supplement
+
+The [separately preregistered startup supplement](cold-start/README.md) now times
+from launching each new Python process through its first validated result,
+including imports, frozen-input checks, checkpoint verification, runtime/model
+initialization, indexing, vectors, serialization and IPC as applicable.
+
+All 30 workers (15 per method, five exposed probes repeated three times) matched
+the saved ranks. First-result p50/p95 were **210.17/232.65 ms for BM25** and
+**6,615.80/9,957.69 ms for selective hybrid**. Teardown is recorded separately.
+These are process-cold, OS-cached research-worker results under uncontrolled host
+load, not disk-cold or shipping-CLI startup. With 15 samples the descriptive p95
+is the observed maximum. The original 6.994 s partial observation and its limits
+are retained rather than replaced. No ranking threshold, relevance label or
+human-validation gate changed; the recommendation remains **defer**.

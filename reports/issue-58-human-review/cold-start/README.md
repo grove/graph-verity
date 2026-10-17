@@ -48,3 +48,30 @@ The public plan excludes private receipt paths. The private plan's SHA-256 links
 the report to the actual frozen input. Original runtime/checkpoint/index hashes
 remain those of the study and capture receipt. The original frozen kit is not
 amended; this is a separately preregistered measurement of exposed cases.
+
+## Executed results
+
+The [plan](protocol.json) and code were committed before the queries. All **30/30**
+workers completed; every first result matched the saved authorized snapshot and
+ranked identities. [Raw observations and descriptive summaries](results.json)
+retain all cases, method order and repetitions. There are **no exclusions or
+failed observations** and no human judgments.
+
+| Parent-observed metric | BM25 (15) | Selective hybrid (15) |
+|---|---:|---:|
+| First-result p50 | 210.17 ms | 6,615.80 ms |
+| First-result p95 | 232.65 ms | 9,957.69 ms |
+| First-result p99 | 232.65 ms | 9,957.69 ms |
+| Process-exit p50 (includes teardown) | 231.73 ms | 7,374.78 ms |
+| Process-exit p95 (includes teardown) | 255.11 ms | 10,766.12 ms |
+
+Host/runtime remain Apple M1 Pro / 32 GiB, macOS 26.6.2 arm64, pinned Python
+3.14.8 and EmbeddingGemma 2 runtime/checkpoint. The new full-process values must
+not be subtracted from the older single 6.994 s in-process observation: timing
+boundaries, query mix, cache history, sample size and uncontrolled host load differ.
+With n=15, both p95 and p99 are the observed maximum; there is no tail guarantee.
+
+This establishes a startup cost for the declared research setup, not retrieval
+usefulness or production readiness. The earlier warm p95 (110.34 ms) and
+conservative RSS (1.947 GiB) remain separate observations. **Recommendation stays
+defer, BM25 stays default, and actual human review remains pending.**
