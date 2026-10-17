@@ -712,14 +712,20 @@ fn deterministic_preflight_blocks_explicit_negation_without_running_a_model() {
     let g = graph();
     let scope = vec![PUBLIC.to_owned()];
     let fixture = FixtureParser::default(); // no response registered
-    let outcome = g.run_parser(
-        &NoOpModel,
-        "Hvilke selskaper har ingen kontrakter?",
-        &scope,
-        &policy(),
-    ).unwrap();
+    let outcome = g
+        .run_parser(
+            &NoOpModel,
+            "Hvilke selskaper har ingen kontrakter?",
+            &scope,
+            &policy(),
+        )
+        .unwrap();
     match outcome {
-        ParserOutcome::Guarded { origin, code, proposal: Proposal::Unsupported { reason } } => {
+        ParserOutcome::Guarded {
+            origin,
+            code,
+            proposal: Proposal::Unsupported { reason },
+        } => {
             assert_eq!(origin, "deterministic_preflight_not_model");
             assert_eq!(code, "unsupported_negation");
             assert!(reason.contains("no graph query was executed"));
@@ -728,12 +734,15 @@ fn deterministic_preflight_blocks_explicit_negation_without_running_a_model() {
     }
     // Conservative boundary: do not treat 'ikke mindre enn' as negation
     // because it is a supported >= comparison.
-    let err = g.run_parser(
-        &fixture,
-        "Hvilke selskaper har ikke mindre enn 51 ansatte?",
-        &scope,
-        &policy(),
-    ).err().unwrap();
+    let err = g
+        .run_parser(
+            &fixture,
+            "Hvilke selskaper har ikke mindre enn 51 ansatte?",
+            &scope,
+            &policy(),
+        )
+        .err()
+        .unwrap();
     assert!(err.to_string().contains("fixture_missing"));
 }
 
@@ -746,14 +755,20 @@ fn deterministic_preflight_blocks_duplicate_authorized_labels_only() {
     let g = Snapshot::from_bytes(&bytes, "trig").unwrap();
     let scope = vec![PUBLIC.to_owned()];
     let fixture = FixtureParser::default();
-    let outcome = g.run_parser(
-        &NoOpModel,
-        "Hva er antall ansatte for Felles AS?",
-        &scope,
-        &policy(),
-    ).unwrap();
+    let outcome = g
+        .run_parser(
+            &NoOpModel,
+            "Hva er antall ansatte for Felles AS?",
+            &scope,
+            &policy(),
+        )
+        .unwrap();
     match outcome {
-        ParserOutcome::Guarded { origin, code, proposal: Proposal::NeedsClarification { reason } } => {
+        ParserOutcome::Guarded {
+            origin,
+            code,
+            proposal: Proposal::NeedsClarification { reason },
+        } => {
             assert_eq!(origin, "deterministic_preflight_not_model");
             assert_eq!(code, "ambiguous_entity_label");
             assert!(reason.contains("More than one authorized entity"));
@@ -761,12 +776,15 @@ fn deterministic_preflight_blocks_duplicate_authorized_labels_only() {
         _ => panic!("Expected deterministic, non-model clarification"),
     }
     // Avoid arbitrary substring detection for different entity names.
-    let err = g.run_parser(
-        &fixture,
-        "Hva er antall ansatte for Felles ASJ?",
-        &scope,
-        &policy(),
-    ).err().unwrap();
+    let err = g
+        .run_parser(
+            &fixture,
+            "Hva er antall ansatte for Felles ASJ?",
+            &scope,
+            &policy(),
+        )
+        .err()
+        .unwrap();
     assert!(err.to_string().contains("fixture_missing"));
 }
 
@@ -811,11 +829,15 @@ fn evaluator_preserves_raw_model_error_despite_would_block_advice() {
     let response = serde_json::to_vec(&ParserResponse {
         version: 1,
         proposal: Proposal::Candidate { plan: base(&g) },
-    }).unwrap();
+    })
+    .unwrap();
     let result = score_response(&g, &b, response);
     let scored = &result.cases[0];
     assert_eq!(scored.proposal_status.as_deref(), Some("candidate"));
-    assert_eq!(scored.preflight_would_block.as_deref(), Some("unsupported_negation"));
+    assert_eq!(
+        scored.preflight_would_block.as_deref(),
+        Some("unsupported_negation")
+    );
     assert!(scored.execution.is_some()); // offline audit of the RAW proposal
     assert!(scored.wrong_plan_successful_execution);
     assert!(!scored.passed);
