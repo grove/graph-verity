@@ -267,23 +267,28 @@
     "kind": "find",
     "bundle": "wikidata",
     "prompt": {
-      "en": "Search Nor as an entity label fragment. Explain whether a partial match uniquely proves which entity you intended.",
-      "nb": "Søk etter Nor som et fragment av en entitetsetikett. Forklar om et delvis treff entydig beviser hvilken entitet du mente."
+      "en": "Search Kingdom as part of a country alias. Inspect the candidate and explain whether a partial lexical match proves which entity you intended.",
+      "nb": "Søk etter Kongeriket som en del av et landsalias. Undersøk kandidaten og forklar om et delvis leksikalsk treff beviser hvilken entitet du mente."
     },
-    "target": "Inspect graph-qualified candidates including Q20 / Norway; partial lexical relevance is not proof of intended identity",
+    "queries": {
+      "en": "Kingdom",
+      "nb": "Kongeriket"
+    },
+    "target": "Q20 in the development graph is one non-exact, low_confidence candidate through the observed Kingdom of Norway / Kongeriket Norge alias. Inspect the original alias; a partial lexical match does not prove intended identity. BM25 token matching does not imply arbitrary substring or prefix matching.",
     "checks": [
       "ambiguity"
     ],
     "decision": null,
     "snapshot": "data/wikidata/snapshot.nq",
     "witnesses": [
-      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2000/01/rdf-schema#label> \"Norway\"@en <urn:graph-verity:wikidata:development> ."
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2004/02/skos/core#altLabel> \"Kingdom of Norway\"@en <urn:graph-verity:wikidata:development> .",
+      "<http://www.wikidata.org/entity/Q20> <http://www.w3.org/2004/02/skos/core#altLabel> \"Kongeriket Norge\"@nb <urn:graph-verity:wikidata:development> ."
     ],
     "author": "AI coding agent",
     "reviewer": null,
     "judgment_status": "unreviewed_exploratory",
-    "ambiguity": "Fragment may match multiple resources; participant relevance remains subjective",
-    "lineage": "New public pilot wording over exposed development data; not independent gold"
+    "ambiguity": "Even a lone non-exact alias candidate does not establish intended identity; participant relevance remains subjective",
+    "lineage": "Pre-enrollment v1.1 correction after the task author's exposed AI adapter rehearsal found that v1's Nor query returns no_match. Uses whole tokens from original source aliases; not independent gold or a human observation."
   },
   {
     "id": "A01",

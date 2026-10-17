@@ -5,7 +5,7 @@
 Actual participants **0 / proposed 5–8**. Human task attempts **0**; planned
 participant-task assignments **0** (no enrollment). There are **20 task templates**,
 not 20 human attempts. Completed/abandoned human tasks **0 / 0**. Independent
-human task reviewers **0**. No recruitment or observation has occurred.
+human task reviewers **0**. No recruitment or human observation has occurred.
 Human success, selection errors, misunderstanding, confident wrong interpretations
 and relevance are **unmeasured**, not measured zero. There are no observed human
 failures or qualitative findings to summarize, and no per-language/experience
@@ -17,6 +17,23 @@ ambiguity/shared-path fixtures. GEMET is outside this first bounded pilot.
 All judgments are AI-authored exploratory references with null human reviewers.
 Real operator assessments must carry truthful local owner/independent attribution;
 source witnesses and passing software tests cannot substitute for human assessment.
+
+An exposed **AI adapter rehearsal** exercised all 20 task cases after the initial
+kit publication. The AI was the original task author and had already seen all
+targets and implementation; this is not independent or human evidence. Browser
+interaction was unavailable, so visual/keyboard usability was not assessed.
+It found an error in F11: `Nor` returns no match, although the original target
+assumed Norway candidates. The pre-enrollment **v1.1** amendment replaces it with
+source-backed alias tokens `Kingdom` / `Kongeriket`, checked against the actual
+API as non-exact, low-confidence Q20 candidates. The original freeze and source
+commit are preserved in the protocol's supersession record; no human sessions,
+thresholds, rubric, dataset or UI/core behavior changed.
+
+Additional AI observations: capital paraphrases retrieve property candidates
+rather than Oslo; reformulation and graph navigation are needed. An unavailable
+exact IRI can return unrelated permitted namespace-token matches. These remain
+explicit exploratory retrieval limitations to evaluate, not measured human errors
+or reasons to treat top-ranked results as exact identities.
 
 The model-free offline rehearsal creates **1 synthetic session**, with 20 planned
 task slots, 2 synthetic attempts, 1 abandonment, 1 missing record and 1 deliberately

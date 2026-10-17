@@ -253,6 +253,40 @@ class PilotStudy(unittest.TestCase):
             finally:
                 bundle.close()
 
+    def test_partial_alias_task_matches_actual_bilingual_find_behavior(self):
+        from local_find import Bundle
+        subprocess.run(["cargo", "build", "--locked", "--offline", "-q", "-p", "verity_cli"],
+                       cwd=study.ROOT, check=True)
+        directory = study.ROOT / "data/wikidata"
+        bundle = Bundle(study.ROOT / "target/debug/verity", directory / "snapshot.nq", "nquads",
+                        directory / "policy.json", directory / "scope.json", directory / "discovery.json")
+        self.addCleanup(bundle.close)
+        tab = bundle.api("/api/session", {})["tab"]
+        task = next(t for t in self.tasks if t["id"] == "F11")
+        self.assertEqual(set(task["queries"]), {"en", "nb"})
+        for language, query in task["queries"].items():
+            with self.subTest(language=language):
+                self.assertIn(query, task["prompt"][language])
+                result = bundle.api("/api/find", dict(query=query, scope=bundle.scope,
+                                                     role="entity", limit=10), tab)
+                self.assertEqual(result["status"], "low_confidence")
+                self.assertEqual(result["matches"], 1)
+                hit, = result["hits"]
+                self.assertEqual(hit["iri"], "http://www.wikidata.org/entity/Q20")
+                self.assertEqual(hit["graph"], "urn:graph-verity:wikidata:development")
+                self.assertFalse(hit["exact"])
+                self.assertTrue(any(query in witness for witness in task["witnesses"]))
+        result = bundle.api("/api/find", dict(query="Nor", scope=bundle.scope,
+                                             role="entity", limit=10), tab)
+        self.assertEqual(result["status"], "no_match")
+        self.assertEqual(result["hits"], [])
+        protocol, _, identity = study.verify()
+        self.assertEqual(protocol["preregistration_version"], "pilot-v1.1")
+        self.assertNotEqual(identity, protocol["supersedes"]["protocol_id"])
+        old_form = study.form(self.tasks, protocol["supersedes"]["protocol_id"], "en", "beginner", "fluent")
+        with self.assertRaises(ValueError):
+            study.validate(old_form, self.tasks, identity)
+
 
 if __name__ == "__main__":
     unittest.main()

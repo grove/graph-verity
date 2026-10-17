@@ -1,4 +1,4 @@
-# Pilot v1 preregistration and operator checklist (#57)
+# Pilot v1.1 preregistration and operator checklist (#57)
 
 **Frozen kit; real participants 0; human attempts 0; independent task reviewers 0.**
 Stage B is blocked pending actual consenting volunteers. A synthetic rehearsal,
@@ -6,7 +6,7 @@ Rust test, browser pass or coding agent can never satisfy the real-user gate.
 No recruitment, enrollment, human review or research schedule is claimed here.
 
 `protocol.json` fixes recruitment, task order, rubric and proposed iteration/stop
-hypotheses before enrollment or observations. `tasks.json` fixes bilingual wording,
+hypotheses before human enrollment or observations. `tasks.json` fixes bilingual wording,
 exact identifiers, original snapshot quad witnesses, task-specific checks,
 unresolved intent/relevance ambiguity and lineage. It is AI-authored exploratory
 material. Its `reviewer: null` means no actual human reference reviewer. Source
@@ -26,6 +26,31 @@ new task wording/review, different build inputs or thresholds require a separate
 version **before** further observations, with reasons and affected sessions.
 This is a content commitment, not a timestamped external preregistry or signature.
 The PR supplies the reviewer-readable publication history.
+
+This is the **pre-enrollment v1.1 amendment**, kept at the same `pilot-v1/`
+family path because the operator bundles are unchanged. The original v1 is
+preserved at commit `017dd3653aa5258b200bbbe35d8752088cd709d5`, protocol ID
+`69f0c6cd1a6ddd4bfa0d07744a5cc89b5baa8097eb50d14d6894e9f825afd0d1`.
+An exposed adapter rehearsal by the AI task author found that F11's `Nor` query
+returns `no_match`, contrary to its target. F11 now uses original alias tokens
+`Kingdom` / `Kongeriket`, which return Q20 as one non-exact, low-confidence
+candidate. Partial label matching does not promise substring/prefix matching.
+The actual API behavior is checked in both task languages. No human sessions
+are affected; recruitment, order, rubric, thresholds, UI/core and datasets are
+unchanged. The new freeze hash prevents mixing forms from these versions.
+Schema `version: 1` describes the form/protocol format, not the study revision.
+
+The same AI rehearsal exercised all 20 adapter cases, with prior access to the
+prompts, targets and source. It is neither independent nor human research.
+Browser interaction was unavailable because computer-use permissions were not
+granted; no visual/keyboard usability conclusion follows. It also identified
+limitations to observe honestly in F06/F08: natural capital paraphrases retrieve
+property candidates rather than Oslo, requiring reformulation/navigation, and
+an unavailable exact IRI can retrieve unrelated permitted candidates through
+shared namespace tokens. A label search for Stockholm yields no match; pasting
+its excluded IRI is not guaranteed to yield an empty candidate list. Neither
+ranking outcome establishes identity, scope completeness or real-world absence.
+These are retained BM25 limitations, not new human failure measurements.
 
 All historical #37–#53 scores, tasks and phase-0 decisions remain frozen.
 These pilot prompts reuse exposed sources and some #56 walkthroughs, explicitly
