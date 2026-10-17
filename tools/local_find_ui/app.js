@@ -70,7 +70,8 @@ function button(text, parent, action) {
 function json(value, parent) { node("pre", JSON.stringify(value, null, 2), parent, "muted"); }
 async function api(route, body) {
   const response = await fetch(route, { method: "POST", credentials: "omit", cache: "no-store",
-    headers: { "Content-Type": "application/json", Authorization: "Bearer " + credential },
+    headers: { "Content-Type": "application/json", Authorization: "Bearer " + credential,
+      "X-Verity-Tab": session?.tab || "" },
     body: JSON.stringify(body) });
   if (!response.ok) throw new Error(t("failed"));
   return response.json();
@@ -103,7 +104,7 @@ function renderFind(result) {
     json(hit.explanation, card);
     documentText(hit.document, hit.graph, card);
     button(t("select"), card, () => open(hit.iri, hit.graph,
-      $("role").value === "predicate" ? "predicate" : "outgoing"));
+      $("role").value === "predicate" ? "predicate" : "outgoing", $("role").value === "entity"));
   }
   provenance(result, $("results"));
 }
@@ -118,6 +119,9 @@ function renderEntity(result) {
   $("selection").textContent = `${result.iri || "—"} · ${selected.graph} · ${result.snapshot_id}`;
   $("page-status").textContent = `${t(result.status)} ${t("page")} ${result.offset}. ${t(result.truncated ? "truncated" : "unclipped")}`;
   for (const [graph, doc] of Object.entries(result.documents)) documentText(doc, graph, $("details"));
+  if (result.iri && selected.fromFind && session.roles.includes("predicate")) {
+    button("Build exact follow_path plan from this selected Find entity", $("details"), beginAsk);
+  }
   provenance(result, $("details"));
   for (const edge of result.evidence) {
     const row = node("article", undefined, $("edges"), "edge");
@@ -130,6 +134,7 @@ function renderEntity(result) {
   $("next").disabled = result.next_offset === null || result.next_offset > 100000;
 }
 async function page(offset, focus = false) {
+  clearAsk(true);
   const ticket = ++generation;
   $("page-status").textContent = t("busy");
   $("previous").disabled = true; $("next").disabled = true;
@@ -144,13 +149,14 @@ async function page(offset, focus = false) {
     if (focus) $("detail-title").focus();
   } catch { if (ticket === generation) $("page-status").textContent = t("failed"); }
 }
-function open(iri, graph, direction) {
-  selected = { iri, graph, limit: Math.min(Number($("limit").value) || 10, session.page_limit) };
+function open(iri, graph, direction, fromFind = false) {
+  selected = { iri, graph, fromFind, limit: Math.min(Number($("limit").value) || 10, session.page_limit) };
   $("navigation").hidden = false; $("direction").value = direction;
   page(0, true);
 }
 $("search-form").addEventListener("submit", async event => {
   event.preventDefault();
+  clearAsk(true);
   const scope = [...$("graphs").querySelectorAll("input:checked")].map(input => input.value);
   const ticket = ++generation;
   $("navigation").hidden = true; $("results").replaceChildren(); lastFind = null; lastEntity = null;
@@ -175,11 +181,151 @@ function translate() {
   if (lastFind) renderFind(lastFind);
   if (lastEntity) renderEntity(lastEntity);
 }
-$("language").addEventListener("change", () => { locale = $("language").value; translate(); });
+$("language").addEventListener("change", () => { clearAsk(true); locale = $("language").value; translate(); });
+let askCatalog, askToken, askGeneration = 0, reviewTimer;
+function clearReview(notify = true) {
+  ++askGeneration;
+  askToken = null;
+  clearTimeout(reviewTimer);
+  $("ask-decision").hidden = true;
+  $("ask-reviewed").checked = false;
+  $("ask-approve").disabled = true;
+  $("ask-review").replaceChildren(); $("ask-answer").replaceChildren();
+  $("ask-status").textContent = "Review invalidated. Preview the current exact choices before approval.";
+  if (notify && session) api("/api/ask-cancel", {}).catch(() => {});
+}
+function clearAsk(notify = false) {
+  clearReview(notify);
+  $("ask").hidden = true;
+  askCatalog = null;
+}
+const literalTypes = new Set(["string", "boolean", "integer", "decimal", "double", "date", "dateTime"]
+  .map(type => "http://www.w3.org/2001/XMLSchema#" + type));
+const langString = "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString";
+literalTypes.add(langString);
+function stepChoice(id) {
+  const value = $(id).value;
+  if (!value) return null;
+  const [index, direction] = value.split(":");
+  const choice = askCatalog.choices[Number(index)];
+  return { graph: choice.graph, predicate: choice.predicate, direction };
+}
+function filterTypes() {
+  const step = stepChoice("ask-step2") || stepChoice("ask-step1");
+  $("ask-datatype").replaceChildren();
+  const blank = node("option", "Choose exact observed datatype", $("ask-datatype")); blank.value = "";
+  if (!step || step.direction !== "forward") return;
+  const choice = askCatalog.choices.find(c => c.graph === step.graph && c.predicate === step.predicate);
+  if (choice.ill_typed) return;
+  for (const datatype of choice.object_types.filter(type => literalTypes.has(type))) {
+    const option = node("option", datatype, $("ask-datatype")); option.value = datatype;
+  }
+}
+async function beginAsk() {
+  clearAsk();
+  const ticket = askGeneration;
+  try {
+    const result = await api("/api/ask-catalog", {});
+    if (ticket !== askGeneration) return;
+    askCatalog = result;
+    $("ask").hidden = false;
+    $("ask-selection").textContent = `${result.selection.iri} · ${result.selection.graph} · ${result.snapshot_id} · Evidence cap ${result.max_evidence} · Timeout ${result.timeout_ms} ms`;
+    $("ask-limit").max = result.max_rows; $("ask-limit").value = Math.min(10, result.max_rows);
+    $("ask-output").value = "values"; $("ask-op").value = "";
+    $("ask-value").value = ""; $("ask-language").value = "";
+    $("ask-catalog").replaceChildren();
+    for (const id of ["ask-step1", "ask-step2"]) {
+      $(id).replaceChildren();
+      const blank = node("option", id === "ask-step1" ? "Choose a first step explicitly" : "No second step", $(id)); blank.value = "";
+      result.choices.forEach((choice, index) => {
+        if (id === "ask-step1" && choice.graph !== result.selection.graph) return;
+        for (const direction of ["forward", "reverse"]) {
+          const labels = choice.labels.map(label => `${label.text} @${label.language || label.datatype}`);
+          for (const text of choice.document?.texts || []) {
+            if (text.via) labels.push(`${text.value.text} (observed retrieval mapping; inspect original source)`);
+          }
+          const option = node("option", `${choice.graph} · ${choice.predicate} · ${direction === "forward" ? "forward (outgoing: current → terminal)" : "reverse (incoming: terminal → current)"} · ${labels.length ? labels.join(" / ") : "No direct label; inspect mapping evidence"}`, $(id));
+          option.value = `${index}:${direction}`;
+        }
+      });
+    }
+    for (const choice of result.choices) {
+      const detail = node("details", undefined, $("ask-catalog"));
+      node("summary", `${choice.graph} · ${choice.predicate} · ${choice.labels.length === 0 ? "Missing direct label" : choice.labels.length > 1 ? "Multiple labels; identity stays the exact IRI" : "Observed label"}`, detail);
+      json(choice, detail);
+    }
+    filterTypes();
+    $("ask-status").textContent = "Choose exact steps and operators, then request a preview. Nothing has executed.";
+    $("ask-title").focus();
+  } catch { $("page-status").textContent = t("failed"); }
+}
+for (const id of ["ask-arguments", "search-form"]) {
+  $(id).addEventListener("input", () => { clearReview(); if (id === "search-form") clearAsk(); });
+  $(id).addEventListener("change", () => { clearReview(); if (id === "search-form") clearAsk(); });
+}
+for (const id of ["ask-step1", "ask-step2"]) $(id).addEventListener("change", filterTypes);
+// Enter alone must never approve. Space/click on the separately enabled approval button works.
+$("ask").addEventListener("keydown", event => { if (event.key === "Enter") event.preventDefault(); });
+$("ask-preview").addEventListener("click", async () => {
+  clearReview(false);
+  const ticket = askGeneration;
+  $("ask-preview").disabled = true;
+  try {
+    const steps = [stepChoice("ask-step1"), stepChoice("ask-step2")].filter(Boolean);
+    if (!$("ask-step1").value || !$("ask-limit").checkValidity()) throw new Error();
+    const request = { version: 1, snapshot_id: askCatalog.snapshot_id,
+      scope: [...new Set(steps.map(step => step.graph))], limit: Number($("ask-limit").value),
+      template: { kind: "follow_path", start: askCatalog.selection.iri, steps,
+        output: $("ask-output").value, filter: $("ask-op").value ? { op: $("ask-op").value,
+          value: { lexical: $("ask-value").value, datatype: $("ask-datatype").value,
+            language: $("ask-language").value || null } } : null } };
+    const result = await api("/api/ask-preview", request);
+    if (ticket !== askGeneration) return;
+    askToken = result.token;
+    for (const line of result.preview.summary) node("p", line, $("ask-review"));
+    node("p", result.preview.limitations, $("ask-review"));
+    node("p", "The approval ID below is a content hash, not authentication or proof of human review. A separate expiring, single-use UI decision is held by this local session.", $("ask-review"));
+    const detail = node("details", undefined, $("ask-review"));
+    node("summary", "Entire authoritative Rust preview and source provenance", detail); json(result.preview, detail); json(result.sources, detail);
+    $("ask-decision").hidden = false;
+    $("ask-status").textContent = `Awaiting deliberate approval. No query has executed. Review expires in ${result.review_seconds} seconds.`;
+    reviewTimer = setTimeout(() => clearReview(), result.review_seconds * 1000);
+  } catch { if (ticket === askGeneration) $("ask-status").textContent = t("failed") + " Return to exact Find resolution or change explicit operators."; }
+  finally { $("ask-preview").disabled = false; }
+});
+$("ask-reviewed").addEventListener("change", () => { $("ask-approve").disabled = !askToken || !$("ask-reviewed").checked; });
+$("ask-cancel").addEventListener("click", () => { clearReview(); $("ask-status").textContent = "Cancelled. Nothing executed."; });
+$("ask-approve").addEventListener("click", async () => {
+  if (!askToken || !$("ask-reviewed").checked) return;
+  const token = askToken;
+  clearReview(false); // Take the decision synchronously; double-click cannot reuse it.
+  const ticket = askGeneration;
+  $("ask-status").textContent = t("busy");
+  try {
+    const { outcome, sources } = await api("/api/ask-confirm", { token, decision: "approve" });
+    if (ticket !== askGeneration) return;
+    const result = outcome.result;
+    $("ask-status").textContent = `Answer to the selected formal plan · Rows truncated: ${!result.complete_within_scope} · Evidence truncated: ${!result.evidence_complete_for_returned_rows}`;
+    node("h3", "Terminal bindings (original RDF terms)", $("ask-answer")); json(result.bindings, $("ask-answer"));
+    node("p", "Interpretation correctness: not assessed. Real-world truth: not established. Open world: missing facts remain unknown. Distinct counts require the scoped query as well as positive witnesses.", $("ask-answer"));
+    json({ snapshot_id: result.snapshot_id, scope: result.scope, sources,
+      rows_truncated: !result.complete_within_scope,
+      evidence_truncated: !result.evidence_complete_for_returned_rows }, $("ask-answer"));
+    const evidence = node("details", undefined, $("ask-answer"));
+    node("summary", "Inspect original source triples and full read-only execution receipt", evidence); json(outcome, evidence);
+  } catch { if (ticket === askGeneration) $("ask-status").textContent = t("failed") + " Preview again; this decision cannot be reused."; }
+});
+for (const event of ["pagehide", "popstate"]) window.addEventListener(event, () => clearAsk(true));
+window.addEventListener("pageshow", event => { if (event.persisted) clearAsk(true); });
+document.addEventListener("visibilitychange", () => { if (document.hidden) clearAsk(true); });
 async function start() {
   if (!credential) { $("connection").textContent = t("credential"); return; }
   try {
     session = await api("/api/session", {});
+    setTimeout(() => {
+      clearAsk(true); $("controls").disabled = true;
+      $("connection").textContent = "Local tab session expired. Reload to start a new session and resolve your exact selection again.";
+    }, session.session_seconds * 1000);
     for (const role of session.roles) {
       const option = node("option", t(role), $("role")); option.value = role;
     }

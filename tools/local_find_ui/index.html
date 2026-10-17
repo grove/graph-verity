@@ -44,6 +44,32 @@
       <button id="previous" type="button">Previous page</button>
       <button id="next" type="button">Next page</button>
     </section>
+    <section id="ask" aria-labelledby="ask-title" hidden>
+      <h2 id="ask-title" tabindex="-1">Experimental Confirmed Ask · exact follow_path</h2>
+      <p>Answers apply to your selected formal plan. Approval does not prove natural-language interpretation or real-world truth. Missing facts remain unknown. No release GO or user study is claimed.</p>
+      <p id="ask-selection"></p>
+      <p>Choose each graph, original predicate IRI and actual RDF direction explicitly. The second step starts at the first step's terminal variable; only the final variable is returned. Unsupported or ambiguous choices: return to Find and select exact identities.</p>
+      <div id="ask-arguments">
+        <label for="ask-step1">First directed step</label><select id="ask-step1"></select>
+        <label for="ask-step2">Optional connected second step</label><select id="ask-step2"></select>
+        <details><summary>Permitted predicate labels, types and graph provenance (missing / multiple labels stay explicit)</summary><div id="ask-catalog"></div></details>
+        <label for="ask-output">Terminal projection</label><select id="ask-output"><option value="values">Distinct terminal RDF values</option><option value="count_distinct">COUNT(DISTINCT terminal RDF terms), not paths</option></select>
+        <label for="ask-op">Optional typed terminal comparison</label><select id="ask-op"><option value="">No filter</option><option value="eq">Equal (=)</option><option value="ne">Not equal (!=)</option><option value="lt">Less than (&lt;)</option><option value="le">Less or equal (&lt;=)</option><option value="gt">Greater than (&gt;)</option><option value="ge">Greater or equal (&gt;=)</option></select>
+        <label for="ask-datatype">Exact observed RDF datatype (no coercion)</label><select id="ask-datatype"></select>
+        <label for="ask-value">Literal lexical value</label><input id="ask-value" maxlength="4096" autocomplete="off">
+        <label for="ask-language">Language tag (rdf:langString only)</label><input id="ask-language" maxlength="100" autocomplete="off">
+        <label for="ask-limit">Maximum result rows (count includes one row)</label><input id="ask-limit" type="number" min="1" value="10">
+        <button id="ask-preview" type="button">Preview exact plan · no execution</button>
+      </div>
+      <p id="ask-status" role="status" aria-live="polite"></p>
+      <div id="ask-review"></div>
+      <div id="ask-decision" hidden>
+        <label><input id="ask-reviewed" type="checkbox">I reviewed the exact steps, direction, filter, aggregation, scope, snapshot and limits above.</label>
+        <button id="ask-approve" type="button" disabled>Approve this exact plan and execute once</button>
+        <button id="ask-cancel" type="button">Cancel · do not execute</button>
+      </div>
+      <div id="ask-answer"></div>
+    </section>
     <details><summary id="receipt-title">Local runtime receipt</summary><pre id="receipt"></pre></details>
   </main>
   <footer id="footer">BM25 only · Offline local pilot · Stop the server with Ctrl-C. No usability or relevance study is claimed.</footer>
