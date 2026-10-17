@@ -11,7 +11,7 @@ const browser = spawn(chrome, ["--headless=new", "--no-first-run", "--no-default
   "--disable-background-networking", "--disable-component-update", "--disable-sync",
   "--metrics-recording-only", "--remote-debugging-port=0", "--remote-debugging-address=127.0.0.1",
   `--user-data-dir=${directory}`, "about:blank"], { stdio: ["ignore", "ignore", "pipe"] });
-let websocket;
+let websocket, pausedV2;
 try {
   const endpoint = await new Promise((resolve, reject) => {
     let text = "";
@@ -36,6 +36,7 @@ try {
       if (message.error) task.reject(new Error(message.error.message));
       else task.resolve(message.result);
     }
+    if (message.method === "Fetch.requestPaused") pausedV2 = message.params.requestId;
     if (message.method === "Network.requestWillBeSent") requests.push(message.params.request.url);
     if (message.method === "Runtime.exceptionThrown") exceptions.push(message.params.exceptionDetails.text);
   };
@@ -76,8 +77,16 @@ try {
       await evaluate("lastFind.hits.map(hit => hit.iri)"), "All returned candidates retain their order");
   }
   await send("Network.enable"); await send("Runtime.enable"); await send("Page.enable");
+  // Force the v1 session to finish before the v2 presentation script arrives.
+  await send("Fetch.enable", { patterns: [{ urlPattern: "*/v2.js", requestStage: "Request" }] });
   await send("Page.navigate", { url });
   await until("document.getElementById('controls') && !document.getElementById('controls').disabled");
+  assert(pausedV2, "The v2 script must be held until v1 has initialized");
+  await send("Fetch.continueRequest", { requestId: pausedV2 });
+  await send("Fetch.disable");
+  await until("typeof submittedQuery === 'string'");
+  assert.match(await evaluate("document.getElementById('connection').textContent"), /v2 prototype/);
+  assert.match(await evaluate("document.getElementById('examples').textContent"), /Examples/);
   const read = id => evaluate(`document.getElementById(${JSON.stringify(id)}).textContent`);
   const clickSelect = () => evaluate("[...document.querySelectorAll('#results article button')].find(b => b.textContent === t('select')).click()");
   async function change(id, value) {

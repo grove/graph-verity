@@ -149,3 +149,6 @@ renderEntity = function (result) {
   $("previous").disabled = result.offset === 0;
   $("next").disabled = result.next_offset === null || result.next_offset > 100000;
 };
+// The v1 session may already be ready when this deferred asset finishes loading.
+if (session) translate();
+else $("examples").textContent = t("examples");

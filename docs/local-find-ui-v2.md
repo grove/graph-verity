@@ -96,7 +96,8 @@ REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py
 
 V2 inherits the existing HTTP/approval/security tests against its composed server,
 adds independent v1/v2 Find payload equality checks, and runs a separately named
-Node/headless-Chrome harness on synthetic and retained public Wikidata fixtures.
+Node/headless-Chrome harness on synthetic and retained public Wikidata fixtures,
+including delayed v2 asset loading after the v1 session has initialized.
 No npm dependencies or models are needed. Existing CI discovers the new Python
 test module automatically and requires Chrome/Node.
 
