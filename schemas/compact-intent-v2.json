@@ -1,0 +1,304 @@
+{
+  "$defs": {
+    "CompactEdge": {
+      "additionalProperties": false,
+      "properties": {
+        "direction": {
+          "$ref": "#/$defs/Direction"
+        },
+        "from": {
+          "$ref": "#/$defs/CompactNode"
+        },
+        "predicate": {
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "to": {
+          "$ref": "#/$defs/CompactNode"
+        }
+      },
+      "required": [
+        "from",
+        "predicate",
+        "direction",
+        "to"
+      ],
+      "type": "object"
+    },
+    "CompactFilter": {
+      "additionalProperties": false,
+      "properties": {
+        "datatype": {
+          "$ref": "#/$defs/Datatype"
+        },
+        "lexical": {
+          "type": "string"
+        },
+        "op": {
+          "$ref": "#/$defs/Compare"
+        },
+        "var": {
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "var",
+        "op",
+        "datatype",
+        "lexical"
+      ],
+      "type": "object"
+    },
+    "CompactHaving": {
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "description": "Zero-based projection position, which must be a distinct-count output.",
+          "format": "uint8",
+          "maximum": 255,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "op": {
+          "$ref": "#/$defs/Compare"
+        },
+        "value": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "count",
+        "op",
+        "value"
+      ],
+      "type": "object"
+    },
+    "CompactNode": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "var": {
+              "format": "uint8",
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "var"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "entity": {
+              "format": "uint16",
+              "maximum": 65535,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "entity"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "class": {
+              "format": "uint16",
+              "maximum": 65535,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "class"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "CompactProjection": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "var": {
+              "format": "uint8",
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "var"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "count_distinct": {
+              "format": "uint8",
+              "maximum": 255,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "count_distinct"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "CompactProposal": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "edges": {
+              "items": {
+                "$ref": "#/$defs/CompactEdge"
+              },
+              "type": "array"
+            },
+            "filters": {
+              "items": {
+                "$ref": "#/$defs/CompactFilter"
+              },
+              "type": "array"
+            },
+            "group_by": {
+              "items": {
+                "format": "uint8",
+                "maximum": 255,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "having": {
+              "items": {
+                "$ref": "#/$defs/CompactHaving"
+              },
+              "type": "array"
+            },
+            "projection": {
+              "items": {
+                "$ref": "#/$defs/CompactProjection"
+              },
+              "type": "array"
+            },
+            "status": {
+              "const": "candidate",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "edges",
+            "filters",
+            "projection",
+            "group_by",
+            "having"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "type": "string"
+            },
+            "status": {
+              "const": "needs_clarification",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "reason"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "reason": {
+              "type": "string"
+            },
+            "status": {
+              "const": "unsupported",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "reason"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "Compare": {
+      "enum": [
+        "eq",
+        "ne",
+        "lt",
+        "le",
+        "gt",
+        "ge"
+      ],
+      "type": "string"
+    },
+    "Datatype": {
+      "enum": [
+        "integer",
+        "decimal",
+        "double",
+        "date",
+        "date_time",
+        "boolean",
+        "string"
+      ],
+      "type": "string"
+    },
+    "Direction": {
+      "enum": [
+        "forward",
+        "reverse"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "proposal": {
+      "$ref": "#/$defs/CompactProposal"
+    },
+    "version": {
+      "format": "uint32",
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "version",
+    "proposal"
+  ],
+  "title": "CompactIntentV2",
+  "type": "object"
+}

@@ -36,6 +36,12 @@ The supplied two-hop example follows Oslo's recorded country relationship and th
 
 Other implemented commands are `schema`, `smoke`, `catalog` and exact `resolve`. The [query contract](docs/query-contract.md) describes the arguments, IR and limitations. [Example plans and responses](examples/) are executable inputs, not proposed APIs.
 
+The separate [compact intent v2 contract](docs/compact-intent-v2.md) adds indexed
+proposals, trusted request context and deterministic expansion into the same validated
+v1 plans. Use `schema-compact`, `compact-context` and `compact` to inspect and replay
+[public fixtures](examples/compact-v2/) or arbitrary compact JSON without an LLM.
+The existing local-model experiment continues to use v1.
+
 ## What is implemented
 
 `verity_core` contains bounded RDF ingestion, immutable byte-addressed snapshots, an authorized observed-vocabulary catalog, strict versioned JSON contracts, deterministic query compilation, local execution/evidence, a fixture-backed parser boundary and shared oracle/proposal evaluation. `verity_cli` is a thin local driver.
