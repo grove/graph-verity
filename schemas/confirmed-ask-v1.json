@@ -1,0 +1,167 @@
+{
+  "ask_version": 1,
+  "request": {
+    "$defs": {
+      "AskTemplate": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "filter": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/TypedComparison"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "kind": {
+                "const": "follow_path",
+                "type": "string"
+              },
+              "output": {
+                "$ref": "#/$defs/PathOutput"
+              },
+              "start": {
+                "type": "string"
+              },
+              "steps": {
+                "items": {
+                  "$ref": "#/$defs/PathStep"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "kind",
+              "start",
+              "steps",
+              "output"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "Compare": {
+        "enum": [
+          "eq",
+          "ne",
+          "lt",
+          "le",
+          "gt",
+          "ge"
+        ],
+        "type": "string"
+      },
+      "Direction": {
+        "enum": [
+          "forward",
+          "reverse"
+        ],
+        "type": "string"
+      },
+      "PathOutput": {
+        "enum": [
+          "values",
+          "count_distinct"
+        ],
+        "type": "string"
+      },
+      "PathStep": {
+        "additionalProperties": false,
+        "properties": {
+          "direction": {
+            "$ref": "#/$defs/Direction"
+          },
+          "graph": {
+            "type": "string"
+          },
+          "predicate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "graph",
+          "predicate",
+          "direction"
+        ],
+        "type": "object"
+      },
+      "TypedComparison": {
+        "additionalProperties": false,
+        "properties": {
+          "op": {
+            "$ref": "#/$defs/Compare"
+          },
+          "value": {
+            "$ref": "#/$defs/Value"
+          }
+        },
+        "required": [
+          "op",
+          "value"
+        ],
+        "type": "object"
+      },
+      "Value": {
+        "additionalProperties": false,
+        "properties": {
+          "datatype": {
+            "type": "string"
+          },
+          "language": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lexical": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "lexical",
+          "datatype"
+        ],
+        "type": "object"
+      }
+    },
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "additionalProperties": false,
+    "properties": {
+      "limit": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      },
+      "scope": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
+      "snapshot_id": {
+        "type": "string"
+      },
+      "template": {
+        "$ref": "#/$defs/AskTemplate"
+      },
+      "version": {
+        "format": "uint32",
+        "minimum": 0,
+        "type": "integer"
+      }
+    },
+    "required": [
+      "version",
+      "snapshot_id",
+      "scope",
+      "template",
+      "limit"
+    ],
+    "title": "AskRequest",
+    "type": "object"
+  }
+}

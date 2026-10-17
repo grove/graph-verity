@@ -1,10 +1,11 @@
 #![forbid(unsafe_code)]
 use std::{
     env, fs,
-    io::{self, BufRead, Write},
+    io::{self, BufRead, Read, Write},
     process::ExitCode,
 };
 use verity_core::{
+    ask::decode_request,
     catalog::Policy,
     compact::decode_intent,
     discovery::{DiscoveryConfig, MAX_INDEX_BYTES},
@@ -17,7 +18,7 @@ use verity_core::{
     read_limited, reject, Result, Snapshot,
 };
 
-const USAGE: &str = "verity schema | schema-compact | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | index-build RDF FORMAT POLICY SCOPE CONFIG | index-inspect RDF FORMAT POLICY SCOPE CONFIG INDEX | find|find-batch|entity RDF FORMAT POLICY SCOPE CONFIG REQUEST_JSON [INDEX] | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local|evaluate-local-compact RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT | compact-context RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT | compact RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT INTENT_FILE\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, CONFIG, INDEX, PLAN and BENCHMARK are JSON files. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
+const USAGE: &str = "verity schema | schema-compact | schema-ask | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | index-build RDF FORMAT POLICY SCOPE CONFIG | index-inspect RDF FORMAT POLICY SCOPE CONFIG INDEX | find|find-batch|entity RDF FORMAT POLICY SCOPE CONFIG REQUEST_JSON [INDEX] | ask-preview|ask RDF FORMAT POLICY REQUEST_JSON | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local|evaluate-local-compact RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT | compact-context RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT | compact RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT INTENT_FILE\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, CONFIG, INDEX, PLAN and BENCHMARK are JSON files. ask is experimental and requires interactive exact-plan confirmation. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
 
 // The parent owns llama.cpp, deadlines and process cleanup; model bytes stay inside response.
 struct LlamaCppBridge {
@@ -100,6 +101,9 @@ fn run() -> Result<()> {
     if args.as_slice() == ["schema-compact"] {
         return print_json(&verity_core::compact::schema());
     }
+    if args.as_slice() == ["schema-ask"] {
+        return print_json(&verity_core::ask::schema());
+    }
     if args.len() < 3 {
         return Err(reject("usage", USAGE));
     }
@@ -119,6 +123,25 @@ fn run() -> Result<()> {
     }
     let policy: Policy = serde_json::from_value(json(&args[3])?)?;
     match (args[0].as_str(), args.len()) {
+        ("ask-preview" | "ask", 5) => {
+            let request = decode_request(&read_limited(&args[4], 65_536)?)?;
+            let preview = graph.preview_ask(&request, &policy)?;
+            print_json(&preview)?;
+            if args[0] == "ask-preview" {
+                return Ok(());
+            }
+            io::stdout().flush()?;
+            eprintln!(
+                "Review the complete experimental plan above. To execute, type exactly:\napprove {}\nEnter, cancel, EOF or any other response cancels without execution.",
+                preview.approval_id
+            );
+            let mut decision = String::new();
+            io::stdin().lock().take(256).read_line(&mut decision)?;
+            let expected = format!("approve {}", preview.approval_id);
+            let approval = (decision.trim_end_matches(['\r', '\n']) == expected)
+                .then_some(preview.approval_id.as_str());
+            print_json(&graph.execute_confirmed_ask(&request, &policy, approval)?)
+        }
         ("find" | "find-batch" | "entity", 7 | 8) => {
             let scope: Vec<String> = serde_json::from_value(json(&args[4])?)?;
             let config: DiscoveryConfig = serde_json::from_value(json(&args[5])?)?;
