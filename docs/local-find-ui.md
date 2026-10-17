@@ -119,10 +119,11 @@ or a predicate search does not silently establish an Ask start.
    outgoing `http://www.wikidata.org/prop/direct/P1082` as the second step. Choose
    greater than (`gt`), the observed exact datatype
    `http://www.w3.org/2001/XMLSchema#decimal`, lexical value `700000`, and leave
-   language empty. Preview/approve again. The retained source literal is
-   `+717710` with datatype `xsd:decimal`; it is returned as an original terminal
-   RDF term. There is no implicit string/integer/decimal coercion by the UI.
-   Count mode over the same filtered path returns 1.
+   language empty. Preview/approve again. The retained source file spells the
+   literal `+717710` with datatype `xsd:decimal`; the existing RDF engine returns
+   lexical `717710` with that same datatype. The UI displays the engine's RDF
+   terms without string/integer/decimal coercion. Count mode over the same
+   filtered path returns 1.
 6. To inspect incoming semantics, Find and deliberately select Q585, then choose
    P36 **reverse (incoming)**: terminal countries → P36 → selected Oslo. Preview
    states the actual direction. Choose Cancel, edit a value or scope, navigate,
