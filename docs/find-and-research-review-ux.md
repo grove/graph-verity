@@ -1,5 +1,7 @@
 # Graph Verity UX plan: Explore vs Research Review
 
+> **Product direction clarification (Phase 2):** This document designs **two supporting interfaces**, not two alternatives to the product's original natural-language question-answering goal. The primary envisioned user experience is **Ask a natural-language question → model-proposed typed RDF plan → explicit approval → source-grounded answer**. See [the active Phase 2 roadmap](phase-2-natural-language-ask.md). Explore is an expert/debugging fallback, and Research Review is an evaluation-only tool. Neither is the primary product.
+
 **Status:** proposed experience/design specification, not an implemented feature or a user-validated design  
 **Date:** 2026-10-18  
 **Scope:** local-first RDF Find, graph evidence, deterministic Confirmed Ask, and the separate blinded retrieval study  
@@ -21,7 +23,7 @@ The project already has:
 
 **Today:** BM25 remains Find's default; EmbeddingGemma 2 selective hybrid is research-only; Confirmed Ask accepts only a deliberately constructed formal plan. Issue [#58](https://github.com/grove/graph-verity/issues/58) remains open, with **zero recorded human reviewers and judgments** in the published report. Neither good ranking metrics nor a successful Rust execution proves that the user understood a question or that an RDF statement is true outside its source graph.
 
-## 1. Two products, two jobs
+## 1. Two supporting interfaces, two jobs
 
 | | **Explore — Graph Verity Find** | **Evaluate — Research Review** |
 | --- | --- | --- |
@@ -218,6 +220,6 @@ After human judgments exist, report task completion, misunderstandings, relevant
 
 ## Decision to carry forward
 
-**Build two interfaces with distinct purposes.** Let the everyday Find journey show candidates and source evidence simply. Let Research Review collect rigorous blinded relevance evidence through a clearly guided, progressively disclosed workflow. Preserve the currently frozen #58 study untouched while any easier reviewer UI is separately designed, versioned and evaluated.
+**Keep Explore and Research Review as two distinct supporting interfaces**, while Phase 2's primary product journey is natural-language Ask with source-backed results and explicit confirmation. Let Find show candidates and RDF source evidence simply when users need investigation or disambiguation. Let Research Review collect rigorous blinded relevance evidence through a clearly guided, progressively disclosed workflow. Preserve the currently frozen #58 study untouched while any easier reviewer UI is separately designed, versioned and evaluated.
 
 The next product decision is still **BM25 for Find; hybrid retrieval remains experimental pending real human relevance review and explicit owner promotion approval**.
