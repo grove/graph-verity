@@ -3,7 +3,7 @@ use crate::{
     catalog::Policy,
     execution::{Execution, PlanOrigin, Row},
     ir::Plan,
-    parser::{decode_response, Proposal, SemanticParser},
+    parser::{decode_response, preflight, Proposal, SemanticParser},
     reject, snapshot_id, Result, Snapshot,
 };
 use schemars::JsonSchema;
@@ -66,6 +66,8 @@ pub struct CaseScore {
     pub pipeline_ms: Option<f64>,
     pub expected_status: String,
     pub proposal_status: Option<String>,
+    /// Independent deterministic preflight advice; does not rescore raw model proposals.
+    pub preflight_would_block: Option<String>,
     pub contract_valid: Option<bool>,
     pub safety_valid: Option<bool>,
     pub raw_response: Option<String>,
@@ -102,6 +104,7 @@ impl CaseScore {
             pipeline_ms: None,
             expected_status: case.expected_status.clone(),
             proposal_status: None,
+            preflight_would_block: None,
             contract_valid: None,
             safety_valid: None,
             raw_response: None,
@@ -375,6 +378,9 @@ impl Snapshot {
                     let request = self.parser_request(&case.question, &case.scope, policy);
                     score.catalog_ms = Some(catalog_start.elapsed().as_secs_f64() * 1000.0);
                     let request = request?;
+                    // Diagnostics only: evaluate the untouched model proposal. This
+                    // marker is NOT a correct model abstention or compiler rejection.
+                    score.preflight_would_block = preflight(&request).map(|v| v.code().into());
                     score.stage = "generation".into();
                     let generation_start = Instant::now();
                     let generated = parser.propose(&request);
