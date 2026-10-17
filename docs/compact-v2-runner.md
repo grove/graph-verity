@@ -145,9 +145,10 @@ it neither downloads nor invokes model weights or the llama.cpp runtime.
 
 ## Risks and fallback
 
-No full public-suite inference or M1 Pro A/B result is claimed here. The full
-vocabulary differs from v1's oracle shortlist, so future comparisons must disclose
-that difference. Four-label selection may omit useful aliases; the full Rust
+The [separate issue #32 M1 Pro comparison](../reports/issue-32-compact-ab/README.md)
+retains the public-suite inference and its frozen protocol. The full vocabulary
+differs from v1's oracle shortlist; that difference is a comparison confound.
+Four-label selection may omit useful aliases; the full Rust
 request is logged. Very large authorized tables may still exceed the fixed token
 budget; this is a logged backend failure, never silent truncation or narrowing of
 scope. Grammar can produce syntactically valid wrong interpretations, invalid IDs,

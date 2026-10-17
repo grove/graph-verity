@@ -40,7 +40,7 @@ The separate [compact intent v2 contract](docs/compact-intent-v2.md) adds indexe
 proposals, trusted request context and deterministic expansion into the same validated
 v1 plans. Use `schema-compact`, `compact-context` and `compact` to inspect and replay
 [public fixtures](examples/compact-v2/) or arbitrary compact JSON without an LLM.
-The existing local-model experiment continues to use v1.
+The local-model runner defaults to v1 and offers an opt-in compact v2 route.
 
 ## What is implemented
 
@@ -101,4 +101,6 @@ The [first frozen-model measurement](reports/issue-9-adversarial/README.md) fail
 
 The opt-in [compact v2 CPU runner](docs/compact-v2-runner.md) uses the same pinned
 Qwen weights/runtime with Rust-authorized index tables and strict Rust expansion.
-Its controls are not a frozen A/B or feasibility result; normal CI runs no inference.
+The separate [M1 Pro route comparison](reports/issue-32-compact-ab/README.md)
+retains the single public v2 run against frozen v1. Normal CI verifies saved evidence
+without inference; this comparison does not establish Phase 0 readiness.
