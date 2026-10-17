@@ -1,10 +1,12 @@
-# Local Find browser pilot (#55)
+# Local Find and Confirmed Ask browser pilot (#55 / #56)
 
 This is an operator-started, model-free pilot over the existing Rust BM25 Find
 and one-hop evidence contracts. It is not a hosted service or a usability study.
 Ranked candidates are not verified answers. Source triples belong to an immutable
 graph snapshot; they do not prove real-world truth. Missing matches leave factual
-absence unknown. No model, fusion, Ask, SPARQL input or RDF write is exposed.
+absence unknown. The optional Confirmed Ask editor exposes only the existing
+deterministic `follow_path` template, with a separate preview and approval.
+No model, fusion, free-form Ask, SPARQL input or RDF write is exposed.
 
 ## Launch locally and offline
 
@@ -30,6 +32,12 @@ access log or referrer. Do not share the session URL or the browser tab/profile.
 Stop with **Ctrl-C** in the terminal; this closes the socket, removes the private
 temporary bundle, and revokes browser access. Clear/close the tab to discard the
 credential. Restart for a new credential after any operator input changes.
+
+Each load also obtains a random **tab lease**, sent in `X-Verity-Tab` with the
+bearer credential. Opening/reloading a second tab revokes the previous tab's
+lease, selections and pending review. A lease expires after 15 minutes; reload
+and explicitly resolve/select again. Credentials and tab leases authenticate
+local requests; the core's content digest does not.
 
 `--host ::1` explicitly selects IPv6. Only literal `127.0.0.1` and `::1` are
 accepted, including when `--port` is supplied. Wildcards, hostnames, other local
@@ -79,6 +87,120 @@ no-match, search clipping, evidence clipping, and empty direction/page. Unclippe
 top-k never establishes semantic completeness. No row is selected automatically.
 Blank nodes retain their kind and identifier but cannot be opened as IRI entities.
 
+## Deliberate Confirmed Ask walkthrough
+
+Keep the selected entity's **Graph evidence** open after step 2 above. Click
+**Build exact follow_path plan from this selected Find entity**. This button is
+available only for an explicitly selected entity from the latest entity Find
+results, with both entity and predicate roles allowed. Direct resource navigation
+or a predicate search does not silently establish an Ask start.
+
+1. Choose the first step explicitly: development graph, original predicate
+   `http://www.wikidata.org/prop/direct/P36`, **forward (outgoing)**. The catalog
+   also shows reverse (incoming) choices and graph-qualified original IRIs,
+   observed labels and datatype profiles. Missing direct labels, multiple labels
+   and retrieval-mapping witnesses remain explicit and inspectable. Shared
+   aliases never merge identities. No first step/predicate is preselected.
+2. Leave the second step empty and choose **Distinct terminal RDF values**.
+   Click **Preview exact plan**. Read the authoritative Rust summary, including
+   actual subject → predicate → object direction, terminal-only projection,
+   graphs, immutable snapshot, typed filter, rows, evidence cap and timeout.
+   Expand the entire resolved plan and source provenance. This does not execute.
+3. Separately check that you reviewed the exact plan, then click **Approve this
+   exact plan and execute once** (keyboard: Space). Enter alone never approves,
+   including when this enabled button has focus. The answer is Q585 (Oslo) for
+   this formal plan. Inspect the original Q20 → P36 → Q585 triple and its named
+   graph/snapshot. **Rows truncated** and **Evidence truncated** are independent.
+4. Change projection to **COUNT(DISTINCT terminal RDF terms)**. Review a fresh
+   preview and approve separately: one count row, value 1. This counts distinct
+   terminal RDF terms, not paths; zero would mean no matching stored terms,
+   without establishing real-world absence or dataset completeness.
+5. For a two-hop typed comparison, retain outgoing P36 and explicitly choose
+   outgoing `http://www.wikidata.org/prop/direct/P1082` as the second step. Choose
+   greater than (`gt`), the observed exact datatype
+   `http://www.w3.org/2001/XMLSchema#decimal`, lexical value `700000`, and leave
+   language empty. Preview/approve again. The retained source file spells the
+   literal `+717710` with datatype `xsd:decimal`; the existing RDF engine returns
+   lexical `717710` with that same datatype. The UI displays the engine's RDF
+   terms without string/integer/decimal coercion. Count mode over the same
+   filtered path returns 1.
+6. To inspect incoming semantics, Find and deliberately select Q585, then choose
+   P36 **reverse (incoming)**: terminal countries → P36 → selected Oslo. Preview
+   states the actual direction. Choose Cancel, edit a value or scope, navigate,
+   rerank Find, hide the tab, or use browser history: approval disappears and a
+   new preview is required. Unsupported selections require exact Find resolution
+   or explicit operator changes; no question interpretation or fallback runs.
+
+The editor catalogs predicates only in the operator's permitted graphs. The first
+step uses the explicitly selected entity's graph; the optional second step may
+use another permitted graph and always starts at `?step1`. Every step must match;
+only `?step1` for one hop or `?step2` for two hops is projected. Catalog membership
+does not promise that a particular path has matches. Rust rejects incompatible
+ranges, unknown predicates, unsupported operators, ill-typed literals and invalid
+plans before offering confirmation. Typed-filter datatypes must occur in the
+selected predicate's graph profile; reverse steps end at resources and have no
+literal filter. Labels and source strings remain inert text even if they contain
+markup, model instructions or SPARQL.
+
+The browser submits a fresh Ask request only for preview. The server holds that
+exact request, the complete Rust preview and approval digest, and a random UI
+nonce with a two-minute expiry. Confirmation sends only this nonce and the
+explicit decision, never a replacement plan or a browser-supplied core digest.
+The server consumes the pending decision **before** validation/execution, checks
+the lease and operator bundle, rebuilds the preview under the current Rust
+policy, then passes the retained exact digest to the existing `ask` CLI. That
+CLI independently previews/revalidates and invokes `execute_confirmed_ask`.
+A changed request, snapshot, scope, policy or cap cannot reuse an approval.
+Cancel, incomplete/disconnected requests, missing/wrong/expired decisions and
+replays never execute. Double-submit is blocked synchronously in the UI and by
+the server's single-use record. Concurrent operator-file edits are detected
+before/after CLI calls; the process always uses private frozen copies, and a
+changed original revokes pending review/results rather than hot-reloading data.
+An execution timeout or failed response consumes the decision; inspect a new
+preview before any retry.
+
+The digest is a **content hash**, not authentication, a signature or evidence of
+human understanding. The additional UI lease/nonce does not replace or weaken
+Rust checks. The underlying core/CLI digest remains replayable by independent
+callers; the one-shot ledger is local to this UI. An authenticated custom client
+can deliberately make its own decisions; this UI does not attest a physical
+human gesture. There is no unattended or model proposal endpoint.
+
+## Research tasks and unmeasured risk
+
+**Participants: 0; human task attempts: 0; independent semantic reviewers: 0.**
+Human misunderstanding, false confidence and demand remain **unmeasured**.
+Automated engineering assertions are not user research or a product-release GO.
+Approving a correctly executed plan can still encode the wrong intention, and
+source evidence cannot establish real-world truth. The new editor's Ask copy is
+English; the existing Find controls remain Norwegian/English. Its long catalog
+and complete plan may impose considerable domain knowledge and reading burden.
+
+The numbered walkthrough is a reproducible demo task set using retained public
+sources, ready to freeze for a separately designed user study. Before each
+approval, ask participants to explain the selected direction, which terminal
+variable is returned, typed threshold, distinct-count meaning, scope/snapshot
+and both caps. Add these tasks without coaching the answer:
+
+- Select Oslo's incoming capital relation and explain country versus city.
+- Compare Norway → capital → population in values/count mode, including a threshold
+  above the stored value; explain why zero does not imply real-world absence.
+- Search an ambiguous name in a synthetic fixture; distinguish graph-qualified
+  exact IRIs and missing/shared labels rather than choosing by rank.
+- Change a field after preview, cancel a plan, and open a new tab; explain why
+  the previous approval is unusable. Inspect independent row/evidence clipping
+  with a deliberately restricted operator bundle.
+- Read an injection-bearing synthetic label as source data, and explain why an
+  executed plan and source triples do not verify the user's question or truth.
+
+Record assisted/unassisted completion, wrong-but-executable formal choices,
+cancellations, exclusions, confidence and pre-approval explanations. Independently
+assess task intent and report denominators at participant/task level. Follow the
+[existing research protocol](../reports/issue-40-confirmed-ask/README.md), freezing
+revision/tasks and acceptance criteria before recruitment. The four historical
+Qwen failures remain failures: rejecting their raw proposals at this UI boundary
+is containment, not model correctness or successful interpretation.
+
 ## Architecture and trust boundary
 
 ```text
@@ -99,8 +221,11 @@ not trusted as a cache. Original operator input bytes and the executable are
 checked before requests and again before data responses; changes fail closed.
 Private copies prevent a concurrent input edit from changing the executed data.
 
-The browser can request only `/api/session`, `/api/find`, `/api/entity`. Requests
-never specify paths, policy overrides, plans, raw SPARQL, Ask or an executable.
+The browser can request only `/api/session`, `/api/find`, `/api/entity`,
+`/api/ask-catalog`, `/api/ask-preview`, `/api/ask-confirm`, `/api/ask-cancel`.
+Requests never specify paths, policy overrides, raw Plans/SPARQL or an executable.
+Only preview accepts the strict existing `follow_path` Ask schema; confirmation
+accepts exactly a one-shot UI token and explicit decision.
 Session metadata contains the authorized scope/roles, bounded page size and
 versioned receipt. The receipt binds the adapter and three asset SHA-256 hashes,
 Rust executable hash, snapshot, core policy/config hashes, index revision and
@@ -168,9 +293,17 @@ fallback. These are basic keyboard/accessibility smoke checks, not a WCAG audit
 or screen-reader study. A missing credential leaves controls disabled; request
 errors clear previous results and show a generic localized recovery message.
 
-No model loading, Ask integration, relevance tuning, participant data collection,
-publication of a hosted service or changes to retained #37–#53 reports are included.
+Model-free HTTP/browser coverage additionally includes exact catalog selection,
+forward/reverse two-hop projection, typed comparisons without datatype guessing,
+distinct counts/shared paths, independent clipping flags, one-shot decisions,
+expiry, missing/wrong approval, disconnects, timeouts, Enter alone, cancel,
+argument edits, history, reranking, stale tabs, policy/scope/snapshot/cap changes,
+private canaries and all four historical raw Qwen candidates. Existing Rust tests
+retain CLI EOF/cancel and core schema/digest validation coverage.
+
+No model loading, relevance tuning, participant data collection, publication of
+a hosted service or changes to retained #37–#53 reports are included.
 Automated tests establish engineering behavior, not production readiness,
 human-reviewed gold, user-validated relevance or completed usability research.
-Confirmed Ask UI, actual-user evaluation and research-only selective hybrid remain
-separate #56, #57 and #58 work.
+Actual-user evaluation and research-only selective hybrid remain separate #57
+and #58 work; this #56 integration does not complete either.

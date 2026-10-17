@@ -7,6 +7,11 @@ or demonstrated safe user understanding. The tested Qwen Ask configurations
 remain stopped. The [evaluation report](../reports/issue-40-confirmed-ask/README.md)
 separates automated regressions from missing human evidence.
 
+The [local browser pilot](local-find-ui.md#deliberate-confirmed-ask-walkthrough)
+now exposes the same deterministic template without JSON editing. It adds a
+session-bound, expiring, single-use UI decision while preserving the core/CLI
+contracts below. Human understanding and false-confidence risk remain unmeasured.
+
 ## Offline flow after Find
 
 1. Use [Find and entity/predicate navigation](find-mvp.md) to inspect authorized

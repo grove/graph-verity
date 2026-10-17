@@ -20,6 +20,11 @@ ASSETS = ROOT / "tools" / "local_find_ui"
 MAX_REQUEST = 16 * 1024
 MAX_RESPONSE = 8 * 1024 * 1024
 ROLES = ("entity", "predicate", "class")
+SESSION_SECONDS = 15 * 60
+REVIEW_SECONDS = 2 * 60
+XSD = "http://www.w3.org/2001/XMLSchema#"
+LITERAL_TYPES = {XSD + t for t in ("string", "boolean", "integer", "decimal", "double", "date", "dateTime")}
+LITERAL_TYPES.add("http://www.w3.org/1999/02/22-rdf-syntax-ns#langString")
 ERROR = {"error": "Request unavailable. Check selection or restart with a valid operator bundle."}
 
 
@@ -47,6 +52,10 @@ class Bundle:
                  config: Path, index: Path | None = None, roles: tuple = ROLES):
         self.temp = tempfile.TemporaryDirectory(prefix="verity-find-")
         self.directory = Path(self.temp.name)
+        self.tab = None
+        self.pending = None
+        self.selection = None
+        self.find_entities = set()
         try:
             if not roles or len(set(roles)) != len(roles) or any(r not in ROLES for r in roles):
                 raise ValueError("Roles")
@@ -74,6 +83,13 @@ class Bundle:
             self.snapshot = built["manifest"]["snapshot_id"]
             self.resource_roles = {g: {iri: doc["roles"] for iri, doc in value["documents"].items()}
                                    for g, value in built["graphs"].items()}
+            self.documents = {g: value["documents"] for g, value in built["graphs"].items()}
+            self.catalogs = {}
+            for graph in self.scope:
+                with tempfile.NamedTemporaryFile(dir=self.directory) as file:
+                    file.write(json.dumps([graph]).encode())
+                    file.flush()
+                    self.catalogs[graph] = self.invoke("catalog", [file.name])
             self.page_limit = min(50, self.policy["max_rows"], self.policy["max_evidence"])
             if not self.page_limit:
                 raise ValueError("Evidence policy")
@@ -98,39 +114,134 @@ class Bundle:
         # Changes revoke the session; requests always execute against private frozen copies.
         if any(digest(read(p, limit)) != expected
                for p, (expected, limit) in self.originals.items()):
+            self.tab = self.pending = None
             raise ValueError("Stale operator bundle")
         if file_digest(self.binary) != self.receipt["binary_sha256"]:
+            self.tab = self.pending = None
             raise ValueError("Stale executable")
 
-    def invoke(self, command: str, tail: list, limit: int = MAX_RESPONSE):
+    def invoke(self, command: str, tail: list, limit: int = MAX_RESPONSE, approval=None):
+        common = self.common[:3] if command in ("catalog", "ask-preview", "ask") else self.common
         with tempfile.TemporaryFile(dir=self.directory) as output:
-            subprocess.run([str(self.binary), command, *self.common, *tail],
-                           stdin=subprocess.DEVNULL, stdout=output, stderr=subprocess.DEVNULL,
+            subprocess.run([str(self.binary), command, *common, *tail],
+                           input=(f"approve {approval}\n" if approval else "").encode(),
+                           stdout=output, stderr=subprocess.DEVNULL,
                            check=True, timeout=45)
             output.seek(0)
             data = output.read(limit + 1)
         if len(data) > limit:
             raise ValueError("Output limit")
+        if command == "ask":
+            # The existing CLI emits a fresh preview then an outcome; preserve both.
+            decoder = json.JSONDecoder()
+            preview, end = decoder.raw_decode(data.decode())
+            return preview, json.loads(data.decode()[end:])
         return json.loads(data)
 
-    def api(self, route: str, request: dict):
+    def ask(self, request, approval=None):
+        with tempfile.NamedTemporaryFile(dir=self.directory) as file:
+            file.write(json.dumps(request, ensure_ascii=True).encode())
+            file.flush()
+            return self.invoke("ask" if approval else "ask-preview", [file.name], approval=approval)
+
+    def choices(self):
+        choices = []
+        for graph, catalog in self.catalogs.items():
+            for predicate, profile in catalog["profiles"].get(graph, {}).items():
+                choices.append({"graph": graph, "predicate": predicate,
+                                "labels": catalog["entries"][predicate]["labels"],
+                                "document": self.documents[graph].get(predicate),
+                                "object_types": profile["object_types"], "ill_typed": profile["ill_typed"]})
+        return choices
+
+    def api(self, route: str, request: dict, tab=None):
         self.current()
         if route == "/api/session" and request == {}:
+            self.tab = secrets.token_hex(32)
+            self.expires = time.monotonic() + SESSION_SECONDS
+            self.pending = self.selection = None
+            self.find_entities.clear()
             return {"scope": self.scope, "roles": self.roles, "snapshot_id": self.snapshot,
-                    "page_limit": self.page_limit, "receipt": self.receipt}
+                    "page_limit": self.page_limit, "receipt": self.receipt, "tab": self.tab,
+                    "session_seconds": SESSION_SECONDS}
+        if (not isinstance(tab, str) or not self.tab or not hmac.compare_digest(tab, self.tab)
+                or time.monotonic() >= self.expires):
+            self.pending = None
+            raise ValueError("Expired or stale tab")
         if not isinstance(request, dict):
             raise ValueError("Object required")
+        if route == "/api/ask-confirm":
+            pending, self.pending = self.pending, None  # Consume before any validation or execution.
+            if (set(request) != {"token", "decision"} or not pending
+                    or not isinstance(request["token"], str)
+                    or not hmac.compare_digest(request["token"], pending["token"])
+                    or time.monotonic() >= pending["expires"]):
+                raise ValueError("Decision")
+            if request["decision"] == "cancel":
+                return {"status": "cancelled"}
+            if request["decision"] != "approve":
+                raise ValueError("Approval required")
+            # Rust independently rebuilds/authorizes now, then again inside execute_confirmed_ask.
+            if self.ask(pending["request"]) != pending["preview"]:
+                raise ValueError("Changed plan")
+            self.current()
+            if time.monotonic() >= min(self.expires, pending["expires"]):
+                raise ValueError("Expired decision")
+            fresh, outcome = self.ask(pending["request"], pending["preview"]["approval_id"])
+            self.current()
+            if fresh != pending["preview"] or outcome["status"] != "executed":
+                raise ValueError("Changed plan")
+            return {"outcome": outcome, "sources": pending["sources"]}
+        self.pending = None
+        if route == "/api/ask-cancel" and request == {}:
+            return {"status": "cancelled"}
+        if route == "/api/ask-catalog" and request == {}:
+            if not self.selection or not {"entity", "predicate"}.issubset(self.roles):
+                raise ValueError("Select a Find entity")
+            return {"selection": self.selection, "choices": self.choices(),
+                    "max_rows": self.policy["max_rows"], "max_evidence": self.policy["max_evidence"],
+                    "timeout_ms": self.policy["timeout_ms"], "snapshot_id": self.snapshot}
+        if route == "/api/ask-preview":
+            template = request["template"]
+            if (not self.selection or not {"entity", "predicate"}.issubset(self.roles)
+                    or template["start"] != self.selection["iri"]
+                    or template["steps"][0]["graph"] != self.selection["graph"]):
+                raise ValueError("Select a Find entity")
+            for step in template["steps"]:
+                if (step["graph"] not in self.scope
+                        or step["predicate"] not in self.catalogs[step["graph"]]["profiles"][step["graph"]]):
+                    raise ValueError("Predicate")
+            if template.get("filter") is not None:
+                step = template["steps"][-1]
+                datatype = template["filter"]["value"]["datatype"]
+                if (step["direction"] != "forward" or datatype not in LITERAL_TYPES
+                        or datatype not in self.catalogs[step["graph"]]["profiles"][step["graph"]][step["predicate"]]["object_types"]):
+                    raise ValueError("Exact observed datatype required")
+            preview = self.ask(request)
+            self.current()
+            if time.monotonic() >= self.expires:
+                raise ValueError("Expired session")
+            token = secrets.token_hex(32)
+            sources = {g: json.loads(Path(self.common[4]).read_bytes())["graphs"][g]
+                       for g in request["scope"]}
+            self.pending = {"token": token, "expires": time.monotonic() + REVIEW_SECONDS,
+                            "request": json.loads(json.dumps(request)), "preview": preview, "sources": sources}
+            return {"preview": preview, "token": token, "review_seconds": REVIEW_SECONDS,
+                    "sources": sources}
         scope = request.get("scope")
         if (not isinstance(scope, list) or not scope or any(g not in self.scope for g in scope)
                 or len(set(scope)) != len(scope)):
             raise ValueError("Scope")
         if route == "/api/find":
+            self.selection = None
+            self.find_entities.clear()
             if set(request) != {"query", "scope", "role", "limit"}:
                 raise ValueError("Fields")
             if request["role"] not in self.roles:
                 raise ValueError("Role")
             command = "find"
         elif route == "/api/entity":
+            self.selection = None
             if set(request) != {"snapshot_id", "scope", "iri", "direction", "offset", "limit"}:
                 raise ValueError("Fields")
             # Every navigation remains graph-qualified, including deliberate edge selections.
@@ -152,6 +263,11 @@ class Bundle:
             result = self.invoke(command, [file.name, *self.index])
         # A concurrent edit revokes even the result of an already-running request.
         self.current()
+        if route == "/api/find" and request["role"] == "entity":
+            self.find_entities = {(hit["iri"], hit["graph"]) for hit in result["hits"]}
+        if (route == "/api/entity" and result["iri"]
+                and (result["iri"], scope[0]) in self.find_entities):
+            self.selection = {"iri": result["iri"], "graph": scope[0]}
         return result
 
 
@@ -200,12 +316,13 @@ class Handler(socketserver.BaseRequestHandler):
             while len(body) < length:
                 body.extend(self.receive(length - len(body)))
             request = json.loads(body)
-            result = self.server.bundle.api(route, request)
+            result = self.server.bundle.api(route, request, headers.get("x-verity-tab"))
             encoded = json.dumps(result, ensure_ascii=True, allow_nan=False).encode()
             if len(encoded) > MAX_RESPONSE:
                 raise ValueError("Output limit")
             self.respond(200, encoded, "application/json")
-        except (OSError, ValueError, TypeError, KeyError, RecursionError, subprocess.SubprocessError):
+        except (OSError, ValueError, TypeError, KeyError, IndexError, RecursionError, subprocess.SubprocessError):
+            self.server.bundle.pending = None
             self.respond(400, json.dumps(ERROR).encode(), "application/json")
 
     def receive(self, size):

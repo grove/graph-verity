@@ -136,6 +136,81 @@ try {
     assert.match(await evaluate("document.getElementById('results').textContent"), /directClaim/);
     assert.match(await evaluate("document.getElementById('results').textContent"), /not an invented label triple/);
   }
+  // The exact-plan editor never ranks/selects an Ask start or executes on preview.
+  const confirmRequests = () => requests.filter(request => request.endsWith("/api/ask-confirm")).length;
+  assert.equal(confirmRequests(), 0);
+  await evaluate("document.getElementById('language').value='en'; document.getElementById('language').dispatchEvent(new Event('change'))");
+  await search(mode === "fixture" ? "Path start" : "Norway", "entity", 50);
+  await evaluate("[...document.querySelectorAll('#results article button')].find(b => b.textContent === 'Select candidate').click()");
+  await until("[...document.querySelectorAll('#details button')].some(b => b.textContent.startsWith('Build exact'))");
+  await evaluate("[...document.querySelectorAll('#details button')].find(b => b.textContent.startsWith('Build exact')).click()");
+  await until("!document.getElementById('ask').hidden");
+  assert.equal(await evaluate("document.getElementById('ask-step1').value"), "");
+  assert.equal(await evaluate("document.getElementById('ask-decision').hidden"), true);
+  const askTree = await send("Accessibility.getFullAXTree");
+  assert(askTree.nodes.some(n => n.role?.value === "combobox" && n.name?.value === "First directed step"));
+  async function step(id, predicate, direction = "forward") {
+    await evaluate(`{
+      const select = document.getElementById(${JSON.stringify(id)});
+      select.value = [...select.options].find(o => o.textContent.includes(${JSON.stringify(predicate + " · " + direction)})).value;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    }`);
+  }
+  async function preview() {
+    await evaluate("document.getElementById('ask-preview').click()");
+    await until("!document.getElementById('ask-decision').hidden");
+    assert.equal(await evaluate("document.getElementById('ask-approve').disabled"), true);
+    assert.match(await evaluate("document.getElementById('ask-review').textContent"), /Immutable snapshot.*Exact authorized named-graph scope/s);
+    assert.match(await evaluate("document.getElementById('ask-review').textContent"), /content hash, not authentication/);
+  }
+  async function approve() {
+    await evaluate("document.getElementById('ask-reviewed').click(); document.getElementById('ask-approve').click(); document.getElementById('ask-approve').click()");
+    await until("document.getElementById('ask-status').textContent.includes('Answer to the selected formal plan')");
+    assert.match(await evaluate("document.getElementById('ask-answer').textContent"), /source_graph/);
+    assert.match(await evaluate("document.getElementById('ask-answer').textContent"), /not assessed.*not established.*missing facts remain unknown/s);
+  }
+  await step("ask-step1", mode === "fixture" ? "urn:discovery:owns" : "http://www.wikidata.org/prop/direct/P36");
+  if (mode === "fixture") {
+    assert.match(await evaluate("document.getElementById('ask-catalog').textContent"), /<img src=x onerror=alert\(1\)>/);
+    assert.equal(await evaluate("document.querySelectorAll('#ask img, #ask script').length"), 0);
+    await step("ask-step2", "urn:discovery:value");
+    await evaluate(`document.getElementById('ask-op').value='gt';
+      document.getElementById('ask-datatype').value='http://www.w3.org/2001/XMLSchema#integer';
+      document.getElementById('ask-value').value='60';`);
+  }
+  await preview();
+  assert.equal(confirmRequests(), 0);
+  await evaluate("document.getElementById('ask-reviewed').focus()");
+  await key("Enter", "Enter", 13);
+  assert.equal(await evaluate("document.getElementById('ask-reviewed').checked"), false);
+  await key(" ", "Space", 32);
+  await evaluate("document.getElementById('ask-approve').focus()");
+  await key("Enter", "Enter", 13);
+  assert.equal(confirmRequests(), 0, "Enter alone never approves, even on the enabled button");
+  await key(" ", "Space", 32);
+  await until("document.getElementById('ask-status').textContent.includes('Answer to the selected formal plan')");
+  assert.equal(confirmRequests(), 1);
+  assert.match(await evaluate("document.getElementById('ask-status').textContent"), /Rows truncated: false.*Evidence truncated: false/);
+  assert.match(await evaluate("document.getElementById('ask-answer').textContent"), mode === "fixture" ? /70/ : /Q585/);
+  await evaluate("document.getElementById('ask-output').value='count_distinct'; document.getElementById('ask-output').dispatchEvent(new Event('change', {bubbles:true}))");
+  await preview(); await approve();
+  assert.equal(confirmRequests(), 2, "Double-click sends one decision");
+  assert.match(await evaluate("document.getElementById('ask-answer').textContent"), /count/);
+  // Every argument edit removes approval; cancellation, history and reranking do too.
+  for (const id of ["ask-step1", "ask-step2", "ask-output", "ask-op", "ask-datatype", "ask-value", "ask-language", "ask-limit"]) {
+    await preview();
+    await evaluate(`document.getElementById(${JSON.stringify(id)}).dispatchEvent(new Event('input', {bubbles:true}))`);
+    assert.equal(await evaluate("document.getElementById('ask-decision').hidden"), true, id);
+  }
+  await preview();
+  await evaluate("document.getElementById('ask-cancel').click()");
+  assert.match(await evaluate("document.getElementById('ask-status').textContent"), /Cancelled.*Nothing executed/);
+  await preview();
+  await evaluate("window.dispatchEvent(new PopStateEvent('popstate'))");
+  assert.equal(await evaluate("document.getElementById('ask').hidden"), true);
+  await search("Norway");
+  assert.equal(await evaluate("document.getElementById('ask-decision').hidden"), true);
+  assert.equal(confirmRequests(), 2);
   assert.equal(await evaluate("document.body.textContent.includes('PRIVATE_')"), false);
   assert(requests.every(request => new URL(request).origin === new URL(url).origin), "No third-party requests");
   assert.deepEqual(exceptions, []);
