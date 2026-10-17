@@ -1,0 +1,198 @@
+{
+  "version": 1,
+  "status": "preregistered before new-query inference or participant enrollment",
+  "model": "google/embeddinggemma-2",
+  "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+  "runtime": {
+    "requirements": "tools/embedding-requirements.txt",
+    "checkpoint_sha256": {
+      "1_Pooling/config.json": "8759bdf7c77efc7df7723f64856a593c8943b71ee38baf2a88771fbaf78438f9",
+      "2_Normalize/config.json": "cdb09dfca347a56aa2d691744e38d5ad3c7cbc2834e7181272b9a15328b82524",
+      "README.md": "b677a0ee2818c36f091b65fd3d9b4baea9f04d53b02b49cae916c74bf9682037",
+      "chat_template.jinja": "4b852efc0b9960283e735363331e6f325b33bc74bdbaa076f595bc4e9b94d85e",
+      "config.json": "b8f1e9931b57fbc054acdb445c41765d55b0074c58d145fa82839941ad1b5bb3",
+      "config_sentence_transformers.json": "031e56a498d33c349ab489a21885bcfe25b4fcba841149dc99e1e90d4a7c28f5",
+      "model.safetensors": "197a32965d4b1105faf060417baa899e193fb73cd401f42ec9295234d5553d79",
+      "modules.json": "3d02572a0455b832de67fb8e63a54981bc7e8b46e337c95e917bd8122a533bfd",
+      "preprocessor_config.json": "ea2ae257e901064abdd98dceb19f2b0da06af600bed15e0f99f5c85c37ee9d78",
+      "processor_config.json": "168f6a08522f3ce5dea596d94d003af2fd691742d4f41fe1f9d8cce76bfbf69c",
+      "sentence_bert_config.json": "b1bcd9f2dce3ae863b359e87d0710b5dbc3314a59ecb4e2f97c7778fc8e4b228",
+      "tokenizer.json": "4d777ef5bdc1aa36227abdfb77c3e49e7b9c892d16e1b6bda41c393504828be4",
+      "tokenizer.model": "e594c8a90eb08d8bda498ff4747977dc827ae0c3c56b5c0d41a605a22d02ef03",
+      "tokenizer_config.json": "17bd5d6e9364ca49a534e1502076593317c298d4a663623091ed45388f004874"
+    },
+    "package_versions": {
+      "annotated-doc": "0.0.5",
+      "anyio": "4.15.1",
+      "certifi": "2026.7.22",
+      "click": "8.5.0",
+      "cloudpickle": "3.1.2",
+      "filelock": "4.2.0",
+      "fsspec": "2026.9.0",
+      "h11": "0.16.0",
+      "hf-xet": "1.7.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "huggingface_hub": "1.33.0",
+      "idna": "3.20",
+      "Jinja2": "3.1.6",
+      "joblib": "1.6.0",
+      "markdown-it-py": "4.2.0",
+      "MarkupSafe": "3.0.4",
+      "mdurl": "0.1.2",
+      "mpmath": "1.3.0",
+      "narwhals": "2.27.1",
+      "networkx": "3.7",
+      "numpy": "2.5.4",
+      "packaging": "26.3",
+      "pillow": "13.0.0",
+      "Pygments": "2.21.0",
+      "PyYAML": "6.0.3",
+      "regex": "2026.9.29",
+      "rich": "15.0.0",
+      "safetensors": "0.8.0",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "sentence-transformers": "6.1.0",
+      "setuptools": "84.0.0",
+      "shellingham": "1.5.4",
+      "sympy": "1.14.0",
+      "threadpoolctl": "3.7.0",
+      "tokenizers": "0.23.3",
+      "torch": "2.14.1",
+      "torchvision": "0.29.1",
+      "tqdm": "4.70.1",
+      "transformers": "5.20.1",
+      "typer": "0.27.3",
+      "typing_extensions": "4.16.0"
+    },
+    "cpu_only": true,
+    "threads": 4,
+    "interop_threads": 1,
+    "max_tokens": 256
+  },
+  "representation": "bm25-46: shipping historical text on both sides; SKOS-definition ablation excluded",
+  "manifest": {
+    "version": 1,
+    "snapshot_id": "sha256:527035784bcfb80148e517519fd5d253859546b9e6a628fd1db4736f7010517e",
+    "scope": [
+      "urn:graph-verity:gemet:4.2.3"
+    ],
+    "policy_hash": "sha256:4016cd8450c2d9f1f0eb8d5ecea2e9b8a49a88efbcaf9cb87ceb3736ea484bf6",
+    "config_hash": "sha256:ee5441bdace0b3338c573e7d615a8a342bb274fac464920cb63650371266e6a9",
+    "index_revision": "sha256:c6988ad6a7393e093c53e43c090c4db1a66d4235ff74f043cc75338ad556c86b",
+    "rules": "unicode-lowercase-alphanumeric-v1; no NFC, stemming, transliteration or stopwords; IRI plus observed text; en/no/nb/nn language families and untagged; descriptions first 512 Unicode scalars; graph-local explicit wikibase:directClaim label/alias retrieval via source statements, observed predicates only, no inference or chaining",
+    "sources": {
+      "urn:graph-verity:gemet:4.2.3": {
+        "source": "EEA GEMET 4.2.3 and W3C SKOS Reference 2009; explicit source-triple union",
+        "license": "CC-BY-4.0 AND W3C Software and Document License (2023)",
+        "source_revision": "sha256:96002bb7cd1f89bccb05ee174fb834a04dd7342bdd1428f32105cd47fd6b73b6;skos-sha256:e79633b8d0564816cee8a99f5c9acf9a0e6fc7257c7209acd684ecad53a89dd6",
+        "importer_revision": "gemet-v1-sha256:144a6d04b9f242fe932519fc06c273832bd026638cf8b8c07b31e0b271675fea"
+      }
+    },
+    "graph_hashes": {
+      "urn:graph-verity:gemet:4.2.3": "sha256:a726539fb6f564ab0e4ad4d6b18e2def19cd4e5dc00d6da1c0148bd92c5d8f1c"
+    }
+  },
+  "candidate_universe": "Exactly the graph-qualified role-filtered documents of the pinned bm25-46 export; no new enrichment",
+  "baseline": {
+    "method": "shipping BM25",
+    "k1": 1.2,
+    "b": 0.75,
+    "limit": 50
+  },
+  "selective": {
+    "dense_min_score": 0.73,
+    "lexical_head": 3,
+    "limit": 50
+  },
+  "display": {
+    "top_k": [
+      1,
+      5,
+      10
+    ],
+    "scored_top_k": 10,
+    "blinding": "HMAC-SHA256 private retained 256-bit seed and task ID; reveal only after durable submission",
+    "exact": "Original exact IRI/label/alias; preserve BM25 first hit; multiple exact identities remain ambiguous before clipping",
+    "no_match": "No relevant retrievable resource in the authorized graph and role, not real-world absence; any returned candidate is a false candidate on such tasks",
+    "scores": "Hidden: neither dense nor lexical/fusion scores are ground truth or calibrated confidence"
+  },
+  "rubric": [
+    "individual candidate relevance",
+    "exact identifier first hit",
+    "no-match false suggestions",
+    "graph suitability",
+    "predicate direction",
+    "ambiguity handling",
+    "helpful recovered paraphrases",
+    "preference",
+    "confidence 1–5",
+    "full authorized catalog and off-list relevance"
+  ],
+  "humans": {
+    "minimum_independent_reviewers": 2,
+    "consent_required": true,
+    "ids": "Random anonymous R- IDs; operator attests actual participation; no names, contact details or raw text",
+    "adjudication": "At least two independent consenting reviewers agree on exhaustive relevance set per case; disagreements retained and excluded pending separate adjudication; never majority-vote away a conflict",
+    "excluded": "cannot_assess / technical_failure / withdrawn; retain planned denominator and list exclusions",
+    "separate": [
+      "rehearsal/AI",
+      "owner",
+      "independent human"
+    ]
+  },
+  "scoring": {
+    "metrics": [
+      "Recall@1",
+      "Recall@5",
+      "Recall@10",
+      "MRR@10",
+      "preference",
+      "exact rank-one preservation",
+      "no-match false-candidate rate",
+      "false-confidence",
+      "per-language and family paired changes"
+    ],
+    "intervals": "Fixed-seed query-level 2000-resample descriptive 95% bootstrap; language pairs/target families are dependent; no population significance or power claim"
+  },
+  "recommendation": {
+    "allowed": [
+      "go-for-further-opt-in-trial",
+      "continue BM25",
+      "defer"
+    ],
+    "rule": "Defer while independent human consensus, full tasks, either-language relevant/no-match coverage or new-query comparable resource measurements are missing. With complete evidence continue BM25 on any failed gate. Otherwise propose a further opt-in trial; owner approval is separate.",
+    "recall10_gain": 0.05,
+    "mrr10_gain": 0.03,
+    "overall_descriptive_lower_bound_above": 0,
+    "both_language_recall10_gain_above": 0,
+    "max_language_regression": 0.02,
+    "exact_rank_regressions": 0,
+    "no_match_rate_increase": 0,
+    "warm_p95_ms": 1000,
+    "rss_bytes": 4294967296,
+    "human_safety": "Uncertain exact-first/scope/direction/ambiguity rubric means defer; any negative judgment means continue BM25 with complete evidence."
+  },
+  "measurement": {
+    "hardware": "Must be declared and frozen in a capture receipt before new queries; no new inference has run",
+    "history_hardware": "Apple M1 Pro, 32 GiB; native macOS arm64; CPU-only four intra-op / one inter-op threads; host scheduler; OS caches retained; no affinity or quota",
+    "timing": "Same resident CPU process, same authorized corpus, paired queries; retain cold startup/end-to-end and warm distributions separately; never treat HTTP/replay timings as inference",
+    "memory": "Controller HWM + direct-child HWM + nested-child HWM conservative bound including all simultaneous model/index processes; report cold startup, vector build, disk cost and scheduling"
+  },
+  "limitations": [
+    "Zero actual participants/reviewers at preregistration; genuine human validation blocked.",
+    "AI-authored source anchors are not relevance gold; no-match references need full authorized retrievable catalog review.",
+    "New target families chosen without consulting their ranks; exposed targets only in declared ambiguity/direction probes. Both languages share families.",
+    "Public source corpus and exposed #50/#53 demo remain regressions; neither is an untouched holdout.",
+    "Human identity/consent are operator attestations, not cryptographic proof; anonymous IDs must not be reused across people or duplicated for one person.",
+    "Small convenience sample and correlated queries limit descriptive intervals; no product rollout or Confirmed Ask integration is authorized."
+  ],
+  "manifest_to_corpus": {
+    "rdf": "data/gemet/snapshot.nq",
+    "format": "nquads",
+    "policy": "data/gemet/policy.json",
+    "scope": "data/gemet/scope.json",
+    "config": "data/gemet/discovery.json"
+  }
+}

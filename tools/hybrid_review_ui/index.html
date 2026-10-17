@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Local blinded relevance review</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<h1>Blinded relevance review</h1>
+<p>Reviewer only · Offline saved results · No question interpretation or Ask execution.</p>
+<p>Judge resources against the query in this authorized snapshot. Retrieval scores are not calibrated confidence or evidence of truth.</p>
+<noscript>JavaScript is required. No review has been recorded.</noscript>
+<p id="status" role="status">Connecting…</p>
+<form id="selection"><fieldset id="controls" disabled><legend>Frozen review filters</legend>
+<label>Snapshot <select id="snapshot"></select></label><label>Graph <select id="graph"></select></label>
+<label>Role <select id="role"></select></label><label>Task / query <select id="task"></select></label>
+<label>Top k <select id="limit"><option>10</option><option>5</option><option>1</option></select></label>
+<button>Show blinded pair</button></fieldset></form>
+<main id="review" hidden>
+<h2 id="query" tabindex="-1"></h2><p id="context"></p>
+<div id="lists"></div>
+<form id="judgments"><fieldset><legend>Individual resource relevance (shared identity across both lists)</legend><div id="ratings"></div></fieldset>
+<details><summary>Inspect the authorized catalog for missed relevant resources</summary>
+<p>Recall needs all relevant retrievable resources, including ones missing from both lists. Inspect the catalog and source evidence; if unable, exclude the case. Ctrl/Command-click selects multiple missing resources.</p>
+<label>Filter catalog <input id="catalog-filter" type="search"></label>
+<label>Missing relevant resources <select id="offlist" multiple size="8"></select></label><button id="source" type="button">Inspect selected resource sources</button><pre id="source-text"></pre></details>
+<label><input id="universe" type="checkbox"> I checked the authorized catalog for other relevant resources.</label>
+<label><input id="no-match" type="checkbox"> No relevant retrievable resource exists in this authorized scope (no-match).</label>
+<div id="rubric"></div>
+<label>Preference <select id="preference" required><option value="">Choose</option><option>A</option><option>B</option><option value="tie">Tie</option><option value="neither">Neither</option><option value="uncertain">Uncertain</option></select></label>
+<label>Exclusion <select id="excluded"><option value="">Complete case</option><option value="cannot_assess">Cannot assess scope/relevance</option><option value="technical_failure">Technical failure</option><option value="withdrawn">Withdrawn</option></select></label>
+<p>Submitting locks this case before revealing the systems. Top 10 must be reviewed. Judgments stay in the operator's private local file; no free text or participant names are collected.</p>
+<button id="submit" type="submit">Save judgments and reveal labels</button>
+</form><pre id="reveal" aria-live="polite"></pre>
+</main>
+</body></html>

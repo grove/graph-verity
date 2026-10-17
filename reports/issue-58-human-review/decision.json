@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "protocol_id": "6223e88dbca50cbc9e09b3eb8c0fa4034fe4f55ba8405e66318b37a633c84354",
+  "recommendation": "defer",
+  "issue_58": "open; blocked for genuine participant review",
+  "actual_reviewer_ids": [],
+  "counts": {
+    "independent_humans": 0,
+    "owner_humans": 0,
+    "human_judgments": 0,
+    "new_query_inference_runs": 0
+  },
+  "new_cases": 20,
+  "missing_review_tasks": [
+    "HR-01",
+    "HR-02",
+    "HR-03",
+    "HR-04",
+    "HR-05",
+    "HR-06",
+    "HR-07",
+    "HR-08",
+    "HR-09",
+    "HR-10",
+    "HR-11",
+    "HR-12",
+    "HR-13",
+    "HR-14",
+    "HR-15",
+    "HR-16",
+    "HR-17",
+    "HR-18",
+    "HR-19",
+    "HR-20"
+  ],
+  "metrics": {
+    "recall@1": {
+      "bm25": null,
+      "selective": null,
+      "paired_delta": null,
+      "n": 0
+    },
+    "recall@5": {
+      "bm25": null,
+      "selective": null,
+      "paired_delta": null,
+      "n": 0
+    },
+    "recall@10": {
+      "bm25": null,
+      "selective": null,
+      "paired_delta": null,
+      "n": 0
+    },
+    "mrr@10": {
+      "bm25": null,
+      "selective": null,
+      "paired_delta": null,
+      "n": 0
+    },
+    "no_match_false_candidate_rate": {
+      "bm25": null,
+      "selective": null,
+      "paired_delta": null,
+      "n": 0
+    },
+    "exact_first_preservation": {
+      "bm25": null,
+      "selective": null,
+      "paired_delta": null,
+      "n": 0
+    },
+    "confidence": {
+      "bm25": null,
+      "selective": null,
+      "paired_delta": null,
+      "n": 0
+    },
+    "false_confidence": {
+      "bm25": null,
+      "selective": null,
+      "paired_delta": null,
+      "n": 0
+    }
+  },
+  "languages": {
+    "en": {
+      "planned": 10,
+      "adjudicated": 0
+    },
+    "no": {
+      "planned": 10,
+      "adjudicated": 0
+    }
+  },
+  "disagreements": null,
+  "exclusions": [],
+  "performance": {
+    "new_query_warm_p95_ms": null,
+    "new_query_conservative_rss_bytes": null,
+    "new_query_cold_start_ms": null
+  },
+  "source_snapshot": "sha256:527035784bcfb80148e517519fd5d253859546b9e6a628fd1db4736f7010517e",
+  "graph_unchanged": true,
+  "source_license_unchanged": true,
+  "historical_evidence": "Exposed #50/#53 AI-reference regressions only; no human validation and no credit toward new-study denominators.",
+  "promotion_authorized": false,
+  "automatic_ask_integration": false,
+  "limitations": [
+    "Zero actual participants/reviewers at preregistration; genuine human validation blocked.",
+    "AI-authored source anchors are not relevance gold; no-match references need full authorized retrievable catalog review.",
+    "New target families chosen without consulting their ranks; exposed targets only in declared ambiguity/direction probes. Both languages share families.",
+    "Public source corpus and exposed #50/#53 demo remain regressions; neither is an untouched holdout.",
+    "Human identity/consent are operator attestations, not cryptographic proof; anonymous IDs must not be reused across people or duplicated for one person.",
+    "Small convenience sample and correlated queries limit descriptive intervals; no product rollout or Confirmed Ask integration is authorized."
+  ]
+}

@@ -75,6 +75,10 @@ try {
   }
   await send("Network.enable"); await send("Runtime.enable"); await send("Page.enable");
   await send("Page.navigate", { url });
+  if (mode === "hybrid-review") {
+    const { default: reviewChecks } = await import("./hybrid_review_browser.mjs");
+    await reviewChecks({ send, evaluate, until, key, requests, exceptions, url });
+  } else {
   await until("document.getElementById('controls') && !document.getElementById('controls').disabled");
   assert.equal(await evaluate("location.hash"), "");
   const tree = await send("Accessibility.getFullAXTree");
@@ -220,6 +224,7 @@ try {
   await until("document.querySelector('noscript') && document.getElementById('controls').disabled");
   assert.match(await evaluate("document.querySelector('noscript').textContent"), /No search has run/);
   console.log(`Headless Find ${mode}: walkthrough, inert text, keyboard/AX, offline requests and no-JS fallback passed`);
+  }
 } finally {
   websocket?.close();
   browser.kill("SIGTERM");
