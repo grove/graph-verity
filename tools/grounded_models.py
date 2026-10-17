@@ -153,6 +153,8 @@ def input_paths(cfg):
     return [CONFIG, ROOT / cfg["prompt_file"], ROOT / cfg["grammar_file"],
         ROOT / "tools/grounded-models-requirements.txt", ROOT / "docs/grounded-model-experiment.md",
         ROOT / "schemas/contracts-v1.json", ROOT / "Cargo.lock", ROOT / "Cargo.toml", ROOT / "rust-toolchain.toml",
+        ROOT / "examples/fixture-response.json",
+        *[ROOT / f"data/wikidata/{name}" for name in ["snapshot.nq", "policy.json", "scope.json"]],
         *sorted((ROOT / "crates").rglob("Cargo.toml")),
         *sorted((ROOT / "crates").rglob("*.rs")),
         *sorted(p for p in (ROOT / "tools").glob("*.py") if not p.name.startswith("test_")),
@@ -547,7 +549,8 @@ def summarize(freeze_dir, run_dir):
               "model": state["model"], "status": state["status"], "inference_performed": state["inference_performed"],
               "holdout_accessed": False, "stages": {}, "decision": "revise", "promotion_authorized": False,
               "startup_ms": state.get("startup_ms"), "cold_first_smoke_answer_ms": state.get("cold_first_smoke_answer_ms"),
-              "peak_rss_kib": state.get("peak_rss_kib"), "receipt": state.get("receipt"), "audit": audit}
+              "peak_rss_kib": state.get("peak_rss_kib"), "receipt": state.get("receipt"), "audit": audit,
+              "frozen_inputs_audit": audit_files(freeze_dir)}
     for stage in freeze["config"]["stages"]:
         records = []
         for dataset, _ in DATASETS:
@@ -593,7 +596,8 @@ def summarize(freeze_dir, run_dir):
         result["stages"][stage] = summary
     criteria = freeze["config"]["continuation"]
     passed = (state["status"] == "completed_measurement" and state.get("rss_samples", 0) > 0
-              and not state.get("rss_error") and not audit["unexpected_canary_events"])
+              and not state.get("rss_error") and not audit["unexpected_canary_events"]
+              and not result["frozen_inputs_audit"]["unexpected_canary_events"])
     for summary in result["stages"].values():
         passed &= (summary["strict_complete_exact"]["denominator"] == 24 and
             summary["strict_complete_exact"]["numerator"] >= criteria["strict_complete_exact_min"] and
