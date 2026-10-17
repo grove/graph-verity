@@ -24,8 +24,16 @@ pub struct Hit<'a> {
     pub graph: &'a str,
     pub score: f64,
     pub exact: bool,
+    pub explanation: MatchExplanation,
     /// Bounded observed text, with literal metadata; untrusted data, never instructions.
     pub document: &'a Document,
+}
+
+#[derive(Debug, Default, Serialize)]
+pub struct MatchExplanation {
+    pub exact_iri: bool,
+    pub exact_fields: BTreeSet<Field>,
+    pub matched_tokens: Vec<String>,
 }
 
 #[derive(Debug, Serialize)]
@@ -42,21 +50,19 @@ pub struct FindResult<'a> {
     pub documents: usize,
     pub matches: usize,
     pub exact_ids: usize,
+    pub limit: usize,
+    pub truncated: bool,
+    pub coverage: &'static str,
+    pub interpretation_correctness: &'static str,
+    pub real_world_truth: &'static str,
+    pub absence_policy: &'static str,
     pub hits: Vec<Hit<'a>>,
 }
 
 impl DiscoveryIndex {
     pub fn find(&self, request: &FindRequest, policy: &Policy) -> Result<FindResult<'_>> {
-        policy.authorize(&request.scope)?;
+        self.authorize(&request.scope, policy)?;
         let manifest = self.manifest();
-        if manifest.policy_hash != snapshot_id(&serde_json::to_vec(policy)?, "discovery-policy-v1")
-            || request.scope.iter().any(|g| !self.graphs().contains_key(g))
-        {
-            return Err(reject(
-                "scope",
-                "Index does not cover this policy and scope",
-            ));
-        }
         let query = request.query.trim();
         if query.is_empty() || request.query.len() > 4096 {
             return Err(reject("question", "Find requires 1..4096 UTF-8 bytes"));
@@ -149,6 +155,7 @@ impl DiscoveryIndex {
                 graph,
                 score,
                 exact: exact.contains(&(graph, iri)),
+                explanation: MatchExplanation::default(),
                 document: &self.graphs()[graph].documents[iri],
             })
             .collect();
@@ -161,6 +168,31 @@ impl DiscoveryIndex {
         });
         let matches = hits.len();
         hits.truncate(request.limit);
+        let query_tokens = tokens(query).into_iter().collect::<BTreeSet<_>>();
+        for hit in &mut hits {
+            hit.explanation = MatchExplanation {
+                exact_iri: hit.iri == query,
+                exact_fields: hit
+                    .document
+                    .texts
+                    .iter()
+                    .filter(|t| {
+                        t.field != Field::Description && t.value.text.to_lowercase() == folded
+                    })
+                    .map(|t| t.field)
+                    .collect(),
+                matched_tokens: query_tokens
+                    .iter()
+                    .filter(|t| {
+                        self.graphs()[hit.graph]
+                            .postings
+                            .get(*t)
+                            .is_some_and(|p| p.contains_key(hit.iri))
+                    })
+                    .cloned()
+                    .collect(),
+            };
+        }
         Ok(FindResult {
             snapshot_id: &manifest.snapshot_id,
             role: request.role.clone(),
@@ -194,6 +226,12 @@ impl DiscoveryIndex {
             documents,
             matches,
             exact_ids,
+            limit: request.limit,
+            truncated: matches > request.limit,
+            coverage: "top_k_lexical_candidates_never_exhaustive_semantic_answers",
+            interpretation_correctness: "not_assessed",
+            real_world_truth: "not_established",
+            absence_policy: "open_world_missing_facts_are_not_false",
             hits,
         })
     }

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "snapshot_id": "sha256:2bdae08315de1d30bf1eb212b583f33cd8ff487649798a42699d67efcbd2ee7b",
+  "scope": [
+    "urn:retrieval:public"
+  ],
+  "policy_hash": "sha256:c70544f73879d48674a375ec7a20748785a89a2d883f4146776de110e3886009",
+  "config_hash": "sha256:6ccafe8ff42327877f70fd3703cbd9dee0ff5dc975b289603be2f499276be19a",
+  "index_revision": "sha256:06138a87dbbe7d40f4b0a246cdc1b6b637704af2536162439ccdd46c2aa33742",
+  "rules": "unicode-lowercase-alphanumeric-v1; no NFC, stemming, transliteration or stopwords; IRI plus observed text; en/no/nb/nn language families and untagged; descriptions first 512 Unicode scalars",
+  "sources": {
+    "urn:retrieval:public": {
+      "source": "AI-authored public retrieval fixture, not upstream facts",
+      "license": "Apache-2.0",
+      "source_revision": "sha256:aec05898cecf8531d5f2dac06ef937a8f68dd66b5a69b1a7487ff138069157a1",
+      "importer_revision": "handwritten-retrieval-fixture-v1"
+    }
+  },
+  "graph_hashes": {
+    "urn:retrieval:public": "sha256:700d3af80f66cca3b39f73f50ef008da75974011732cc01a19ae8d06f5998c26"
+  }
+}

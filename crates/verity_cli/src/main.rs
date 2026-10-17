@@ -12,11 +12,12 @@ use verity_core::{
     execution::PlanOrigin,
     find::FindRequest,
     ir::decode_plan,
+    navigation::EntityRequest,
     parser::{FixtureParser, ParserOutcome, ParserRequest, Proposal, SemanticParser},
     read_limited, reject, Result, Snapshot,
 };
 
-const USAGE: &str = "verity schema | schema-compact | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | index-build RDF FORMAT POLICY SCOPE CONFIG | index-inspect RDF FORMAT POLICY SCOPE CONFIG INDEX | find|find-batch RDF FORMAT POLICY SCOPE CONFIG REQUEST_JSON | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local|evaluate-local-compact RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT | compact-context RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT | compact RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT INTENT_FILE\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, CONFIG, INDEX, PLAN and BENCHMARK are JSON files. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
+const USAGE: &str = "verity schema | schema-compact | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | index-build RDF FORMAT POLICY SCOPE CONFIG | index-inspect RDF FORMAT POLICY SCOPE CONFIG INDEX | find|find-batch|entity RDF FORMAT POLICY SCOPE CONFIG REQUEST_JSON [INDEX] | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local|evaluate-local-compact RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT | compact-context RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT | compact RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT INTENT_FILE\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, CONFIG, INDEX, PLAN and BENCHMARK are JSON files. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
 
 // The parent owns llama.cpp, deadlines and process cleanup; model bytes stay inside response.
 struct LlamaCppBridge {
@@ -118,12 +119,25 @@ fn run() -> Result<()> {
     }
     let policy: Policy = serde_json::from_value(json(&args[3])?)?;
     match (args[0].as_str(), args.len()) {
-        ("find" | "find-batch", 7) => {
+        ("find" | "find-batch" | "entity", 7 | 8) => {
             let scope: Vec<String> = serde_json::from_value(json(&args[4])?)?;
             let config: DiscoveryConfig = serde_json::from_value(json(&args[5])?)?;
             let started = std::time::Instant::now();
-            let index = graph.build_discovery(&scope, &policy, &config)?;
+            let index = if args.len() == 8 {
+                graph.load_discovery(
+                    &read_limited(&args[7], MAX_INDEX_BYTES)?,
+                    &scope,
+                    &policy,
+                    &config,
+                )?
+            } else {
+                graph.build_discovery(&scope, &policy, &config)?
+            };
             let build_ms = started.elapsed().as_secs_f64() * 1000.0;
+            if args[0] == "entity" {
+                let request: EntityRequest = serde_json::from_value(json(&args[6])?)?;
+                return print_json(&graph.entity(&index, &request, &policy)?);
+            }
             if args[0] == "find" {
                 let request: FindRequest = serde_json::from_value(json(&args[6])?)?;
                 return print_json(&index.find(&request, &policy)?);

@@ -8,6 +8,28 @@ use std::collections::{BTreeMap, BTreeSet};
 
 type Types = BTreeSet<String>;
 
+/// Fixed one-hop template; all resource and graph terms pass the existing IRI validator.
+pub(crate) fn entity_query(request: &crate::navigation::EntityRequest) -> Result<String> {
+    use crate::navigation::EdgeDirection;
+    let entity = iri(&request.iri)?;
+    let graphs = request
+        .scope
+        .iter()
+        .map(|g| iri(g))
+        .collect::<Result<Vec<_>>>()?
+        .join(" ");
+    let binding = match request.direction {
+        EdgeDirection::Outgoing => format!("BIND({entity} AS ?__s)"),
+        EdgeDirection::Incoming => format!("BIND({entity} AS ?__o)"),
+    };
+    let triple = match request.direction {
+        EdgeDirection::Outgoing => format!("{entity} ?__p ?__o"),
+        EdgeDirection::Incoming => format!("?__s ?__p {entity}"),
+    };
+    // Term keys keep equal-valued literals with different datatypes on stable pages.
+    Ok(format!("SELECT ?__s ?__p ?__o ?__g WHERE {{ VALUES ?__g {{ {graphs} }} GRAPH ?__g {{ {triple} }} {binding} }} ORDER BY ?__g ?__s ?__p (isBlank(?__o)) (isIRI(?__o)) (STR(?__o)) (LANG(?__o)) (DATATYPE(?__o)) ?__o LIMIT {} OFFSET {}", request.limit + 1, request.offset))
+}
+
 /// Fields are private: callers cannot replace validated SPARQL before execution.
 pub struct CompiledPlan {
     pub(crate) query: String,

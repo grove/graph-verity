@@ -30,8 +30,9 @@ The strict request has `query` (1..4096 UTF-8 bytes, nonblank), a nonempty graph
 `scope`, optional `role` (`entity`, `predicate`, `class`), and `limit` (1..50,
 within policy). Unknown fields fail. The CLI builds an index for its operator
 scope file; request scope can select a subset. Both scopes must be authorized.
-An index bound to another policy fails. There is no persisted-index fast path;
-this reuses #36's trusted construction boundary.
+An index bound to another policy fails. An optional final `INDEX` argument checks
+a persisted index by rebuilding and comparing it; there is no cache fast path.
+The [Find MVP guide](find-mvp.md) covers explanations and entity navigation.
 
 All document counts, average lengths, document frequencies, candidates and returned
 text are computed after graph and role filters. A document is `(graph, original
