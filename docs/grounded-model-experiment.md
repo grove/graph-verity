@@ -166,3 +166,16 @@ model-generated drafts under a **separate explicitly approved integration issue*
 and human false-confidence evaluation. [Confirmed Ask](confirmed-ask.md) stays
 deterministic and model-free by default; the [Phase 0 decision](phase-0-decision.md)
 and sealed holdout boundaries remain in force.
+
+## Adapter revision v1b, before Gemma generation
+
+The retained first Gemma preflight stopped before any generation: llama.cpp's
+`common/chat.cpp` intentionally removes a leading model BOS because string
+completion tokenization normally adds it. This runner passes explicit token
+arrays to prevent double BOS, so v1b restores **only** the independently verified
+native BOS, then requires exact full native prompt bytes **and** token IDs.
+No other template difference is accepted. Qwen's prompt/token sequence is
+unchanged. The failed Gemma preflight and its cost remain evidence; Gemma's first
+generation/scored pass uses a separately checksummed v1b source freeze.
+Model weights, Q4_K_M precision, questions, contexts, grammar, budgets, seed,
+smoke questions, scoring and numerical criteria are unchanged. Qwen is not rerun.

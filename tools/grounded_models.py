@@ -250,6 +250,7 @@ class Runtime:
         self.cfg, self.assets, self.key, self.out = cfg, assets, key, out
         self.process = None
         self.generation_attempts = self.generation_completed = 0
+        self.template_prefix = ""
 
     def post(self, endpoint, body, name):
         request = urllib.request.Request(f"http://127.0.0.1:{self.port}/{endpoint}", json.dumps(body).encode(),
@@ -304,7 +305,7 @@ class Runtime:
         templated = self.post("apply-template", {"messages": [{"role": "system", "content": system},
             {"role": "user", "content": safe_user(context)}], "add_generation_prompt": True,
             "chat_template_kwargs": {"enable_thinking": False}}, out / "template")
-        prompt = templated["prompt"]
+        prompt = self.template_prefix + templated["prompt"]
         (out / "prompt.txt").write_text(prompt)
         tokens = self.post("tokenize", {"content": prompt, "add_special": False, "parse_special": True}, out / "tokens")["tokens"]
         require(len(tokens) + self.cfg["max_output_tokens"] < self.cfg["context_tokens"], "Context budget exceeded")
@@ -341,8 +342,17 @@ class Runtime:
         (folder / "native-template.json").write_bytes(native)
         expected = json.loads(native)
         actual = self.post("apply-template", {"messages": messages, "chat_template_kwargs": {"enable_thinking": False}}, folder / "parity-template")
-        require(actual["prompt"] == expected["prompt"], "Official native/runtime chat template parity failed")
-        tokens = self.post("tokenize", {"content": actual["prompt"], "add_special": False, "parse_special": True}, folder / "parity-tokens")
+        if actual["prompt"] != expected["prompt"]:
+            bos = read(self.assets / f"upstream/{self.key}/tokenizer_config.json").get("bos_token")
+            # llama.cpp removes the model BOS because string completions add it automatically.
+            require(isinstance(bos, str) and bos and bos + actual["prompt"] == expected["prompt"],
+                    "Official native/runtime chat template parity failed")
+            self.template_prefix = bos
+        canonical = self.template_prefix + actual["prompt"]
+        require(canonical == expected["prompt"], "Canonical template parity failed")
+        dump(folder / "template-canonicalization.json", {"restored_native_bos": self.template_prefix,
+            "canonical_prompt_sha256": hashlib.sha256(canonical.encode()).hexdigest()})
+        tokens = self.post("tokenize", {"content": canonical, "add_special": False, "parse_special": True}, folder / "parity-tokens")
         require(tokens["tokens"] == expected["tokens"], "Official native/GGUF tokenizer parity failed")
 
 
@@ -474,6 +484,7 @@ def infer(cfg, assets, key, freeze_dir, out):
     require(not out.exists(), "Never overwrite an attempted run")
     out.mkdir(parents=True)
     state = {"model": key, "config_sha256": sha(CONFIG), "freeze_sha256": sha(freeze_dir / "checksums.json"),
+        "adapter_version": "issue48-v1b-native-bos",
         "status": "running", "inference_performed": False, "holdout_accessed": False, "retries": 0,
         "platform": platform.platform(), "python": sys.version, "accelerator": "none",
         "cache_condition": "new model process; OS page cache not evicted; prompt caching enabled",

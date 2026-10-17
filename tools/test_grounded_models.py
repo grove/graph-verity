@@ -92,6 +92,25 @@ class GroundedModelTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 verify_freeze(freeze, current=False)
 
+    def test_native_bos_is_restored_before_token_array_completion(self):
+        with tempfile.TemporaryDirectory() as directory:
+            assets = Path(directory)
+            native = assets / "upstream/gemma4"
+            native.mkdir(parents=True)
+            dump(native / "tokenizer_config.json", {"bos_token": "<bos>"})
+            runtime = Runtime(config(), assets, "gemma4", assets)
+            runtime.reference_python = "python"
+            expected = json.dumps({"prompt": "<bos>template", "tokens": [2, 42]}).encode()
+            with patch("grounded_models.subprocess.check_output", return_value=expected), \
+                 patch.object(runtime, "post", side_effect=[{"prompt": "template"}, {"tokens": [2, 42]}]) as post:
+                runtime.template_parity({}, assets)
+            self.assertEqual(runtime.template_prefix, "<bos>")
+            self.assertEqual(post.call_args_list[1].args[1]["content"], "<bos>template")
+            with patch("grounded_models.subprocess.check_output", return_value=expected), \
+                 patch.object(runtime, "post", return_value={"prompt": "different"}):
+                with self.assertRaisesRegex(ValueError, "parity failed"):
+                    runtime.template_parity({}, assets)
+
     def test_saved_scoring_still_rejects_changed_public_reference_inputs(self):
         with tempfile.TemporaryDirectory() as directory:
             folder = Path(directory)
