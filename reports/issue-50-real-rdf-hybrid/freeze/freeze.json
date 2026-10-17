@@ -1,0 +1,292 @@
+{
+  "version": 1,
+  "protocol_sha256": "807b517b7b426c31a8297ae476e703e2056cf982802425285b3c482fdf5e8ff6",
+  "frozen_at_utc": "2026-10-17T18:20:57Z",
+  "model": {
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "sha256": {
+      "1_Pooling/config.json": "8759bdf7c77efc7df7723f64856a593c8943b71ee38baf2a88771fbaf78438f9",
+      "2_Normalize/config.json": "cdb09dfca347a56aa2d691744e38d5ad3c7cbc2834e7181272b9a15328b82524",
+      "README.md": "b677a0ee2818c36f091b65fd3d9b4baea9f04d53b02b49cae916c74bf9682037",
+      "chat_template.jinja": "4b852efc0b9960283e735363331e6f325b33bc74bdbaa076f595bc4e9b94d85e",
+      "config.json": "b8f1e9931b57fbc054acdb445c41765d55b0074c58d145fa82839941ad1b5bb3",
+      "config_sentence_transformers.json": "031e56a498d33c349ab489a21885bcfe25b4fcba841149dc99e1e90d4a7c28f5",
+      "model.safetensors": "197a32965d4b1105faf060417baa899e193fb73cd401f42ec9295234d5553d79",
+      "modules.json": "3d02572a0455b832de67fb8e63a54981bc7e8b46e337c95e917bd8122a533bfd",
+      "preprocessor_config.json": "ea2ae257e901064abdd98dceb19f2b0da06af600bed15e0f99f5c85c37ee9d78",
+      "processor_config.json": "168f6a08522f3ce5dea596d94d003af2fd691742d4f41fe1f9d8cce76bfbf69c",
+      "sentence_bert_config.json": "b1bcd9f2dce3ae863b359e87d0710b5dbc3314a59ecb4e2f97c7778fc8e4b228",
+      "tokenizer.json": "4d777ef5bdc1aa36227abdfb77c3e49e7b9c892d16e1b6bda41c393504828be4",
+      "tokenizer.model": "e594c8a90eb08d8bda498ff4747977dc827ae0c3c56b5c0d41a605a22d02ef03",
+      "tokenizer_config.json": "17bd5d6e9364ca49a534e1502076593317c298d4a663623091ed45388f004874"
+    },
+    "failures": [],
+    "valid": true
+  },
+  "model_dir": "/private/tmp/graph-verity-issue38/artifacts/embeddinggemma2/assets",
+  "runtime": {
+    "python": "3.14.8 (main, Sep 30 2026, 17:55:09) [Clang 21.0.0 (clang-2100.3.34.2)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "torch_build": "PyTorch built with:\n  - GCC 4.2\n  - C++ Version: 202002\n  - clang 21.0.0\n  - OpenMP 202011\n  - LAPACK is enabled (usually provided by MKL)\n  - NNPACK is enabled\n  - CPU capability usage: DEFAULT\n  - Build settings: BLAS_INFO=accelerate, BUILD_TYPE=Release, COMMIT_SHA=5c4886908584029761b579af026dcfb627c84070, CUDA_FLAGS= -DLIBCUDACXX_ENABLE_SIMPLIFIED_COMPLEX_OPERATIONS -Xfatbin -compress-all  -Wno-deprecated-gpu-targets --expt-extended-lambda -DCUB_WRAPPED_NAMESPACE=at_cuda_detail -DDISABLE_CUSPARSE_DEPRECATED -DCUDA_HAS_FP16=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -DC10_NODEPRECATED, CXX_COMPILER=/usr/bin/c++, CXX_FLAGS= -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DUSE_PYTORCH_QNNPACK -DAT_BUILD_ARM_VEC256_WITH_SLEEF -DUSE_PYTORCH_METAL_EXPORT -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DUSE_COREML_DELEGATE -O2 -fPIC -DC10_NODEPRECATED -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=braced-scalar-init -Werror=range-loop-construct -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-unknown-pragmas -Wno-unused-parameter -Wno-strict-overflow -Wno-strict-aliasing -Wvla-extension -Wsuggest-override -Wnewline-eof -Winconsistent-missing-override -Winconsistent-missing-destructor-override -Wno-pass-failed -Wno-error=old-style-cast -Wconstant-conversion -Qunused-arguments -faligned-new -fno-math-errno -fno-trapping-math -Werror=format -fclang-abi-compat=17 -DUSE_MPS -Wno-missing-braces, LAPACK_INFO=accelerate, TORCH_VERSION=2.14.1, USE_CUDA=OFF, USE_CUDNN=OFF, USE_CUSPARSELT=OFF, USE_EIGEN_FOR_BLAS=ON, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_GLOO=ON, USE_HIPSPARSELT=OFF, USE_MKL=OFF, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=OFF, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, USE_ROCM_KERNEL_ASSERT=OFF, USE_XCCL=OFF, USE_XPU=OFF, \n",
+    "torch_git": "5c4886908584029761b579af026dcfb627c84070",
+    "threads": 4,
+    "interop_threads": 1,
+    "packages": {
+      "shellingham": {
+        "version": "1.5.4",
+        "record_sha256": "c0c9bfb54aa7c09692c96707aa9f2cba8d237e9aea1a6e87f5dc9599de68e16e"
+      },
+      "narwhals": {
+        "version": "2.27.1",
+        "record_sha256": "29669d3f66d5eb037bfcfaabde59ff5ba6d1bef60dd11f1509ab36aeff44c58e"
+      },
+      "transformers": {
+        "version": "5.20.1",
+        "record_sha256": "cd5851d60ad802502bd4066aa6830d30e51546132deaeb7d3e07e0d333cbf331"
+      },
+      "scikit-learn": {
+        "version": "1.9.1",
+        "record_sha256": "82a95bcfeba0e1e320c313a43bba4745f139abb06b6fc4e1a23538836d006602"
+      },
+      "cloudpickle": {
+        "version": "3.1.2",
+        "record_sha256": "294362ac1a0c1718ccacbb8adf965a94130910b6afcc97f0d58da96a2f2ef99d"
+      },
+      "sentence-transformers": {
+        "version": "6.1.0",
+        "record_sha256": "73b1ba390f4732deccedc445c286aa50d34a726b0df99605affc7e12ab9f6372"
+      },
+      "click": {
+        "version": "8.5.0",
+        "record_sha256": "af7564a4fb3049132c765f55d709d1bdf45aa5d9943161fd18e421d48a1a160e"
+      },
+      "torch": {
+        "version": "2.14.1",
+        "record_sha256": "3684897ddb2a0c1a03c035a76954d38b51a114791e8915c356696ecb0a951d59"
+      },
+      "packaging": {
+        "version": "26.3",
+        "record_sha256": "c0c3df01ef094b6ac324a019f0f33863d70b4faa7195b1fbc8f73e69be56b425"
+      },
+      "networkx": {
+        "version": "3.7",
+        "record_sha256": "b823106a992517d3319f8de9a4729ac62c2ad488e8aff92f643fdfebd49ce1e6"
+      },
+      "joblib": {
+        "version": "1.6.0",
+        "record_sha256": "36215fb168581422cdffe6d301ec461f9496b0da3776474afb5258c5c9941718"
+      },
+      "tokenizers": {
+        "version": "0.23.3",
+        "record_sha256": "8a07fa61830e7dcf7b89086925397a4e2f31672485b98a7c6fbc25673a7f71b0"
+      },
+      "Pygments": {
+        "version": "2.21.0",
+        "record_sha256": "608d3713642270b706761f5e4fd5257b6c5701676fadc2de39d28216765b0eeb"
+      },
+      "rich": {
+        "version": "15.0.0",
+        "record_sha256": "c6419c3f505f6883590c4352aeadea290677b83cf9ae952c8b50f71ae7fce190"
+      },
+      "torchvision": {
+        "version": "0.29.1",
+        "record_sha256": "081e73d07804381fd687ef67bdedf6cc15fcd54b988b4288391d22fdeb50e4c4"
+      },
+      "httpcore": {
+        "version": "1.0.9",
+        "record_sha256": "3b228a4b9eeaec831f19db85097f0ad8eb1c26290444a51c265f11433bee7e55"
+      },
+      "numpy": {
+        "version": "2.5.4",
+        "record_sha256": "1b795a62875f807e829c0f5624600bd959988f8bde13c025336acf2d0147abc5"
+      },
+      "pillow": {
+        "version": "13.0.0",
+        "record_sha256": "4c65a2cde5507ee3d3fdb00d09607a747f738f0d3c15f4a1cb870aaff7ed334f"
+      },
+      "sympy": {
+        "version": "1.14.0",
+        "record_sha256": "e38d2e3726042e3a71064f973103436c3d6f07891409502d168a7794f1db3c6a"
+      },
+      "pip": {
+        "version": "26.2.1",
+        "record_sha256": "96a495e8857c65ec4a89deda0432d0f67561ee14abd871575eb7b5f209c77562"
+      },
+      "hf-xet": {
+        "version": "1.7.0",
+        "record_sha256": "ef38219592f4ca003ae8d3bbcabaa37f8042f38c5108db65e38ca8d9543b01b5"
+      },
+      "safetensors": {
+        "version": "0.8.0",
+        "record_sha256": "1ab239295fc8d1dea1c9903158f004d69dd7adacc6fcd771ee746a7d555a257f"
+      },
+      "tqdm": {
+        "version": "4.70.1",
+        "record_sha256": "f4fd0811c16ef7de4142e2c397e3f0b5d1cb4a7611e2a484ce847975ca046ff6"
+      },
+      "setuptools": {
+        "version": "84.0.0",
+        "record_sha256": "57818b87c8dd954ff58569717dec5cece6f26803e590d308c5ba355a8f8401d3"
+      },
+      "h11": {
+        "version": "0.16.0",
+        "record_sha256": "ba650296768ea16379435a7f3036b9543c0f36dda71a92a967f6472a7e06d121"
+      },
+      "mdurl": {
+        "version": "0.1.2",
+        "record_sha256": "7a5d6bb92ad3a7f3d270ae07908fa93ef5c17109b073b409b6c8f721fcf3a1eb"
+      },
+      "mpmath": {
+        "version": "1.3.0",
+        "record_sha256": "6433c0c4d607d996c70e1bc24102427ec70a89b35a12c081c25f23f877fd2165"
+      },
+      "PyYAML": {
+        "version": "6.0.3",
+        "record_sha256": "6890f1172c70a7251a22cddcf154a3324f7e3e0662394f7c53e8b6e8ba4e6b4c"
+      },
+      "fsspec": {
+        "version": "2026.9.0",
+        "record_sha256": "261d9d56477f8d0d5859631867fe6e9a57041440a8ef2661b7ecd6a90337d407"
+      },
+      "filelock": {
+        "version": "4.2.0",
+        "record_sha256": "5e366c9577b7a139b3e2674e1e135792ab75f5e2478354b8bccfaf0e02979fd6"
+      },
+      "certifi": {
+        "version": "2026.7.22",
+        "record_sha256": "2c3c16a60ff2046d7dd69ff97c2121923f74cd01ef7ffb78a966ac2ea9da2790"
+      },
+      "typer": {
+        "version": "0.27.3",
+        "record_sha256": "bcd90f94457b4bd7e19656b0fee80e11b0e761919dffa65e16f460b7bdf54935"
+      },
+      "Jinja2": {
+        "version": "3.1.6",
+        "record_sha256": "ba8ab2fd1d4863e9cc4772446535658519940174fa0826587903f7871f2bab76"
+      },
+      "regex": {
+        "version": "2026.9.29",
+        "record_sha256": "b7f3316ce74ac7a83f89c37901bf6d3965169ef776d2e933e65b57eea6b1582b"
+      },
+      "markdown-it-py": {
+        "version": "4.2.0",
+        "record_sha256": "6d5538e10b25fce7cf07ae71d502e3138e6f10c571617123e99081dab2668f9f"
+      },
+      "annotated-doc": {
+        "version": "0.0.5",
+        "record_sha256": "770b45695f0e19e4e4a6d59a65b1d29c545da9e0357ad5f879328fa3fce0b5ab"
+      },
+      "threadpoolctl": {
+        "version": "3.7.0",
+        "record_sha256": "141860e24b4ba0123033be6debc4862eddc4117ef02bd9c564a62b595a55866a"
+      },
+      "httpx": {
+        "version": "0.28.1",
+        "record_sha256": "cd4ca1922544541d9736df7d79680688330914a95b7e3260981b2935519a278c"
+      },
+      "typing_extensions": {
+        "version": "4.16.0",
+        "record_sha256": "a3bd396b2053d0700a251a9bf95a184cc9179d1c0544a0d7a810a220b3814049"
+      },
+      "MarkupSafe": {
+        "version": "3.0.4",
+        "record_sha256": "f03ded38b6647d5892376756bc7aebbbfff516047caf39e59e0e469943271962"
+      },
+      "anyio": {
+        "version": "4.15.1",
+        "record_sha256": "612f9af760908a22f569b5604737c473cc396f4a6be97d4eafeb19ebd7368f97"
+      },
+      "scipy": {
+        "version": "1.18.1",
+        "record_sha256": "c8376cdaf2d52ee1e31281ba922765b40e3bce29e06e61b81e277b6a1903a888"
+      },
+      "huggingface_hub": {
+        "version": "1.33.0",
+        "record_sha256": "b0b34ac7a0d19d48333c09ca717327ed82ce20eb43491c67c08c8e3f435dd754"
+      },
+      "idna": {
+        "version": "3.20",
+        "record_sha256": "f1966f53c7a9f8dccd1a41cd7ee948771d651de0423cbe99568e3138fc9b4ac3"
+      }
+    }
+  },
+  "sessions": {
+    "bm25-46": "/private/tmp/graph-verity-issue50-legacy-session",
+    "skos-definitions-v1": "/Users/grove/projects/graph-verity/target/release/examples/retrieval_session"
+  },
+  "session_sha256": {
+    "bm25-46": "712a10f05f2fa4d751871e44ac65f9a11bb1c9e2e6dec676791b946c73e43e73",
+    "skos-definitions-v1": "7fa7ca9968d0f0f568e8a3824feb5752fce30320ba1d678ca4613dda6090c8dd"
+  },
+  "binary_sha256": {
+    "bm25-46": "045f3de669777dbd08eadb663387e689c1fff8f17747fa610ce2926f42fe015d",
+    "skos-definitions-v1": "9aa020c3aaa1d315c1f579b99f1a519b2aceed49b1e05f39fa9090c611f58899"
+  },
+  "code_sha256": {
+    "tools/hybrid_retrieval.py": "63b3c797d12a83e1c3d6c52d57b8d7b54db0040cee7b0f4d5065945fcc9c392f",
+    "tools/gemet.py": "144a6d04b9f242fe932519fc06c273832bd026638cf8b8c07b31e0b271675fea",
+    "tools/embedding_experiment.py": "07503cd9a12fa7636c5074f8ee2fa5d35c689a76d071cd10d0b0be8839abad4d",
+    "tools/retrieval.py": "88d120e1eda1ac31995897022c32c5c208c00cfb0acaf32f1c2c9056732d0709",
+    "tools/embedding-requirements.txt": "3fe68da5cacf6064fc1ca266cd419ceab2600ef93ca95b9618b86c0a0d96c209",
+    "Cargo.lock": "b86b68fc472e2178f4815cfc86a3477713bd3ad74c6872bd70dfbfcbff3cf5d0",
+    "rust-toolchain.toml": "f715f440167e20fd8ea9afa0498c3d1ab80174cfcb8cbc895f106a34d907a1e1",
+    "crates/verity_cli/examples/retrieval_session.rs": "71a27de9d8de7020aa60db794414e26bb41c40a74d32fdf53913fb0740e304a3",
+    "crates/verity_cli/src/main.rs": "d5ef3888c8c48bfeec6fc3d83c0817a2c03b5fea4cabf9aad51d61d6e4d7d479",
+    "crates/verity_cli/tests/ask.rs": "797adc09e42425e5d4c722e044f56c204260f9e1e442c01c7f297645b64a6e6b",
+    "crates/verity_cli/tests/compact.rs": "331091090e90308def92d93a16ac8be1bcab2b6a8cbccdc57519f3f88c1c4498",
+    "crates/verity_cli/tests/discovery.rs": "855957b0e71087044b93a51c8e5b1e8b1df84066138235bf227b0039e038b1ca",
+    "crates/verity_cli/tests/find.rs": "3809db1cfad320e54d8567f3a18ef0373fdc6401d591bf0e13e39a0a3098ba51",
+    "crates/verity_cli/tests/navigation.rs": "760d065c3377efa0146a1c602b626b91f96c29efca3db9ebc818a50863e65cf3",
+    "crates/verity_core/src/ask.rs": "0a963469a5dc679bad4097e5cee211a7e51fbbcf800f9d336a537d3d7d1287e0",
+    "crates/verity_core/src/catalog.rs": "b2d0a974d3481853d1d86b0d066e8c117a83bcc429c815c72ef7e9d9c58f17da",
+    "crates/verity_core/src/compact.rs": "84512bd602ff1b91b3d7f194c234588a83273ded8ce6da79657c498a3287fdbe",
+    "crates/verity_core/src/compiler.rs": "3155caad912653f997f442d3c74e0e8bc32f765ec2bb2c1413a8b21ded8d74e1",
+    "crates/verity_core/src/discovery.rs": "62b3e763182ef3d2ffa57dc2a26e8277ce4398f7b83bb7f61e33f3df3d5e4f82",
+    "crates/verity_core/src/evaluation.rs": "27e4775d2cd0721dd000667bf775dede31465732eea256dbf9af7b6536913f31",
+    "crates/verity_core/src/execution.rs": "18401d0b0ca00a2780d2184343dca64b701b3c58faa097134929eff8b1731c0f",
+    "crates/verity_core/src/find.rs": "913c67920e8dbde44369e435413658ff2aa7c64f00f0cb20be22f9a5a25f1649",
+    "crates/verity_core/src/ir.rs": "4f050b3b920509e1409b8d1dd2bfd7df8c5bb650f29c30f6fc2da0ca2f547c11",
+    "crates/verity_core/src/lib.rs": "dba3fbcccb5b4fd2831d85bc4287e3d38ee105b6528f6a759c7debcdc7010898",
+    "crates/verity_core/src/navigation.rs": "c7a0bcdd0f11c3d85da7fd630ef6064218b9cf57341c65ec46a9ae9e481b16a5",
+    "crates/verity_core/src/parser.rs": "6bfbc1bdba1268039990ab62d2ab6970b404ba1f428b010db39dbaeedadafd13",
+    "crates/verity_core/tests/ask.rs": "011a93fee598e8522cfed7619785f82e6bb09cd884d535bd9bb3fd853517b093",
+    "crates/verity_core/tests/compact.rs": "c11f9bf03ee685656720ec3ef62b04a44debfdba587b01b9cdb3441761aa71df",
+    "crates/verity_core/tests/core.rs": "1741390d5be289c622f41013978511a95898f980e423c5c1cd9c0e94b1e0358b",
+    "crates/verity_core/tests/discovery.rs": "aa2d5717b91bdea2cfce69a6f322626b72aa102931efc2a658330920b58bd493",
+    "crates/verity_core/tests/find.rs": "e9cbf4b60c3f024beb8aa03802e19cb4771e179627e723e78f9ccc53e1403401",
+    "crates/verity_core/tests/navigation.rs": "4dcc58c047164fcf18fa32f79176e80d1e0e01d2b69b6d00768fe1e4679aac5b"
+  },
+  "inputs_sha256": {
+    "benchmarks/embeddinggemma/manifest.json": "ee1dc53af42be51a7b532c3932734080648793830ccd6600fe4f280270ea7cce",
+    "benchmarks/hybrid/cases.json": "8fcaaa16c7c991f3ed52ea5b93fd7fc569bfb01291a6ca383d19f22a91efa906",
+    "benchmarks/hybrid/queries.tsv": "bbc4aaa75ec51e3cc63f8edf4852cd9eb4a268261ee421ff3900dec56083ccec",
+    "data/gemet/discovery.json": "050736e69ea1164495ef9b8adeee59ffba7fec665488f883e16b0166edd9da8d",
+    "data/gemet/manifest.json": "0230b6049f465e0c62b4a9f2d6f179be38ebd85e4ead0dbc5a51757408d62fe8",
+    "data/gemet/policy.json": "54870f5f76d1a8075689986ab4b272c52896541b394c96f22081f75293804a0d",
+    "data/gemet/scope.json": "58707821d63dd6ffdc94c995ee72fc17044d577ad775bad0303f9856a125f7d6",
+    "data/gemet/snapshot.nq": "0d3f1c7e412940ffbedd83c703ab6a62e6be619fa0c2ca2cd9523a1806c3eaed",
+    "data/gemet/source/download.html": "f4ed449554d0e159b7452cba0b974de9c8cd4f937e538a150bf85d5ebe87e59a",
+    "data/gemet/source/gemet-4.2.3.rdf.gz": "96002bb7cd1f89bccb05ee174fb834a04dd7342bdd1428f32105cd47fd6b73b6",
+    "data/gemet/source/skos.rdf": "e79633b8d0564816cee8a99f5c9acf9a0e6fc7257c7209acd684ecad53a89dd6",
+    "data/gemet/source/w3c-license.html": "5497437f8e227f2a64def93edfccc6a85088a5c8e1924cacf419090e57c7c058",
+    "data/gemet/stats.json": "0ced3e6619e504ecefb50503d1045b6540ae63fb00197027397d78f0c020fc64",
+    "tools/gemet.py": "144a6d04b9f242fe932519fc06c273832bd026638cf8b8c07b31e0b271675fea"
+  },
+  "exports_sha256": {
+    "bm25-46-documents.json.gz": "73bcb69c838347dd19029c705d3b83443487b72ae628f80863bd5afa8fd97638",
+    "skos-definitions-v1-documents.json.gz": "d5a98391a4f3ba7b78cf9d5d6d30a1c9bcb1d1735c450c17faa5eebfb4b0a1ba"
+  },
+  "baseline_revision": "be68f23",
+  "cpu_description": "Apple M1 Pro 10-core, 32 GiB, native macOS arm64; host scheduler, four Torch threads, one inter-op; no Metal or CPU isolation; repeat corrects process-tree RSS instrumentation, no relevance/ranking changes",
+  "scheduling": "Native host scheduler; four Torch intra-op threads, one inter-op; no affinity or quota; OS caches retained",
+  "legal_sha256": {
+    "APACHE-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "gemma-terms.html": "9d9fc13973c43dfb632eb6b2275d75f79531c0013804f9aec23898c1e169d0a1",
+    "prohibited-use-policy.html": "4ccd5c38d267c9f0c741354afc5fe5b9a5835d34b2a474f155422ca5eece1818"
+  },
+  "compiler": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: aarch64-apple-darwin\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "no_tuning": true,
+  "holdout_accessed": false
+}

@@ -1,0 +1,148 @@
+{
+  "bm25-46": {
+    "bm25": {
+      "n": 122,
+      "p50": 1.0709576308727264,
+      "p95": 5.593832582235336,
+      "p99": 5.971166305243969
+    },
+    "embedding": {
+      "n": 122,
+      "p50": 67.67083331942558,
+      "p95": 93.99079158902168,
+      "p99": 152.22762431949377
+    },
+    "fusion": {
+      "n": 122,
+      "p50": 68.98937374353409,
+      "p95": 95.11995781213045,
+      "p99": 153.90437562018633
+    },
+    "cold_samples": [
+      {
+        "elapsed_ms": 9501.32295768708,
+        "model_load_ms": 6050.213084556162,
+        "query_id": "hybrid-001",
+        "lexical_hits": 50,
+        "dense_hits": 50,
+        "worker_peak_rss_bytes": 2190524416,
+        "nested_child_peak_rss_bytes": 30408704
+      },
+      {
+        "elapsed_ms": 7282.713042572141,
+        "model_load_ms": 4278.266916051507,
+        "query_id": "hybrid-021",
+        "lexical_hits": 23,
+        "dense_hits": 50,
+        "worker_peak_rss_bytes": 2322710528,
+        "nested_child_peak_rss_bytes": 30179328
+      },
+      {
+        "elapsed_ms": 7676.293917000294,
+        "model_load_ms": 4377.935499884188,
+        "query_id": "hybrid-033",
+        "lexical_hits": 29,
+        "dense_hits": 50,
+        "worker_peak_rss_bytes": 2188328960,
+        "nested_child_peak_rss_bytes": 29999104
+      },
+      {
+        "elapsed_ms": 7920.693290419877,
+        "model_load_ms": 4770.757707767189,
+        "query_id": "hybrid-055",
+        "lexical_hits": 1,
+        "dense_hits": 50,
+        "worker_peak_rss_bytes": 2316386304,
+        "nested_child_peak_rss_bytes": 27983872
+      },
+      {
+        "elapsed_ms": 7131.0145845636725,
+        "model_load_ms": 4157.669332809746,
+        "query_id": "hybrid-091",
+        "lexical_hits": 50,
+        "dense_hits": 50,
+        "worker_peak_rss_bytes": 2310389760,
+        "nested_child_peak_rss_bytes": 30343168
+      }
+    ],
+    "cold_fusion_end_to_end": {
+      "n": 5,
+      "p50": 7676.293917000294,
+      "p95": 9501.32295768708,
+      "p99": 9501.32295768708
+    }
+  },
+  "skos-definitions-v1": {
+    "bm25": {
+      "n": 122,
+      "p50": 1.466125249862671,
+      "p95": 5.932332947850227,
+      "p99": 6.250250153243542
+    },
+    "embedding": {
+      "n": 122,
+      "p50": 64.16779197752476,
+      "p95": 83.10420904308558,
+      "p99": 121.4525830000639
+    },
+    "fusion": {
+      "n": 122,
+      "p50": 65.91487489640713,
+      "p95": 85.70883236825466,
+      "p99": 124.28000010550022
+    },
+    "cold_samples": [
+      {
+        "elapsed_ms": 9186.934917233884,
+        "model_load_ms": 5651.627583429217,
+        "query_id": "hybrid-001",
+        "lexical_hits": 50,
+        "dense_hits": 50,
+        "worker_peak_rss_bytes": 1902886912,
+        "nested_child_peak_rss_bytes": 61112320
+      },
+      {
+        "elapsed_ms": 7805.6795839220285,
+        "model_load_ms": 4694.586249999702,
+        "query_id": "hybrid-021",
+        "lexical_hits": 50,
+        "dense_hits": 50,
+        "worker_peak_rss_bytes": 2005073920,
+        "nested_child_peak_rss_bytes": 57933824
+      },
+      {
+        "elapsed_ms": 7466.34874958545,
+        "model_load_ms": 4192.065958864987,
+        "query_id": "hybrid-033",
+        "lexical_hits": 50,
+        "dense_hits": 50,
+        "worker_peak_rss_bytes": 2241593344,
+        "nested_child_peak_rss_bytes": 58851328
+      },
+      {
+        "elapsed_ms": 7464.500458911061,
+        "model_load_ms": 4033.206708729267,
+        "query_id": "hybrid-055",
+        "lexical_hits": 1,
+        "dense_hits": 50,
+        "worker_peak_rss_bytes": 2247409664,
+        "nested_child_peak_rss_bytes": 58212352
+      },
+      {
+        "elapsed_ms": 7555.890916846693,
+        "model_load_ms": 4162.135417573154,
+        "query_id": "hybrid-091",
+        "lexical_hits": 50,
+        "dense_hits": 50,
+        "worker_peak_rss_bytes": 1907474432,
+        "nested_child_peak_rss_bytes": 57933824
+      }
+    ],
+    "cold_fusion_end_to_end": {
+      "n": 5,
+      "p50": 7555.890916846693,
+      "p95": 9186.934917233884,
+      "p99": 9186.934917233884
+    }
+  }
+}

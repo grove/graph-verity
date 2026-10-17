@@ -406,3 +406,41 @@ fn retained_snapshot_configs_pin_sources_importers_and_cover_every_resource() {
         }
     }
 }
+
+#[test]
+fn skos_definitions_keep_original_witnesses_and_authorized_scope() {
+    let rdf = format!(
+        r#"@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+        <{A}> {{ <urn:term> skos:definition "{}"@no . }}
+        <{B}> {{ <urn:term> skos:definition "other graph"@en . }}
+        <{PRIVATE}> {{ <urn:term> skos:definition "PRIVATE_DEFINITION_CANARY"@en .
+                        <urn:PRIVATE_ID_CANARY> skos:definition "PRIVATE_TEXT_CANARY"@en . }}"#,
+        "æ".repeat(513)
+    );
+    let snapshot = Snapshot::from_bytes(rdf.as_bytes(), "trig").unwrap();
+    let index = snapshot
+        .build_discovery(&[A.into()], &policy(), &config(&snapshot))
+        .unwrap();
+    let text = index.graphs()[A].documents["urn:term"]
+        .texts
+        .iter()
+        .next()
+        .unwrap();
+    assert_eq!(text.field, Field::Description);
+    assert_eq!(
+        text.predicate,
+        "http://www.w3.org/2004/02/skos/core#definition"
+    );
+    assert_eq!(text.value.language.as_deref(), Some("no"));
+    assert_eq!(
+        text.value.datatype,
+        "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+    );
+    assert_eq!(text.value.text.chars().count(), 512);
+    assert!(text.truncated);
+    assert!(text.via.is_none());
+    let output = String::from_utf8(serialized(&index)).unwrap();
+    assert!(!output.contains("CANARY"));
+    assert!(!output.contains("other graph"));
+    assert_eq!(index.graphs()[A].statistics.documents, 2);
+}

@@ -108,6 +108,11 @@ def main() -> int:
         run("clippy", ["cargo", "clippy", "--workspace", "--all-targets", "--locked",
                        "--offline", "--", "-D", "warnings"])
         run("rust-tests", ["cargo", "test", "--workspace", "--locked", "--offline"])
+        run("hybrid-source-scope-canary", [sys.executable, "tools/hybrid_retrieval.py", "scope-canary",
+                                          "--binary", "target/debug/verity"])
+        run("hybrid-native-lexical-replay", [sys.executable, "tools/hybrid_retrieval.py", "verify-lexical",
+                                            "--binary", "target/debug/verity", "--out",
+                                            "reports/issue-50-real-rdf-hybrid/run"])
         cli("smoke", "smoke", "tests/fixtures/smoke.trig", "trig")
         run("dataset-verify", [sys.executable, "tools/dataset.py", "verify"])
         rebuilt = OUT / "rebuilt.nq"

@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "status": "preregistered_before_any_retrieval_ranks_or_model_inference",
+  "model": "google/embeddinggemma-2",
+  "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+  "fusion": {
+    "method": "reciprocal rank fusion",
+    "constant": 60,
+    "weights": [
+      1,
+      1
+    ],
+    "inputs": "BM25 top 50 and embedding top 50; no exact-match override",
+    "ties": "IRI then graph",
+    "tuning": "No tuning; fixed before inference; development reported separately from evaluation"
+  },
+  "parameters": {
+    "limit": 50,
+    "k1": 1.2,
+    "b": 0.75,
+    "max_tokens": 256
+  },
+  "cases": "benchmarks/hybrid/cases.json",
+  "baseline_revision": "be68f23",
+  "corpus": {
+    "rdf": "data/gemet/snapshot.nq",
+    "format": "nquads",
+    "policy": "data/gemet/policy.json",
+    "scope": "data/gemet/scope.json",
+    "config": "data/gemet/discovery.json"
+  },
+  "variants": {
+    "bm25-46": "Unchanged #46 revised BM25 and its identical label/comment/IRI text for dense/fusion; GEMET SKOS definitions remain source-visible but unindexed.",
+    "skos-definitions-v1": "Separately versioned observed-text variant: add original skos:definition as description, capped at 512 Unicode scalars. Same candidate IDs/roles/scope, BM25 algorithm, dense runtime and fusion."
+  },
+  "counts": {
+    "total": 122,
+    "split": {
+      "development": 40,
+      "evaluation": 82
+    },
+    "language": {
+      "en": 60,
+      "no": 62
+    },
+    "family": {
+      "identifier": 10,
+      "alias": 10,
+      "entity": 20,
+      "paraphrase": 26,
+      "cross_language": 12,
+      "long_description": 6,
+      "multi_relevant": 6,
+      "ambiguous": 6,
+      "no_match": 10,
+      "hard_negative": 4,
+      "predicate": 4,
+      "direction": 4,
+      "class": 4
+    }
+  },
+  "shared_resource_lineages": [
+    "resource:http://www.eionet.europa.eu/gemet/concept/1476",
+    "resource:http://www.eionet.europa.eu/gemet/concept/2714",
+    "resource:http://www.eionet.europa.eu/gemet/concept/2740",
+    "resource:http://www.eionet.europa.eu/gemet/concept/6492",
+    "resource:http://www.eionet.europa.eu/gemet/concept/7858"
+  ],
+  "independence": "Public AI-authored source-audited cases, no independent reviewer. Most target lineages disjoint; listed overlaps are correlated and never called unseen independent tests. No tuning in either split.",
+  "policy": "BM25 retains #46 exact tier and conservative pre-clipping states. Dense/fusion have no exact tier or similarity threshold. Zero role-authorized candidates -> no_match, one -> low_confidence, more -> ambiguous_candidates before top50 clipping. No lexical veto, calibrated confidence, query interpretation, or execution.",
+  "adoption": {
+    "recall10_gain": 0.05,
+    "mrr10_gain": 0.03,
+    "max_language_regression": 0.02,
+    "max_no_match_return_increase": 0.02,
+    "exact_rank_regressions": 0,
+    "warm_p95_ms": 1000,
+    "rss_bytes": 4294967296,
+    "resources_max": 10000,
+    "uncertainty": "Qualifying paired query-bootstrap lower bound >0; descriptive only. Independent relevance/usability review and separate owner/release decision still required."
+  },
+  "cold_case_indices": [
+    0,
+    20,
+    32,
+    54,
+    90
+  ],
+  "timing": "Warm: actual persistent Rust index NDJSON request/response IO + resident dense tokenizer/inference/rank/output serialization + fusion/output serialization; each frozen query once in source order, including first. Cold: fresh Python process imports/model load, stored vector load, fresh Rust import/build, one query and process teardown; five preregistered query indices; OS caches not evicted. Four Torch intra-op threads, one inter-op; no affinity/Metal.",
+  "intervals": "2000 query-level percentile bootstrap samples, seed37; correlated and AI-reference-only, not population intervals; n=5 cold p95/p99 are maxima.",
+  "controls": "Original frozen #37-46 reports/fixtures unchanged; normal model-free replay plus fresh #46 lexical regression run. #48 remains separate retrieval-grounded parser follow-up.",
+  "sha256": {
+    "benchmarks/embeddinggemma/manifest.json": "ee1dc53af42be51a7b532c3932734080648793830ccd6600fe4f280270ea7cce",
+    "benchmarks/hybrid/cases.json": "8fcaaa16c7c991f3ed52ea5b93fd7fc569bfb01291a6ca383d19f22a91efa906",
+    "benchmarks/hybrid/queries.tsv": "bbc4aaa75ec51e3cc63f8edf4852cd9eb4a268261ee421ff3900dec56083ccec",
+    "data/gemet/discovery.json": "050736e69ea1164495ef9b8adeee59ffba7fec665488f883e16b0166edd9da8d",
+    "data/gemet/manifest.json": "0230b6049f465e0c62b4a9f2d6f179be38ebd85e4ead0dbc5a51757408d62fe8",
+    "data/gemet/policy.json": "54870f5f76d1a8075689986ab4b272c52896541b394c96f22081f75293804a0d",
+    "data/gemet/scope.json": "58707821d63dd6ffdc94c995ee72fc17044d577ad775bad0303f9856a125f7d6",
+    "data/gemet/snapshot.nq": "0d3f1c7e412940ffbedd83c703ab6a62e6be619fa0c2ca2cd9523a1806c3eaed",
+    "data/gemet/source/download.html": "f4ed449554d0e159b7452cba0b974de9c8cd4f937e538a150bf85d5ebe87e59a",
+    "data/gemet/source/gemet-4.2.3.rdf.gz": "96002bb7cd1f89bccb05ee174fb834a04dd7342bdd1428f32105cd47fd6b73b6",
+    "data/gemet/source/skos.rdf": "e79633b8d0564816cee8a99f5c9acf9a0e6fc7257c7209acd684ecad53a89dd6",
+    "data/gemet/source/w3c-license.html": "5497437f8e227f2a64def93edfccc6a85088a5c8e1924cacf419090e57c7c058",
+    "data/gemet/stats.json": "0ced3e6619e504ecefb50503d1045b6540ae63fb00197027397d78f0c020fc64",
+    "tools/gemet.py": "144a6d04b9f242fe932519fc06c273832bd026638cf8b8c07b31e0b271675fea"
+  }
+}

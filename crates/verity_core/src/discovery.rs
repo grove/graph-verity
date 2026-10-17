@@ -9,7 +9,7 @@ use std::collections::{BTreeMap, BTreeSet};
 
 pub const MAX_INDEX_BYTES: usize = 64 * 1024 * 1024;
 const DESCRIPTION_CHARS: usize = 512;
-const RULES: &str = "unicode-lowercase-alphanumeric-v1; no NFC, stemming, transliteration or stopwords; IRI plus observed text; en/no/nb/nn language families and untagged; descriptions first 512 Unicode scalars; graph-local explicit wikibase:directClaim label/alias retrieval via source statements, observed predicates only, no inference or chaining";
+const RULES: &str = "unicode-lowercase-alphanumeric-v1; no NFC, stemming, transliteration or stopwords; IRI plus observed text; en/no/nb/nn language families and untagged; descriptions including skos:definition first 512 Unicode scalars; graph-local explicit wikibase:directClaim label/alias retrieval via source statements, observed predicates only, no inference or chaining";
 pub const DIRECT_CLAIM: &str = "http://wikiba.se/ontology#directClaim";
 
 /// Operator-supplied provenance, bound to immutable snapshot bytes. Never model input.
@@ -147,6 +147,7 @@ fn field(predicate: &str) -> Option<Field> {
         | "http://schema.org/identifier"
         | "https://schema.org/identifier" => Field::Identifier,
         "http://www.w3.org/2000/01/rdf-schema#comment"
+        | "http://www.w3.org/2004/02/skos/core#definition"
         | "http://purl.org/dc/terms/description"
         | "http://schema.org/description"
         | "https://schema.org/description" => Field::Description,
