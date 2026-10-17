@@ -87,6 +87,14 @@ class GroundedModelTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 verify_freeze(freeze, current=False)
 
+    def test_saved_scoring_still_rejects_changed_public_reference_inputs(self):
+        with tempfile.TemporaryDirectory() as directory:
+            folder = Path(directory)
+            dump(folder / "freeze.json", {"input_sha256": {"benchmarks/adversarial.json": "wrong"}})
+            dump(folder / "checksums.json", file_hashes(folder))
+            with self.assertRaisesRegex(ValueError, "benchmarks/adversarial.json"):
+                verify_freeze(folder, current=False)
+
     def test_frozen_public_find_contexts_and_saved_raw_outputs_replay_in_rust(self):
         import contextlib
         import io

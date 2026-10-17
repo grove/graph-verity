@@ -208,9 +208,10 @@ def freeze(cfg, out):
 def verify_freeze(folder, current=True):
     require(read(folder / "checksums.json") == file_hashes(folder), "Freeze bytes changed")
     record = read(folder / "freeze.json")
-    if current:
-        for name, digest in record["input_sha256"].items():
+    for name, digest in record.get("input_sha256", {}).items():
+        if current or name.startswith(("benchmarks/", "data/", "configs/", "schemas/")):
             require(sha(ROOT / name) == digest, f"Post-freeze input changed: {name}")
+    if current:
         require(sha(CLI) == record["cli_sha256"], "Post-freeze Rust binary changed")
     return record
 
