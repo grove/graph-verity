@@ -2,6 +2,7 @@
 #![forbid(unsafe_code)]
 
 pub mod catalog;
+pub mod compact;
 pub mod compiler;
 pub mod evaluation;
 pub mod execution;
