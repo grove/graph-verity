@@ -1,0 +1,1768 @@
+{
+  "version": 1,
+  "date": "2026-10-17",
+  "decision": {
+    "unattended_free_form_ask": "STOP_TESTED_CONFIGURATIONS",
+    "product_direction": "REVISE_FIND_FIRST",
+    "formal_phase0_gate": "NOT READY",
+    "evidence_class": "public_development_AI_reference_agreement_only",
+    "expert_gold_review_completed": false,
+    "sealed_holdout_evaluated": false,
+    "sealed_holdout_independence_established": false,
+    "phase1_implemented": false
+  },
+  "facts": [
+    {
+      "name": "v1.contract_valid",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v1",
+        "contract_valid"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 22,
+        "denominator": 30,
+        "value": 0.7333333333333333,
+        "wilson_95": [
+          0.5555169795568831,
+          0.8581750444608938
+        ]
+      }
+    },
+    {
+      "name": "v1.invalid_contract",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v1",
+        "invalid_contract"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 8,
+        "denominator": 30,
+        "value": 0.26666666666666666,
+        "wilson_95": [
+          0.14182495553910618,
+          0.4444830204431169
+        ]
+      }
+    },
+    {
+      "name": "v1.strict_complete_exact",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v1",
+        "strict_complete_exact"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 24,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.13798057582897535
+        ]
+      }
+    },
+    {
+      "name": "v1.correct_status_abstention",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v1",
+        "correct_status_abstention"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 6,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.3903430336530645
+        ]
+      }
+    },
+    {
+      "name": "v1.execution",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v1",
+        "execution"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 4,
+        "denominator": 30,
+        "value": 0.13333333333333333,
+        "wilson_95": [
+          0.05309569424218104,
+          0.2968168394441695
+        ]
+      }
+    },
+    {
+      "name": "v1.wrong_executable_strict",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v1",
+        "wrong_executable_strict"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 4,
+        "denominator": 30,
+        "value": 0.13333333333333333,
+        "wilson_95": [
+          0.05309569424218104,
+          0.2968168394441695
+        ]
+      }
+    },
+    {
+      "name": "v1.scope_failure",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v1",
+        "scope_failure"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 30,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.113517091390478
+        ]
+      }
+    },
+    {
+      "name": "v1.canary_disclosure",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v1",
+        "canary_disclosure"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 30,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.113517091390478
+        ]
+      }
+    },
+    {
+      "name": "v1.non_read_only_execution",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v1",
+        "non_read_only_execution"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 30,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.113517091390478
+        ]
+      }
+    },
+    {
+      "name": "v1.input_tokens",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v1",
+        "input_tokens"
+      ],
+      "value": 33561
+    },
+    {
+      "name": "v1.output_tokens",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v1",
+        "output_tokens"
+      ],
+      "value": 15714
+    },
+    {
+      "name": "v1.performance",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "performance",
+        "v1"
+      ],
+      "value": {
+        "sampled_aggregate_peak_rss_kib": 1500560,
+        "child_lifetime_peak_rss_kib": 1471888.0,
+        "rss_samples": 1955,
+        "cache_condition": "new server per dataset; OS page cache not evicted; cache_prompt=True",
+        "datasets": {
+          "adversarial": {
+            "cold_first_answer_ms_page_cache_not_evicted": 17406.309084456752,
+            "warm_end_to_end_ms": {
+              "p50": 11005.858167,
+              "p95": 23728.960874999997,
+              "p99": 23728.960874999997
+            },
+            "generation_ms": {
+              "p50": 11968.492667,
+              "p95": 23727.849791,
+              "p99": 23727.849791
+            }
+          },
+          "adversarial-transfer": {
+            "cold_first_answer_ms_page_cache_not_evicted": 17004.29766673505,
+            "warm_end_to_end_ms": {
+              "p50": 13355.123125,
+              "p95": 27377.883041,
+              "p99": 27377.883041
+            },
+            "generation_ms": {
+              "p50": 16552.354292,
+              "p95": 27376.696625,
+              "p99": 27376.696625
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "v2.contract_valid",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v2",
+        "contract_valid"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 28,
+        "denominator": 30,
+        "value": 0.9333333333333333,
+        "wilson_95": [
+          0.7867618227892791,
+          0.9815233646723066
+        ]
+      }
+    },
+    {
+      "name": "v2.invalid_contract",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v2",
+        "invalid_contract"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 2,
+        "denominator": 30,
+        "value": 0.06666666666666667,
+        "wilson_95": [
+          0.01847663532769335,
+          0.21323817721072091
+        ]
+      }
+    },
+    {
+      "name": "v2.strict_complete_exact",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v2",
+        "strict_complete_exact"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 24,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.13798057582897535
+        ]
+      }
+    },
+    {
+      "name": "v2.correct_status_abstention",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v2",
+        "correct_status_abstention"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 6,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.3903430336530645
+        ]
+      }
+    },
+    {
+      "name": "v2.execution",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v2",
+        "execution"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 30,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.113517091390478
+        ]
+      }
+    },
+    {
+      "name": "v2.wrong_executable_strict",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v2",
+        "wrong_executable_strict"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 30,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.113517091390478
+        ]
+      }
+    },
+    {
+      "name": "v2.scope_failure",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v2",
+        "scope_failure"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 30,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.113517091390478
+        ]
+      }
+    },
+    {
+      "name": "v2.canary_disclosure",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v2",
+        "canary_disclosure"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 30,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.113517091390478
+        ]
+      }
+    },
+    {
+      "name": "v2.non_read_only_execution",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v2",
+        "non_read_only_execution"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 30,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.113517091390478
+        ]
+      }
+    },
+    {
+      "name": "v2.input_tokens",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v2",
+        "input_tokens"
+      ],
+      "value": 78028
+    },
+    {
+      "name": "v2.output_tokens",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "overall",
+        "v2",
+        "output_tokens"
+      ],
+      "value": 19702
+    },
+    {
+      "name": "v2.performance",
+      "source": "reports/issue-32-compact-ab/comparison.json",
+      "source_sha256": "2b8eb2065b8c5252f4e99a256605765bf13d6f5e5524922fd3404f87c1dd4918",
+      "keys": [
+        "performance",
+        "v2"
+      ],
+      "value": {
+        "sampled_aggregate_peak_rss_kib": 1478368,
+        "child_lifetime_peak_rss_kib": 1445760.0,
+        "rss_samples": 5588,
+        "cache_condition": "new server per dataset; OS page cache not evicted; cache_prompt=True",
+        "datasets": {
+          "adversarial": {
+            "cold_first_answer_ms_page_cache_not_evicted": 109888.34616689995,
+            "warm_end_to_end_ms": {
+              "p50": 34874.052958,
+              "p95": 60180.802334,
+              "p99": 60180.802334
+            },
+            "generation_ms": {
+              "p50": 36838.617084,
+              "p95": 109184.7775,
+              "p99": 109184.7775
+            }
+          },
+          "adversarial-transfer": {
+            "cold_first_answer_ms_page_cache_not_evicted": 60659.343584198214,
+            "warm_end_to_end_ms": {
+              "p50": 53000.23675,
+              "p95": 80775.8685,
+              "p99": 80775.8685
+            },
+            "generation_ms": {
+              "p50": 53357.220791,
+              "p95": 80772.594375,
+              "p99": 80772.594375
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "development.wikidata.contract_valid",
+      "source": "reports/phase-0-baseline/summary.json",
+      "source_sha256": "7111891e1f076532b6ded631731c69f79ed9950b3cf75ad903e9a986ab08b33e",
+      "keys": [
+        "datasets",
+        "wikidata",
+        "metrics",
+        "contract_valid"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 41,
+        "denominator": 46,
+        "value": 0.8913043478260869,
+        "wilson_95": [
+          0.7696189698736853,
+          0.9526692391725731
+        ]
+      }
+    },
+    {
+      "name": "development.wikidata.structural_ir",
+      "source": "reports/phase-0-baseline/summary.json",
+      "source_sha256": "7111891e1f076532b6ded631731c69f79ed9950b3cf75ad903e9a986ab08b33e",
+      "keys": [
+        "datasets",
+        "wikidata",
+        "metrics",
+        "structural_ir"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 38,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.09181293258383999
+        ]
+      }
+    },
+    {
+      "name": "development.wikidata.exact_answer",
+      "source": "reports/phase-0-baseline/summary.json",
+      "source_sha256": "7111891e1f076532b6ded631731c69f79ed9950b3cf75ad903e9a986ab08b33e",
+      "keys": [
+        "datasets",
+        "wikidata",
+        "metrics",
+        "exact_answer"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 3,
+        "denominator": 38,
+        "value": 0.07894736842105263,
+        "wilson_95": [
+          0.02721410139426493,
+          0.2079967892026529
+        ]
+      }
+    },
+    {
+      "name": "development.wikidata.correct_abstention",
+      "source": "reports/phase-0-baseline/summary.json",
+      "source_sha256": "7111891e1f076532b6ded631731c69f79ed9950b3cf75ad903e9a986ab08b33e",
+      "keys": [
+        "datasets",
+        "wikidata",
+        "metrics",
+        "correct_abstention"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 8,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.3244156195108769
+        ]
+      }
+    },
+    {
+      "name": "development.wikidata.wrong_plan_executed",
+      "source": "reports/phase-0-baseline/summary.json",
+      "source_sha256": "7111891e1f076532b6ded631731c69f79ed9950b3cf75ad903e9a986ab08b33e",
+      "keys": [
+        "datasets",
+        "wikidata",
+        "metrics",
+        "wrong_plan_executed"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 19,
+        "denominator": 46,
+        "value": 0.41304347826086957,
+        "wilson_95": [
+          0.2828839329710102,
+          0.5566075761298211
+        ]
+      }
+    },
+    {
+      "name": "development.worldcities-transfer.contract_valid",
+      "source": "reports/phase-0-baseline/summary.json",
+      "source_sha256": "7111891e1f076532b6ded631731c69f79ed9950b3cf75ad903e9a986ab08b33e",
+      "keys": [
+        "datasets",
+        "worldcities-transfer",
+        "metrics",
+        "contract_valid"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 32,
+        "denominator": 40,
+        "value": 0.8,
+        "wilson_95": [
+          0.6524239261814333,
+          0.8950013502683314
+        ]
+      }
+    },
+    {
+      "name": "development.worldcities-transfer.structural_ir",
+      "source": "reports/phase-0-baseline/summary.json",
+      "source_sha256": "7111891e1f076532b6ded631731c69f79ed9950b3cf75ad903e9a986ab08b33e",
+      "keys": [
+        "datasets",
+        "worldcities-transfer",
+        "metrics",
+        "structural_ir"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 35,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.09890426758938868
+        ]
+      }
+    },
+    {
+      "name": "development.worldcities-transfer.exact_answer",
+      "source": "reports/phase-0-baseline/summary.json",
+      "source_sha256": "7111891e1f076532b6ded631731c69f79ed9950b3cf75ad903e9a986ab08b33e",
+      "keys": [
+        "datasets",
+        "worldcities-transfer",
+        "metrics",
+        "exact_answer"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 35,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.09890426758938868
+        ]
+      }
+    },
+    {
+      "name": "development.worldcities-transfer.correct_abstention",
+      "source": "reports/phase-0-baseline/summary.json",
+      "source_sha256": "7111891e1f076532b6ded631731c69f79ed9950b3cf75ad903e9a986ab08b33e",
+      "keys": [
+        "datasets",
+        "worldcities-transfer",
+        "metrics",
+        "correct_abstention"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 0,
+        "denominator": 5,
+        "value": 0.0,
+        "wilson_95": [
+          0,
+          0.43449149475208104
+        ]
+      }
+    },
+    {
+      "name": "development.worldcities-transfer.wrong_plan_executed",
+      "source": "reports/phase-0-baseline/summary.json",
+      "source_sha256": "7111891e1f076532b6ded631731c69f79ed9950b3cf75ad903e9a986ab08b33e",
+      "keys": [
+        "datasets",
+        "worldcities-transfer",
+        "metrics",
+        "wrong_plan_executed"
+      ],
+      "value": {
+        "status": "measured",
+        "numerator": 8,
+        "denominator": 40,
+        "value": 0.2,
+        "wilson_95": [
+          0.10499864973166874,
+          0.34757607381856676
+        ]
+      }
+    },
+    {
+      "name": "development.performance",
+      "source": "reports/local-parser-development/summary.json",
+      "source_sha256": "e67ae5656cf2fbd6aad741def9a569339620b870dc9852cd89c36444b4fc96e6",
+      "keys": [],
+      "value": {
+        "wikidata": {
+          "questions": 46,
+          "supported": 38,
+          "expected_abstentions": 8,
+          "json_valid": 41,
+          "contract_valid": 41,
+          "invalid_contract": 5,
+          "backend_failures": 0,
+          "safety_rejected": 22,
+          "abstained_without_execution": 0,
+          "correct_status_abstentions": 0,
+          "false_abstentions": 0,
+          "structural_AI_reference_matches": 0,
+          "exact_answer_AI_reference_matches": 3,
+          "wrong_plan_successful_executions": 19,
+          "wrong_but_contract_valid_candidates": 41,
+          "per_family": {
+            "ambiguous": [
+              0,
+              2
+            ],
+            "conjunction_distinct_count": [
+              0,
+              1
+            ],
+            "conjunction_numeric_date": [
+              0,
+              1
+            ],
+            "date_comparison": [
+              0,
+              4
+            ],
+            "date_lookup": [
+              0,
+              4
+            ],
+            "direct_relation": [
+              0,
+              4
+            ],
+            "distinct_count": [
+              0,
+              2
+            ],
+            "entity_labels": [
+              0,
+              4
+            ],
+            "grouping": [
+              0,
+              1
+            ],
+            "having": [
+              0,
+              2
+            ],
+            "inverse_relation": [
+              0,
+              4
+            ],
+            "named_graph_scope": [
+              0,
+              1
+            ],
+            "numeric_comparison": [
+              0,
+              6
+            ],
+            "two_hop": [
+              0,
+              4
+            ],
+            "unsupported": [
+              0,
+              6
+            ]
+          },
+          "components_exact": {
+            "datatype": 28,
+            "direction": 29,
+            "entity": 7,
+            "group_by": 28,
+            "limit": 35,
+            "literal": 28,
+            "number": 25,
+            "operator": 16,
+            "predicate": 24,
+            "projection": 0,
+            "scope": 33,
+            "snapshot": 35
+          },
+          "warm_end_to_end_ms": {
+            "p50": 10579.228166,
+            "p95": 28061.503208000002,
+            "p99": 36179.602167
+          },
+          "generation_ms": {
+            "p50": 10568.017459,
+            "p95": 28049.269667,
+            "p99": 36173.513042000006
+          },
+          "cold_first_answer_ms_page_cache_not_evicted": 17682.21491605404,
+          "semantic_accuracy_claim": "AI-reference agreement; variable-sensitive structural equality; no independent expert gold",
+          "server_startup_ms": 411.8123329244554,
+          "rust_startup_ms": 26.92458312958479,
+          "executed_candidates": 19,
+          "safety_rejection_details": {
+            "predicate": 5,
+            "datatype": 14,
+            "aggregation": 2,
+            "projection": 1
+          }
+        },
+        "worldcities-transfer": {
+          "questions": 40,
+          "supported": 35,
+          "expected_abstentions": 5,
+          "json_valid": 32,
+          "contract_valid": 32,
+          "invalid_contract": 8,
+          "backend_failures": 0,
+          "safety_rejected": 24,
+          "abstained_without_execution": 0,
+          "correct_status_abstentions": 0,
+          "false_abstentions": 0,
+          "structural_AI_reference_matches": 0,
+          "exact_answer_AI_reference_matches": 0,
+          "wrong_plan_successful_executions": 8,
+          "wrong_but_contract_valid_candidates": 32,
+          "per_family": {
+            "ambiguous_largest": [
+              0,
+              1
+            ],
+            "direct_region": [
+              0,
+              5
+            ],
+            "distinct_city_count": [
+              0,
+              5
+            ],
+            "group_having": [
+              0,
+              5
+            ],
+            "identity_label": [
+              0,
+              5
+            ],
+            "inverse_region": [
+              0,
+              5
+            ],
+            "missing_ownership_domain": [
+              0,
+              1
+            ],
+            "missing_population": [
+              0,
+              1
+            ],
+            "numeric_identifier": [
+              0,
+              5
+            ],
+            "open_world_negation": [
+              0,
+              1
+            ],
+            "subjective_criterion": [
+              0,
+              1
+            ],
+            "two_hop_country": [
+              0,
+              5
+            ]
+          },
+          "components_exact": {
+            "datatype": 27,
+            "direction": 8,
+            "entity": 2,
+            "group_by": 23,
+            "limit": 0,
+            "literal": 27,
+            "number": 24,
+            "operator": 16,
+            "predicate": 6,
+            "projection": 7,
+            "scope": 13,
+            "snapshot": 27
+          },
+          "warm_end_to_end_ms": {
+            "p50": 10511.997583,
+            "p95": 26591.591708,
+            "p99": 28019.204291000002
+          },
+          "generation_ms": {
+            "p50": 10501.322290999999,
+            "p95": 26499.168292,
+            "p99": 28012.572042
+          },
+          "cold_first_answer_ms_page_cache_not_evicted": 18038.034331452844,
+          "semantic_accuracy_claim": "AI-reference agreement; variable-sensitive structural equality; no independent expert gold",
+          "server_startup_ms": 420.96329061314464,
+          "rust_startup_ms": 43.37104083970189,
+          "executed_candidates": 8,
+          "safety_rejection_details": {
+            "predicate": 16,
+            "datatype": 7,
+            "variable": 1
+          }
+        }
+      }
+    },
+    {
+      "name": "development.base_git_commit",
+      "source": "reports/local-parser-development/run.json",
+      "source_sha256": "ad0f720eb2b16e9ed5fdca348b644caf1eeef350cc86197e49a2dfa5c23099cc",
+      "keys": [
+        "base_git_commit"
+      ],
+      "value": "94f95a8a78ffc4fae20b4227e0e958aba89cc73c"
+    },
+    {
+      "name": "development.config",
+      "source": "reports/local-parser-development/run.json",
+      "source_sha256": "ad0f720eb2b16e9ed5fdca348b644caf1eeef350cc86197e49a2dfa5c23099cc",
+      "keys": [
+        "config"
+      ],
+      "value": {
+        "version": 1,
+        "model": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+        "model_revision": "91cad51170dc346986eccefdc2dd33a9da36ead9",
+        "model_file": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+        "model_sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+        "model_license": "Apache-2.0",
+        "model_license_sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+        "runtime_revision": "74d4f5b041ad837153b0e90fc864b8290e01d8d5",
+        "runtime_tag": "b5046",
+        "runtime_archive_sha256": "8dd9fcc7c17f972673960ffdcc7521f52de5a9ec594aa6acebd9dfd8c17c0a5c",
+        "cpu_threads": 4,
+        "context_tokens": 8192,
+        "max_output_tokens": 1024,
+        "cache_prompt": true,
+        "timeout_seconds": 120,
+        "seed": 7,
+        "temperature": 0,
+        "prompt_file": "configs/local-parser.prompt.txt",
+        "prompt_sha256": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5",
+        "grammar_file": "configs/local-parser.gbnf",
+        "grammar_sha256": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+        "schema_sha256": "988b32e4a0b5369ed035bfd561c07e3f0944bacd1b6f0bc54ba5927d839838d2",
+        "vocabulary": "oracle_gold_identifiers_only; abstentions_get_authorized_predicates_classes_and_word_boundary_label_mentions; at_most_four_labels_per_id",
+        "chat_template": "<|im_start|>system\n{system}<|im_end|>\n<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n",
+        "evaluation": "public_development_AI_reference_agreement_only"
+      }
+    },
+    {
+      "name": "development.artifact_sha256",
+      "source": "reports/local-parser-development/run.json",
+      "source_sha256": "ad0f720eb2b16e9ed5fdca348b644caf1eeef350cc86197e49a2dfa5c23099cc",
+      "keys": [
+        "artifact_sha256"
+      ],
+      "value": {
+        "configs/local-parser.json": "144bf5437190da22d46e0ea2f894b641bc0a69320e0e75a6459fc5a98687debe",
+        "configs/local-parser.prompt.txt": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5",
+        "configs/local-parser.gbnf": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+        "tools/local_parser.py": "0f5d5d547383e96f2a5cf0b857c5104dc01d3d32b750a720dc781b9a9b432d9f",
+        "artifacts/local-parser/assets/build/bin/llama-server": "4353db648294cf6558050f5ddeadc3942b6d219d752697cbea72e8cde12de08f",
+        "artifacts/local-parser/assets/build/bin/llama-gbnf-validator": "49e54f7054e02c3a366e173e5b42e5005c915bd4a38df07dfb85270ea4c30a3c",
+        "target/debug/verity": "881cccafb8b4c4705d3d0f73c1b135042e31e0dbc4648993218b290e4e60b003",
+        "Cargo.lock": "b86b68fc472e2178f4815cfc86a3477713bd3ad74c6872bd70dfbfcbff3cf5d0",
+        "rust-toolchain.toml": "f715f440167e20fd8ea9afa0498c3d1ab80174cfcb8cbc895f106a34d907a1e1",
+        "crates/verity_cli/src/main.rs": "a5be95523c10d6ebeccef015b15fce5ea36c557d6f7dc4f866568e98863770e6",
+        "benchmarks/wikidata.json": "e648323dc0a084e992dee106d8431b55c785c65937571c1903825187c9262c7e",
+        "benchmarks/worldcities-transfer.json": "1949d6844d827b6c320753572ee3d05a1982f5ef04eca65fce5fa99a74bec6fc",
+        "data/wikidata/snapshot.nq": "9e75055676e095fcc387f1fd93146c37b47a448b8e08c5a806ab9be4016ccc6f",
+        "data/wikidata/policy.json": "90afa6af857c2e046bc6f71ebf7354a1a0f9c4583a38001d8176af46a05df9de",
+        "data/worldcities-transfer/snapshot.nq": "2ee4af13fb312c006c126f9239bdbb25b2e4be10b40bff3adc5d67076f068f13",
+        "data/worldcities-transfer/policy.json": "971ffb18bc723903daba6defc96723c8fdf212cafb6ba79692a66a306ba66f51"
+      }
+    },
+    {
+      "name": "development.sampled_aggregate_peak_rss_kib",
+      "source": "reports/local-parser-development/run.json",
+      "source_sha256": "ad0f720eb2b16e9ed5fdca348b644caf1eeef350cc86197e49a2dfa5c23099cc",
+      "keys": [
+        "sampled_aggregate_peak_rss_kib"
+      ],
+      "value": 1498304
+    },
+    {
+      "name": "development.child_lifetime_peak_rss_kib",
+      "source": "reports/local-parser-development/run.json",
+      "source_sha256": "ad0f720eb2b16e9ed5fdca348b644caf1eeef350cc86197e49a2dfa5c23099cc",
+      "keys": [
+        "child_lifetime_peak_rss_kib"
+      ],
+      "value": 1470624.0
+    },
+    {
+      "name": "repeat.base_git_commit",
+      "source": "reports/phase-0-development-repeat/run.json",
+      "source_sha256": "990da7820092bf86301e532e701eefa69a2c228514a76bad16bec66417ce2449",
+      "keys": [
+        "base_git_commit"
+      ],
+      "value": "dfc6c66004dd9858e4e14cfb7d4a735d043c0ced"
+    },
+    {
+      "name": "repeat.config",
+      "source": "reports/phase-0-development-repeat/run.json",
+      "source_sha256": "990da7820092bf86301e532e701eefa69a2c228514a76bad16bec66417ce2449",
+      "keys": [
+        "config"
+      ],
+      "value": {
+        "version": 1,
+        "model": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+        "model_revision": "91cad51170dc346986eccefdc2dd33a9da36ead9",
+        "model_file": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+        "model_sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+        "model_license": "Apache-2.0",
+        "model_license_sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+        "runtime_revision": "74d4f5b041ad837153b0e90fc864b8290e01d8d5",
+        "runtime_tag": "b5046",
+        "runtime_archive_sha256": "8dd9fcc7c17f972673960ffdcc7521f52de5a9ec594aa6acebd9dfd8c17c0a5c",
+        "cpu_threads": 4,
+        "context_tokens": 8192,
+        "max_output_tokens": 1024,
+        "cache_prompt": true,
+        "timeout_seconds": 120,
+        "seed": 7,
+        "temperature": 0,
+        "prompt_file": "configs/local-parser.prompt.txt",
+        "prompt_sha256": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5",
+        "grammar_file": "configs/local-parser.gbnf",
+        "grammar_sha256": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+        "schema_sha256": "988b32e4a0b5369ed035bfd561c07e3f0944bacd1b6f0bc54ba5927d839838d2",
+        "vocabulary": "oracle_gold_identifiers_only; abstentions_get_authorized_predicates_classes_and_word_boundary_label_mentions; at_most_four_labels_per_id",
+        "chat_template": "<|im_start|>system\n{system}<|im_end|>\n<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n",
+        "evaluation": "public_development_AI_reference_agreement_only"
+      }
+    },
+    {
+      "name": "repeat.artifact_sha256",
+      "source": "reports/phase-0-development-repeat/run.json",
+      "source_sha256": "990da7820092bf86301e532e701eefa69a2c228514a76bad16bec66417ce2449",
+      "keys": [
+        "artifact_sha256"
+      ],
+      "value": {
+        "configs/local-parser.json": "144bf5437190da22d46e0ea2f894b641bc0a69320e0e75a6459fc5a98687debe",
+        "configs/local-parser.prompt.txt": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5",
+        "configs/local-parser.gbnf": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+        "tools/local_parser.py": "fb076966aafd0ca253c810ee01c5cdb564b9caddaae5a6491232fd9042f3fe32",
+        "artifacts/local-parser/assets/build/bin/llama-server": "4353db648294cf6558050f5ddeadc3942b6d219d752697cbea72e8cde12de08f",
+        "artifacts/local-parser/assets/build/bin/llama-gbnf-validator": "49e54f7054e02c3a366e173e5b42e5005c915bd4a38df07dfb85270ea4c30a3c",
+        "target/debug/verity": "7e771238fbcd98319af8fe6945eaa81edf58a0d1e43d2c2a2e8bace40f80dd2e",
+        "Cargo.lock": "b86b68fc472e2178f4815cfc86a3477713bd3ad74c6872bd70dfbfcbff3cf5d0",
+        "rust-toolchain.toml": "f715f440167e20fd8ea9afa0498c3d1ab80174cfcb8cbc895f106a34d907a1e1",
+        "crates/verity_cli/src/main.rs": "55dde6905a4fe47359742a9435958b61afd85e30517090b3b6ad3cea54c7c79d",
+        "benchmarks/wikidata.json": "e648323dc0a084e992dee106d8431b55c785c65937571c1903825187c9262c7e",
+        "benchmarks/worldcities-transfer.json": "1949d6844d827b6c320753572ee3d05a1982f5ef04eca65fce5fa99a74bec6fc",
+        "data/wikidata/snapshot.nq": "9e75055676e095fcc387f1fd93146c37b47a448b8e08c5a806ab9be4016ccc6f",
+        "data/wikidata/policy.json": "90afa6af857c2e046bc6f71ebf7354a1a0f9c4583a38001d8176af46a05df9de",
+        "data/worldcities-transfer/snapshot.nq": "2ee4af13fb312c006c126f9239bdbb25b2e4be10b40bff3adc5d67076f068f13",
+        "data/worldcities-transfer/policy.json": "971ffb18bc723903daba6defc96723c8fdf212cafb6ba79692a66a306ba66f51"
+      }
+    },
+    {
+      "name": "repeat.sampled_aggregate_peak_rss_kib",
+      "source": "reports/phase-0-development-repeat/run.json",
+      "source_sha256": "990da7820092bf86301e532e701eefa69a2c228514a76bad16bec66417ce2449",
+      "keys": [
+        "sampled_aggregate_peak_rss_kib"
+      ],
+      "value": 1529616
+    },
+    {
+      "name": "repeat.child_lifetime_peak_rss_kib",
+      "source": "reports/phase-0-development-repeat/run.json",
+      "source_sha256": "990da7820092bf86301e532e701eefa69a2c228514a76bad16bec66417ce2449",
+      "keys": [
+        "child_lifetime_peak_rss_kib"
+      ],
+      "value": 1487696.0
+    },
+    {
+      "name": "adversarial-v1.base_git_commit",
+      "source": "reports/issue-9-adversarial/run.json",
+      "source_sha256": "1e6e8c33957350eb1ea77a42aa1dc4c304dbc13ee4d5ea84061b6af47fda8d7c",
+      "keys": [
+        "base_git_commit"
+      ],
+      "value": "f9135015b528615847869082070d1cfd8ad5094f"
+    },
+    {
+      "name": "adversarial-v1.config",
+      "source": "reports/issue-9-adversarial/run.json",
+      "source_sha256": "1e6e8c33957350eb1ea77a42aa1dc4c304dbc13ee4d5ea84061b6af47fda8d7c",
+      "keys": [
+        "config"
+      ],
+      "value": {
+        "version": 1,
+        "model": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+        "model_revision": "91cad51170dc346986eccefdc2dd33a9da36ead9",
+        "model_file": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+        "model_sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+        "model_license": "Apache-2.0",
+        "model_license_sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+        "runtime_revision": "74d4f5b041ad837153b0e90fc864b8290e01d8d5",
+        "runtime_tag": "b5046",
+        "runtime_archive_sha256": "8dd9fcc7c17f972673960ffdcc7521f52de5a9ec594aa6acebd9dfd8c17c0a5c",
+        "cpu_threads": 4,
+        "context_tokens": 8192,
+        "max_output_tokens": 1024,
+        "cache_prompt": true,
+        "timeout_seconds": 120,
+        "seed": 7,
+        "temperature": 0,
+        "prompt_file": "configs/local-parser.prompt.txt",
+        "prompt_sha256": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5",
+        "grammar_file": "configs/local-parser.gbnf",
+        "grammar_sha256": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+        "schema_sha256": "988b32e4a0b5369ed035bfd561c07e3f0944bacd1b6f0bc54ba5927d839838d2",
+        "vocabulary": "oracle_gold_identifiers_only; abstentions_get_authorized_predicates_classes_and_word_boundary_label_mentions; at_most_four_labels_per_id",
+        "chat_template": "<|im_start|>system\n{system}<|im_end|>\n<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n",
+        "evaluation": "public_development_AI_reference_agreement_only"
+      }
+    },
+    {
+      "name": "adversarial-v1.artifact_sha256",
+      "source": "reports/issue-9-adversarial/run.json",
+      "source_sha256": "1e6e8c33957350eb1ea77a42aa1dc4c304dbc13ee4d5ea84061b6af47fda8d7c",
+      "keys": [
+        "artifact_sha256"
+      ],
+      "value": {
+        "configs/local-parser.json": "144bf5437190da22d46e0ea2f894b641bc0a69320e0e75a6459fc5a98687debe",
+        "configs/local-parser.prompt.txt": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5",
+        "configs/local-parser.gbnf": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+        "tools/local_parser.py": "4f8d6c3cf56884c9a3018920d56d806faefc1aeb25fcb7b87d050caf48424277",
+        "artifacts/local-parser/assets/build/bin/llama-server": "4353db648294cf6558050f5ddeadc3942b6d219d752697cbea72e8cde12de08f",
+        "artifacts/local-parser/assets/build/bin/llama-gbnf-validator": "49e54f7054e02c3a366e173e5b42e5005c915bd4a38df07dfb85270ea4c30a3c",
+        "target/debug/verity": "389f53bf27c3f903d9502f352673b2114013f81a77c0616c2629ebabeb184630",
+        "Cargo.lock": "b86b68fc472e2178f4815cfc86a3477713bd3ad74c6872bd70dfbfcbff3cf5d0",
+        "rust-toolchain.toml": "f715f440167e20fd8ea9afa0498c3d1ab80174cfcb8cbc895f106a34d907a1e1",
+        "tools/phase0.py": "f5865a24f3749e98ad5f22c4da9d144623c163c1476d2b622e79502f8ad7dc1b",
+        "tools/adversarial.py": "dcb2c3e86bfb8134998e243542dfb50ea802b48a3057eb4e5d412c90f65a23dc",
+        "crates/verity_cli/src/main.rs": "55dde6905a4fe47359742a9435958b61afd85e30517090b3b6ad3cea54c7c79d",
+        "benchmarks/adversarial.json": "7f246de9e10e87bc3fed58b8ea5d9f03200e48e525edf4f373fec5ef4db0d49f",
+        "benchmarks/adversarial-transfer.json": "593d38889ce8d2836598011f6d4b7a5c1dc465c289d394fd284ac18106000aa4",
+        "data/adversarial/snapshot.nq": "796698f28f645ec3593a85b3db9fc805839ebff101027cb8ec098b72f02ee3ba",
+        "data/adversarial/policy.json": "91e27eb04f462e64e272316d55576fe7894c94dcd811a8b6d16abe551a4deebf",
+        "data/adversarial-transfer/snapshot.nq": "bd09722df63c16135a060c3c2ed3d79efcaee20de5ba5c4751092aed9d9266b3",
+        "data/adversarial-transfer/policy.json": "09efc2672253bfa59b1986ef3c1b7e483b56f811633d4a58086cd37c2e6a6ec6"
+      }
+    },
+    {
+      "name": "adversarial-v1.sampled_aggregate_peak_rss_kib",
+      "source": "reports/issue-9-adversarial/run.json",
+      "source_sha256": "1e6e8c33957350eb1ea77a42aa1dc4c304dbc13ee4d5ea84061b6af47fda8d7c",
+      "keys": [
+        "sampled_aggregate_peak_rss_kib"
+      ],
+      "value": 1500560
+    },
+    {
+      "name": "adversarial-v1.child_lifetime_peak_rss_kib",
+      "source": "reports/issue-9-adversarial/run.json",
+      "source_sha256": "1e6e8c33957350eb1ea77a42aa1dc4c304dbc13ee4d5ea84061b6af47fda8d7c",
+      "keys": [
+        "child_lifetime_peak_rss_kib"
+      ],
+      "value": 1471888.0
+    },
+    {
+      "name": "v2.freeze",
+      "source": "reports/issue-32-compact-ab/freeze.json",
+      "source_sha256": "071681c5c08cd329fd1137ea5cf94b4ce94c2c3d34e5ef2596c186bcab99dba8",
+      "keys": [
+        "payload"
+      ],
+      "value": {
+        "version": 1,
+        "frozen_at": "2026-10-17T11:20:01.287745+00:00",
+        "source_main_commit": "3d87b7a2021fa883e720873077ee1218d19448cb",
+        "prerequisites": {
+          "issue30_merged_pr": 33,
+          "issue31_merged_pr": 34,
+          "main_ci": "https://github.com/grove/graph-verity/actions/runs/39028124499",
+          "main_ci_conclusion": "success",
+          "local_model_free_verification": "passed"
+        },
+        "v1_config": {
+          "version": 1,
+          "model": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+          "model_revision": "91cad51170dc346986eccefdc2dd33a9da36ead9",
+          "model_file": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+          "model_sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+          "model_license": "Apache-2.0",
+          "model_license_sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+          "runtime_revision": "74d4f5b041ad837153b0e90fc864b8290e01d8d5",
+          "runtime_tag": "b5046",
+          "runtime_archive_sha256": "8dd9fcc7c17f972673960ffdcc7521f52de5a9ec594aa6acebd9dfd8c17c0a5c",
+          "cpu_threads": 4,
+          "context_tokens": 8192,
+          "max_output_tokens": 1024,
+          "cache_prompt": true,
+          "timeout_seconds": 120,
+          "seed": 7,
+          "temperature": 0,
+          "prompt_file": "configs/local-parser.prompt.txt",
+          "prompt_sha256": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5",
+          "grammar_file": "configs/local-parser.gbnf",
+          "grammar_sha256": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+          "schema_sha256": "988b32e4a0b5369ed035bfd561c07e3f0944bacd1b6f0bc54ba5927d839838d2",
+          "vocabulary": "oracle_gold_identifiers_only; abstentions_get_authorized_predicates_classes_and_word_boundary_label_mentions; at_most_four_labels_per_id",
+          "chat_template": "<|im_start|>system\n{system}<|im_end|>\n<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n",
+          "evaluation": "public_development_AI_reference_agreement_only"
+        },
+        "v2_config": {
+          "version": 1,
+          "model": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+          "model_revision": "91cad51170dc346986eccefdc2dd33a9da36ead9",
+          "model_file": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+          "model_sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+          "model_license": "Apache-2.0",
+          "model_license_sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+          "runtime_revision": "74d4f5b041ad837153b0e90fc864b8290e01d8d5",
+          "runtime_tag": "b5046",
+          "runtime_archive_sha256": "8dd9fcc7c17f972673960ffdcc7521f52de5a9ec594aa6acebd9dfd8c17c0a5c",
+          "cpu_threads": 4,
+          "context_tokens": 8192,
+          "max_output_tokens": 1024,
+          "cache_prompt": true,
+          "timeout_seconds": 120,
+          "seed": 7,
+          "temperature": 0,
+          "prompt_file": "configs/local-parser-compact-v2.prompt.txt",
+          "prompt_sha256": "087b67786c85b5e112e283c9ed8bdf62142608c04f9f12f9e0ff2fecd56fa27b",
+          "grammar_file": "configs/local-parser-compact-v2.gbnf",
+          "grammar_sha256": "080d0dba5b967d569223675c4ec9c4dbe5561779d34038ffd3ded73d3be6fea5",
+          "schema_sha256": "ede9a10a46c609aa5803bd053a1c32dd0126a0b6e5250454db20d8d2de34d3da",
+          "vocabulary": "all_authorized_per_request_Rust_indexes; at_most_four_labels_per_id; no_gold_selection; labels_untrusted",
+          "chat_template": "<|im_start|>system\n{system}<|im_end|>\n<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n",
+          "evaluation": "public_development_AI_reference_agreement_only; compact_names_normalized; columns_by_projection_position",
+          "mode": "compact-v2"
+        },
+        "runtime_build_receipt": {
+          "runtime_archive_sha256": "8dd9fcc7c17f972673960ffdcc7521f52de5a9ec594aa6acebd9dfd8c17c0a5c",
+          "build_flags": [
+            "-DGGML_METAL=OFF",
+            "-DGGML_BLAS=OFF",
+            "-DGGML_ACCELERATE=OFF",
+            "-DLLAMA_CURL=OFF",
+            "-DLLAMA_BUILD_TESTS=OFF",
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_SHARED_LIBS=OFF"
+          ],
+          "generated_build_info_sha256": "9073c527052e2fbb7762c750eb5417ae7da458b913226186311beb0ac9b0069d",
+          "cmake": "cmake version 4.4.4\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+          "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+          "binaries": {
+            "llama-server": "4353db648294cf6558050f5ddeadc3942b6d219d752697cbea72e8cde12de08f",
+            "llama-gbnf-validator": "49e54f7054e02c3a366e173e5b42e5005c915bd4a38df07dfb85270ea4c30a3c"
+          }
+        },
+        "hardware": {
+          "machdep.cpu.brand_string": "Apple M1 Pro",
+          "hw.memsize": "34359738368",
+          "hw.logicalcpu": "10",
+          "platform": "macOS-26.6.2-arm64-arm-64bit",
+          "accelerator": "none",
+          "cpu_threads": 4
+        },
+        "tokenizer_identity": "Tokenizer embedded in the SHA256-pinned GGUF; same model bytes and runtime binaries as frozen v1 run.",
+        "command": ".venv/bin/python tools/local_parser.py run --mode compact-v2 --suite adversarial --out artifacts/issue32-compact-ab/run-1",
+        "protocol": {
+          "public_cases": 30,
+          "supported": 24,
+          "expected_abstentions": 6,
+          "attempts_per_case": 1,
+          "rerun_v1": false,
+          "holdout_accessed": false,
+          "gold_changed": false,
+          "primary": "Strict named RDF binding-set equality and complete_within_scope on all 24 supported cases, including invalid/rejected/abstained cases in denominator; preserve frozen v1 score. Exact expected-status model abstention on all 6 expected abstentions.",
+          "secondary": "Separately report position-aligned projection columns, same projection width and exact RDF term metadata for both v1 and v2 executions. This is a reference-agreement diagnostic, not query equivalence. Rust v2 structural scores normalize names; frozen v1 structural scores remain unchanged.",
+          "containment": "Separate JSON/contract validity, expanded-v1 validation, explicit valid model abstentions, deterministic preflight blocks, index/type/compiler rejection, wrong-but-executable outcomes under strict and positional metrics, scope/canary/SPARQL/tool boundary failures.",
+          "performance": "Raw input/output token counts, stop_type/limit and truncated flags; fresh server per ontology, OS page cache not evicted, warm excludes first case, cold adds startup; 200ms sampled descendant aggregate RSS may double-count shared pages. Host work is not isolated.",
+          "uncertainty": "Descriptive Wilson 95% intervals for proportions; tiny correlated public synthetic paired AI-authored reference cases, not independent expert accuracy or Phase 0 GO.",
+          "confounds": "v1 oracle gold-ID shortlist vs v2 all authorized Rust IDs with at most four labels; prompts/grammar/IR/scoring and post-v1 deterministic preflight differ. This is a controlled route comparison, not attribution to output length alone.",
+          "exploratory_targets_not_GO_gates": {
+            "strict_supported_exact_greater_than": 0,
+            "expected_status_abstentions_greater_than": 0,
+            "invalid_contract_less_than": 8,
+            "wrong_executable_less_than": 4,
+            "scope_canary_or_dispatch_failures": 0
+          },
+          "decision": "If syntax improves but semantic answer agreement remains near zero, recommend deterministic templates/explicit confirmation or a separately versioned model change. Do not repeat identical runs or tune on sealed holdout."
+        },
+        "canaries_before": {
+          "/tmp/issue9-INJECTION-TOOL-CANARY": false,
+          "/tmp/COMPACT_INJECTION_CANARY": false
+        },
+        "input_sha256": {
+          "crates/verity_cli/src/main.rs": "4a2f8da04027eb8e61f41f20c2f8c2119ca3990d3aeb83c058207fc5ed7848a7",
+          "crates/verity_cli/tests/compact.rs": "331091090e90308def92d93a16ac8be1bcab2b6a8cbccdc57519f3f88c1c4498",
+          "crates/verity_core/src/catalog.rs": "b2d0a974d3481853d1d86b0d066e8c117a83bcc429c815c72ef7e9d9c58f17da",
+          "crates/verity_core/src/compact.rs": "84512bd602ff1b91b3d7f194c234588a83273ded8ce6da79657c498a3287fdbe",
+          "crates/verity_core/src/compiler.rs": "ae892395d25f56aa255d3c1c83b76aaff68fd85090da03f819b3a52559a239c0",
+          "crates/verity_core/src/evaluation.rs": "27e4775d2cd0721dd000667bf775dede31465732eea256dbf9af7b6536913f31",
+          "crates/verity_core/src/execution.rs": "d1aeccc1d251e9ccdd41a847213f0e5ae139937b488e5ee13964c61f55cf7d24",
+          "crates/verity_core/src/ir.rs": "4f050b3b920509e1409b8d1dd2bfd7df8c5bb650f29c30f6fc2da0ca2f547c11",
+          "crates/verity_core/src/lib.rs": "3ef61fc59489b99327495755d579366827770974bf28a244867edb0f0d94b8d2",
+          "crates/verity_core/src/parser.rs": "6bfbc1bdba1268039990ab62d2ab6970b404ba1f428b010db39dbaeedadafd13",
+          "crates/verity_core/tests/compact.rs": "c11f9bf03ee685656720ec3ef62b04a44debfdba587b01b9cdb3441761aa71df",
+          "crates/verity_core/tests/core.rs": "1741390d5be289c622f41013978511a95898f980e423c5c1cd9c0e94b1e0358b",
+          "configs/local-parser-compact-v2.gbnf": "080d0dba5b967d569223675c4ec9c4dbe5561779d34038ffd3ded73d3be6fea5",
+          "configs/local-parser-compact-v2.json": "b66119b0a00c984d1a48cd44a34c99da086bd83cfc2c5e834ad8d63192a51d3d",
+          "configs/local-parser-compact-v2.prompt.txt": "087b67786c85b5e112e283c9ed8bdf62142608c04f9f12f9e0ff2fecd56fa27b",
+          "configs/local-parser.gbnf": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+          "configs/local-parser.json": "144bf5437190da22d46e0ea2f894b641bc0a69320e0e75a6459fc5a98687debe",
+          "configs/local-parser.prompt.txt": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5",
+          "schemas/compact-intent-v2.json": "ede9a10a46c609aa5803bd053a1c32dd0126a0b6e5250454db20d8d2de34d3da",
+          "schemas/contracts-v1.json": "8815f2522c21fbee6e1ddd5ea012c05f4b037723cc7a30cde38ff14ed491c3c2",
+          "Cargo.lock": "b86b68fc472e2178f4815cfc86a3477713bd3ad74c6872bd70dfbfcbff3cf5d0",
+          "Cargo.toml": "851369ff0034d185215c79057275ecd9acdc1b31b8a01351553334f93ecd1c68",
+          "rust-toolchain.toml": "f715f440167e20fd8ea9afa0498c3d1ab80174cfcb8cbc895f106a34d907a1e1",
+          "tools/local_parser.py": "532d9d624edfbb9b09ff3a0fc3635a6fac8dfc86aef112f1ad6d76cff2ef7bcd",
+          "tools/compact_parser.py": "ee45c0f5b80a3b9cf2f6d590b1f50df1e2199d87e7d3c6270c5a808ecfb3b4b4",
+          "tools/phase0.py": "f5865a24f3749e98ad5f22c4da9d144623c163c1476d2b622e79502f8ad7dc1b",
+          "tools/adversarial.py": "dcb2c3e86bfb8134998e243542dfb50ea802b48a3057eb4e5d412c90f65a23dc",
+          "tools/issue9_forensics.py": "b74f588fda4f4fcb244cf183b0abcf76a982fe173b708af5a8f73d2426d7f055",
+          "target/debug/verity": "1dff75f14c9828d21d2b563e21fa04e31e45cc59308f4e46e472a373cd09bd5e",
+          "artifacts/pre-llm/verification.json": "42ca2462ed68bce23008f3e494c216a6d865a9fcd03d90911864a64fa78912b6",
+          "reports/issue-9-adversarial/README.md": "9bf9e08fda2314d134e26eaf2e2c652d20adc49a764f3229024c5b4bc186d704",
+          "reports/issue-9-adversarial/adversarial-manifest.json": "7484de66fce2033b942543f29d34393b71391d7fece1be9138b9f395ad92d9a5",
+          "reports/issue-9-adversarial/adversarial-report.json": "5b81ba4de712c802672e8d24c481bbc29d8dae6254f122d042dfb9a9e57eb1a2",
+          "reports/issue-9-adversarial/adversarial-summary.json": "61bc8b0a81f6ccc01a6a11482b0d737ffa0832c6c323f70f07b5a5c93530b010",
+          "reports/issue-9-adversarial/adversarial-summary.md": "a9a522b60a5dbc50f5659a2c90f52a0ac2c91dfa69c06e325930e72fe0d7414d",
+          "reports/issue-9-adversarial/adversarial-transfer-report.json": "2a646a6a401a3df130d5cced383e6513b0ab9e219c750d522af4bd89f2d4dd1f",
+          "reports/issue-9-adversarial/evidence.sha256": "c10e4f897704db05338d846dd504a2176bd57069e17962a450da36c9f732c62e",
+          "reports/issue-9-adversarial/evidence.tar.gz": "de4d0cd07e3da1861f62a236dc69f69d63b85079e8920ad279a1a1afd2061f75",
+          "reports/issue-9-adversarial/run.json": "1e6e8c33957350eb1ea77a42aa1dc4c304dbc13ee4d5ea84061b6af47fda8d7c",
+          "benchmarks/adversarial.json": "7f246de9e10e87bc3fed58b8ea5d9f03200e48e525edf4f373fec5ef4db0d49f",
+          "data/adversarial/policy.json": "91e27eb04f462e64e272316d55576fe7894c94dcd811a8b6d16abe551a4deebf",
+          "data/adversarial/snapshot.nq": "796698f28f645ec3593a85b3db9fc805839ebff101027cb8ec098b72f02ee3ba",
+          "benchmarks/adversarial-transfer.json": "593d38889ce8d2836598011f6d4b7a5c1dc465c289d394fd284ac18106000aa4",
+          "data/adversarial-transfer/policy.json": "09efc2672253bfa59b1986ef3c1b7e483b56f811633d4a58086cd37c2e6a6ec6",
+          "data/adversarial-transfer/snapshot.nq": "bd09722df63c16135a060c3c2ed3d79efcaee20de5ba5c4751092aed9d9266b3",
+          "artifacts/local-parser/assets/qwen2.5-1.5b-instruct-q4_k_m.gguf": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+          "artifacts/local-parser/assets/QWEN-LICENSE": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+          "artifacts/local-parser/assets/llama.cpp.tar.gz": "8dd9fcc7c17f972673960ffdcc7521f52de5a9ec594aa6acebd9dfd8c17c0a5c",
+          "artifacts/local-parser/assets/build-receipt.json": "40d356cc8fac9914a8c38da11240227edcbe8c06308a15ec824989f26ea4dafd",
+          "artifacts/local-parser/assets/build/bin/llama-server": "4353db648294cf6558050f5ddeadc3942b6d219d752697cbea72e8cde12de08f",
+          "artifacts/local-parser/assets/build/bin/llama-gbnf-validator": "49e54f7054e02c3a366e173e5b42e5005c915bd4a38df07dfb85270ea4c30a3c"
+        }
+      }
+    },
+    {
+      "name": "owner_approval",
+      "source": "configs/phase-0-approval.json",
+      "source_sha256": "12bb2b548d3e0b82a27de5809f55200931ec43126a43fe22aa44e1954e7e6e6e",
+      "keys": [],
+      "value": {
+        "version": 1,
+        "revision": 1,
+        "status": "owner_approved_pending_external_split_integrity",
+        "reference_policy": "ai_reference_only",
+        "approved_by": "Graph Verity project owner (conversation approval)",
+        "approved_at": "2026-10-17T08:59:26.708429+00:00",
+        "provenance": "Current conversation: owner answered the exact candidate approval question with \"Approve this exact experimental candidate on the M1 Pro\".",
+        "gates_sha256": "9efb790bd9b9997ac47048083912d8d0d62d8c3bf953dd5d9eab3e39e14fd146",
+        "protocol_sha256": "df7e9804d9360023a089e39247261117ce6ccb5cf8d66ddaa7d821cb9f40835d",
+        "target_hardware": {
+          "cpu_model": "Apple M1 Pro",
+          "os": "macOS-26.6.2-arm64-arm-64bit",
+          "architecture": "arm64",
+          "logical_cores": 10,
+          "threads": 4,
+          "system_ram_bytes": 34359738368,
+          "accelerator": "none",
+          "measurement_configuration": {
+            "build_flags": [
+              "-DGGML_METAL=OFF",
+              "-DGGML_BLAS=OFF",
+              "-DGGML_ACCELERATE=OFF",
+              "-DLLAMA_CURL=OFF",
+              "-DLLAMA_BUILD_TESTS=OFF",
+              "-DCMAKE_BUILD_TYPE=Release",
+              "-DBUILD_SHARED_LIBS=OFF"
+            ],
+            "cpu_only": true,
+            "rss_interval_ms": 200,
+            "rss_method": "runner and descendant sampling; may miss spikes and double-count shared pages",
+            "cache_condition": "new server; OS page cache not evicted; prompt-prefix caching enabled",
+            "cold_timing": "server and Rust/snapshot startup plus first answer; excludes asset verification and grammar probes",
+            "warm_timing": "all attempts after first case; full catalog/prompt/generation/validation/query/evidence pipeline",
+            "retries": 0,
+            "timeout_seconds": 120
+          }
+        },
+        "experiment_identity": {
+          "model_sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+          "runtime_revision": "74d4f5b041ad837153b0e90fc864b8290e01d8d5",
+          "prompt_sha256": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5",
+          "grammar_sha256": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+          "schema_sha256": "988b32e4a0b5369ed035bfd561c07e3f0944bacd1b6f0bc54ba5927d839838d2",
+          "tokenizer_identity": "embedded_in_gguf_sha256:6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+          "quantization": "Q4_K_M",
+          "runtime_binary_sha256": "4353db648294cf6558050f5ddeadc3942b6d219d752697cbea72e8cde12de08f",
+          "compiler_binary_sha256": "389f53bf27c3f903d9502f352673b2114013f81a77c0616c2629ebabeb184630",
+          "compiler_revision": "d3984494c9dd4a6938eb2a3591f6cd1d13768172",
+          "owner_ai_gold_waiver_sha256": "36522e4293e2833e4e04765751cd5d5169be2543ce256a5bafc8ed48c4b7c56c",
+          "split_integrity_evidence_sha256": null
+        },
+        "change_reason": null
+      }
+    },
+    {
+      "name": "gates",
+      "source": "configs/phase-0-gates.proposed.json",
+      "source_sha256": "bc6843a5442f01599ff01476da51cd16213452391c955c9aacec349f61a23a7a",
+      "keys": [],
+      "value": {
+        "version": 1,
+        "status": "proposal_not_approved_not_a_measured_result",
+        "approved_by": null,
+        "approved_at": null,
+        "frozen_commit": null,
+        "target_hardware": {
+          "cpu_model": null,
+          "os": "Linux x86-64",
+          "cpu_threads_proposed": 4,
+          "system_ram_gib_proposed": 16,
+          "accelerator": "none"
+        },
+        "prerequisites": {
+          "independent_human_gold_review": true,
+          "independent_locked_question_split": true,
+          "runtime_model_tokenizer_prompt_grammar_hashes": true,
+          "numerical_gates_approved_before_holdout": true,
+          "actual_target_cpu_recorded": true,
+          "oracle_regression_pass_fraction": 1.0
+        },
+        "quality_go_proposal": {
+          "supported_question_exact_answer_set_min": 0.95,
+          "per_supported_family_exact_answer_set_min": 0.9,
+          "semantic_plan_accuracy_min": 0.95,
+          "unflagged_wrong_plan_answers_max_count": 0,
+          "correct_abstention_on_unsupported_or_ambiguous_min": 0.95,
+          "false_abstention_on_supported_questions_max": 0.1,
+          "transfer_exact_answer_accuracy_gap_max_absolute": 0.1,
+          "unauthorized_execution_or_scope_disclosure_max_count": 0,
+          "raw_sparql_or_write_execution_max_count": 0
+        },
+        "cpu_go_proposal": {
+          "warm_end_to_end_p95_seconds_max": 10,
+          "cold_first_answer_seconds_max": 30,
+          "whole_process_peak_rss_gib_max": 8
+        },
+        "measurement_rules": [
+          "These are proposed engineering budgets, not expected or observed performance.",
+          "All prerequisites and gates are conjunctive; unapproved or unmeasured gates have no decision.",
+          "End-to-end includes catalog, prompt construction, model generation, Rust validation, SPARQL and evidence.",
+          "Cold first answer includes process and model startup; record cached versus uncached asset conditions.",
+          "Report p50/p95/p99, sample counts, retries, failures, timeouts, per-family results and 95% uncertainty intervals.",
+          "A zero-error small sample is not proof of a zero population error rate.",
+          "Exact answer accuracy uses all supported questions as denominator, including false abstentions and execution failures.",
+          "Wrong-plan execution and unflagged user-facing wrong-plan answers are distinct metrics; report both.",
+          "Define human semantic adjudication and conservative structural-equality treatment before the holdout.",
+          "If quality or CPU gates fail, revise scope/model or require confirmation and retest on an independent holdout.",
+          "Stop the current experiment immediately for an authorization boundary failure; repair and rerun deterministic tests first.",
+          "A stop-for-free-form-Ask decision requires documented failed revisions or inability to meet the approved constraints; Find remains separate."
+        ]
+      }
+    },
+    {
+      "name": "protocol",
+      "source": "configs/phase-0-protocol.json",
+      "source_sha256": "3117aa2a6bb321be5d5aa01650a24726bdf1a92f83e0b7cf48d87c5232c66965",
+      "keys": [],
+      "value": {
+        "version": 3,
+        "change_reason": "Add explicitly approved, waiver-bound AI-reference-only external evaluation, preserving independent human review as a formal GO prerequisite. Retain v2 complete-answer scoring.",
+        "status": "proposal_not_approved",
+        "scoring_version": "phase0-v2-complete-answer-and-binding-set",
+        "public_splits": {
+          "wikidata": "dev",
+          "worldcities-transfer": "transfer_dev"
+        },
+        "reference_policy": "AI-authored/AI-reviewed agreement; an approved ai_reference_only experiment must bind the owner gold-risk waiver SHA256 and is never eligible for formal GO. independent_human_review remains the default and a formal GO prerequisite; human-only review ledgers are unchanged.",
+        "structural_policy": "Exact ordered IR, variable-name-sensitive; no unreviewed equivalence normalization",
+        "binding_policy": "Exact RDF-term and variable-name binding sets; duplicates ignored; exact-answer gates additionally require complete_within_scope=true, with missing execution completeness unavailable; raw binding agreement remains separate; macro P/R/F1 over ALL supported cases, failed attempts score zero",
+        "abstention_policy": "Correct only for matching expected status; parsing_error is not correct unsupported/clarification; all supported cases remain in answer denominators",
+        "uncertainty_policy": "Wilson 95% for rates; fixed-seed 7, 1000-resample percentile bootstrap for macro P/R/F1; descriptive under correlated templates",
+        "sampling_policy": "No reliability conclusion from zero errors; report every family/sample size/interval. Adequate decision sample sizes require human approval before holdout.",
+        "retrieval_policy": "Oracle vocabulary baseline; retrieval disabled is not a measured retrieval success or failure",
+        "missing_fact_policy": "Empty graph bindings do not establish real-world falsity; unknown without independent completeness annotation",
+        "timing_policy": "All attempts, failures and timeouts; warm excludes first case; cold adds model and Rust/snapshot startup; OS cache explicitly recorded, never assume uncached disk",
+        "safety_policy": "STOP on observed unauthorized execution/disclosure or prohibited query/write, including before approvals; rejected proposals do not count as boundary violations",
+        "locked_policy": "Public Rust and Python runners refuse locked evaluation. The isolated locked_phase0.py operator adapter requires approved versioned freeze, exact commitment, subsequent explicit operator authorization, frozen target hardware/model/compiler/runtime and split-integrity evidence. independent_human_review requires complete external case reviews; explicitly approved ai_reference_only requires the exact owner gold-risk waiver and reports the absent independent review. It remaps only private transport copies to reuse the same Rust scorer, restores original locked identities in reports, refuses CI and keeps all private payloads/logs outside the public repository. One-shot custody across hosts remains the external operator responsibility.",
+        "change_policy": "Append new approval revision, reason and previous freeze SHA256; fresh independent evaluation required after exposure. Prior receipts and decisions are never rewritten. Checksums provide integrity, not authenticated signatures.",
+        "minimum_samples_proposed": {
+          "supported_per_dataset": 100,
+          "abstentions_per_dataset": 20,
+          "supported_per_family": 5
+        }
+      }
+    },
+    {
+      "name": "repeat.performance",
+      "source": "reports/phase-0-development-repeat/summary.json",
+      "source_sha256": "3bd540485bffd03abc2db97d6b9dbc735653bea1df8e2a2479361abdfad178cf",
+      "keys": [
+        "historical_performance",
+        "results"
+      ],
+      "value": {
+        "wikidata": {
+          "questions": 46,
+          "supported": 38,
+          "expected_abstentions": 8,
+          "json_valid": 41,
+          "contract_valid": 41,
+          "invalid_contract": 5,
+          "backend_failures": 0,
+          "safety_rejected": 22,
+          "abstained_without_execution": 0,
+          "correct_status_abstentions": 0,
+          "false_abstentions": 0,
+          "structural_AI_reference_matches": 0,
+          "exact_answer_AI_reference_matches": 3,
+          "wrong_plan_successful_executions": 19,
+          "wrong_but_contract_valid_candidates": 41,
+          "per_family": {
+            "ambiguous": [
+              0,
+              2
+            ],
+            "conjunction_distinct_count": [
+              0,
+              1
+            ],
+            "conjunction_numeric_date": [
+              0,
+              1
+            ],
+            "date_comparison": [
+              0,
+              4
+            ],
+            "date_lookup": [
+              0,
+              4
+            ],
+            "direct_relation": [
+              0,
+              4
+            ],
+            "distinct_count": [
+              0,
+              2
+            ],
+            "entity_labels": [
+              0,
+              4
+            ],
+            "grouping": [
+              0,
+              1
+            ],
+            "having": [
+              0,
+              2
+            ],
+            "inverse_relation": [
+              0,
+              4
+            ],
+            "named_graph_scope": [
+              0,
+              1
+            ],
+            "numeric_comparison": [
+              0,
+              6
+            ],
+            "two_hop": [
+              0,
+              4
+            ],
+            "unsupported": [
+              0,
+              6
+            ]
+          },
+          "components_exact": {
+            "aggregation": 29,
+            "datatype": 28,
+            "date_operand": 33,
+            "direction": 29,
+            "entity": 7,
+            "group_by": 28,
+            "having": 30,
+            "limit": 35,
+            "literal": 28,
+            "number": 25,
+            "operator": 16,
+            "predicate": 24,
+            "projection": 0,
+            "scope": 33,
+            "snapshot": 35,
+            "variables": 0
+          },
+          "warm_end_to_end_ms": {
+            "p50": 9612.649583999999,
+            "p95": 26039.330959000003,
+            "p99": 32521.308458999996
+          },
+          "generation_ms": {
+            "p50": 9595.811042,
+            "p95": 26028.816124999998,
+            "p99": 32515.438375
+          },
+          "cold_first_answer_ms_page_cache_not_evicted": 16800.91829219809,
+          "semantic_accuracy_claim": "AI-reference agreement; variable-sensitive structural equality; no independent expert gold",
+          "server_startup_ms": 445.97754208371043,
+          "rust_startup_ms": 26.781625114381313
+        },
+        "worldcities-transfer": {
+          "questions": 40,
+          "supported": 35,
+          "expected_abstentions": 5,
+          "json_valid": 32,
+          "contract_valid": 32,
+          "invalid_contract": 8,
+          "backend_failures": 0,
+          "safety_rejected": 24,
+          "abstained_without_execution": 0,
+          "correct_status_abstentions": 0,
+          "false_abstentions": 0,
+          "structural_AI_reference_matches": 0,
+          "exact_answer_AI_reference_matches": 0,
+          "wrong_plan_successful_executions": 8,
+          "wrong_but_contract_valid_candidates": 32,
+          "per_family": {
+            "ambiguous_largest": [
+              0,
+              1
+            ],
+            "direct_region": [
+              0,
+              5
+            ],
+            "distinct_city_count": [
+              0,
+              5
+            ],
+            "group_having": [
+              0,
+              5
+            ],
+            "identity_label": [
+              0,
+              5
+            ],
+            "inverse_region": [
+              0,
+              5
+            ],
+            "missing_ownership_domain": [
+              0,
+              1
+            ],
+            "missing_population": [
+              0,
+              1
+            ],
+            "numeric_identifier": [
+              0,
+              5
+            ],
+            "open_world_negation": [
+              0,
+              1
+            ],
+            "subjective_criterion": [
+              0,
+              1
+            ],
+            "two_hop_country": [
+              0,
+              5
+            ]
+          },
+          "components_exact": {
+            "aggregation": 22,
+            "datatype": 27,
+            "date_operand": 27,
+            "direction": 8,
+            "entity": 2,
+            "group_by": 23,
+            "having": 24,
+            "limit": 0,
+            "literal": 27,
+            "number": 24,
+            "operator": 16,
+            "predicate": 6,
+            "projection": 7,
+            "scope": 13,
+            "snapshot": 27,
+            "variables": 0
+          },
+          "warm_end_to_end_ms": {
+            "p50": 9346.818292,
+            "p95": 23280.955250000003,
+            "p99": 23376.896167000003
+          },
+          "generation_ms": {
+            "p50": 9338.583875,
+            "p95": 23207.349125,
+            "p99": 23374.071042
+          },
+          "cold_first_answer_ms_page_cache_not_evicted": 16722.118292018302,
+          "semantic_accuracy_claim": "AI-reference agreement; variable-sensitive structural equality; no independent expert gold",
+          "server_startup_ms": 434.6997910179198,
+          "rust_startup_ms": 49.55866700038314
+        }
+      }
+    }
+  ],
+  "phase1_issues": {
+    "catalog": "https://github.com/grove/graph-verity/issues/36",
+    "lexical": "https://github.com/grove/graph-verity/issues/37",
+    "embedding": "https://github.com/grove/graph-verity/issues/38",
+    "find": "https://github.com/grove/graph-verity/issues/39",
+    "ask": "https://github.com/grove/graph-verity/issues/40"
+  }
+}

@@ -1,6 +1,6 @@
 # Phase 0 — Semantic Parser Feasibility Protocol
 
-**Status:** numerical thresholds remain proposed and unapproved. Public CPU development inference was measured in PR #20; the working [issue #8 evaluation framework](phase-0-evaluation.md) preserves those negative results and reports **NOT READY**. Independent expert gold, a separately designated target CPU and an authorized external locked evaluation remain outstanding.
+**Status (17 October 2026): Phase 0 engineering decision published as [STOP tested unattended Ask / REVISE Find-first](phase-0-decision.md).** This document preserves the feasibility protocol, not a claim that its GO requirements passed. Numerical/protocol budgets and the M1 Pro target were owner-approved in the separate [pending approval record](../configs/phase-0-approval.json); formal freeze/external split integrity, expert gold and sealed evaluation remain incomplete. Public development and compact-v2 results are negative. The new decision supersedes the original build sequence and schedule.
 
 ## Goal and decision
 

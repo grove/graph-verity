@@ -1,14 +1,14 @@
 # Graph Verity
 
-**Ask naturally. Verify against the graph.**
+**Find RDF entities. Explore connections. Inspect the evidence.**
 
-Graph Verity is a local-first RDF question-answering project. Its **deterministic pre-LLM core is implemented on `main`**: manually authored or fixture-supplied typed plans are validated in Rust, compiled into read-only SPARQL, and executed in embedded Oxigraph with scoped RDF evidence.
+Graph Verity is a local-first RDF exploration project. **Phase 0 selected a Find-first MVP and stopped unattended free-form Ask with the tested Qwen2.5-1.5B v1/compact-v2 configurations.** See the [decision, evidence and roadmap](docs/phase-0-decision.md) and [machine-readable record](docs/phase-0-decision.json). Find is the next build scope, not an implemented feature. Its **deterministic pre-LLM core is implemented on `main`**: manually authored or fixture-supplied typed plans are validated in Rust, compiled into read-only SPARQL, and executed in embedded Oxigraph with scoped RDF evidence.
 
 An opt-in **CPU-only local semantic-parser experiment** is implemented behind the same Rust validation boundary. It evaluates public development questions with oracle vocabulary, reports AI-reference agreement separately from JSON validity and query execution, and preserves model/grammar/prompt/output artifacts. See [the experiment and reproduction command](docs/local-parser-experiment.md). Embeddings, Find/search, SHACL validation and product HTTP serving remain unimplemented. Successful graph execution does not establish that a question was understood or that the graph's statements are true in the world.
 
 ## Try the implemented pipeline
 
-The deterministic implementation is on `main`; the separate real-data transfer work is in the issue #5 follow-up PR. Install Rust through rustup and Python 3.12 on Linux; the checked-in toolchain and dependency files pin the versions used by CI. Linux x86-64 / Ubuntu 24.04 is the tested target, not a claim of verification on every platform.
+The deterministic implementation and real-data transfer fixtures are on `main`. Install Rust through rustup and Python 3.12 on Linux; the checked-in toolchain and dependency files pin the versions used by CI. Linux x86-64 / Ubuntu 24.04 is the tested target, not a claim of verification on every platform.
 
 ```sh
 git clone https://github.com/grove/graph-verity.git
@@ -56,7 +56,7 @@ The first retained real dataset is a **600-quad bounded Wikidata geography captu
 
 The benchmark contains **130 machine-authored candidate questions**: 46 development cases, 76 templated review candidates and 8 geographic-transfer candidates. Development includes **38 executable queries and 8 recorded clarification/unsupported cases**. Those eight cases are bookkeeping, not demonstrated model abstention. Template reuse does not create independent semantic evidence. None of the gold is represented as expert-approved; no independently reviewed locked holdout has been completed.
 
-Use the [Phase 0 evaluator and preregistration commands](docs/phase-0-evaluation.md) to rescore saved parser outputs, replay them through Rust, verify manifests and assess proposed gates. The baseline is **NOT READY**; see [its decision matrix](reports/phase-0-baseline/summary.md).
+Use the [Phase 0 evaluator and preregistration commands](docs/phase-0-evaluation.md) to rescore saved parser outputs, replay them through Rust, verify manifests and assess proposed gates. Formal feasibility remains **NOT READY**; the engineering outcome is **STOP tested unattended Ask / REVISE Find-first**. See the [historical baseline matrix](reports/phase-0-baseline/summary.md) and [final decision](docs/phase-0-decision.md).
 
 The isolated external operator can preregister either independent-human-review evidence
 or an explicitly approved, owner-waiver-bound AI-reference comparison. The latter
@@ -80,13 +80,21 @@ The project owner explicitly approved the prior AI audit and authorized the addi
 
 The project owner has **authorized proceeding without a paid independent human gold reviewer**. The 130 Wikidata candidates were machine-authored and source-audited by AI, and the separate Schema.org transfer cases and external 60-case holdout candidates are **not human-expert validated**. This is an explicitly accepted development limitation, not an achieved expert-review gate.
 
-The human reviewer ledger stays empty and its `review --require-reviewed` checks are not bypassed. The next local-model experiment may compare against the exposed development cases; any later externally held candidate evaluation must be pre-frozen and described as **AI-reference agreement**, not verified Norwegian semantic accuracy. See [Phase 0 risk acceptance](docs/phase-0-ai-gold-risk-acceptance.md) and [benchmark review](docs/benchmark-review.md).
+The human reviewer ledger stays empty and its `review --require-reviewed` checks are not bypassed. The retained local-model experiments compare against exposed development cases; any later externally held candidate evaluation must be pre-frozen and described as **AI-reference agreement**, not verified Norwegian semantic accuracy. See [Phase 0 risk acceptance](docs/phase-0-ai-gold-risk-acceptance.md) and [benchmark review](docs/benchmark-review.md).
 
 ## Run the local semantic-parser experiment
 
-The [local experiment](docs/local-parser-experiment.md) pins Qwen2.5-1.5B-Instruct Q4_K_M, llama.cpp, the embedded tokenizer, ChatML template, grammar and prompt. After one-time `python3 tools/local_parser.py prepare` and `cargo build --locked -p verity_cli`, run `python3 tools/local_parser.py run --out artifacts/local-parser/repeat-1` offline. It owns the loopback-only CPU runtime and evaluates only public `dev` / `transfer_dev` cases; normal CI still runs no inference. Each fresh run preserves raw proposals, failures, component diagnostics, complete parser timings and RAM measurements. Gold remains AI-authored, and the sealed holdout remains unevaluated. This experiment does not approve the numerical Phase 0 gates or establish unrestricted Ask feasibility.
+The [local experiment](docs/local-parser-experiment.md) pins Qwen2.5-1.5B-Instruct Q4_K_M, llama.cpp, the embedded tokenizer, ChatML template, grammar and prompt. After one-time `python3 tools/local_parser.py prepare` and `cargo build --locked -p verity_cli`, run `python3 tools/local_parser.py run --out artifacts/local-parser/repeat-1` offline. It owns the loopback-only CPU runtime and evaluates only public `dev` / `transfer_dev` cases; normal CI still runs no inference. Each fresh run preserves raw proposals, failures, component diagnostics, complete parser timings and RAM measurements. Gold remains AI-authored, and the sealed holdout remains unevaluated. This experiment does not establish unrestricted Ask feasibility. The later owner budget/target approval remains pending external split integrity and formal freeze.
 
-The longer-term design has two distinct modes: **Find** ranks vocabulary/entities and may miss answers; **Ask** executes a validated formal plan within a declared graph scope. Retrieval, SHACL, production serving and hardening remain future work. The [implementation plan](docs/implementation-plan.md) and [Phase 0 feasibility protocol](docs/phase-0-feasibility.md) describe those design goals; this README and readiness report describe the runnable implementation.
+## Phase 0 outcome and next build
+
+The original 86-question development experiment returned reference answer bindings on **3/73 supported questions** and correct model abstentions on **0/13**. On 30 adversarial questions, v1 versus compact v2 improved valid contracts **22/30 → 28/30**, but complete answers stayed **0/24** and correct abstentions **0/6**. V1 executed four wrong plans; v2 executed none because deterministic checks rejected or blocked every candidate. Compact v2 also increased tokens and latency. These are public AI-reference measurements, not expert-reviewed accuracy or a sealed-holdout result. The evidence supports stopping these unattended Ask configurations, not a claim about every small model.
+
+The [Find-first plan](docs/phase-0-decision.md#selected-next-scope-a-find-first-mvp) is ordered: [authorized bilingual catalog #36](https://github.com/grove/graph-verity/issues/36), [BM25 baseline #37](https://github.com/grove/graph-verity/issues/37), [pinned EmbeddingGemma comparison #38](https://github.com/grove/graph-verity/issues/38), then [Find/navigation/evidence MVP #39](https://github.com/grove/graph-verity/issues/39). EmbeddingGemma may improve semantic retrieval; adoption requires measured Recall@k/MRR gains within CPU/RAM budgets. A lexical-only result is acceptable. [Optional constrained Ask #40](https://github.com/grove/graph-verity/issues/40) requires explicit intent selection or plan confirmation; unattended free-form Ask stays disabled as a product direction.
+
+Reuse the authorized catalog/exact resolution, typed IR, validation, read-only compiler, snapshot execution, bounded evidence and replay/evaluation infrastructure. **Successful query execution proves what a particular plan returned in a snapshot. Correct question interpretation is a separate claim. Supporting triples provide graph evidence; none establishes real-world truth.** Find rankings are partial discovery, and absent triples remain unknown.
+
+Production ingestion/serving, full SHACL and GNNs are outside this next MVP. The older [architecture plan](docs/implementation-plan.md) is retained as design context and is superseded by the [Phase 0 decision](docs/phase-0-decision.md) for scope and schedule.
 
 ## Review and contribution
 

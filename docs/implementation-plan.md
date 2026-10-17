@@ -1,8 +1,10 @@
 # Graph Verity — RDF Semantic Retrieval & Question Answering
 ## Detailed Implementation Plan, Revised MVP
 
-**Revised:** 14 October 2026  
-**Status:** Proposed engineering plan; implementation not yet started. Phase 0 parser feasibility is now the first architectural decision gate.  
+**Revised status:** 17 October 2026
+
+**Status:** Historical architecture proposal, superseded for active scope/schedule by the [Phase 0 STOP/REVISE decision](phase-0-decision.md). The deterministic Rust foundation, local parser experiments and evaluation tooling are implemented. Tested unattended Qwen Ask failed; the next MVP is Find-first (#36–#39), with optional confirmed Ask (#40). Sections below preserve broader design alternatives, not approved release requirements.
+
 **Initial scale:** 10,000–100,000 searchable RDF resources  
 **Primary languages:** Norwegian questions; Norwegian and English graph labels  
 **Runtime:** Local Rust process, without an external database or hosted AI inference service
@@ -425,76 +427,27 @@ CompGCN and R-GCN are **not MVP benchmarks**. After release, compare them agains
 - Validate model weights, local native inference dependencies, quantization, tokenizer/grammar, bundled data and third-party licenses during release.
 - Include regressions for wrong-direction relations, illicit scopes, malformed IR, injection attempts and incomplete data.
 
-## 14. Proposed Delivery Phases
+## 14. Active implementation sequence and schedule
 
-**Delivery planning ranges (not guarantees):** basic prototype 4–8 weeks, useful limited-domain MVP 3–5 months, hardened pilot 6–9 months, subject to engineering capacity, availability of expert-labelled RDF cases and Phase 0 results. The former 20-week schedule should be read as an optimistic build sequence, **not** a credible fixed commitment for reliable pilot readiness. General-purpose arbitrary natural-language RDF querying remains out of scope. Do not proceed to full stack implementation if the small local parser does not pass Phase 0 gates.
+The [Phase 0 decision](phase-0-decision.md#selected-next-scope-a-find-first-mvp) replaces the former optimistic full-stack schedule. Phase 0 completed engineering experiments with a negative result for the tested unattended Ask configurations; it did not pass formal feasibility gates.
 
-| Phase | Indicative timing | Deliverables | Exit criterion |
-|---|---|---|---|
-| **0. Benchmark + parser feasibility** | Weeks 1–4 (overlapping prototype work) | Real RDF domain, 100–200 gold questions, tiny typed IR→SPARQL compiler and oracle; local parser grammar/runtime spike on target CPU; unsupported-question and transfer tests. | Documented go / revise / stop decision based on locked end-to-end answer correctness, wrong-plan risk, abstention and CPU/RAM. |
-| **1. RDF ingestion and vocabulary** | After Phase 0 go decision | Oxigraph, deterministic graph/named graphs, ontology catalog, verbalization, SHACL library assessment. | Reproducible import and vocabulary ID tests. |
-| **2. Hybrid search** | MVP implementation | EmbeddingGemma ONNX, Rust parity, flat vector index, BM25, `/v1/search`. | B2 retrieval quality, pre-rerank Recall@50 and CPU measurements. |
-| **3. RDF/SHACL verification** | MVP implementation | Existing validator integration or bounded cached SPARQL constraint templates; evidence. | Differential parity for supported SHACL fixtures. |
-| **4. Expand parser + query compiler** | After proven Phase 0 spike | Improve ontology-scoped context, harden validated IR compiler, add supported families and `/v1/ask`. | Held-out Norwegian families pass accuracy, transfer, calibration and safe-abstention gates on target CPU. |
-| **5. Optional reranker + error analysis** | After working baseline | B3 comparison on 10/20/50 candidates, latency/RAM, retrieval failure analysis. | Explicit adopt/reject decision vs B2. |
-| **6. Hardening and pilot** | Pilot stage (6–9 month planning range overall) | Compatible bundle activation, delta updates, permissions, offline packaging, load/rollback tests. | Pilot definition of done. |
+1. [#36](https://github.com/grove/graph-verity/issues/36): authorized Norwegian/English vocabulary/entity catalog (3–5 days).
+2. [#37](https://github.com/grove/graph-verity/issues/37): measured BM25 lexical baseline (4–6 days), after catalog.
+3. [#38](https://github.com/grove/graph-verity/issues/38): pin and compare EmbeddingGemma to BM25 (4–7 days), after baseline. No assumed embedding advantage or runtime compatibility.
+4. [#39](https://github.com/grove/graph-verity/issues/39): scoped Find, graph navigation, supporting triples and source/snapshot provenance (5–8 days), after the embedding adopt/reject decision.
+5. [#40](https://github.com/grove/graph-verity/issues/40): optional explicit intent selection/plan confirmation (3–5 days), only after Find and a separate product decision.
 
-**These phases are sequential dependencies, not a fixed 20-week calendar;** parallelism and iteration depend on benchmark gates, data quality and capacity. The feasibility spike may justify a narrower Find-only release.
-
-**Deferred:** CompGCN/R-GCN training, relational vector refresh, and model alignment **after** the MVP. Preserve the experimental recipe in Appendix A without committing MVP weeks to it.
-
-### 14.1 Phase-by-phase checklists
-
-**Phase 0 — specification**
-- [ ] Freeze an imperfect real RDF dataset, named-graph/entailment semantics and 100–200 expert-reviewed Norwegian questions with gold SPARQL/IR, expected result sets and unsupported/ambiguous cases.
-- [ ] Define a minimal IR and implement/test deterministic IR→SPARQL using expert IR before integrating a local model.
-- [ ] In the **first four weeks**, benchmark a grammar-constrained small local model with fixed ontology terms against expert IR; independently test grammar enforcement and Rust validation, reversed edges, numerical operators and malicious RDF labels.
-- [ ] Set answer-set/abstention/wrong-plan accuracy gates and full CPU/RAM budgets **before** looking at locked holdout results; make a go / revise / stop decision.
-- [ ] Evaluate on a distinct-ontology or temporal holdout; measure ontology transfer independently from within-domain paraphrase accuracy. See [Phase 0 feasibility protocol](phase-0-feasibility.md).
-
-**Phase 1 — ingestion**
-- [ ] Preserve graph provenance, RDF literals, language tags, predicate direction and stable resource IDs.
-- [ ] Build catalog of actual class, predicate and entity IDs plus type/domain/range hints.
-- [ ] Evaluate Rudof/`shacl` against the required subset and Oxigraph integration.
-- [ ] Reuse shape parsing; cache reviewed validation plans on shape update where needed.
-
-**Phase 2 — retrieval**
-- [ ] Match Python and Rust query/document embedding behavior and ONNX quantization.
-- [ ] Implement vector + BM25 fusion; support authorized scope filters.
-- [ ] Measure pre-rerank Recall@50/100 and relational/cross-language errors.
-- [ ] Ship a genuinely usable `/v1/search` without a GNN.
-
-**Phase 3 — exact semantics**
-- [ ] Pin supported SHACL 2017 constraints and class/entailment policy.
-- [ ] Differential-test subclass, datatype, counts, blank nodes and graph scope.
-- [ ] Expose trustworthy evidence and unsupported/nonconformant statuses.
-
-**Phase 4 — local semantic parser**
-- [ ] Test deterministic IR→SPARQL execution from expert IR first.
-- [ ] Retrieve ontology terms into an authorized, constrained generator context.
-- [ ] Benchmark a small local parser on Norwegian paraphrase and operator tests.
-- [ ] Enforce typed/authorized IR and safe SPARQL limits; return clarification/unsupported instead of guessing.
-- [ ] Establish end-to-end answer precision/recall/F1, abstention and p95 numbers.
-
-**Phase 5 — optional reranking**
-- [ ] Compare B2 vs B3 on Recall@10, MRR, nDCG, CPU p95 and RAM.
-- [ ] Test top-10/20/50 reranking and B2 fallback.
-- [ ] Reject reranking if it adds latency without meaningful quality improvement.
-
-**Phase 6 — production**
-- [ ] Atomically activate and rollback compatible graph/index/ontology/parser bundles.
-- [ ] Build updated document embeddings and lexical deltas for changed/new nodes.
-- [ ] Test access controls, malicious graph text, timeouts, offline operation and regression canaries.
+One maintainer: 16–26 engineering days, approximately 4–6 working weeks for Find, excluding review/license/runtime delays. Production ingestion, HTTP hardening, SHACL runtime, reranking and GNNs are not on this MVP critical path. The final decision defines proposed retrieval quality/performance targets; old Ask gates are not reused as retrieval approval.
 
 ## 15. Repository and Artifacts
 
-**Proposed code layout: two crates, not eleven.** The following directories are *planned*, not already implemented.
+**Original broader layout proposal:** the two-crate workspace now exists; many internal modules and artifact directories below remain design alternatives. See README for the runnable structure.
 
 ~~~text
 graph-verity/
   README.md
   LICENSE
-  Cargo.toml                        # Rust workspace (future)
+  Cargo.toml                        # Rust workspace (implemented)
   crates/
     verity_core/
       src/
@@ -575,9 +528,9 @@ When a module needs a stronger boundary, use ordinary Rust visibility/traits fir
 | CPU timing guesses treated as guarantees | Missed operational targets | Benchmark complete pipeline p50/p95/p99 and peak RAM; define budgets from actual device. |
 | CompGCN brings marginal benefit and stale structural embeddings | Unnecessary training and refresh complexity | Move GNN to post-MVP research and require gain over strongest production retrieval. |
 
-## 17. Definition of Done
+## 17. Historical broader Ask pilot definition
 
-The first pilot is ready only when:
+These original broader requirements are retained for context; they do not define the selected Find-first release. Use the [decision milestones and success criteria](phase-0-decision.md#selected-next-scope-a-find-first-mvp). The original Ask pilot would require:
 
 - [ ] Phase 0 feasibility findings, grammar-behavior tests and an explicit documented go/revise/stop decision are recorded; no implementation claims rest solely on schema-valid JSON.
 - [ ] A local/offline Rust process runs with Oxigraph, an embedding model, compatible indexes and a pinned local semantic-parser runtime.
@@ -593,17 +546,9 @@ The first pilot is ready only when:
 - [ ] B3 is deployed only if its measured value justifies CPU/RAM cost; otherwise B2 remains the retrieval path.
 - [ ] No CompGCN/R-GCN implementation, special structural-index freshness service or related promotion gate is required to finish MVP.
 
-## 18. Final Recommendation
+## 18. Current recommendation
 
-Develop **Graph Verity** as a practical, local-first RDF question-answering engine:
-
-1. **Dependable retrieval:** EmbeddingGemma 2 + BM25 to find real RDF terms with documented recall and provenance.
-2. **Controlled understanding:** a compact local generative semantic parser grounded in the ontology catalog, producing JSON for a **typed query IR**, with an explicit abstention path.
-3. **Verifiable execution:** deterministic IR validation and SPARQL compilation, Oxigraph, and a maintained/validated SHACL implementation or a reviewed bounded SPARQL subset.
-4. **Measured ranking improvements:** try a multilingual cross-encoder on actual candidate descriptions; adopt it only if held-out gains justify CPU/RAM cost.
-5. **Research later:** test CompGCN/R-GCN only after the MVP, and only against the strongest working retrieval baseline.
-
-The differentiator is not a new GNN. It is the combination of natural-language interpretation, **ontology-aware planning**, exact graph execution, and reproducible evidence in a self-hosted Rust service.
+Ship a narrow Find-first pilot: deterministic scoped catalog, a measured lexical baseline, an adopt/reject EmbeddingGemma experiment, and graph navigation with provenance. Reuse the typed compiler and evidence foundation. The [final Phase 0 decision](phase-0-decision.md) records why unattended free-form Ask with the tested Qwen configurations stops here. Any later Ask flow requires explicit intent selection or plan confirmation and separate evaluation; no semantic-feasibility GO is claimed.
 
 ## 19. Reference Documentation
 
