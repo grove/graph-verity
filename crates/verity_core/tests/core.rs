@@ -682,6 +682,18 @@ fn local_origin_and_independent_model_output_rejections() {
     for bytes in [b"SELECT * WHERE {?s ?p ?o}".as_slice(), b"{", b"{\"version\":1,\"proposal\":{\"status\":\"unsupported\",\"reason\":\"x\",\"sparql\":\"DROP ALL\"}}"] {
         assert!(g.run_parser(&MockModel(bytes.to_vec()), "test", &scope, &policy()).is_err());
     }
+    for field in ["tool_calls", "command", "service", "sparql"] {
+        let mut encoded: serde_json::Value = serde_json::from_slice(&response(base(&g))).unwrap();
+        encoded["proposal"][field] = serde_json::json!("touch /tmp/issue9-INJECTION-TOOL-CANARY");
+        assert!(g
+            .run_parser(
+                &MockModel(serde_json::to_vec(&encoded).unwrap()),
+                "test",
+                &scope,
+                &policy()
+            )
+            .is_err());
+    }
 }
 
 fn evaluation_fixture(g: &Snapshot, gold: Plan) -> Benchmark {

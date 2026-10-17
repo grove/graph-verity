@@ -87,3 +87,7 @@ The longer-term design has two distinct modes: **Find** ranks vocabulary/entitie
 The model-independent foundation was merged through PRs [#11](https://github.com/grove/graph-verity/pull/11)–[#14](https://github.com/grove/graph-verity/pull/14); benchmark review tooling and the AI audit were added through [#15](https://github.com/grove/graph-verity/pull/15) and [#16](https://github.com/grove/graph-verity/pull/16). The owner explicitly waived expert review for issue #5's **engineering-readiness milestone**; the missing independent evaluation evidence remains a disclosed limitation, not a model-feasibility pass.
 
 Code and original fixtures use [Apache-2.0](LICENSE). Retained Wikidata structured RDF is CC0-1.0 as documented with the dataset. The selected experimental model uses Apache-2.0 and llama.cpp uses MIT; [pinned license details](docs/local-parser-experiment.md#frozen-inputs-and-attribution) remain separate from the graph licenses.
+
+The [issue #9 adversarial suite](docs/adversarial-evaluation.md) adds 30 public
+paired-ontology regressions, model-free cross-engine CI checks and an opt-in frozen
+model run with per-category false positives, false abstentions and transfer gaps.

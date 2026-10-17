@@ -98,9 +98,9 @@ def main() -> int:
         state["git_commit"] = run("git-revision", ["git", "rev-parse", "HEAD"]).strip()
         run("initial-clean-tree", ["git", "diff", "--exit-code", "HEAD"])
         state["rustc"] = run("rust-version", ["rustc", "-Vv"]).strip()
+        run("dependency-fetch", ["cargo", "fetch", "--locked"])
         run("reporting-tests", [sys.executable, "-m", "unittest", "discover",
                                 "-s", "tools", "-p", "test_*.py", "-v"])
-        run("dependency-fetch", ["cargo", "fetch", "--locked"])
         run("format", ["cargo", "fmt", "--all", "--check"])
         run("clippy", ["cargo", "clippy", "--workspace", "--all-targets", "--locked",
                        "--offline", "--", "-D", "warnings"])
