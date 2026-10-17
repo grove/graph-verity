@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Graph Verity · Local Find</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a href="#search" class="skip">Skip to search / Til søk</a>
+  <header><h1>Graph Verity · Local Find</h1>
+    <label for="language">Language / Språk</label>
+    <select id="language"><option value="en">English</option><option value="nb">Norsk bokmål</option></select>
+    <p id="boundary">Ranked candidates are not verified answers. Source triples describe this graph snapshot, not proof of real-world truth. No match does not establish factual absence.</p>
+  </header>
+  <main>
+    <noscript><p>JavaScript is required for this local pilot. No search has run. Enable it for this loopback origin, or use the offline Find CLI described in docs/find-mvp.md. / JavaScript må aktiveres, eller bruk Find-kommandolinjen.</p></noscript>
+    <p id="connection" role="status">Connecting to local session / Kobler til lokal økt…</p>
+    <form id="search-form">
+      <fieldset id="controls" disabled>
+        <legend id="search-title">Find in authorized graphs</legend>
+        <label id="query-label" for="search">Search (Norwegian or English)</label>
+        <input id="search" name="query" type="search" maxlength="4096" required autocomplete="off">
+        <label id="role-label" for="role">Role</label><select id="role" name="role"></select>
+        <fieldset id="graphs"><legend id="graphs-title">Authorized graphs — select one or more</legend></fieldset>
+        <label id="limit-label" for="limit">Maximum candidates / edges per page</label>
+        <input id="limit" type="number" min="1" max="50" value="10" required>
+        <button id="submit" type="submit">Find</button>
+      </fieldset>
+    </form>
+    <section aria-labelledby="results-title"><h2 id="results-title">Candidates</h2>
+      <p id="status" role="status" aria-live="polite"></p>
+      <div id="results"></div>
+    </section>
+    <section id="navigation" aria-labelledby="detail-title" hidden>
+      <h2 id="detail-title" tabindex="-1">Graph evidence</h2>
+      <p id="selection"></p>
+      <label id="direction-label" for="direction">Direction</label>
+      <select id="direction"><option value="outgoing">Outgoing</option><option value="incoming">Incoming</option><option value="predicate">Predicate usage</option></select>
+      <p id="page-status" role="status" aria-live="polite"></p>
+      <div id="details"></div>
+      <div id="edges"></div>
+      <button id="previous" type="button">Previous page</button>
+      <button id="next" type="button">Next page</button>
+    </section>
+    <details><summary id="receipt-title">Local runtime receipt</summary><pre id="receipt"></pre></details>
+  </main>
+  <footer id="footer">BM25 only · Offline local pilot · Stop the server with Ctrl-C. No usability or relevance study is claimed.</footer>
+</body>
+</html>

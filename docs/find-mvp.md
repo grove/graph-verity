@@ -136,5 +136,5 @@ Search ranks candidates. Navigation executes a fixed bounded read-only template.
 `evidence_verification: verified_against_snapshot` establishes the returned triples
 in that snapshot. `interpretation_correctness: not_assessed` and
 `real_world_truth: not_established` remain separate. Absent triples are unknown
-under the open-world policy. No autonomous Ask, UI, remote SERVICE, write endpoint,
+under the open-world policy. The separate [local browser pilot](local-find-ui.md) now wraps these contracts. No autonomous Ask, remote SERVICE, write endpoint,
 production ingestion, SHACL runtime or GNN is added.
