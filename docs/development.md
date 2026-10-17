@@ -32,3 +32,5 @@ formats source, downloads model weights, or grants itself permission to merge a 
 The opt-in [local parser experiment](local-parser-experiment.md) builds and runs a pinned
 CPU model separately. Normal CI invokes no inference and downloads no model weights.
 CI success verifies only its model-free tests, not parser feasibility on deployment hardware.
+
+For issue #8, `tools/phase0.py report|replay|verify|assess|compare` provides the model-free evaluation workflow. `verify_pre_llm.py` runs its regressions, report generation and Rust replay in ordinary CI. See [the protocol, approval/freeze boundaries and isolated operator command](phase-0-evaluation.md).

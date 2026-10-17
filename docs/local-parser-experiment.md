@@ -154,3 +154,7 @@ accuracy claim and is already executable through `resolve` and `run`. Fixture re
 remains a test adapter. A smaller model is an unmeasured alternative, not a promised
 performance fix. Any revised model/prompt needs fresh development measurements and
 a frozen setup before a separately authorized one-shot external holdout run.
+
+## Unified evaluation and frozen gates (#8)
+
+The [Phase 0 framework](phase-0-evaluation.md) adds saved-output reassessment and Rust replay, per-family rates/uncertainty, immutable report manifests, deterministic gate assessment and an isolated preregistered operator adapter. Numerical gates remain proposals. New runner records separate vocabulary-selection and runtime prompt/prediction times, and descendant RSS sampling includes startup; these additions do not alter the original PR #20 measurements. Public inference still uses only dev/transfer_dev; the external candidate has not been evaluated.

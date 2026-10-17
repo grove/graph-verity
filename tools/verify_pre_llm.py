@@ -156,6 +156,27 @@ def main() -> int:
             "recorded_abstentions_not_model_tested": len(skipped),
             "locked_holdout_evaluated": False, "model_transfer_accuracy": None,
         }
+        cli("locked-evaluation-denied", "evaluate", rdf, fmt, policy,
+            "PRIVATE_NOT_PRESENT_DO_NOT_OPEN", "locked_holdout", str(OUT / "never-created"),
+            should_succeed=False)
+        require("Private evaluation is disabled" in (OUT / "locked-evaluation-denied.stderr.txt").read_text(),
+                "Locked evaluation was not rejected before benchmark access")
+        # Fresh artifact subdirectories preserve prior reports and permit repeated verification.
+        import tempfile
+        phase0_out = Path(tempfile.mkdtemp(prefix="phase0-", dir=OUT))
+        run("phase0-historical-report", [sys.executable, "tools/phase0.py", "report", "--out", str(phase0_out / "baseline")])
+        run("phase0-rust-replay", [sys.executable, "tools/phase0.py", "replay", "--out", str(phase0_out / "replay")])
+        for name in ["baseline", "replay"]:
+            run(f"phase0-{name}-integrity", [sys.executable, "tools/phase0.py", "verify",
+                                            str(phase0_out / name / "manifest.json"), "--check-inputs"])
+            summary_report = json.loads((phase0_out / name / "summary.json").read_text())
+            require(summary_report["gate_assessment"]["decision"] == "NOT READY",
+                    "Development evidence must not produce a readiness claim")
+            require(summary_report["datasets"]["wikidata"]["metrics"]["exact_answer"]["numerator"] == 3
+                    and summary_report["datasets"]["worldcities-transfer"]["metrics"]["structural_ir"]["numerator"] == 0,
+                    "Historical negative result changed during scoring/replay")
+        run("phase0-run-comparison", [sys.executable, "tools/phase0.py", "compare",
+                                     str(phase0_out / "baseline"), str(phase0_out / "replay")])
         manual = json.loads(cli("manual", "run", rdf, fmt, policy, "examples/manual-plan.json"))
         replay = json.loads(cli("replay", "replay", rdf, fmt, policy, scope,
                                 "examples/question.txt", "examples/fixture-response.json"))

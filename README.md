@@ -50,6 +50,8 @@ The first retained real dataset is a **600-quad bounded Wikidata geography captu
 
 The benchmark contains **130 machine-authored candidate questions**: 46 development cases, 76 templated review candidates and 8 geographic-transfer candidates. Development includes **38 executable queries and 8 recorded clarification/unsupported cases**. Those eight cases are bookkeeping, not demonstrated model abstention. Template reuse does not create independent semantic evidence. None of the gold is represented as expert-approved; no independently reviewed locked holdout has been completed.
 
+Use the [Phase 0 evaluator and preregistration commands](docs/phase-0-evaluation.md) to rescore saved parser outputs, replay them through Rust, verify manifests and assess proposed gates. The baseline is **NOT READY**; see [its decision matrix](reports/phase-0-baseline/summary.md).
+
 See [benchmark review and evaluation](docs/benchmark-review.md), [proposed numerical gates](configs/phase-0-gates.proposed.json), and [pre-LLM readiness](docs/pre-llm-readiness.md). Compiler-oracle results are not natural-language accuracy or a Phase 0 go decision.
 
 ## Real cross-ontology and sealed holdout preparation

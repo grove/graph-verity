@@ -1,6 +1,6 @@
 # Phase 0 — Semantic Parser Feasibility Protocol
 
-**Status:** proposed experiment; no results or pass rates have been measured.
+**Status:** numerical thresholds remain proposed and unapproved. Public CPU development inference was measured in PR #20; the working [issue #8 evaluation framework](phase-0-evaluation.md) preserves those negative results and reports **NOT READY**. Independent expert gold, a separately designated target CPU and an authorized external locked evaluation remain outstanding.
 
 ## Goal and decision
 
@@ -46,4 +46,4 @@ Provisional recommendation: prioritize near-zero unflagged wrong-plan claims on 
 
 ## Artifacts to check in
 
-A fixture license/source manifest; question dataset schema and gold IR/SPARQL; minimal compiler, parser runtime+grammar checks; fixed splits; reproducible evaluation script; failures/abstention casebook; benchmark JSON report; go/revise/stop decision. None of these are implemented at the time of writing.
+A fixture license/source manifest; question dataset schema and gold IR/SPARQL; minimal compiler, parser runtime+grammar checks; fixed splits; reproducible evaluation script; failures/abstention casebook; benchmark JSON report; go/revise/stop decision. The compiler, public data/reference fixtures, actual local parser experiment and evaluation framework are now implemented; see [the implementation status and remaining approvals](phase-0-evaluation.md). This protocol's independent-review and deployment-readiness goals remain unmet.

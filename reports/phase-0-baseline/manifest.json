@@ -1,0 +1,165 @@
+{
+  "sha256": "24fd25d1dda0e8e99ae4145c8ccd432cd5898c0c5d96e9e8e458615d81f4ce4f",
+  "payload": {
+    "version": 1,
+    "kind": "historical_development_reassessment",
+    "source_revision": "4168a64ebe3956a7648bf02836aae542e9f21140",
+    "source_dirty": false,
+    "scoring_version": "phase0-v1-ordered-structural-and-binding-set",
+    "command": [
+      "tools/phase0.py",
+      "report",
+      "--out",
+      "artifacts/phase0-final-baseline"
+    ],
+    "environment": {
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "python": "3.12.14 (main, Aug 14 2026, 15:24:41) [Clang 22.1.3 ]"
+    },
+    "inputs": [
+      {
+        "path": "configs/phase-0-gates.proposed.json",
+        "sha256": "bc6843a5442f01599ff01476da51cd16213452391c955c9aacec349f61a23a7a"
+      },
+      {
+        "path": "configs/phase-0-protocol.json",
+        "sha256": "8cbed627158c80e773059c5b6ff4fe7786c06099d1f823585616eabbe6493b9c"
+      },
+      {
+        "path": "configs/local-parser.json",
+        "sha256": "144bf5437190da22d46e0ea2f894b641bc0a69320e0e75a6459fc5a98687debe"
+      },
+      {
+        "path": "configs/local-parser.prompt.txt",
+        "sha256": "bb309cbbe00a0ee8070e59521138c59a5e3de62145b74aaa6aedaa3566af7eb5"
+      },
+      {
+        "path": "configs/local-parser.gbnf",
+        "sha256": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e"
+      },
+      {
+        "path": "schemas/contracts-v1.json",
+        "sha256": "8815f2522c21fbee6e1ddd5ea012c05f4b037723cc7a30cde38ff14ed491c3c2"
+      },
+      {
+        "path": "Cargo.lock",
+        "sha256": "b86b68fc472e2178f4815cfc86a3477713bd3ad74c6872bd70dfbfcbff3cf5d0"
+      },
+      {
+        "path": "rust-toolchain.toml",
+        "sha256": "f715f440167e20fd8ea9afa0498c3d1ab80174cfcb8cbc895f106a34d907a1e1"
+      },
+      {
+        "path": "benchmarks/split-manifest.json",
+        "sha256": "cd5336b64aed6ab8e2cdcf55f447bcdca658f7cbc8e52838a7e4cdb80ac15b91"
+      },
+      {
+        "path": "configs/locked-holdout-commitment.json",
+        "sha256": "4226afd03cf8135d72fd122f2506e4209480b329a8449773307fb96bc34bef27"
+      },
+      {
+        "path": "tools/phase0.py",
+        "sha256": "4cbc8957d3f5e39ae21e603080a69ffd2fdc8d451583e74fd5015c5a7ac45d4b"
+      },
+      {
+        "path": "tools/local_parser.py",
+        "sha256": "0d4197e54a685ad6be6200cffb824598d735a8e94a2f7eee963fe622181c6282"
+      },
+      {
+        "path": "tools/locked_phase0.py",
+        "sha256": "e9334df3e284b731fd3d98e9a269b75d98e441f5b56e124d2b373dbf3e068933"
+      },
+      {
+        "path": "crates/verity_cli/src/main.rs",
+        "sha256": "55dde6905a4fe47359742a9435958b61afd85e30517090b3b6ad3cea54c7c79d"
+      },
+      {
+        "path": "crates/verity_core/src/catalog.rs",
+        "sha256": "b2d0a974d3481853d1d86b0d066e8c117a83bcc429c815c72ef7e9d9c58f17da"
+      },
+      {
+        "path": "crates/verity_core/src/compiler.rs",
+        "sha256": "ae892395d25f56aa255d3c1c83b76aaff68fd85090da03f819b3a52559a239c0"
+      },
+      {
+        "path": "crates/verity_core/src/evaluation.rs",
+        "sha256": "1e9d1584cc8f4255bca43048a774d77b42506e9048d1510e134b48e7fb140802"
+      },
+      {
+        "path": "crates/verity_core/src/execution.rs",
+        "sha256": "d1aeccc1d251e9ccdd41a847213f0e5ae139937b488e5ee13964c61f55cf7d24"
+      },
+      {
+        "path": "crates/verity_core/src/ir.rs",
+        "sha256": "4f050b3b920509e1409b8d1dd2bfd7df8c5bb650f29c30f6fc2da0ca2f547c11"
+      },
+      {
+        "path": "crates/verity_core/src/lib.rs",
+        "sha256": "64c1f0df7a18573e19a6d2fc868a7f6211becfcc0a3517b2adf641513c44ad35"
+      },
+      {
+        "path": "crates/verity_core/src/parser.rs",
+        "sha256": "88d422f846ef784b84b59f7ba17aba410f3aeb5329d57809909391d6311684d7"
+      },
+      {
+        "path": "benchmarks/wikidata.json",
+        "sha256": "e648323dc0a084e992dee106d8431b55c785c65937571c1903825187c9262c7e"
+      },
+      {
+        "path": "benchmarks/worldcities-transfer.json",
+        "sha256": "1949d6844d827b6c320753572ee3d05a1982f5ef04eca65fce5fa99a74bec6fc"
+      },
+      {
+        "path": "data/wikidata/snapshot.nq",
+        "sha256": "9e75055676e095fcc387f1fd93146c37b47a448b8e08c5a806ab9be4016ccc6f"
+      },
+      {
+        "path": "data/wikidata/policy.json",
+        "sha256": "90afa6af857c2e046bc6f71ebf7354a1a0f9c4583a38001d8176af46a05df9de"
+      },
+      {
+        "path": "data/worldcities-transfer/snapshot.nq",
+        "sha256": "2ee4af13fb312c006c126f9239bdbb25b2e4be10b40bff3adc5d67076f068f13"
+      },
+      {
+        "path": "data/worldcities-transfer/policy.json",
+        "sha256": "971ffb18bc723903daba6defc96723c8fdf212cafb6ba79692a66a306ba66f51"
+      },
+      {
+        "path": "configs/phase-0-approval.json",
+        "sha256": "9c348ffb9083babc10842860d68f0a07a2b9f4a298b468e19285acac5962a471"
+      },
+      {
+        "path": "reports/local-parser-development/run.json",
+        "sha256": "ad0f720eb2b16e9ed5fdca348b644caf1eeef350cc86197e49a2dfa5c23099cc"
+      },
+      {
+        "path": "reports/local-parser-development/wikidata-report.json",
+        "sha256": "83d2119680cebf2d0083aa4f633f5357294382c0e73258aef7d243b4ef706f27"
+      },
+      {
+        "path": "reports/local-parser-development/worldcities-transfer-report.json",
+        "sha256": "1e58c248a39fc3b8595eeed441cf6c88f9bdda4e22ee92e9690f1a70c65ce24b"
+      }
+    ],
+    "outputs": {
+      "summary.json": "7111891e1f076532b6ded631731c69f79ed9950b3cf75ad903e9a986ab08b33e",
+      "summary.md": "294a8ffa4e9965d7cc0ab3c274f084dd31de8ec41aecdff56feff5c04c0f5c98"
+    },
+    "splits": [
+      [
+        "wikidata",
+        "dev"
+      ],
+      [
+        "worldcities-transfer",
+        "transfer_dev"
+      ]
+    ],
+    "model_invoked": false,
+    "holdout_accessed": false,
+    "inference_mode": "inherited_recorded_cpu_grammar_constrained",
+    "toolchain": "rustc 1.99.0 (b940084d7 2026-09-28) (Homebrew)\nbinary: rustc\ncommit-hash: b940084d7eb6a299eb4bfeb8e34901bc051e7ac4\ncommit-date: 2026-09-28\nhost: aarch64-apple-darwin\nrelease: 1.99.0\nLLVM version: 23.1.2\n",
+    "measured_vs_inherited": "Replay stage timings measure replay overhead, never model generation; historical input files remain immutable"
+  }
+}
