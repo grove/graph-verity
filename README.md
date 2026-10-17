@@ -38,6 +38,14 @@ Other implemented commands are `schema`, `smoke`, `catalog` and exact `resolve`.
 
 For the [offline local browser UI](docs/local-find-ui.md), run `cargo build --locked --offline -p verity_cli` then `python3 tools/local_find.py` and open the private session URL printed in the terminal. Norwegian/English controls cover scoped search, deliberate graph-qualified selection and original directed RDF evidence. The optional exact `follow_path` editor adds one/two-hop plans, typed filters and distinct counts with a complete Rust preview and a separate expiring, single-use confirmation. Stop with Ctrl-C. This is an engineering pilot, not a completed user study.
 
+For a retained public corpus, use the [one-command offline presets](docs/find-pilot-presets.md):
+`python3 tools/launch_find_pilot.py wikidata-development`, `worldcities-norway`, or
+`gemet-4.2.3` (Python 3.11+). These launch the existing v1 interface with verified
+source/license inputs and a fixed authorized scope. An interested pilot user's
+next step is to try one corpus and bring one concrete question, chosen IRI and
+original directed evidence to the maintainer. There are currently **no documented
+successful human participant tasks and no product-release GO**.
+
 The separate [Find UI v2 prototype](docs/local-find-ui-v2.md) (`python3 tools/local_find_v2.py`) adds explicit exact-identifier warnings, original text witnesses and directed RDF statements while reusing the unchanged v1 backend. It is not the frozen participant interface and makes no measured usability claim.
 
 The [frozen local pilot study kit](studies/pilot-v1/README.md) adds consent-aware offline operator forms, source-backed bilingual tasks and deterministic aggregate reporting. **Real participants: 0; human attempts: 0.** Issue #57 remains blocked/open pending genuine volunteers; the synthetic rehearsal is not human evidence or a release GO.
