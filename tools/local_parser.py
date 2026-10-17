@@ -28,6 +28,7 @@ BUILD_FLAGS = ["-DGGML_METAL=OFF", "-DGGML_BLAS=OFF", "-DGGML_ACCELERATE=OFF",
                "-DLLAMA_CURL=OFF", "-DLLAMA_BUILD_TESTS=OFF", "-DCMAKE_BUILD_TYPE=Release",
                "-DBUILD_SHARED_LIBS=OFF"]
 DATASETS = [("wikidata", "dev"), ("worldcities-transfer", "transfer_dev")]
+ADVERSARIAL_DATASETS = [("adversarial", "dev"), ("adversarial-transfer", "transfer_dev")]
 # Ignore proxy environment even for loopback; inference can only contact our owned server.
 HTTP = urllib.request.build_opener(urllib.request.ProxyHandler({}))
 
@@ -317,7 +318,8 @@ def summarize(report):
 
 def evaluate(cfg, out, dataset, split, memory, *, benchmark_path=None):
     out.mkdir()
-    require((dataset, split) in DATASETS, "Only pinned public development datasets are enabled")
+    require((dataset, split) in DATASETS + ADVERSARIAL_DATASETS,
+            "Only pinned public development datasets are enabled")
     benchmark_path = benchmark_path or ROOT / f"benchmarks/{dataset}.json"
     benchmark = json.loads(benchmark_path.read_text())
     cases = {(c["question"], tuple(sorted(c["scope"]))): c for c in benchmark["cases"] if c["split"] == split}
@@ -437,10 +439,12 @@ class Memory:
             self.error = str(error)
 
 
-def run(cfg, out):
+def run(cfg, out, suite="development"):
+    require(suite in {"development", "adversarial"}, "Unknown public suite")
+    datasets = ADVERSARIAL_DATASETS if suite == "adversarial" else DATASETS
     require(not out.exists(), "Choose a fresh output directory; previous failures are preserved")
     out.mkdir(parents=True)
-    state = {"status": "running", "config": cfg, "platform": platform.platform(),
+    state = {"status": "running", "suite": suite, "config": cfg, "platform": platform.platform(),
              "logical_cpus": os.cpu_count(), "architecture": platform.machine(), "accelerator": "none",
              "measurement_cpu_role": "public_development_not_designated_deployment_target", "python": sys.version,
              "holdout_evaluated": False, "retries": 0, "build_flags": BUILD_FLAGS,
@@ -458,9 +462,10 @@ def run(cfg, out):
             ROOT / cfg["prompt_file"], ROOT / cfg["grammar_file"], Path(__file__),
             ASSETS / "build/bin/llama-server", ASSETS / "build/bin/llama-gbnf-validator",
             ROOT / "target/debug/verity", ROOT / "Cargo.lock", ROOT / "rust-toolchain.toml",
+            ROOT / "tools/phase0.py", ROOT / "tools/adversarial.py",
             ROOT / "crates/verity_cli/src/main.rs",
-            *[ROOT / f"benchmarks/{name}.json" for name, _ in DATASETS],
-            *[ROOT / f"data/{name}/{file}" for name, _ in DATASETS for file in ["snapshot.nq", "policy.json"]]]}
+            *[ROOT / f"benchmarks/{name}.json" for name, _ in datasets],
+            *[ROOT / f"data/{name}/{file}" for name, _ in datasets for file in ["snapshot.nq", "policy.json"]]]}
         receipt = json.loads((ASSETS / "build-receipt.json").read_text())
         require(receipt["runtime_archive_sha256"] == cfg["runtime_archive_sha256"]
                 and receipt["build_flags"] == BUILD_FLAGS, "Runtime build configuration changed; run prepare")
@@ -489,7 +494,7 @@ def run(cfg, out):
         grammar_probes(cfg, out / "grammar-probes")
         state["grammar_probes_passed"] = True
         memory.worker.start()
-        for dataset, split in DATASETS:
+        for dataset, split in datasets:
             state["results"][dataset] = evaluate(cfg, out / dataset, dataset, split, memory)
             dump(out / "run.json", state)
         require(memory.samples > 0 and memory.error is None, f"RSS sampling failed: {memory.error}")
@@ -509,21 +514,26 @@ def run(cfg, out):
         state["child_lifetime_peak_rss_kib"] = peak / 1024 if platform.system() == "Darwin" else peak
         dump(out / "run.json", state)
         # Import only after the runner finishes; phase0 reuses the runner's pinned helpers.
-        from phase0 import archive_inference
-        archive_inference(out, state)
+        if suite == "adversarial":
+            from adversarial import archive
+            archive(out, state)
+        else:
+            from phase0 import archive_inference
+            archive_inference(out, state)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=["prepare", "run"])
     parser.add_argument("--out", type=Path, default=ROOT / "artifacts/local-parser/run")
+    parser.add_argument("--suite", choices=["development", "adversarial"], default="development")
     args = parser.parse_args()
     os.chdir(ROOT)
     cfg = config()
     if args.command == "prepare":
         prepare(cfg)
     else:
-        run(cfg, args.out.resolve())
+        run(cfg, args.out.resolve(), args.suite)
 
 
 if __name__ == "__main__":
