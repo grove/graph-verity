@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import http.client
 import json
 import os
 from pathlib import Path
@@ -253,6 +254,8 @@ class Runtime:
         self.template_prefix = ""
 
     def post(self, endpoint, body, name):
+        if endpoint == "completion":
+            return self.stream_completion(body, name.parent)
         request = urllib.request.Request(f"http://127.0.0.1:{self.port}/{endpoint}", json.dumps(body).encode(),
                                          {"Content-Type": "application/json"})
         with HTTP.open(request, timeout=self.cfg["timeout_seconds"]) as response:
@@ -260,6 +263,43 @@ class Runtime:
         (name.with_suffix(".http.json")).write_bytes(raw)
         require(len(raw) <= 2 * 1024 * 1024, "Oversized runtime response")
         return json.loads(raw)
+
+    def stream_completion(self, body, out):
+        deadline = time.monotonic() + self.cfg["timeout_seconds"]
+        payload = json.dumps(body).encode()
+        headers = (f"POST /completion HTTP/1.1\r\nHost: 127.0.0.1\r\nContent-Type: application/json\r\n"
+                   f"Content-Length: {len(payload)}\r\nConnection: close\r\n\r\n").encode()
+        pieces, received = [], 0
+        with socket.create_connection(("127.0.0.1", self.port), timeout=self.cfg["timeout_seconds"]) as sock, \
+             (out / "completion.http.sse").open("wb", buffering=0) as raw, \
+             (out / "proposal.txt").open("wb", buffering=0) as proposal:
+            sock.sendall(headers + payload)
+            with http.client.HTTPResponse(sock) as response:
+                response.begin()
+                dump(out / "completion-http.json", {"status": response.status, "headers": response.getheaders()})
+                if response.status != 200:
+                    raw.write(response.read(2 * 1024 * 1024 + 1))
+                    raise ValueError(f"Completion HTTP {response.status}; see retained response")
+                while True:
+                    remaining = deadline - time.monotonic()
+                    if remaining <= 0:
+                        raise TimeoutError("Completion wall deadline")
+                    sock.settimeout(remaining)
+                    line = response.readline(2 * 1024 * 1024 + 1)
+                    require(line, "Completion stream ended without terminal event")
+                    raw.write(line)
+                    received += len(line)
+                    require(received <= 2 * 1024 * 1024, "Oversized completion stream")
+                    if not line.startswith(b"data:"):
+                        continue
+                    event = json.loads(line[5:].strip())
+                    piece = event.get("content", "")
+                    require(isinstance(piece, str), "Invalid completion delta")
+                    proposal.write(piece.encode())
+                    pieces.append(piece)
+                    if event.get("stop") is True:
+                        event["content"] = "".join(pieces)
+                        return event
 
     def __enter__(self):
         with socket.socket() as sock:
@@ -311,7 +351,7 @@ class Runtime:
         require(len(tokens) + self.cfg["max_output_tokens"] < self.cfg["context_tokens"], "Context budget exceeded")
         # Token arrays prevent completion from adding a second BOS to Gemma's official template.
         body = {"prompt": tokens, "n_predict": self.cfg["max_output_tokens"], "temperature": 0,
-                "seed": self.cfg["seed"], "cache_prompt": True}
+                "seed": self.cfg["seed"], "cache_prompt": True, "stream": True}
         if constrained:
             body["grammar"] = (ROOT / self.cfg["grammar_file"]).read_text()
         dump(out / "completion-request.json", body)
@@ -484,7 +524,7 @@ def infer(cfg, assets, key, freeze_dir, out):
     require(not out.exists(), "Never overwrite an attempted run")
     out.mkdir(parents=True)
     state = {"model": key, "config_sha256": sha(CONFIG), "freeze_sha256": sha(freeze_dir / "checksums.json"),
-        "adapter_version": "issue48-v1b-native-bos",
+        "adapter_version": "issue48-v1b-native-bos-stream",
         "status": "running", "inference_performed": False, "holdout_accessed": False, "retries": 0,
         "platform": platform.platform(), "python": sys.version, "accelerator": "none",
         "cache_condition": "new model process; OS page cache not evicted; prompt caching enabled",
@@ -591,6 +631,7 @@ def summarize(freeze_dir, run_dir):
                 record = case_record(c, reference, runtime, request, prompt, raw, False)
                 record.update(dataset=dataset, language="nb", components_exact=c["components_exact"],
                     generation_attempted=(folder / "completion-request.json").exists(),
+                    received_candidate_bytes=(folder / "proposal.txt").stat().st_size if (folder / "proposal.txt").exists() else 0,
                     vocabulary_selection_ms=read(folder / "selection.json")["ms"],
                     grammar_accepted=read(folder / "grammar.json")["accepted"] if (folder / "grammar.json").exists() else None,
                     valid_but_misleading=c["contract_valid"] is True and c["proposal_status"] == "candidate" and not record["strict_complete_exact"],

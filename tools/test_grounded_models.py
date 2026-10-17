@@ -111,6 +111,32 @@ class GroundedModelTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "parity failed"):
                     runtime.template_parity({}, assets)
 
+    def test_stream_keeps_partial_candidate_bytes_on_timeout(self):
+        from unittest.mock import MagicMock
+        with tempfile.TemporaryDirectory() as directory:
+            folder = Path(directory)
+            runtime = Runtime(config(), folder, "gemma4", folder)
+            runtime.port = 12345
+            sock, response = MagicMock(), MagicMock()
+            sock.__enter__.return_value = sock
+            response.__enter__.return_value = response
+            response.status = 200
+            response.getheaders.return_value = []
+            response.readline.side_effect = [b'data: {"content":"{\\"version\\":1,","stop":false}\n', TimeoutError("deadline")]
+            with patch("grounded_models.socket.create_connection", return_value=sock), \
+                 patch("grounded_models.http.client.HTTPResponse", return_value=response):
+                with self.assertRaises(TimeoutError):
+                    runtime.stream_completion({"stream": True}, folder)
+            self.assertEqual((folder / "proposal.txt").read_bytes(), b'{"version":1,')
+            self.assertIn(b'"stop":false', (folder / "completion.http.sse").read_bytes())
+            response.readline.side_effect = [b'data: {"content":"{}","stop":false}\n',
+                                           b'data: {"content":"","stop":true,"tokens_predicted":2}\n']
+            with patch("grounded_models.socket.create_connection", return_value=sock), \
+                 patch("grounded_models.http.client.HTTPResponse", return_value=response):
+                result = runtime.stream_completion({"stream": True}, folder)
+            self.assertEqual(result["content"], "{}")
+            self.assertEqual(result["tokens_predicted"], 2)
+
     def test_saved_scoring_still_rejects_changed_public_reference_inputs(self):
         with tempfile.TemporaryDirectory() as directory:
             folder = Path(directory)

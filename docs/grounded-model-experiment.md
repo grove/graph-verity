@@ -177,5 +177,10 @@ native BOS, then requires exact full native prompt bytes **and** token IDs.
 No other template difference is accepted. Qwen's prompt/token sequence is
 unchanged. The failed Gemma preflight and its cost remain evidence; Gemma's first
 generation/scored pass uses a separately checksummed v1b source freeze.
+The v1b transport also streams the same native completion so partial candidate
+bytes survive a timeout, under the same 300-second wall deadline. Qwen's original
+final-response-only timeout returned no response body; unreceived text is not
+reconstructed. This transport/source difference and all failed-attempt costs are
+disclosed; the two runs are not a controlled equal-configuration latency A/B.
 Model weights, Q4_K_M precision, questions, contexts, grammar, budgets, seed,
 smoke questions, scoring and numerical criteria are unchanged. Qwen is not rerun.
