@@ -176,6 +176,14 @@ experiment identities. Hardware fields are `cpu_model`, `os`, `architecture`,
 The tokenizer is embedded in the pinned GGUF; record that identity and Q4_K_M
 quantization explicitly. A clean committed checkout and matching pinned identities
 are required. No command creates owner approval or human gold-review records.
+`reference_policy` defaults to `independent_human_review` (also for older approval
+records without the field). An explicitly approved `ai_reference_only` experiment
+instead requires `experiment_identity.owner_ai_gold_waiver_sha256` matching the
+exact bytes of [the owner risk acceptance](phase-0-ai-gold-risk-acceptance.md),
+and does not require or manufacture `independent_review_evidence_sha256`.
+All other experiment, hardware, split-integrity and numerical-approval requirements
+still apply. Approval of an AI-reference experiment cannot satisfy formal GO,
+even if a supplied summary incorrectly claims all prerequisites passed.
 
 ```sh
 # Only after actual human approval; this command currently fails closed:
@@ -190,6 +198,9 @@ measurement configuration, source commit and inference config **before** externa
 locked evaluation. Later threshold changes require a new revision and linked receipt;
 old runs keep their gate/protocol bindings and cannot retroactively become preregistered
 passes. Commit threshold/experiment changes with reasons; do not replace old receipts.
+The frozen inputs also include the owner waiver and external-bundle verifier source,
+so either changing invalidates admission. Protocol v3 records this evidence-class
+choice while retaining scoring v2; existing proposal files remain unapproved.
 
 `assess` verifies its source report manifest and deterministically explains every
 configured threshold. Unknown gates fail closed. All approved gates/prerequisites
@@ -233,14 +244,26 @@ session, public CI, or a shell whose output is publicly captured.**
 ```
 
 It checks the frozen source commit/clean checkout, compiler and runtime binaries,
-pinned assets, exact CPU/OS/architecture/cores/RAM, external review-ledger and integrity
-file hashes, complete case-bound human assertions, actual bundle/benchmark hashes,
+pinned assets, exact CPU/OS/architecture/cores/RAM, integrity file hash,
+actual bundle/benchmark hashes,
 case counts/snapshot/split and public/private case-ID disjointness. The externally
 reviewed integrity record requires `benchmark_sha256`, `public_cases_disjoint`,
 `public_lineage_disjoint`, `exposed_groups_excluded`, `reviewer` and `provenance`.
 Software cannot infer lineage independence or expert identity; the approver must
-establish those assertions before freezing. A metadata receipt at the same path
+establish those assertions before freezing. `independent_human_review` additionally
+requires a frozen external review-ledger hash and complete case-bound human assertions;
+omitting `--reviews` fails closed. A metadata receipt at the same path
 cannot be reused; cross-host one-shot custody is still the operator's responsibility.
+
+For the owner-waived exploratory path, approve a new record with
+`reference_policy: ai_reference_only` and the exact `owner_ai_gold_waiver_sha256`
+before freezing. After the separate operator authorization, run the same isolated
+command **without `--reviews`**. Supplying a human-review ledger in this mode is
+rejected. It still verifies the unchanged sealed commitment and split-integrity
+evidence, and labels its private run and assessment **AI-reference agreement — not
+expert-validated semantic accuracy**. The private human-review ledger and public
+`review --require-reviewed` checks are untouched. No approval has been created
+and no real locked run has been performed by implementing this path.
 
 Only an isolated private *transport copy* uses `transfer_dev` internally to reach the
 existing public Rust bridge; the private adapter restores the original `locked_holdout`
@@ -253,12 +276,16 @@ this implementation; authorized-path tests use synthetic fixtures and mock infer
 
 The private report includes a gate assessment, with missing oracle regression,
 independent transfer or UI measurements unavailable rather than inferred from that
-single run. An independent target run is not by itself enough for GO. Human publication
+single run. It audits retained scopes, snapshot identities and evidence graphs through
+the same audit as public reports: an observed violation forces STOP; observing none
+does not establish a complete disclosure audit. AI-reference runs explicitly keep the
+independent-human-review prerequisite false. An independent target run is not by itself enough for GO. Human publication
 must select non-sensitive aggregates separately; there is no automatic private artifact
 uploader. If a holdout is exposed to development, commission a fresh test set.
 
-The [owner waiver](phase-0-ai-gold-risk-acceptance.md) permits exploratory development;
-it does not replace expert gold, threshold approval, target-device approval or
+The [owner waiver](phase-0-ai-gold-risk-acceptance.md) permits exploratory development
+and a separately preregistered AI-reference comparison;
+it does not replace expert gold for formal GO, threshold approval, target-device approval or
 production readiness. The human-only review ledger remains unchanged.
 
 ## Issue #8 status and the next decisions

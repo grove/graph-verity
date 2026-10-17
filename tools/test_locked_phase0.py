@@ -41,6 +41,15 @@ class LockedAdapterTests(unittest.TestCase):
 
 class SyntheticAuthorizedAdapterTests(unittest.TestCase):
     def test_authorized_adapter_restores_locked_identity_and_keeps_private_artifacts(self):
+        self.check_authorized_adapter("independent_human_review")
+
+    def test_ai_reference_adapter_verifies_bundle_without_fabricating_human_reviews(self):
+        self.check_authorized_adapter("ai_reference_only")
+
+    def test_private_scope_violation_forces_stop_even_with_ai_waiver(self):
+        self.check_authorized_adapter("ai_reference_only", violation=True)
+
+    def check_authorized_adapter(self, reference_policy, violation=False):
         import copy
         import io
         import json
@@ -59,7 +68,16 @@ class SyntheticAuthorizedAdapterTests(unittest.TestCase):
             report["cases"] = [copy.deepcopy(report["cases"][0])]
             report["cases"][0].update(id=b["cases"][0]["id"], family=b["cases"][0]["family"])
             approved = {"target_hardware": {}, "gates_sha256": digest(read(GATES)), "protocol_sha256": digest(read(PROTOCOL)),
+                        "reference_policy": reference_policy,
                         "experiment_identity": {k: "synthetic-sha" for k in ["compiler_binary_sha256", "runtime_binary_sha256", "independent_review_evidence_sha256", "split_integrity_evidence_sha256"]}}
+            if reference_policy == "ai_reference_only":
+                args.reviews = None
+                del approved["experiment_identity"]["independent_review_evidence_sha256"]
+                approved["experiment_identity"]["owner_ai_gold_waiver_sha256"] = "synthetic-sha"
+            if violation:
+                report["cases"][0]["execution"] = {"scope": ["urn:unauthorized-synthetic-scope"],
+                    "snapshot_id": b["snapshot_id"], "evidence": [], "complete_within_scope": True,
+                    "evidence_complete_for_returned_rows": True, "validation_ms": 0, "query_ms": 0, "evidence_ms": 0}
             frozen = {"approval": approved, "source_revision": "synthetic-revision", "gates": read(GATES), "protocol": read(PROTOCOL)}
             write_new(args.freeze, seal(frozen))
             write_new(args.operator_record, {})
@@ -81,18 +99,41 @@ class SyntheticAuthorizedAdapterTests(unittest.TestCase):
                 return {"warm_end_to_end_ms": {"p95": 1}, "cold_first_answer_ms_page_cache_not_evicted": 2}
             def fake_sha(path):
                 return cfg["model_sha256"] if Path(path).name == cfg["model_file"] else "synthetic-sha"
-            with patch("locked_phase0.authorize_locked"), patch("locked_phase0.subprocess.check_output", side_effect=["", "synthetic-revision"]), \
+            with patch("locked_phase0.authorize_locked"), patch("locked_phase0.subprocess.check_output", side_effect=lambda cmd, **kw: "" if "status" in cmd else "synthetic-revision"), \
                  patch("locked_phase0.check_hardware", return_value={}), patch("locked_phase0.sha", side_effect=fake_sha), \
-                 patch("locked_phase0.verify_source"), patch("locked_phase0.check_external_reviews", return_value={"all_claimed_approved": True}), \
+                 patch("locked_phase0.verify_source"), patch("locked_phase0.check_external_reviews", return_value={"all_claimed_approved": True}) as reviews, \
+                 patch("locked_phase0.verify") as verify, \
                  patch("locked_phase0.grammar_probes"), patch("locked_phase0.Memory", return_value=memory), \
                  patch("locked_phase0.evaluate", side_effect=evaluate_fake):
+                original_reviews = args.reviews
+                args.reviews = root / "must-not-be-read" if reference_policy == "ai_reference_only" else None
+                with self.assertRaisesRegex(ValueError, "human-review ledger|requires external case reviews"):
+                    run(args)
+                reviews.assert_not_called()
+                verify.assert_not_called()
+                args.reviews = original_reviews
                 run(args)
+                if reference_policy == "ai_reference_only":
+                    reviews.assert_not_called()
+                    verify.assert_called_once_with(args.bundle.resolve())
+                else:
+                    reviews.assert_called_once_with(args.bundle.resolve(), args.reviews.resolve())
+                    verify.assert_not_called()
             result = read(args.out / "private-report.json")
             self.assertEqual(result["split"], "locked_holdout")
             self.assertEqual(result["cases"][0]["split"], "locked_holdout")
             self.assertIn("transport_benchmark_digest", result)
             self.assertTrue((args.out / "private-manifest.json").exists())
-            self.assertEqual(read(args.out / "private-gate-assessment.json")["gate_assessment"]["decision"], "NOT READY")
+            assessment = read(args.out / "private-gate-assessment.json")
+            self.assertEqual(assessment["gate_assessment"]["decision"], "STOP" if violation else "NOT READY")
+            self.assertEqual(assessment["prerequisites"]["independent_human_gold_review"], reference_policy == "independent_human_review")
+            state = read(args.out / "private-run.json")
+            self.assertEqual(state["reference_policy"], reference_policy)
+            if reference_policy == "ai_reference_only":
+                self.assertIn("not expert-validated", state["interpretation"])
+                self.assertIn("not expert-validated", assessment["evidence_class"])
+                self.assertIn("not expert-validated", result["evidence_class"])
+                self.assertIn("not expert-validated", read(args.out / "private-summary.json")["evidence_class"])
             self.assertEqual(args.out.stat().st_mode & 0o777, 0o700)
 
     def test_terminal_errors_are_sanitized(self):
