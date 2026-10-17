@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "checked_commit": "a6e6739e2b8d0dcd5f83a629d7cd5e1a97e1e3b7",
+  "command": "PATH=/opt/homebrew/opt/rustup/bin:$PATH .venv/bin/python tools/verify_pre_llm.py",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: aarch64-apple-darwin\nrelease: 1.99.1\nLLVM version: 23.1.1",
+  "python": "3.12.14 (main, Aug 14 2026, 15:24:41) [Clang 22.1.3 ]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python_tests": 119,
+  "rust_tests_passed": 77,
+  "command_count": 36,
+  "all_command_returncodes_expected": true,
+  "model_invoked_in_verification": false,
+  "holdout_evaluated": false,
+  "engineering_oracle": {
+    "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
+    "executable_checks_passed": 38,
+    "executable_checks_total": 38,
+    "recorded_abstention_cases_not_model_tested": 8,
+    "model_accuracy": null,
+    "model_abstention_accuracy": null,
+    "interpretation": "compiler_oracle_against_machine_authored_human_review_pending_gold"
+  },
+  "scope": "Full normal model-free Rust/Python/format/Clippy/reference pipeline, unchanged historical report/Phase0 verification, new source/license/canary/vector/rank replay. Follow-up commit only records this validation and doc/checksum corrections."
+}

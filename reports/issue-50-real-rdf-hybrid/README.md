@@ -81,7 +81,7 @@ Evaluation paired deltas against each variant’s BM25:
 
 | Variant / method | Recall@10 delta | MRR@10 delta |
 |---|---|---|
-| bm25-46 / embedding | 0.271 [0.129, 0.414] | 0.123 [-0.000, 0.242] |
+| bm25-46 / embedding | 0.271 [0.129, 0.414] | 0.1234 [-0.0005, 0.2420] |
 | bm25-46 / fusion | 0.229 [0.129, 0.343] | 0.025 [-0.060, 0.108] |
 | skos-definitions-v1 / embedding | 0.164 [0.021, 0.307] | 0.103 [-0.031, 0.228] |
 | skos-definitions-v1 / fusion | 0.143 [0.014, 0.271] | 0.068 [-0.040, 0.174] |
@@ -188,7 +188,7 @@ adoption thresholds are unchanged.** Both attempts remain inspectable; results
 are not selected by favorable latency. The canonical corrected repeat is in
 `freeze/` and `run/`, with exact code in `frozen-code.tar.gz`.
 
-Both complete runs have **identical hits, scores, case metrics and complete summaries** across all 732 rank lists; see [repeat-comparison.json](repeat-comparison.json). Fresh native BM25 control replays produce **320 unchanged historical rank lists** (160 queries × two representations), bound by [historical-controls.json](historical-controls.json). The first and corrected attempts are repetitions of the same references, not additional independent queries. Full verification results are recorded below after the clean-tree pipeline completes.
+Both complete runs have **identical hits, scores, case metrics and complete summaries** across all 732 rank lists; see [repeat-comparison.json](repeat-comparison.json). Fresh native BM25 control replays produce **320 unchanged historical rank lists** (160 queries × two representations), bound by [historical-controls.json](historical-controls.json). The first and corrected attempts are repetitions of the same references, not additional independent queries. The complete clean-tree pipeline **passed** at `a6e6739e2b8d0dcd5f83a629d7cd5e1a97e1e3b7`: **119 Python tests and 77 Rust tests**, formatting, Clippy, source/reference rebuilding, native lexical/vector/rank replay, original historical reports and Phase 0 checks. See [validation.json](validation.json) and [full command log](logs/full-verification.log). The follow-up commit records validation and documentation/checksum updates only.
 
 Ordinary CI verifies source licenses/hashes and byte rebuilding, original source
 witnesses and split lineages, private ID/text/count/source canaries, role/scope
