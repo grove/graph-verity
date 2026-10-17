@@ -1,0 +1,261 @@
+{
+  "config": {
+    "version": "issue48-v1",
+    "runtime_revision": "c0fd78626405c6d9b934efef0ec7291fcc20e3d6",
+    "runtime_archive_sha256": "777e63ee32b4a192420eda6856327c1dc9a06e292a23a4c271f54412483cc5e8",
+    "build_flags": [
+      "-DGGML_METAL=OFF",
+      "-DGGML_BLAS=OFF",
+      "-DGGML_ACCELERATE=OFF",
+      "-DLLAMA_OPENSSL=OFF",
+      "-DLLAMA_BUILD_TESTS=ON",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DBUILD_SHARED_LIBS=OFF"
+    ],
+    "candidates": {
+      "qwen35": {
+        "repo": "Qwen/Qwen3.5-9B",
+        "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+        "architecture": "Qwen3_5ForConditionalGeneration",
+        "license": "Apache-2.0",
+        "files": {
+          "LICENSE": {
+            "sha256": "bbedc3fda3305820b977265f01b8619d87570a6739de3a5582c3464840f1e57a",
+            "bytes": 11544
+          },
+          "README.md": {
+            "sha256": "c5f5a8c2dddab69cfbf05279235aa5fddb137939a06539c4c7637aa900fef6d0",
+            "bytes": 77643
+          },
+          "chat_template.jinja": {
+            "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+            "bytes": 7756
+          },
+          "config.json": {
+            "sha256": "d0883072e01861ed0b2d47be3c16c36a8e81c224c7ffaa310c6558fb3f932b05",
+            "bytes": 3126
+          },
+          "merges.txt": {
+            "sha256": "a9d356d7bdf1ef4949e3e748e95b8e10ad9d4e2e838eddc38a0a7b6b94d1db8d",
+            "bytes": 3353259
+          },
+          "model.safetensors-00001-of-00004.safetensors": {
+            "sha256": "db6f444b43d318c92f360a13a25561a6a65b10c0631b8ed305a426dbaa6c380e",
+            "bytes": 5276436216
+          },
+          "model.safetensors-00002-of-00004.safetensors": {
+            "sha256": "31c7d7e2dd5d207840b31cc59083c8f4c4718959149e0358c0364052bb9a0330",
+            "bytes": 5335161512
+          },
+          "model.safetensors-00003-of-00004.safetensors": {
+            "sha256": "7ec36ba3a4176a44c3c0876ad80c56a2f70c84bf008d82e9501df642f17dadec",
+            "bytes": 5368717440
+          },
+          "model.safetensors-00004-of-00004.safetensors": {
+            "sha256": "b62b0c4cd7e44edee103ee8f4fe225f246d5e768e07bfd5f25b63a8aa1fdd0c6",
+            "bytes": 3325995712
+          },
+          "model.safetensors.index.json": {
+            "sha256": "26d3539b516be613f39563617cb9d33b3f83d401298125be392c80cefb8f7fe5",
+            "bytes": 79657
+          },
+          "preprocessor_config.json": {
+            "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+            "bytes": 390
+          },
+          "tokenizer.json": {
+            "sha256": "5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42",
+            "bytes": 12807982
+          },
+          "tokenizer_config.json": {
+            "sha256": "316230d6a809701f4db5ea8f8fc862bc3a6f3229c937c174e674ff3ca0a64ac8",
+            "bytes": 16710
+          },
+          "video_preprocessor_config.json": {
+            "sha256": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13",
+            "bytes": 385
+          },
+          "vocab.json": {
+            "sha256": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003",
+            "bytes": 6722759
+          }
+        }
+      },
+      "gemma4": {
+        "repo": "google/gemma-4-12B-it",
+        "revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+        "architecture": "Gemma4UnifiedForConditionalGeneration",
+        "license": "Apache-2.0",
+        "files": {
+          "README.md": {
+            "sha256": "04a06469e3d83b941eaa776a3647b8690b5a7cc5c833af2381e5345bb1bb45c0",
+            "bytes": 28484
+          },
+          "chat_template.jinja": {
+            "sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+            "bytes": 18683
+          },
+          "config.json": {
+            "sha256": "478c46e8d2c52d5c2d85bf67e3b3e8c90e7c9d91086cee27e3c267907e936bd9",
+            "bytes": 4423
+          },
+          "generation_config.json": {
+            "sha256": "a8349d9bd64cc5841297fcb5002f0fdc4749c473c8f1b10ea337f9ce4ee7014e",
+            "bytes": 260
+          },
+          "model.safetensors": {
+            "sha256": "5a84cb313260ac447237b890387116dfa8682e49a6b44bc585ae8353abbff18d",
+            "bytes": 23919549408
+          },
+          "processor_config.json": {
+            "sha256": "6b938e76555b3e9946890770e1abcd442a4718f34041a58e8139dc8ad34545c9",
+            "bytes": 1382
+          },
+          "tokenizer.json": {
+            "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+            "bytes": 32169626
+          },
+          "tokenizer_config.json": {
+            "sha256": "a62f4e85a47c0c136edaaa3a4f591fd6783717299a9def47e5ad03a49f6a5eb9",
+            "bytes": 3089
+          }
+        }
+      }
+    },
+    "quantization": "Q4_K_M",
+    "cpu_threads": 4,
+    "context_tokens": 16384,
+    "max_output_tokens": 4096,
+    "timeout_seconds": 300,
+    "seed": 7,
+    "temperature": 0,
+    "cache_prompt": true,
+    "thinking": false,
+    "retrieval": {
+      "roles": [
+        "entity",
+        "predicate",
+        "class"
+      ],
+      "limit_per_role": 10,
+      "labels_per_id": 4,
+      "query": "whole original question; no gold identifiers"
+    },
+    "datasets": [
+      [
+        "adversarial",
+        "dev"
+      ],
+      [
+        "adversarial-transfer",
+        "transfer_dev"
+      ]
+    ],
+    "stages": [
+      "oracle",
+      "retrieval"
+    ],
+    "smoke": {
+      "question": "Hvilket land ligger Oslo i?",
+      "attempts": 1,
+      "scored": false,
+      "determinism_repeats": 2
+    },
+    "continuation": {
+      "strict_complete_exact_min": 18,
+      "supported_denominator": 24,
+      "correct_status_abstention_min": 4,
+      "abstention_denominator": 6,
+      "safety_violations_max": 0,
+      "warm_p95_ms_max": 120000,
+      "peak_rss_kib_max": 25165824,
+      "both_stages_required": true
+    },
+    "retries": 0,
+    "holdout_accessed": false,
+    "promotion": "separate explicitly approved integration issue required",
+    "license_sources": {
+      "qwen35": "https://huggingface.co/Qwen/Qwen3.5-9B/resolve/c202236235762e1c871ad0ccb60c8ee5ba337b9a/LICENSE",
+      "gemma4": "https://ai.google.dev/gemma/docs/gemma_4_license"
+    },
+    "prompt_file": "configs/grounded-models-v1.prompt.txt",
+    "grammar_file": "configs/local-parser.gbnf",
+    "prompt_sha256": "9d2c0723f1620c326321ebaa57fb2ad90d37bdbf20ce9d19fe9850ac9a317f41",
+    "grammar_sha256": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+    "license_sha256": {
+      "qwen35": "bbedc3fda3305820b977265f01b8619d87570a6739de3a5582c3464840f1e57a",
+      "gemma4": "bb28c48e3e078166e91cfc2b6db7ffebb8a0973b9e23b3df060561292d8d69ec"
+    },
+    "upstream_archive_sha256": "985c34c93730b8da35a0176e9492f095934121c2364b96d74e3c094cdc881934"
+  },
+  "config_sha256": "18a6d5c8521763b0e006597d2e1fa004ca17387f070ebd5157e5ed56b7c6d8b2",
+  "source_commit": "a8135a81d8aec2b5b16b0b1ff337d440dec176f5",
+  "input_sha256": {
+    "configs/grounded-models-v1.json": "18a6d5c8521763b0e006597d2e1fa004ca17387f070ebd5157e5ed56b7c6d8b2",
+    "configs/grounded-models-v1.prompt.txt": "9d2c0723f1620c326321ebaa57fb2ad90d37bdbf20ce9d19fe9850ac9a317f41",
+    "configs/local-parser.gbnf": "d85c31f9ed45a66f9c2479cae7531eb56442ba9d522499d3c3a6b1f14fb8809e",
+    "tools/grounded-models-requirements.txt": "402becc4d2873a93331e253f9b17e62e9969c0da8cbff5e867696cb3f78f3851",
+    "docs/grounded-model-experiment.md": "65ff529d8d421526a91c29c6279a0547792108c7c254932e633d86d538c7b9a6",
+    "schemas/contracts-v1.json": "8815f2522c21fbee6e1ddd5ea012c05f4b037723cc7a30cde38ff14ed491c3c2",
+    "Cargo.lock": "b86b68fc472e2178f4815cfc86a3477713bd3ad74c6872bd70dfbfcbff3cf5d0",
+    "Cargo.toml": "851369ff0034d185215c79057275ecd9acdc1b31b8a01351553334f93ecd1c68",
+    "rust-toolchain.toml": "f715f440167e20fd8ea9afa0498c3d1ab80174cfcb8cbc895f106a34d907a1e1",
+    "examples/fixture-response.json": "75e30aa6681f70fc982156998c574226f5a5120aed20721ad4965b45347a8afe",
+    "data/wikidata/snapshot.nq": "9e75055676e095fcc387f1fd93146c37b47a448b8e08c5a806ab9be4016ccc6f",
+    "data/wikidata/policy.json": "90afa6af857c2e046bc6f71ebf7354a1a0f9c4583a38001d8176af46a05df9de",
+    "data/wikidata/scope.json": "4815891ffd7325fbb7be1ac24b835160164c3b418c8e1647e59cb23572c82aee",
+    "crates/verity_cli/Cargo.toml": "bf664c6504bcee7ef7893310308b66ad14db725544b2608273dae8ee7079f824",
+    "crates/verity_core/Cargo.toml": "a5239bd9019e8016d1bb8cecdb01a60ebea46429bdfe50cf13f11d5e44d47ab7",
+    "crates/verity_cli/src/main.rs": "d5ef3888c8c48bfeec6fc3d83c0817a2c03b5fea4cabf9aad51d61d6e4d7d479",
+    "crates/verity_cli/tests/ask.rs": "797adc09e42425e5d4c722e044f56c204260f9e1e442c01c7f297645b64a6e6b",
+    "crates/verity_cli/tests/compact.rs": "331091090e90308def92d93a16ac8be1bcab2b6a8cbccdc57519f3f88c1c4498",
+    "crates/verity_cli/tests/discovery.rs": "855957b0e71087044b93a51c8e5b1e8b1df84066138235bf227b0039e038b1ca",
+    "crates/verity_cli/tests/find.rs": "3809db1cfad320e54d8567f3a18ef0373fdc6401d591bf0e13e39a0a3098ba51",
+    "crates/verity_cli/tests/navigation.rs": "760d065c3377efa0146a1c602b626b91f96c29efca3db9ebc818a50863e65cf3",
+    "crates/verity_core/src/ask.rs": "0a963469a5dc679bad4097e5cee211a7e51fbbcf800f9d336a537d3d7d1287e0",
+    "crates/verity_core/src/catalog.rs": "b2d0a974d3481853d1d86b0d066e8c117a83bcc429c815c72ef7e9d9c58f17da",
+    "crates/verity_core/src/compact.rs": "84512bd602ff1b91b3d7f194c234588a83273ded8ce6da79657c498a3287fdbe",
+    "crates/verity_core/src/compiler.rs": "3155caad912653f997f442d3c74e0e8bc32f765ec2bb2c1413a8b21ded8d74e1",
+    "crates/verity_core/src/discovery.rs": "62902986b375d4bb291920b5428c1e3541a55c0bc28e4d9ab82d660563550fb6",
+    "crates/verity_core/src/evaluation.rs": "27e4775d2cd0721dd000667bf775dede31465732eea256dbf9af7b6536913f31",
+    "crates/verity_core/src/execution.rs": "18401d0b0ca00a2780d2184343dca64b701b3c58faa097134929eff8b1731c0f",
+    "crates/verity_core/src/find.rs": "913c67920e8dbde44369e435413658ff2aa7c64f00f0cb20be22f9a5a25f1649",
+    "crates/verity_core/src/ir.rs": "4f050b3b920509e1409b8d1dd2bfd7df8c5bb650f29c30f6fc2da0ca2f547c11",
+    "crates/verity_core/src/lib.rs": "dba3fbcccb5b4fd2831d85bc4287e3d38ee105b6528f6a759c7debcdc7010898",
+    "crates/verity_core/src/navigation.rs": "c7a0bcdd0f11c3d85da7fd630ef6064218b9cf57341c65ec46a9ae9e481b16a5",
+    "crates/verity_core/src/parser.rs": "6bfbc1bdba1268039990ab62d2ab6970b404ba1f428b010db39dbaeedadafd13",
+    "crates/verity_core/tests/ask.rs": "011a93fee598e8522cfed7619785f82e6bb09cd884d535bd9bb3fd853517b093",
+    "crates/verity_core/tests/compact.rs": "c11f9bf03ee685656720ec3ef62b04a44debfdba587b01b9cdb3441761aa71df",
+    "crates/verity_core/tests/core.rs": "1741390d5be289c622f41013978511a95898f980e423c5c1cd9c0e94b1e0358b",
+    "crates/verity_core/tests/discovery.rs": "94366a4882d8a05b98753b0d7ca10bead70aaac9897f25a18df9c09c859ea8a2",
+    "crates/verity_core/tests/find.rs": "e9cbf4b60c3f024beb8aa03802e19cb4771e179627e723e78f9ccc53e1403401",
+    "crates/verity_core/tests/navigation.rs": "4dcc58c047164fcf18fa32f79176e80d1e0e01d2b69b6d00768fe1e4679aac5b",
+    "tools/adversarial.py": "dcb2c3e86bfb8134998e243542dfb50ea802b48a3057eb4e5d412c90f65a23dc",
+    "tools/benchmark.py": "6030470b331832194fe90353b59a22d0b47f9830597f5a49b2428cb67e03916a",
+    "tools/benchmark_review.py": "491ec7dd4e98c3230725d7c3f0414a68a5fb639f85894d82a1a424d578f412e2",
+    "tools/compact_ab.py": "d39d89bf25034d45880cd76d375c0d7cc950a566109ef777f1dec9bc22710418",
+    "tools/compact_parser.py": "ee45c0f5b80a3b9cf2f6d590b1f50df1e2199d87e7d3c6270c5a808ecfb3b4b4",
+    "tools/dataset.py": "5ec78c099befa2cc3fef215be5aaa494f86318483f80cc7afed3ae2faa080524",
+    "tools/embedding_experiment.py": "07503cd9a12fa7636c5074f8ee2fa5d35c689a76d071cd10d0b0be8839abad4d",
+    "tools/find_quality.py": "541cffe83001db3b17120ff1a6410ab0211dbc36553d3d04474ccda91a6bf008",
+    "tools/grounded_models.py": "20209d52eee4d023041a51e74dd7d60c89fae230c64707db0552b5026608f854",
+    "tools/issue9_forensics.py": "b74f588fda4f4fcb244cf183b0abcf76a982fe173b708af5a8f73d2426d7f055",
+    "tools/local_parser.py": "e4f900daed29d86aa3d58178f6a374310eb78e187921a3f15e0a25a89f789673",
+    "tools/locked_phase0.py": "1c86158ce71777dff142b1ae6aedb8077a83bc27bc54abec7c8b4a47d72c4c9b",
+    "tools/phase0.py": "f5865a24f3749e98ad5f22c4da9d144623c163c1476d2b622e79502f8ad7dc1b",
+    "tools/retrieval.py": "88d120e1eda1ac31995897022c32c5c208c00cfb0acaf32f1c2c9056732d0709",
+    "tools/verify_pre_llm.py": "3822bd116450727695117c319878c282d7bb418dd0b9affddcecae11246f3334",
+    "tools/verify_sealed_holdout.py": "c3d8d50ad7b583de3f9719bb5665ab00d000bfb023bc6c9f35d9904b55ef30dd",
+    "tools/verify_worldcities_benchmark.py": "b3c703108d23206420caeb64b0b463ca82d664f9d4f6c4f572b212b88d8ecb70",
+    "tools/worldcities_transfer.py": "5f60418e76bc7ade98591dc395043ebf43ec6d8f6a0e4342c99c6b0e5817c881",
+    "benchmarks/adversarial.json": "7f246de9e10e87bc3fed58b8ea5d9f03200e48e525edf4f373fec5ef4db0d49f",
+    "benchmarks/adversarial-transfer.json": "593d38889ce8d2836598011f6d4b7a5c1dc465c289d394fd284ac18106000aa4",
+    "data/adversarial/snapshot.nq": "796698f28f645ec3593a85b3db9fc805839ebff101027cb8ec098b72f02ee3ba",
+    "data/adversarial/policy.json": "91e27eb04f462e64e272316d55576fe7894c94dcd811a8b6d16abe551a4deebf",
+    "data/adversarial-transfer/snapshot.nq": "bd09722df63c16135a060c3c2ed3d79efcaee20de5ba5c4751092aed9d9266b3",
+    "data/adversarial-transfer/policy.json": "09efc2672253bfa59b1986ef3c1b7e483b56f811633d4a58086cd37c2e6a6ec6"
+  },
+  "cli_sha256": "2def7d04b49286cce9175a582631c87f46d904a69593d3f3fcd0d23f72dcdba6",
+  "holdout_accessed": false,
+  "inference_performed": false
+}

@@ -137,3 +137,9 @@ automated assertions a usability study or expert review. No sealed Ask holdout,
 model trial, deployment or unattended Ask promotion is authorized by this feature.
 Issue #40 stays open until implementation, required evidence and passing CI
 are merged; merging this prototype still does not authorize a product release.
+
+The separate [issue #48 model experiment](grounded-model-experiment.md) compares
+public draft-plan proposals only. Even a promising result cannot enable a model
+here: integration requires a separate explicitly approved issue, human
+false-confidence evaluation, plan inspection/confirmation and execution-time
+revalidation of the exact graph, snapshot and scope.

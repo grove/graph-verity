@@ -1,0 +1,1258 @@
+{
+  "scoring_version": "issue48-v1-strict-plus-positional",
+  "freeze_sha256": "2448698ac3b481ca15b2c7dea4496f9a37ef6d1dd0d0cf944f7bc1a60a0fe304",
+  "model": "gemma4",
+  "status": "blocked_or_failed",
+  "inference_performed": false,
+  "holdout_accessed": false,
+  "stages": {
+    "oracle": {
+      "json_valid": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "contract_valid": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "model_abstention": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "preflight_block": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "expansion_rejection": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "expander_only_rejection": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "rust_compiler_rejection": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "expanded_v1_validated": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "independent_v1_validation": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "execution": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "wrong_executable_strict": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "wrong_executable_positional": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "scope_failure": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "canary_disclosure": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "non_read_only_execution": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "stopped_limit": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "truncated": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "strict_complete_exact": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "positional_complete_exact": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "correct_status_abstention": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "safe_model_abstention": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "invalid_contract": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "backend_failure": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "false_model_abstention": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "missing_runtime_counts": 0,
+      "distinct_raw_proposals": 0,
+      "grammar_accepted": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "valid_but_misleading": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "raw_query_or_tool_markers": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "wrong_answer_without_runtime_semantic_flag": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "components_exact": {},
+      "cases": [],
+      "warm_end_to_end_ms": {
+        "p50": null,
+        "p95": null,
+        "p99": null
+      },
+      "generation_attempts": 0,
+      "per_ontology": {
+        "adversarial": {
+          "json_valid": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "contract_valid": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "model_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "preflight_block": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "expansion_rejection": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "expander_only_rejection": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "rust_compiler_rejection": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "expanded_v1_validated": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "independent_v1_validation": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "execution": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "wrong_executable_strict": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "wrong_executable_positional": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "scope_failure": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "canary_disclosure": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "non_read_only_execution": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "stopped_limit": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "truncated": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "strict_complete_exact": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "positional_complete_exact": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "correct_status_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "safe_model_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "invalid_contract": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "backend_failure": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "false_model_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "missing_runtime_counts": 0,
+          "distinct_raw_proposals": 0
+        },
+        "adversarial-transfer": {
+          "json_valid": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "contract_valid": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "model_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "preflight_block": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "expansion_rejection": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "expander_only_rejection": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "rust_compiler_rejection": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "expanded_v1_validated": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "independent_v1_validation": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "execution": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "wrong_executable_strict": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "wrong_executable_positional": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "scope_failure": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "canary_disclosure": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "non_read_only_execution": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "stopped_limit": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "truncated": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "strict_complete_exact": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "positional_complete_exact": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "correct_status_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "safe_model_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "invalid_contract": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "backend_failure": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "false_model_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "missing_runtime_counts": 0,
+          "distinct_raw_proposals": 0
+        }
+      },
+      "per_family": {},
+      "language": "all 30 questions Norwegian nb; paired ontologies are correlated",
+      "peak_rss_kib": 10321728
+    },
+    "retrieval": {
+      "json_valid": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "contract_valid": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "model_abstention": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "preflight_block": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "expansion_rejection": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "expander_only_rejection": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "rust_compiler_rejection": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "expanded_v1_validated": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "independent_v1_validation": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "execution": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "wrong_executable_strict": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "wrong_executable_positional": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "scope_failure": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "canary_disclosure": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "non_read_only_execution": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "stopped_limit": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "truncated": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "strict_complete_exact": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "positional_complete_exact": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "correct_status_abstention": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "safe_model_abstention": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "invalid_contract": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "backend_failure": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "false_model_abstention": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "missing_runtime_counts": 0,
+      "distinct_raw_proposals": 0,
+      "grammar_accepted": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "valid_but_misleading": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "raw_query_or_tool_markers": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "wrong_answer_without_runtime_semantic_flag": {
+        "status": "not_applicable",
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "wilson_95": null
+      },
+      "components_exact": {},
+      "cases": [],
+      "warm_end_to_end_ms": {
+        "p50": null,
+        "p95": null,
+        "p99": null
+      },
+      "generation_attempts": 0,
+      "per_ontology": {
+        "adversarial": {
+          "json_valid": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "contract_valid": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "model_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "preflight_block": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "expansion_rejection": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "expander_only_rejection": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "rust_compiler_rejection": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "expanded_v1_validated": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "independent_v1_validation": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "execution": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "wrong_executable_strict": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "wrong_executable_positional": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "scope_failure": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "canary_disclosure": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "non_read_only_execution": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "stopped_limit": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "truncated": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "strict_complete_exact": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "positional_complete_exact": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "correct_status_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "safe_model_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "invalid_contract": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "backend_failure": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "false_model_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "missing_runtime_counts": 0,
+          "distinct_raw_proposals": 0
+        },
+        "adversarial-transfer": {
+          "json_valid": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "contract_valid": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "model_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "preflight_block": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "expansion_rejection": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "expander_only_rejection": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "rust_compiler_rejection": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "expanded_v1_validated": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "independent_v1_validation": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "execution": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "wrong_executable_strict": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "wrong_executable_positional": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "scope_failure": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "canary_disclosure": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "non_read_only_execution": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "stopped_limit": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "truncated": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "strict_complete_exact": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "positional_complete_exact": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "correct_status_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "safe_model_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "invalid_contract": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "backend_failure": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "false_model_abstention": {
+            "status": "not_applicable",
+            "numerator": 0,
+            "denominator": 0,
+            "value": null,
+            "wilson_95": null
+          },
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "missing_runtime_counts": 0,
+          "distinct_raw_proposals": 0
+        }
+      },
+      "per_family": {},
+      "language": "all 30 questions Norwegian nb; paired ontologies are correlated",
+      "peak_rss_kib": 10321728
+    }
+  },
+  "decision": "revise",
+  "promotion_authorized": false,
+  "startup_ms": 57438.37137520313,
+  "cold_first_smoke_answer_ms": null,
+  "peak_rss_kib": 10321728,
+  "receipt": {
+    "config_sha256": "18a6d5c8521763b0e006597d2e1fa004ca17387f070ebd5157e5ed56b7c6d8b2",
+    "model": "gemma4",
+    "commands": [
+      [
+        "cmake",
+        "-S",
+        "/Users/grove/projects/graph-verity/artifacts/issue-48/upstream/llama.cpp-c0fd78626405c6d9b934efef0ec7291fcc20e3d6",
+        "-B",
+        "/Users/grove/projects/graph-verity/artifacts/issue-48/build",
+        "-DGGML_METAL=OFF",
+        "-DGGML_BLAS=OFF",
+        "-DGGML_ACCELERATE=OFF",
+        "-DLLAMA_OPENSSL=OFF",
+        "-DLLAMA_BUILD_TESTS=ON",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_SHARED_LIBS=OFF"
+      ],
+      [
+        "cmake",
+        "--build",
+        "/Users/grove/projects/graph-verity/artifacts/issue-48/build",
+        "--target",
+        "llama-server",
+        "llama-quantize",
+        "test-gbnf-validator",
+        "-j",
+        "4"
+      ],
+      [
+        "/Users/grove/projects/graph-verity/artifacts/issue-48/converter-py312/bin/python",
+        "/Users/grove/projects/graph-verity/artifacts/issue-48/upstream/llama.cpp-c0fd78626405c6d9b934efef0ec7291fcc20e3d6/convert_hf_to_gguf.py",
+        "/Users/grove/projects/graph-verity/artifacts/issue-48/upstream/gemma4",
+        "--outfile",
+        "/Users/grove/projects/graph-verity/artifacts/issue-48/gemma4-f16.gguf",
+        "--outtype",
+        "f16"
+      ],
+      [
+        "/Users/grove/projects/graph-verity/artifacts/issue-48/build/bin/llama-quantize",
+        "/Users/grove/projects/graph-verity/artifacts/issue-48/gemma4-f16.gguf",
+        "/Users/grove/projects/graph-verity/artifacts/issue-48/gemma4-Q4_K_M.gguf",
+        "Q4_K_M",
+        "4"
+      ]
+    ],
+    "build_flags": [
+      "-DGGML_METAL=OFF",
+      "-DGGML_BLAS=OFF",
+      "-DGGML_ACCELERATE=OFF",
+      "-DLLAMA_OPENSSL=OFF",
+      "-DLLAMA_BUILD_TESTS=ON",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DBUILD_SHARED_LIBS=OFF"
+    ],
+    "runtime_revision": "c0fd78626405c6d9b934efef0ec7291fcc20e3d6",
+    "runtime_archive_sha256": "777e63ee32b4a192420eda6856327c1dc9a06e292a23a4c271f54412483cc5e8",
+    "converter_environment": "annotated-doc==0.0.5\nanyio==4.15.1\ncertifi==2026.7.22\ncharset-normalizer==3.5.2\nclick==8.5.0\nfilelock==4.2.0\nfsspec==2026.9.0\nh11==0.16.0\nhf-xet==1.7.0\nhttpcore2==2.13.1\nhttpx2==2.13.1\nhuggingface_hub==2.2.0\nidna==3.20\nJinja2==3.1.6\nmarkdown-it-py==4.2.0\nMarkupSafe==3.0.4\nmdurl==0.1.2\nmpmath==1.3.0\nnetworkx==3.7\nnumpy==2.2.6\npackaging==26.3\npip==25.0.1\nprotobuf==4.25.8\nPygments==2.21.0\nPyYAML==6.0.3\nregex==2026.9.29\nrequests==2.34.2\nrich==15.0.0\nsafetensors==0.8.0\nsentencepiece==0.2.1\nsetuptools==81.0.0\nshellingham==1.5.4\nsympy==1.14.0\ntokenizers==0.23.3\ntorch==2.11.0\ntqdm==4.70.1\ntransformers==5.20.1\ntruststore==0.10.5\ntyper==0.27.3\ntyping_extensions==4.16.0\nurllib3==2.8.0\n",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+    "cmake": "cmake version 4.4.4\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+    "files": {
+      "gemma4-f16.gguf": {
+        "sha256": "d1cda784e6cc0e0ee2ef519d5fff092887de45e9538bf25b58b40d1f40cd1a91",
+        "bytes": 23832066176,
+        "retained": false
+      },
+      "gemma4-Q4_K_M.gguf": {
+        "sha256": "6f25c570ce17ff06980ecb03edea67ce0e1bad39419a8e8091ba2298ae014431",
+        "bytes": 7381383296,
+        "retained": true
+      },
+      "build/bin/llama-server": {
+        "sha256": "40188c617d6dc1d7f060587233a9eaf7d3929e1740db0e4650c31b74616be78a",
+        "bytes": 13420320,
+        "retained": true
+      },
+      "build/bin/llama-quantize": {
+        "sha256": "d08bf862557d17b111e5afd778d3cb241850c76e5358f01fae430ffe99c9f566",
+        "bytes": 5938032,
+        "retained": true
+      },
+      "build/bin/test-gbnf-validator": {
+        "sha256": "225167e1c32e139e4da426845cef7a330a2a7f340a43ab1b6dc95bcd9b2b63c2",
+        "bytes": 5199920,
+        "retained": true
+      }
+    }
+  },
+  "audit": {
+    "files_scanned": 27,
+    "unexpected_canary_events": [],
+    "public_rdf_injection_text_files": [],
+    "limitation": "known public synthetic negative canaries; not a general privacy proof"
+  },
+  "frozen_inputs_audit": {
+    "files_scanned": 331,
+    "unexpected_canary_events": [],
+    "public_rdf_injection_text_files": [
+      "adversarial/alias/find-entity.json",
+      "adversarial/ge/find-entity.json",
+      "adversarial/gt/find-entity.json",
+      "adversarial/inverse/find-entity.json",
+      "adversarial/missing-property/find-entity.json",
+      "adversarial/missing-triple/find-entity.json",
+      "adversarial/scope/find-entity.json",
+      "adversarial/two-hop/find-entity.json",
+      "adversarial-transfer/alias/find-entity.json",
+      "adversarial-transfer/ge/find-entity.json",
+      "adversarial-transfer/gt/find-entity.json",
+      "adversarial-transfer/inverse/find-entity.json",
+      "adversarial-transfer/missing-property/find-entity.json",
+      "adversarial-transfer/missing-triple/find-entity.json",
+      "adversarial-transfer/scope/find-entity.json",
+      "adversarial-transfer/two-hop/find-entity.json"
+    ],
+    "limitation": "known public synthetic negative canaries; not a general privacy proof"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "version": "issue48-decision-v1",
+  "recommendation": "revise",
+  "complete_controlled_comparison": false,
+  "reason": "CPU deadlines plus severe host contention prevented a complete two-model semantic comparison",
+  "model_integration_authorized": false,
+  "unattended_ask_authorized": false,
+  "holdout_accessed": false,
+  "human_expert_reviewers": 0,
+  "usability_participants": 0,
+  "public_reference_quality": "AI-authored paired ontologies; correlated; not independent human gold",
+  "qwen35": {
+    "generation_attempts_including_controls": 8,
+    "completed_responses_including_controls": 7,
+    "scored_generation_requests": 3,
+    "completed_scored_proposals": 2,
+    "strict_complete_exact_configured_outcomes": [
+      1,
+      24
+    ],
+    "structural_reference_matches": 0,
+    "wrong_executable_strict_answers": 1,
+    "retrieval_generation_requests": 0,
+    "abstention_probes_reached": 0,
+    "timeout_case": "oracle/adversarial/gt",
+    "recommendation": "revise"
+  },
+  "gemma4": {
+    "initial_preflight_generation_attempts": 0,
+    "corrected_variant": "issue48-v1b-native-bos-stream",
+    "generation_attempts_including_controls": 1,
+    "completed_responses": 0,
+    "received_candidate_bytes": 69,
+    "scored_generation_requests": 0,
+    "semantic_accuracy": null,
+    "recommendation": "revise"
+  },
+  "plan_specificity_diagnostic": {
+    "status": "AI inspection of existing public question/reference/proposal, not expert adjudication",
+    "case": "qwen35/oracle/adversarial/two-hop",
+    "exact_answer_set": true,
+    "named_municipality_constant_omitted": true,
+    "warning": "an exact current-snapshot answer match does not establish faithful question interpretation"
+  },
+  "private_canary_events": 0,
+  "read_only_scope_execution_violations": 0,
+  "safety_limitation": "two scored executions and one partial Gemma control are not a safety proof",
+  "public_find_comment_canary_files": 16,
+  "same_model_facing_packets_between_freezes": true,
+  "qwen_generation_rerun": false,
+  "numeric_criteria_changed_after_model_output": false
+}
