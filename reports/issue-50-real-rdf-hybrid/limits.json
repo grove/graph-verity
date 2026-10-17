@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "selected_pilot_concepts": 2200,
+  "measured_pilot_graph_qualified_resources": 2215,
+  "full_source_concepts": 5573,
+  "full_source_rdf_sha256": "151be979b5ac8f5db2c55cc724d44988d3aca6d2d7d44e55df108b2c61371b35",
+  "full_source_baseline_documents": 5588,
+  "full_source_baseline_index_bytes": 9525850,
+  "full_source_definition_variant_stdout": "",
+  "full_source_definition_variant_stderr": "{\"detail\":\"index_limit: Discovery allocation budget exceeded; narrow scope\",\"status\":\"error\"}\n",
+  "requested_10000_stdout": "",
+  "requested_10000_stderr": "Traceback (most recent call last):\n  File \"/Users/grove/projects/graph-verity/tools/gemet.py\", line 115, in <module>\n    build(args.concepts, args.out)\n  File \"/Users/grove/projects/graph-verity/tools/gemet.py\", line 75, in build\n    raw, stats = extract(count)\n                 ^^^^^^^^^^^^^^\n  File \"/Users/grove/projects/graph-verity/tools/gemet.py\", line 45, in extract\n    r.require(count <= len(concepts), 'Source has fewer concepts than requested; no synthetic padding')\n  File \"/Users/grove/projects/graph-verity/tools/retrieval.py\", line 39, in require\n    raise ValueError(message)\nValueError: Source has fewer concepts than requested; no synthetic padding\n",
+  "importer_sha256": "144a6d04b9f242fe932519fc06c273832bd026638cf8b8c07b31e0b271675fea",
+  "source_selection_and_blocked_attempts_preceded_rank_inspection": true,
+  "limits_raised": false,
+  "synthetic_resources_added": false,
+  "next_scale_step": "Resolve measured allocation cost or authorize separate bounded indexes; then source-pin additional distinct licensed real subjects. Single GEMET release has <10000 concepts."
+}

@@ -151,3 +151,11 @@ an explicit product go decision. Better predicate recall and conservative JSON
 states do not establish safe question interpretation, human usability or factual
 truth. Scope selection, mapping coverage, language restrictions, manual candidate
 inspection and real-domain scale remain limits; no unattended Ask is implemented.
+
+The separately preregistered [real RDF hybrid retrieval study #50](../reports/issue-50-real-rdf-hybrid/README.md)
+compares the original #46 representation with a new `skos-definitions-v1` text
+variant. Discovery now recognizes original `skos:definition` literals as bounded
+descriptions with their original predicate/language/datatype witnesses. This
+changes the index rules identity; old persisted indexes require rebuilding.
+BM25 remains the shipping Find backend. Neither historical reports nor fixtures
+are retuned. See the [new protocol](../benchmarks/hybrid/README.md).

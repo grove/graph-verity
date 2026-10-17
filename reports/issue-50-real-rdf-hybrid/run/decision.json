@@ -1,0 +1,35 @@
+{
+  "recommendation": "keep_bm25; defer hybrid pending owner decision and independent relevance/usability review",
+  "variants": {
+    "bm25-46": {
+      "checks": {
+        "positive_paired_gain": true,
+        "language_nonregression": false,
+        "exact_nonregression": false,
+        "no_match_nonregression": false,
+        "warm_p95": true,
+        "memory": false,
+        "no_failures": true
+      },
+      "engineering_rule_pass": false,
+      "no_match_return_delta": 0.5
+    },
+    "skos-definitions-v1": {
+      "checks": {
+        "positive_paired_gain": true,
+        "language_nonregression": false,
+        "exact_nonregression": false,
+        "no_match_nonregression": false,
+        "warm_p95": true,
+        "memory": false,
+        "no_failures": true
+      },
+      "engineering_rule_pass": false,
+      "no_match_return_delta": 0.5
+    }
+  },
+  "automatic_integration": false,
+  "human_review_available": false,
+  "phase_0_gate": false,
+  "retrieval_is_interpretation": false
+}
