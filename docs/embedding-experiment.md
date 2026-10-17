@@ -98,6 +98,8 @@ fusion/serialization. Its extra lexical startup/build work is included, not
 subtracted. This avoids presenting batch-internal timing as end-to-end latency.
 The first warm sample is retained; page caches are not evicted. Report 30 cold
 BM25 samples and 200 warm samples per corpus; p99 uses nearest-rank percentiles.
+Timing rotates five fixed short strings per corpus, recorded in the requests;
+it is not the relevance-query distribution or a worst-case 256-token workload.
 Runtime model construction time is recorded separately, not called a cold-query
 distribution. RSS conservatively sums controller and maximum child high-water
 marks; the reference-parity load is included. The native macOS measurement uses
