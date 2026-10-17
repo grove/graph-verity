@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "protocol_id": "6223e88dbca50cbc9e09b3eb8c0fa4034fe4f55ba8405e66318b37a633c84354",
+  "code_sha256": {
+    "hybrid_review_cold.py": "0859531696b2d2151a831cb8bc538807f6d4af413e35811a0a0f77f46697b09f",
+    "test_hybrid_review_cold.py": "9ab553d99d5e69f831182e66d0b5f4d4eca530f635783003d1d6d93c6595d087"
+  },
+  "implementation_commit": "3a67c96c3c1c6afb6a0b812f9937a8ddbce73f71",
+  "frozen_at_utc": "2026-10-17T21:54:58Z",
+  "receipt_sha256": "7e810ac9448c180621606709f3914d88e73290c58602380fdf4d29a82c205976",
+  "saved_results_sha256": "d1b62739104c107ed1096f956183625b0f7ffaafa35b26227517cc234f746467",
+  "python": "3.14.8 (main, Sep 30 2026, 17:55:09) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "hardware": "Apple M1 Pro, 32 GiB per retained host declaration; macOS 26.6.2 arm64; CPU-only 4 intra-op / 1 inter-op threads; native scheduler; OS caches retained; no affinity or quota; concurrent desktop workload uncontrolled",
+  "schedule": [
+    {
+      "repetition": 0,
+      "task_id": "HR-19",
+      "system": "selective"
+    },
+    {
+      "repetition": 0,
+      "task_id": "HR-19",
+      "system": "bm25"
+    },
+    {
+      "repetition": 0,
+      "task_id": "HR-09",
+      "system": "selective"
+    },
+    {
+      "repetition": 0,
+      "task_id": "HR-09",
+      "system": "bm25"
+    },
+    {
+      "repetition": 0,
+      "task_id": "HR-01",
+      "system": "bm25"
+    },
+    {
+      "repetition": 0,
+      "task_id": "HR-01",
+      "system": "selective"
+    },
+    {
+      "repetition": 0,
+      "task_id": "HR-02",
+      "system": "bm25"
+    },
+    {
+      "repetition": 0,
+      "task_id": "HR-02",
+      "system": "selective"
+    },
+    {
+      "repetition": 0,
+      "task_id": "HR-20",
+      "system": "bm25"
+    },
+    {
+      "repetition": 0,
+      "task_id": "HR-20",
+      "system": "selective"
+    },
+    {
+      "repetition": 1,
+      "task_id": "HR-01",
+      "system": "bm25"
+    },
+    {
+      "repetition": 1,
+      "task_id": "HR-01",
+      "system": "selective"
+    },
+    {
+      "repetition": 1,
+      "task_id": "HR-19",
+      "system": "selective"
+    },
+    {
+      "repetition": 1,
+      "task_id": "HR-19",
+      "system": "bm25"
+    },
+    {
+      "repetition": 1,
+      "task_id": "HR-02",
+      "system": "selective"
+    },
+    {
+      "repetition": 1,
+      "task_id": "HR-02",
+      "system": "bm25"
+    },
+    {
+      "repetition": 1,
+      "task_id": "HR-20",
+      "system": "bm25"
+    },
+    {
+      "repetition": 1,
+      "task_id": "HR-20",
+      "system": "selective"
+    },
+    {
+      "repetition": 1,
+      "task_id": "HR-09",
+      "system": "selective"
+    },
+    {
+      "repetition": 1,
+      "task_id": "HR-09",
+      "system": "bm25"
+    },
+    {
+      "repetition": 2,
+      "task_id": "HR-20",
+      "system": "bm25"
+    },
+    {
+      "repetition": 2,
+      "task_id": "HR-20",
+      "system": "selective"
+    },
+    {
+      "repetition": 2,
+      "task_id": "HR-09",
+      "system": "selective"
+    },
+    {
+      "repetition": 2,
+      "task_id": "HR-09",
+      "system": "bm25"
+    },
+    {
+      "repetition": 2,
+      "task_id": "HR-02",
+      "system": "selective"
+    },
+    {
+      "repetition": 2,
+      "task_id": "HR-02",
+      "system": "bm25"
+    },
+    {
+      "repetition": 2,
+      "task_id": "HR-01",
+      "system": "selective"
+    },
+    {
+      "repetition": 2,
+      "task_id": "HR-01",
+      "system": "bm25"
+    },
+    {
+      "repetition": 2,
+      "task_id": "HR-19",
+      "system": "bm25"
+    },
+    {
+      "repetition": 2,
+      "task_id": "HR-19",
+      "system": "selective"
+    }
+  ],
+  "seed": 58,
+  "repetitions": 3,
+  "timing": "Parent monotonic clock immediately before fresh Python Popen through receipt and validation of the first serialized top-10 result; teardown measured separately",
+  "included": [
+    "interpreter startup",
+    "Python imports",
+    "frozen input and binary verification",
+    "checkpoint verification and Torch/runtime initialization for selective",
+    "model load for selective",
+    "lexical index construction",
+    "vector load for selective",
+    "first query, serialization, IPC and parent result validation"
+  ],
+  "conditions": "Sequential workers, no overlapping model owners; CPU-only 4/1 threads; native scheduler; process-cold with OS caches retained; no cache eviction; concurrent desktop workload uncontrolled",
+  "limitations": [
+    "15 observations per method across 5 exposed query probes; descriptive timing percentiles, not population estimates.",
+    "Not storage-cold, reboot-cold or shipping CLI startup; this measures the pinned research worker with input validation.",
+    "Historical document vectors reused; no document-vector rebuild or new relevance judgments.",
+    "No cold-latency promotion threshold is introduced; the original warm/RSS and human gates remain unchanged."
+  ]
+}
