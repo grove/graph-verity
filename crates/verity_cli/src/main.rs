@@ -10,12 +10,13 @@ use verity_core::{
     discovery::{DiscoveryConfig, MAX_INDEX_BYTES},
     evaluation::Benchmark,
     execution::PlanOrigin,
+    find::FindRequest,
     ir::decode_plan,
     parser::{FixtureParser, ParserOutcome, ParserRequest, Proposal, SemanticParser},
     read_limited, reject, Result, Snapshot,
 };
 
-const USAGE: &str = "verity schema | schema-compact | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | index-build RDF FORMAT POLICY SCOPE CONFIG | index-inspect RDF FORMAT POLICY SCOPE CONFIG INDEX | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local|evaluate-local-compact RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT | compact-context RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT | compact RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT INTENT_FILE\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, CONFIG, INDEX, PLAN and BENCHMARK are JSON files. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
+const USAGE: &str = "verity schema | schema-compact | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | index-build RDF FORMAT POLICY SCOPE CONFIG | index-inspect RDF FORMAT POLICY SCOPE CONFIG INDEX | find|find-batch RDF FORMAT POLICY SCOPE CONFIG REQUEST_JSON | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local|evaluate-local-compact RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT | compact-context RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT | compact RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT INTENT_FILE\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, CONFIG, INDEX, PLAN and BENCHMARK are JSON files. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
 
 // The parent owns llama.cpp, deadlines and process cleanup; model bytes stay inside response.
 struct LlamaCppBridge {
@@ -117,6 +118,46 @@ fn run() -> Result<()> {
     }
     let policy: Policy = serde_json::from_value(json(&args[3])?)?;
     match (args[0].as_str(), args.len()) {
+        ("find" | "find-batch", 7) => {
+            let scope: Vec<String> = serde_json::from_value(json(&args[4])?)?;
+            let config: DiscoveryConfig = serde_json::from_value(json(&args[5])?)?;
+            let started = std::time::Instant::now();
+            let index = graph.build_discovery(&scope, &policy, &config)?;
+            let build_ms = started.elapsed().as_secs_f64() * 1000.0;
+            if args[0] == "find" {
+                let request: FindRequest = serde_json::from_value(json(&args[6])?)?;
+                return print_json(&index.find(&request, &policy)?);
+            }
+            let requests: Vec<FindRequest> = serde_json::from_value(json(&args[6])?)?;
+            if requests.is_empty() || requests.len() > 1000 {
+                return Err(reject(
+                    "input_limit",
+                    "Find batch requires 1..1000 requests",
+                ));
+            }
+            let mut results = Vec::new();
+            for request in requests {
+                let started = std::time::Instant::now();
+                let result = index.find(&request, &policy);
+                let elapsed_ms = started.elapsed().as_secs_f64() * 1000.0;
+                results.push(match result {
+                    Ok(result) => serde_json::json!({"elapsed_ms": elapsed_ms, "result": result}),
+                    Err(error) => {
+                        serde_json::json!({"elapsed_ms": elapsed_ms, "error": error.to_string()})
+                    }
+                });
+            }
+            let process_threads = fs::read_to_string("/proc/self/status")
+                .ok()
+                .and_then(|status| {
+                    status
+                        .lines()
+                        .find_map(|line| line.strip_prefix("Threads:")?.trim().parse::<u32>().ok())
+                });
+            print_json(
+                &serde_json::json!({"process_threads": process_threads, "build_ms": build_ms, "index_bytes": serde_json::to_vec_pretty(&index)?.len(), "results": results}),
+            )
+        }
         ("index-build", 6) | ("index-inspect", 7) => {
             let scope: Vec<String> = serde_json::from_value(json(&args[4])?)?;
             let config: DiscoveryConfig = serde_json::from_value(json(&args[5])?)?;

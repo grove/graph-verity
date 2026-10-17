@@ -1,0 +1,48 @@
+{
+  "stage": "pre-ranking scale load preflight",
+  "superseded_rdf_sha256": "4af15b8d7601f1d6c15b1bf69c8496d8d9b15f953319cd658c72f5977887ebe4",
+  "resources": 10000,
+  "failures": [
+    {
+      "argv": [
+        "/Users/grove/projects/graph-verity/target/release/verity",
+        "index-build",
+        "/Users/grove/projects/graph-verity/artifacts/retrieval-dev-check/scale.nq",
+        "nquads",
+        "/Users/grove/projects/graph-verity/artifacts/retrieval-dev-check/scale-policy.json",
+        "/Users/grove/projects/graph-verity/artifacts/retrieval-dev-check/scale-scope.json",
+        "/Users/grove/projects/graph-verity/artifacts/retrieval-dev-check/scale-config.json"
+      ],
+      "returncode": 1,
+      "stderr": "{\"detail\":\"index_limit: Discovery allocation budget exceeded; narrow scope\",\"status\":\"error\"}\n",
+      "stdout": "",
+      "elapsed_ms": 258.77479184418917
+    }
+  ],
+  "source": "initial-scale.nq.gz",
+  "config": {
+    "version": 1,
+    "snapshot_id": "sha256:12f786f09aa0f51a3033281b72edbca083335cbad91bd760f5ecdfd72daf8f3e",
+    "graphs": {
+      "urn:retrieval:scale": {
+        "source": "Synthetic load, not relevance evidence",
+        "license": "Apache-2.0",
+        "source_revision": "sha256:4af15b8d7601f1d6c15b1bf69c8496d8d9b15f953319cd658c72f5977887ebe4",
+        "importer_revision": "retrieval-scale-v1"
+      }
+    }
+  },
+  "policy": {
+    "version": 1,
+    "graphs": [
+      "urn:retrieval:scale"
+    ],
+    "max_rows": 1000,
+    "max_evidence": 100,
+    "timeout_ms": 10000
+  },
+  "scope": [
+    "urn:retrieval:scale"
+  ],
+  "archive_sha256": "2f901791b68ea8593dca92ab169e38601a0976b93b8123f1a727a6c1fee04a20"
+}

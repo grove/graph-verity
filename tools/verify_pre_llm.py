@@ -101,6 +101,7 @@ def main() -> int:
         run("dependency-fetch", ["cargo", "fetch", "--locked"])
         run("reporting-tests", [sys.executable, "-m", "unittest", "discover",
                                 "-s", "tools", "-p", "test_*.py", "-v"])
+        run("retrieval-freeze", [sys.executable, "tools/retrieval.py", "verify"])
         run("issue9-forensics", [sys.executable, "tools/issue9_forensics.py", "verify",
                                  "--out", str(OUT / "issue9-forensics.json")])
         run("format", ["cargo", "fmt", "--all", "--check"])

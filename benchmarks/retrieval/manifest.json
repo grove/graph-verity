@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "freeze": "2026-10-17-before-first-ranking-run",
+  "corpora": {
+    "wikidata": {
+      "rdf": "data/wikidata/snapshot.nq",
+      "format": "nquads",
+      "policy": "data/wikidata/policy.json",
+      "scope": "data/wikidata/scope.json",
+      "config": "data/wikidata/discovery.json"
+    },
+    "cities": {
+      "rdf": "data/worldcities-transfer/snapshot.nq",
+      "format": "nquads",
+      "policy": "data/worldcities-transfer/policy.json",
+      "scope": "benchmarks/retrieval/cities-scope.json",
+      "config": "data/worldcities-transfer/discovery.json"
+    },
+    "descriptions": {
+      "rdf": "benchmarks/retrieval/descriptions.nq",
+      "format": "nquads",
+      "policy": "benchmarks/retrieval/descriptions-policy.json",
+      "scope": "benchmarks/retrieval/descriptions-scope.json",
+      "config": "benchmarks/retrieval/descriptions-discovery.json"
+    }
+  },
+  "judgments": "benchmarks/retrieval/judgments.json",
+  "development": "benchmarks/retrieval/development.json",
+  "evaluation": "benchmarks/retrieval/evaluation.json",
+  "parameters": {
+    "k1": 1.2,
+    "b": 0.75,
+    "limit": 50
+  },
+  "review": "AI-authored exploratory; no stakeholder quality claim",
+  "lineage": "New retrieval-only queries, not imported from Ask benchmarks or sealed holdout. Dev/eval share intents and judgments with different public formulations; evaluation is not an independent holdout. No tuning after this freeze.",
+  "sha256": {
+    "benchmarks/retrieval/cities-scope.json": "55168c3934322949555bc54d36c494b20fac5e99dc16a6f092090a8929fee0e7",
+    "benchmarks/retrieval/descriptions-discovery.json": "c2f4517fd47124eac276cc71e495ed71deb70ba5db487c589cdf20d2d6027d15",
+    "benchmarks/retrieval/descriptions-policy.json": "6271a615efd3e9b3a7c8bb39bf2b6014b76fb0e91d0d08160454311cfcdaaf7b",
+    "benchmarks/retrieval/descriptions-scope.json": "59afb6ef0bf90e6d62983e09bd41fb5874bf7edb33bfe3b12b3d50798cee85d9",
+    "benchmarks/retrieval/descriptions.nq": "aec05898cecf8531d5f2dac06ef937a8f68dd66b5a69b1a7487ff138069157a1",
+    "benchmarks/retrieval/development.json": "448da7e9c3db49dc026c09a0a859751e6ba6ab9665617e9af306aa08cce4cbd8",
+    "benchmarks/retrieval/evaluation.json": "99473b279557b42922b5ca0b84f73c29a12a4b83081748a374d8d57a09443614",
+    "benchmarks/retrieval/judgments.json": "305f8ebe9edb729e223a56833f02457f55a9a037e50eb44fafa814298e5e8282",
+    "data/wikidata/discovery.json": "a4e7f83a0ae87fac1fafe786896a8950844afe3f53f1ee7f324b24d3dda64368",
+    "data/wikidata/policy.json": "90afa6af857c2e046bc6f71ebf7354a1a0f9c4583a38001d8176af46a05df9de",
+    "data/wikidata/scope.json": "4815891ffd7325fbb7be1ac24b835160164c3b418c8e1647e59cb23572c82aee",
+    "data/wikidata/snapshot.nq": "9e75055676e095fcc387f1fd93146c37b47a448b8e08c5a806ab9be4016ccc6f",
+    "data/worldcities-transfer/discovery.json": "fca0e1c25759a5414817604969e067617a9ecce1fd4b94a2cd72d008172a77df",
+    "data/worldcities-transfer/policy.json": "971ffb18bc723903daba6defc96723c8fdf212cafb6ba79692a66a306ba66f51",
+    "data/worldcities-transfer/snapshot.nq": "2ee4af13fb312c006c126f9239bdbb25b2e4be10b40bff3adc5d67076f068f13"
+  },
+  "scale": {
+    "resources": 10000,
+    "quads": 19996,
+    "rdf_sha256": "87df275d730b4caf2e4c316496b01dfbf9e93047c099b66a71b630e1e91c7ef7",
+    "lineage": "Frozen deterministic synthetic load recipe in tools/retrieval.py; Apache-2.0; not real-domain scale evidence. Initial verbose synthetic recipe exceeded the existing 64MiB conservative index allocation budget before any ranking run; reduced document text and IRI lengths without changing the 10000-resource denominator. See reports/issue-37-bm25/initial-scale-failure.json."
+  }
+}
