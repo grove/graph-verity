@@ -108,6 +108,10 @@ class GroundedModelTests(unittest.TestCase):
             self.assertEqual(audit["unexpected_canary_events"], [{"file": "server.log", "marker": "PRIVATE_LABEL_CANARY"}])
             dump(folder / "audit.json", audit)
             self.assertEqual(audit_files(folder), audit)
+            (folder / "server.log").write_bytes(b"COMMENT_INJECTION_CANARY: public RDF description")
+            public = audit_files(folder)
+            self.assertEqual(public["unexpected_canary_events"], [])
+            self.assertEqual(public["public_rdf_injection_text_files"], ["server.log"])
 
     def test_preparation_keeps_quantized_assets_and_intermediate_provenance(self):
         import hashlib

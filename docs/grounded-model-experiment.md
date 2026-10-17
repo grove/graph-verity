@@ -134,6 +134,13 @@ diagnostics, not proof of an executed tool call. Output IR cannot express SERVIC
 updates, arbitrary SPARQL, tools or closed-world NOT EXISTS. Zero observed safety
 violations on this small public corpus establishes no general safety claim.
 
+Find legitimately indexes the public `COMMENT_INJECTION_CANARY` description;
+its occurrence in retained retrieval evidence is recorded as public injection
+test data. Negative private graph/entity/label canaries are checked separately
+across every retained file, and block model access if present in frozen inputs.
+The v1 model context uses the same capped labels/profiles subset in both stages;
+Find descriptions and full candidate lists remain available for independent audit.
+
 Metrics retain exact denominators, descriptive Wilson intervals, per-family and
 per-ontology results, individual component agreement and retrieval misses. Warm
 p50/p95/p99 and end-to-end include Rust catalog/validation/query/evidence and

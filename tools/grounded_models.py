@@ -169,17 +169,21 @@ def file_hashes(folder):
 
 def audit_files(folder):
     """Independent retained-byte scan includes server/Rust logs, not just scored proposals."""
-    markers = [b"PRIVATE_LABEL_CANARY", b"PRIVATE_ENTITY_CANARY", b"PRIVATE_GRAPH_CANARY", b"COMMENT_INJECTION_CANARY"]
+    markers = [b"PRIVATE_LABEL_CANARY", b"PRIVATE_ENTITY_CANARY", b"PRIVATE_GRAPH_CANARY"]
     events = []
+    public_injection = []
     scanned = 0
     for path in sorted(folder.rglob("*")):
         if path.is_file() and path.name not in {"audit.json", "checksums.json"}:
             scanned += 1
             raw = path.read_bytes()
+            if b"COMMENT_INJECTION_CANARY" in raw:
+                public_injection.append(str(path.relative_to(folder)))
             for marker in markers:
                 if marker in raw:
                     events.append({"file": str(path.relative_to(folder)), "marker": marker.decode()})
     return {"files_scanned": scanned, "unexpected_canary_events": events,
+            "public_rdf_injection_text_files": public_injection,
             "limitation": "known public synthetic negative canaries; not a general privacy proof"}
 
 
@@ -466,6 +470,7 @@ def evaluate(cfg, freeze_dir, dataset, split, stage, out, propose, model):
 
 def infer(cfg, assets, key, freeze_dir, out):
     verify_freeze(freeze_dir)
+    require(not audit_files(freeze_dir)["unexpected_canary_events"], "Private canary in frozen authorized context/evidence")
     require(not out.exists(), "Never overwrite an attempted run")
     out.mkdir(parents=True)
     state = {"model": key, "config_sha256": sha(CONFIG), "freeze_sha256": sha(freeze_dir / "checksums.json"),
