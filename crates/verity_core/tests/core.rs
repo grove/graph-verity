@@ -10,6 +10,17 @@ use verity_core::{
 const PUBLIC: &str = "https://example.org/public";
 const PRIVATE: &str = "https://example.org/private";
 const RDF: &[u8] = include_bytes!("../../../tests/fixtures/smoke.trig");
+/// Panics if inference is invoked: guarded cases must be intercepted first.
+struct NoOpModel;
+impl verity_core::parser::SemanticParser for NoOpModel {
+    fn origin(&self) -> PlanOrigin {
+        PlanOrigin::LocalModel
+    }
+    fn propose(&self, _: &verity_core::parser::ParserRequest) -> verity_core::Result<Vec<u8>> {
+        panic!("Deterministic preflight failed to intercept a known unsupported request")
+    }
+}
+
 fn graph() -> Snapshot {
     Snapshot::from_bytes(RDF, "trig").unwrap()
 }
@@ -696,6 +707,87 @@ fn local_origin_and_independent_model_output_rejections() {
     }
 }
 
+#[test]
+fn deterministic_preflight_blocks_explicit_negation_without_running_a_model() {
+    let g = graph();
+    let scope = vec![PUBLIC.to_owned()];
+    let fixture = FixtureParser::default(); // no response registered
+    let outcome = g
+        .run_parser(
+            &NoOpModel,
+            "Hvilke selskaper har ingen kontrakter?",
+            &scope,
+            &policy(),
+        )
+        .unwrap();
+    match outcome {
+        ParserOutcome::Guarded {
+            origin,
+            code,
+            proposal: Proposal::Unsupported { reason },
+        } => {
+            assert_eq!(origin, "deterministic_preflight_not_model");
+            assert_eq!(code, "unsupported_negation");
+            assert!(reason.contains("no graph query was executed"));
+        }
+        _ => panic!("Expected a deterministic, non-model unsupported guard"),
+    }
+    // Conservative boundary: do not treat 'ikke mindre enn' as negation
+    // because it is a supported >= comparison.
+    let err = g
+        .run_parser(
+            &fixture,
+            "Hvilke selskaper har ikke mindre enn 51 ansatte?",
+            &scope,
+            &policy(),
+        )
+        .err()
+        .unwrap();
+    assert!(err.to_string().contains("fixture_missing"));
+}
+
+#[test]
+fn deterministic_preflight_blocks_duplicate_authorized_labels_only() {
+    let mut bytes = RDF.to_vec();
+    bytes.extend_from_slice(
+        b"\n<https://example.org/public> { <https://example.org/a> <http://www.w3.org/2000/01/rdf-schema#label> \"Felles AS\" . <https://example.org/b> <http://www.w3.org/2000/01/rdf-schema#label> \"Felles AS\" . }\n",
+    );
+    let g = Snapshot::from_bytes(&bytes, "trig").unwrap();
+    let scope = vec![PUBLIC.to_owned()];
+    let fixture = FixtureParser::default();
+    let outcome = g
+        .run_parser(
+            &NoOpModel,
+            "Hva er antall ansatte for Felles AS?",
+            &scope,
+            &policy(),
+        )
+        .unwrap();
+    match outcome {
+        ParserOutcome::Guarded {
+            origin,
+            code,
+            proposal: Proposal::NeedsClarification { reason },
+        } => {
+            assert_eq!(origin, "deterministic_preflight_not_model");
+            assert_eq!(code, "ambiguous_entity_label");
+            assert!(reason.contains("More than one authorized entity"));
+        }
+        _ => panic!("Expected deterministic, non-model clarification"),
+    }
+    // Avoid arbitrary substring detection for different entity names.
+    let err = g
+        .run_parser(
+            &fixture,
+            "Hva er antall ansatte for Felles ASJ?",
+            &scope,
+            &policy(),
+        )
+        .err()
+        .unwrap();
+    assert!(err.to_string().contains("fixture_missing"));
+}
+
 fn evaluation_fixture(g: &Snapshot, gold: Plan) -> Benchmark {
     let bindings = g
         .execute(&gold, &policy(), PlanOrigin::Fixture)
@@ -723,6 +815,33 @@ fn score_response(g: &Snapshot, b: &Benchmark, bytes: Vec<u8>) -> verity_core::e
         .unwrap();
     fixture.insert(&request, bytes).unwrap();
     g.evaluate(b, "dev", &policy(), Some(&fixture)).unwrap()
+}
+
+#[test]
+fn evaluator_preserves_raw_model_error_despite_would_block_advice() {
+    let g = graph();
+    let mut b = evaluation_fixture(&g, base(&g));
+    b.cases[0].question = "Hvilke selskaper har ingen kontrakter?".into();
+    b.cases[0].expected_status = "unsupported".into();
+    b.cases[0].gold = None;
+    b.cases[0].reference_sparql = None;
+    b.cases[0].expected_bindings = None;
+    let response = serde_json::to_vec(&ParserResponse {
+        version: 1,
+        proposal: Proposal::Candidate { plan: base(&g) },
+    })
+    .unwrap();
+    let result = score_response(&g, &b, response);
+    let scored = &result.cases[0];
+    assert_eq!(scored.proposal_status.as_deref(), Some("candidate"));
+    assert_eq!(
+        scored.preflight_would_block.as_deref(),
+        Some("unsupported_negation")
+    );
+    assert!(scored.execution.is_some()); // offline audit of the RAW proposal
+    assert!(scored.wrong_plan_successful_execution);
+    assert!(!scored.passed);
+    assert_eq!(scored.stage, "execution");
 }
 
 #[test]

@@ -7,7 +7,7 @@ use crate::{
 };
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
-use std::collections::BTreeMap;
+use std::collections::{BTreeMap, BTreeSet};
 
 #[derive(Clone, Debug, Serialize, JsonSchema)]
 pub struct ParserRequest {
@@ -31,6 +31,92 @@ pub enum Proposal {
     NeedsClarification { reason: String },
     Unsupported { reason: String },
     ParsingError { code: String, message: String },
+}
+
+/// Conservative, deterministic preflight. This is NOT proof of model understanding.
+///
+/// Only explicit open-world absence wording and exact duplicate authorized entity
+/// labels are recognized. A model may still misinterpret every other question.
+/// Do not treat a preflight block as a correct *model* abstention in evaluation.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
+pub enum PreflightBlock {
+    UnsupportedNegation,
+    AmbiguousEntityLabel,
+}
+
+impl PreflightBlock {
+    pub fn code(self) -> &'static str {
+        match self {
+            Self::UnsupportedNegation => "unsupported_negation",
+            Self::AmbiguousEntityLabel => "ambiguous_entity_label",
+        }
+    }
+
+    fn proposal(self) -> Proposal {
+        match self {
+            Self::UnsupportedNegation => Proposal::Unsupported {
+                reason: "Open-world absence or negation is not supported; no graph query was executed".into(),
+            },
+            Self::AmbiguousEntityLabel => Proposal::NeedsClarification {
+                reason: "More than one authorized entity shares a label in the question; specify an identifier".into(),
+            },
+        }
+    }
+}
+
+/// Match full Unicode-alphanumeric word boundaries rather than substring aliases.
+/// Untrusted RDF label text is compared as data only and never echoed as instructions.
+fn phrase_in_question(question: &str, label: &str) -> bool {
+    if label.trim().chars().count() < 3 {
+        return false;
+    }
+    let question = question.to_lowercase();
+    let label = label.to_lowercase();
+    question
+        .match_indices(label.as_str())
+        .any(|(start, matched)| {
+            let before = question[..start].chars().next_back();
+            let after = question[start + matched.len()..].chars().next();
+            !before.is_some_and(char::is_alphanumeric) && !after.is_some_and(char::is_alphanumeric)
+        })
+}
+
+/// A deliberately small *negative safety* filter, not a natural-language solver.
+/// In particular "ikke mindre enn" remains a supported inclusive numeric phrase.
+pub fn preflight(request: &ParserRequest) -> Option<PreflightBlock> {
+    let words: BTreeSet<_> = request
+        .question
+        .to_lowercase()
+        .split(|ch: char| !ch.is_alphanumeric())
+        .filter(|word| !word.is_empty())
+        .map(str::to_owned)
+        .collect();
+    if ["ingen", "uten", "mangler", "manglende"]
+        .iter()
+        .any(|word| words.contains(*word))
+        || (words.contains("ikke") && (words.contains("noen") || words.contains("noe")))
+    {
+        return Some(PreflightBlock::UnsupportedNegation);
+    }
+    let mut by_label: BTreeMap<String, BTreeSet<&str>> = BTreeMap::new();
+    for (iri, entry) in &request.catalog.entries {
+        if entry.roles.contains("entity") {
+            for label in &entry.labels {
+                by_label
+                    .entry(label.text.to_lowercase())
+                    .or_default()
+                    .insert(iri);
+            }
+        }
+    }
+    if by_label
+        .iter()
+        .any(|(label, ids)| ids.len() > 1 && phrase_in_question(&request.question, label))
+    {
+        return Some(PreflightBlock::AmbiguousEntityLabel);
+    }
+    None
 }
 
 /// Future backends return raw bytes so JSON validity can be measured independently.
@@ -75,8 +161,18 @@ impl ParserRequest {
 #[derive(Debug, Serialize)]
 #[serde(tag = "status", rename_all = "snake_case")]
 pub enum ParserOutcome {
-    Executed { result: Box<Execution> },
-    Abstained { proposal: Proposal },
+    Executed {
+        result: Box<Execution>,
+    },
+    Abstained {
+        proposal: Proposal,
+    },
+    /// Origin is explicitly deterministic, never falsely attributed to model understanding.
+    Guarded {
+        origin: &'static str,
+        code: &'static str,
+        proposal: Proposal,
+    },
 }
 
 pub fn decode_response(bytes: &[u8]) -> Result<ParserResponse> {
@@ -129,6 +225,18 @@ impl Snapshot {
         policy: &Policy,
     ) -> Result<ParserOutcome> {
         let request = self.parser_request(question, scope, policy)?;
+        // Fixture replay must remain exact for independent gold/CI auditing.
+        // Only the future user-facing local-model path applies this advisory
+        // guard; offline evaluate-local still scores the raw model response.
+        if matches!(parser.origin(), PlanOrigin::LocalModel) {
+            if let Some(block) = preflight(&request) {
+                return Ok(ParserOutcome::Guarded {
+                    origin: "deterministic_preflight_not_model",
+                    code: block.code(),
+                    proposal: block.proposal(),
+                });
+            }
+        }
         let response = decode_response(&parser.propose(&request)?)?;
         match response.proposal {
             Proposal::Candidate { plan } => {
