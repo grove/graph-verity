@@ -1,0 +1,10 @@
+:root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+body { max-width: 100rem; margin: 2rem auto; padding: 0 1rem; }
+label { display: block; margin: .7rem 0; }
+button, input, select { font: inherit; max-width: 100%; padding: .35rem; }
+fieldset, article, details { margin: 1rem 0; padding: 1rem; border: 1px solid #888; }
+#lists, #rubric { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+article { overflow-wrap: anywhere; }
+:focus-visible { outline: 3px solid #478bff; outline-offset: 3px; }
+@media (max-width: 50rem) { #lists, #rubric { grid-template-columns: 1fr; } }
