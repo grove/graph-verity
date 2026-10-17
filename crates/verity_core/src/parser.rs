@@ -122,6 +122,12 @@ pub fn preflight(request: &ParserRequest) -> Option<PreflightBlock> {
 /// Future backends return raw bytes so JSON validity can be measured independently.
 pub trait SemanticParser {
     fn propose(&self, request: &ParserRequest) -> Result<Vec<u8>>;
+    fn compact_v2(&self) -> bool {
+        false
+    }
+    fn propose_compact(&self, _: &crate::compact::CompactContext) -> Result<Vec<u8>> {
+        Err(reject("local_backend", "Compact backend not implemented"))
+    }
     fn origin(&self) -> PlanOrigin;
     fn model(&self) -> Option<String> {
         None

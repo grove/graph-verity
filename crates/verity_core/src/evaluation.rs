@@ -1,6 +1,7 @@
 //! Oracle and parser runs share scoring. Fixture correctness is never reported as model accuracy.
 use crate::{
     catalog::Policy,
+    compact::{decode_intent, CompactProposal},
     execution::{Execution, PlanOrigin, Row},
     ir::Plan,
     parser::{decode_response, preflight, Proposal, SemanticParser},
@@ -74,6 +75,10 @@ pub struct CaseScore {
     pub generation_ms: Option<f64>,
     pub end_to_end_ms: f64,
     pub components_exact: BTreeMap<String, bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expanded_plan: Option<Plan>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub expansion_ms: Option<f64>,
 }
 
 impl CaseScore {
@@ -111,11 +116,76 @@ impl CaseScore {
             generation_ms: None,
             end_to_end_ms: 0.0,
             components_exact: BTreeMap::new(),
+            expanded_plan: None,
+            expansion_ms: None,
         }
     }
 }
 
-/// Conservative, variable-name-sensitive reference comparisons, not semantic equivalence.
+// Compact slots and v1 names differ. Normalize names only; retain order and every operation.
+fn canonical_plan(plan: &Plan) -> Plan {
+    use crate::ir::{Node, Projection};
+    let mut plan = plan.clone();
+    let mut variables = BTreeMap::new();
+    let mut rename = |name: &mut String| {
+        let next = format!("v{}", variables.len());
+        *name = variables.entry(name.clone()).or_insert(next).clone();
+    };
+    for edge in &mut plan.patterns {
+        for node in [&mut edge.from, &mut edge.to] {
+            if let Node::Variable { name } = node {
+                rename(name);
+            }
+        }
+    }
+    for filter in &mut plan.filters {
+        rename(&mut filter.variable);
+    }
+    let mut aliases = BTreeMap::new();
+    for (i, projection) in plan.projection.iter_mut().enumerate() {
+        match projection {
+            Projection::Variable { name } => rename(name),
+            Projection::CountDistinct { variable, alias } => {
+                rename(variable);
+                let canonical = format!("c{i}");
+                aliases.insert(alias.clone(), canonical.clone());
+                *alias = canonical;
+            }
+        }
+    }
+    for name in &mut plan.group_by {
+        rename(name);
+    }
+    for having in &mut plan.having {
+        if let Some(alias) = aliases.get(&having.alias) {
+            having.alias.clone_from(alias);
+        }
+    }
+    plan
+}
+
+fn align_columns(rows: &[Row], actual: &Plan, gold: &Plan) -> Vec<Row> {
+    use crate::ir::Projection;
+    let name = |p: &Projection| match p {
+        Projection::Variable { name } => name.clone(),
+        Projection::CountDistinct { alias, .. } => alias.clone(),
+    };
+    let columns: BTreeMap<_, _> = actual
+        .projection
+        .iter()
+        .map(name)
+        .zip(gold.projection.iter().map(name))
+        .collect();
+    rows.iter()
+        .map(|row| {
+            row.iter()
+                .map(|(key, value)| (columns.get(key).unwrap_or(key).clone(), value.clone()))
+                .collect()
+        })
+        .collect()
+}
+
+/// Conservative, order-sensitive reference comparisons, not semantic equivalence.
 pub fn plan_components(actual: &Plan, gold: &Plan) -> BTreeMap<String, bool> {
     fn parts(plan: &Plan) -> BTreeMap<String, serde_json::Value> {
         let p = serde_json::to_value(plan).expect("Plan serialization is infallible");
@@ -378,12 +448,27 @@ impl Snapshot {
                     let request = self.parser_request(&case.question, &case.scope, policy);
                     score.catalog_ms = Some(catalog_start.elapsed().as_secs_f64() * 1000.0);
                     let request = request?;
+                    let context = if parser.compact_v2() {
+                        Some(self.compact_context(
+                            &case.question,
+                            &case.scope,
+                            policy,
+                            100.min(policy.max_rows),
+                        )?)
+                    } else {
+                        None
+                    };
+                    score.catalog_ms = Some(catalog_start.elapsed().as_secs_f64() * 1000.0);
                     // Diagnostics only: evaluate the untouched model proposal. This
                     // marker is NOT a correct model abstention or compiler rejection.
                     score.preflight_would_block = preflight(&request).map(|v| v.code().into());
                     score.stage = "generation".into();
                     let generation_start = Instant::now();
-                    let generated = parser.propose(&request);
+                    let generated = if let Some(context) = &context {
+                        parser.propose_compact(context)
+                    } else {
+                        parser.propose(&request)
+                    };
                     score.generation_ms = Some(generation_start.elapsed().as_secs_f64() * 1000.0);
                     let raw = generated?;
                     score.raw_response = Some(String::from_utf8_lossy(&raw).into_owned());
@@ -396,9 +481,33 @@ impl Snapshot {
                         "json_generation"
                     }
                     .into();
-                    let decoded = decode_response(&raw)?;
-                    score.contract_valid = Some(true);
-                    decoded.proposal
+                    if let Some(context) = &context {
+                        let decoded = decode_intent(&raw)?;
+                        score.contract_valid = Some(true);
+                        score.proposal_status = Some(
+                            match &decoded.proposal {
+                                CompactProposal::Candidate { .. } => "candidate",
+                                CompactProposal::Unsupported { .. } => "unsupported",
+                                CompactProposal::NeedsClarification { .. } => "needs_clarification",
+                            }
+                            .into(),
+                        );
+                        score.stage = "compact_expansion".into();
+                        score.safety_valid = Some(false);
+                        let started = Instant::now();
+                        let expanded = self.expand_compact(context, &decoded, policy);
+                        score.expansion_ms = Some(started.elapsed().as_secs_f64() * 1000.0);
+                        let expanded = expanded?;
+                        score.safety_valid = None;
+                        if let Proposal::Candidate { plan } = &expanded {
+                            score.expanded_plan = Some(plan.clone());
+                        }
+                        expanded
+                    } else {
+                        let decoded = decode_response(&raw)?;
+                        score.contract_valid = Some(true);
+                        decoded.proposal
+                    }
                 } else if let Some(gold) = &case.gold {
                     Proposal::Candidate { plan: gold.clone() }
                 } else {
@@ -436,9 +545,22 @@ impl Snapshot {
                 };
                 score.stage = "validation".into();
                 score.safety_valid = Some(false);
-                score.structural_ir_exact = Some(case.gold.as_ref() == Some(&plan));
-                if let Some(gold) = &case.gold {
-                    score.components_exact = plan_components(&plan, gold);
+                let compact = parser.is_some_and(SemanticParser::compact_v2);
+                let comparable_plan = if compact {
+                    canonical_plan(&plan)
+                } else {
+                    plan.clone()
+                };
+                let gold = case.gold.as_ref().map(|p| {
+                    if compact {
+                        canonical_plan(p)
+                    } else {
+                        p.clone()
+                    }
+                });
+                score.structural_ir_exact = Some(gold.as_ref() == Some(&comparable_plan));
+                if let Some(gold) = &gold {
+                    score.components_exact = plan_components(&comparable_plan, gold);
                 }
                 if plan.scope.iter().collect::<BTreeSet<_>>()
                     != case.scope.iter().collect::<BTreeSet<_>>()
@@ -486,7 +608,29 @@ impl Snapshot {
                         "Frozen bindings disagree with independent reference SPARQL",
                     ));
                 }
-                let (exact, precision, recall, f1) = set_scores(&result.bindings, expected);
+                // Compact output names are slots; compare columns by projection position.
+                let bindings = if compact {
+                    align_columns(
+                        &result.bindings,
+                        &plan,
+                        case.gold.as_ref().expect("answerable gold"),
+                    )
+                } else {
+                    result.bindings.clone()
+                };
+                let (exact, precision, recall, f1) = if compact
+                    && plan.projection.len()
+                        != case
+                            .gold
+                            .as_ref()
+                            .expect("answerable gold")
+                            .projection
+                            .len()
+                {
+                    (false, 0.0, 0.0, 0.0)
+                } else {
+                    set_scores(&bindings, expected)
+                };
                 score.exact_result_set = Some(exact);
                 score.precision = Some(precision);
                 score.recall = Some(recall);
@@ -537,6 +681,7 @@ impl Snapshot {
             include_bytes!("execution.rs"),
             include_bytes!("parser.rs"),
             include_bytes!("evaluation.rs"),
+            include_bytes!("compact.rs"),
         ]
         .concat();
         Ok(Report {

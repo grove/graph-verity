@@ -816,3 +816,193 @@ fn public_wikidata_temporal_and_decimal_boundaries() {
             .is_empty());
     }
 }
+
+#[test]
+fn compact_model_scoring_preserves_raw_bytes_and_distinguishes_guards() {
+    use verity_core::{
+        evaluation::{Benchmark, Case},
+        parser::{ParserRequest, SemanticParser},
+    };
+    struct Model(Vec<u8>);
+    impl SemanticParser for Model {
+        fn origin(&self) -> PlanOrigin {
+            PlanOrigin::LocalModel
+        }
+        fn model(&self) -> Option<String> {
+            Some("mock_compact_not_inference".into())
+        }
+        fn compact_v2(&self) -> bool {
+            true
+        }
+        fn propose(&self, _: &ParserRequest) -> verity_core::Result<Vec<u8>> {
+            panic!("v1 path used")
+        }
+        fn propose_compact(&self, context: &CompactContext) -> verity_core::Result<Vec<u8>> {
+            assert!(context.references().iter().all(|r| r.graph == PUBLIC));
+            Ok(self.0.clone())
+        }
+    }
+    let (graph, policy, context) = fixture();
+    let proposal = candidate(vec![edge(
+        &context,
+        entity(&context, "municipality"),
+        "owns",
+        json!({"var": 0}),
+    )]);
+    let mut gold = expand(&graph, &context, &policy, &proposal);
+    gold.patterns[0].to = ir::Node::Variable {
+        name: "company".into(),
+    };
+    gold.projection = vec![ir::Projection::Variable {
+        name: "company".into(),
+    }];
+    let mut benchmark = Benchmark { version: 1, name: "compact-scoring-control".into(), snapshot_id: graph.id().into(), cases: vec![Case {
+        id: "candidate".into(), question: "Vis de oppgitte relasjonene".into(), interpretation: "control".into(), family: "control".into(),
+        split: "dev".into(), review_status: "synthetic".into(), provenance: "test_not_model_accuracy".into(), scope: vec![PUBLIC.into()],
+        expected_status: "executed".into(), gold: Some(gold),
+        reference_sparql: Some(format!("SELECT ?company WHERE {{ GRAPH <{PUBLIC}> {{ <{EX}municipality> <{EX}owns> ?company }} }}")),
+        expected_bindings: Some(vec![Row::from([("company".into(), iri(&format!("{EX}company")))])]),
+    }] };
+    let raw = serde_json::to_vec(&proposal).unwrap();
+    let report = graph
+        .evaluate(&benchmark, "dev", &policy, Some(&Model(raw.clone())))
+        .unwrap();
+    let score = &report.cases[0];
+    assert!(score.passed);
+    assert_eq!(
+        score.raw_response.as_deref(),
+        Some(std::str::from_utf8(&raw).unwrap())
+    );
+    assert_eq!(score.exact_result_set, Some(true));
+    assert_eq!(score.structural_ir_exact, Some(true));
+    assert!(score.expanded_plan.is_some());
+    assert!(matches!(
+        score.execution.as_ref().unwrap().origin,
+        PlanOrigin::LocalModel
+    ));
+
+    // Group/count aliases and HAVING positions are normalized without changing operations.
+    let mut grouped = candidate(vec![
+        edge(
+            &context,
+            entity(&context, "municipality"),
+            "owns",
+            json!({"var": 0}),
+        ),
+        edge(&context, json!({"var": 0}), "contract", json!({"var": 1})),
+    ]);
+    grouped["proposal"]["projection"] = json!([{"var": 0}, {"count_distinct": 1}]);
+    grouped["proposal"]["group_by"] = json!([0]);
+    grouped["proposal"]["having"] = json!([{"count": 1, "op": "ge", "value": 2}]);
+    let mut case = benchmark.cases[0].clone();
+    let mut gold = expand(&graph, &context, &policy, &grouped);
+    gold.projection[1] = ir::Projection::CountDistinct {
+        variable: "v1".into(),
+        alias: "total".into(),
+    };
+    gold.having[0].alias = "total".into();
+    case.gold = Some(gold);
+    case.reference_sparql = Some(format!("SELECT ?v0 (COUNT(DISTINCT ?v1) AS ?total) WHERE {{ GRAPH <{PUBLIC}> {{ <{EX}municipality> <{EX}owns> ?v0 . ?v0 <{EX}contract> ?v1 }} }} GROUP BY ?v0 HAVING(COUNT(DISTINCT ?v1) >= 2)"));
+    case.expected_bindings = Some(vec![Row::from([
+        ("v0".into(), iri(&format!("{EX}company"))),
+        ("total".into(), integer("2")),
+    ])]);
+    let grouped_benchmark = Benchmark {
+        version: 1,
+        name: "grouped-control".into(),
+        snapshot_id: graph.id().into(),
+        cases: vec![case],
+    };
+    let report = graph
+        .evaluate(
+            &grouped_benchmark,
+            "dev",
+            &policy,
+            Some(&Model(serde_json::to_vec(&grouped).unwrap())),
+        )
+        .unwrap();
+    assert!(report.cases[0].passed, "{}", report.cases[0].detail);
+    grouped["proposal"]["having"][0]["op"] = json!("gt");
+    let report = graph
+        .evaluate(
+            &grouped_benchmark,
+            "dev",
+            &policy,
+            Some(&Model(serde_json::to_vec(&grouped).unwrap())),
+        )
+        .unwrap();
+    assert!(!report.cases[0].passed);
+    assert_eq!(report.cases[0].structural_ir_exact, Some(false));
+    assert!(report.cases[0].wrong_plan_successful_execution);
+
+    let mut wrong = proposal.clone();
+    wrong["proposal"]["edges"][0]["predicate"] = json!(index(
+        &context,
+        PUBLIC,
+        &format!("{EX}contract"),
+        Role::Predicate
+    ));
+    let report = graph
+        .evaluate(
+            &benchmark,
+            "dev",
+            &policy,
+            Some(&Model(serde_json::to_vec(&wrong).unwrap())),
+        )
+        .unwrap();
+    assert!(report.cases[0].wrong_plan_successful_execution);
+    assert_eq!(report.cases[0].exact_result_set, Some(false));
+
+    for (raw, contract, code) in [
+        (b"{\"version\":2".to_vec(), false, "compact_json"),
+        (
+            serde_json::to_vec(&{
+                let mut p = proposal.clone();
+                p["proposal"]["edges"][0]["predicate"] = json!(65535);
+                p
+            })
+            .unwrap(),
+            true,
+            "compact_reference",
+        ),
+    ] {
+        let report = graph
+            .evaluate(&benchmark, "dev", &policy, Some(&Model(raw.clone())))
+            .unwrap();
+        let score = &report.cases[0];
+        assert!(!score.passed);
+        assert_eq!(score.contract_valid, Some(contract));
+        assert_eq!(score.error_code.as_deref(), Some(code));
+        assert_eq!(
+            score.raw_response.as_deref(),
+            Some(std::str::from_utf8(&raw).unwrap())
+        );
+        assert!(score.execution.is_none());
+    }
+    benchmark.cases[0].question = "Hvilke selskaper har ingen kontrakter?".into();
+    benchmark.cases[0].expected_status = "unsupported".into();
+    benchmark.cases[0].gold = None;
+    benchmark.cases[0].reference_sparql = None;
+    benchmark.cases[0].expected_bindings = None;
+    // The model is still invoked; blocking a candidate must not become model abstention.
+    let report = graph
+        .evaluate(&benchmark, "dev", &policy, Some(&Model(raw)))
+        .unwrap();
+    let score = &report.cases[0];
+    assert!(!score.passed);
+    assert!(score.preflight_would_block.is_some());
+    assert_eq!(score.stage, "compact_expansion");
+    assert_eq!(score.proposal_status.as_deref(), Some("candidate"));
+    assert!(score.execution.is_none());
+    let abstention =
+        br#"{"version":2,"proposal":{"status":"unsupported","reason":"Negation"}}"#.to_vec();
+    let report = graph
+        .evaluate(&benchmark, "dev", &policy, Some(&Model(abstention)))
+        .unwrap();
+    assert!(report.cases[0].passed);
+    assert_eq!(
+        report.cases[0].proposal_status.as_deref(),
+        Some("unsupported")
+    );
+    assert!(report.cases[0].expanded_plan.is_none());
+}

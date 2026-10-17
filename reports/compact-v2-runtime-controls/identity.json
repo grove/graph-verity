@@ -1,0 +1,50 @@
+{
+  "config": {
+    "version": 1,
+    "model": "Qwen/Qwen2.5-1.5B-Instruct-GGUF",
+    "model_revision": "91cad51170dc346986eccefdc2dd33a9da36ead9",
+    "model_file": "qwen2.5-1.5b-instruct-q4_k_m.gguf",
+    "model_sha256": "6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+    "model_license": "Apache-2.0",
+    "model_license_sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+    "runtime_revision": "74d4f5b041ad837153b0e90fc864b8290e01d8d5",
+    "runtime_tag": "b5046",
+    "runtime_archive_sha256": "8dd9fcc7c17f972673960ffdcc7521f52de5a9ec594aa6acebd9dfd8c17c0a5c",
+    "cpu_threads": 4,
+    "context_tokens": 8192,
+    "max_output_tokens": 1024,
+    "cache_prompt": true,
+    "timeout_seconds": 120,
+    "seed": 7,
+    "temperature": 0,
+    "prompt_file": "configs/local-parser-compact-v2.prompt.txt",
+    "prompt_sha256": "087b67786c85b5e112e283c9ed8bdf62142608c04f9f12f9e0ff2fecd56fa27b",
+    "grammar_file": "configs/local-parser-compact-v2.gbnf",
+    "grammar_sha256": "080d0dba5b967d569223675c4ec9c4dbe5561779d34038ffd3ded73d3be6fea5",
+    "schema_sha256": "ede9a10a46c609aa5803bd053a1c32dd0126a0b6e5250454db20d8d2de34d3da",
+    "vocabulary": "all_authorized_per_request_Rust_indexes; at_most_four_labels_per_id; no_gold_selection; labels_untrusted",
+    "chat_template": "<|im_start|>system\n{system}<|im_end|>\n<|im_start|>user\n{user}<|im_end|>\n<|im_start|>assistant\n",
+    "evaluation": "public_development_AI_reference_agreement_only; compact_names_normalized; columns_by_projection_position",
+    "mode": "compact-v2"
+  },
+  "build_receipt": {
+    "runtime_archive_sha256": "8dd9fcc7c17f972673960ffdcc7521f52de5a9ec594aa6acebd9dfd8c17c0a5c",
+    "build_flags": [
+      "-DGGML_METAL=OFF",
+      "-DGGML_BLAS=OFF",
+      "-DGGML_ACCELERATE=OFF",
+      "-DLLAMA_CURL=OFF",
+      "-DLLAMA_BUILD_TESTS=OFF",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DBUILD_SHARED_LIBS=OFF"
+    ],
+    "generated_build_info_sha256": "9073c527052e2fbb7762c750eb5417ae7da458b913226186311beb0ac9b0069d",
+    "cmake": "cmake version 4.4.4\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+    "binaries": {
+      "llama-server": "4353db648294cf6558050f5ddeadc3942b6d219d752697cbea72e8cde12de08f",
+      "llama-gbnf-validator": "49e54f7054e02c3a366e173e5b42e5005c915bd4a38df07dfb85270ea4c30a3c"
+    }
+  },
+  "rust_binary_sha256": "b9ee2fbc233175d705f2be74b3ba2a0a80a3168a695fb5729255ae8c14cc96b5"
+}

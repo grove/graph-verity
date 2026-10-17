@@ -14,19 +14,33 @@ use verity_core::{
     read_limited, reject, Result, Snapshot,
 };
 
-const USAGE: &str = "verity schema | schema-compact | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT | compact-context RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT | compact RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT INTENT_FILE\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, PLAN and BENCHMARK are JSON files. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
+const USAGE: &str = "verity schema | schema-compact | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local|evaluate-local-compact RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT | compact-context RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT | compact RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT INTENT_FILE\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, PLAN and BENCHMARK are JSON files. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
 
 // The parent owns llama.cpp, deadlines and process cleanup; model bytes stay inside response.
-struct LlamaCppBridge(String);
+struct LlamaCppBridge {
+    model: String,
+    compact: bool,
+}
 impl SemanticParser for LlamaCppBridge {
     fn origin(&self) -> PlanOrigin {
         PlanOrigin::LocalModel
     }
     fn model(&self) -> Option<String> {
-        Some(self.0.clone())
+        Some(self.model.clone())
     }
     fn propose(&self, request: &ParserRequest) -> Result<Vec<u8>> {
-        println!("{}", serde_json::json!({"parser_request": request}));
+        self.exchange(serde_json::json!({"parser_request": request}))
+    }
+    fn compact_v2(&self) -> bool {
+        self.compact
+    }
+    fn propose_compact(&self, context: &verity_core::compact::CompactContext) -> Result<Vec<u8>> {
+        self.exchange(serde_json::json!({"compact_context": context}))
+    }
+}
+impl LlamaCppBridge {
+    fn exchange(&self, message: serde_json::Value) -> Result<Vec<u8>> {
+        println!("{message}");
         io::stdout().flush()?;
         let mut line = Vec::new();
         let mut input = io::stdin().lock();
@@ -182,7 +196,7 @@ fn run() -> Result<()> {
             }
             Ok(())
         }
-        ("evaluate-local", 7) => {
+        ("evaluate-local" | "evaluate-local-compact", 7) => {
             if !matches!(args[5].as_str(), "dev" | "transfer_dev") {
                 return Err(reject(
                     "split",
@@ -196,7 +210,10 @@ fn run() -> Result<()> {
                 &benchmark,
                 &args[5],
                 &policy,
-                Some(&LlamaCppBridge(args[6].clone())),
+                Some(&LlamaCppBridge {
+                    model: args[6].clone(),
+                    compact: args[0] == "evaluate-local-compact",
+                }),
             )?;
             println!("{}", serde_json::json!({"report": report}));
             Ok(())

@@ -23,6 +23,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "configs/local-parser.json"
+COMPACT_CONFIG = ROOT / "configs/local-parser-compact-v2.json"
 ASSETS = ROOT / "artifacts/local-parser/assets"
 BUILD_FLAGS = ["-DGGML_METAL=OFF", "-DGGML_BLAS=OFF", "-DGGML_ACCELERATE=OFF",
                "-DLLAMA_CURL=OFF", "-DLLAMA_BUILD_TESTS=OFF", "-DCMAKE_BUILD_TYPE=Release",
@@ -47,13 +48,21 @@ def dump(path, value):
     Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
 
 
-def config():
-    cfg = json.loads(CONFIG.read_text())
+def config(mode="v1"):
+    require(mode in {"v1", "compact-v2"}, "Unknown parser mode")
+    cfg = json.loads((COMPACT_CONFIG if mode == "compact-v2" else CONFIG).read_text())
     require(cfg["version"] == 1 and cfg["cpu_threads"] == 4, "Unsupported configuration")
     require(1 <= cfg["max_output_tokens"] < cfg["context_tokens"] <= 16384, "Invalid context limits")
     require(1 <= cfg["timeout_seconds"] <= 300, "Invalid deadline")
     for field, name in [("prompt_file", "prompt"), ("grammar_file", "grammar")]:
         require(sha(ROOT / cfg[field]) == cfg[f"{name}_sha256"], f"Changed pinned {name}")
+    if mode == "compact-v2":
+        require(cfg.get("mode") == mode, "Missing compact mode identity")
+        baseline = json.loads(CONFIG.read_text())
+        differences = {key for key in cfg.keys() | baseline.keys() if cfg.get(key) != baseline.get(key)}
+        require(differences == {"mode", "prompt_file", "prompt_sha256", "grammar_file", "grammar_sha256",
+                                "schema_sha256", "vocabulary", "evaluation"}, "Unexpected v1/v2 configuration drift")
+        require(sha(ROOT / "schemas/compact-intent-v2.json") == cfg["schema_sha256"], "Changed compact schema")
     return cfg
 
 
@@ -107,6 +116,20 @@ def prepare(cfg):
         "compiler": subprocess.check_output(["c++", "--version"], text=True),
         "binaries": {name: sha(ASSETS / f"build/bin/{name}")
                      for name in ["llama-server", "llama-gbnf-validator"]}})
+
+
+def verify_runtime(cfg):
+    """Check the prepared runtime without loading or downloading weights."""
+    require(sha(ASSETS / "llama.cpp.tar.gz") == cfg["runtime_archive_sha256"], "Changed runtime archive")
+    verify_source(cfg)
+    receipt = json.loads((ASSETS / "build-receipt.json").read_text())
+    require(receipt["runtime_archive_sha256"] == cfg["runtime_archive_sha256"]
+            and receipt["build_flags"] == BUILD_FLAGS, "Runtime build configuration changed; run prepare")
+    for name, digest in receipt["binaries"].items():
+        require(sha(ASSETS / f"build/bin/{name}") == digest, "Runtime binary changed since prepare")
+    require(sha(ASSETS / f"llama.cpp-{cfg['runtime_revision']}/common/build-info.cpp")
+            == receipt["generated_build_info_sha256"], "Changed generated runtime build info")
+    return receipt
 
 
 def oracle_context(request, case):
@@ -293,7 +316,7 @@ def summarize(report):
     cases = report["cases"]
     supported = [c for c in cases if c["expected_status"] == "executed"]
     abstentions = [c for c in cases if c["expected_status"] != "executed"]
-    return {"questions": len(cases), "supported": len(supported), "expected_abstentions": len(abstentions),
+    result = {"questions": len(cases), "supported": len(supported), "expected_abstentions": len(abstentions),
             "json_valid": sum(c["json_valid"] is True for c in cases),
             "contract_valid": sum(c["contract_valid"] is True for c in cases),
             "invalid_contract": sum(c["contract_valid"] is False for c in cases),
@@ -314,6 +337,19 @@ def summarize(report):
             "generation_ms": percentiles([c["generation_ms"] for c in cases if c["generation_ms"] is not None]),
             "cold_first_answer_ms_page_cache_not_evicted": cases[0]["end_to_end_ms"],
             "semantic_accuracy_claim": "AI-reference agreement; variable-sensitive structural equality; no independent expert gold"}
+    if report.get("compact_v2"):
+        model_abstentions = [c for c in cases if c["stage"] == "abstention" and
+                            c["contract_valid"] is True and c["safety_valid"] is None]
+        result.update({
+            "model_abstentions": len(model_abstentions),
+            "abstained_without_execution": len(model_abstentions),
+            "false_abstentions": sum(c["expected_status"] == "executed" for c in model_abstentions),
+            "deterministic_preflight_blocks": sum(c["stage"] == "compact_expansion" and
+                c.get("error_code") == c.get("preflight_would_block") for c in cases),
+            "expansion_rejections": sum(c["stage"] in {"compact_expansion", "compiler"} and
+                c.get("expansion_ms") is not None and c.get("expanded_plan") is None for c in cases),
+            "semantic_accuracy_claim": "AI-reference agreement; names normalized, operation/order-sensitive structural equality; answer columns by projection position; no independent expert gold"})
+    return result
 
 
 def evaluate(cfg, out, dataset, split, memory, *, benchmark_path=None):
@@ -324,7 +360,8 @@ def evaluate(cfg, out, dataset, split, memory, *, benchmark_path=None):
     benchmark = json.loads(benchmark_path.read_text())
     cases = {(c["question"], tuple(sorted(c["scope"]))): c for c in benchmark["cases"] if c["split"] == split}
     require(len(cases) == sum(c["split"] == split for c in benchmark["cases"]), "Ambiguous benchmark request identity")
-    command = [str(ROOT / "target/debug/verity"), "evaluate-local", f"data/{dataset}/snapshot.nq",
+    compact = cfg.get("mode") == "compact-v2"
+    command = [str(ROOT / "target/debug/verity"), "evaluate-local-compact" if compact else "evaluate-local", f"data/{dataset}/snapshot.nq",
                "nquads", f"data/{dataset}/policy.json", str(benchmark_path), split,
                f"{cfg['model']}@{cfg['model_revision']}:{cfg['model_sha256']}"]
     timings = {}
@@ -348,15 +385,20 @@ def evaluate(cfg, out, dataset, split, memory, *, benchmark_path=None):
                 if "report" in message:
                     report = message["report"]
                     break
-                request = message["parser_request"]
-                case = cases[(request["question"], tuple(sorted(request["catalog"]["scope"])))]
+                request = message["compact_context" if compact else "parser_request"]
+                scope = request["scope"] if compact else request["catalog"]["scope"]
+                case = cases[(request["question"], tuple(sorted(scope)))]
                 case_out = out / case["id"]
                 case_out.mkdir()
                 dump(case_out / "request.json", request)
                 selection_start = time.monotonic()
-                context = oracle_context(request, case)
+                if compact:
+                    from compact_parser import prompt_context
+                    context = prompt_context(request)
+                else:
+                    context = oracle_context(request, case)
                 selection_ms = (time.monotonic() - selection_start) * 1000
-                dump(case_out / "oracle-context.json", context)
+                dump(case_out / ("compact-context.json" if compact else "oracle-context.json"), context)
                 prompt = chat(cfg, context)
                 (case_out / "prompt.txt").write_text(prompt)
                 generated = None
@@ -371,6 +413,12 @@ def evaluate(cfg, out, dataset, split, memory, *, benchmark_path=None):
                                            "model_roundtrip_ms": (time.monotonic() - runtime_start) * 1000,
                                            "runtime_prompt_ms": generated.get("timings", {}).get("prompt_ms"),
                                            "runtime_predicted_ms": generated.get("timings", {}).get("predicted_ms")}
+                    if compact:
+                        timings[case["id"]].update({"input_token_count": generated["input_token_count"],
+                            "output_token_count": generated.get("tokens_predicted"),
+                            "stopped_limit": generated.get("stop_type") == "limit",
+                            "stop_type": generated.get("stop_type"), "truncated": generated.get("truncated"),
+                            "grammar_accepted": validate_grammar(cfg, case_out, generated["content"], "raw-compact")})
                 except (OSError, ValueError, urllib.error.URLError) as error:
                     reply = {"error": str(error)}
                     dump(case_out / "failure.json", reply)
@@ -398,6 +446,8 @@ def evaluate(cfg, out, dataset, split, memory, *, benchmark_path=None):
                 process.stdin.close()
         for case in report["cases"]:
             case.update(timings.get(case["id"], {}))
+        if compact:
+            report["compact_v2"] = True
         dump(out / "report.json", report)
         summary = summarize(report)
         summary["server_startup_ms"] = server.startup_seconds * 1000
@@ -457,8 +507,8 @@ def run(cfg, out, suite="development"):
                                (ASSETS / "QWEN-LICENSE", cfg["model_license_sha256"]),
                                (ASSETS / "llama.cpp.tar.gz", cfg["runtime_archive_sha256"])]:
             require(sha(path) == expected, f"Changed pinned asset: {path}")
-        verify_source(cfg)
-        state["artifact_sha256"] = {str(p.relative_to(ROOT)): sha(p) for p in [CONFIG,
+        compact = cfg.get("mode") == "compact-v2"
+        state["artifact_sha256"] = {str(p.relative_to(ROOT)): sha(p) for p in [COMPACT_CONFIG if compact else CONFIG,
             ROOT / cfg["prompt_file"], ROOT / cfg["grammar_file"], Path(__file__),
             ASSETS / "build/bin/llama-server", ASSETS / "build/bin/llama-gbnf-validator",
             ROOT / "target/debug/verity", ROOT / "Cargo.lock", ROOT / "rust-toolchain.toml",
@@ -466,17 +516,17 @@ def run(cfg, out, suite="development"):
             ROOT / "crates/verity_cli/src/main.rs",
             *[ROOT / f"benchmarks/{name}.json" for name, _ in datasets],
             *[ROOT / f"data/{name}/{file}" for name, _ in datasets for file in ["snapshot.nq", "policy.json"]]]}
-        receipt = json.loads((ASSETS / "build-receipt.json").read_text())
-        require(receipt["runtime_archive_sha256"] == cfg["runtime_archive_sha256"]
-                and receipt["build_flags"] == BUILD_FLAGS, "Runtime build configuration changed; run prepare")
-        for name, digest in receipt["binaries"].items():
-            require(sha(ASSETS / f"build/bin/{name}") == digest, "Runtime binary changed since prepare")
-        require(sha(ASSETS / f"llama.cpp-{cfg['runtime_revision']}/common/build-info.cpp")
-                == receipt["generated_build_info_sha256"], "Changed generated runtime build info")
+        if compact:
+            state["artifact_sha256"].update({str(p.relative_to(ROOT)): sha(p) for p in [
+                CONFIG, ROOT / "schemas/compact-intent-v2.json", ROOT / "tools/compact_parser.py",
+                *sorted((ROOT / "crates/verity_core/src").glob("*.rs"))]})
+        receipt = verify_runtime(cfg)
         state["build_receipt"] = receipt
         state["rustc"] = subprocess.check_output(["rustc", "-Vv"], text=True)
         state["base_git_commit"] = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
-        schema = json.loads(subprocess.check_output([str(ROOT / "target/debug/verity"), "schema"], cwd=ROOT))["parser_output"]
+        exported = json.loads(subprocess.check_output([str(ROOT / "target/debug/verity"),
+                              "schema-compact" if compact else "schema"], cwd=ROOT))
+        schema = exported if compact else exported["parser_output"]
         schema_bytes = (json.dumps(schema, indent=2) + "\n").encode()
         require(hashlib.sha256(schema_bytes).hexdigest() == cfg["schema_sha256"], "Changed Rust parser schema")
         source = ASSETS / f"llama.cpp-{cfg['runtime_revision']}"
@@ -491,7 +541,11 @@ def run(cfg, out, suite="development"):
             state["cpuinfo"] = Path("/proc/cpuinfo").read_text().split("\n\n")[0]
             state["meminfo"] = Path("/proc/meminfo").read_text()
         dump(out / "run.json", state)
-        grammar_probes(cfg, out / "grammar-probes")
+        if compact:
+            from compact_parser import grammar_probes as compact_probes
+            compact_probes(cfg, out / "grammar-probes", inference=True)
+        else:
+            grammar_probes(cfg, out / "grammar-probes")
         state["grammar_probes_passed"] = True
         memory.worker.start()
         for dataset, split in datasets:
@@ -514,7 +568,10 @@ def run(cfg, out, suite="development"):
         state["child_lifetime_peak_rss_kib"] = peak / 1024 if platform.system() == "Darwin" else peak
         dump(out / "run.json", state)
         # Import only after the runner finishes; phase0 reuses the runner's pinned helpers.
-        if suite == "adversarial":
+        if cfg.get("mode") == "compact-v2":
+            from compact_parser import archive
+            archive(out, state)
+        elif suite == "adversarial":
             from adversarial import archive
             archive(out, state)
         else:
@@ -524,16 +581,23 @@ def run(cfg, out, suite="development"):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["prepare", "run"])
-    parser.add_argument("--out", type=Path, default=ROOT / "artifacts/local-parser/run")
+    parser.add_argument("command", choices=["prepare", "run", "probes"])
+    parser.add_argument("--mode", choices=["v1", "compact-v2"], default="v1")
+    parser.add_argument("--out", type=Path)
+    parser.add_argument("--inference", action="store_true", help="Opt in to model generation controls for compact probes")
     parser.add_argument("--suite", choices=["development", "adversarial"], default="development")
     args = parser.parse_args()
     os.chdir(ROOT)
-    cfg = config()
+    cfg = config(args.mode)
+    out = (args.out or ROOT / f"artifacts/local-parser/{'compact-v2' if args.mode == 'compact-v2' else 'run'}").resolve()
     if args.command == "prepare":
         prepare(cfg)
+    elif args.command == "probes":
+        require(args.mode == "compact-v2", "Standalone probes require --mode compact-v2")
+        from compact_parser import grammar_probes as compact_probes
+        compact_probes(cfg, out, inference=args.inference)
     else:
-        run(cfg, args.out.resolve(), args.suite)
+        run(cfg, out, args.suite)
 
 
 if __name__ == "__main__":
