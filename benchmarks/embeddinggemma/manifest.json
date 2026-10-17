@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "status": "preregistered",
+  "model": "google/embeddinggemma-2",
+  "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+  "upstream": "benchmarks/embeddinggemma/upstream.json",
+  "retrieval_manifest": "benchmarks/retrieval/manifest.json",
+  "parity_fixtures": "benchmarks/embeddinggemma/parity-inputs.json",
+  "prefixes": {
+    "query": "task: search result | query: ",
+    "document": "title: none | text: "
+  },
+  "max_tokens": 256,
+  "dimensions": 768,
+  "planned_reference": "Official Sentence Transformers mean pooling (include_prompt=true) and Normalize over text-only EmbeddingGemma2Model",
+  "fusion": {
+    "method": "reciprocal rank fusion",
+    "constant": 60,
+    "weights": [
+      1,
+      1
+    ],
+    "inputs": "BM25 top 50 and embedding top 50; no exact-match override",
+    "ties": "IRI then graph",
+    "tuning": "No tuning; fixed before inference; development reported separately from evaluation"
+  },
+  "adoption_proposal": {
+    "recall_at_10_gain": 0.05,
+    "mrr_at_10_gain": 0.03,
+    "maximum_language_regression": 0.02,
+    "warm_end_to_end_p95_ms": 1000,
+    "aggregate_peak_rss_bytes": 4294967296,
+    "maximum_graph_qualified_resources": 10000,
+    "inconclusive": "retain BM25",
+    "phase_0_gate": false
+  },
+  "terms": {
+    "license": "Apache-2.0",
+    "license_url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+    "model_card": "README.md at exact upstream revision",
+    "additional_linked_documents": [
+      "https://ai.google.dev/gemma/terms",
+      "https://ai.google.dev/gemma/prohibited_use_policy"
+    ],
+    "interpretation": "Retain exact retrieved files and hashes; no automated license acceptance. The upstream model metadata declares Apache-2.0."
+  },
+  "sha256": {
+    "benchmarks/retrieval/manifest.json": "ca0fab2a9a89f36b59fce73bdd9215ac7470bc3f921fff826aea4a4b6c3f2e88",
+    "benchmarks/embeddinggemma/upstream.json": "5c20fd1f9407a3a5752a35bd1cffaa060d2a8f48df4ccb0a3395bd3fda351c90",
+    "benchmarks/embeddinggemma/parity-inputs.json": "a87b8c1f0e55a68d243dc11b30799cd9e28487f1e6e733f92e9655955d5712bd",
+    "reports/issue-37-bm25/run/artifacts.json": "342825d0ec07e76f94cdd10efa92715c0ec288bed8eaa44324d171bffd3ed68c"
+  },
+  "model_selection": "User explicitly replaced the issue candidate google/embeddinggemma-300m with Apache-2.0 google/embeddinggemma-2 on 2026-10-17 before inference.",
+  "runtime": {
+    "device": "cpu",
+    "threads": 4,
+    "dtype": "float32",
+    "quantization": "none; upstream BF16 weights cast to FP32",
+    "export_conversion": "none; official safetensors, vision_config=None and audio_config=None",
+    "pooling": "attention-mask weighted mean of projected last_hidden_state including prompt and special tokens",
+    "normalization": "L2; full 768 dimensions",
+    "attention": "eager",
+    "batch_size": 1,
+    "max_tokens": 256
+  },
+  "document_batch_size": 8,
+  "truncation": "Pilot cap 256 tokens including prefix/special tokens, right truncation; native 8192-token context is not evaluated.",
+  "uncertainty_rule": "In addition to point thresholds, the qualifying paired gain must have a descriptive 95% lower bound strictly above zero. Otherwise retain BM25."
+}

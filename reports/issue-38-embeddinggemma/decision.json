@@ -1,0 +1,25 @@
+{
+  "decision": "candidate_for_review",
+  "systems": {
+    "embedding": {
+      "gain": true,
+      "language_non_regression": false,
+      "positive_paired_interval": false,
+      "latency": true,
+      "memory": true,
+      "no_failures": true,
+      "pilot_rule_pass": false
+    },
+    "fusion": {
+      "gain": true,
+      "language_non_regression": true,
+      "positive_paired_interval": true,
+      "latency": true,
+      "memory": true,
+      "no_failures": true,
+      "pilot_rule_pass": true
+    }
+  },
+  "automatic_integration": false,
+  "interpretation": "Exploratory AI judgments, correlated public formulations; not stakeholder quality or Phase 0 approval"
+}
