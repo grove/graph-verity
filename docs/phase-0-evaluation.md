@@ -102,6 +102,20 @@ reject semantically equivalent plans. Exact answer bindings are scored independe
 including variable names. A structurally different plan returning identical rows
 therefore earns an answer match but remains a structural disagreement.
 
+Scoring v2 retains raw `exact_answer` binding-set agreement and adds
+`complete_exact_answer`: exact-answer quality gates require both matching bindings
+and `complete_within_scope: true`. A truncated answer cannot pass those gates even
+if its retained rows happen to match the reference. Historical matching outputs
+without retained execution/completeness evidence are unavailable for this gate;
+use `replay` to measure them. Older archived reports stay on scoring v1 and cannot
+be directly compared with v2 without explicit rescoring.
+
+JSON and Markdown reports count complete/truncated query results separately from
+complete/incomplete evidence for returned rows. These execution limits do not
+measure whether the graph contains every relevant real-world fact. Missing-fact
+classifications remain unknown. A frozen-reference verification error has its own
+`reference_validation` failure stage, separate from model disagreement.
+
 `wrong_plan_executed` is a **structural reference-disagreement proxy**, not expert
 adjudication. Observed unflagged user-facing false confidence is `not_measured` because
 there is no complete interface under test. The gate does not replace that measurement

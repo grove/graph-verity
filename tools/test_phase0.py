@@ -35,10 +35,10 @@ class Phase0Tests(unittest.TestCase):
     def ready_summary(self):
         summary = self.summary()
         d = summary["datasets"]["test"]
-        for metric in ["exact_answer", "structural_ir", "correct_abstention"]:
+        for metric in ["exact_answer", "complete_exact_answer", "structural_ir", "correct_abstention"]:
             d["metrics"][metric] = rate(200, 200)
         d["metrics"]["false_abstention"] = rate(0, 200)
-        d["per_family"] = {"test": {"exact_answer": rate(200, 200)}}
+        d["per_family"] = {"test": {"exact_answer": rate(200, 200), "complete_exact_answer": rate(200, 200)}}
         summary["prerequisites"] = dict(self.gates["prerequisites"])
         summary["safety"] = {"unauthorized_execution_or_disclosure_count": 0, "prohibited_execution_count": 0}
         summary["target_cpu_measurements"].update({k: 1 for k in self.gates["cpu_go_proposal"]})
@@ -99,6 +99,37 @@ class Phase0Tests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 summarize(r, self.reference, "dev")
 
+    def test_truncated_bindings_and_evidence_are_not_missing_graph_facts(self):
+        c = self.case(exact_result_set=True, safety_valid=True, execution={"complete_within_scope": False,
+                                                     "evidence_complete_for_returned_rows": False})
+        annotated = annotate(c, self.reference["cases"][0], "test", "dev")
+        self.assertEqual(annotated["failure_stage"], "incomplete_query_result")
+        self.assertEqual(annotated["query_completeness"], "truncated")
+        self.assertEqual(annotated["evidence_completeness"], "incomplete")
+        self.assertEqual(annotated["missing_facts"]["status"], "not_measured")
+        metrics = statistics([annotated])
+        self.assertEqual(metrics["exact_answer"], rate(1, 1))
+        self.assertEqual(metrics["complete_exact_answer"], rate(0, 1))
+        c["execution"]["complete_within_scope"] = True
+        self.assertEqual(statistics([c])["complete_exact_answer"], rate(1, 1))
+        c["execution"] = None
+        self.assertEqual(statistics([c])["complete_exact_answer"]["status"], "not_measured")
+
+    def test_reference_failures_are_distinct_from_model_disagreement(self):
+        c = self.case(stage="reference", safety_valid=True, error_code="gold_reference_mismatch",
+                      detail="gold_reference_mismatch: frozen bindings disagree")
+        self.assertEqual(annotate(c, self.reference["cases"][0], "test", "dev")["failure_stage"],
+                         "reference_validation")
+
+    def test_truncated_or_unknown_answer_completeness_cannot_pass_quality_gate(self):
+        s = self.ready_summary()
+        s["user_facing_measurement"] = {"unflagged_wrong_plan_answers": 0}
+        metrics = s["datasets"]["test"]["metrics"]
+        metrics["complete_exact_answer"] = rate(0, 200)
+        self.assertEqual(assess(s, self.gates, self.approved())["decision"], "REVISE")
+        metrics["complete_exact_answer"]["value"] = None
+        self.assertEqual(assess(s, self.gates, self.approved())["decision"], "NOT READY")
+
     def test_schema_failure_empty_results_unknown_missing_facts_and_retrieval(self):
         ref = self.reference["cases"][0]
         c = self.case(json_valid=False, contract_valid=False)
@@ -129,6 +160,7 @@ class Phase0Tests(unittest.TestCase):
         s["user_facing_measurement"] = {"unflagged_wrong_plan_answers": 0}
         self.assertEqual(assess(s, self.gates, self.approved())["decision"], "GO")
         s["datasets"]["test"]["metrics"]["exact_answer"] = rate(100, 200)
+        s["datasets"]["test"]["metrics"]["complete_exact_answer"] = rate(100, 200)
         self.assertEqual(assess(s, self.gates, self.approved())["decision"], "REVISE")
         s["datasets"]["test"]["metrics"]["exact_answer"] = rate(3, 3)
         self.assertEqual(assess(s, self.gates, self.approved())["decision"], "REVISE")

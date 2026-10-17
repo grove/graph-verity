@@ -18,7 +18,7 @@ from pathlib import Path
 
 from local_parser import DATASETS, ROOT, percentiles, require, sha
 
-SCORING = "phase0-v1-ordered-structural-and-binding-set"
+SCORING = "phase0-v2-complete-answer-and-binding-set"
 GATES = ROOT / "configs/phase-0-gates.proposed.json"
 PROTOCOL = ROOT / "configs/phase-0-protocol.json"
 APPROVAL = ROOT / "configs/phase-0-approval.json"
@@ -84,6 +84,14 @@ def statistics(cases, model=True):
         "wrong_plan_among_executions": rate(sum(c["wrong_plan_successful_execution"] for c in cases),
                                             sum(c["wrong_plan_successful_execution"] or c["exact_result_set"] is not None for c in cases)),
     }
+    # A matching retained row set cannot certify an explicitly truncated answer.
+    unknown_completeness = any(c["exact_result_set"] is True and not c.get("execution") for c in supported)
+    metrics["complete_exact_answer"] = ({"status": "not_measured", "value": None, "numerator": None,
+                                          "denominator": len(supported), "wilson_95": None}
+                                         if unknown_completeness else rate(sum(
+                                             c["exact_result_set"] is True
+                                             and c.get("execution", {}).get("complete_within_scope") is True
+                                             for c in supported), len(supported)))
     metrics["macro_answer_scores_all_supported"] = {
         k: sum((c.get(k) or 0) for c in supported)/len(supported) if supported else None
         for k in ["precision", "recall", "f1"]}
@@ -124,6 +132,9 @@ def annotate(score, reference, benchmark, split):
              retrieval=retrieval,
              missing_facts={"status": "not_measured", "reason": "No independent per-case completeness annotation"},
              observed_user_facing_false_confidence={"status": "not_measured", "reason": "No complete user interface"})
+    execution = c.get("execution")
+    c["query_completeness"] = ("complete_within_scope" if execution["complete_within_scope"] else "truncated") if execution else "not_measured"
+    c["evidence_completeness"] = ("complete_for_returned_rows" if execution["evidence_complete_for_returned_rows"] else "incomplete") if execution else "not_measured"
     if not c.get("error_code") and c["detail"]:
         c["error_code"] = c["detail"].split(":", 1)[0]
     if c["contract_valid"] is False:
@@ -132,6 +143,10 @@ def annotate(score, reference, benchmark, split):
         c["failure_stage"] = "rust_validation_authorization"
     elif c["proposal_status"] in ABSTENTIONS:
         c["failure_stage"] = "expected_abstention" if c["proposal_status"] == c["expected_status"] else "incorrect_abstention"
+    elif c["stage"] == "reference" and c.get("error_code"):
+        c["failure_stage"] = "reference_validation"
+    elif c["query_completeness"] == "truncated":
+        c["failure_stage"] = "incomplete_query_result"
     elif c["stage"] in {"scored", "reference"} or c["wrong_plan_successful_execution"]:
         c["failure_stage"] = "matching_reference_results" if c["exact_result_set"] else "semantic_or_answer_disagreement"
     else:
@@ -165,6 +180,11 @@ def summarize(report, benchmark, split):
             "attempts": len(cases),
             "validation_rejections": sum(c["safety_valid"] is False for c in cases),
             "retrieval_failures": sum(c["retrieval"]["status"] == "failed" for c in cases),
+            "completeness": {key: {status: sum(c[key] == status for c in cases)
+                                   for status in sorted({c[key] for c in cases})}
+                             for key in ["query_completeness", "evidence_completeness"]},
+            "missing_fact_classifications": {"not_measured": len(cases),
+                                             "reason": "Query/evidence completeness does not establish graph coverage of real-world facts"},
             "generation_failures": sum(c["json_valid"] is None for c in cases),
             "timeouts": {"count": sum(c.get("error_code") == "timeout" or "timed out" in c["detail"].lower() for c in cases),
                          "scope": "recorded case errors; inspect runner failures for interrupted attempts"}}
@@ -233,7 +253,7 @@ def assess(summary, gates, approval):
         v = values(key)
         return (min(v) if minimum else max(v)) if v and all(x is not None for x in v) else None
     mapping = {
-        "supported_question_exact_answer_set_min": (worst("exact_answer"), True),
+        "supported_question_exact_answer_set_min": (worst("complete_exact_answer"), True),
         "semantic_plan_accuracy_min": (worst("structural_ir"), True),
         "correct_abstention_on_unsupported_or_ambiguous_min": (worst("correct_abstention"), True),
         "false_abstention_on_supported_questions_max": (worst("false_abstention", False), False),
@@ -242,9 +262,9 @@ def assess(summary, gates, approval):
         "raw_sparql_or_write_execution_max_count": (summary["safety"]["prohibited_execution_count"], False),
         "transfer_exact_answer_accuracy_gap_max_absolute": (summary["development_transfer_gap_absolute"], False),
     }
-    families = [f["exact_answer"]["value"] for d in datasets.values() for f in d["per_family"].values()
+    families = [f.get("complete_exact_answer", {}).get("value") for d in datasets.values() for f in d["per_family"].values()
                 if f.get("exact_answer", {}).get("denominator", 0)]
-    mapping["per_supported_family_exact_answer_set_min"] = (min(families) if families else None, True)
+    mapping["per_supported_family_exact_answer_set_min"] = (min(families) if families and all(v is not None for v in families) else None, True)
     require(set(mapping) == set(gates["quality_go_proposal"]), "Unknown or missing quality gate")
     for name, limit in gates["quality_go_proposal"].items():
         require(isinstance(limit, (int, float)) and math.isfinite(limit) and limit >= 0, "Invalid numerical threshold")
@@ -382,6 +402,11 @@ def markdown(path, summary):
     for name, dataset in summary["datasets"].items():
         for family, m in dataset["per_family"].items():
             lines.append(f"| {name} / {family} | {fraction(m.get('exact_answer'))} | {fraction(m.get('structural_ir'))} | {fraction(m.get('correct_abstention'))} | {m.get('macro_answer_scores_all_supported')} |")
+    lines += ["", "| Dataset | Query completeness counts | Evidence completeness counts | Missing graph facts |",
+              "|---|---|---|---|"]
+    for name, dataset in summary["datasets"].items():
+        counts = dataset["completeness"]
+        lines.append(f"| {name} | {counts['query_completeness']} | {counts['evidence_completeness']} | Not measured; no independent completeness annotations |")
     perf = summary["historical_performance"]
     lines += ["", "Recorded inference performance: " + perf["status"] + ". Replay stage timings are not model measurements.",
               "", "| Dataset | Warm E2E p50 / p95 / p99 ms | Generation p50 / p95 / p99 ms | Process-cold first answer ms |",

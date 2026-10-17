@@ -1,14 +1,15 @@
 {
-  "version": 1,
+  "version": 2,
+  "change_reason": "Require complete query results for exact-answer gates; retain raw binding agreement separately and distinguish truncated results, incomplete evidence, reference failures and unknown graph coverage.",
   "status": "proposal_not_approved",
-  "scoring_version": "phase0-v1-ordered-structural-and-binding-set",
+  "scoring_version": "phase0-v2-complete-answer-and-binding-set",
   "public_splits": {
     "wikidata": "dev",
     "worldcities-transfer": "transfer_dev"
   },
   "reference_policy": "AI-authored/AI-reviewed development agreement; independent expert review remains a formal GO prerequisite",
   "structural_policy": "Exact ordered IR, variable-name-sensitive; no unreviewed equivalence normalization",
-  "binding_policy": "Exact RDF-term and variable-name binding sets; duplicates ignored; macro P/R/F1 over ALL supported cases, failed attempts score zero",
+  "binding_policy": "Exact RDF-term and variable-name binding sets; duplicates ignored; exact-answer gates additionally require complete_within_scope=true, with missing execution completeness unavailable; raw binding agreement remains separate; macro P/R/F1 over ALL supported cases, failed attempts score zero",
   "abstention_policy": "Correct only for matching expected status; parsing_error is not correct unsupported/clarification; all supported cases remain in answer denominators",
   "uncertainty_policy": "Wilson 95% for rates; fixed-seed 7, 1000-resample percentile bootstrap for macro P/R/F1; descriptive under correlated templates",
   "sampling_policy": "No reliability conclusion from zero errors; report every family/sample size/interval. Adequate decision sample sizes require human approval before holdout.",
