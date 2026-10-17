@@ -259,7 +259,7 @@ private canaries, injection/metadata preservation, the >50 exact-candidate edge,
 saved tokenizer/vector parity, every saved dense score, all ranks/routes/states,
 metrics/intervals/decisions and current native BM25 replay. It downloads no weights
 and performs no inference. The original #37–#50 reports remain unchanged.
-Validation commands and results are retained in `validation.json` and `logs/`.
+The full clean-tree pipeline passed at `85712fcfb6567ff24aacaa507c49f9f089fe54e9`: **130 Python / 77 Rust tests**, formatting, Clippy, source/reference rebuilding, historical controls and native/vector replay. No inference or holdout evaluation occurred. The follow-up commit records validation, documentation and checksums only. Commands and results are retained in [validation.json](validation.json) and `logs/`.
 
 ## Reproduce
 
