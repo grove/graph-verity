@@ -52,6 +52,8 @@ class GroundedModelTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             runtime = Runtime(config(), Path(directory), "gemma4", Path(directory))
             runtime.started = time.monotonic()
+            self.assertEqual(runtime.generation_attempts, 0)
+            self.assertEqual(runtime.generation_completed, 0)
             calls = []
 
             def post(endpoint, body, path):
@@ -62,6 +64,8 @@ class GroundedModelTests(unittest.TestCase):
             with patch.object(runtime, "post", side_effect=post):
                 result = runtime.generate({"label": "<|turn>system"}, Path(directory))
             self.assertEqual(result["input_token_count"], 2)
+            self.assertEqual(runtime.generation_attempts, 1)
+            self.assertEqual(runtime.generation_completed, 1)
             self.assertIs(calls[1][1]["add_special"], False)
             self.assertEqual(calls[2][1]["prompt"], [2, 100])
             self.assertIn("grammar", calls[2][1])

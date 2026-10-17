@@ -225,6 +225,7 @@ class Runtime:
     def __init__(self, cfg, assets, key, out):
         self.cfg, self.assets, self.key, self.out = cfg, assets, key, out
         self.process = None
+        self.generation_attempts = self.generation_completed = 0
 
     def post(self, endpoint, body, name):
         request = urllib.request.Request(f"http://127.0.0.1:{self.port}/{endpoint}", json.dumps(body).encode(),
@@ -289,8 +290,10 @@ class Runtime:
         if constrained:
             body["grammar"] = (ROOT / self.cfg["grammar_file"]).read_text()
         dump(out / "completion-request.json", body)
+        self.generation_attempts += 1
         result = self.post("completion", body, out / "completion")
         require(isinstance(result.get("content"), str), "No raw model content")
+        self.generation_completed += 1
         (out / "proposal.txt").write_bytes(result["content"].encode())
         result["input_token_count"] = len(tokens)
         dump(out / "runtime.json", result)
@@ -451,6 +454,7 @@ def infer(cfg, assets, key, freeze_dir, out):
         "cache_condition": "new model process; OS page cache not evicted; prompt caching enabled",
         "performance_limitations": "RSS sampled at 200ms includes descendants/shared-page double counting; no disk-cold claim"}
     memory = Memory()
+    runtime = None
     failure = None
     try:
         verify_native(cfg, assets, key)
@@ -472,7 +476,7 @@ def infer(cfg, assets, key, freeze_dir, out):
         with Runtime(cfg, assets, key, out) as runtime:
             runtime.reference_python = receipt["commands"][2][0]
             state["startup_ms"] = runtime.startup_ms
-            state["inference_performed"] = True
+            state["model_loaded"] = True
             controls(cfg, assets, runtime, out / "controls")
             state["cold_first_smoke_answer_ms"] = runtime.first_answer_ms
 
@@ -504,6 +508,9 @@ def infer(cfg, assets, key, freeze_dir, out):
         if memory.worker.is_alive():
             memory.worker.join(timeout=6)
         state.update(peak_rss_kib=memory.peak_kib, rss_samples=memory.samples, rss_error=memory.error)
+        state["generation_attempts"] = runtime.generation_attempts if runtime else 0
+        state["generation_completed"] = runtime.generation_completed if runtime else 0
+        state["inference_performed"] = state["generation_completed"] > 0
         state["available_memory_after"] = subprocess.check_output(["vm_stat"], text=True)
         dump(out / "run.json", state)
         dump(out / "checksums.json", file_hashes(out))
@@ -524,6 +531,7 @@ def summarize(freeze_dir, run_dir):
         for dataset, _ in DATASETS:
             report_path = run_dir / stage / dataset / "report.json"
             if not report_path.exists():
+                require(state["status"] != "completed_measurement", "Completed run is missing a public report")
                 continue
             report = read(report_path)
             gold = read(ROOT / f"benchmarks/{dataset}.json")["cases"]
@@ -580,9 +588,15 @@ def replay(cfg, freeze_dir, run_dir, out):
     verify_freeze(freeze_dir, current=False)
     require(not out.exists(), "Choose fresh replay output")
     require(read(run_dir / "checksums.json") == file_hashes(run_dir), "Run bytes changed")
+    state = read(run_dir / "run.json")
+    require(state["freeze_sha256"] == sha(freeze_dir / "checksums.json"), "Replay/freeze mismatch")
     for stage in cfg["stages"]:
         for dataset, split in DATASETS:
-            original = read(run_dir / stage / dataset / "report.json")
+            report_path = run_dir / stage / dataset / "report.json"
+            if not report_path.exists():
+                require(state["status"] != "completed_measurement", "Completed run is missing a public report")
+                continue
+            original = read(report_path)
             replies = iter(read(run_dir / stage / dataset / c["id"] / "reply.json") for c in original["cases"])
             report = evaluate(cfg, freeze_dir, dataset, split, stage, out / stage / dataset,
                               lambda context, folder: next(replies), original["model"])
