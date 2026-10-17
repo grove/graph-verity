@@ -251,3 +251,9 @@ Model-free verification (from repository root; no weights or inference):
 ```
 
 The original baseline/repeat manifests verify retained outputs without comparing historical source hashes to a newer checkout. The compact comparison verifies its pre-inference input freeze, both evidence archives and inner manifests and recomputes scores from saved public outputs. Ordinary CI additionally replays all 30 saved v2 strings through Rust, runs source/reference checks, formatting, Clippy, Rust and Python tests. Checksums establish byte integrity, not signatures or human expertise. Decision consistency tests bind copied measurements, intervals, timings, tokens, RAM, identities and local links to retained sources; GitHub existence/state is inspected at publication rather than making offline CI depend on GitHub.
+
+Issue #48's separate [Qwen3.5-9B / Gemma 4 12B experiment](grounded-model-experiment.md)
+tests new model proposals under its own exploratory criteria. It does not revise
+this decision or its gates. Any model integration needs a separate explicitly
+approved issue and human false-confidence evaluation; Confirmed Ask remains
+deterministic and model-free by default.

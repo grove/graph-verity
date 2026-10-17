@@ -367,8 +367,9 @@ def evaluate(cfg, out, dataset, split, memory, *, benchmark_path=None):
     timings = {}
     with Server(cfg, out) as server, (out / "rust.stderr.log").open("w") as errors:
         rust_started = time.monotonic()
+        # Text buffering can hide a prefetched request from selector after startup_ready.
         process = subprocess.Popen(command, cwd=ROOT, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
-                                   stderr=errors, text=True, bufsize=1)
+                                   stderr=errors, bufsize=0)
         memory.pids = [os.getpid(), server.process.pid, process.pid]
         try:
             selector = selectors.DefaultSelector()
@@ -425,7 +426,7 @@ def evaluate(cfg, out, dataset, split, memory, *, benchmark_path=None):
                     # A timeout may leave inference running. Stop instead of overlapping requests.
                     if isinstance(error, (TimeoutError, urllib.error.URLError)):
                         raise
-                process.stdin.write(json.dumps(reply) + "\n")
+                process.stdin.write((json.dumps(reply) + "\n").encode())
                 process.stdin.flush()
                 index += 1
                 print(f"{dataset} {index}/{len(cases)} {case['id']}: "
