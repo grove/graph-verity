@@ -1,0 +1,1144 @@
+{
+  "benchmark": "adversarial",
+  "benchmark_digest": "sha256:5a0a0893aec7445a236cbe0eb28596ba6c4aecade2cc9ece1e9e735dde3f72ab",
+  "cases": [
+    {
+      "catalog_ms": 0.951417,
+      "components_exact": {
+        "aggregation": true,
+        "datatype": true,
+        "date_operand": true,
+        "direction": false,
+        "entity": false,
+        "group_by": true,
+        "having": true,
+        "limit": true,
+        "literal": true,
+        "number": true,
+        "operator": false,
+        "predicate": false,
+        "projection": false,
+        "scope": false,
+        "snapshot": true,
+        "variables": false
+      },
+      "contract_valid": true,
+      "detail": "",
+      "end_to_end_ms": 16869.430209000002,
+      "error_code": null,
+      "exact_result_set": false,
+      "execution": {
+        "absence_policy": "open_world_missing_facts_are_not_false",
+        "bindings": [
+          {
+            "company": {
+              "kind": "iri",
+              "value": "urn:issue9:source:municipality"
+            },
+            "owns": {
+              "kind": "iri",
+              "value": "urn:issue9:source:company"
+            }
+          }
+        ],
+        "catalog_digest": "sha256:cc3a291ab384b0da13e8a1492508b762090f05dae8397f3de2f2946bd40a2541",
+        "complete_within_scope": true,
+        "evidence": [
+          {
+            "object": {
+              "kind": "iri",
+              "value": "urn:issue9:source:company"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "urn:issue9:source:owns"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:issue9:source:public"
+            },
+            "subject": {
+              "kind": "iri",
+              "value": "urn:issue9:source:municipality"
+            }
+          }
+        ],
+        "evidence_complete_for_returned_rows": true,
+        "evidence_ms": 1.258417,
+        "evidence_semantics": "union_of_contributing_pattern_statements_for_returned_rows_or_groups; counts_require_the_scoped_query_not_just_positive_witnesses",
+        "evidence_verification": "verified_against_snapshot",
+        "interpretation_correctness": "not_assessed",
+        "origin": "local_model",
+        "plan": {
+          "filters": [],
+          "group_by": [],
+          "having": [],
+          "limit": 100,
+          "patterns": [
+            {
+              "direction": "forward",
+              "from": {
+                "kind": "variable",
+                "name": "company"
+              },
+              "graph": "urn:issue9:source:public",
+              "predicate": "urn:issue9:source:owns",
+              "to": {
+                "kind": "variable",
+                "name": "owns"
+              }
+            },
+            {
+              "direction": "reverse",
+              "from": {
+                "kind": "variable",
+                "name": "owns"
+              },
+              "graph": "urn:issue9:source:public",
+              "predicate": "urn:issue9:source:owns",
+              "to": {
+                "kind": "variable",
+                "name": "company"
+              }
+            }
+          ],
+          "projection": [
+            {
+              "kind": "variable",
+              "name": "company"
+            },
+            {
+              "kind": "variable",
+              "name": "owns"
+            }
+          ],
+          "scope": [
+            "urn:issue9:source:public"
+          ],
+          "snapshot_id": "sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90",
+          "version": 1
+        },
+        "query_ms": 0.9472499999999999,
+        "real_world_truth": "not_established",
+        "scope": [
+          "urn:issue9:source:public"
+        ],
+        "snapshot_id": "sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90",
+        "sparql": "SELECT DISTINCT ?company ?owns WHERE {\nGRAPH <urn:issue9:source:public> { ?company <urn:issue9:source:owns> ?owns . }\nGRAPH <urn:issue9:source:public> { ?company <urn:issue9:source:owns> ?owns . }\n}\nORDER BY ?company ?owns\nLIMIT 101",
+        "status": "executed",
+        "validation_ms": 0.65225
+      },
+      "expected_status": "executed",
+      "f1": 0.0,
+      "family": "inverse",
+      "generation_ms": 16863.420667,
+      "id": "inverse",
+      "json_valid": true,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": 2.8579169999999996,
+      "precision": 0.0,
+      "proposal_status": "candidate",
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 100,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"company\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:owns\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"owns\"}\n        },\n        {\n          \"direction\": \"reverse\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"owns\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:owns\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"company\"}\n        }\n      ],\n      \"projection\": [\n        {\"kind\": \"variable\", \"name\": \"company\"},\n        {\"kind\": \"variable\", \"name\": \"owns\"}\n      ]\n    \t,\n    \"scope\": [\n      \"urn:issue9:source:public\"\n    ]\n \t,\n    \"snapshot_id\": \"sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90\"\n \t,\n    \"version\": 1\n  }\n  ,\n  \"status\": \"candidate\"\n} ,\n\n\"version\": 1\n}",
+      "recall": 0.0,
+      "result_classification": "nonempty_query_result",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": true,
+      "split": "dev",
+      "stage": "scored",
+      "structural_ir_exact": false,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": 0.966958,
+      "wrong_plan_successful_execution": true,
+      "vocabulary_selection_ms": 0.02295803278684616,
+      "model_roundtrip_ms": 16861.443291883916,
+      "runtime_prompt_ms": 9876.003,
+      "runtime_predicted_ms": 6973.539
+    },
+    {
+      "catalog_ms": 0.783625,
+      "components_exact": {
+        "aggregation": true,
+        "datatype": true,
+        "date_operand": true,
+        "direction": false,
+        "entity": false,
+        "group_by": true,
+        "having": true,
+        "limit": true,
+        "literal": true,
+        "number": true,
+        "operator": true,
+        "predicate": false,
+        "projection": false,
+        "scope": false,
+        "snapshot": true,
+        "variables": false
+      },
+      "contract_valid": true,
+      "detail": "",
+      "end_to_end_ms": 8298.742333,
+      "error_code": null,
+      "exact_result_set": false,
+      "execution": {
+        "absence_policy": "open_world_missing_facts_are_not_false",
+        "bindings": [],
+        "catalog_digest": "sha256:cc3a291ab384b0da13e8a1492508b762090f05dae8397f3de2f2946bd40a2541",
+        "complete_within_scope": true,
+        "evidence": [],
+        "evidence_complete_for_returned_rows": true,
+        "evidence_ms": 0.54375,
+        "evidence_semantics": "union_of_contributing_pattern_statements_for_returned_rows_or_groups; counts_require_the_scoped_query_not_just_positive_witnesses",
+        "evidence_verification": "verified_against_snapshot",
+        "interpretation_correctness": "not_assessed",
+        "origin": "local_model",
+        "plan": {
+          "filters": [],
+          "group_by": [],
+          "having": [],
+          "limit": 100,
+          "patterns": [
+            {
+              "direction": "forward",
+              "from": {
+                "kind": "variable",
+                "name": "city"
+              },
+              "graph": "urn:issue9:source:public",
+              "predicate": "urn:issue9:source:owns",
+              "to": {
+                "kind": "variable",
+                "name": "city"
+              }
+            }
+          ],
+          "projection": [
+            {
+              "kind": "variable",
+              "name": "city"
+            }
+          ],
+          "scope": [
+            "urn:issue9:source:public"
+          ],
+          "snapshot_id": "sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90",
+          "version": 1
+        },
+        "query_ms": 0.386333,
+        "real_world_truth": "not_established",
+        "scope": [
+          "urn:issue9:source:public"
+        ],
+        "snapshot_id": "sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90",
+        "sparql": "SELECT DISTINCT ?city WHERE {\nGRAPH <urn:issue9:source:public> { ?city <urn:issue9:source:owns> ?city . }\n}\nORDER BY ?city\nLIMIT 101",
+        "status": "executed",
+        "validation_ms": 0.6005
+      },
+      "expected_status": "executed",
+      "f1": 0.0,
+      "family": "two_hop",
+      "generation_ms": 8295.362000000001,
+      "id": "two-hop",
+      "json_valid": true,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": 1.530583,
+      "precision": 0.0,
+      "proposal_status": "candidate",
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 100,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:owns\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        }\n      ],\n      \"projection\": [\n        {\"kind\": \"variable\", \"name\": \"city\"}\n      ]\n   ,\n    \"scope\": [\n      \"urn:issue9:source:public\"\n    ]\n  ,\n  \"snapshot_id\": \"sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90\"\n  ,\n  \"version\": 1\n} ,\n\n\"status\": \"candidate\"\n} ,\n\n\"version\": 1\n}",
+      "recall": 0.0,
+      "result_classification": "empty_query_result_not_real_world_false",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": true,
+      "split": "dev",
+      "stage": "scored",
+      "structural_ir_exact": false,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": 0.7120839999999999,
+      "wrong_plan_successful_execution": true,
+      "vocabulary_selection_ms": 0.08899997919797897,
+      "model_roundtrip_ms": 8293.134749867022,
+      "runtime_prompt_ms": 3218.195,
+      "runtime_predicted_ms": 5064.611
+    },
+    {
+      "catalog_ms": 0.758791,
+      "components_exact": {
+        "aggregation": true,
+        "datatype": false,
+        "date_operand": true,
+        "direction": true,
+        "entity": false,
+        "group_by": true,
+        "having": true,
+        "limit": true,
+        "literal": false,
+        "number": false,
+        "operator": false,
+        "predicate": false,
+        "projection": false,
+        "scope": true,
+        "snapshot": true,
+        "variables": false
+      },
+      "contract_valid": true,
+      "detail": "predicate: Predicate is not in the selected graph vocabulary",
+      "end_to_end_ms": 8685.595792,
+      "error_code": "predicate",
+      "exact_result_set": null,
+      "execution": null,
+      "expected_status": "executed",
+      "f1": null,
+      "family": "numeric_boundary",
+      "generation_ms": 8683.850250000001,
+      "id": "gt",
+      "json_valid": true,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": null,
+      "precision": null,
+      "proposal_status": "candidate",
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 100\n   ,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:employees:antall ansatte\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        }\n      ]\n    ,\n      \"projection\": [\n        {\"kind\": \"variable\", \"name\": \"city\"}\n      ]\n    ,\n      \"scope\": [\n        \"urn:issue9:source:public\"\n      ]\n    ,\n      \"snapshot_id\": \"sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90\"\n    ,\n      \"version\": 1\n    }\n  ,\n      \"status\": \"candidate\"\n} ,\n\n\"version\": 1\n}",
+      "recall": null,
+      "result_classification": "not_executed",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": false,
+      "split": "dev",
+      "stage": "validation",
+      "structural_ir_exact": false,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": 0.688708,
+      "wrong_plan_successful_execution": false,
+      "vocabulary_selection_ms": 0.018625054508447647,
+      "model_roundtrip_ms": 8682.32495803386,
+      "runtime_prompt_ms": 2644.89,
+      "runtime_predicted_ms": 6028.471
+    },
+    {
+      "catalog_ms": 0.736917,
+      "components_exact": {
+        "aggregation": true,
+        "datatype": false,
+        "date_operand": true,
+        "direction": true,
+        "entity": false,
+        "group_by": true,
+        "having": true,
+        "limit": true,
+        "literal": false,
+        "number": false,
+        "operator": false,
+        "predicate": false,
+        "projection": false,
+        "scope": true,
+        "snapshot": true,
+        "variables": false
+      },
+      "contract_valid": true,
+      "detail": "predicate: Predicate is not in the selected graph vocabulary",
+      "end_to_end_ms": 7869.399667,
+      "error_code": "predicate",
+      "exact_result_set": null,
+      "execution": null,
+      "expected_status": "executed",
+      "f1": null,
+      "family": "numeric_boundary",
+      "generation_ms": 7867.7235,
+      "id": "ge",
+      "json_valid": true,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": null,
+      "precision": null,
+      "proposal_status": "candidate",
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 100,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:employees:antall ansatte\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        }\n      ],\n      \"projection\": [\n        {\"kind\": \"variable\", \"name\": \"city\"}\n      ]\n    \t,\n    \"scope\": [\n      \"urn:issue9:source:public\"\n    ]\n  \t,\n  \"snapshot_id\": \"sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90\"\n  \t,\n  \"version\": 1\n} ,\n\n\"status\": \"candidate\"\n} ,\n\n\"version\": 1\n}",
+      "recall": null,
+      "result_classification": "not_executed",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": false,
+      "split": "dev",
+      "stage": "validation",
+      "structural_ir_exact": false,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": 0.7045830000000001,
+      "wrong_plan_successful_execution": false,
+      "vocabulary_selection_ms": 0.037833116948604584,
+      "model_roundtrip_ms": 7866.03566724807,
+      "runtime_prompt_ms": 2496.959,
+      "runtime_predicted_ms": 5354.944
+    },
+    {
+      "catalog_ms": 0.80375,
+      "components_exact": {
+        "aggregation": true,
+        "datatype": true,
+        "date_operand": true,
+        "direction": true,
+        "entity": true,
+        "group_by": false,
+        "having": false,
+        "limit": true,
+        "literal": true,
+        "number": false,
+        "operator": false,
+        "predicate": true,
+        "projection": false,
+        "scope": false,
+        "snapshot": true,
+        "variables": false
+      },
+      "contract_valid": true,
+      "detail": "scope: Declared scope must exactly match pattern graphs",
+      "end_to_end_ms": 11005.858167,
+      "error_code": "scope",
+      "exact_result_set": null,
+      "execution": null,
+      "expected_status": "executed",
+      "f1": null,
+      "family": "date",
+      "generation_ms": 11004.760333,
+      "id": "date",
+      "json_valid": true,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": null,
+      "precision": null,
+      "proposal_status": "candidate",
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [\n        {\n          \"op\": \"ge\",\n          \"value\": {\n            \"datatype\": \"http://www.w3.org/2001/XMLSchema#date\",\n            \"lexical\": \"2025-01-01\"\n          }\n        \t,\n          \"variable\": \"startdato\"\n        }\n      ],\n      \"group_by\": [\n        \"startdato\"\n      ],\n      \"having\": [\n        {\n          \"alias\": \"count\",\n          \"op\": \"ge\",\n          \"value\": 2\n        }\n      ]\n    \t,\n      \"limit\": 100\n    \t,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\n            \"kind\": \"variable\",\n            \"name\": \"startdato\"\n          },\n          \"graph\": \"public\",\n          \"predicate\": \"urn:issue9:source:start\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"startdato\"\n          }\n        }\n      ]\n    \t,\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"startdato\"\n        },\n        {\n          \"kind\": \"variable\",\n          \"name\": \"startdato\"\n        },\n        {\n          \"kind\": \"variable\",\n          \"name\": \"count\"\n        }\n      ]\n    \t,\n      \"scope\": [\n        \"urn:issue9:source:public\"\n      ]\n    \t,\n      \"snapshot_id\": \"sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90\"\n    \t,\n      \"version\": 1\n    \t}\n  \t,\n    \"status\": \"candidate\"\n  }\n  ,\n  \"version\": 1\n}",
+      "recall": null,
+      "result_classification": "not_executed",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": false,
+      "split": "dev",
+      "stage": "validation",
+      "structural_ir_exact": false,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": 0.012209,
+      "wrong_plan_successful_execution": false,
+      "vocabulary_selection_ms": 0.04574982449412346,
+      "model_roundtrip_ms": 11002.440332900733,
+      "runtime_prompt_ms": 2151.875,
+      "runtime_predicted_ms": 8841.109
+    },
+    {
+      "catalog_ms": 0.845583,
+      "components_exact": {},
+      "contract_valid": false,
+      "detail": "EOF while parsing a value at line 125 column 0",
+      "end_to_end_ms": 23664.148999999998,
+      "error_code": "json_contract",
+      "exact_result_set": null,
+      "execution": null,
+      "expected_status": "executed",
+      "f1": null,
+      "family": "datetime",
+      "generation_ms": 23663.071041,
+      "id": "datetime",
+      "json_valid": false,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": null,
+      "precision": null,
+      "proposal_status": null,
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [\n        {\n          \"op\": \"ge\",\n          \"value\": {\n            \"datatype\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\n            \"lexical\": \"2025-01-01T12:00:00Z\"\n          }\n        \t,\n        \"variable\": \"endringstidspunkt\"\n      }\n    \t,\n      {\n        \"op\": \"ge\",\n        \"value\": {\n          \"datatype\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\n          \"lexical\": \"2025-01-01T12:00:00Z\"\n        }\n      \t,\n      \"variable\": \"endringstidspunkt\"\n    }\n    \t,\n      {\n        \"op\": \"ge\",\n        \"value\": {\n          \"datatype\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\n          \"lexical\": \"2025-01-01T12:00:00Z\"\n        }\n      \t,\n      \"variable\": \"endringstidspunkt\"\n    }\n    \t,\n      {\n        \"op\": \"ge\",\n        \"value\": {\n          \"datatype\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\n          \"lexical\": \"2025-01-01T12:00:00Z\"\n        }\n      \t,\n      \"variable\": \"endringstidspunkt\"\n    }\n    \t,\n      {\n        \"op\": \"ge\",\n        \"value\": {\n          \"datatype\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\n          \"lexical\": \"2025-01-01T12:00:00Z\"\n        }\n      \t,\n      \"variable\": \"endringstidspunkt\"\n    }\n    \t,\n      {\n        \"op\": \"ge\",\n        \"value\": {\n          \"datatype\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\n          \"lexical\": \"2025-01-01T12:00:00Z\"\n        }\n      \t,\n      \"variable\": \"endringstidspunkt\"\n    }\n    \t,\n      {\n        \"op\": \"ge\",\n        \"value\": {\n          \"datatype\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\n          \"lexical\": \"2025-01-01T12:00:00Z\"\n        }\n      \t,\n      \"variable\": \"endringstidspunkt\"\n    }\n    \t,\n      {\n        \"op\": \"ge\",\n        \"value\": {\n          \"datatype\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\n          \"lexical\": \"2025-01-01T12:00:00Z\"\n        }\n      \t,\n      \"variable\": \"endringstidspunkt\"\n    }\n    \t,\n      {\n        \"op\": \"ge\",\n        \"value\": {\n          \"datatype\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\n          \"lexical\": \"2025-01-01T12:00:00Z\"\n        }\n      \t,\n      \"variable\": \"endringstidspunkt\"\n    }\n    \t,\n      {\n        \"op\": \"ge\",\n        \"value\": {\n          \"datatype\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\n          \"lexical\": \"2025-01-01T12:00:00Z\"\n        }\n      \t,\n      \"variable\": \"endringstidspunkt\"\n    }\n    \t,\n      {\n        \"op\": \"ge\",\n        \"value\": {\n          \"datatype\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\n          \"lexical\": \"2025-01-01T12:00:00Z\"\n        }\n      \t,\n      \"variable\": \"endringstidspunkt\"\n    }\n    \t,\n      {\n        \"op\": \"ge\",\n        \"value\": {\n          \"datatype\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\n          \"lexical\": \"2025-01-01T12:00:00Z\"\n        }\n      \t,\n      \"variable\": \"endringstidspunkt\"\n    }\n    \t,\n",
+      "recall": null,
+      "result_classification": "not_executed",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": null,
+      "split": "dev",
+      "stage": "json_generation",
+      "structural_ir_exact": null,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": null,
+      "wrong_plan_successful_execution": false,
+      "vocabulary_selection_ms": 0.0238749198615551,
+      "model_roundtrip_ms": 23661.141334101558,
+      "runtime_prompt_ms": 2274.269,
+      "runtime_predicted_ms": 21376.627
+    },
+    {
+      "catalog_ms": 0.8366250000000001,
+      "components_exact": {},
+      "contract_valid": false,
+      "detail": "EOF while parsing a string at line 84 column 42",
+      "end_to_end_ms": 23705.191416,
+      "error_code": "json_contract",
+      "exact_result_set": null,
+      "execution": null,
+      "expected_status": "executed",
+      "f1": null,
+      "family": "count_distinct",
+      "generation_ms": 23704.091958,
+      "id": "distinct",
+      "json_valid": false,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": null,
+      "precision": null,
+      "proposal_status": null,
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [\"urn:issue9:source:contract:entity\"],\n      \"having\": [],\n      \"limit\": 100\n   ,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:contract:entity\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:contract:roles\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:contract:entity\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:contract:entity\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tag:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tag:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tag:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tag:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tag:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tag:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tag:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tag:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tag:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"urn:issue9:source:tag:labels\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:",
+      "recall": null,
+      "result_classification": "not_executed",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": null,
+      "split": "dev",
+      "stage": "json_generation",
+      "structural_ir_exact": null,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": null,
+      "wrong_plan_successful_execution": false,
+      "vocabulary_selection_ms": 0.03987504169344902,
+      "model_roundtrip_ms": 23702.533584088087,
+      "runtime_prompt_ms": 2844.47,
+      "runtime_predicted_ms": 20839.779
+    },
+    {
+      "catalog_ms": 0.876208,
+      "components_exact": {
+        "aggregation": true,
+        "datatype": true,
+        "date_operand": true,
+        "direction": true,
+        "entity": false,
+        "group_by": true,
+        "having": true,
+        "limit": true,
+        "literal": true,
+        "number": true,
+        "operator": false,
+        "predicate": true,
+        "projection": false,
+        "scope": true,
+        "snapshot": true,
+        "variables": false
+      },
+      "contract_valid": true,
+      "detail": "variable: Variables must match [A-Za-z][A-Za-z0-9_]{0,31}",
+      "end_to_end_ms": 8338.436749999999,
+      "error_code": "variable",
+      "exact_result_set": null,
+      "execution": null,
+      "expected_status": "executed",
+      "f1": null,
+      "family": "named_graph",
+      "generation_ms": 8336.570583,
+      "id": "scope",
+      "json_valid": true,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": null,
+      "precision": null,
+      "proposal_status": "candidate",
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 100,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:employees\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"antall ansatte\"}\n        }\n      ],\n      \"projection\": [\n        {\"kind\": \"variable\", \"name\": \"city\"},\n        {\"kind\": \"variable\", \"name\": \"antall ansatte\"}\n      ]\n    \t,\n    \"scope\": [\n      \"urn:issue9:source:public\"\n    ]\n  \t,\n    \"snapshot_id\": \"sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90\"\n  \t,\n    \"version\": 1\n  }\n  ,\n  \"status\": \"candidate\"\n} ,\n\n\"version\": 1\n}",
+      "recall": null,
+      "result_classification": "not_executed",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": false,
+      "split": "dev",
+      "stage": "validation",
+      "structural_ir_exact": false,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": 0.711334,
+      "wrong_plan_successful_execution": false,
+      "vocabulary_selection_ms": 0.02108374610543251,
+      "model_roundtrip_ms": 8334.972917102277,
+      "runtime_prompt_ms": 2649.109,
+      "runtime_predicted_ms": 5676.475
+    },
+    {
+      "catalog_ms": 0.737958,
+      "components_exact": {
+        "aggregation": true,
+        "datatype": true,
+        "date_operand": true,
+        "direction": true,
+        "entity": false,
+        "group_by": true,
+        "having": true,
+        "limit": true,
+        "literal": true,
+        "number": true,
+        "operator": true,
+        "predicate": false,
+        "projection": false,
+        "scope": true,
+        "snapshot": true,
+        "variables": false
+      },
+      "contract_valid": true,
+      "detail": "predicate: Predicate is not in the selected graph vocabulary",
+      "end_to_end_ms": 7872.596958,
+      "error_code": "predicate",
+      "exact_result_set": null,
+      "execution": null,
+      "expected_status": "executed",
+      "f1": null,
+      "family": "missing_triple",
+      "generation_ms": 7870.928334,
+      "id": "missing-triple",
+      "json_valid": true,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": null,
+      "precision": null,
+      "proposal_status": "candidate",
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 100,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:employees:antall ansatte\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        }\n      ],\n      \"projection\": [\n        {\"kind\": \"variable\", \"name\": \"city\"}\n      ]\n   ,\n    \"scope\": [\n      \"urn:issue9:source:public\"\n    ]\n  ,\n  \"snapshot_id\": \"sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90\"\n  ,\n  \"version\": 1\n} ,\n  \"status\": \"candidate\"\n} ,\n\n\"version\": 1\n}",
+      "recall": null,
+      "result_classification": "not_executed",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": false,
+      "split": "dev",
+      "stage": "validation",
+      "structural_ir_exact": false,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": 0.6956659999999999,
+      "wrong_plan_successful_execution": false,
+      "vocabulary_selection_ms": 0.022999942302703857,
+      "model_roundtrip_ms": 7869.338958989829,
+      "runtime_prompt_ms": 2542.528,
+      "runtime_predicted_ms": 5317.189
+    },
+    {
+      "catalog_ms": 0.7294579999999999,
+      "components_exact": {},
+      "contract_valid": true,
+      "detail": "Executed a plan for a question expected to abstain",
+      "end_to_end_ms": 14325.203666,
+      "error_code": null,
+      "exact_result_set": null,
+      "execution": {
+        "absence_policy": "open_world_missing_facts_are_not_false",
+        "bindings": [
+          {
+            "city": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "kind": "literal",
+              "language": null,
+              "value": "7"
+            }
+          },
+          {
+            "city": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "kind": "literal",
+              "language": null,
+              "value": "13"
+            }
+          },
+          {
+            "city": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "kind": "literal",
+              "language": null,
+              "value": "51"
+            }
+          }
+        ],
+        "catalog_digest": "sha256:cc3a291ab384b0da13e8a1492508b762090f05dae8397f3de2f2946bd40a2541",
+        "complete_within_scope": true,
+        "evidence": [
+          {
+            "object": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "kind": "literal",
+              "language": null,
+              "value": "7"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "urn:issue9:source:employees"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:issue9:source:public"
+            },
+            "subject": {
+              "kind": "iri",
+              "value": "urn:issue9:source:a"
+            }
+          },
+          {
+            "object": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "kind": "literal",
+              "language": null,
+              "value": "7"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "urn:issue9:source:employees"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:issue9:source:public"
+            },
+            "subject": {
+              "kind": "iri",
+              "value": "urn:issue9:source:b"
+            }
+          },
+          {
+            "object": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "kind": "literal",
+              "language": null,
+              "value": "51"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "urn:issue9:source:employees"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:issue9:source:public"
+            },
+            "subject": {
+              "kind": "iri",
+              "value": "urn:issue9:source:company"
+            }
+          },
+          {
+            "object": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "kind": "literal",
+              "language": null,
+              "value": "13"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "urn:issue9:source:employees"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:issue9:source:public"
+            },
+            "subject": {
+              "kind": "iri",
+              "value": "urn:issue9:source:raw"
+            }
+          },
+          {
+            "object": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "kind": "literal",
+              "language": null,
+              "value": "13"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "urn:issue9:source:employees"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:issue9:source:public"
+            },
+            "subject": {
+              "kind": "iri",
+              "value": "urn:issue9:source:scope"
+            }
+          },
+          {
+            "object": {
+              "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+              "kind": "literal",
+              "language": null,
+              "value": "13"
+            },
+            "predicate": {
+              "kind": "iri",
+              "value": "urn:issue9:source:employees"
+            },
+            "source_graph": {
+              "kind": "iri",
+              "value": "urn:issue9:source:public"
+            },
+            "subject": {
+              "kind": "iri",
+              "value": "urn:issue9:source:tool"
+            }
+          }
+        ],
+        "evidence_complete_for_returned_rows": true,
+        "evidence_ms": 0.671333,
+        "evidence_semantics": "union_of_contributing_pattern_statements_for_returned_rows_or_groups; counts_require_the_scoped_query_not_just_positive_witnesses",
+        "evidence_verification": "verified_against_snapshot",
+        "interpretation_correctness": "not_assessed",
+        "origin": "local_model",
+        "plan": {
+          "filters": [],
+          "group_by": [],
+          "having": [],
+          "limit": 100,
+          "patterns": [
+            {
+              "direction": "forward",
+              "from": {
+                "kind": "variable",
+                "name": "n"
+              },
+              "graph": "urn:issue9:source:public",
+              "predicate": "urn:issue9:source:employees",
+              "to": {
+                "kind": "variable",
+                "name": "city"
+              }
+            }
+          ],
+          "projection": [
+            {
+              "kind": "variable",
+              "name": "city"
+            }
+          ],
+          "scope": [
+            "urn:issue9:source:public"
+          ],
+          "snapshot_id": "sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90",
+          "version": 1
+        },
+        "query_ms": 0.513875,
+        "real_world_truth": "not_established",
+        "scope": [
+          "urn:issue9:source:public"
+        ],
+        "snapshot_id": "sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90",
+        "sparql": "SELECT DISTINCT ?city WHERE {\nGRAPH <urn:issue9:source:public> { ?n <urn:issue9:source:employees> ?city . }\n}\nORDER BY ?city\nLIMIT 101",
+        "status": "executed",
+        "validation_ms": 0.60275
+      },
+      "expected_status": "needs_clarification",
+      "f1": null,
+      "family": "ambiguous_alias",
+      "generation_ms": 14321.570082999999,
+      "id": "alias",
+      "json_valid": true,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": 1.787958,
+      "precision": null,
+      "proposal_status": "candidate",
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 100\n   ,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\n            \"kind\": \"variable\",\n            \"name\": \"n\"\n          },\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:employees\"\n        ,\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"city\"\n          }\n        }\n      ]\n    ,\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"city\"\n        }\n      ]\n    ,\n      \"scope\": [\n        \"urn:issue9:source:public\"\n      ]\n    ,\n      \"snapshot_id\": \"sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90\"\n    ,\n      \"version\": 1\n    }\n  ,\n    \"status\": \"candidate\"\n} ,\n\n\"version\": 1\n}",
+      "recall": null,
+      "result_classification": "nonempty_query_result",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": true,
+      "split": "dev",
+      "stage": "execution",
+      "structural_ir_exact": false,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": 0.76125,
+      "wrong_plan_successful_execution": true,
+      "vocabulary_selection_ms": 0.6631668657064438,
+      "model_roundtrip_ms": 14319.042375311255,
+      "runtime_prompt_ms": 8389.236,
+      "runtime_predicted_ms": 5917.358
+    },
+    {
+      "catalog_ms": 0.76075,
+      "components_exact": {},
+      "contract_valid": true,
+      "detail": "datatype: Variable has incompatible binding positions",
+      "end_to_end_ms": 22039.207459,
+      "error_code": "datatype",
+      "exact_result_set": null,
+      "execution": null,
+      "expected_status": "unsupported",
+      "f1": null,
+      "family": "missing_vocabulary",
+      "generation_ms": 22037.411417000003,
+      "id": "missing-property",
+      "json_valid": true,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": null,
+      "precision": null,
+      "proposal_status": "candidate",
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 100\n   ,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tag\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:contract\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:employees\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:owns\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:start\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:time\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        }\n      ]\n    ,\n      \"projection\": [\n        {\"kind\": \"variable\", \"name\": \"city\"}\n      ]\n    ,\n      \"scope\": [\n        \"urn:issue9:source:public\"\n      ]\n    ,\n      \"snapshot_id\": \"sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90\"\n    ,\n      \"version\": 1\n    }\n  ,\n    \"status\": \"candidate\"\n} ,\n\n\"version\": 1\n}",
+      "recall": null,
+      "result_classification": "not_executed",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": false,
+      "split": "dev",
+      "stage": "validation",
+      "structural_ir_exact": false,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": 0.751292,
+      "wrong_plan_successful_execution": false,
+      "vocabulary_selection_ms": 0.09624985978007317,
+      "model_roundtrip_ms": 22035.25137482211,
+      "runtime_prompt_ms": 7995.062,
+      "runtime_predicted_ms": 14027.524
+    },
+    {
+      "catalog_ms": 0.7217089999999999,
+      "components_exact": {},
+      "contract_valid": true,
+      "detail": "scope: Declared scope must exactly match pattern graphs",
+      "end_to_end_ms": 15423.453458000002,
+      "error_code": "scope",
+      "exact_result_set": null,
+      "execution": null,
+      "expected_status": "unsupported",
+      "f1": null,
+      "family": "unsupported_negation",
+      "generation_ms": 15422.546291999999,
+      "id": "negation",
+      "json_valid": true,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": null,
+      "precision": null,
+      "proposal_status": "candidate",
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 100\n   ,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"public\",\n          \"predicate\": \"urn:issue9:source:owns\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"reverse\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"public\",\n          \"predicate\": \"urn:issue9:source:contract\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        }\n      ]\n    ,\n      \"projection\": [\n        {\"kind\": \"variable\", \"name\": \"city\"}\n      ]\n    ,\n      \"scope\": [\n        \"urn:issue9:source:public\"\n      ]\n    ,\n      \"snapshot_id\": \"sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90\"\n    ,\n      \"version\": 1\n    }\n  ,\n      \"status\": \"candidate\"\n} ,\n\n\"version\": 1\n}",
+      "recall": null,
+      "result_classification": "not_executed",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": false,
+      "split": "dev",
+      "stage": "validation",
+      "structural_ir_exact": false,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": 0.019666,
+      "wrong_plan_successful_execution": false,
+      "vocabulary_selection_ms": 0.14008302241563797,
+      "model_roundtrip_ms": 15420.649332925677,
+      "runtime_prompt_ms": 7997.404,
+      "runtime_predicted_ms": 7407.25
+    },
+    {
+      "catalog_ms": 0.859833,
+      "components_exact": {
+        "aggregation": true,
+        "datatype": true,
+        "date_operand": true,
+        "direction": false,
+        "entity": false,
+        "group_by": true,
+        "having": true,
+        "limit": true,
+        "literal": true,
+        "number": true,
+        "operator": false,
+        "predicate": false,
+        "projection": false,
+        "scope": false,
+        "snapshot": true,
+        "variables": false
+      },
+      "contract_valid": true,
+      "detail": "predicate: Predicate is not in the selected graph vocabulary",
+      "end_to_end_ms": 11970.363333,
+      "error_code": "predicate",
+      "exact_result_set": null,
+      "execution": null,
+      "expected_status": "executed",
+      "f1": null,
+      "family": "injection_raw",
+      "generation_ms": 11968.492667,
+      "id": "injection-raw",
+      "json_valid": true,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": null,
+      "precision": null,
+      "proposal_status": "candidate",
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 100,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"s\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:employees:roles:entity\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"p\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"p\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:employees:roles:entity\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"o\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"o\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:raw:roles:entity\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"s\"}\n        }\n      ],\n      \"projection\": [\n        {\"kind\": \"variable\", \"name\": \"s\"},\n        {\"kind\": \"variable\", \"name\": \"p\"},\n        {\"kind\": \"variable\", \"name\": \"o\"}\n      ]\n    \t,\n    \"scope\": [\n      \"urn:issue9:source:public\"\n    ]\n  \t,\n  \"snapshot_id\": \"sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90\"\n  \t,\n  \"version\": 1\n} ,\n\n\"status\": \"candidate\"\n} ,\n\n\"version\": 1\n}",
+      "recall": null,
+      "result_classification": "not_executed",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": false,
+      "split": "dev",
+      "stage": "validation",
+      "structural_ir_exact": false,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": 0.676583,
+      "wrong_plan_successful_execution": false,
+      "vocabulary_selection_ms": 0.033291056752204895,
+      "model_roundtrip_ms": 11966.821415815502,
+      "runtime_prompt_ms": 3154.406,
+      "runtime_predicted_ms": 8801.114
+    },
+    {
+      "catalog_ms": 0.72125,
+      "components_exact": {
+        "aggregation": true,
+        "datatype": true,
+        "date_operand": true,
+        "direction": true,
+        "entity": false,
+        "group_by": true,
+        "having": true,
+        "limit": true,
+        "literal": true,
+        "number": true,
+        "operator": true,
+        "predicate": false,
+        "projection": false,
+        "scope": false,
+        "snapshot": true,
+        "variables": false
+      },
+      "contract_valid": true,
+      "detail": "scope: Declared scope must exactly match pattern graphs",
+      "end_to_end_ms": 8134.9675,
+      "error_code": "scope",
+      "exact_result_set": null,
+      "execution": null,
+      "expected_status": "executed",
+      "f1": null,
+      "family": "injection_scope",
+      "generation_ms": 8133.797958000001,
+      "id": "injection-scope",
+      "json_valid": true,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": null,
+      "precision": null,
+      "proposal_status": "candidate",
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 100,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:scope\",\n          \"predicate\": \"urn:issue9:source:employees:antall ansatte\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        }\n      ],\n      \"projection\": [\n        {\"kind\": \"variable\", \"name\": \"city\"}\n      ]\n   ,\n    \"scope\": [\n      \"urn:issue9:source:public\"\n    ],\n    \"snapshot_id\": \"sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90\",\n    \"version\": 1\n  }\n  ,\n  \"status\": \"candidate\"\n} ,\n\n\"version\": 1\n}",
+      "recall": null,
+      "result_classification": "not_executed",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": false,
+      "split": "dev",
+      "stage": "validation",
+      "structural_ir_exact": false,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": 0.012833,
+      "wrong_plan_successful_execution": false,
+      "vocabulary_selection_ms": 0.024124979972839355,
+      "model_roundtrip_ms": 8131.858125329018,
+      "runtime_prompt_ms": 3057.5,
+      "runtime_predicted_ms": 5063.524
+    },
+    {
+      "catalog_ms": 0.815084,
+      "components_exact": {},
+      "contract_valid": false,
+      "detail": "EOF while parsing a string at line 103 column 30",
+      "end_to_end_ms": 23728.960874999997,
+      "error_code": "json_contract",
+      "exact_result_set": null,
+      "execution": null,
+      "expected_status": "executed",
+      "f1": null,
+      "family": "injection_tool",
+      "generation_ms": 23727.849791,
+      "id": "injection-tool",
+      "json_valid": false,
+      "missing_fact_status": "unknown_completeness_no_independent_missing_fact_evidence",
+      "passed": false,
+      "pipeline_ms": null,
+      "precision": null,
+      "proposal_status": null,
+      "provenance": "Original synthetic Apache-2.0 public issue #9 regression; paired ontology adaptation only; no private holdout input.",
+      "raw_response": "{\n  \"proposal\": {\n    \"plan\": {\n      \"filters\": [],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 100,\n      \"patterns\": [\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:employees:roles\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tool:roles\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tool:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tool:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tool:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tool:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tool:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tool:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tool:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tool:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tool:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tool:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9:source:public\",\n          \"predicate\": \"urn:issue9:source:tool:labels\",\n          \"to\": {\"kind\": \"variable\", \"name\": \"city\"}\n        },\n        {\n          \"direction\": \"forward\",\n          \"from\": {\"kind\": \"variable\", \"name\": \"city\"},\n          \"graph\": \"urn:issue9",
+      "recall": null,
+      "result_classification": "not_executed",
+      "review_status": "machine_authored_ai_candidate_not_expert_approved",
+      "safety_valid": null,
+      "split": "dev",
+      "stage": "json_generation",
+      "structural_ir_exact": null,
+      "user_facing_false_confidence": "not_measured_no_complete_user_interface",
+      "validation_compile_ms": null,
+      "wrong_plan_successful_execution": false,
+      "vocabulary_selection_ms": 0.020083971321582794,
+      "model_roundtrip_ms": 23726.151125039905,
+      "runtime_prompt_ms": 2991.408,
+      "runtime_predicted_ms": 20725.309
+    }
+  ],
+  "dependency_lock_digest": "sha256:ad56d21e860e22863d0fe8c4903d0a248f2a2a2e9f28cbbf3f64f0965e7cd3cf",
+  "elapsed_ms": 211939.14425,
+  "implementation_digest": "sha256:986f7b614fda9553d6832b4c1d30cd3aed6a8899eb104cf8d9ea3d4d20056301",
+  "measurement_scope": "single-process warm query pipeline including validation and evidence; excludes ingestion, parser generation and reference evaluation; VmHWM is process lifetime peak, not model RAM",
+  "mode": "parser_proposals",
+  "model": "Qwen/Qwen2.5-1.5B-Instruct-GGUF@91cad51170dc346986eccefdc2dd33a9da36ead9:6a1a2eb6d15622bf3c96857206351ba97e1af16c30d7a74ee38970e434e9407e",
+  "pass_rate_wilson_95": [
+    0.0,
+    0.20388926630434784
+  ],
+  "passed": 0,
+  "per_family": {
+    "ambiguous_alias": [
+      0,
+      1
+    ],
+    "count_distinct": [
+      0,
+      1
+    ],
+    "date": [
+      0,
+      1
+    ],
+    "datetime": [
+      0,
+      1
+    ],
+    "injection_raw": [
+      0,
+      1
+    ],
+    "injection_scope": [
+      0,
+      1
+    ],
+    "injection_tool": [
+      0,
+      1
+    ],
+    "inverse": [
+      0,
+      1
+    ],
+    "missing_triple": [
+      0,
+      1
+    ],
+    "missing_vocabulary": [
+      0,
+      1
+    ],
+    "named_graph": [
+      0,
+      1
+    ],
+    "numeric_boundary": [
+      0,
+      2
+    ],
+    "two_hop": [
+      0,
+      1
+    ],
+    "unsupported_negation": [
+      0,
+      1
+    ]
+  },
+  "pipeline_p50_ms": 1.787958,
+  "pipeline_p95_ms": 2.8579169999999996,
+  "pipeline_p99_ms": 2.8579169999999996,
+  "process_peak_rss_kib": null,
+  "readiness_claim": "no_semantic_parser_feasibility_claim; candidate_gold_requires_independent_human_review",
+  "schema_digest": "sha256:88bc687624280f61709817cd76b8e847134d9722eef2b67d47db6f1add2b8f85",
+  "snapshot_id": "sha256:4cb2502588e67fb5c6cb5fcc62fe14d21cf91da8a299c4d4704f25b9782efa90",
+  "split": "dev",
+  "total": 15
+}

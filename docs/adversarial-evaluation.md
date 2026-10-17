@@ -103,3 +103,5 @@ prompt canaries, execution scope/snapshot and evidence graph identity. The typed
 Rust parser and compiler, rather than model obedience, enforce executable scope.
 A failed model probe is evidence of an inadequate configuration, not a reason to
 weaken the reference or claim issue #9's semantic robustness is established.
+
+The [first retained frozen-model run](../reports/issue-9-adversarial/README.md) failed all 30 expected-behavior assertions. Its complete proposals, category diagnostics and checksummed evidence remain available; issue #9's actual semantic robustness criteria remain unmet.
