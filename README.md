@@ -98,3 +98,7 @@ The [issue #9 adversarial suite](docs/adversarial-evaluation.md) adds 30 public
 paired-ontology regressions, model-free cross-engine CI checks and an opt-in frozen
 model run with per-category false positives, false abstentions and transfer gaps.
 The [first frozen-model measurement](reports/issue-9-adversarial/README.md) failed all 30 expected-behavior checks; compiler containment does not establish semantic robustness.
+
+The opt-in [compact v2 CPU runner](docs/compact-v2-runner.md) uses the same pinned
+Qwen weights/runtime with Rust-authorized index tables and strict Rust expansion.
+Its controls are not a frozen A/B or feasibility result; normal CI runs no inference.
