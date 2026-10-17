@@ -91,3 +91,4 @@ Code and original fixtures use [Apache-2.0](LICENSE). Retained Wikidata structur
 The [issue #9 adversarial suite](docs/adversarial-evaluation.md) adds 30 public
 paired-ontology regressions, model-free cross-engine CI checks and an opt-in frozen
 model run with per-category false positives, false abstentions and transfer gaps.
+The [first frozen-model measurement](reports/issue-9-adversarial/README.md) failed all 30 expected-behavior checks; compiler containment does not establish semantic robustness.
