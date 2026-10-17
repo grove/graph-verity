@@ -7,12 +7,53 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from grounded_models import (ROOT, Runtime, audit_files, config, evaluate, file_hashes, freeze, prepare, replay, retrieval_context, safe_user,
+from grounded_models import (ROOT, REPORT, Runtime, archive_files, audit_files, config, evaluate, file_hashes, freeze, prepare, replay, retrieval_context, safe_user,
                              selected_context, summarize, verify_freeze)
 from local_parser import dump
 
 
 class GroundedModelTests(unittest.TestCase):
+    def test_retained_cpu_attempts_recompute_and_replay_without_models(self):
+        import contextlib
+        import io
+        from local_parser import sha
+        self.assertEqual(json.loads((REPORT / "checksums.json").read_text()), file_hashes(REPORT))
+        inventory = json.loads((REPORT / "evidence-files.json").read_text())
+        self.assertEqual(sha(REPORT / "evidence.tar.gz"), inventory["archive_sha256"])
+        subprocess.run(["cargo", "build", "--locked", "--offline", "--quiet", "-p", "verity_cli"], cwd=ROOT, check=True)
+        with tempfile.TemporaryDirectory() as directory, contextlib.redirect_stdout(io.StringIO()):
+            folder = Path(directory)
+            for name, data in archive_files(REPORT / "evidence.tar.gz").items():
+                path = folder / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(data)
+            for name, hashes in inventory["directories"].items():
+                self.assertEqual(file_hashes(folder / name), hashes)
+            for name, digest in inventory["provenance"].items():
+                self.assertEqual(sha(folder / "provenance" / name), digest)
+            for model, frozen in [("qwen35", "freeze-v1"), ("gemma4-preflight", "freeze-v1"), ("gemma4-v1b", "freeze-v1b")]:
+                result = summarize(folder / frozen, folder / model)
+                self.assertEqual(result, json.loads((REPORT / f"{model}-metrics.json").read_text()))
+                self.assertEqual(result["decision"], "revise")
+                self.assertFalse(result["promotion_authorized"])
+            packets = [{k: v for k, v in file_hashes(folder / name).items() if k != "freeze.json"}
+                       for name in ["freeze-v1", "freeze-v1b"]]
+            self.assertEqual(packets[0], packets[1])
+            self.assertEqual(len(packets[0]), 330)
+            qwen = json.loads((folder / "qwen35/run.json").read_text())
+            gemma = json.loads((folder / "gemma4-v1b/run.json").read_text())
+            self.assertEqual(qwen["generation_attempts"], 8)
+            self.assertEqual(gemma["generation_attempts"], 1)
+            self.assertTrue(gemma["inference_performed"])
+            replay(config(), folder / "freeze-v1", folder / "qwen35", folder / "replay")
+            partial = folder / "gemma4-v1b/controls/smoke-0/proposal.txt"
+            self.assertEqual(partial.stat().st_size, 69)
+            rejected = subprocess.run([str(ROOT / "target/debug/verity"), "replay", "data/wikidata/snapshot.nq",
+                "nquads", "data/wikidata/policy.json", "data/wikidata/scope.json",
+                str(folder / "partial-replay/question.txt"), str(partial)], cwd=ROOT, capture_output=True, text=True)
+            self.assertNotEqual(rejected.returncode, 0)
+            self.assertIn("EOF while parsing an object", rejected.stderr)
+
     def test_exact_official_models_and_distinct_frozen_configuration(self):
         cfg = config()
         self.assertEqual([c["repo"] for c in cfg["candidates"].values()],
