@@ -1,0 +1,35 @@
+{
+  "version": "nl-ask-demo-v1",
+  "cases": [
+    {
+      "question": "Hvilken hovedstad har Norge?",
+      "language": "nb",
+      "packet_id": "sha256:c6d57e39dd86ebede5e0cb7c3257d88284b1fa97894c3af0e8555af8420c3887",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"start\": 1, \"predicate\": 1, \"graph\": 1, \"direction\": \"forward\", \"output\": \"values\", \"rationale\": \"Synthetic saved draft for confirmation engineering; not live inference.\"}"
+    },
+    {
+      "question": "Which country lists Oslo as its capital?",
+      "language": "en",
+      "packet_id": "sha256:c4d774189f231d380d850c1dfe100bab874f9d096e267b853b5ef7e1de259e5b",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"start\": 1, \"predicate\": 1, \"graph\": 1, \"direction\": \"reverse\", \"output\": \"values\", \"rationale\": \"Synthetic saved draft for confirmation engineering; not live inference.\"}"
+    },
+    {
+      "question": "What is the capital of Norway?",
+      "language": "en",
+      "packet_id": "sha256:c3de764c0b396ac355cb8988739b09ff14bd020c2390151b48e95f1f37b2d905",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"start\": 7, \"predicate\": 2, \"graph\": 1, \"direction\": \"reverse\", \"output\": \"values\", \"rationale\": \"Deliberately WRONG inverse fixture: executable does not mean understood. Cancel it.\"}"
+    },
+    {
+      "question": "Hva er hovedstaden i Norge?",
+      "language": "nb",
+      "packet_id": "sha256:9a9d04dad779cf788d12ee950577867bda629f02effbfca5a6861c03523d871e",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"needs_clarification\", \"rationale\": \"This whole-question BM25 packet lacks P36. No silent rewrite or invented reference.\"}"
+    },
+    {
+      "question": "How many capitals are there?",
+      "language": "en",
+      "packet_id": "sha256:ddbb7fb0dda68fd3f308be0804ed9c549f57347850176e12839f39274b3fda36",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"unsupported\", \"rationale\": \"Counts are outside the one-hop values contract.\"}"
+    }
+  ]
+}

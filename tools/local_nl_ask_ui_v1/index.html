@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Experimental NL Ask</title><link rel="stylesheet" href="/style.css">
+  <script src="/nl-ask-v1.js" defer></script>
+</head>
+<body>
+<main>
+  <p class="badge">Experimental · local · opt-in</p>
+  <h1>Ask a question</h1>
+  <p>A graph answer reports what the selected RDF snapshot explicitly states. It does not prove real-world truth or that your question was understood.</p>
+  <p id="runtime" role="status"></p>
+  <details><summary>Authorized dataset and snapshot</summary><pre id="scope"></pre></details>
+  <label for="language">Question language</label>
+  <select id="language"><option value="en">English</option><option value="nb">Norwegian (Bokmål)</option><option value="nn">Norwegian (Nynorsk)</option><option value="no">Norwegian</option></select>
+  <label for="question">Your original question</label>
+  <textarea id="question" maxlength="4096" rows="3"></textarea>
+  <button id="ask" type="button" disabled>Review interpretation</button>
+  <details id="demo" hidden><summary>Saved demo questions — no live understanding</summary><div id="demo-cases"></div></details>
+  <p id="status" role="status" aria-live="polite"></p>
+  <section id="choose" hidden>
+    <h2>Choose the exact original entity</h2>
+    <p>These are retrieved candidates, not confidence scores. Choose the entity you mean, then request a new Rust preview. A different entity than the saved proposal requires editing/clarification.</p>
+    <p>Untrusted saved model-shaped proposal; its explanation is unverified:</p><pre id="draft"></pre>
+    <label for="start">Original candidate (IRI and graph)</label><select id="start"></select>
+    <button id="preview" type="button">Build independent Rust preview</button>
+    <details><summary>Retrieved packet, original labels and evidence</summary><pre id="packet"></pre></details>
+  </section>
+  <section id="review" hidden>
+    <h2>Review the interpreted meaning</h2>
+    <div class="columns">
+      <article><h3>Your original question</h3><p id="original"></p>
+        <h3>Model-authored explanation · unverified</h3><p id="explanation"></p>
+        <p>Saved-draft demo. No inference occurred. Confirmation records your choice; it does not establish correct interpretation.</p></article>
+      <article><h3>Authoritative Rust interpretation</h3><ul id="rust-summary"></ul>
+        <h3>Entire authoritative Rust preview</h3><pre id="rust-preview"></pre></article>
+    </div>
+    <h3>Source, license and limits</h3><pre id="sources"></pre>
+    <p id="expiry"></p>
+    <button id="approve" type="button" disabled>Approve this exact interpretation and run</button>
+    <button id="edit" type="button">Edit / clarify</button>
+    <button id="cancel" type="button">Cancel</button>
+  </section>
+  <section id="results" hidden><h2>Rust read-only result and original RDF evidence</h2>
+    <p id="result-status"></p><div id="answers"></div>
+    <details><summary>Complete execution, clipping flags and separate proposal/confirmation provenance</summary><pre id="receipt"></pre></details>
+  </section>
+  <details id="expert"><summary>Find expert mode (optional)</summary>
+    <p>Search original RDF vocabulary with BM25. This does not interpret or execute your question.</p>
+    <label for="find-query">Find text or exact IRI</label><input id="find-query">
+    <button id="find" type="button">Find resources</button><pre id="find-results"></pre>
+  </details>
+</main>
+</body>
+</html>
