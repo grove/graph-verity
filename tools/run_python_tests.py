@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Test current code and replay #53/#57 against unchanged source fingerprints."""
 import hashlib
+from contextlib import contextmanager
 import json
 from pathlib import Path
 import subprocess
@@ -11,6 +12,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 PILOT_COMMIT = "f12422a0b106faa84c2f1cd05c8ee99fea14c185"
+VOCABULARY_COMMIT = "6d90bf8df3ce87c286d3ccd67097f817afdf16a3"
 
 
 def main():
@@ -29,16 +31,22 @@ def main():
     return 0
 
 
-def replay_frozen_studies():
+@contextmanager
+def source_export(commit):
     with tempfile.TemporaryDirectory(prefix="verity-frozen-pilot-") as temp:
         directory = Path(temp)
         archive = directory / "source.tar"
         with archive.open("wb") as stream:
-            subprocess.run(["git", "archive", "--format=tar", PILOT_COMMIT], cwd=ROOT, stdout=stream, check=True)
+            subprocess.run(["git", "archive", "--format=tar", commit], cwd=ROOT, stdout=stream, check=True)
         source = directory / "source"
         source.mkdir()
         with tarfile.open(archive) as stream:
             stream.extractall(source, filter="data")
+        yield source, directory
+
+
+def replay_frozen_studies():
+    with source_export(PILOT_COMMIT) as (source, directory):
         frozen = json.loads((ROOT / "studies/pilot-v1/freeze.json").read_bytes())
         # Fail if the historical export differs from the committed original kit.
         assert (source / "studies/pilot-v1/freeze.json").read_bytes() == (ROOT / "studies/pilot-v1/freeze.json").read_bytes()
@@ -62,5 +70,27 @@ def replay_frozen_studies():
                         "--binary", str(source / "target/debug/examples/retrieval_session")], cwd=ROOT, check=True)
 
 
+def replay_question_vocabulary():
+    # #73 packets bind the original source/index identity, including lib.rs.
+    report = Path("reports/issue-73-question-vocabulary")
+    with source_export(VOCABULARY_COMMIT) as (source, _):
+        frozen = json.loads((ROOT / report / "freeze/freeze.json").read_bytes())
+        for name, digest in frozen["input_sha256"].items():
+            assert hashlib.sha256((source / name).read_bytes()).hexdigest() == digest, name
+        for folder in [report, Path("benchmarks/question-vocabulary-v1")]:
+            def hashes(root):
+                return {p.relative_to(root): hashlib.sha256(p.read_bytes()).hexdigest()
+                        for p in root.rglob("*") if p.is_file()}
+            assert hashes(ROOT / folder) == hashes(source / folder), "Changed frozen vocabulary evidence"
+        subprocess.run(["cargo", "build", "--locked", "--offline", "-q", "-p", "verity_cli"], cwd=source, check=True)
+        subprocess.run([sys.executable, "tools/question_vocabulary.py", "verify",
+                        "--binary", str(source / "target/debug/verity")], cwd=source, check=True)
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    if sys.argv[1:] == ["question-vocabulary"]:
+        replay_question_vocabulary()
+    elif not sys.argv[1:]:
+        sys.exit(main())
+    else:
+        sys.exit("usage: run_python_tests.py [question-vocabulary]")

@@ -11,6 +11,7 @@ pub mod execution;
 pub mod find;
 pub mod ir;
 pub mod navigation;
+pub mod nl_ask;
 pub mod parser;
 pub mod vocabulary;
 

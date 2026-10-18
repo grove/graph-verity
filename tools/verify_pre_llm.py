@@ -101,6 +101,9 @@ def main() -> int:
         state["rustc"] = run("rust-version", ["rustc", "-Vv"]).strip()
         run("dependency-fetch", ["cargo", "fetch", "--locked"])
         run("reporting-tests", [sys.executable, "tools/run_python_tests.py"])
+        run("nl-ask-freeze", [sys.executable, "tools/nl_ask_benchmark.py", "verify"])
+        run("nl-ask-reference", [sys.executable, "tools/nl_ask_benchmark.py", "baseline",
+                                 "--split", "development"])
         run("retrieval-freeze", [sys.executable, "tools/retrieval.py", "verify"])
         run("issue9-forensics", [sys.executable, "tools/issue9_forensics.py", "verify",
                                  "--out", str(OUT / "issue9-forensics.json")])
@@ -108,13 +111,14 @@ def main() -> int:
         run("clippy", ["cargo", "clippy", "--workspace", "--all-targets", "--locked",
                        "--offline", "--", "-D", "warnings"])
         run("rust-tests", ["cargo", "test", "--workspace", "--locked", "--offline"])
-        run("question-vocabulary-replay", [sys.executable, "tools/question_vocabulary.py", "verify",
-                                           "--binary", "target/debug/verity"])
+        run("question-vocabulary-replay", [sys.executable, "tools/run_python_tests.py",
+                                           "question-vocabulary"])
         run("hybrid-source-scope-canary", [sys.executable, "tools/hybrid_retrieval.py", "scope-canary",
                                           "--binary", "target/debug/verity"])
         run("hybrid-native-lexical-replay", [sys.executable, "tools/hybrid_retrieval.py", "verify-lexical",
                                             "--binary", "target/debug/verity", "--out",
                                             "reports/issue-50-real-rdf-hybrid/run"])
+        run("selective-current-lexical", [sys.executable, "tools/frozen_pilot.py", "selective-current"])
         cli("smoke", "smoke", "tests/fixtures/smoke.trig", "trig")
         run("dataset-verify", [sys.executable, "tools/dataset.py", "verify"])
         rebuilt = OUT / "rebuilt.nq"
