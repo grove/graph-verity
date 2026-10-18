@@ -34,3 +34,13 @@ CPU model separately. Normal CI invokes no inference and downloads no model weig
 CI success verifies only its model-free tests, not parser feasibility on deployment hardware.
 
 For issue #8, `tools/phase0.py report|replay|verify|assess|compare` provides the model-free evaluation workflow. `verify_pre_llm.py` runs its regressions, report generation and Rust replay in ordinary CI. See [the protocol, approval/freeze boundaries and isolated operator command](phase-0-evaluation.md).
+
+The complete model-free Python suite runs with
+`.venv/bin/python tools/frozen_pilot.py test-all`.
+This runs current tests and replays the original pilot-v1.1 tests against exact
+commit `f12422a0b106faa84c2f1cd05c8ee99fea14c185` in a temporary source export.
+The historical pilot pins every Rust source file, so it must not be re-frozen
+when new Rust modules are added. Its committed evidence, source hashes, tasks
+and judgments stay unchanged. `verify_pre_llm.py` uses this runner and the same
+isolation for pilot verification/rehearsal. Local HTTP/browser tests need loopback
+socket access.
