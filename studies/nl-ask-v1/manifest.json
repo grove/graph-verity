@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "contract": "nl-ask-draft-v1",
+  "recipes": [
+    {
+      "split": "development",
+      "wikidata": "Q279724",
+      "geonames": [
+        "605155",
+        "603570"
+      ],
+      "gemet": "51",
+      "graphs": [
+        "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "urn:graph-verity:nl-ask-v1:development:geonames",
+        "urn:graph-verity:nl-ask-v1:development:gemet"
+      ],
+      "focal_resources": [
+        "http://www.wikidata.org/entity/Q279724",
+        "https://sws.geonames.org/605155/",
+        "https://sws.geonames.org/603570/",
+        "http://www.eionet.europa.eu/gemet/concept/51"
+      ]
+    },
+    {
+      "split": "evaluation",
+      "wikidata": "Q578326",
+      "geonames": [
+        "630752",
+        "634963"
+      ],
+      "gemet": "832",
+      "graphs": [
+        "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+        "urn:graph-verity:nl-ask-v1:evaluation:geonames",
+        "urn:graph-verity:nl-ask-v1:evaluation:gemet"
+      ],
+      "focal_resources": [
+        "http://www.wikidata.org/entity/Q578326",
+        "https://sws.geonames.org/630752/",
+        "https://sws.geonames.org/634963/",
+        "http://www.eionet.europa.eu/gemet/concept/832"
+      ]
+    }
+  ],
+  "graph_origin": "Importer-assigned named graphs, not upstream named graphs; no entailment.",
+  "source_inventory": [
+    {
+      "file": "studies/nl-ask-v1/sources/Q279724.ttl",
+      "url": "https://www.wikidata.org/wiki/Special:EntityData/Q279724.ttl",
+      "revision_url": "https://www.wikidata.org/wiki/Special:EntityData/Q279724.ttl?revision=2520553171",
+      "revision": 2520553171,
+      "retrieved_at_utc": "2026-10-18T08:16:08.662979+00:00",
+      "license": "CC0-1.0",
+      "license_url": "https://www.wikidata.org/wiki/Wikidata:Licensing"
+    },
+    {
+      "file": "studies/nl-ask-v1/sources/Q578326.ttl",
+      "url": "https://www.wikidata.org/wiki/Special:EntityData/Q578326.ttl",
+      "revision_url": "https://www.wikidata.org/wiki/Special:EntityData/Q578326.ttl?revision=2535539461",
+      "revision": 2535539461,
+      "retrieved_at_utc": "2026-10-18T08:16:10.014443+00:00",
+      "license": "CC0-1.0",
+      "license_url": "https://www.wikidata.org/wiki/Wikidata:Licensing"
+    }
+  ],
+  "reused_archives": [
+    "data/worldcities-transfer/source.csv",
+    "data/worldcities-transfer/manifest.json",
+    "data/gemet/source/gemet-4.2.3.rdf.gz",
+    "data/gemet/manifest.json"
+  ],
+  "source_mapping": "Wikidata original selected direct claims and labels; GeoNames original CSV rows through existing Schema.org mapper; GEMET original concept fields/relations. Overlay triples are separately serialized synthetic adversarial annotations, never upstream claims.",
+  "gold_provenance": "AI-authored questions and interpretation references; full bindings/witnesses computed model-free from frozen source triples. Deterministic source audit is not independent semantic review.",
+  "split_rule": "Separate university, city/region and focal GEMET concept resource lineages; all paraphrases/translations of an instantiated intent stay in its split. Shared task families, source archives and ontology vocabulary are deliberate; not independent expert or unseen-domain evaluation.",
+  "historical_exposure": "Phase 0, #48 and #58 tasks remain exposed regressions. New question IDs and focal resources do not relabel those cases. Archived corpora and some terminal/schema IRIs were previously public. GEMET focal concepts were outside the old 2200-concept extraction. Public evaluation is not a sealed holdout.",
+  "sealed_holdout": "External 60-case Ask holdout excluded; no read, copy, edit, commitment change or scoring.",
+  "independent_reviewer_status": "pending",
+  "independent_human_reviews": 0
+}

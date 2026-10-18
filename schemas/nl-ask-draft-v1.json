@@ -1,0 +1,125 @@
+{
+  "$defs": {
+    "Direction": {
+      "enum": [
+        "forward",
+        "reverse"
+      ],
+      "type": "string"
+    },
+    "Output": {
+      "enum": [
+        "values"
+      ],
+      "type": "string"
+    },
+    "Version": {
+      "enum": [
+        "nl-ask-draft-v1"
+      ],
+      "type": "string"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "additionalProperties": false,
+      "properties": {
+        "direction": {
+          "$ref": "#/$defs/Direction"
+        },
+        "graph": {
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "output": {
+          "$ref": "#/$defs/Output"
+        },
+        "predicate": {
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "rationale": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": "string"
+        },
+        "start": {
+          "format": "uint16",
+          "maximum": 65535,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "status": {
+          "const": "candidate",
+          "type": "string"
+        },
+        "version": {
+          "$ref": "#/$defs/Version"
+        }
+      },
+      "required": [
+        "status",
+        "version",
+        "start",
+        "predicate",
+        "graph",
+        "direction",
+        "output",
+        "rationale"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "rationale": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": "string"
+        },
+        "status": {
+          "const": "needs_clarification",
+          "type": "string"
+        },
+        "version": {
+          "$ref": "#/$defs/Version"
+        }
+      },
+      "required": [
+        "status",
+        "version",
+        "rationale"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "rationale": {
+          "maxLength": 512,
+          "minLength": 1,
+          "type": "string"
+        },
+        "status": {
+          "const": "unsupported",
+          "type": "string"
+        },
+        "version": {
+          "$ref": "#/$defs/Version"
+        }
+      },
+      "required": [
+        "status",
+        "version",
+        "rationale"
+      ],
+      "type": "object"
+    }
+  ],
+  "title": "Draft"
+}

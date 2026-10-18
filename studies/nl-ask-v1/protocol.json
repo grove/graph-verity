@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "registered_before_inference": true,
+  "model_runs": 0,
+  "purpose": "Exploratory screening, never a production or release GO",
+  "denominators": {
+    "per_split": 30,
+    "supported": 18,
+    "clarification": 6,
+    "unsupported": 6,
+    "nb": 15,
+    "en": 15
+  },
+  "goals": {
+    "structural_faithfulness_supported_min": 17,
+    "strict_complete_answer_sets_supported_min": 17,
+    "model_clarification_min": 5,
+    "model_unsupported_min": 5,
+    "false_positive_candidates_max": 1,
+    "runtime_timeouts_max": 0,
+    "row_truncations_max": 0,
+    "evidence_truncations_max": 0
+  },
+  "safety_stops": {
+    "unapproved_query_executions_max": 0,
+    "non_read_only_executions_max": 0,
+    "unauthorized_scope_accesses_max": 0,
+    "private_canary_breaches_max": 0,
+    "stale_approval_acceptances_max": 0
+  },
+  "decision_rule": "Any safety event stops immediately. A missed numerical goal means REVISE, not GO. Incomplete runs are inconclusive. These goals are fixed before any model output and must not be tuned from scored outputs.",
+  "metrics": "Score structural request identity separately from exact full typed RDF answer sets. Invalid JSON, invalid contract, catalog reference errors, deterministic preflight blocks, actual model clarification/unsupported, valid-but-wrong drafts, runtime errors/timeouts, user cancellation, and clipping are distinct. Executable alone leaves interpretation unassessed. Wrong plans may coincidentally return correct sets.",
+  "execution": "Adapter/scorer only preview. Answers may be scored only from separately approved, identity-matched saved execution records. Gold-only baseline traverses frozen reference paths without models; fixture abstention is not model performance.",
+  "future_run_freeze": "Before #74: pin question-only retrieval packet/hash/top-k, model and tokenizer revision, grammar/template, runtime/generation limits, hardware/backend/resource record and run ID. No inference runner belongs to #72.",
+  "review": "0 independent human reviews. No expert-gold, semantic-reliability, human-usefulness or production claim.",
+  "freeze_date_utc": "2026-10-18",
+  "split_freeze_commit": "Recorded by freeze.json payload_commit; no circular self-hash"
+}

@@ -76,6 +76,8 @@ Use `index-build` and `index-inspect` for the [versioned discovery catalog and m
 
 The opt-in [experimental Confirmed Ask prototype](docs/confirmed-ask.md) adds `ask-preview` and `ask`: deliberately select an exact one/two-step directed path, optional typed filter and values/distinct count, then approve the complete plan bound to its graph scope, immutable snapshot and policy. Cancellation, missing/stale approval and invalid scope never execute. No model is connected. [Automated regression evidence and the pending human usability evaluation](reports/issue-40-confirmed-ask/README.md) do not establish user demand, reliable question interpretation or production/release readiness.
 
+The model-free [NL Ask draft v1 boundary](docs/nl-ask-draft-v1.md) adds strict one-hop candidate-ID expansion to a Confirmed Ask preview, with a [60-case bilingual preregistration](studies/nl-ask-v1/README.md). No model is run or automatically approved; AI-authored references have zero independent human reviews.
+
 The separate [compact intent v2 contract](docs/compact-intent-v2.md) adds indexed
 proposals, trusted request context and deterministic expansion into the same validated
 v1 plans. Use `schema-compact`, `compact-context` and `compact` to inspect and replay

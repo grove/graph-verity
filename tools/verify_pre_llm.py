@@ -102,6 +102,9 @@ def main() -> int:
         run("dependency-fetch", ["cargo", "fetch", "--locked"])
         run("reporting-tests", [sys.executable, "-m", "unittest", "discover",
                                 "-s", "tools", "-p", "test_*.py", "-v"])
+        run("nl-ask-freeze", [sys.executable, "tools/nl_ask_benchmark.py", "verify"])
+        run("nl-ask-reference", [sys.executable, "tools/nl_ask_benchmark.py", "baseline",
+                                 "--split", "development"])
         run("pilot-study-freeze", [sys.executable, "tools/pilot_study.py", "verify"])
         pilot_out = Path(tempfile.mkdtemp(prefix="pilot-rehearsal-", dir=OUT))
         run("pilot-study-rehearsal", [sys.executable, "tools/pilot_study.py", "rehearse",
