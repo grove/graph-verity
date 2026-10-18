@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 COMMIT = 'f12422a0b106faa84c2f1cd05c8ee99fea14c185'
 FREEZE = 'studies/pilot-v1/freeze.json'
 FREEZE_SHA256 = '5398f886ec1812ac23a427134b9008ca092c559669991fdfa0b919f8d6c38353'
+EXTRA_FILES = {'data/wikidata/scope.json': '4815891ffd7325fbb7be1ac24b835160164c3b418c8e1647e59cb23572c82aee'}
 
 
 @contextmanager
@@ -26,7 +27,7 @@ def source_snapshot():
         raise ValueError('Historical pilot freeze identity mismatch')
     with tempfile.TemporaryDirectory(prefix='verity-frozen-pilot-') as temp:
         source = Path(temp)
-        for name, expected in {**json.loads(raw)['files'], FREEZE: FREEZE_SHA256}.items():
+        for name, expected in {**json.loads(raw)['files'], **EXTRA_FILES, FREEZE: FREEZE_SHA256}.items():
             path = source / name
             data = blob(name)
             if sha256(data).hexdigest() != expected:

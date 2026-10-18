@@ -13,6 +13,7 @@ class FrozenPilotTests(unittest.TestCase):
             self.assertEqual(sha256(original).hexdigest(), pilot.FREEZE_SHA256)
             self.assertFalse((source / 'crates/verity_core/src/nl_ask.rs').exists())
             self.assertTrue((source / 'tools/test_pilot_study.py').is_file())
+            self.assertTrue((source / 'data/wikidata/scope.json').is_file())
         self.assertEqual((pilot.ROOT / pilot.FREEZE).read_bytes(), original)
 
 
