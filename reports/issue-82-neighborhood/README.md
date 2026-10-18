@@ -150,6 +150,16 @@ public test data. No extra source or gold enters the retrieval request.
 
 ## Validation and reproduction
 
+Historical source-fingerprint verifiers for #72/#74/#76 run against exact Git
+export `bba81fc` with original sources, strict hashes and original reports.
+The harness compares the current frozen evidence directories with that export
+before replay. Current-binary #72/#74 schema/contract/scorer tests still run;
+only the two checks that require historical source hashes and the #76 historical
+recalculation move to the export. The existing #73/pilot export checks remain.
+No old verifier, freeze or report is weakened or resealed. This was required
+because adding the separate CLI/module necessarily changes current Rust sources.
+
+
 The new Rust core/CLI tests cover real development-source forward/reverse
 nonlexical recovery, exact ordering, graph-private canaries, graph-local roles,
 snapshot/policy/index/source drift, stale IDs, whole-packet replay/tampering,

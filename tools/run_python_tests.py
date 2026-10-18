@@ -3,6 +3,7 @@
 import hashlib
 from contextlib import contextmanager
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -12,7 +13,21 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 PILOT_COMMIT = "f12422a0b106faa84c2f1cd05c8ee99fea14c185"
+NL_ASK_COMMIT = "bba81fc68c3b7f6a63aa3c104baf3ea29d49e754"
 VOCABULARY_COMMIT = "6d90bf8df3ce87c286d3ccd67097f817afdf16a3"
+
+
+def current_tests(suite):
+    # Only source-fingerprint checks move to the original export. Current contract tests remain.
+    frozen_only = {
+        "test_nl_ask_benchmark.NarrowAskTests.test_frozen_sources_splits_and_manifest",
+        "test_one_hop_trial.OneHopTrialTests.test_committed_freeze_and_decision_replay_without_models",
+    }
+    for test in suite:
+        if isinstance(test, unittest.TestSuite):
+            yield from current_tests(test)
+        elif test.id() not in frozen_only:
+            yield test
 
 
 def main():
@@ -22,8 +37,8 @@ def main():
     for path in sorted((ROOT / "tools").glob("test_*.py")):
         # The original pilot hashes every Rust file; current-code coverage lives in
         # the other suites. Never refresh its source fingerprints to accept new code.
-        if path.name != "test_pilot_study.py":
-            suite.addTests(loader.loadTestsFromName(path.stem))
+        if path.name not in {"test_pilot_study.py", "test_nl_ask_evaluation.py"}:
+            suite.addTests(current_tests(loader.loadTestsFromName(path.stem)))
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     if not result.wasSuccessful():
         return 1
@@ -87,10 +102,31 @@ def replay_question_vocabulary():
                         "--binary", str(source / "target/debug/verity")], cwd=source, check=True)
 
 
+def replay_nl_ask_history():
+    # Preserve #72–#76 source hashes and evidence; never reseal them for current code.
+    with source_export(NL_ASK_COMMIT) as (source, _):
+        for name in ["studies/nl-ask-v1", "reports/issue-74-one-hop-trial", "reports/issue-76-nl-ask-evaluation"]:
+            def hashes(root):
+                return {p.relative_to(root): hashlib.sha256(p.read_bytes()).hexdigest()
+                        for p in root.rglob("*") if p.is_file()}
+            assert hashes(ROOT / name) == hashes(source / name), "Changed frozen NL Ask evidence: " + name
+        # The original #72 verifier inspects Git objects. Exported files stay separate,
+        # while read-only object inspection uses the real repository's immutable history.
+        env = dict(os.environ, GIT_DIR=str(ROOT / ".git"), GIT_WORK_TREE=str(source))
+        subprocess.run(["cargo", "build", "--locked", "--offline", "-q", "-p", "verity_cli"], cwd=source, env=env, check=True)
+        for name in ["test_nl_ask_benchmark.py", "test_one_hop_trial.py", "test_nl_ask_evaluation.py"]:
+            subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", "tools", "-p", name, "-v"],
+                           cwd=source, env=env, check=True)
+        for args in [["verify"], ["baseline", "--split", "development"]]:
+            subprocess.run([sys.executable, "tools/nl_ask_benchmark.py", *args], cwd=source, env=env, check=True)
+
+
 if __name__ == "__main__":
     if sys.argv[1:] == ["question-vocabulary"]:
         replay_question_vocabulary()
+    elif sys.argv[1:] == ["nl-ask-history"]:
+        replay_nl_ask_history()
     elif not sys.argv[1:]:
         sys.exit(main())
     else:
-        sys.exit("usage: run_python_tests.py [question-vocabulary]")
+        sys.exit("usage: run_python_tests.py [question-vocabulary|nl-ask-history]")
