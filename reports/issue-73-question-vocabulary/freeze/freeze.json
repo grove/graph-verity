@@ -1,0 +1,109 @@
+{
+  "protocol": {
+    "version": "question-vocabulary-study-v1",
+    "frozen_date": "2026-10-18",
+    "retrieval": "whole-original-question-per-role-BM25-only",
+    "questions": "benchmarks/question-vocabulary-v1/questions.json",
+    "references": "benchmarks/question-vocabulary-v1/references.json",
+    "budget": {
+      "per_role_top_k": 20,
+      "max_packet_bytes": 1048576,
+      "texts_per_candidate": 8,
+      "max_text_bytes": 2048,
+      "evidence_per_page": 3,
+      "max_source_bytes": 4096
+    },
+    "corpora": {
+      "wikidata-dev": {
+        "rdf": "data/wikidata/snapshot.nq",
+        "policy": "data/wikidata/policy.json",
+        "scope": "benchmarks/question-vocabulary-v1/wikidata-dev-scope.json",
+        "config": "data/wikidata/discovery.json"
+      },
+      "wikidata-transfer": {
+        "rdf": "data/wikidata/snapshot.nq",
+        "policy": "data/wikidata/policy.json",
+        "scope": "benchmarks/question-vocabulary-v1/wikidata-transfer-scope.json",
+        "config": "data/wikidata/discovery.json"
+      },
+      "worldcities-no": {
+        "rdf": "data/worldcities-transfer/snapshot.nq",
+        "policy": "data/worldcities-transfer/policy.json",
+        "scope": "benchmarks/question-vocabulary-v1/worldcities-no-scope.json",
+        "config": "data/worldcities-transfer/discovery.json"
+      },
+      "worldcities-fi": {
+        "rdf": "data/worldcities-transfer/snapshot.nq",
+        "policy": "data/worldcities-transfer/policy.json",
+        "scope": "benchmarks/question-vocabulary-v1/worldcities-fi-scope.json",
+        "config": "data/worldcities-transfer/discovery.json"
+      },
+      "gemet": {
+        "rdf": "data/gemet/snapshot.nq",
+        "policy": "data/gemet/policy.json",
+        "scope": "benchmarks/question-vocabulary-v1/gemet-scope.json",
+        "config": "data/gemet/discovery.json"
+      }
+    },
+    "language_selection": "Existing discovery en/no/nb/nn families and untagged; language recorded, no translation or preference",
+    "tie_order": "exact first, BM25 descending, original IRI then graph",
+    "selection": "New AI-authored grounding regressions; public source/intent lineages exposed; #72 frozen cases unavailable",
+    "inference_performed": false,
+    "holdout_accessed": false
+  },
+  "input_sha256": {
+    "benchmarks/question-vocabulary-v1/protocol.json": "d567839dc3d67c9140472c306a9713b715a1a216ba46488388da3d601c6405f7",
+    "benchmarks/question-vocabulary-v1/questions.json": "8119e1f8b02f0fcf37afad113d0c4863992f294fdc2d6e4f39cce5925d526562",
+    "benchmarks/question-vocabulary-v1/references.json": "66c7ff706ba0fafde5301bdc549fd28354556f77aa39d5919dacfb00e0781703",
+    "tools/question_vocabulary.py": "a9b559a32d960183ab9646ec5e2ebb4604906bf192878f378f5d83a5a6381cb0",
+    "schemas/question-vocabulary-packet-v1.json": "83333e214fb92fa5cb1b795734100e5668f36c2290424e548a9fc3ff5d03f2b2",
+    "Cargo.lock": "b86b68fc472e2178f4815cfc86a3477713bd3ad74c6872bd70dfbfcbff3cf5d0",
+    "rust-toolchain.toml": "f715f440167e20fd8ea9afa0498c3d1ab80174cfcb8cbc895f106a34d907a1e1",
+    "crates/verity_cli/examples/retrieval_session.rs": "71a27de9d8de7020aa60db794414e26bb41c40a74d32fdf53913fb0740e304a3",
+    "crates/verity_cli/src/main.rs": "15e26a8f588280a2bae2c64195aa9b640b074f1d9c4353f9e12816140b410774",
+    "crates/verity_cli/tests/ask.rs": "797adc09e42425e5d4c722e044f56c204260f9e1e442c01c7f297645b64a6e6b",
+    "crates/verity_cli/tests/compact.rs": "331091090e90308def92d93a16ac8be1bcab2b6a8cbccdc57519f3f88c1c4498",
+    "crates/verity_cli/tests/discovery.rs": "855957b0e71087044b93a51c8e5b1e8b1df84066138235bf227b0039e038b1ca",
+    "crates/verity_cli/tests/find.rs": "3809db1cfad320e54d8567f3a18ef0373fdc6401d591bf0e13e39a0a3098ba51",
+    "crates/verity_cli/tests/navigation.rs": "760d065c3377efa0146a1c602b626b91f96c29efca3db9ebc818a50863e65cf3",
+    "crates/verity_cli/tests/vocabulary.rs": "0e5f6a7768adbeb0e6f5b0aaa44c92c2d522742f5e3c2702c69262938bf3578d",
+    "crates/verity_core/src/ask.rs": "0a963469a5dc679bad4097e5cee211a7e51fbbcf800f9d336a537d3d7d1287e0",
+    "crates/verity_core/src/catalog.rs": "b2d0a974d3481853d1d86b0d066e8c117a83bcc429c815c72ef7e9d9c58f17da",
+    "crates/verity_core/src/compact.rs": "84512bd602ff1b91b3d7f194c234588a83273ded8ce6da79657c498a3287fdbe",
+    "crates/verity_core/src/compiler.rs": "3155caad912653f997f442d3c74e0e8bc32f765ec2bb2c1413a8b21ded8d74e1",
+    "crates/verity_core/src/discovery.rs": "1ce2267569aa8a8f61c93c5ee9f4e6b46d5a26cc60fa4837040575238c3cf96e",
+    "crates/verity_core/src/evaluation.rs": "27e4775d2cd0721dd000667bf775dede31465732eea256dbf9af7b6536913f31",
+    "crates/verity_core/src/execution.rs": "ce5c4688016c6e51843b332f7b8e8e09a461c075ed31ee94124b267ca17dce1e",
+    "crates/verity_core/src/find.rs": "913c67920e8dbde44369e435413658ff2aa7c64f00f0cb20be22f9a5a25f1649",
+    "crates/verity_core/src/ir.rs": "4f050b3b920509e1409b8d1dd2bfd7df8c5bb650f29c30f6fc2da0ca2f547c11",
+    "crates/verity_core/src/lib.rs": "04beb1b25e7734b2a93aaf35701a4c9089f5b3ea9188374f483c8c6cbce1c514",
+    "crates/verity_core/src/navigation.rs": "c7a0bcdd0f11c3d85da7fd630ef6064218b9cf57341c65ec46a9ae9e481b16a5",
+    "crates/verity_core/src/parser.rs": "6bfbc1bdba1268039990ab62d2ab6970b404ba1f428b010db39dbaeedadafd13",
+    "crates/verity_core/src/vocabulary.rs": "2ea1bbf4eabbc91f60e6b6810e2fb7bf91d6f860084fd3bf8ec3a4a81f91ff72",
+    "crates/verity_core/tests/ask.rs": "011a93fee598e8522cfed7619785f82e6bb09cd884d535bd9bb3fd853517b093",
+    "crates/verity_core/tests/compact.rs": "c11f9bf03ee685656720ec3ef62b04a44debfdba587b01b9cdb3441761aa71df",
+    "crates/verity_core/tests/core.rs": "1741390d5be289c622f41013978511a95898f980e423c5c1cd9c0e94b1e0358b",
+    "crates/verity_core/tests/discovery.rs": "aa2d5717b91bdea2cfce69a6f322626b72aa102931efc2a658330920b58bd493",
+    "crates/verity_core/tests/find.rs": "e9cbf4b60c3f024beb8aa03802e19cb4771e179627e723e78f9ccc53e1403401",
+    "crates/verity_core/tests/navigation.rs": "4dcc58c047164fcf18fa32f79176e80d1e0e01d2b69b6d00768fe1e4679aac5b",
+    "crates/verity_core/tests/vocabulary.rs": "33d424d79d8d5c3ad5c44653fce8e88cc34116d3f5498f06b2178ab440806836",
+    "data/wikidata/snapshot.nq": "9e75055676e095fcc387f1fd93146c37b47a448b8e08c5a806ab9be4016ccc6f",
+    "data/wikidata/policy.json": "90afa6af857c2e046bc6f71ebf7354a1a0f9c4583a38001d8176af46a05df9de",
+    "benchmarks/question-vocabulary-v1/wikidata-dev-scope.json": "4815891ffd7325fbb7be1ac24b835160164c3b418c8e1647e59cb23572c82aee",
+    "data/wikidata/discovery.json": "a4e7f83a0ae87fac1fafe786896a8950844afe3f53f1ee7f324b24d3dda64368",
+    "benchmarks/question-vocabulary-v1/wikidata-transfer-scope.json": "f4256bfb14ed5399de68ab91a743a2422d9d57aeba7291df2e7291cf1ae0315e",
+    "data/worldcities-transfer/snapshot.nq": "2ee4af13fb312c006c126f9239bdbb25b2e4be10b40bff3adc5d67076f068f13",
+    "data/worldcities-transfer/policy.json": "971ffb18bc723903daba6defc96723c8fdf212cafb6ba79692a66a306ba66f51",
+    "benchmarks/question-vocabulary-v1/worldcities-no-scope.json": "644f6dfc8f384379a37272eedf815bdcbe445781b672fd244fb19ce3e2bfc832",
+    "data/worldcities-transfer/discovery.json": "fca0e1c25759a5414817604969e067617a9ecce1fd4b94a2cd72d008172a77df",
+    "benchmarks/question-vocabulary-v1/worldcities-fi-scope.json": "8bbefd46a326f7190a835302dbf75c823d76d7d7d17c06fe740a48120c4b72b8",
+    "data/gemet/snapshot.nq": "0d3f1c7e412940ffbedd83c703ab6a62e6be619fa0c2ca2cd9523a1806c3eaed",
+    "data/gemet/policy.json": "54870f5f76d1a8075689986ab4b272c52896541b394c96f22081f75293804a0d",
+    "benchmarks/question-vocabulary-v1/gemet-scope.json": "58707821d63dd6ffdc94c995ee72fc17044d577ad775bad0303f9856a125f7d6",
+    "data/gemet/discovery.json": "050736e69ea1164495ef9b8adeee59ffba7fec665488f883e16b0166edd9da8d"
+  },
+  "source_commit": "aa7df0077197108669c49a229c5b385599bdba3f",
+  "inference_performed": false,
+  "holdout_accessed": false,
+  "ordering": "inputs_and_selection_frozen_before_packets; all_packets_saved_before_reference_scoring"
+}

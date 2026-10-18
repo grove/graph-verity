@@ -62,7 +62,7 @@ pub enum PlanOrigin {
     LocalModel,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, JsonSchema)]
 pub struct Statement {
     pub subject: RdfTerm,
     pub predicate: RdfTerm,

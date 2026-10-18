@@ -1,0 +1,315 @@
+{
+  "version": "question-vocabulary-references-v1",
+  "reviewer_status": "AI-authored source-audited references; independent human reviews: 0; not #72 gold",
+  "cases": {
+    "capital-inflected-no": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/entity/Q20"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "capital-en": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/entity/Q20"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "capital-reverse-no": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/entity/Q585"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "incoming"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "capital-reverse-en": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/entity/Q585"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "incoming"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "sweden-capital-no": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:wikidata:transfer",
+          "iri": "http://www.wikidata.org/entity/Q34"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:wikidata:transfer",
+          "iri": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "sweden-capital-en": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:wikidata:transfer",
+          "iri": "http://www.wikidata.org/entity/Q34"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:wikidata:transfer",
+          "iri": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "stockholm-reverse-en": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:wikidata:transfer",
+          "iri": "http://www.wikidata.org/entity/Q1754"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:wikidata:transfer",
+          "iri": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "incoming"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "oslo-country-no": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/entity/Q585"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/prop/direct/P17",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "oslo-country-en": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/entity/Q585"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/prop/direct/P17",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "norway-cities-en": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/entity/Q20"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:wikidata:development",
+          "iri": "http://www.wikidata.org/prop/direct/P17",
+          "direction": "incoming"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "geonames-oslo-no": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:worldcities:transfer:NO",
+          "iri": "https://sws.geonames.org/3143244/"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:worldcities:transfer:NO",
+          "iri": "https://schema.org/containedInPlace",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "geonames-bergen-en": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:worldcities:transfer:NO",
+          "iri": "https://sws.geonames.org/3161732/"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:worldcities:transfer:NO",
+          "iri": "https://schema.org/containedInPlace",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "geonames-oslo-class-en": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:worldcities:transfer:NO",
+          "iri": "https://sws.geonames.org/3143244/"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:worldcities:transfer:NO",
+          "iri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "direction": "outgoing"
+        },
+        {
+          "role": "class",
+          "graph": "urn:graph-verity:worldcities:transfer:NO",
+          "iri": "https://schema.org/City"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "geonames-east-helsinki-en": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:worldcities:transfer:FI",
+          "iri": "https://sws.geonames.org/12747032/"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:worldcities:transfer:FI",
+          "iri": "https://schema.org/containedInPlace",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "gemet-animal-life-en": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10003"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.w3.org/2004/02/skos/core#broader",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "gemet-animal-life-no": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10003"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.w3.org/2004/02/skos/core#broader",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "gemet-noise-en": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10017"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.w3.org/2004/02/skos/core#related",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "gemet-noise-no": {
+      "required": [
+        {
+          "role": "entity",
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.eionet.europa.eu/gemet/concept/10017"
+        },
+        {
+          "role": "predicate",
+          "graph": "urn:graph-verity:gemet:4.2.3",
+          "iri": "http://www.w3.org/2004/02/skos/core#related",
+          "direction": "outgoing"
+        }
+      ],
+      "expected_no_match": false
+    },
+    "lexical-no-match-en": {
+      "required": [],
+      "expected_no_match": true
+    },
+    "unknown-resource-en": {
+      "required": [],
+      "expected_no_match": true
+    },
+    "open-world-negative-no": {
+      "required": [],
+      "expected_no_match": false
+    },
+    "count-unsupported-en": {
+      "required": [],
+      "expected_no_match": false
+    }
+  }
+}

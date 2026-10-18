@@ -4,6 +4,7 @@ use crate::{
     reject, snapshot_id, Error, Result, Snapshot,
 };
 use oxigraph::model::{NamedOrBlankNode, Term};
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use std::collections::{BTreeMap, BTreeSet};
 
@@ -21,7 +22,7 @@ pub struct DiscoveryConfig {
     pub graphs: BTreeMap<String, Source>,
 }
 
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize, JsonSchema)]
 #[serde(deny_unknown_fields)]
 pub struct Source {
     pub source: String,
@@ -89,7 +90,7 @@ pub struct Document {
     pub token_count: u32,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Serialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum Field {
     Label,
@@ -98,7 +99,7 @@ pub enum Field {
     Description,
 }
 
-#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Serialize)]
+#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, JsonSchema)]
 pub struct ObservedText {
     pub field: Field,
     pub predicate: String,
@@ -109,7 +110,7 @@ pub struct ObservedText {
     pub via: Option<PredicateMapping>,
 }
 
-#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Serialize)]
+#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Serialize, JsonSchema)]
 pub struct PredicateMapping {
     pub source_iri: String,
     pub predicate: String,

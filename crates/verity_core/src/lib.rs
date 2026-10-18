@@ -12,6 +12,7 @@ pub mod find;
 pub mod ir;
 pub mod navigation;
 pub mod parser;
+pub mod vocabulary;
 
 use oxigraph::io::RdfFormat;
 use oxigraph::sparql::{QueryResults, SparqlEvaluator};
