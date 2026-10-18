@@ -55,7 +55,8 @@ fn neighborhood_cli_replays_bounded_packets_and_rejects_unknown_fields_and_stale
     assert_eq!(
         serde_json::from_slice::<Value>(&schema.stdout).unwrap(),
         serde_json::from_slice::<Value>(
-            &std::fs::read(root.join("schemas/question-vocabulary-packet-v2-neighborhood.json")).unwrap()
+            &std::fs::read(root.join("schemas/question-vocabulary-packet-v2-neighborhood.json"))
+                .unwrap()
         )
         .unwrap()
     );
