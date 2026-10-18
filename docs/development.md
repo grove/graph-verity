@@ -42,5 +42,12 @@ commit `f12422a0b106faa84c2f1cd05c8ee99fea14c185` in a temporary source export.
 The historical pilot pins every Rust source file, so it must not be re-frozen
 when new Rust modules are added. Its committed evidence, source hashes, tasks
 and judgments stay unchanged. `verify_pre_llm.py` uses this runner and the same
-isolation for pilot verification/rehearsal. Local HTTP/browser tests need loopback
+isolation for pilot verification/rehearsal. `selective-replay` also builds the
+historical retrieval-session example from these pinned Rust bytes: the #53 replay
+compares an index revision that includes `lib.rs`, so new module exports change
+its identity even when retrieval behavior is unchanged. The wrapper also compares
+all 172 recorded #53 lexical responses against current Rust, recording both index
+revisions separately and requiring every other field/rank/score to agree. Current
+retrieval remains covered by the Rust/Python suite and #50 lexical replay too.
+Local HTTP/browser tests need loopback
 socket access.

@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Replay pilot-v1.1 checks from their pinned source without amending historic evidence."""
+"""Replay frozen study checks from pinned Rust sources without amending evidence."""
 import argparse
 from contextlib import contextmanager
 from hashlib import sha256
+import gzip
 import json
+import math
 from pathlib import Path
 import subprocess
 import sys
@@ -49,16 +51,53 @@ def current_tests():
     return unittest.TestSuite(c for c in cases(suite) if c.__class__.__module__ != 'test_pilot_study')
 
 
+def current_selective_lexical():
+    import selective_hybrid as study
+    spec, cases = study.verify_protocol()
+    session = study.h.Session(str(ROOT / 'target/debug/examples/retrieval_session'), spec['corpus'])
+    current_revision = session.ready['manifest']['index_revision']
+    recorded_revisions = set()
+    try:
+        with gzip.open(ROOT / 'reports/issue-53-selective-hybrid/run/skos-definitions-v1-resident-scores.jsonl.gz', 'rt') as stream:
+            pools = [json.loads(line) for line in stream]
+        study.r.require(len(pools) == len(cases), 'Selective lexical denominator changed')
+        for case, pool in zip(cases, pools):
+            study.r.require(pool['id'] == case['id'], 'Selective lexical case changed')
+            actual = session.query(study.h.request(case, spec))
+            expected = pool['lexical']
+            study.r.require(actual.pop('index_revision') == current_revision, 'Inconsistent current index revision')
+            recorded_revisions.add(expected.pop('index_revision'))
+            study.r.require(len(actual['hits']) == len(expected['hits']), 'Selective lexical hit count changed')
+            for left, right in zip(actual['hits'], expected['hits']):
+                study.r.require(math.isclose(left['score'], right['score'], rel_tol=1e-12, abs_tol=1e-12), 'Selective lexical score changed')
+                left['score'] = right['score']
+            study.r.require(actual == expected, 'Current selective lexical behavior changed')
+    finally:
+        session.close()
+    print(json.dumps(dict(current_index_revision=current_revision, recorded_index_revisions=sorted(recorded_revisions),
+                          current_lexical_cases_verified=len(cases), model_invoked=False)), flush=True)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['test-all', 'verify', 'rehearse'])
+    parser.add_argument('command', choices=['test-all', 'verify', 'rehearse', 'selective-replay'])
     parser.add_argument('--out', type=Path)
     args = parser.parse_args()
     if args.command == 'test-all':
         if not unittest.TextTestRunner(verbosity=2).run(current_tests()).wasSuccessful():
             return 1
     with source_snapshot() as source:
-        if args.command == 'test-all':
+        if args.command == 'selective-replay':
+            subprocess.run(['cargo', 'build', '--locked', '--offline', '--quiet', '-p', 'verity_cli',
+                            '--example', 'retrieval_session'], cwd=ROOT, check=True)
+            current_selective_lexical()
+            subprocess.run(['cargo', 'build', '--locked', '--offline', '--quiet', '-p', 'verity_cli',
+                            '--example', 'retrieval_session'], cwd=source, check=True)
+            command = [sys.executable, str(ROOT / 'tools/selective_hybrid.py'), 'verify-report',
+                       '--freeze', str(ROOT / 'reports/issue-53-selective-hybrid/freeze'),
+                       '--out', str(ROOT / 'reports/issue-53-selective-hybrid/run'),
+                       '--binary', str(source / 'target/debug/examples/retrieval_session')]
+        elif args.command == 'test-all':
             command = [sys.executable, '-m', 'unittest', 'discover', '-s', str(source / 'tools'),
                        '-p', 'test_pilot_study.py', '-v']
         else:
