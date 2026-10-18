@@ -15,10 +15,10 @@ The intended user experience starts with **"Ask a question"**, not with a mandat
 - **[#72](https://github.com/grove/graph-verity/issues/72):** freeze a supported one-hop Norwegian/English question-to-draft contract and semantic benchmark, distinguishing plausible-but-wrong executable plans from true question understanding.
 - **[#73](https://github.com/grove/graph-verity/issues/73):** build graph-qualified, gold-free BM25 vocabulary packets for the model and diagnose missing start/predicate/direction coverage. EmbeddingGemma 2 remains an experimental retrieval variant pending its separate review.
 - **[#74](https://github.com/grove/graph-verity/issues/74):** the [controlled one-hop trial](reports/issue-74-one-hop-trial/README.md) stopped at host preflight with both candidates unattempted; the frozen #72/#73 coverage and offline scorer are reproducible. Dedicated-host inference remains inconclusive. Metal requires a separate supported variant; #48 remains unchanged.
-- **[#75](https://github.com/grove/graph-verity/issues/75):** build an **explicitly opted-in** NL Ask UI which presents an untrusted model draft and the complete authoritative Rust plan. A separate user approval is required before any execution.
+- **[#75](https://github.com/grove/graph-verity/issues/75):** the [opt-in local NL Ask v1 prototype](docs/local-nl-ask-v1.md) implements saved-draft replay, exact entity choice, the entire authoritative Rust preview and separate single-use approval with original RDF evidence. Live inference remains blocked by #74; the default launcher honestly reports model unavailable.
 - **[#76](https://github.com/grove/graph-verity/issues/76):** assess actual one-hop query fidelity, strict RDF answers, unsupported/clarification outcomes, wrong-but-executable plans, human false confidence and resource cost before any further promotion decision.
 
-These are **new implementation issues, not claims of completed features**. Existing [Confirmed Ask](docs/confirmed-ask.md) remains manually assembled and user-confirmed; **no language model** is connected to its execution path today. Phase 0's [STOP/REVISE evidence](docs/phase-0-decision.md) remains valid for the earlier tested unattended configurations. A passing model-free CI or executable plan does not establish that the question was understood.
+These are **experimental milestones, not product-readiness claims**. Existing [Confirmed Ask](docs/confirmed-ask.md) remains manually assembled and user-confirmed; **no live language model** is connected to its execution path today. Phase 0's [STOP/REVISE evidence](docs/phase-0-decision.md) remains valid for the earlier tested unattended configurations. A passing model-free CI or executable plan does not establish that the question was understood.
 
 ## Try the implemented pipeline
 
@@ -61,6 +61,8 @@ original directed evidence to the maintainer. There are currently **no documente
 successful human participant tasks and no product-release GO**.
 
 The separate [Find UI v2 prototype](docs/local-find-ui-v2.md) (`python3 tools/local_find_v2.py`) adds explicit exact-identifier warnings, original text witnesses and directed RDF statements while reusing the unchanged v1 backend. It is not the frozen participant interface and makes no measured usability claim.
+
+The [experimental NL Ask v1 launcher](docs/local-nl-ask-v1.md) (`python3 tools/local_nl_ask.py`) starts a separate loopback-only Ask-first interface with an honest model-unavailable state and optional Find expert mode. Explicitly add `--saved-drafts-demo examples/nl-ask-v1/saved-drafts-demo.json` to rehearse Norwegian/English one-hop interpretations, exact original entity selection, the complete Rust preview, separate approval, and per-answer source evidence. **This is model-free replay, not live NL understanding; #74's runtime blocker remains.** Stop with Ctrl-C.
 
 The [frozen local pilot study kit](studies/pilot-v1/README.md) adds consent-aware offline operator forms, source-backed bilingual tasks and deterministic aggregate reporting. **Real participants: 0; human attempts: 0.** Issue #57 remains blocked/open pending genuine volunteers; the synthetic rehearsal is not human evidence or a release GO.
 

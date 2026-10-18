@@ -1,0 +1,21 @@
+:root { font-family: system-ui, sans-serif; color: #182c32; background: #f4f6f5; }
+main { max-width: 1180px; margin: 2rem auto; padding: 0 1.5rem 4rem; }
+h1 { font-size: 2.4rem; margin-bottom: .6rem; }
+h2 { margin-top: 2rem; }
+p { max-width: 85ch; line-height: 1.6; }
+.badge { color: #6b4315; font-weight: 650; }
+label { display: block; margin-top: 1rem; margin-bottom: .4rem; font-weight: 600; }
+textarea, input, select { box-sizing: border-box; max-width: 100%; padding: .7rem; font: inherit; }
+textarea { width: 100%; }
+button { padding: .8rem 1rem; font: inherit; margin: .8rem .5rem .8rem 0; cursor: pointer; }
+button:disabled { cursor: default; }
+#approve { background: #126453; color: white; border: 2px solid #126453; }
+#approve:disabled { background: #64736e; border-color: #64736e; }
+details { margin: 1rem 0; padding: .8rem; background: #fff; border: 1px solid #cdd9d4; }
+summary { cursor: pointer; }
+.columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.2rem; }
+article { background: white; padding: 1rem; border: 1px solid #cdd9d4; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .86rem; line-height: 1.5; }
+:focus-visible { outline: 3px solid #d17b17; outline-offset: 3px; }
+[hidden] { display: none !important; }
+@media (max-width: 760px) { .columns { grid-template-columns: 1fr; } }
