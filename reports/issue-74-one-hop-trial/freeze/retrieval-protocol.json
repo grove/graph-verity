@@ -1,0 +1,28 @@
+{
+  "version": "question-vocabulary-study-v1",
+  "frozen_date": "2026-10-18",
+  "retrieval": "whole-original-question-per-role-BM25-only",
+  "questions": "reports/issue-74-one-hop-trial/freeze/questions.json",
+  "references": "reports/issue-74-one-hop-trial/freeze/references.json",
+  "budget": {
+    "per_role_top_k": 20,
+    "max_packet_bytes": 1048576,
+    "texts_per_candidate": 8,
+    "max_text_bytes": 2048,
+    "evidence_per_page": 3,
+    "max_source_bytes": 4096
+  },
+  "corpora": {
+    "evaluation": {
+      "rdf": "studies/nl-ask-v1/evaluation/snapshot.nq",
+      "policy": "studies/nl-ask-v1/evaluation/policy.json",
+      "scope": "studies/nl-ask-v1/evaluation/scope.json",
+      "config": "studies/nl-ask-v1/evaluation/discovery.json"
+    }
+  },
+  "language_selection": "Existing discovery en/no/nb/nn families and untagged; language recorded, no translation or preference",
+  "tie_order": "exact first, BM25 descending, original IRI then graph",
+  "selection": "Exact frozen #72 evaluation split; no rank-dependent tuning",
+  "inference_performed": false,
+  "holdout_accessed": false
+}
