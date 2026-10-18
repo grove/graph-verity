@@ -1,0 +1,586 @@
+{
+  "version": "issue74-decision-v1",
+  "decision": "INCONCLUSIVE_REVISE",
+  "blockers": [
+    {
+      "metric": "load_per_cpu",
+      "observed": 1.895947265625,
+      "threshold": 0.75,
+      "reason": "host_contention_or_resources"
+    },
+    {
+      "metric": "max_process_cpu_percent",
+      "observed": 150.3,
+      "threshold": 150,
+      "reason": "host_contention_or_resources"
+    }
+  ],
+  "inference_performed": false,
+  "holdout_accessed": false,
+  "model_ranking": null,
+  "integration_authorized": false,
+  "executions": 0,
+  "controls": {
+    "native_template_and_token_id_parity": "unattempted_host_preflight_block",
+    "actual_runtime_grammar_accept_reject": "unattempted_host_preflight_block",
+    "malicious_source_label": "unattempted_host_preflight_block",
+    "offline_one_hop_smoke": "unattempted_host_preflight_block",
+    "real_reverse_direction": "unattempted_host_preflight_block",
+    "identical_generation_repeat": "unattempted_host_preflight_block",
+    "source_scope_and_private_canaries": "unattempted_host_preflight_block"
+  },
+  "variants": {
+    "qwen35": {
+      "oracle": {
+        "status": "unattempted_host_preflight_block",
+        "attempted": 0,
+        "denominators": {
+          "candidate": 18,
+          "needs_clarification": 6,
+          "unsupported": 6
+        },
+        "semantic_accuracy": null,
+        "answer_accuracy": null,
+        "model_abstention_accuracy": null,
+        "latency": null,
+        "process_tree_rss": null,
+        "cases": [
+          {
+            "id": "eva-01",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-02",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-03",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-04",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-05",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-06",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-07",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-08",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-09",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-10",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-11",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-12",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-13",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-14",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-15",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-16",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-17",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-18",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-19",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-20",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-21",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-22",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-23",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-24",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-25",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-26",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-27",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-28",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-29",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-30",
+            "status": "unattempted_host_preflight_block"
+          }
+        ]
+      },
+      "retrieval": {
+        "status": "unattempted_host_preflight_block",
+        "attempted": 0,
+        "denominators": {
+          "candidate": 18,
+          "needs_clarification": 6,
+          "unsupported": 6
+        },
+        "semantic_accuracy": null,
+        "answer_accuracy": null,
+        "model_abstention_accuracy": null,
+        "latency": null,
+        "process_tree_rss": null,
+        "cases": [
+          {
+            "id": "eva-01",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-02",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-03",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-04",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-05",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-06",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-07",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-08",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-09",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-10",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-11",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-12",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-13",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-14",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-15",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-16",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-17",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-18",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-19",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-20",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-21",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-22",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-23",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-24",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-25",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-26",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-27",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-28",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-29",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-30",
+            "status": "unattempted_host_preflight_block"
+          }
+        ]
+      }
+    },
+    "gemma4": {
+      "oracle": {
+        "status": "unattempted_host_preflight_block",
+        "attempted": 0,
+        "denominators": {
+          "candidate": 18,
+          "needs_clarification": 6,
+          "unsupported": 6
+        },
+        "semantic_accuracy": null,
+        "answer_accuracy": null,
+        "model_abstention_accuracy": null,
+        "latency": null,
+        "process_tree_rss": null,
+        "cases": [
+          {
+            "id": "eva-01",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-02",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-03",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-04",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-05",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-06",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-07",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-08",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-09",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-10",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-11",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-12",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-13",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-14",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-15",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-16",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-17",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-18",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-19",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-20",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-21",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-22",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-23",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-24",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-25",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-26",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-27",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-28",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-29",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-30",
+            "status": "unattempted_host_preflight_block"
+          }
+        ]
+      },
+      "retrieval": {
+        "status": "unattempted_host_preflight_block",
+        "attempted": 0,
+        "denominators": {
+          "candidate": 18,
+          "needs_clarification": 6,
+          "unsupported": 6
+        },
+        "semantic_accuracy": null,
+        "answer_accuracy": null,
+        "model_abstention_accuracy": null,
+        "latency": null,
+        "process_tree_rss": null,
+        "cases": [
+          {
+            "id": "eva-01",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-02",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-03",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-04",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-05",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-06",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-07",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-08",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-09",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-10",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-11",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-12",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-13",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-14",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-15",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-16",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-17",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-18",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-19",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-20",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-21",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-22",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-23",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-24",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-25",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-26",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-27",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-28",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-29",
+            "status": "unattempted_host_preflight_block"
+          },
+          {
+            "id": "eva-30",
+            "status": "unattempted_host_preflight_block"
+          }
+        ]
+      }
+    }
+  },
+  "resource_measurement": "Host snapshot only; no model startup, HWM sums, sampled model RSS or throughput measurements",
+  "host_record_sha256": "88fd88cf905f0696dda11f4d5bbce4b7361345d3c48892f19d61740d0c168734",
+  "assets_evidence_sha256": "d9070f74244b404d35fa0ae80d70ede0ef1e10451ce3273d71a0b419a96eef0c",
+  "freeze_sha256": "e45522438dc5ceb2b1f387d7f37a8977c104320434336ccd03f878ba3ca2139e"
+}

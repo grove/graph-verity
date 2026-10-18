@@ -14,7 +14,7 @@ The intended user experience starts with **"Ask a question"**, not with a mandat
 
 - **[#72](https://github.com/grove/graph-verity/issues/72):** freeze a supported one-hop Norwegian/English question-to-draft contract and semantic benchmark, distinguishing plausible-but-wrong executable plans from true question understanding.
 - **[#73](https://github.com/grove/graph-verity/issues/73):** build graph-qualified, gold-free BM25 vocabulary packets for the model and diagnose missing start/predicate/direction coverage. EmbeddingGemma 2 remains an experimental retrieval variant pending its separate review.
-- **[#74](https://github.com/grove/graph-verity/issues/74):** measure actual pinned local model inference under controlled host conditions; a separately frozen Metal run may be tested if the backend supports it. The incomplete #48 CPU study is not a fair accuracy comparison.
+- **[#74](https://github.com/grove/graph-verity/issues/74):** the [controlled one-hop trial](reports/issue-74-one-hop-trial/README.md) stopped at host preflight with both candidates unattempted; the frozen #72/#73 coverage and offline scorer are reproducible. Dedicated-host inference remains inconclusive. Metal requires a separate supported variant; #48 remains unchanged.
 - **[#75](https://github.com/grove/graph-verity/issues/75):** build an **explicitly opted-in** NL Ask UI which presents an untrusted model draft and the complete authoritative Rust plan. A separate user approval is required before any execution.
 - **[#76](https://github.com/grove/graph-verity/issues/76):** assess actual one-hop query fidelity, strict RDF answers, unsupported/clarification outcomes, wrong-but-executable plans, human false confidence and resource cost before any further promotion decision.
 

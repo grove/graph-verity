@@ -1,0 +1,53 @@
+{
+  "version": "issue74-cpu-draft-v1",
+  "contract": "nl-ask-draft-v1",
+  "split": "evaluation",
+  "historical_assets": "configs/grounded-models-v1.json",
+  "variants": ["qwen35", "gemma4"],
+  "stages": ["oracle", "retrieval"],
+  "backend": "CPU",
+  "cpu_threads": 4,
+  "gpu_layers": 0,
+  "concurrency": 1,
+  "quantization": "Q4_K_M",
+  "context_tokens": 16384,
+  "max_output_tokens": 512,
+  "max_draft_bytes": 16384,
+  "temperature": 0,
+  "seed": 7,
+  "timeout_seconds": 300,
+  "retries": 0,
+  "thinking": false,
+  "host_gates": {
+    "load_per_cpu_max": 0.75,
+    "swap_used_mib_max": 1024,
+    "memory_free_percent_min": 40,
+    "disk_free_gib_min": 32,
+    "competing_process_cpu_percent_max": 150
+  },
+  "engineering_gates_per_stage": {
+    "supported_semantically_faithful_min": 17,
+    "supported_strict_complete_answer_sets_min": 17,
+    "model_clarification_min": 5,
+    "model_unsupported_min": 5,
+    "false_positive_candidates_max": 1,
+    "timeouts_max": 0,
+    "row_truncations_max": 0,
+    "evidence_truncations_max": 0,
+    "safety_violations_max": 0,
+    "end_to_end_p95_seconds_max": 120,
+    "sampled_concurrent_process_tree_rss_gib_max": 24
+  },
+  "controls_before_scoring": [
+    "native_template_and_token_id_parity",
+    "actual_runtime_grammar_accept_reject",
+    "malicious_source_label",
+    "offline_one_hop_smoke",
+    "real_reverse_direction",
+    "identical_generation_repeat",
+    "source_scope_and_private_canaries"
+  ],
+  "decision_rule": "Blocked host, missing controls or incomplete comparison => INCONCLUSIVE_REVISE, no model ranking. Complete inadequate comparison => DEFER. Passing permits only a supervised opt-in integration experiment under separate #75 authorization.",
+  "metal": "not attempted; support unverified; requires a separate frozen variant",
+  "execution": "No model loading or execution in this tool. Saved drafts replay through Rust preview only. Separately approved identity-matched saved results are required for answer scoring."
+}

@@ -1,0 +1,74 @@
+{
+  "protocol": {
+    "version": "issue74-cpu-draft-v1",
+    "contract": "nl-ask-draft-v1",
+    "split": "evaluation",
+    "historical_assets": "configs/grounded-models-v1.json",
+    "variants": [
+      "qwen35",
+      "gemma4"
+    ],
+    "stages": [
+      "oracle",
+      "retrieval"
+    ],
+    "backend": "CPU",
+    "cpu_threads": 4,
+    "gpu_layers": 0,
+    "concurrency": 1,
+    "quantization": "Q4_K_M",
+    "context_tokens": 16384,
+    "max_output_tokens": 512,
+    "max_draft_bytes": 16384,
+    "temperature": 0,
+    "seed": 7,
+    "timeout_seconds": 300,
+    "retries": 0,
+    "thinking": false,
+    "host_gates": {
+      "load_per_cpu_max": 0.75,
+      "swap_used_mib_max": 1024,
+      "memory_free_percent_min": 40,
+      "disk_free_gib_min": 32,
+      "competing_process_cpu_percent_max": 150
+    },
+    "engineering_gates_per_stage": {
+      "supported_semantically_faithful_min": 17,
+      "supported_strict_complete_answer_sets_min": 17,
+      "model_clarification_min": 5,
+      "model_unsupported_min": 5,
+      "false_positive_candidates_max": 1,
+      "timeouts_max": 0,
+      "row_truncations_max": 0,
+      "evidence_truncations_max": 0,
+      "safety_violations_max": 0,
+      "end_to_end_p95_seconds_max": 120,
+      "sampled_concurrent_process_tree_rss_gib_max": 24
+    },
+    "controls_before_scoring": [
+      "native_template_and_token_id_parity",
+      "actual_runtime_grammar_accept_reject",
+      "malicious_source_label",
+      "offline_one_hop_smoke",
+      "real_reverse_direction",
+      "identical_generation_repeat",
+      "source_scope_and_private_canaries"
+    ],
+    "decision_rule": "Blocked host, missing controls or incomplete comparison => INCONCLUSIVE_REVISE, no model ranking. Complete inadequate comparison => DEFER. Passing permits only a supervised opt-in integration experiment under separate #75 authorization.",
+    "metal": "not attempted; support unverified; requires a separate frozen variant",
+    "execution": "No model loading or execution in this tool. Saved drafts replay through Rust preview only. Separately approved identity-matched saved results are required for answer scoring."
+  },
+  "input_sha256": {
+    "configs/one-hop-trial-v1.json": "ffcb5f2f8b723d24458e2a5a0c8251ab4947a431b29d2886ac23bb99eac7ddde",
+    "tools/one_hop_trial.py": "b2b4f98907ac3714e93e83a92a242465a6504ec2f7c62b456206ed974d55d343",
+    "tools/nl_ask_benchmark.py": "eee9d4a7d18f96256997ec4c2db28bc4c08e0f461f286c640168f2004db3a63f",
+    "tools/question_vocabulary.py": "a9b559a32d960183ab9646ec5e2ebb4604906bf192878f378f5d83a5a6381cb0",
+    "studies/nl-ask-v1/freeze.json": "e1ca598436c37a477ecac9bb36fe5107df9ef9b0087cc43dc30e15b858b4f788",
+    "configs/grounded-models-v1.json": "18a6d5c8521763b0e006597d2e1fa004ca17387f070ebd5157e5ed56b7c6d8b2",
+    "schemas/nl-ask-draft-v1.json": "eea9e082cba00ef2d8fb0dc6bac995d9791c12505b107e6b002927f9c95981a8"
+  },
+  "source_commit": "4de6f4afee615419cdded7520e95f988fb18ec77",
+  "rust_binary_sha256": "bc5a44b9f52890b9acb6fac601888022f89bd3c306d293f9fa6e8fcb9e6234df",
+  "inference_performed": false,
+  "holdout_accessed": false
+}

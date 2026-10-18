@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+  "scope": [
+    "urn:graph-verity:nl-ask-v1:evaluation:gemet",
+    "urn:graph-verity:nl-ask-v1:evaluation:geonames",
+    "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+  ],
+  "policy_hash": "sha256:23e29ac8561bd2dc5490c27ea6c780a17bcf083d79f15ba9fcc7fae194513dc4",
+  "config_hash": "sha256:5d7abb5d8f840a52126429c9d3ac6a430f42cb9c77ebe5c138dbeb42de54d34e",
+  "index_revision": "sha256:a65d1ae1ab6502bfeaaca0549e37eea09c974d83e114702692617ac83e7203a1",
+  "rules": "unicode-lowercase-alphanumeric-v1; no NFC, stemming, transliteration or stopwords; IRI plus observed text; en/no/nb/nn language families and untagged; descriptions including skos:definition first 512 Unicode scalars; graph-local explicit wikibase:directClaim label/alias retrieval via source statements, observed predicates only, no inference or chaining",
+  "sources": {
+    "urn:graph-verity:nl-ask-v1:evaluation:gemet": {
+      "source": "EEA GEMET original concept labels/definitions and explicit incoming/outgoing relations",
+      "license": "CC-BY-4.0",
+      "source_revision": "4.2.3",
+      "importer_revision": "nl-ask-v1-source-recipe"
+    },
+    "urn:graph-verity:nl-ask-v1:evaluation:geonames": {
+      "source": "GeoNames via datasets/world-cities archived CSV; existing worldcities_transfer.py mapping, renamed graph",
+      "license": "CC-BY-4.0",
+      "source_revision": "73c9f54ab9f305168c76d0802db151e30a157b28",
+      "importer_revision": "nl-ask-v1-source-recipe"
+    },
+    "urn:graph-verity:nl-ask-v1:evaluation:wikidata": {
+      "source": "Wikidata archived direct claims and original en/nb/nn labels; plus explicitly synthetic overlay.nq labels",
+      "license": "CC0-1.0; overlay Apache-2.0",
+      "source_revision": "2535539461",
+      "importer_revision": "nl-ask-v1-source-recipe"
+    }
+  },
+  "graph_hashes": {
+    "urn:graph-verity:nl-ask-v1:evaluation:gemet": "sha256:0370c54603dc6e46b7c572293bd8aa223184c4a33b97e7127b4513739caa47f2",
+    "urn:graph-verity:nl-ask-v1:evaluation:geonames": "sha256:8c726159f8df023a8bc71d57b9678ddf8d38b78e0b54409cb42355e20a88fce3",
+    "urn:graph-verity:nl-ask-v1:evaluation:wikidata": "sha256:77d8633718193ca40dcbc6f3055ad640b7479b7e8e046e249d8fc04ce75190fd"
+  }
+}
