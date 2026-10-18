@@ -100,12 +100,7 @@ def main() -> int:
         run("initial-clean-tree", ["git", "diff", "--exit-code", "HEAD"])
         state["rustc"] = run("rust-version", ["rustc", "-Vv"]).strip()
         run("dependency-fetch", ["cargo", "fetch", "--locked"])
-        run("reporting-tests", [sys.executable, "-m", "unittest", "discover",
-                                "-s", "tools", "-p", "test_*.py", "-v"])
-        run("pilot-study-freeze", [sys.executable, "tools/pilot_study.py", "verify"])
-        pilot_out = Path(tempfile.mkdtemp(prefix="pilot-rehearsal-", dir=OUT))
-        run("pilot-study-rehearsal", [sys.executable, "tools/pilot_study.py", "rehearse",
-                                      "--out", str(pilot_out / "report.json")])
+        run("reporting-tests", [sys.executable, "tools/run_python_tests.py"])
         run("retrieval-freeze", [sys.executable, "tools/retrieval.py", "verify"])
         run("issue9-forensics", [sys.executable, "tools/issue9_forensics.py", "verify",
                                  "--out", str(OUT / "issue9-forensics.json")])
@@ -113,6 +108,8 @@ def main() -> int:
         run("clippy", ["cargo", "clippy", "--workspace", "--all-targets", "--locked",
                        "--offline", "--", "-D", "warnings"])
         run("rust-tests", ["cargo", "test", "--workspace", "--locked", "--offline"])
+        run("question-vocabulary-replay", [sys.executable, "tools/question_vocabulary.py", "verify",
+                                           "--binary", "target/debug/verity"])
         run("hybrid-source-scope-canary", [sys.executable, "tools/hybrid_retrieval.py", "scope-canary",
                                           "--binary", "target/debug/verity"])
         run("hybrid-native-lexical-replay", [sys.executable, "tools/hybrid_retrieval.py", "verify-lexical",

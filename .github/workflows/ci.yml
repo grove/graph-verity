@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           persist-credentials: false
-          fetch-depth: 0 # The offline handoff tests export the exact historical #64 commit.
+          fetch-depth: 0 # Offline tests export the exact frozen #57 and #64 source commits.
       - name: Install pinned Rust toolchain
         run: rustup install
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4

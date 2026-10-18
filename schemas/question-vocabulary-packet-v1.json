@@ -1,0 +1,474 @@
+{
+  "$defs": {
+    "CandidateCollection": {
+      "properties": {
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/VocabularyCandidate"
+          },
+          "type": "array"
+        },
+        "candidates_clipped": {
+          "type": "boolean"
+        },
+        "exact_matches": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "matches": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "matches",
+        "exact_matches",
+        "candidates_clipped",
+        "candidates"
+      ],
+      "type": "object"
+    },
+    "Field": {
+      "enum": [
+        "label",
+        "alias",
+        "identifier",
+        "description"
+      ],
+      "type": "string"
+    },
+    "Label": {
+      "properties": {
+        "datatype": {
+          "type": "string"
+        },
+        "language": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "datatype"
+      ],
+      "type": "object"
+    },
+    "ObservedText": {
+      "properties": {
+        "field": {
+          "$ref": "#/$defs/Field"
+        },
+        "predicate": {
+          "type": "string"
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "value": {
+          "$ref": "#/$defs/Label"
+        },
+        "via": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PredicateMapping"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Retrieval association only: source_iri has this text and links to the document IRI."
+        }
+      },
+      "required": [
+        "field",
+        "predicate",
+        "value",
+        "truncated"
+      ],
+      "type": "object"
+    },
+    "PredicateMapping": {
+      "properties": {
+        "predicate": {
+          "type": "string"
+        },
+        "source_iri": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_iri",
+        "predicate"
+      ],
+      "type": "object"
+    },
+    "RdfTerm": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "iri",
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "blank_node",
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "datatype": {
+              "type": "string"
+            },
+            "kind": {
+              "const": "literal",
+              "type": "string"
+            },
+            "language": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "value",
+            "datatype"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "importer_revision": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "source_revision": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "license",
+        "source_revision",
+        "importer_revision"
+      ],
+      "type": "object"
+    },
+    "Statement": {
+      "properties": {
+        "object": {
+          "$ref": "#/$defs/RdfTerm"
+        },
+        "predicate": {
+          "$ref": "#/$defs/RdfTerm"
+        },
+        "source_graph": {
+          "$ref": "#/$defs/RdfTerm"
+        },
+        "subject": {
+          "$ref": "#/$defs/RdfTerm"
+        }
+      },
+      "required": [
+        "subject",
+        "predicate",
+        "object",
+        "source_graph"
+      ],
+      "type": "object"
+    },
+    "UsagePage": {
+      "properties": {
+        "clipped": {
+          "type": "boolean"
+        },
+        "direction": {
+          "type": "string"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Statement"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "direction",
+        "evidence",
+        "clipped"
+      ],
+      "type": "object"
+    },
+    "VocabularyBudget": {
+      "additionalProperties": false,
+      "description": "Freeze these budgets before scoring or inference; changing them changes every table ID.",
+      "properties": {
+        "evidence_per_page": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "max_packet_bytes": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "max_source_bytes": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "max_text_bytes": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "per_role_top_k": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "texts_per_candidate": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "per_role_top_k",
+        "max_packet_bytes",
+        "texts_per_candidate",
+        "max_text_bytes",
+        "evidence_per_page",
+        "max_source_bytes"
+      ],
+      "type": "object"
+    },
+    "VocabularyCandidate": {
+      "properties": {
+        "exact": {
+          "type": "boolean"
+        },
+        "graph": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "iri": {
+          "type": "string"
+        },
+        "ranking_score": {
+          "format": "double",
+          "type": "number"
+        },
+        "texts": {
+          "items": {
+            "$ref": "#/$defs/ObservedText"
+          },
+          "type": "array"
+        },
+        "texts_clipped": {
+          "type": "boolean"
+        },
+        "usage": {
+          "description": "These are original statements. Incoming traversal does not assert an inverse property.",
+          "items": {
+            "$ref": "#/$defs/UsagePage"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "iri",
+        "graph",
+        "exact",
+        "ranking_score",
+        "texts",
+        "texts_clipped",
+        "usage"
+      ],
+      "type": "object"
+    },
+    "VocabularyRequest": {
+      "additionalProperties": false,
+      "description": "Authenticated operator input, never fields supplied by a model proposal.",
+      "properties": {
+        "index_revision": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "question": {
+          "type": "string"
+        },
+        "scope": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "snapshot_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "question",
+        "language",
+        "snapshot_id",
+        "index_revision",
+        "scope"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Only Rust construction/revalidation produces this type; serialized packets are untrusted.",
+  "properties": {
+    "absence_policy": {
+      "type": "string"
+    },
+    "budget": {
+      "$ref": "#/$defs/VocabularyBudget"
+    },
+    "classes": {
+      "$ref": "#/$defs/CandidateCollection"
+    },
+    "clipped": {
+      "type": "boolean"
+    },
+    "context_trust": {
+      "type": "string"
+    },
+    "entities": {
+      "$ref": "#/$defs/CandidateCollection"
+    },
+    "graph_hashes": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
+    },
+    "interpretation_correctness": {
+      "type": "string"
+    },
+    "packet_id": {
+      "type": "string"
+    },
+    "packet_revision": {
+      "type": "string"
+    },
+    "policy_hash": {
+      "type": "string"
+    },
+    "predicates": {
+      "$ref": "#/$defs/CandidateCollection"
+    },
+    "ranking_revision": {
+      "type": "string"
+    },
+    "real_world_truth": {
+      "type": "string"
+    },
+    "request": {
+      "$ref": "#/$defs/VocabularyRequest"
+    },
+    "requires_disambiguation": {
+      "type": "boolean"
+    },
+    "rules": {
+      "type": "string"
+    },
+    "score_semantics": {
+      "type": "string"
+    },
+    "sources": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Source"
+      },
+      "type": "object"
+    },
+    "status": {
+      "type": "string"
+    },
+    "version": {
+      "const": "question-vocabulary-packet-v1",
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "packet_id",
+    "request",
+    "budget",
+    "policy_hash",
+    "ranking_revision",
+    "packet_revision",
+    "graph_hashes",
+    "sources",
+    "rules",
+    "score_semantics",
+    "context_trust",
+    "interpretation_correctness",
+    "real_world_truth",
+    "absence_policy",
+    "status",
+    "requires_disambiguation",
+    "clipped",
+    "entities",
+    "predicates",
+    "classes"
+  ],
+  "title": "VocabularyPacket",
+  "type": "object"
+}
