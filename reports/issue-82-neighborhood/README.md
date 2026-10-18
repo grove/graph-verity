@@ -150,6 +150,13 @@ public test data. No extra source or gold enters the retrieval request.
 
 ## Validation and reproduction
 
+The full required model-free pipeline **passed** on retrieval-code commit
+`d8eebfd`, including required browser checks, Rust/Python, format, Clippy,
+reference queries, frozen replays and final clean tree. The complete
+[verification receipt](verification.json) retains commands, exit statuses and
+model/holdout exclusions. Subsequent changes only add this receipt and its report
+link/checksums; retrieval code, protocol, captures and scores remain unchanged.
+
 Historical source-fingerprint verifiers for #72/#74/#76 run against exact Git
 export `bba81fc` with original sources, strict hashes and original reports.
 The harness compares the current frozen evidence directories with that export
