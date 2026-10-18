@@ -141,5 +141,5 @@ try {
   if (websocket) websocket.close();
   browser.kill('SIGTERM');
   await new Promise(resolve => browser.once('exit',resolve));
-  await rm(directory,{recursive:true,force:true});
+  await rm(directory,{recursive:true,force:true,maxRetries:5,retryDelay:100});
 }

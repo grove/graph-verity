@@ -154,8 +154,11 @@ The full required model-free pipeline **passed** on retrieval-code commit
 `d8eebfd`, including required browser checks, Rust/Python, format, Clippy,
 reference queries, frozen replays and final clean tree. The complete
 [verification receipt](verification.json) retains commands, exit statuses and
-model/holdout exclusions. Subsequent changes only add this receipt and its report
-link/checksums; retrieval code, protocol, captures and scores remain unchanged.
+model/holdout exclusions. Subsequent changes add this receipt/report metadata and align NL Ask browser-test
+teardown with the existing Find browser-test removal retries. Retrieval code,
+protocol, captures and scores remain unchanged. A first Linux branch run failed
+on `ENOTEMPTY` while removing Chrome’s temporary profile after browser checks;
+that test-only teardown race is fixed with the existing bounded Node retry policy.
 
 Historical source-fingerprint verifiers for #72/#74/#76 run against exact Git
 export `bba81fc` with original sources, strict hashes and original reports.
