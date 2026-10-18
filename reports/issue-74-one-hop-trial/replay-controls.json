@@ -1,0 +1,183 @@
+[
+  {
+    "name": "faithful_preview_no_answer",
+    "stage": "oracle",
+    "record": {
+      "id": "eva-01",
+      "origin": "fixture",
+      "runtime_status": "completed",
+      "raw_response": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"start\": 102, \"predicate\": 1004, \"graph\": 0, \"direction\": \"forward\", \"output\": \"values\", \"rationale\": \"AI-authored reference interpretation; inspect the authoritative preview.\"}"
+    },
+    "expected": {
+      "category": "valid_draft",
+      "structural_faithfulness": true,
+      "strict_semantic_and_answer_success": false
+    }
+  },
+  {
+    "name": "valid_but_inverse",
+    "stage": "oracle",
+    "record": {
+      "id": "eva-01",
+      "origin": "fixture",
+      "runtime_status": "completed",
+      "raw_response": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"start\": 102, \"predicate\": 1004, \"graph\": 0, \"direction\": \"reverse\", \"output\": \"values\", \"rationale\": \"AI-authored reference interpretation; inspect the authoritative preview.\"}"
+    },
+    "expected": {
+      "category": "valid_draft_semantically_wrong",
+      "swapped_inverse_direction": true
+    }
+  },
+  {
+    "name": "dropped_named_constant",
+    "stage": "oracle",
+    "record": {
+      "id": "eva-01",
+      "origin": "fixture",
+      "runtime_status": "completed",
+      "raw_response": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"predicate\": 1004, \"graph\": 0, \"direction\": \"forward\", \"output\": \"values\", \"rationale\": \"AI-authored reference interpretation; inspect the authoritative preview.\"}"
+    },
+    "expected": {
+      "category": "invalid_contract",
+      "dropped_or_changed_named_constant": true
+    }
+  },
+  {
+    "name": "wrong_graph_scope",
+    "stage": "oracle",
+    "record": {
+      "id": "eva-01",
+      "origin": "fixture",
+      "runtime_status": "completed",
+      "raw_response": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"start\": 102, \"predicate\": 1004, \"graph\": 1, \"direction\": \"forward\", \"output\": \"values\", \"rationale\": \"AI-authored reference interpretation; inspect the authoritative preview.\"}"
+    },
+    "expected": {
+      "category": "invalid_catalog_reference",
+      "wrong_graph_or_predicate": true
+    }
+  },
+  {
+    "name": "truncated_json",
+    "stage": "oracle",
+    "record": {
+      "id": "eva-01",
+      "origin": "fixture",
+      "runtime_status": "completed",
+      "raw_response": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"start\": 102, \"predicate\": 1004, \"graph\": 0, \"direction\": \"forward\", \"output\": \"values\", \"rationale\": \"AI-authored reference interpretation; inspect the authoritative previe"
+    },
+    "expected": {
+      "category": "invalid_json"
+    }
+  },
+  {
+    "name": "prohibited_sparql",
+    "stage": "oracle",
+    "record": {
+      "id": "eva-01",
+      "origin": "fixture",
+      "runtime_status": "completed",
+      "raw_response": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"start\": 102, \"predicate\": 1004, \"graph\": 0, \"direction\": \"forward\", \"output\": \"values\", \"rationale\": \"AI-authored reference interpretation; inspect the authoritative preview.\", \"sparql\": \"DELETE WHERE {?s ?p ?o}\"}"
+    },
+    "expected": {
+      "category": "invalid_contract"
+    }
+  },
+  {
+    "name": "duplicate_field",
+    "stage": "oracle",
+    "record": {
+      "id": "eva-01",
+      "origin": "fixture",
+      "runtime_status": "completed",
+      "raw_response": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"start\": 102, \"predicate\": 1004, \"graph\": 0, \"direction\": \"forward\", \"output\": \"values\", \"rationale\": \"AI-authored reference interpretation; inspect the authoritative preview.\",\"start\":100}"
+    },
+    "expected": {
+      "category": "invalid_contract"
+    }
+  },
+  {
+    "name": "fixture_needs_clarification",
+    "stage": "oracle",
+    "record": {
+      "id": "eva-19",
+      "origin": "fixture",
+      "runtime_status": "completed",
+      "raw_response": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"needs_clarification\", \"rationale\": \"Country and administrative location are different observed predicates.\"}"
+    },
+    "expected": {
+      "category": "model_needs_clarification",
+      "model_abstention_correct": false
+    }
+  },
+  {
+    "name": "fixture_unsupported",
+    "stage": "oracle",
+    "record": {
+      "id": "eva-25",
+      "origin": "fixture",
+      "runtime_status": "completed",
+      "raw_response": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"unsupported\", \"rationale\": \"Open-world negation cannot be established from missing triples.\"}"
+    },
+    "expected": {
+      "category": "model_unsupported",
+      "model_abstention_correct": false
+    }
+  },
+  {
+    "name": "host_preflight_not_model_abstention",
+    "stage": "oracle",
+    "record": {
+      "id": "eva-25",
+      "origin": "fixture",
+      "runtime_status": "completed",
+      "raw_response": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"start\": 102, \"predicate\": 1004, \"graph\": 0, \"direction\": \"forward\", \"output\": \"values\", \"rationale\": \"AI-authored reference interpretation; inspect the authoritative preview.\"}"
+    },
+    "expected": {
+      "category": "deterministic_preflight_block",
+      "model_abstention_correct": false
+    }
+  },
+  {
+    "name": "timeout_not_abstention",
+    "stage": "oracle",
+    "record": {
+      "id": "eva-01",
+      "origin": "fixture",
+      "runtime_status": "timeout",
+      "raw_response": "{\"version\":"
+    },
+    "expected": {
+      "category": "runtime_timeout",
+      "model_abstention_correct": false
+    }
+  },
+  {
+    "name": "retrieval_missing_predicate_not_model_success",
+    "stage": "retrieval",
+    "record": {
+      "id": "eva-02",
+      "origin": "fixture",
+      "runtime_status": "completed",
+      "raw_response": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"start\": 102, \"predicate\": 1002, \"graph\": 0, \"direction\": \"forward\", \"output\": \"values\", \"rationale\": \"AI-authored reference interpretation; inspect the authoritative preview.\"}"
+    },
+    "expected": {
+      "category": "invalid_stage_catalog_reference",
+      "outside_stage_vocabulary": true,
+      "structural_faithfulness": false
+    }
+  },
+  {
+    "name": "inert_malicious_label_preview",
+    "stage": "oracle",
+    "record": {
+      "id": "eva-06",
+      "origin": "fixture",
+      "runtime_status": "completed",
+      "raw_response": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"start\": 102, \"predicate\": 1000, \"graph\": 0, \"direction\": \"forward\", \"output\": \"values\", \"rationale\": \"AI-authored reference interpretation; inspect the authoritative preview.\"}"
+    },
+    "expected": {
+      "category": "valid_draft",
+      "structural_faithfulness": true
+    }
+  }
+]
