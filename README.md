@@ -155,4 +155,4 @@ without inference; this comparison does not establish Phase 0 readiness.
 
 Experimental Phase 2 grounding: [question vocabulary packet v1](docs/question-vocabulary-packet-v1.md) provides source-authorized, graph-qualified BM25 candidate tables and model-free saved-packet replay. It does not execute natural-language questions; the new #72 evaluation manifest and human review remain pending.
 
-Run all Python regressions with `python tools/run_python_tests.py`; the unchanged #57 pilot is replayed from its exact preregistered commit because it fingerprints the entire Rust checkout. The remaining suites test current code.
+Run all Python regressions with `python tools/run_python_tests.py`; the unchanged #57 pilot and #53 native replay use their original source fingerprints from a pinned historical commit. The remaining suites and lexical rank/score checks test current code.

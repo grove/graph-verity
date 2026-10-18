@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Test current code and replay #57 against its exact, unchanged preregistration."""
+"""Test current code and replay #53/#57 against unchanged source fingerprints."""
 import hashlib
 import json
 from pathlib import Path
@@ -25,6 +25,11 @@ def main():
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     if not result.wasSuccessful():
         return 1
+    replay_frozen_studies()
+    return 0
+
+
+def replay_frozen_studies():
     with tempfile.TemporaryDirectory(prefix="verity-frozen-pilot-") as temp:
         directory = Path(temp)
         archive = directory / "source.tar"
@@ -45,7 +50,16 @@ def main():
             ["tools/pilot_study.py", "rehearse", "--out", str(directory / "rehearsal.json")],
         ]:
             subprocess.run([sys.executable, *args], cwd=source, check=True)
-    return 0
+        # #53 also compares native source revisions, not just ranks. The current
+        # lexical rank/score replay remains a separate verify_pre_llm check.
+        original = json.loads((ROOT / "reports/issue-53-selective-hybrid/freeze/freeze.json").read_bytes())
+        for name in ["crates/verity_core/src/catalog.rs", "crates/verity_core/src/discovery.rs", "crates/verity_core/src/lib.rs", "crates/verity_core/src/find.rs", "Cargo.lock", "rust-toolchain.toml"]:
+            assert hashlib.sha256((source / name).read_bytes()).hexdigest() == original["code_sha256"][name], name
+        subprocess.run(["cargo", "build", "--locked", "--offline", "-q", "-p", "verity_cli", "--example", "retrieval_session"], cwd=source, check=True)
+        subprocess.run([sys.executable, "tools/selective_hybrid.py", "verify-report",
+                        "--freeze", "reports/issue-53-selective-hybrid/freeze",
+                        "--out", "reports/issue-53-selective-hybrid/run",
+                        "--binary", str(source / "target/debug/examples/retrieval_session")], cwd=ROOT, check=True)
 
 
 if __name__ == "__main__":
