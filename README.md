@@ -154,3 +154,7 @@ Qwen weights/runtime with Rust-authorized index tables and strict Rust expansion
 The separate [M1 Pro route comparison](reports/issue-32-compact-ab/README.md)
 retains the single public v2 run against frozen v1. Normal CI verifies saved evidence
 without inference; this comparison does not establish Phase 0 readiness.
+
+Experimental Phase 2 grounding: [question vocabulary packet v1](docs/question-vocabulary-packet-v1.md) provides source-authorized, graph-qualified BM25 candidate tables and model-free saved-packet replay. It does not execute natural-language questions; the [#72 contract and evaluation manifest](studies/nl-ask-v1/README.md) are frozen, with independent human review still pending.
+
+Run all Python regressions with `python tools/run_python_tests.py`; the unchanged #57 pilot and #53 native replay use their original source fingerprints from a pinned historical commit. The remaining suites and lexical rank/score checks test current code.

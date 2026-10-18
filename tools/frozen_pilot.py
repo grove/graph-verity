@@ -80,17 +80,20 @@ def current_selective_lexical():
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['test-all', 'verify', 'rehearse', 'selective-replay'])
+    parser.add_argument('command', choices=['test-all', 'verify', 'rehearse', 'selective-replay', 'selective-current'])
     parser.add_argument('--out', type=Path)
     args = parser.parse_args()
     if args.command == 'test-all':
         if not unittest.TextTestRunner(verbosity=2).run(current_tests()).wasSuccessful():
             return 1
+    if args.command in {'selective-current', 'selective-replay'}:
+        subprocess.run(['cargo', 'build', '--locked', '--offline', '--quiet', '-p', 'verity_cli',
+                        '--example', 'retrieval_session'], cwd=ROOT, check=True)
+        current_selective_lexical()
+        if args.command == 'selective-current':
+            return 0
     with source_snapshot() as source:
         if args.command == 'selective-replay':
-            subprocess.run(['cargo', 'build', '--locked', '--offline', '--quiet', '-p', 'verity_cli',
-                            '--example', 'retrieval_session'], cwd=ROOT, check=True)
-            current_selective_lexical()
             subprocess.run(['cargo', 'build', '--locked', '--offline', '--quiet', '-p', 'verity_cli',
                             '--example', 'retrieval_session'], cwd=source, check=True)
             command = [sys.executable, str(ROOT / 'tools/selective_hybrid.py'), 'verify-report',

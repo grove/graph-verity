@@ -1,0 +1,52 @@
+{
+  "version": "question-vocabulary-study-v1",
+  "frozen_date": "2026-10-18",
+  "retrieval": "whole-original-question-per-role-BM25-only",
+  "questions": "benchmarks/question-vocabulary-v1/questions.json",
+  "references": "benchmarks/question-vocabulary-v1/references.json",
+  "budget": {
+    "per_role_top_k": 20,
+    "max_packet_bytes": 1048576,
+    "texts_per_candidate": 8,
+    "max_text_bytes": 2048,
+    "evidence_per_page": 3,
+    "max_source_bytes": 4096
+  },
+  "corpora": {
+    "wikidata-dev": {
+      "rdf": "data/wikidata/snapshot.nq",
+      "policy": "data/wikidata/policy.json",
+      "scope": "benchmarks/question-vocabulary-v1/wikidata-dev-scope.json",
+      "config": "data/wikidata/discovery.json"
+    },
+    "wikidata-transfer": {
+      "rdf": "data/wikidata/snapshot.nq",
+      "policy": "data/wikidata/policy.json",
+      "scope": "benchmarks/question-vocabulary-v1/wikidata-transfer-scope.json",
+      "config": "data/wikidata/discovery.json"
+    },
+    "worldcities-no": {
+      "rdf": "data/worldcities-transfer/snapshot.nq",
+      "policy": "data/worldcities-transfer/policy.json",
+      "scope": "benchmarks/question-vocabulary-v1/worldcities-no-scope.json",
+      "config": "data/worldcities-transfer/discovery.json"
+    },
+    "worldcities-fi": {
+      "rdf": "data/worldcities-transfer/snapshot.nq",
+      "policy": "data/worldcities-transfer/policy.json",
+      "scope": "benchmarks/question-vocabulary-v1/worldcities-fi-scope.json",
+      "config": "data/worldcities-transfer/discovery.json"
+    },
+    "gemet": {
+      "rdf": "data/gemet/snapshot.nq",
+      "policy": "data/gemet/policy.json",
+      "scope": "benchmarks/question-vocabulary-v1/gemet-scope.json",
+      "config": "data/gemet/discovery.json"
+    }
+  },
+  "language_selection": "Existing discovery en/no/nb/nn families and untagged; language recorded, no translation or preference",
+  "tie_order": "exact first, BM25 descending, original IRI then graph",
+  "selection": "New AI-authored grounding regressions; public source/intent lineages exposed; #72 frozen cases unavailable",
+  "inference_performed": false,
+  "holdout_accessed": false
+}

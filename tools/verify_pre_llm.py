@@ -100,14 +100,10 @@ def main() -> int:
         run("initial-clean-tree", ["git", "diff", "--exit-code", "HEAD"])
         state["rustc"] = run("rust-version", ["rustc", "-Vv"]).strip()
         run("dependency-fetch", ["cargo", "fetch", "--locked"])
-        run("reporting-tests", [sys.executable, "tools/frozen_pilot.py", "test-all"])
+        run("reporting-tests", [sys.executable, "tools/run_python_tests.py"])
         run("nl-ask-freeze", [sys.executable, "tools/nl_ask_benchmark.py", "verify"])
         run("nl-ask-reference", [sys.executable, "tools/nl_ask_benchmark.py", "baseline",
                                  "--split", "development"])
-        run("pilot-study-freeze", [sys.executable, "tools/frozen_pilot.py", "verify"])
-        pilot_out = Path(tempfile.mkdtemp(prefix="pilot-rehearsal-", dir=OUT))
-        run("pilot-study-rehearsal", [sys.executable, "tools/frozen_pilot.py", "rehearse",
-                                      "--out", str(pilot_out / "report.json")])
         run("retrieval-freeze", [sys.executable, "tools/retrieval.py", "verify"])
         run("issue9-forensics", [sys.executable, "tools/issue9_forensics.py", "verify",
                                  "--out", str(OUT / "issue9-forensics.json")])
@@ -115,12 +111,14 @@ def main() -> int:
         run("clippy", ["cargo", "clippy", "--workspace", "--all-targets", "--locked",
                        "--offline", "--", "-D", "warnings"])
         run("rust-tests", ["cargo", "test", "--workspace", "--locked", "--offline"])
+        run("question-vocabulary-replay", [sys.executable, "tools/run_python_tests.py",
+                                           "question-vocabulary"])
         run("hybrid-source-scope-canary", [sys.executable, "tools/hybrid_retrieval.py", "scope-canary",
                                           "--binary", "target/debug/verity"])
         run("hybrid-native-lexical-replay", [sys.executable, "tools/hybrid_retrieval.py", "verify-lexical",
                                             "--binary", "target/debug/verity", "--out",
                                             "reports/issue-50-real-rdf-hybrid/run"])
-        run("selective-hybrid-replay", [sys.executable, "tools/frozen_pilot.py", "selective-replay"])
+        run("selective-current-lexical", [sys.executable, "tools/frozen_pilot.py", "selective-current"])
         cli("smoke", "smoke", "tests/fixtures/smoke.trig", "trig")
         run("dataset-verify", [sys.executable, "tools/dataset.py", "verify"])
         rebuilt = OUT / "rebuilt.nq"
