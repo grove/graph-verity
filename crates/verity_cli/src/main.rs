@@ -20,7 +20,7 @@ use verity_core::{
     Result, Snapshot,
 };
 
-const USAGE: &str = "verity schema | schema-compact | schema-ask | schema-nl-ask | nl-ask-preview RDF FORMAT POLICY SCOPE CONFIG CATALOG DRAFT | schema-vocabulary | vocabulary|vocabulary-replay RDF FORMAT POLICY SCOPE CONFIG REQUEST_JSON BUDGET_JSON [SAVED_PACKET] | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | index-build RDF FORMAT POLICY SCOPE CONFIG | index-inspect RDF FORMAT POLICY SCOPE CONFIG INDEX | find|find-batch|entity RDF FORMAT POLICY SCOPE CONFIG REQUEST_JSON [INDEX] | ask-preview|ask RDF FORMAT POLICY REQUEST_JSON | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local|evaluate-local-compact RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT | compact-context RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT | compact RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT INTENT_FILE\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, CONFIG, INDEX, PLAN and BENCHMARK are JSON files. ask is experimental and requires interactive exact-plan confirmation. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
+const USAGE: &str = "verity schema | schema-compact | schema-ask | schema-nl-ask | nl-ask-preview RDF FORMAT POLICY SCOPE CONFIG CATALOG DRAFT | schema-neighborhood | neighborhood|neighborhood-replay RDF FORMAT POLICY SCOPE CONFIG REQUEST_JSON BUDGET_JSON [SAVED_PACKET] | schema-vocabulary | vocabulary|vocabulary-replay RDF FORMAT POLICY SCOPE CONFIG REQUEST_JSON BUDGET_JSON [SAVED_PACKET] | inspect|smoke RDF FORMAT | catalog RDF FORMAT POLICY SCOPE | index-build RDF FORMAT POLICY SCOPE CONFIG | index-inspect RDF FORMAT POLICY SCOPE CONFIG INDEX | find|find-batch|entity RDF FORMAT POLICY SCOPE CONFIG REQUEST_JSON [INDEX] | ask-preview|ask RDF FORMAT POLICY REQUEST_JSON | run RDF FORMAT POLICY PLAN | evaluate RDF FORMAT POLICY BENCHMARK SPLIT OUTDIR | evaluate-local|evaluate-local-compact RDF FORMAT POLICY BENCHMARK SPLIT MODEL_ID | replay RDF FORMAT POLICY SCOPE QUESTION_FILE RESPONSE_FILE | resolve RDF FORMAT POLICY SCOPE ROLE TEXT | compact-context RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT | compact RDF FORMAT POLICY SCOPE QUESTION_FILE LIMIT INTENT_FILE\nFORMAT: trig|nquads|turtle; POLICY, SCOPE, CONFIG, INDEX, PLAN and BENCHMARK are JSON files. ask is experimental and requires interactive exact-plan confirmation. evaluate-local is the private stdio bridge owned by tools/local_parser.py.";
 
 // The parent owns llama.cpp, deadlines and process cleanup; model bytes stay inside response.
 struct LlamaCppBridge {
@@ -109,6 +109,9 @@ fn run() -> Result<()> {
     if args.as_slice() == ["schema-nl-ask"] {
         return print_json(&verity_core::nl_ask::schema());
     }
+    if args.as_slice() == ["schema-neighborhood"] {
+        return print_json(&verity_core::nl_ask::neighborhood::schema());
+    }
     if args.as_slice() == ["schema-vocabulary"] {
         return print_json(&verity_core::vocabulary::schema());
     }
@@ -139,6 +142,34 @@ fn run() -> Result<()> {
             let context = graph.freeze_nl_ask_catalog(&index, selection, &policy)?;
             let draft = verity_core::nl_ask::decode_draft(&read_limited(&args[7], 16_384)?)?;
             print_json(&graph.preview_nl_ask(&context, draft, &policy)?)
+        }
+        ("neighborhood", 8) | ("neighborhood-replay", 9) => {
+            let scope: Vec<String> = serde_json::from_value(json(&args[4])?)?;
+            let config: DiscoveryConfig = serde_json::from_value(json(&args[5])?)?;
+            let request: VocabularyRequest = serde_json::from_value(json(&args[6])?)?;
+            let budget: VocabularyBudget = serde_json::from_value(json(&args[7])?)?;
+            let mut requested_scope = request.scope.clone();
+            let mut operator_scope = scope.clone();
+            requested_scope.sort();
+            operator_scope.sort();
+            if requested_scope != operator_scope {
+                return Err(reject("scope", "Packet scope differs from operator scope"));
+            }
+            let index = graph.build_discovery(&scope, &policy, &config)?;
+            let packet = if args[0] == "neighborhood-replay" {
+                graph.revalidate_neighborhood_packet(
+                    &index,
+                    &read_limited(&args[8], budget.max_packet_bytes.min(1024 * 1024))?,
+                    &request,
+                    &policy,
+                    &budget,
+                )?
+            } else {
+                graph.neighborhood_packet(&index, &request, &policy, &budget)?
+            };
+            // Compact JSON keeps the emitted packet inside its authenticated byte budget.
+            println!("{}", serde_json::to_string(&packet)?);
+            Ok(())
         }
         ("vocabulary", 8) | ("vocabulary-replay", 9) => {
             let scope: Vec<String> = serde_json::from_value(json(&args[4])?)?;
