@@ -69,7 +69,8 @@ independent human semantic review. All later controls and smoke are unattempted.
 (original P17), graph 0, forward direction and values projection; Rust accepted
 both and all five semantic fields matched the reference. However, one rationale
 said “country of the institution” and the other “country of the entity”, with
-different additional assertions. Byte-level repeatability failed under the
+different additional assertions. Completion request bytes were identical in
+both repeats for each model. Byte-level repeatability failed under the
 unchanged control. No prompt repair, rationale stripping, cache change or retry
 was used. The model also asserted a Finland answer in its rationale, including a
 cross-source GeoNames justification in the second reply. These are unverified
@@ -155,5 +156,14 @@ current Rust, reproduce semantic diagnostics, check raw SSE concatenation and
 prove no requests exist for unattempted controls/smokes. CI loads no model and
 needs no native assets. Original-host `--variant v1d replay` additionally requires
 the recorded Rust binary hash; cross-platform CI binds the unchanged Rust source
-and locked toolchain instead. The continuation's complete verification receipt
-will be retained after model-free CI finishes.
+and locked toolchain instead.
+
+The complete `REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py`
+suite **passed** at implementation/evidence commit `2b2786a`, including 244
+current Python tests, headless-browser checks, historical source/native replay,
+Rust workspace tests, Clippy with warnings denied, formatting and all
+source/reference/canary and clean-tree checks. [verification.json](verification.json)
+retains every command and outcome. The later receipt/documentation commit changes
+no adapter, frozen input, Rust source or model evidence bytes. The first sandboxed
+native-test attempt could not inspect `ps`; the complete suite ran with the host
+process access required by its existing cleanup tests, and loaded no models.
