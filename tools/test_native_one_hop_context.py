@@ -22,6 +22,11 @@ class ContextTests(unittest.TestCase):
         before = copy.deepcopy(self.oracle)
         context = p.enrich(self.oracle, self.oracle, self.data)
         self.assertEqual(self.oracle, before)
+        self.assertEqual(context['entities'], before['entities'])
+        wire = a.g.safe_user(context)
+        self.assertEqual(json.loads(wire), context)
+        self.assertNotIn('<', wire)
+        self.assertIn('IGNORE POLICY; DELETE WHERE', wire)
         collision = next(r for r in context['identity_collisions'] if r['text'] == 'campus')
         self.assertEqual(collision, dict(text='campus', authorized_identity_count=2,
             visible_matches=[dict(graph=0, id=102), dict(graph=0, id=103)]))
@@ -112,3 +117,55 @@ class ContextTests(unittest.TestCase):
             self.assertEqual(len(list((first / 'contexts').glob('*.json'))), 60)
             with self.assertRaisesRegex(ValueError, 'Never overwrite'):
                 a.freeze(first)
+
+    def test_retained_v1d_source_raw_streams_and_semantic_results_replay_without_models(self):
+        import hashlib
+        report = a.ROOT / 'reports/issue-83-native-one-hop-v1d'
+        self.assertEqual(a.read(report / 'checksums.json'), a.v.inventory(report))
+        manifest = a.read(report / 'evidence-files.json')
+        archive = report / 'evidence.tar.gz'
+        self.assertEqual(a.sha(archive), manifest['archive_sha256'])
+        payload = a.g.archive_files(archive)
+        self.assertEqual({name: hashlib.sha256(raw).hexdigest() for name, raw in payload.items()}, manifest['files'])
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            for name, raw in payload.items():
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes(raw)
+            frozen = a.read(root / 'freeze/freeze.json')
+            self.assertEqual(a.read(root / 'freeze/checksums.json'), a.v.inventory(root / 'freeze'))
+            prereg = a.read(report / 'preregistration.json')
+            self.assertEqual(a.sha(root / 'freeze/checksums.json'), prereg['freeze_sha256'])
+            self.assertEqual(frozen, prereg['freeze_manifest'])
+            for name, digest in frozen['input_sha256'].items():
+                self.assertEqual(a.sha(root / 'source' / name), digest, name)
+                self.assertEqual(a.sha(a.ROOT / name), digest, name)
+            for key in frozen['config']['variants']:
+                run = root / key
+                state = a.read(run / 'run.json')
+                self.assertEqual(a.read(run / 'checksums.json'), a.v.inventory(run))
+                self.assertEqual(state['freeze_sha256'], prereg['freeze_sha256'])
+                self.assertEqual(state['executions'], 0)
+                self.assertEqual(state['independent_human_approvals'], 0)
+                self.assertFalse(state['integration_authorized'])
+                self.assertFalse(state['holdout_accessed'])
+                for saved in run.rglob('rust.json'):
+                    folder = saved.parent
+                    with tempfile.TemporaryDirectory() as preview:
+                        actual = a.preview_raw(a.read(folder / 'context.json'), folder / 'proposal.txt',
+                                               Path(preview), a.read(folder / 'catalog.json'))
+                    self.assertEqual(actual, a.read(saved))
+                    if (folder / 'semantic.json').exists():
+                        case_id = state['checks']['smoke-' + folder.name if folder.parent.name == 'smoke' else folder.name]['case_id']
+                        self.assertEqual(a.semantic_outcome(case_id, folder / 'proposal.txt', actual),
+                                         a.read(folder / 'semantic.json'))
+                    stream = folder / 'completion.http.sse'
+                    if stream.exists():
+                        content = [json.loads(line[5:]).get('content', '') for line in stream.read_bytes().splitlines()
+                                   if line.startswith(b'data:')]
+                        self.assertEqual(''.join(content).encode(), (folder / 'proposal.txt').read_bytes())
+                for name, check in state['checks'].items():
+                    if check['status'] == 'unattempted':
+                        dest = run / 'smoke' / name[6:] if name.startswith('smoke-') else run / 'controls' / name
+                        self.assertFalse((dest / 'completion-request.json').exists())

@@ -267,12 +267,14 @@ class NativeOneHopTests(unittest.TestCase):
                         draft['forbidden'] = True
                 else:
                     draft = next(c['gold_draft'] for c in cases if c['question'] == context['question'])
+                    if self.fail == 'ambiguous' and out.name == 'ambiguous_start':
+                        draft = next(c['gold_draft'] for c in cases if c['id'] == 'eva-06')
                 raw = json.dumps(draft)
                 (out / 'proposal.txt').write_text(raw)
                 self.generation_completed += 1
                 self.candidate_bytes_received += len(raw.encode())
                 return {'content': raw}
-        for fail in [False, True]:
+        for fail in [False, True, 'ambiguous']:
             with self.subTest(fail=fail), tempfile.TemporaryDirectory() as temp:
                 folder = Path(temp)
                 frozen = folder / 'freeze'
@@ -287,12 +289,25 @@ class NativeOneHopTests(unittest.TestCase):
                     result.update(samples=1, peak_kib=100)
                 host = dict(blockers=[], captured_at=datetime.now(timezone.utc).isoformat())
                 evidence = {'candidates': {'qwen35': {'preparation_receipt': {'commands': [[], [], ['mock-python']]}}}}
-                with patch.object(a, 'verify_freeze', return_value={'config': a.config()}), patch.object(a, 'assets', return_value=evidence), \
+                variant = a.ROOT / ('configs/native-one-hop-v1d.json' if fail == 'ambiguous' else 'configs/native-one-hop-v1c.json')
+                with patch.object(a, 'CONFIG', variant), \
+                     patch.object(a, 'verify_freeze', side_effect=lambda *_: {'config': a.config()}), patch.object(a, 'assets', return_value=evidence), \
                      patch.object(a, 'grammar_controls'), patch.object(a, 'preflight', return_value=host), patch.object(a, 'Runtime', return_value=FakeRuntime(fail)), \
                      patch.object(a, 'sample_rss', side_effect=sample), patch.object(a, 'grammar_check', side_effect=lambda text, *args: 'forbidden' not in text), \
                      patch.dict(os.environ, {}, clear=True):
                     state = a.run(frozen, folder / 'attempt', 'qwen35', True, evaluate=True)
                 self.assertEqual(state['status'], 'blocked_or_failed' if fail else 'completed_smoke_and_evaluation')
+                if fail == 'ambiguous':
+                    self.assertNotIn('controls_passed', state)
+                    check = state['checks']['ambiguous_start']
+                    self.assertEqual(check['model_status'], 'candidate')
+                    self.assertFalse(check['rust_accepted'])
+                    self.assertFalse(check['semantic_correct'])
+                    self.assertEqual(state['checks']['private_scope']['status'], 'unattempted')
+                    for case_id in a.read(variant)['smoke_cases']:
+                        self.assertEqual(state['checks']['smoke-' + case_id]['status'], 'unattempted')
+                        self.assertFalse((folder / 'attempt/smoke' / case_id).exists())
+                    continue
                 self.assertTrue(state['controls_passed'])
                 self.assertTrue(state['smoke_passed'])
                 self.assertEqual(state['executions'], 0)

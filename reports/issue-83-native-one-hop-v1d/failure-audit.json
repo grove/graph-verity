@@ -1,0 +1,72 @@
+{
+  "qwen_country": {
+    "archive_member": "qwen35-v1c/smoke/eva-01",
+    "files": {
+      "context.json": "3367daf467c8f68802554917e6e47624bb1d37319db8f65bdf00323ca320adae",
+      "proposal.txt": "042313fc660374fa12bec11f8840de4e056fe04d52f834f2264b390f2bcdb633",
+      "prompt.txt": "5605f61792354c578646513ec937439df1bd961e959a4d8fbd24aacd17189a33",
+      "rust.json": "344fbfe68bcc97b2352a3dab1e088d2df101531573cc2dbe9e2212bef292c937",
+      "runtime.json": "0b5bb18df61e1ca29ce6d78b728aaec7728ee6391027595eb59ea1891a3526ed",
+      "parity.json": "85c872b2f2358de672e4c5d5153325e071157dd28af45da8c26af683cbf0ef32"
+    },
+    "question": "Hvilket land er oppført for Universitetet i Jyväskylä i Wikidata-uttrekket?",
+    "all_predicate_texts_empty": true,
+    "oracle_has_no_usage": true,
+    "model_status": "needs_clarification",
+    "rust": {
+      "returncode": 0,
+      "stdout": "{\n  \"status\": \"model_needs_clarification\",\n  \"display_rationale\": \"The question asks for the country of 'Universitetet i Jyväskylä' (University of Jyväskylä). The provided entity list contains an entity (id 102) with the label 'Jyväskylä universitet' in Norwegian, but the graph tables do not contain any stored triples linking this entity to a country (predicate P17) or any other entity representing a country. The predicates table lists P17 (country) but no graph data connects the university to it. Without a stored relation in the provided graph tables, the query cannot be \"\n}\n",
+      "stderr": ""
+    }
+  },
+  "gemma_ambiguous": {
+    "archive_member": "gemma4-v1c/controls/ambiguous_start",
+    "files": {
+      "context.json": "e632597afe6a878213b55bbe17b77e729b72afa9e6a09304d36bde0cb13e4102",
+      "proposal.txt": "9ea2ab0b750ad395935ee54ea677d433483c761bfb5515ec57b1bc234aa34703",
+      "prompt.txt": "312c89505a262630fab706ac6d624b918b2ff151049307da6e1f1e9dc41a30f2",
+      "rust.json": "f0415446f512945138cf1a4ebf5e703db2d639262a99155a734fff3dc9397e45",
+      "runtime.json": "99fd7324418f2e20a89308c9924c4e049acd29031d7bf8116bf8b51b0d55f437",
+      "parity.json": "4e43b246f364a0f5e17170b6310fd21177e9e4f31c91797cb74540f3c2350d99"
+    },
+    "question": "Show the labels of Campus.",
+    "all_predicate_texts_empty": true,
+    "oracle_has_no_usage": true,
+    "model_status": "candidate",
+    "rust": {
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "{\"detail\":\"deterministic_preflight_block: Host snapshot, source, scope, resolution or limits prohibit this draft\",\"status\":\"error\"}\n"
+    }
+  },
+  "new_source_only_presentation": {
+    "context_sha256": "e1691d5defb700d153acf291772d3bc0dbe9520040a3c7115e5d8fba0a75dee7",
+    "country_usage": [
+      {
+        "subject": 102,
+        "object": {
+          "kind": "entity",
+          "id": 101
+        }
+      }
+    ],
+    "identity_collisions": [
+      {
+        "text": "campus",
+        "authorized_identity_count": 2,
+        "visible_matches": [
+          {
+            "graph": 0,
+            "id": 102
+          },
+          {
+            "graph": 0,
+            "id": 103
+          }
+        ]
+      }
+    ],
+    "source_snapshot_sha256": "c35b205e7e76b2440b7680ac9139796413401f1a6acfeadc483967f6e5334ae9",
+    "hypothesis": "Source evidence was absent from oracle; alias collision was visible but scattered. Presentation hypothesis only, no causal or accuracy claim."
+  }
+}

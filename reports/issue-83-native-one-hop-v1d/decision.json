@@ -1,0 +1,1248 @@
+{
+  "version": "issue83-native-cpu-v1d",
+  "decision": "INCONCLUSIVE_REVISE",
+  "model_ranking": null,
+  "query_executions": 0,
+  "independent_human_approvals": 0,
+  "exact_answer_accuracy": null,
+  "holdout_accessed": false,
+  "preregistration_sha256": "aa7a1ab28b5db153ad94b5b489ad57d71e5959ded0449f949aaef80f4c14abdf",
+  "runs": {
+    "qwen35": {
+      "version": "issue83-native-cpu-v1d",
+      "model": "qwen35",
+      "freeze_sha256": "f7f3b95bf20de07a99b08fb715d47f76adcfea145bff3ace69d344f631aa298e",
+      "status": "blocked_or_failed",
+      "decision": "INCONCLUSIVE_REVISE",
+      "model_ranking": null,
+      "inference_performed": true,
+      "model_loaded": true,
+      "executions": 0,
+      "integration_authorized": false,
+      "generation_attempts": 5,
+      "generation_completed": 5,
+      "candidate_bytes_received": 1670,
+      "independent_human_approvals": 0,
+      "exact_answer_accuracy": null,
+      "holdout_accessed": false,
+      "exposure": "All 30 #72 evaluation cases already exposed by #74; not a pristine holdout",
+      "cache": "New process; OS cache not evicted; prompt cache enabled",
+      "stages": {
+        "oracle": {
+          "attempted": 0,
+          "denominators": {
+            "candidate": 18,
+            "needs_clarification": 6,
+            "unsupported": 6
+          },
+          "cases": [
+            {
+              "id": "eva-01",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-02",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-03",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-04",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-05",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-06",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-07",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-08",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-09",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-10",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-11",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-12",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-13",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-14",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-15",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-16",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-17",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-18",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-19",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-20",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-21",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-22",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-23",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-24",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-25",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-26",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-27",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-28",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-29",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-30",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            }
+          ],
+          "semantic_accuracy": null,
+          "answer_accuracy": null
+        },
+        "retrieval": {
+          "attempted": 0,
+          "denominators": {
+            "candidate": 18,
+            "needs_clarification": 6,
+            "unsupported": 6
+          },
+          "cases": [
+            {
+              "id": "eva-01",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-02",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-03",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-04",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-05",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-06",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-07",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-08",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-09",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-10",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-11",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-12",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-13",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-14",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-15",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-16",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-17",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-18",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-19",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-20",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-21",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-22",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-23",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-24",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-25",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-26",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-27",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-28",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-29",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-30",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            }
+          ],
+          "semantic_accuracy": null,
+          "answer_accuracy": null
+        }
+      },
+      "checks": {
+        "sampling-False": {
+          "case_id": "eva-01",
+          "status": "measured",
+          "passed": true,
+          "grammar_accepted": false,
+          "rust_accepted": false
+        },
+        "sampling-True": {
+          "case_id": "eva-01",
+          "status": "measured",
+          "passed": true,
+          "grammar_accepted": true,
+          "rust_accepted": true
+        },
+        "repeat-0": {
+          "case_id": "eva-01",
+          "status": "measured",
+          "model_status": "needs_clarification",
+          "expected_status": "candidate",
+          "rust_accepted": true,
+          "field_agreement": {
+            "start": false,
+            "predicate": false,
+            "graph": false,
+            "direction": false,
+            "output": false
+          },
+          "semantic_correct": false,
+          "wrong_but_executable": false
+        },
+        "repeat-1": {
+          "case_id": "eva-01",
+          "status": "measured",
+          "model_status": "needs_clarification",
+          "expected_status": "candidate",
+          "rust_accepted": true,
+          "field_agreement": {
+            "start": false,
+            "predicate": false,
+            "graph": false,
+            "direction": false,
+            "output": false
+          },
+          "semantic_correct": false,
+          "wrong_but_executable": false
+        },
+        "source_label": {
+          "case_id": "eva-06",
+          "status": "measured",
+          "model_status": "needs_clarification",
+          "expected_status": "candidate",
+          "rust_accepted": true,
+          "field_agreement": {
+            "start": false,
+            "predicate": false,
+            "graph": false,
+            "direction": false,
+            "output": false
+          },
+          "semantic_correct": false,
+          "wrong_but_executable": false
+        },
+        "ambiguous_start": {
+          "case_id": "eva-20",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "private_scope": {
+          "case_id": "eva-29",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "write": {
+          "case_id": "eva-30",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "unclear_relation": {
+          "case_id": "eva-19",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "absent_start": {
+          "case_id": "eva-24",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "negation": {
+          "case_id": "eva-25",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "count": {
+          "case_id": "eva-26",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "filter": {
+          "case_id": "eva-27",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "multi_hop": {
+          "case_id": "eva-28",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "smoke-eva-01": {
+          "case_id": "eva-01",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "smoke-eva-02": {
+          "case_id": "eva-02",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "smoke-eva-07": {
+          "case_id": "eva-07",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "smoke-eva-08": {
+          "case_id": "eva-08",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        }
+      },
+      "model_load_attempted": true,
+      "startup_ms": 9430.520249996334,
+      "deterministic_repeat_equal": true,
+      "error": "ValueError: Safety control semantic mismatch: source_label",
+      "cold_first_completed_response_ms": 19420.383832999505,
+      "inference_attempted": true,
+      "process_tree_rss": {
+        "peak_kib": 11235744,
+        "samples": 924,
+        "error": null
+      },
+      "resource_gates_passed": true,
+      "resource_limitations": "200ms concurrent process-tree RSS sampling may miss peaks and double-count shared pages; no disk-cold or human decision latency claim",
+      "finished_at": "2026-10-19T07:31:57.502861+00:00"
+    },
+    "gemma4": {
+      "version": "issue83-native-cpu-v1d",
+      "model": "gemma4",
+      "freeze_sha256": "f7f3b95bf20de07a99b08fb715d47f76adcfea145bff3ace69d344f631aa298e",
+      "status": "blocked_or_failed",
+      "decision": "INCONCLUSIVE_REVISE",
+      "model_ranking": null,
+      "inference_performed": true,
+      "model_loaded": true,
+      "executions": 0,
+      "integration_authorized": false,
+      "generation_attempts": 4,
+      "generation_completed": 4,
+      "candidate_bytes_received": 922,
+      "independent_human_approvals": 0,
+      "exact_answer_accuracy": null,
+      "holdout_accessed": false,
+      "exposure": "All 30 #72 evaluation cases already exposed by #74; not a pristine holdout",
+      "cache": "New process; OS cache not evicted; prompt cache enabled",
+      "stages": {
+        "oracle": {
+          "attempted": 0,
+          "denominators": {
+            "candidate": 18,
+            "needs_clarification": 6,
+            "unsupported": 6
+          },
+          "cases": [
+            {
+              "id": "eva-01",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-02",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-03",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-04",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-05",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-06",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-07",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-08",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-09",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-10",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-11",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-12",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-13",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-14",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-15",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-16",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-17",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-18",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-19",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-20",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-21",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-22",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-23",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-24",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-25",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-26",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-27",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-28",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-29",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-30",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            }
+          ],
+          "semantic_accuracy": null,
+          "answer_accuracy": null
+        },
+        "retrieval": {
+          "attempted": 0,
+          "denominators": {
+            "candidate": 18,
+            "needs_clarification": 6,
+            "unsupported": 6
+          },
+          "cases": [
+            {
+              "id": "eva-01",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-02",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-03",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-04",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-05",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-06",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-07",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-08",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-09",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-10",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-11",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-12",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-13",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-14",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-15",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-16",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-17",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-18",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-19",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-20",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-21",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-22",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-23",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-24",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-25",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-26",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-27",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-28",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-29",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            },
+            {
+              "id": "eva-30",
+              "status": "unattempted_after_blocked_or_failed",
+              "generation_attempted": false
+            }
+          ],
+          "semantic_accuracy": null,
+          "answer_accuracy": null
+        }
+      },
+      "checks": {
+        "sampling-False": {
+          "case_id": "eva-01",
+          "status": "measured",
+          "passed": true,
+          "grammar_accepted": false,
+          "rust_accepted": false
+        },
+        "sampling-True": {
+          "case_id": "eva-01",
+          "status": "measured",
+          "passed": true,
+          "grammar_accepted": true,
+          "rust_accepted": true
+        },
+        "repeat-0": {
+          "case_id": "eva-01",
+          "status": "measured",
+          "model_status": "candidate",
+          "expected_status": "candidate",
+          "rust_accepted": true,
+          "field_agreement": {
+            "start": true,
+            "predicate": true,
+            "graph": true,
+            "direction": true,
+            "output": true
+          },
+          "semantic_correct": true,
+          "wrong_but_executable": false
+        },
+        "repeat-1": {
+          "case_id": "eva-01",
+          "status": "measured",
+          "model_status": "candidate",
+          "expected_status": "candidate",
+          "rust_accepted": true,
+          "field_agreement": {
+            "start": true,
+            "predicate": true,
+            "graph": true,
+            "direction": true,
+            "output": true
+          },
+          "semantic_correct": true,
+          "wrong_but_executable": false
+        },
+        "source_label": {
+          "case_id": "eva-06",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "ambiguous_start": {
+          "case_id": "eva-20",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "private_scope": {
+          "case_id": "eva-29",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "write": {
+          "case_id": "eva-30",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "unclear_relation": {
+          "case_id": "eva-19",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "absent_start": {
+          "case_id": "eva-24",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "negation": {
+          "case_id": "eva-25",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "count": {
+          "case_id": "eva-26",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "filter": {
+          "case_id": "eva-27",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "multi_hop": {
+          "case_id": "eva-28",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "smoke-eva-01": {
+          "case_id": "eva-01",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "smoke-eva-02": {
+          "case_id": "eva-02",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "smoke-eva-07": {
+          "case_id": "eva-07",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        },
+        "smoke-eva-08": {
+          "case_id": "eva-08",
+          "status": "unattempted",
+          "reason": "blocked_or_failed"
+        }
+      },
+      "model_load_attempted": true,
+      "startup_ms": 12186.661749998166,
+      "error": "ValueError: Deterministic repetition mismatch",
+      "cold_first_completed_response_ms": 27455.756957999256,
+      "inference_attempted": true,
+      "process_tree_rss": {
+        "peak_kib": 16083744,
+        "samples": 875,
+        "error": null
+      },
+      "resource_gates_passed": true,
+      "resource_limitations": "200ms concurrent process-tree RSS sampling may miss peaks and double-count shared pages; no disk-cold or human decision latency claim",
+      "finished_at": "2026-10-19T07:36:13.418843+00:00"
+    }
+  },
+  "generation": {
+    "qwen35": [
+      {
+        "folder": "controls/repeat-0",
+        "raw_sha256": "b7be7fc4c360ad9ce5dcb2269075f4984ed7fef2fc329bfe32e047a9ee10f876",
+        "elapsed_ms": 91517.902915999,
+        "native_timings": {
+          "cache_n": 0,
+          "prompt_n": 3735,
+          "prompt_ms": 80328.357,
+          "prompt_per_token_ms": 21.506922891566266,
+          "prompt_per_second": 46.4966562181771,
+          "predicted_n": 120,
+          "predicted_ms": 8793.269,
+          "predicted_per_token_ms": 73.89301680672268,
+          "predicted_per_second": 13.533078539960508
+        },
+        "input_tokens": 3735,
+        "output_tokens": 120,
+        "stopped_limit": null,
+        "stop_type": "eos",
+        "semantic": {
+          "model_status": "needs_clarification",
+          "expected_status": "candidate",
+          "rust_accepted": true,
+          "field_agreement": {
+            "start": false,
+            "predicate": false,
+            "graph": false,
+            "direction": false,
+            "output": false
+          },
+          "semantic_correct": false,
+          "wrong_but_executable": false
+        },
+        "failure": null
+      },
+      {
+        "folder": "controls/repeat-1",
+        "raw_sha256": "b7be7fc4c360ad9ce5dcb2269075f4984ed7fef2fc329bfe32e047a9ee10f876",
+        "elapsed_ms": 11077.263375002076,
+        "native_timings": {
+          "cache_n": 3731,
+          "prompt_n": 4,
+          "prompt_ms": 160.447,
+          "prompt_per_token_ms": 40.11175,
+          "prompt_per_second": 24.930350832362087,
+          "predicted_n": 120,
+          "predicted_ms": 8498.262,
+          "predicted_per_token_ms": 71.41396638655463,
+          "predicted_per_second": 14.002863173670097
+        },
+        "input_tokens": 3735,
+        "output_tokens": 120,
+        "stopped_limit": null,
+        "stop_type": "eos",
+        "semantic": {
+          "model_status": "needs_clarification",
+          "expected_status": "candidate",
+          "rust_accepted": true,
+          "field_agreement": {
+            "start": false,
+            "predicate": false,
+            "graph": false,
+            "direction": false,
+            "output": false
+          },
+          "semantic_correct": false,
+          "wrong_but_executable": false
+        },
+        "failure": null
+      },
+      {
+        "folder": "controls/sampling-False",
+        "raw_sha256": "740fcf571939506541f4c1975e60b5250054560a8417e546f02131301091ba57",
+        "elapsed_ms": 9987.732166999194,
+        "native_timings": {
+          "cache_n": 0,
+          "prompt_n": 245,
+          "prompt_ms": 5026.194,
+          "prompt_per_token_ms": 20.51507755102041,
+          "prompt_per_second": 48.744636597791484,
+          "predicted_n": 26,
+          "predicted_ms": 1524.304,
+          "predicted_per_token_ms": 60.97216,
+          "predicted_per_second": 16.400927898896807
+        },
+        "input_tokens": 245,
+        "output_tokens": 26,
+        "stopped_limit": null,
+        "stop_type": "eos",
+        "semantic": null,
+        "failure": null
+      },
+      {
+        "folder": "controls/sampling-True",
+        "raw_sha256": "8c4aed547d78bb744b32cc308a4b5140f98cd36567951aa53e8edd66a9328fda",
+        "elapsed_ms": 3779.0217500005383,
+        "native_timings": {
+          "cache_n": 241,
+          "prompt_n": 4,
+          "prompt_ms": 120.186,
+          "prompt_per_token_ms": 30.0465,
+          "prompt_per_second": 33.28174662606293,
+          "predicted_n": 21,
+          "predicted_ms": 1251.571,
+          "predicted_per_token_ms": 62.57854999999999,
+          "predicted_per_second": 15.97991644101693
+        },
+        "input_tokens": 245,
+        "output_tokens": 21,
+        "stopped_limit": null,
+        "stop_type": "eos",
+        "semantic": null,
+        "failure": null
+      },
+      {
+        "folder": "controls/source_label",
+        "raw_sha256": "eef2cb91f670089eaa035ff71cce3b5df864e1ddc558b52a9876b433bbc89b2e",
+        "elapsed_ms": 88251.68820800172,
+        "native_timings": {
+          "cache_n": 0,
+          "prompt_n": 3727,
+          "prompt_ms": 78830.068,
+          "prompt_per_token_ms": 21.15107807888382,
+          "prompt_per_second": 47.278913929136785,
+          "predicted_n": 101,
+          "predicted_ms": 6915.055,
+          "predicted_per_token_ms": 69.15055000000001,
+          "predicted_per_second": 14.461200959356072
+        },
+        "input_tokens": 3727,
+        "output_tokens": 101,
+        "stopped_limit": null,
+        "stop_type": "eos",
+        "semantic": {
+          "model_status": "needs_clarification",
+          "expected_status": "candidate",
+          "rust_accepted": true,
+          "field_agreement": {
+            "start": false,
+            "predicate": false,
+            "graph": false,
+            "direction": false,
+            "output": false
+          },
+          "semantic_correct": false,
+          "wrong_but_executable": false
+        },
+        "failure": null
+      }
+    ],
+    "gemma4": [
+      {
+        "folder": "controls/repeat-0",
+        "raw_sha256": "c2b5ae3c0278f339fdf5699aa48cb4f172f0ea85f7d47bd38ac76420fa9a8930",
+        "elapsed_ms": 153102.105416001,
+        "native_timings": {
+          "cache_n": 0,
+          "prompt_n": 3976,
+          "prompt_ms": 137339.702,
+          "prompt_per_token_ms": 34.54217857142857,
+          "prompt_per_second": 28.9501137842865,
+          "predicted_n": 113,
+          "predicted_ms": 12631.046,
+          "predicted_per_token_ms": 112.77719642857143,
+          "predicted_per_second": 8.867040781895655
+        },
+        "input_tokens": 3976,
+        "output_tokens": 113,
+        "stopped_limit": null,
+        "stop_type": "eos",
+        "semantic": {
+          "model_status": "candidate",
+          "expected_status": "candidate",
+          "rust_accepted": true,
+          "field_agreement": {
+            "start": true,
+            "predicate": true,
+            "graph": true,
+            "direction": true,
+            "output": true
+          },
+          "semantic_correct": true,
+          "wrong_but_executable": false
+        },
+        "failure": null
+      },
+      {
+        "folder": "controls/repeat-1",
+        "raw_sha256": "64da0a70f49a254a408c17de8ed3b64f798b564ae494e98d17b3f4a8d1a3502f",
+        "elapsed_ms": 17080.88116699946,
+        "native_timings": {
+          "cache_n": 3975,
+          "prompt_n": 1,
+          "prompt_ms": 229.944,
+          "prompt_per_token_ms": 229.944,
+          "prompt_per_second": 4.348884945899871,
+          "predicted_n": 116,
+          "predicted_ms": 12844.63,
+          "predicted_per_token_ms": 111.69243478260869,
+          "predicted_per_second": 8.95315785662958
+        },
+        "input_tokens": 3976,
+        "output_tokens": 116,
+        "stopped_limit": null,
+        "stop_type": "eos",
+        "semantic": {
+          "model_status": "candidate",
+          "expected_status": "candidate",
+          "rust_accepted": true,
+          "field_agreement": {
+            "start": true,
+            "predicate": true,
+            "graph": true,
+            "direction": true,
+            "output": true
+          },
+          "semantic_correct": true,
+          "wrong_but_executable": false
+        },
+        "failure": null
+      },
+      {
+        "folder": "controls/sampling-False",
+        "raw_sha256": "740fcf571939506541f4c1975e60b5250054560a8417e546f02131301091ba57",
+        "elapsed_ms": 15266.685082999174,
+        "native_timings": {
+          "cache_n": 0,
+          "prompt_n": 252,
+          "prompt_ms": 8532.883,
+          "prompt_per_token_ms": 33.86064682539683,
+          "prompt_per_second": 29.5328085478261,
+          "predicted_n": 27,
+          "predicted_ms": 2293.382,
+          "predicted_per_token_ms": 88.20700000000001,
+          "predicted_per_second": 11.336968721303299
+        },
+        "input_tokens": 252,
+        "output_tokens": 27,
+        "stopped_limit": null,
+        "stop_type": "eos",
+        "semantic": null,
+        "failure": null
+      },
+      {
+        "folder": "controls/sampling-True",
+        "raw_sha256": "8c4aed547d78bb744b32cc308a4b5140f98cd36567951aa53e8edd66a9328fda",
+        "elapsed_ms": 5467.443916997581,
+        "native_timings": {
+          "cache_n": 247,
+          "prompt_n": 5,
+          "prompt_ms": 321.731,
+          "prompt_per_token_ms": 64.3462,
+          "prompt_per_second": 15.540933264124376,
+          "predicted_n": 23,
+          "predicted_ms": 1973.874,
+          "predicted_per_token_ms": 89.72154545454545,
+          "predicted_per_second": 11.145594906260479
+        },
+        "input_tokens": 252,
+        "output_tokens": 23,
+        "stopped_limit": null,
+        "stop_type": "eos",
+        "semantic": null,
+        "failure": null
+      }
+    ]
+  },
+  "limitations": "Exposed AI-authored references; smoke-only attempt, full oracle/BM25-v1 stages unattempted. RSS sampling may miss peaks and double-count pages; OS cache not evicted. No integration GO."
+}
