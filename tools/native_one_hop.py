@@ -31,7 +31,7 @@ read, dump, require = v.read, v.dump, v.require
 
 def config():
     cfg = read(CONFIG)
-    require(cfg["version"] == "issue83-native-cpu-v1c", "Unknown native adapter")
+    require(cfg["version"] in {"issue83-native-cpu-v1c", "issue83-native-cpu-v1d"}, "Unknown native adapter")
     cpu = read(ROOT / cfg["cpu_protocol"])
     require(cpu["cpu_threads"] == 4 and cpu["gpu_layers"] == 0 and cpu["concurrency"] == 1
             and cpu["temperature"] == 0 and cpu["quantization"] == "Q4_K_M"
@@ -73,6 +73,10 @@ def freeze(out, binary=BINARY):
     budget = read(v.DEFAULT_PROTOCOL)["budget"]
     dump(out / "budget.json", budget)
     graphs = {r["id"]: r["iri"] for r in table["graphs"]}
+    if cfg.get("context_revision") == "source-usage-and-collisions-v1":
+        import native_one_hop_context as presentation
+        from rdflib import Dataset
+        data = t.n.parse_rdf(Dataset(), t.STUDY / "snapshot.nq", format="nquads")
     for q in questions:
         folder = out / "packets" / q["id"]
         folder.mkdir()
@@ -94,6 +98,8 @@ def freeze(out, binary=BINARY):
                 for collection in ["entities", "predicates"]:
                     retained = {(r["graph"], r["iri"]) for r in packet[collection]["candidates"]}
                     context[collection] = [r for r in oracle[collection] if (graphs[r["graph"]], r["iri"]) in retained]
+            if cfg.get("context_revision") == "source-usage-and-collisions-v1":
+                context = presentation.enrich(context, oracle, data)
             dump(out / "contexts" / f"{q['id']}-{stage}.json", context)
     # Resolution fixtures are for the offline Rust preview/scorer only, never serialized into prompts.
     dump(out / "operator-fixtures.json", {c["id"]: dict(resolved_start=c["resolved_start"], blocked=c["preflight_blocked"])
@@ -104,6 +110,8 @@ def freeze(out, binary=BINARY):
              ROOT / "schemas/nl-ask-draft-v1.json", ROOT / "Cargo.lock", ROOT / "rust-toolchain.toml",
              t.n.STUDY / "freeze.json", t.n.STUDY / "cases.json", original / "checksums.json",
              *sorted(t.STUDY.glob("*")), *sorted((ROOT / "crates").rglob("*.rs"))]
+    if cfg.get("context_revision"):
+        paths.append(ROOT / "tools/native_one_hop_context.py")
     require(json.loads(v.cli(binary, "schema-nl-ask")) == read(ROOT / "schemas/nl-ask-draft-v1.json"), "Rust schema drift")
     dump(out / "freeze.json", dict(version=cfg["version"], config=cfg, exposed_evaluation=True,
          input_sha256={str(p.relative_to(ROOT)): sha(p) for p in paths if p.is_file()},
@@ -397,6 +405,24 @@ def run(folder, out, key, allow_inference=False, evaluate=False, binary=BINARY):
         return _run(folder, out, key, evaluate, binary)
 
 
+def semantic_outcome(case_id, raw_path, checked):
+    """Post-generation diagnostics only: never used by context construction."""
+    case = next(c for c in t.cases() if c["id"] == case_id)
+    try:
+        draft = json.loads(raw_path.read_bytes())
+        draft = draft if isinstance(draft, dict) else {}
+        status = draft.get("status")
+    except (ValueError, UnicodeDecodeError):
+        draft, status = {}, None
+    expected = case["expected_status"]
+    fields = {key: draft.get(key) == case["gold_draft"].get(key)
+              for key in ["start", "predicate", "graph", "direction", "output"]} if expected == "candidate" else {}
+    correct = checked["returncode"] == 0 and status == expected and all(fields.values())
+    return dict(model_status=status, expected_status=expected, rust_accepted=checked["returncode"] == 0,
+                field_agreement=fields, semantic_correct=correct,
+                wrong_but_executable=checked["returncode"] == 0 and status == "candidate" and not correct)
+
+
 def _run(folder, out, key, evaluate=False, binary=BINARY):
     frozen = verify_freeze(folder, binary)
     cfg = frozen["config"]
@@ -411,12 +437,22 @@ def _run(folder, out, key, evaluate=False, binary=BINARY):
                  exposure=cfg["evaluation_exposure"], cache="New process; OS cache not evicted; prompt cache enabled",
                  stages={stage: dict(attempted=0, denominators=dict(candidate=18, needs_clarification=6, unsupported=6),
                          cases=[dict(id=q["id"], status="unattempted") for q in read(folder / "questions.json")]) for stage in cfg["stages"]})
+    state["checks"] = {name: dict(case_id=case_id, status="unattempted")
+                       for name, case_id in [("sampling-False", cfg["smoke_cases"][0]),
+                                            ("sampling-True", cfg["smoke_cases"][0]),
+                                            ("repeat-0", cfg["smoke_cases"][0]), ("repeat-1", cfg["smoke_cases"][0]),
+                                            *cfg["control_cases"].items(),
+                                            *(("smoke-" + cid, cid) for cid in cfg["smoke_cases"]) ]}
     runtime, memory_thread = None, None
     done = threading.Event()
     rss = dict(peak_kib=0, samples=0, error=None)
     fixtures = read(folder / "operator-fixtures.json")
     def generate(case_id, stage, destination, constrained=True, context=None, system=None):
         destination.mkdir(parents=True)
+        check_name = "smoke-" + case_id if destination.parent.name == "smoke" else destination.name
+        check = state["checks"].get(check_name)
+        if check is not None:
+            check["status"] = "attempting"
         context = context or read(folder / "contexts" / f"{case_id}-{stage}.json")
         dump(destination / "context.json", context)
         try:
@@ -428,9 +464,16 @@ def _run(folder, out, key, evaluate=False, binary=BINARY):
             raw_path = destination / "proposal.txt"
             if raw_path.exists():
                 preview_raw(context, raw_path, destination, fixtures[case_id], binary)
+            if check is not None:
+                check["status"] = "runtime_failure"
             raise
         raw_path = destination / "proposal.txt"
         checked = preview_raw(context, raw_path, destination, fixtures[case_id], binary)
+        if not destination.name.startswith("sampling-"):
+            outcome = semantic_outcome(case_id, raw_path, checked)
+            dump(destination / "semantic.json", outcome)
+            if check is not None:
+                check.update(outcome, status="measured")
         if constrained:
             require(grammar_check(raw_path.read_text(), context, destination), "Generated output violates native grammar")
         return result, checked
@@ -460,6 +503,8 @@ def _run(folder, out, key, evaluate=False, binary=BINARY):
                 _, checked = generate(cfg["smoke_cases"][0], "oracle", dest, constrained, challenge,
                                       system=(ROOT / cfg["control_prompt_file"]).read_text())
                 accepted = grammar_check((dest / "proposal.txt").read_text(), challenge, dest)
+                state["checks"][dest.name].update(status="measured", passed=accepted == constrained,
+                                                  grammar_accepted=accepted, rust_accepted=checked["returncode"] == 0)
                 require(accepted == constrained, "Native constrained/unconstrained sampling control failed")
                 if constrained:
                     require(checked["returncode"] == 0, "Constrained sampling rejected by Rust")
@@ -470,10 +515,13 @@ def _run(folder, out, key, evaluate=False, binary=BINARY):
                 require(checked["returncode"] == 0, "Repeated smoke rejected by Rust")
                 repeats.append((dest / "proposal.txt").read_bytes())
             require(repeats[0] == repeats[1], "Deterministic repetition mismatch")
+            state["deterministic_repeat_equal"] = True
             for name, case_id in cfg["control_cases"].items():
                 _, checked = generate(case_id, "oracle", out / "controls" / name)
                 require(checked["returncode"] == 0, "Safety control rejected by Rust")
                 status = json.loads(checked["stdout"])["status"]
+                if cfg.get("context_revision"):
+                    require(state["checks"][name]["semantic_correct"], "Safety control semantic mismatch: " + name)
                 if name == "ambiguous_start":
                     require(status == "model_needs_clarification", "Ambiguous identity not clarified")
                 elif name in {"private_scope", "write"}:
@@ -561,6 +609,9 @@ def _run(folder, out, key, evaluate=False, binary=BINARY):
             and rss["peak_kib"] <= cfg["engineering_gates_per_stage"]["sampled_concurrent_process_tree_rss_gib_max"] * 2**20)
         state["resource_limitations"] = "200ms concurrent process-tree RSS sampling may miss peaks and double-count shared pages; no disk-cold or human decision latency claim"
         state["finished_at"] = datetime.now(timezone.utc).isoformat()
+        for check in state["checks"].values():
+            if check["status"] == "unattempted":
+                check["reason"] = state["status"]
         dump(out / "run.json", state)
         dump(out / "checksums.json", v.inventory(out))
     return state
@@ -584,7 +635,9 @@ def replay(folder, run_dir, binary=BINARY):
 
 
 def main():
+    global CONFIG
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--variant", choices=["v1c", "v1d"], default="v1c")
     parser.add_argument("command", choices=["freeze", "preflight", "assets", "run", "replay"])
     parser.add_argument("--freeze", type=Path, default=REPORT / "freeze")
     parser.add_argument("--out", type=Path)
@@ -593,6 +646,7 @@ def main():
     parser.add_argument("--allow-inference", action="store_true")
     parser.add_argument("--evaluate", action="store_true")
     args = parser.parse_args()
+    CONFIG = ROOT / f"configs/native-one-hop-{args.variant}.json"
     signal.signal(signal.SIGTERM, lambda *_: sys.exit("Operator cancelled"))
     if args.command == "replay":
         require(args.run is not None, "--run required")

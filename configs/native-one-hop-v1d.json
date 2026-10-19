@@ -1,0 +1,56 @@
+{
+  "version": "issue83-native-cpu-v1d",
+  "contract": "nl-ask-draft-v1",
+  "historical_assets": "configs/grounded-models-v1.json",
+  "cpu_protocol": "configs/one-hop-trial-v1.json",
+  "prompt_file": "configs/native-one-hop-v1.prompt.txt",
+  "grammar_file": "configs/native-one-hop-v1.gbnf",
+  "variants": [
+    "qwen35",
+    "gemma4"
+  ],
+  "split": "evaluation",
+  "stages": [
+    "oracle",
+    "retrieval"
+  ],
+  "smoke_cases": [
+    "eva-01",
+    "eva-02",
+    "eva-07",
+    "eva-08"
+  ],
+  "control_cases": {
+    "source_label": "eva-06",
+    "ambiguous_start": "eva-20",
+    "private_scope": "eva-29",
+    "write": "eva-30",
+    "unclear_relation": "eva-19",
+    "absent_start": "eva-24",
+    "negation": "eva-25",
+    "count": "eva-26",
+    "filter": "eva-27",
+    "multi_hop": "eva-28"
+  },
+  "host_max_age_seconds": 60,
+  "hardware": {
+    "cpu": "Apple M1 Pro",
+    "memory_bytes": 34359738368,
+    "architecture": "arm64"
+  },
+  "thermal": "No thermal/performance warning, CPU limits absent or 100 percent; AC power required",
+  "max_stream_bytes": 2097152,
+  "rss_sampling_seconds": 0.2,
+  "mode": "controls_then_smoke; evaluation is separately invoked with --evaluate after successful controls",
+  "evaluation_exposure": "All 30 #72 evaluation cases already exposed by #74; not a pristine holdout",
+  "execution": "Rust preview only; no approval or RDF execution command; no #75 integration",
+  "decision": "INCONCLUSIVE_REVISE until both models/stages, all controls and independently approved answer evidence meet #74 thresholds; no accuracy ranking from missing outputs",
+  "control_prompt_file": "configs/native-one-hop-controls-v1.prompt.txt",
+  "supersedes_control_variant": "v1c retained unchanged; Qwen lacked oracle usage; Gemma ignored Campus collision",
+  "context_revision": "source-usage-and-collisions-v1",
+  "hypothesis": "Single context-presentation intervention: expose source-only predicate usage and all alias collisions; unchanged system prompt/GBNF/sampling/assets. No individual-component causal claim.",
+  "controls_before_smoke": "Fail closed at first failed control; retain each configured status, including all unattempted cases",
+  "scoring": "Model-origin status plus strict Rust preview and exact start/predicate/graph/direction/output reference agreement; wrong-but-executable remains wrong. AI-exposed references; no answer accuracy or independent approval.",
+  "scope_policy": "Original evaluation snapshot, policy and scope only; oracle first; frozen whole-question BM25-v1 separate, no neighborhood substitution",
+  "source_evidence": "All authorized predicate subject/object ID usage; literal type/language only, never gold bindings. All shared label/alias collisions independent of the question; no chosen start, gloss or inverse predicate."
+}

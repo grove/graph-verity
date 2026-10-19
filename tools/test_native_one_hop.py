@@ -341,7 +341,13 @@ class NativeOneHopTests(unittest.TestCase):
             # Platform binaries differ. The Rust sources and locked toolchain must agree.
             for path, digest in frozen['input_sha256'].items():
                 if path.startswith('crates/') or path in {'Cargo.lock', 'rust-toolchain.toml'} or name == 'freeze':
-                    self.assertEqual(a.sha(a.ROOT / path), digest, path)
+                    if name == 'freeze' and path == 'tools/native_one_hop.py':
+                        # The v1c runner is immutable in PR #85's merge; current runner adds v1d.
+                        original = subprocess.check_output(['git', 'show',
+                            'e1d1e55b8e04cf1fe660b2b8663a6db177ad2c95:' + path], cwd=a.ROOT)
+                        self.assertEqual(hashlib.sha256(original).hexdigest(), digest, path)
+                    else:
+                        self.assertEqual(a.sha(a.ROOT / path), digest, path)
         for run in sorted(report.glob('*')):
             if not run.is_dir() or not (run / 'run.json').exists():
                 continue
