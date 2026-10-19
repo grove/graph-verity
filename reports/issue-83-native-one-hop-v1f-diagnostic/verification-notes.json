@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-10-19T09:35:19.706129+00:00",
+  "tested_commit": "d3428e1b1af32b42f9a018cb83ee4aa61c14e89b",
+  "command": "CARGO_NET_OFFLINE=true REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py",
+  "status": "passed",
+  "current_python_tests": 254,
+  "native_model_free_tests": 29,
+  "new_diagnostic_tests": 5,
+  "required_browser_checks": true,
+  "cargo_offline": true,
+  "native_inference": false,
+  "source_freeze_verified_after_full_pipeline": true,
+  "earlier_attempts": "Retained in verification-logs.tar.gz: sandbox ps denial; assertion corrected for BM25 missing IDs; concurrent test invocations correctly rejected by operator lock; passing host suites; first full passing pipeline before accounting correction.",
+  "remaining": [
+    "Separate explicit operator authorization and fresh host/asset verification before native inference",
+    "Independent human review is pending",
+    "No semantic GO, product integration, issue closure or merge"
+  ]
+}

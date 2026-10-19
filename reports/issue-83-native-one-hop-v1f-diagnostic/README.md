@@ -99,9 +99,16 @@ interruption, #75 integration, Find default change or sealed holdout access.
 
 ## Verification
 
-The focused model-free native suite and full existing verification pipeline are
-recorded in the accompanying verification receipt after execution. Tests use fake
-model transport and real Rust preview; their outputs are not native model evidence.
-Initial failed verification attempts are retained separately from passing checks.
+The complete `CARGO_NET_OFFLINE=true REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py`
+pipeline **passed at d3428e1**: 254 current Python tests, required headless-browser
+checks, frozen-history replay, Rust workspace tests, formatting, Clippy, source
+canaries and integrity/reference checks. This includes all 29 model-free native
+tests; the five new diagnostic tests also passed separately after the accounting
+correction. [verification.json](verification.json) retains every command/outcome;
+[verification-notes.json](verification-notes.json) records scope and remaining
+work. [verification-logs.tar.gz](verification-logs.tar.gz) and its
+[hash inventory](verification-logs.json) retain complete logs, initial failures
+and both full passing verification runs. Tests use fake model transport and real
+Rust preview; their outputs are not native model evidence.
 Resource samples may miss peaks/double-count shared pages; per-case resource
 snapshots report the run peak to date. Semantic readiness remains unestablished.
