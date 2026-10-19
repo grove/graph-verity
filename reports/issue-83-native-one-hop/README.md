@@ -121,3 +121,12 @@ visibly blocked. A future separately frozen prompt/context condition must resolv
 these failures before a full controlled comparison or supervised integration can
 be considered. Any neighborhood packet trial must be a new third condition.
 Existing #48/#72–#76 source freezes, historical decisions and scores are unchanged.
+
+The complete model-free `REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py`
+verification passed against implementation commit `b69ac2f1336fb76c8731be94442697d86386a057`.
+[verification.json](verification.json) retains every command/result, including
+238 current Python tests, historical source replays, browser checks, Rust tests,
+Clippy, formatting, dataset/source/scope canaries and final clean-tree verification.
+The later receipt/documentation commit changes no adapter, frozen input or Rust source.
+Freeze `source_commit` records the base HEAD at preregistration; `input_sha256`
+binds the exact implementation bytes, including then-new worktree files.
