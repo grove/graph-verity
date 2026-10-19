@@ -21,7 +21,7 @@ sources/evidence remain unchanged. These questions were already exposed;
 additional explicit-label, source-form Norwegian and paraphrased English questions
 are exposed regression probes too, not an independent holdout.
 
-## Actual attempts and independent repeat measurements
+## Actual attempts and separate repeat measurements
 
 Same official pinned Qwen3.5-9B and Gemma 4 12B, Q4_K_M, native llama.cpp, Apple
 M1 Pro / 32 GiB, four CPU threads, zero GPU layers, concurrency one, greedy seed 7,
@@ -172,8 +172,10 @@ Rust without models. No old evidence was resealed to accept current source chang
 The initial sandboxed native-test attempt failed because `ps` access was denied;
 its complete failure log and the subsequent passing host run (23 tests) are in
 the archive. The sealed native suite passed **24 tests**, including the added immutable-evidence
-test for raw-byte/source replay and all rationale coverage. The full model-free verification receipt is retained in
-[verification.json](verification.json), including Rust/Python/browser, Clippy,
+test for raw-byte/source replay and all rationale coverage. The complete `REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py`
+suite **passed**, including 249 current Python tests and headless-browser checks.
+[verification.json](verification.json) retains every command and outcome for
+Rust/Python/browser, Clippy,
 formatting, frozen history, source integrity, reference, canary and clean-tree
 checks. Inference stays out of CI. RSS sampling can miss peaks/double-count shared
 pages; OS cache is not evicted, and latency is not a disk-cold or human timing claim.
