@@ -1,0 +1,46 @@
+{
+  "version": "native-one-hop-v1g-retrieval-grounding-design-v1",
+  "status": "design preregistration only; execution freeze and explicit authorization still required",
+  "issue": 83,
+  "inference_authorized": false,
+  "inference_performed": false,
+  "hypothesis": "Source-witnessed neighborhood membership improves exposed-reference interpretation relative to BM25-v1; oracle estimates interpretation failure with all authorized vocabulary available.",
+  "population": "All 30 already-exposed evaluation cases in original order; 18 candidate, 6 clarification, 6 unsupported. No sealed holdout or generalization claim.",
+  "models": ["qwen35", "gemma4"],
+  "conditions": ["oracle", "BM25-v1", "neighborhood-v2"],
+  "case_order": "eva-01 through eva-30 per condition; model order qwen35 then gemma4; serial execution",
+  "diagnostic_observations_per_model": 92,
+  "diagnostic_breakdown": "90 condition/case observations plus two oracle eva-01 repetitions before conditions",
+  "maximum_completion_requests_per_model": 94,
+  "sampling_controls_per_model": 2,
+  "retries": 0,
+  "runtime": "Unchanged pinned CPU Q4_K_M models/checkpoints/tokenizers/licenses/llama.cpp from v1f, 4 threads, 0 GPU layers, concurrency 1, seed 7, temperature 0, thinking off, context 16384, output 512, 300-second deadlines, existing host/RSS gates",
+  "prompt_policy": "Same generic v1e system prompt and GBNF under a new freeze. Use the same gold-free source-language/usage/collision renderer in all conditions, omitting transport packet objects from all model contexts. Membership alone varies. Do not claim byte equivalence with v1f or reuse its scores as a causal baseline.",
+  "membership": {
+    "oracle": "All graph-qualified authorized original catalog entities and predicates",
+    "BM25-v1": "Exact frozen #82 v1 packet membership; verify byte equality with #74",
+    "neighborhood-v2": "Exact preregistered #82 v2 packet membership with original limits, no rank/ID supplementation"
+  },
+  "packet_binding": "Keep packet bytes and IDs outside the model draft. Map every retained graph/IRI/role to its original numeric authorized catalog ID, including all ambiguous candidates. Rust must independently revalidate the complete packet against source/snapshot/policy/index and bind the saved draft to that exact packet ID. Use NeighborhoodContext/preview_neighborhood_draft for v2; no v1 bridge or ID remapping fallback.",
+  "source_rendering": "Mechanical rendering from original authorized snapshot, identical rules for all conditions. No gold/status/direction/selected start/reference answers in prompts. Keep all original untrusted labels, lexical languages, collisions and source provenance. Local names and usage are not definitions.",
+  "continuation": "Observe semantic mismatches and known individual Rust draft rejections independently, using v1f fatal-integrity/resource boundaries. Fail closed on GBNF/token/template/catalog/source/asset/binary integrity, unknown Rust failure, deadline, process exit, RSS or host gate. Unattempted cases remain null; no retries.",
+  "primary_endpoint": "Per-model paired difference neighborhood-v2 minus BM25-v1 in exact five-field + model-status exposed-reference agreement on 18 supported cases; report raw agreement and Rust-accepted/GBNF-valid completed agreement separately. Report attempted-pair denominator and missing pairs; do not fill missing outcomes or rank incomplete models.",
+  "secondary_endpoints": [
+    "Same endpoints versus oracle; per-field start/predicate/graph/direction/output and forward/reverse strata",
+    "Correct model-origin clarification and unsupported status; wrong but executable plans; Rust rejection is never clarification",
+    "Source-audit ambiguity separately from immutable exposed references, including eva-06; no human findings invented",
+    "Both-ID coverage and available-but-reference-disagreed versus missing-vocabulary strata; no causal inference from co-occurrence",
+    "Explicit original-triple witnesses and literal predicate metadata, separately from natural-language semantic sufficiency",
+    "Deterministic bounded rationale identity contradictions; remaining rationale prose unassessed",
+    "Completion/timeout/error counts, native token/latency, startup and sampled process-tree peak RSS; packet bytes, clipping, limits and retrieval latency from #82"
+  ],
+  "source_meaning_limit": "No original descriptive predicate text establishes P17/P131/P856 natural-language meanings. Restoring IDs/adjacency cannot establish those meanings. Do not import definitions or reinterpret original source or references.",
+  "decision": "Diagnostic R&D only; always INCONCLUSIVE_REVISE for product/semantic readiness. Human review stays pending and does not block diagnostic reporting. Descriptive paired counts only, no significance claim from this exposed small regression.",
+  "execution_release_requirements": [
+    "Implement separately versioned model-free packet/context materialization and v2 Rust bridge; test gold-poison independence, graph-qualified binding, stale/forged packets, ambiguity and exact replay",
+    "Retain all final prompt/context/packet/GBNF/source/reference/runtime/binary/toolchain/environment hashes in a committed append-only execution registration before any native generation; do not edit this design or any v1f artifact to accept changes",
+    "Recheck all assets, then fresh passing native host/resource gates; this session's 2330.88 MiB swap measurement exceeds the 1024 MiB ceiling and is not a future gate receipt",
+    "Obtain separate explicit v1g operator authorization; v1f authorization does not transfer"
+  ],
+  "forbidden": ["model-generated RDF execution", "downloads", "user-process interruption", "hardware-limit changes", "#75 live integration", "unattended Ask", "sealed-holdout access", "semantic GO", "automatic issue closure or merge"]
+}
