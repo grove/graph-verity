@@ -1,0 +1,81 @@
+{
+  "version": "issue83-native-cpu-v1e",
+  "contract": "nl-ask-draft-v1",
+  "historical_assets": "configs/grounded-models-v1.json",
+  "cpu_protocol": "configs/one-hop-trial-v1.json",
+  "prompt_file": "configs/native-one-hop-v1e.prompt.txt",
+  "grammar_file": "configs/native-one-hop-v1.gbnf",
+  "variants": [
+    "qwen35",
+    "gemma4"
+  ],
+  "split": "evaluation",
+  "stages": [
+    "oracle",
+    "retrieval"
+  ],
+  "smoke_cases": [
+    "eva-01",
+    "eva-02",
+    "eva-07",
+    "eva-08",
+    "v1e-country-source-nb",
+    "v1e-country-paraphrase-en"
+  ],
+  "control_cases": {
+    "ambiguous_start": "eva-20",
+    "source_label": "eva-06",
+    "malicious_label_explicit": "v1e-label-explicit",
+    "private_scope": "eva-29",
+    "write": "eva-30",
+    "unclear_relation": "eva-19",
+    "absent_start": "eva-24",
+    "negation": "eva-25",
+    "count": "eva-26",
+    "filter": "eva-27",
+    "multi_hop": "eva-28"
+  },
+  "host_max_age_seconds": 60,
+  "hardware": {
+    "cpu": "Apple M1 Pro",
+    "memory_bytes": 34359738368,
+    "architecture": "arm64"
+  },
+  "thermal": "No thermal/performance warning, CPU limits absent or 100 percent; AC power required",
+  "max_stream_bytes": 2097152,
+  "rss_sampling_seconds": 0.2,
+  "mode": "controls_then_smoke; evaluation is separately invoked with --evaluate after successful controls",
+  "evaluation_exposure": "All 30 #72 evaluation cases already exposed by #74; not a pristine holdout",
+  "execution": "Rust preview only; no approval or RDF execution command; no #75 integration",
+  "decision": "INCONCLUSIVE_REVISE until both models/stages, all controls and independently approved answer evidence meet #74 thresholds; no accuracy ranking from missing outputs",
+  "control_prompt_file": "configs/native-one-hop-controls-v1.prompt.txt",
+  "supersedes_control_variant": "v1d unchanged; complete JSON equality remains its original gate.",
+  "context_revision": "source-language-groups-v1e",
+  "hypothesis": "Combined language presentation + semantic repeatability interpretation; exposed regression only, no causal ablation or model ranking.",
+  "controls_before_smoke": "Fail closed at first failed control. Generic every-stored-label question may clarify because multiple original label predicates exist; explicit rdfs:label injection control must match its reference. All configured missing checks remain unattempted.",
+  "scoring": "Keep exact frozen-reference fields and model status separate from preregistered acceptable ambiguity. No change to #74 scoring or thresholds. Stable wrong plans remain wrong. Rationale claims manually reviewed against graph-qualified source without query execution.",
+  "scope_policy": "Original evaluation snapshot, policy and scope only; oracle first; frozen whole-question BM25-v1 separate, no neighborhood substitution",
+  "source_evidence": "Same authorized source edges and collisions as v1d; source names grouped by original language, predicate IRI local names extracted mechanically. No translations, invented property definitions, selected IDs or gold directions.",
+  "fixture_file": "configs/native-one-hop-v1e.fixtures.json",
+  "repeatability": {
+    "generations": 2,
+    "gate": "Strict Rust-accepted drafts, identical prompt/token/request identities, equal model status and, for candidates, exact start/predicate/graph/direction/output. Stable abstention has no plan and is not semantic success.",
+    "diagnostics": [
+      "structured_plan_equal",
+      "complete_json_bytes_equal",
+      "status_equal",
+      "rationale_text_equal",
+      "separate_reference_agreement",
+      "post_generation_rationale_assertion_review"
+    ]
+  },
+  "ambiguous_reference_controls": {
+    "source_label": [
+      "needs_clarification"
+    ]
+  },
+  "rationale_review": {
+    "method": "Post-generation AI investigator review of every non-sampling rationale; retain exact text, individual factual/cross-graph claims, supported/unsupported/unverifiable classification and source evidence. No automatic clean-rationale claim and no independent human review.",
+    "gate": "Any unsupported assertion prevents GO; unverifiable or unreviewed claims prevent GO. Prose differences alone do not stop the run."
+  }
+}

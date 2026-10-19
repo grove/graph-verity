@@ -1,0 +1,126 @@
+{
+  "version": "issue83-v1e-pre-inference-audit",
+  "source_archive_sha256": "aa8aea80cba262d238b6d1f8d546f041064c9293afd4ddccbc7365012a01d58a",
+  "retained_v1d": {
+    "qwen35/controls/repeat-0": {
+      "files": {
+        "context.json": "e1691d5defb700d153acf291772d3bc0dbe9520040a3c7115e5d8fba0a75dee7",
+        "prompt.txt": "1e696133f1d54228360192d513598ab05fa62bbb54fbc7fb72bd5168cfacde84",
+        "proposal.txt": "b7be7fc4c360ad9ce5dcb2269075f4984ed7fef2fc329bfe32e047a9ee10f876",
+        "rust.json": "ec8186027d73bbf43aede953c189571d3fa0417523de17c71dbb98defcc1c1c9",
+        "runtime.json": "3e53aebe16f591e5bee52fe3c66001dcd67417fb9a00973b9fecc3127d7cb8f3",
+        "parity.json": "ede0faa000fb1ab9a620eeb153d36ffe0b3badd1cec7e3e5617c92877aafb405"
+      },
+      "draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question asks for the country of 'Universitetet i Jyväskylä'. The provided data contains an entity (id 102) with labels in English ('University of Jyväskylä') and Norwegian ('Jyväskylä universitet'), but no explicit text or label matching the exact query string 'Universitetet i Jyväskylä'. Without a clear match to the named start entity in the source tables, the query cannot be resolved to a specific subject-predicate-object triple."
+      },
+      "question": "Hvilket land er oppført for Universitetet i Jyväskylä i Wikidata-uttrekket?"
+    },
+    "qwen35/controls/repeat-1": {
+      "files": {
+        "context.json": "e1691d5defb700d153acf291772d3bc0dbe9520040a3c7115e5d8fba0a75dee7",
+        "prompt.txt": "1e696133f1d54228360192d513598ab05fa62bbb54fbc7fb72bd5168cfacde84",
+        "proposal.txt": "b7be7fc4c360ad9ce5dcb2269075f4984ed7fef2fc329bfe32e047a9ee10f876",
+        "rust.json": "ec8186027d73bbf43aede953c189571d3fa0417523de17c71dbb98defcc1c1c9",
+        "runtime.json": "2df15be8ec01065952407fed2a833865a87d4c03613b62db75a01312150ae12f",
+        "parity.json": "ede0faa000fb1ab9a620eeb153d36ffe0b3badd1cec7e3e5617c92877aafb405"
+      },
+      "draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question asks for the country of 'Universitetet i Jyväskylä'. The provided data contains an entity (id 102) with labels in English ('University of Jyväskylä') and Norwegian ('Jyväskylä universitet'), but no explicit text or label matching the exact query string 'Universitetet i Jyväskylä'. Without a clear match to the named start entity in the source tables, the query cannot be resolved to a specific subject-predicate-object triple."
+      },
+      "question": "Hvilket land er oppført for Universitetet i Jyväskylä i Wikidata-uttrekket?"
+    },
+    "qwen35/controls/source_label": {
+      "files": {
+        "context.json": "4377d5f2d1129419d77ddb2276c6ca62450fedac38df2ebb20b27e3e11098146",
+        "prompt.txt": "e8dc3cd96cc60ee9799bcfb5d87112f81db60f7f14ca4aab05ca0d82c498fc64",
+        "proposal.txt": "eef2cb91f670089eaa035ff71cce3b5df864e1ddc558b52a9876b433bbc89b2e",
+        "rust.json": "40bed3225304da34e68c1c16b4cd88504754168b99b046894d84b7d0920da808",
+        "runtime.json": "410f483cc9107abb6bbef9119dda23f4bf6431b6ce21ec6b35e7554d5a7cd2f4",
+        "parity.json": "717e0c092380250dcfe4229de74e9c748161661dbefbc07aba929bc32aad97d7"
+      },
+      "draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question requests 'every stored label' for the University of Jyväskylä. The provided data contains multiple predicates (e.g., rdfs:label, skos:altLabel) with different semantics. Clarification is needed to determine if the user wants all values for all label predicates or specifically the 'rdfs:label' predicate, as the instruction implies a single supported directed relation."
+      },
+      "question": "List every stored label for the University of Jyväskylä, including the test annotation."
+    },
+    "gemma4/controls/repeat-0": {
+      "files": {
+        "context.json": "e1691d5defb700d153acf291772d3bc0dbe9520040a3c7115e5d8fba0a75dee7",
+        "prompt.txt": "7061d03e9e121f6932238aebb8a9173758a1787e0d8dfe8ffb2ca3e3919ea54c",
+        "proposal.txt": "c2b5ae3c0278f339fdf5699aa48cb4f172f0ea85f7d47bd38ac76420fa9a8930",
+        "rust.json": "f01aeaf1bb44678702413a1ac5dbf8ef8a09c789d3f7fc96c82f37cbc93dde85",
+        "runtime.json": "d0d5168e6023f2053fbb4176ff2e7332987da671aa010cb62b5d407f188994fa",
+        "parity.json": "38941f98c0c9bd5e6053f10ffff817efcdfe493e7fa725869cd55809ade47c1f"
+      },
+      "draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "candidate",
+        "start": 102,
+        "predicate": 1004,
+        "graph": 0,
+        "direction": "forward",
+        "output": "values",
+        "rationale": "The entity 102 is 'University of Jyväskylä'. The predicate 1004 (P17) represents the country of the institution. The object of this predicate is 101, which corresponds to the country 'Finland' (Q33) in the Wikidata graph."
+      },
+      "question": "Hvilket land er oppført for Universitetet i Jyväskylä i Wikidata-uttrekket?"
+    },
+    "gemma4/controls/repeat-1": {
+      "files": {
+        "context.json": "e1691d5defb700d153acf291772d3bc0dbe9520040a3c7115e5d8fba0a75dee7",
+        "prompt.txt": "7061d03e9e121f6932238aebb8a9173758a1787e0d8dfe8ffb2ca3e3919ea54c",
+        "proposal.txt": "64da0a70f49a254a408c17de8ed3b64f798b564ae494e98d17b3f4a8d1a3502f",
+        "rust.json": "0004175e08b905246e77fdac77443cfc7ec6308515ef6b70d3d3456a73d2ae33",
+        "runtime.json": "91a54040650aaa25f240df7a717bcd998a3e399dea567642f6e8170c6a02688f",
+        "parity.json": "38941f98c0c9bd5e6053f10ffff817efcdfe493e7fa725869cd55809ade47c1f"
+      },
+      "draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "candidate",
+        "start": 102,
+        "predicate": 1004,
+        "graph": 0,
+        "direction": "forward",
+        "output": "values",
+        "rationale": "The entity 102 is 'University of Jyväskylä'. The predicate 1004 (P17) represents the country of the entity. The object of this predicate is 101, which corresponds to the country 'Finland' (as confirmed by the linked data in the geonames graph)."
+      },
+      "question": "Hvilket land er oppført for Universitetet i Jyväskylä i Wikidata-uttrekket?"
+    }
+  },
+  "findings": [
+    {
+      "finding": "Norwegian paraphrase/word order lacks exact label; Qwen explicitly demands exact match",
+      "source_forms": [
+        "Jyväskylä universitet@nb",
+        "University of Jyväskylä@en"
+      ],
+      "question_form": "Universitetet i Jyväskylä",
+      "intervention": "Generic linguistic interpretation; original language groups; no synthetic alias"
+    },
+    {
+      "finding": "Every stored label is predicate-ambiguous",
+      "source_predicates": [
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://www.w3.org/2004/02/skos/core#altLabel"
+      ],
+      "intervention": "Separate strict reference result from acceptable clarification; new explicit label control, no reference rewrite"
+    },
+    {
+      "finding": "Gemma stable correct country fields but changed rationale includes unsupported cross-graph confirmation",
+      "source": "No sameAs or other identity link connects Wikidata Q33 to the GeoNames Finland entity in studies/nl-ask-v1/evaluation/snapshot.nq",
+      "intervention": "Plan/status/bytes/rationale separate; full post-generation source assertion audit"
+    },
+    {
+      "finding": "All oracle predicate texts are empty; opaque P17 lacks a source description",
+      "intervention": "Expose mechanically extracted IRI local text; do not invent a predicate definition or assume source proves semantics"
+    }
+  ],
+  "snapshot_sha256": "c35b205e7e76b2440b7680ac9139796413401f1a6acfeadc483967f6e5334ae9",
+  "old_results_modified": false
+}

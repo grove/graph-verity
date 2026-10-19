@@ -1,6 +1,7 @@
 """Source-only v1d presentation and semantic diagnostics, without model access."""
 import copy
 import json
+import subprocess
 from pathlib import Path
 import tempfile
 import unittest
@@ -140,7 +141,12 @@ class ContextTests(unittest.TestCase):
             self.assertEqual(frozen, prereg['freeze_manifest'])
             for name, digest in frozen['input_sha256'].items():
                 self.assertEqual(a.sha(root / 'source' / name), digest, name)
-                self.assertEqual(a.sha(a.ROOT / name), digest, name)
+                if name in {'tools/native_one_hop.py', 'tools/native_one_hop_context.py'}:
+                    original = subprocess.check_output(['git', 'show',
+                        '646c211be269e58bf74bf1126fde21ead35a3be8:' + name], cwd=a.ROOT)
+                    self.assertEqual(hashlib.sha256(original).hexdigest(), digest, name)
+                else:
+                    self.assertEqual(a.sha(a.ROOT / name), digest, name)
             for key in frozen['config']['variants']:
                 run = root / key
                 state = a.read(run / 'run.json')

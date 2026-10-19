@@ -161,6 +161,8 @@ The separate [native one-hop adapter #83](docs/native-one-hop-v1.md) adds an off
 
 The [post-PR #85 v1d continuation](docs/native-one-hop-v1d.md) separately preregisters source-derived predicate usage and explicit alias collisions, retaining bilingual forward/reverse semantic checks and all failed or unattempted cases.
 
+The separate [v1e semantic-reliability experiment](docs/native-one-hop-v1e.md) distinguishes plan, status, complete JSON and rationale agreement, with an explicit source-grounded rationale audit and exposed bilingual regression probes. See its [retained evidence and decision](reports/issue-83-native-one-hop-v1e/README.md).
+
 Experimental Phase 2 grounding: [question vocabulary packet v1](docs/question-vocabulary-packet-v1.md) provides source-authorized, graph-qualified BM25 candidate tables and model-free saved-packet replay. It does not execute natural-language questions; the [#72 contract and evaluation manifest](studies/nl-ask-v1/README.md) are frozen, with independent human review still pending.
 
 Run all Python regressions with `python tools/run_python_tests.py`; the unchanged #57 pilot and #53 native replay use their original source fingerprints from a pinned historical commit. The remaining suites and lexical rank/score checks test current code.

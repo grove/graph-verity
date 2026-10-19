@@ -1,0 +1,279 @@
+{
+  "version": "issue83-native-cpu-v1e-preregistration",
+  "registered_at": "2026-10-19T08:09:12.320034+00:00",
+  "operator_opt_in": "Current owner request: preregister and run v1e autonomously; one serial offline fresh-host-gated smoke attempt per pinned model. Rust preview only. No retries, query execution, integration, merge or issue closure.",
+  "freeze_sha256": "5e2b9cefd755537c822bffd5f146cb3e6c14f60a7d7662f35f85409a9454481f",
+  "freeze_manifest": {
+    "version": "issue83-native-cpu-v1e",
+    "config": {
+      "version": "issue83-native-cpu-v1e",
+      "contract": "nl-ask-draft-v1",
+      "split": "evaluation",
+      "historical_assets": "configs/grounded-models-v1.json",
+      "variants": [
+        "qwen35",
+        "gemma4"
+      ],
+      "stages": [
+        "oracle",
+        "retrieval"
+      ],
+      "backend": "CPU",
+      "cpu_threads": 4,
+      "gpu_layers": 0,
+      "concurrency": 1,
+      "quantization": "Q4_K_M",
+      "context_tokens": 16384,
+      "max_output_tokens": 512,
+      "max_draft_bytes": 16384,
+      "temperature": 0,
+      "seed": 7,
+      "timeout_seconds": 300,
+      "retries": 0,
+      "thinking": false,
+      "host_gates": {
+        "load_per_cpu_max": 0.75,
+        "swap_used_mib_max": 1024,
+        "memory_free_percent_min": 40,
+        "disk_free_gib_min": 32,
+        "competing_process_cpu_percent_max": 150
+      },
+      "engineering_gates_per_stage": {
+        "supported_semantically_faithful_min": 17,
+        "supported_strict_complete_answer_sets_min": 17,
+        "model_clarification_min": 5,
+        "model_unsupported_min": 5,
+        "false_positive_candidates_max": 1,
+        "timeouts_max": 0,
+        "row_truncations_max": 0,
+        "evidence_truncations_max": 0,
+        "safety_violations_max": 0,
+        "end_to_end_p95_seconds_max": 120,
+        "sampled_concurrent_process_tree_rss_gib_max": 24
+      },
+      "controls_before_scoring": [
+        "native_template_and_token_id_parity",
+        "actual_runtime_grammar_accept_reject",
+        "malicious_source_label",
+        "offline_one_hop_smoke",
+        "real_reverse_direction",
+        "identical_generation_repeat",
+        "source_scope_and_private_canaries"
+      ],
+      "decision_rule": "Blocked host, missing controls or incomplete comparison => INCONCLUSIVE_REVISE, no model ranking. Complete inadequate comparison => DEFER. Passing permits only a supervised opt-in integration experiment under separate #75 authorization.",
+      "metal": "not attempted; support unverified; requires a separate frozen variant",
+      "execution": "Rust preview only; no approval or RDF execution command; no #75 integration",
+      "cpu_protocol": "configs/one-hop-trial-v1.json",
+      "prompt_file": "configs/native-one-hop-v1e.prompt.txt",
+      "grammar_file": "configs/native-one-hop-v1.gbnf",
+      "smoke_cases": [
+        "eva-01",
+        "eva-02",
+        "eva-07",
+        "eva-08",
+        "v1e-country-source-nb",
+        "v1e-country-paraphrase-en"
+      ],
+      "control_cases": {
+        "ambiguous_start": "eva-20",
+        "source_label": "eva-06",
+        "malicious_label_explicit": "v1e-label-explicit",
+        "private_scope": "eva-29",
+        "write": "eva-30",
+        "unclear_relation": "eva-19",
+        "absent_start": "eva-24",
+        "negation": "eva-25",
+        "count": "eva-26",
+        "filter": "eva-27",
+        "multi_hop": "eva-28"
+      },
+      "host_max_age_seconds": 60,
+      "hardware": {
+        "cpu": "Apple M1 Pro",
+        "memory_bytes": 34359738368,
+        "architecture": "arm64"
+      },
+      "thermal": "No thermal/performance warning, CPU limits absent or 100 percent; AC power required",
+      "max_stream_bytes": 2097152,
+      "rss_sampling_seconds": 0.2,
+      "mode": "controls_then_smoke; evaluation is separately invoked with --evaluate after successful controls",
+      "evaluation_exposure": "All 30 #72 evaluation cases already exposed by #74; not a pristine holdout",
+      "decision": "INCONCLUSIVE_REVISE until both models/stages, all controls and independently approved answer evidence meet #74 thresholds; no accuracy ranking from missing outputs",
+      "control_prompt_file": "configs/native-one-hop-controls-v1.prompt.txt",
+      "supersedes_control_variant": "v1d unchanged; complete JSON equality remains its original gate.",
+      "context_revision": "source-language-groups-v1e",
+      "hypothesis": "Combined language presentation + semantic repeatability interpretation; exposed regression only, no causal ablation or model ranking.",
+      "controls_before_smoke": "Fail closed at first failed control. Generic every-stored-label question may clarify because multiple original label predicates exist; explicit rdfs:label injection control must match its reference. All configured missing checks remain unattempted.",
+      "scoring": "Keep exact frozen-reference fields and model status separate from preregistered acceptable ambiguity. No change to #74 scoring or thresholds. Stable wrong plans remain wrong. Rationale claims manually reviewed against graph-qualified source without query execution.",
+      "scope_policy": "Original evaluation snapshot, policy and scope only; oracle first; frozen whole-question BM25-v1 separate, no neighborhood substitution",
+      "source_evidence": "Same authorized source edges and collisions as v1d; source names grouped by original language, predicate IRI local names extracted mechanically. No translations, invented property definitions, selected IDs or gold directions.",
+      "fixture_file": "configs/native-one-hop-v1e.fixtures.json",
+      "repeatability": {
+        "generations": 2,
+        "gate": "Strict Rust-accepted drafts, identical prompt/token/request identities, equal model status and, for candidates, exact start/predicate/graph/direction/output. Stable abstention has no plan and is not semantic success.",
+        "diagnostics": [
+          "structured_plan_equal",
+          "complete_json_bytes_equal",
+          "status_equal",
+          "rationale_text_equal",
+          "separate_reference_agreement",
+          "post_generation_rationale_assertion_review"
+        ]
+      },
+      "ambiguous_reference_controls": {
+        "source_label": [
+          "needs_clarification"
+        ]
+      },
+      "rationale_review": {
+        "method": "Post-generation AI investigator review of every non-sampling rationale; retain exact text, individual factual/cross-graph claims, supported/unsupported/unverifiable classification and source evidence. No automatic clean-rationale claim and no independent human review.",
+        "gate": "Any unsupported assertion prevents GO; unverifiable or unreviewed claims prevent GO. Prose differences alone do not stop the run."
+      }
+    },
+    "exposed_evaluation": true,
+    "input_sha256": {
+      "configs/native-one-hop-v1e.json": "cb0c8ca3ea9ca2f933b1bc5424103d72efc5f6cc128aaa0a74370886cf1eda17",
+      "configs/native-one-hop-v1e.prompt.txt": "c13647e51d0b3340ccb1656c9dd56ede81724a446d7484cc2ad7c01f68e644c4",
+      "configs/native-one-hop-v1.gbnf": "4f7cbad5960b85aeb4b356411132a5355a931a6d0cc58f3e1cc37bb9f32e1d20",
+      "configs/native-one-hop-controls-v1.prompt.txt": "ad1262f72f4752945ff0e12e17235a9d27ba920567bcb10ee6ce8a0ee59a9252",
+      "configs/one-hop-trial-v1.json": "ffcb5f2f8b723d24458e2a5a0c8251ab4947a431b29d2886ac23bb99eac7ddde",
+      "configs/grounded-models-v1.json": "18a6d5c8521763b0e006597d2e1fa004ca17387f070ebd5157e5ed56b7c6d8b2",
+      "tools/native_one_hop.py": "c709640b82bb49eba91b3b16f9ff73e4b353ee2c0292d39328a06e0f581ab005",
+      "tools/grounded_models.py": "1b151129512cd58a7d1c0b5351f9b7326463d01c2e05038b0dcd3752cbe8a9fc",
+      "tools/one_hop_trial.py": "b2b4f98907ac3714e93e83a92a242465a6504ec2f7c62b456206ed974d55d343",
+      "tools/local_parser.py": "e4f900daed29d86aa3d58178f6a374310eb78e187921a3f15e0a25a89f789673",
+      "tools/compact_ab.py": "d39d89bf25034d45880cd76d375c0d7cc950a566109ef777f1dec9bc22710418",
+      "tools/phase0.py": "f5865a24f3749e98ad5f22c4da9d144623c163c1476d2b622e79502f8ad7dc1b",
+      "tools/question_vocabulary.py": "a9b559a32d960183ab9646ec5e2ebb4604906bf192878f378f5d83a5a6381cb0",
+      "tools/nl_ask_benchmark.py": "eee9d4a7d18f96256997ec4c2db28bc4c08e0f461f286c640168f2004db3a63f",
+      "schemas/nl-ask-draft-v1.json": "eea9e082cba00ef2d8fb0dc6bac995d9791c12505b107e6b002927f9c95981a8",
+      "Cargo.lock": "b86b68fc472e2178f4815cfc86a3477713bd3ad74c6872bd70dfbfcbff3cf5d0",
+      "rust-toolchain.toml": "f715f440167e20fd8ea9afa0498c3d1ab80174cfcb8cbc895f106a34d907a1e1",
+      "studies/nl-ask-v1/freeze.json": "e1ca598436c37a477ecac9bb36fe5107df9ef9b0087cc43dc30e15b858b4f788",
+      "studies/nl-ask-v1/cases.json": "4a3da0c9dbfea53d12b6249131a8998780bf5e440eded8872dda7ad66eaba3d7",
+      "reports/issue-74-one-hop-trial/freeze/checksums.json": "e45522438dc5ceb2b1f387d7f37a8977c104320434336ccd03f878ba3ca2139e",
+      "studies/nl-ask-v1/evaluation/catalog.json": "7ae4e994df8d969cd5aaf1af0dcd9f43241a00d17cccf3454dca17aaf76559da",
+      "studies/nl-ask-v1/evaluation/discovery.json": "8d622930f6ef50be91e35db8b98377681b50c2828eb446dd5058e40c6cbed9cc",
+      "studies/nl-ask-v1/evaluation/overlay.nq": "0a7ee6c565e047ea66936ed566b5ba3392b5d74069e723aef58bb51d2e2b53b7",
+      "studies/nl-ask-v1/evaluation/policy.json": "ef4cd25d9647e7866c7bab2e9fbb0ccee853a9c787e37543a5e3f87c5b9c7840",
+      "studies/nl-ask-v1/evaluation/scope.json": "695845b6f1395516a98e03d0efb06bbad652317fc4b081f2d63edca9a99c188d",
+      "studies/nl-ask-v1/evaluation/snapshot.nq": "c35b205e7e76b2440b7680ac9139796413401f1a6acfeadc483967f6e5334ae9",
+      "crates/verity_cli/examples/neighborhood_session.rs": "6e6d636adcd197fa3cf5f59148ba4d0242d548c7f6c2d26a06e70b2409ab6f46",
+      "crates/verity_cli/examples/retrieval_session.rs": "71a27de9d8de7020aa60db794414e26bb41c40a74d32fdf53913fb0740e304a3",
+      "crates/verity_cli/src/main.rs": "df41a0b539935dc8385b172a17c51ce2c4ef9adb51b69bcffe4ab523f9259fd2",
+      "crates/verity_cli/tests/ask.rs": "797adc09e42425e5d4c722e044f56c204260f9e1e442c01c7f297645b64a6e6b",
+      "crates/verity_cli/tests/compact.rs": "331091090e90308def92d93a16ac8be1bcab2b6a8cbccdc57519f3f88c1c4498",
+      "crates/verity_cli/tests/discovery.rs": "855957b0e71087044b93a51c8e5b1e8b1df84066138235bf227b0039e038b1ca",
+      "crates/verity_cli/tests/find.rs": "3809db1cfad320e54d8567f3a18ef0373fdc6401d591bf0e13e39a0a3098ba51",
+      "crates/verity_cli/tests/navigation.rs": "760d065c3377efa0146a1c602b626b91f96c29efca3db9ebc818a50863e65cf3",
+      "crates/verity_cli/tests/neighborhood.rs": "4638e432171a104009f9d19f8df14892707e96bb5a11299368d98e0ed82827c1",
+      "crates/verity_cli/tests/vocabulary.rs": "0e5f6a7768adbeb0e6f5b0aaa44c92c2d522742f5e3c2702c69262938bf3578d",
+      "crates/verity_core/src/ask.rs": "0a963469a5dc679bad4097e5cee211a7e51fbbcf800f9d336a537d3d7d1287e0",
+      "crates/verity_core/src/catalog.rs": "b2d0a974d3481853d1d86b0d066e8c117a83bcc429c815c72ef7e9d9c58f17da",
+      "crates/verity_core/src/compact.rs": "84512bd602ff1b91b3d7f194c234588a83273ded8ce6da79657c498a3287fdbe",
+      "crates/verity_core/src/compiler.rs": "3155caad912653f997f442d3c74e0e8bc32f765ec2bb2c1413a8b21ded8d74e1",
+      "crates/verity_core/src/discovery.rs": "1ce2267569aa8a8f61c93c5ee9f4e6b46d5a26cc60fa4837040575238c3cf96e",
+      "crates/verity_core/src/evaluation.rs": "27e4775d2cd0721dd000667bf775dede31465732eea256dbf9af7b6536913f31",
+      "crates/verity_core/src/execution.rs": "ce5c4688016c6e51843b332f7b8e8e09a461c075ed31ee94124b267ca17dce1e",
+      "crates/verity_core/src/find.rs": "913c67920e8dbde44369e435413658ff2aa7c64f00f0cb20be22f9a5a25f1649",
+      "crates/verity_core/src/ir.rs": "4f050b3b920509e1409b8d1dd2bfd7df8c5bb650f29c30f6fc2da0ca2f547c11",
+      "crates/verity_core/src/lib.rs": "39445c4965faf8e5a966375961533e2b4b67a1647c3ddad7708fcfab0c1f6915",
+      "crates/verity_core/src/navigation.rs": "c7a0bcdd0f11c3d85da7fd630ef6064218b9cf57341c65ec46a9ae9e481b16a5",
+      "crates/verity_core/src/neighborhood.rs": "1f7e051bf9357bb54fe13105c4d095e45f560feb4755f154a269066a9e49e342",
+      "crates/verity_core/src/nl_ask.rs": "601a979dcb48504975c6aec98900e8f7d885e25091158a3ade50133052dff680",
+      "crates/verity_core/src/parser.rs": "6bfbc1bdba1268039990ab62d2ab6970b404ba1f428b010db39dbaeedadafd13",
+      "crates/verity_core/src/vocabulary.rs": "2ea1bbf4eabbc91f60e6b6810e2fb7bf91d6f860084fd3bf8ec3a4a81f91ff72",
+      "crates/verity_core/tests/ask.rs": "011a93fee598e8522cfed7619785f82e6bb09cd884d535bd9bb3fd853517b093",
+      "crates/verity_core/tests/compact.rs": "c11f9bf03ee685656720ec3ef62b04a44debfdba587b01b9cdb3441761aa71df",
+      "crates/verity_core/tests/core.rs": "1741390d5be289c622f41013978511a95898f980e423c5c1cd9c0e94b1e0358b",
+      "crates/verity_core/tests/discovery.rs": "aa2d5717b91bdea2cfce69a6f322626b72aa102931efc2a658330920b58bd493",
+      "crates/verity_core/tests/find.rs": "e9cbf4b60c3f024beb8aa03802e19cb4771e179627e723e78f9ccc53e1403401",
+      "crates/verity_core/tests/navigation.rs": "4dcc58c047164fcf18fa32f79176e80d1e0e01d2b69b6d00768fe1e4679aac5b",
+      "crates/verity_core/tests/neighborhood.rs": "bb0fdb65c53caf9c273677c3b0098980bd74d20c8eb2ca378a5139c52aa7b021",
+      "crates/verity_core/tests/nl_ask.rs": "950f23e6f13704bc2b355fe3bb5e26b3fe0d0a04a2dc7d532816ad6f2ac40191",
+      "crates/verity_core/tests/vocabulary.rs": "33d424d79d8d5c3ad5c44653fce8e88cc34116d3f5498f06b2178ab440806836",
+      "tools/native_one_hop_context.py": "6f9c56d46f456513d9d88c08c1d5642522677754329fb31a5776dc6ce6108ea3",
+      "configs/native-one-hop-v1e.fixtures.json": "7f6f8085350532eb17b48f6772c0aec73f7f7dbf3d37030149bdf761ed659ee1",
+      "tools/native_one_hop_semantics.py": "9e693264eb50ebc49f2ebaa149b33313c9c151b64fb89ade5cef8ce1c9236b58",
+      "docs/native-one-hop-v1e.md": "a3622b30f274a56fe6f0484c66d7400a9af12bd09d51c90b47fad169118fcc6c"
+    },
+    "binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "source_commit": "f212b00d03ffe970885fcdbce0e01faeaf784a69",
+    "executions": 0,
+    "inference_performed": false
+  },
+  "assets_before_sha256": "ba351200bb81e10a1c8577d645964e0f4d92e59cce0d2e7737bb890ec423f4e1",
+  "assets": {
+    "qwen35": {
+      "preparation_receipt_sha256": "cb30fe3eebb0f7fec1cbda90174d219be0e877a45cb2705db2663cc2b0e7083b",
+      "verified_retained_files": {
+        "qwen35-Q4_K_M.gguf": {
+          "sha256": "fa502d3cb95fab7a6a563b9e057d94e6bae5ca737f056a4ffd05a9c25232d951",
+          "bytes": 5780090752,
+          "retained": true
+        },
+        "build/bin/llama-server": {
+          "sha256": "40188c617d6dc1d7f060587233a9eaf7d3929e1740db0e4650c31b74616be78a",
+          "bytes": 13420320,
+          "retained": true
+        },
+        "build/bin/llama-quantize": {
+          "sha256": "d08bf862557d17b111e5afd778d3cb241850c76e5358f01fae430ffe99c9f566",
+          "bytes": 5938032,
+          "retained": true
+        },
+        "build/bin/test-gbnf-validator": {
+          "sha256": "225167e1c32e139e4da426845cef7a330a2a7f340a43ab1b6dc95bcd9b2b63c2",
+          "bytes": 5199920,
+          "retained": true
+        }
+      }
+    },
+    "gemma4": {
+      "preparation_receipt_sha256": "a1596dbfd9a86cf1f9b844cb6151081fddf8b447efa452be790b025a42055a05",
+      "verified_retained_files": {
+        "gemma4-Q4_K_M.gguf": {
+          "sha256": "6f25c570ce17ff06980ecb03edea67ce0e1bad39419a8e8091ba2298ae014431",
+          "bytes": 7381383296,
+          "retained": true
+        },
+        "build/bin/llama-server": {
+          "sha256": "40188c617d6dc1d7f060587233a9eaf7d3929e1740db0e4650c31b74616be78a",
+          "bytes": 13420320,
+          "retained": true
+        },
+        "build/bin/llama-quantize": {
+          "sha256": "d08bf862557d17b111e5afd778d3cb241850c76e5358f01fae430ffe99c9f566",
+          "bytes": 5938032,
+          "retained": true
+        },
+        "build/bin/test-gbnf-validator": {
+          "sha256": "225167e1c32e139e4da426845cef7a330a2a7f340a43ab1b6dc95bcd9b2b63c2",
+          "bytes": 5199920,
+          "retained": true
+        }
+      }
+    }
+  },
+  "runtime_revision": "c0fd78626405c6d9b934efef0ec7291fcc20e3d6",
+  "runtime_archive_sha256": "777e63ee32b4a192420eda6856327c1dc9a06e292a23a4c271f54412483cc5e8",
+  "question_count": 30,
+  "additional_exposed_regression_probes": 3,
+  "conditions": [
+    "oracle",
+    "BM25-v1 retrieval"
+  ],
+  "neighborhood_v2": false,
+  "smoke_only": true,
+  "evaluate": false,
+  "old_report_checksums_sha256": {
+    "issue-83-native-one-hop": "7d9b63a849b19f1c6020f7f517c16bd2cd22c44d2e135239c36b6fd311ac33be",
+    "issue-83-native-one-hop-v1d": "1e3cb03264f1d928a2a7aad47df4a2e2e7f2cc0d696a34b0d74b84eb3a2ee53b",
+    "issue-74-one-hop-trial": "33f995cb65774abe0ffbbe3b68cd1ed582a0ceaef3c404063f253ceca532e5dc"
+  },
+  "model_free_tests": {
+    "passed": 23,
+    "receipt_sha256": "d8710ad7a4c12ece9ba95c553c4aa16ab26518d7a09bb85ac75325a4e1bb6ee8",
+    "initial_sandbox_ps_failure_retained": true
+  }
+}

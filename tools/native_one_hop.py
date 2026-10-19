@@ -31,13 +31,19 @@ read, dump, require = v.read, v.dump, v.require
 
 def config():
     cfg = read(CONFIG)
-    require(cfg["version"] in {"issue83-native-cpu-v1c", "issue83-native-cpu-v1d"}, "Unknown native adapter")
+    require(cfg["version"] in {"issue83-native-cpu-v1c", "issue83-native-cpu-v1d", "issue83-native-cpu-v1e"}, "Unknown native adapter")
     cpu = read(ROOT / cfg["cpu_protocol"])
     require(cpu["cpu_threads"] == 4 and cpu["gpu_layers"] == 0 and cpu["concurrency"] == 1
             and cpu["temperature"] == 0 and cpu["quantization"] == "Q4_K_M"
             and cpu["context_tokens"] == 16384 and cpu["max_output_tokens"] == 512
             and cpu["retries"] == 0 and cpu["thinking"] is False, "CPU variant changed")
     return {**cpu, **cfg}
+
+
+def experiment_cases():
+    """Additional exposed regression probes; reference fields never enter a context."""
+    path = config().get("fixture_file")
+    return t.cases() + (read(ROOT / path) if path else [])
 
 
 def grammar(context):
@@ -64,6 +70,8 @@ def freeze(out, binary=BINARY):
     questions = read(original / "questions.json")["questions"]
     require(len(questions) == 30, "Keep all 30 evaluation questions")
     dump(out / "questions.json", questions)
+    questions += [{k: case[k] for k in ["id", "question", "language"]}
+                  for case in experiment_cases() if case["id"] not in {q["id"] for q in questions}]
     table = read(t.STUDY / "catalog.json")
     dump(out / "catalog.json", table)
     discovery = read(t.STUDY / "discovery.json")
@@ -73,7 +81,7 @@ def freeze(out, binary=BINARY):
     budget = read(v.DEFAULT_PROTOCOL)["budget"]
     dump(out / "budget.json", budget)
     graphs = {r["id"]: r["iri"] for r in table["graphs"]}
-    if cfg.get("context_revision") == "source-usage-and-collisions-v1":
+    if cfg.get("context_revision"):
         import native_one_hop_context as presentation
         from rdflib import Dataset
         data = t.n.parse_rdf(Dataset(), t.STUDY / "snapshot.nq", format="nquads")
@@ -88,7 +96,10 @@ def freeze(out, binary=BINARY):
         packet = json.loads(packet_bytes)
         v.source_audit(packet, dict(rdf=str((t.STUDY / "snapshot.nq").relative_to(ROOT)),
                                    policy=str((t.STUDY / "policy.json").relative_to(ROOT))), dict(required=[]))
-        oracle = read(original / "contexts" / f"{q['id']}-oracle.json")
+        path = original / "contexts" / f"{q['id']}-oracle.json"
+        oracle = read(path if path.exists() else original / "contexts/eva-01-oracle.json")
+        if not path.exists():
+            oracle.update(question=q["question"], language=q["language"])
         require(oracle["question"] == q["question"] and oracle["language"] == q["language"]
                 and oracle["snapshot_id"] == manifest["snapshot_id"], "Context identity drift")
         for stage in cfg["stages"]:
@@ -98,12 +109,14 @@ def freeze(out, binary=BINARY):
                 for collection in ["entities", "predicates"]:
                     retained = {(r["graph"], r["iri"]) for r in packet[collection]["candidates"]}
                     context[collection] = [r for r in oracle[collection] if (graphs[r["graph"]], r["iri"]) in retained]
-            if cfg.get("context_revision") == "source-usage-and-collisions-v1":
+            if cfg.get("context_revision"):
                 context = presentation.enrich(context, oracle, data)
+                if cfg["version"] == "issue83-native-cpu-v1e":
+                    context = presentation.language_view(context)
             dump(out / "contexts" / f"{q['id']}-{stage}.json", context)
     # Resolution fixtures are for the offline Rust preview/scorer only, never serialized into prompts.
     dump(out / "operator-fixtures.json", {c["id"]: dict(resolved_start=c["resolved_start"], blocked=c["preflight_blocked"])
-                                         for c in t.cases()})
+                                         for c in experiment_cases()})
     paths = [CONFIG, ROOT / cfg["prompt_file"], ROOT / cfg["grammar_file"], ROOT / cfg["control_prompt_file"], t.CONFIG, g.CONFIG,
              Path(__file__), ROOT / "tools/grounded_models.py", ROOT / "tools/one_hop_trial.py",
              ROOT / "tools/local_parser.py", ROOT / "tools/compact_ab.py", ROOT / "tools/phase0.py", ROOT / "tools/question_vocabulary.py", ROOT / "tools/nl_ask_benchmark.py",
@@ -112,6 +125,9 @@ def freeze(out, binary=BINARY):
              *sorted(t.STUDY.glob("*")), *sorted((ROOT / "crates").rglob("*.rs"))]
     if cfg.get("context_revision"):
         paths.append(ROOT / "tools/native_one_hop_context.py")
+    if cfg.get("fixture_file"):
+        paths += [ROOT / cfg["fixture_file"], ROOT / "tools/native_one_hop_semantics.py",
+                  ROOT / "docs/native-one-hop-v1e.md"]
     require(json.loads(v.cli(binary, "schema-nl-ask")) == read(ROOT / "schemas/nl-ask-draft-v1.json"), "Rust schema drift")
     dump(out / "freeze.json", dict(version=cfg["version"], config=cfg, exposed_evaluation=True,
          input_sha256={str(p.relative_to(ROOT)): sha(p) for p in paths if p.is_file()},
@@ -407,7 +423,7 @@ def run(folder, out, key, allow_inference=False, evaluate=False, binary=BINARY):
 
 def semantic_outcome(case_id, raw_path, checked):
     """Post-generation diagnostics only: never used by context construction."""
-    case = next(c for c in t.cases() if c["id"] == case_id)
+    case = next(c for c in experiment_cases() if c["id"] == case_id)
     try:
         draft = json.loads(raw_path.read_bytes())
         draft = draft if isinstance(draft, dict) else {}
@@ -514,14 +530,32 @@ def _run(folder, out, key, evaluate=False, binary=BINARY):
                 _, checked = generate(cfg["smoke_cases"][0], "oracle", dest)
                 require(checked["returncode"] == 0, "Repeated smoke rejected by Rust")
                 repeats.append((dest / "proposal.txt").read_bytes())
-            require(repeats[0] == repeats[1], "Deterministic repetition mismatch")
-            state["deterministic_repeat_equal"] = True
+            if cfg.get("repeatability"):
+                from native_one_hop_semantics import repeatability
+                state["repeatability"] = repeatability(repeats)
+                state["repeatability"]["rust_previews_accepted"] = True
+                for name in ["prompt.txt", "completion-request.json"]:
+                    pair = [out / "controls" / f"repeat-{i}" / name for i in range(2)]
+                    equal = pair[0].read_bytes() == pair[1].read_bytes()
+                    state["repeatability"][name + "_equal"] = equal
+                    state["repeatability"]["gate_passed"] &= equal
+                dump(out / "repeatability.json", state["repeatability"])
+                require(state["repeatability"]["gate_passed"], "Plan/status repetition mismatch or invalid draft")
+            else:
+                require(repeats[0] == repeats[1], "Deterministic repetition mismatch")
+                state["deterministic_repeat_equal"] = True
             for name, case_id in cfg["control_cases"].items():
                 _, checked = generate(case_id, "oracle", out / "controls" / name)
                 require(checked["returncode"] == 0, "Safety control rejected by Rust")
                 status = json.loads(checked["stdout"])["status"]
                 if cfg.get("context_revision"):
-                    require(state["checks"][name]["semantic_correct"], "Safety control semantic mismatch: " + name)
+                    check = state["checks"][name]
+                    alternatives = cfg.get("ambiguous_reference_controls", {}).get(name)
+                    acceptable = check["semantic_correct"] or bool(alternatives and check["model_status"] in alternatives)
+                    if cfg.get("repeatability"):
+                        check["interpretation_acceptable"] = acceptable
+                        check["reference_ambiguity"] = bool(alternatives)
+                    require(acceptable, "Safety control semantic mismatch: " + name)
                 if name == "ambiguous_start":
                     require(status == "model_needs_clarification", "Ambiguous identity not clarified")
                 elif name in {"private_scope", "write"}:
@@ -532,7 +566,7 @@ def _run(folder, out, key, evaluate=False, binary=BINARY):
             for case_id in cfg["smoke_cases"]:
                 _, checked = generate(case_id, "oracle", out / "smoke" / case_id)
                 require(checked["returncode"] == 0, "Smoke draft rejected by Rust")
-                case = next(c for c in t.cases() if c["id"] == case_id)
+                case = next(c for c in experiment_cases() if c["id"] == case_id)
                 request = json.loads(checked["stdout"]).get("request")
                 require(request == case["gold_request"], "Smoke start/predicate/direction mismatch against exposed reference")
             state["smoke_passed"] = True
@@ -554,6 +588,12 @@ def _run(folder, out, key, evaluate=False, binary=BINARY):
         if isinstance(error, (KeyboardInterrupt, SystemExit)):
             raise
     finally:
+        if cfg.get("repeatability") and "repeatability" not in state:
+            from native_one_hop_semantics import repeatability
+            paths = [out / "controls" / f"repeat-{i}/proposal.txt" for i in range(2)]
+            state["repeatability"] = repeatability([p.read_bytes() for p in paths if p.exists()])
+            state["repeatability"].update(gate_passed=False, incomplete_or_rejected_repeat=True)
+            dump(out / "repeatability.json", state["repeatability"])
         if runtime:
             runtime.__exit__()
             state.update(generation_attempts=runtime.generation_attempts, generation_completed=runtime.generation_completed,
@@ -637,7 +677,7 @@ def replay(folder, run_dir, binary=BINARY):
 def main():
     global CONFIG
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--variant", choices=["v1c", "v1d"], default="v1c")
+    parser.add_argument("--variant", choices=["v1c", "v1d", "v1e"], default="v1c")
     parser.add_argument("command", choices=["freeze", "preflight", "assets", "run", "replay"])
     parser.add_argument("--freeze", type=Path, default=REPORT / "freeze")
     parser.add_argument("--out", type=Path)
