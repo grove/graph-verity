@@ -61,6 +61,7 @@ def observe(folder, out, state, runtime, rss, binary):
                    review_origin="AI investigator preregistration; independent human review pending")
         started = time.monotonic()
         before = dict(rss)
+        generations_before = runtime.generation_attempts
         try:
             a.verify_freeze(folder, binary)
             resource_guard(rss, cfg)
@@ -74,7 +75,6 @@ def observe(folder, out, state, runtime, rss, binary):
             checked = a.preview_raw(context, trusted / "proposal.txt", trusted, fixtures[cid], binary)
             a.require(checked["returncode"] == 0, "Trusted source/catalog preflight failed")
             row["status"] = "attempting"
-            row["generation_attempted"] = True
             row["runtime"] = runtime.generate(context, dest)
             raw = (dest / "proposal.txt").read_bytes()
             draft = strict_draft(raw)
@@ -119,7 +119,8 @@ def observe(folder, out, state, runtime, rss, binary):
                 row["rust_preview"] = a.preview_raw(context, raw_path, dest, fixtures[cid], binary)
             raise
         finally:
-            row.update(latency_ms=(time.monotonic() - started) * 1000,
+            row.update(generation_attempted=runtime.generation_attempts > generations_before,
+                       latency_ms=(time.monotonic() - started) * 1000,
                        resources=dict(before=before, after=dict(rss), scope="sampled process-tree run peak to date; not a per-case peak"))
             a.dump(dest / "observation.json", row)
     state["status"] = "completed_diagnostic"

@@ -41,6 +41,8 @@ class DiagnosticTests(unittest.TestCase):
             def __exit__(self, *args):
                 pass
             def generate(self, context, dest, constrained=True, system=None):
+                if failure == 'template' and dest.name == 'private_scope':
+                    raise ValueError('Native template mismatch before completion request')
                 self.generation_attempts += 1
                 a.dump(dest / 'completion-request.json', {'context': context, 'constrained': constrained})
                 (dest / 'prompt.txt').write_text(a.g.safe_user(context))
@@ -131,7 +133,7 @@ class DiagnosticTests(unittest.TestCase):
 
     def test_fatal_runtime_host_resource_authorization_and_integrity_leave_missing_cases(self):
         with patch.object(a, 'CONFIG', CONFIG):
-            for failure in ['runtime', 'host', 'resource', 'authorization', 'grammar', 'parity', 'source']:
+            for failure in ['runtime', 'host', 'resource', 'authorization', 'grammar', 'parity', 'source', 'template']:
                 with self.subTest(failure=failure):
                     state, out = self.run_mock(failure)
                     self.assertNotEqual(state['status'], 'completed_diagnostic')
@@ -139,6 +141,11 @@ class DiagnosticTests(unittest.TestCase):
                     self.assertTrue(any(r['status'] == 'unattempted' for r in rows))
                     self.assertTrue(all(not r['generation_attempted'] for r in rows if r['condition'] == 'retrieval'))
                     self.assertFalse(state['smoke_passed'])
+                    self.assertEqual(state['diagnostic']['attempted'], max(0, state['generation_attempts'] - 2))
+                    if failure == 'template':
+                        row = next(r for r in rows if r['status'] == 'fatal_failure')
+                        self.assertFalse(row['generation_attempted'])
+                        self.assertIsNone(row['raw_output'])
                     if failure == 'host':
                         self.assertFalse(state['model_loaded'])
                     else:

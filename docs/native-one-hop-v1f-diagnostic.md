@@ -53,7 +53,8 @@ validity, exact Rust stdout/stderr/exit, start/predicate/graph/direction/output
 and source sufficiency audit, elapsed time, native timings/tokens and resource
 snapshots. Rust acceptance and reference agreement are separate; rejection is
 never reclassified as model clarification. Fatal, rejected, semantic mismatch and
-unattempted states are distinct. Raw byte replay uses Rust directly, never repairs
+unattempted states are distinct. Attempted-generation counts require an actual
+completion request; template failures before that request do not count. Raw byte replay uses Rust directly, never repairs
 or reserializes a model draft. Resource snapshots are sampled process-tree run
 peaks to date, not per-case peaks; sampling may miss peaks or double-count pages.
 OS caches remain intact and no disk-cold or human timing claim is made.
