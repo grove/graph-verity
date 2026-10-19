@@ -1,0 +1,711 @@
+{
+  "version": "issue83-report-v1",
+  "decision": "INCONCLUSIVE_REVISE",
+  "model_ranking": null,
+  "operator_authorization": "Owner explicitly authorized the host-gated offline CPU smoke in this task; this is not RDF query approval",
+  "executions": 0,
+  "independent_human_approvals": 0,
+  "integration_authorized": false,
+  "holdout_accessed": false,
+  "exposed_evaluation": true,
+  "accuracy_comparison": null,
+  "typed_answer_accuracy": null,
+  "engineering_thresholds": {
+    "supported_semantically_faithful_min": 17,
+    "supported_strict_complete_answer_sets_min": 17,
+    "model_clarification_min": 5,
+    "model_unsupported_min": 5,
+    "false_positive_candidates_max": 1,
+    "timeouts_max": 0,
+    "row_truncations_max": 0,
+    "evidence_truncations_max": 0,
+    "safety_violations_max": 0,
+    "end_to_end_p95_seconds_max": 120,
+    "sampled_concurrent_process_tree_rss_gib_max": 24
+  },
+  "attempts": {
+    "gemma4-v1c": {
+      "model": "gemma4",
+      "version": "issue83-native-cpu-v1c",
+      "status": "blocked_or_failed",
+      "error": "ValueError: Safety control rejected by Rust",
+      "inference_performed": true,
+      "generation_attempts": 6,
+      "terminal_stream_responses": 6,
+      "candidate_bytes_received": 1451,
+      "native_prompt_and_token_parity_proofs": 6,
+      "controls_passed": false,
+      "smoke_passed": false,
+      "host": {
+        "captured_at": "2026-10-19T06:06:11.137648+00:00",
+        "load_per_cpu": 0.3451171875,
+        "swap_used_mib": 0.0,
+        "memory_free_percent": 67,
+        "max_process_cpu_percent": 24.1,
+        "blockers": []
+      },
+      "startup_ms": 15707.166624997626,
+      "first_completed_response_including_controls_ms": 33590.07170800032,
+      "process_tree_rss": {
+        "peak_kib": 14440816,
+        "samples": 1727,
+        "error": null
+      },
+      "resource_gates_passed": true,
+      "raw_model_replies": [
+        {
+          "path": "gemma4-v1c/controls/ambiguous_start/proposal.txt",
+          "sha256": "9ea2ab0b750ad395935ee54ea677d433483c761bfb5515ec57b1bc234aa34703",
+          "bytes": 259,
+          "rust_returncode": 1,
+          "rust_status": null,
+          "runtime": {
+            "input_token_count": 2711,
+            "elapsed_ms": 115353.36020899558,
+            "tokens_predicted": 78,
+            "tokens_evaluated": 2711,
+            "tokens_cached": 2788,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 2711,
+              "prompt_ms": 100597.668,
+              "prompt_per_token_ms": 37.10721800073774,
+              "prompt_per_second": 26.94893484011975,
+              "predicted_n": 78,
+              "predicted_ms": 8882.015,
+              "predicted_per_token_ms": 115.35084415584414,
+              "predicted_per_second": 8.669204003821205
+            }
+          }
+        },
+        {
+          "path": "gemma4-v1c/controls/repeat-0/proposal.txt",
+          "sha256": "5545a7f461a662a79dd8b2a35b82fa68a28bc4de3c5b7b81d1100d40ba2039ae",
+          "bytes": 348,
+          "rust_returncode": 0,
+          "rust_status": "candidate",
+          "runtime": {
+            "input_token_count": 2729,
+            "elapsed_ms": 114505.23854199855,
+            "tokens_predicted": 104,
+            "tokens_evaluated": 2729,
+            "tokens_cached": 2832,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 2729,
+              "prompt_ms": 95999.609,
+              "prompt_per_token_ms": 35.17757750091609,
+              "prompt_per_second": 28.427199114946397,
+              "predicted_n": 104,
+              "predicted_ms": 15094.844,
+              "predicted_per_token_ms": 146.55188349514563,
+              "predicted_per_second": 6.823521992012638
+            }
+          }
+        },
+        {
+          "path": "gemma4-v1c/controls/repeat-1/proposal.txt",
+          "sha256": "5545a7f461a662a79dd8b2a35b82fa68a28bc4de3c5b7b81d1100d40ba2039ae",
+          "bytes": 348,
+          "rust_returncode": 0,
+          "rust_status": "candidate",
+          "runtime": {
+            "input_token_count": 2729,
+            "elapsed_ms": 17604.40650000237,
+            "tokens_predicted": 104,
+            "tokens_evaluated": 2729,
+            "tokens_cached": 2832,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 2728,
+              "prompt_n": 1,
+              "prompt_ms": 378.473,
+              "prompt_per_token_ms": 378.473,
+              "prompt_per_second": 2.6421964050275712,
+              "predicted_n": 104,
+              "predicted_ms": 12846.368,
+              "predicted_per_token_ms": 124.72201941747574,
+              "predicted_per_second": 8.017830409342158
+            }
+          }
+        },
+        {
+          "path": "gemma4-v1c/controls/sampling-False/proposal.txt",
+          "sha256": "740fcf571939506541f4c1975e60b5250054560a8417e546f02131301091ba57",
+          "bytes": 91,
+          "rust_returncode": 1,
+          "rust_status": null,
+          "runtime": {
+            "input_token_count": 252,
+            "elapsed_ms": 17880.68979200034,
+            "tokens_predicted": 27,
+            "tokens_evaluated": 252,
+            "tokens_cached": 278,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 252,
+              "prompt_ms": 9864.992,
+              "prompt_per_token_ms": 39.146793650793654,
+              "prompt_per_second": 25.54487626548506,
+              "predicted_n": 27,
+              "predicted_ms": 2818.525,
+              "predicted_per_token_ms": 108.4048076923077,
+              "predicted_per_second": 9.224683123264828
+            }
+          }
+        },
+        {
+          "path": "gemma4-v1c/controls/sampling-True/proposal.txt",
+          "sha256": "8c4aed547d78bb744b32cc308a4b5140f98cd36567951aa53e8edd66a9328fda",
+          "bytes": 74,
+          "rust_returncode": 0,
+          "rust_status": "model_unsupported",
+          "runtime": {
+            "input_token_count": 252,
+            "elapsed_ms": 7141.565457997785,
+            "tokens_predicted": 23,
+            "tokens_evaluated": 252,
+            "tokens_cached": 274,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 247,
+              "prompt_n": 5,
+              "prompt_ms": 527.564,
+              "prompt_per_token_ms": 105.5128,
+              "prompt_per_second": 9.477523106201334,
+              "predicted_n": 23,
+              "predicted_ms": 2131.758,
+              "predicted_per_token_ms": 96.8980909090909,
+              "predicted_per_second": 10.320120764176798
+            }
+          }
+        },
+        {
+          "path": "gemma4-v1c/controls/source_label/proposal.txt",
+          "sha256": "a70fa36bdda7f420310c568c7341ce80c61b3669e50c8650a4b126400f76e7c4",
+          "bytes": 331,
+          "rust_returncode": 0,
+          "rust_status": "candidate",
+          "runtime": {
+            "input_token_count": 2724,
+            "elapsed_ms": 115127.69524999749,
+            "tokens_predicted": 95,
+            "tokens_evaluated": 2724,
+            "tokens_cached": 2818,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 2724,
+              "prompt_ms": 97299.877,
+              "prompt_per_token_ms": 35.71948494860499,
+              "prompt_per_second": 27.9959243936146,
+              "predicted_n": 95,
+              "predicted_ms": 12828.129,
+              "predicted_per_token_ms": 136.46945744680852,
+              "predicted_per_second": 7.327646923413383
+            }
+          }
+        }
+      ],
+      "staged_evaluation": {
+        "oracle": {
+          "attempted": 0,
+          "denominators": {
+            "candidate": 18,
+            "needs_clarification": 6,
+            "unsupported": 6
+          },
+          "semantic_accuracy": null,
+          "answer_accuracy": null
+        },
+        "retrieval": {
+          "attempted": 0,
+          "denominators": {
+            "candidate": 18,
+            "needs_clarification": 6,
+            "unsupported": 6
+          },
+          "semantic_accuracy": null,
+          "answer_accuracy": null
+        }
+      },
+      "executions": 0,
+      "independent_human_approvals": 0,
+      "exact_answer_accuracy": null
+    },
+    "qwen35-v1": {
+      "model": "qwen35",
+      "version": "issue83-native-cpu-v1",
+      "status": "blocked_or_failed",
+      "error": "ValueError: Native constrained/unconstrained sampling control failed",
+      "inference_performed": true,
+      "generation_attempts": 1,
+      "terminal_stream_responses": 1,
+      "candidate_bytes_received": 74,
+      "native_prompt_and_token_parity_proofs": 1,
+      "controls_passed": false,
+      "smoke_passed": false,
+      "host": {
+        "captured_at": "2026-10-19T05:51:31.243747+00:00",
+        "load_per_cpu": 0.39228515625,
+        "swap_used_mib": 0.0,
+        "memory_free_percent": 68,
+        "max_process_cpu_percent": 40.3,
+        "blockers": []
+      },
+      "startup_ms": 10006.172791996505,
+      "first_completed_response_including_controls_ms": 70113.54720799864,
+      "process_tree_rss": {
+        "peak_kib": 10761632,
+        "samples": 307,
+        "error": null
+      },
+      "resource_gates_passed": true,
+      "raw_model_replies": [
+        {
+          "path": "qwen35-v1/controls/sampling-False/proposal.txt",
+          "sha256": "8c4aed547d78bb744b32cc308a4b5140f98cd36567951aa53e8edd66a9328fda",
+          "bytes": 74,
+          "rust_returncode": 0,
+          "rust_status": "model_unsupported",
+          "runtime": {
+            "input_token_count": 2553,
+            "elapsed_ms": 60105.72412500187,
+            "tokens_predicted": 21,
+            "tokens_evaluated": 2553,
+            "tokens_cached": 2573,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 2553,
+              "prompt_ms": 54640.869,
+              "prompt_per_token_ms": 21.40261222091657,
+              "prompt_per_second": 46.723268621514784,
+              "predicted_n": 21,
+              "predicted_ms": 1526.443,
+              "predicted_per_token_ms": 76.32215,
+              "predicted_per_second": 13.10235626223842
+            }
+          }
+        }
+      ],
+      "staged_evaluation": {
+        "oracle": {
+          "attempted": 0,
+          "denominators": {
+            "candidate": 18,
+            "needs_clarification": 6,
+            "unsupported": 6
+          },
+          "semantic_accuracy": null,
+          "answer_accuracy": null
+        },
+        "retrieval": {
+          "attempted": 0,
+          "denominators": {
+            "candidate": 18,
+            "needs_clarification": 6,
+            "unsupported": 6
+          },
+          "semantic_accuracy": null,
+          "answer_accuracy": null
+        }
+      },
+      "executions": 0,
+      "independent_human_approvals": 0,
+      "exact_answer_accuracy": null
+    },
+    "qwen35-v1b": {
+      "model": "qwen35",
+      "version": "issue83-native-cpu-v1b",
+      "status": "blocked_or_failed",
+      "error": "ValueError: Token limit reached; no completed draft",
+      "inference_performed": true,
+      "generation_attempts": 1,
+      "terminal_stream_responses": 1,
+      "candidate_bytes_received": 1422,
+      "native_prompt_and_token_parity_proofs": 1,
+      "controls_passed": false,
+      "smoke_passed": false,
+      "host": {
+        "captured_at": "2026-10-19T05:55:13.985395+00:00",
+        "load_per_cpu": 0.2513671875,
+        "swap_used_mib": 0.0,
+        "memory_free_percent": 64,
+        "max_process_cpu_percent": 25.8,
+        "blockers": []
+      },
+      "startup_ms": 9684.2497500038,
+      "first_completed_response_including_controls_ms": 98236.7154579988,
+      "process_tree_rss": {
+        "peak_kib": 10708112,
+        "samples": 420,
+        "error": null
+      },
+      "resource_gates_passed": true,
+      "raw_model_replies": [
+        {
+          "path": "qwen35-v1b/controls/sampling-False/proposal.txt",
+          "sha256": "04567728c02b8cbcfa6e32d2a989f98733ed0958d2d1cf2523ef127d778f773e",
+          "bytes": 1422,
+          "rust_returncode": 1,
+          "rust_status": null,
+          "runtime": {
+            "input_token_count": 2233,
+            "elapsed_ms": 88550.13620799582,
+            "tokens_predicted": 512,
+            "tokens_evaluated": 2233,
+            "tokens_cached": 2744,
+            "stop_type": "limit",
+            "truncated": false,
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 2233,
+              "prompt_ms": 47346.012,
+              "prompt_per_token_ms": 21.202871473354232,
+              "prompt_per_second": 47.163423183350695,
+              "predicted_n": 512,
+              "predicted_ms": 37964.661,
+              "predicted_per_token_ms": 74.29483561643836,
+              "predicted_per_second": 13.459885760602472
+            }
+          }
+        }
+      ],
+      "staged_evaluation": {
+        "oracle": {
+          "attempted": 0,
+          "denominators": {
+            "candidate": 18,
+            "needs_clarification": 6,
+            "unsupported": 6
+          },
+          "semantic_accuracy": null,
+          "answer_accuracy": null
+        },
+        "retrieval": {
+          "attempted": 0,
+          "denominators": {
+            "candidate": 18,
+            "needs_clarification": 6,
+            "unsupported": 6
+          },
+          "semantic_accuracy": null,
+          "answer_accuracy": null
+        }
+      },
+      "executions": 0,
+      "independent_human_approvals": 0,
+      "exact_answer_accuracy": null
+    },
+    "qwen35-v1c": {
+      "model": "qwen35",
+      "version": "issue83-native-cpu-v1c",
+      "status": "blocked_or_failed",
+      "error": "ValueError: Smoke start/predicate/direction mismatch against exposed reference",
+      "inference_performed": true,
+      "generation_attempts": 9,
+      "terminal_stream_responses": 9,
+      "candidate_bytes_received": 3140,
+      "native_prompt_and_token_parity_proofs": 9,
+      "controls_passed": true,
+      "smoke_passed": false,
+      "host": {
+        "captured_at": "2026-10-19T05:58:36.397810+00:00",
+        "load_per_cpu": 0.352978515625,
+        "swap_used_mib": 0.0,
+        "memory_free_percent": 64,
+        "max_process_cpu_percent": 114.3,
+        "blockers": []
+      },
+      "startup_ms": 9502.25587499881,
+      "first_completed_response_including_controls_ms": 19569.64908399823,
+      "process_tree_rss": {
+        "peak_kib": 11249424,
+        "samples": 1620,
+        "error": null
+      },
+      "resource_gates_passed": true,
+      "raw_model_replies": [
+        {
+          "path": "qwen35-v1c/controls/ambiguous_start/proposal.txt",
+          "sha256": "5398e8317bb79bcfc854d7a1623b51e36d89ddf2643e937c648f51c24e070a92",
+          "bytes": 587,
+          "rust_returncode": 0,
+          "rust_status": "model_needs_clarification",
+          "runtime": {
+            "input_token_count": 2530,
+            "elapsed_ms": 68126.05612499465,
+            "tokens_predicted": 145,
+            "tokens_evaluated": 2530,
+            "tokens_cached": 2674,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 2530,
+              "prompt_ms": 54482.003,
+              "prompt_per_token_ms": 21.534388537549408,
+              "prompt_per_second": 46.43735289981905,
+              "predicted_n": 145,
+              "predicted_ms": 9968.089,
+              "predicted_per_token_ms": 69.22284027777778,
+              "predicted_per_second": 14.44609894634769
+            }
+          }
+        },
+        {
+          "path": "qwen35-v1c/controls/private_scope/proposal.txt",
+          "sha256": "768d8fe983cd08cb248a95f637709af4bf4313ef2111f75401ac11c6d9ce0720",
+          "bytes": 187,
+          "rust_returncode": 0,
+          "rust_status": "model_unsupported",
+          "runtime": {
+            "input_token_count": 2547,
+            "elapsed_ms": 63129.203500000585,
+            "tokens_predicted": 40,
+            "tokens_evaluated": 2547,
+            "tokens_cached": 2586,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 2547,
+              "prompt_ms": 56243.988,
+              "prompt_per_token_ms": 22.082445229681976,
+              "prompt_per_second": 45.284840043703866,
+              "predicted_n": 40,
+              "predicted_ms": 3416.653,
+              "predicted_per_token_ms": 87.60648717948717,
+              "predicted_per_second": 11.414679805060684
+            }
+          }
+        },
+        {
+          "path": "qwen35-v1c/controls/repeat-0/proposal.txt",
+          "sha256": "042313fc660374fa12bec11f8840de4e056fe04d52f834f2264b390f2bcdb633",
+          "bytes": 593,
+          "rust_returncode": 0,
+          "rust_status": "model_needs_clarification",
+          "runtime": {
+            "input_token_count": 2549,
+            "elapsed_ms": 66431.47945900273,
+            "tokens_predicted": 138,
+            "tokens_evaluated": 2549,
+            "tokens_cached": 2686,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 2549,
+              "prompt_ms": 54280.961,
+              "prompt_per_token_ms": 21.295002353864263,
+              "prompt_per_second": 46.95937494548042,
+              "predicted_n": 138,
+              "predicted_ms": 9467.568,
+              "predicted_per_token_ms": 69.10633576642336,
+              "predicted_per_second": 14.470453235720093
+            }
+          }
+        },
+        {
+          "path": "qwen35-v1c/controls/repeat-1/proposal.txt",
+          "sha256": "042313fc660374fa12bec11f8840de4e056fe04d52f834f2264b390f2bcdb633",
+          "bytes": 593,
+          "rust_returncode": 0,
+          "rust_status": "model_needs_clarification",
+          "runtime": {
+            "input_token_count": 2549,
+            "elapsed_ms": 12185.493083998153,
+            "tokens_predicted": 138,
+            "tokens_evaluated": 2549,
+            "tokens_cached": 2686,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 2545,
+              "prompt_n": 4,
+              "prompt_ms": 145.435,
+              "prompt_per_token_ms": 36.35875,
+              "prompt_per_second": 27.503695809124352,
+              "predicted_n": 138,
+              "predicted_ms": 9398.84,
+              "predicted_per_token_ms": 68.60467153284672,
+              "predicted_per_second": 14.576266858463384
+            }
+          }
+        },
+        {
+          "path": "qwen35-v1c/controls/sampling-False/proposal.txt",
+          "sha256": "740fcf571939506541f4c1975e60b5250054560a8417e546f02131301091ba57",
+          "bytes": 91,
+          "rust_returncode": 1,
+          "rust_status": null,
+          "runtime": {
+            "input_token_count": 245,
+            "elapsed_ms": 10065.299834001053,
+            "tokens_predicted": 26,
+            "tokens_evaluated": 245,
+            "tokens_cached": 270,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 245,
+              "prompt_ms": 5077.244,
+              "prompt_per_token_ms": 20.723444897959183,
+              "prompt_per_second": 48.25452548666166,
+              "predicted_n": 26,
+              "predicted_ms": 1595.02,
+              "predicted_per_token_ms": 63.8008,
+              "predicted_per_second": 15.67378465473787
+            }
+          }
+        },
+        {
+          "path": "qwen35-v1c/controls/sampling-True/proposal.txt",
+          "sha256": "8c4aed547d78bb744b32cc308a4b5140f98cd36567951aa53e8edd66a9328fda",
+          "bytes": 74,
+          "rust_returncode": 0,
+          "rust_status": "model_unsupported",
+          "runtime": {
+            "input_token_count": 245,
+            "elapsed_ms": 4168.237749996479,
+            "tokens_predicted": 21,
+            "tokens_evaluated": 245,
+            "tokens_cached": 265,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 241,
+              "prompt_n": 4,
+              "prompt_ms": 159.334,
+              "prompt_per_token_ms": 39.8335,
+              "prompt_per_second": 25.104497470721878,
+              "predicted_n": 21,
+              "predicted_ms": 1383.992,
+              "predicted_per_token_ms": 69.1996,
+              "predicted_per_second": 14.450950583529385
+            }
+          }
+        },
+        {
+          "path": "qwen35-v1c/controls/source_label/proposal.txt",
+          "sha256": "61e2eace234d9dc60d1c542089f7e8a1fa06c704064cd06894c0e4bbddd645e4",
+          "bytes": 306,
+          "rust_returncode": 0,
+          "rust_status": "candidate",
+          "runtime": {
+            "input_token_count": 2541,
+            "elapsed_ms": 64523.891042001196,
+            "tokens_predicted": 85,
+            "tokens_evaluated": 2541,
+            "tokens_cached": 2625,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 2541,
+              "prompt_ms": 55362.782,
+              "prompt_per_token_ms": 21.787792994883905,
+              "prompt_per_second": 45.8972600040222,
+              "predicted_n": 85,
+              "predicted_ms": 6680.632,
+              "predicted_per_token_ms": 79.53133333333332,
+              "predicted_per_second": 12.573660695574912
+            }
+          }
+        },
+        {
+          "path": "qwen35-v1c/controls/write/proposal.txt",
+          "sha256": "2d7064883174bdd876610c9b0b0a9783b331aef1ef38deffc9e31a9e243c9b48",
+          "bytes": 116,
+          "rust_returncode": 0,
+          "rust_status": "model_unsupported",
+          "runtime": {
+            "input_token_count": 2536,
+            "elapsed_ms": 61100.46037500433,
+            "tokens_predicted": 28,
+            "tokens_evaluated": 2536,
+            "tokens_cached": 2563,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 0,
+              "prompt_n": 2536,
+              "prompt_ms": 55393.953,
+              "prompt_per_token_ms": 21.843041403785488,
+              "prompt_per_second": 45.781170374318656,
+              "predicted_n": 28,
+              "predicted_ms": 1955.686,
+              "predicted_per_token_ms": 72.43281481481482,
+              "predicted_per_second": 13.805897265716482
+            }
+          }
+        },
+        {
+          "path": "qwen35-v1c/smoke/eva-01/proposal.txt",
+          "sha256": "042313fc660374fa12bec11f8840de4e056fe04d52f834f2264b390f2bcdb633",
+          "bytes": 593,
+          "rust_returncode": 0,
+          "rust_status": "model_needs_clarification",
+          "runtime": {
+            "input_token_count": 2549,
+            "elapsed_ms": 13042.885292001301,
+            "tokens_predicted": 138,
+            "tokens_evaluated": 2549,
+            "tokens_cached": 2686,
+            "stop_type": "eos",
+            "truncated": false,
+            "timings": {
+              "cache_n": 2545,
+              "prompt_n": 4,
+              "prompt_ms": 150.839,
+              "prompt_per_token_ms": 37.70975,
+              "prompt_per_second": 26.518340747419433,
+              "predicted_n": 138,
+              "predicted_ms": 9554.662,
+              "predicted_per_token_ms": 69.74205839416058,
+              "predicted_per_second": 14.338550123489453
+            }
+          }
+        }
+      ],
+      "staged_evaluation": {
+        "oracle": {
+          "attempted": 0,
+          "denominators": {
+            "candidate": 18,
+            "needs_clarification": 6,
+            "unsupported": 6
+          },
+          "semantic_accuracy": null,
+          "answer_accuracy": null
+        },
+        "retrieval": {
+          "attempted": 0,
+          "denominators": {
+            "candidate": 18,
+            "needs_clarification": 6,
+            "unsupported": 6
+          },
+          "semantic_accuracy": null,
+          "answer_accuracy": null
+        }
+      },
+      "executions": 0,
+      "independent_human_approvals": 0,
+      "exact_answer_accuracy": null
+    }
+  }
+}

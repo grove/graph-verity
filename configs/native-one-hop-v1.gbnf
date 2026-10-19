@@ -1,0 +1,7 @@
+root ::= candidate | clarification | unsupported
+candidate ::= "{" ws "\"version\"" ws ":" ws "\"nl-ask-draft-v1\"" ws "," ws "\"status\"" ws ":" ws "\"candidate\"" ws "," ws "\"start\"" ws ":" ws entity-id ws "," ws "\"predicate\"" ws ":" ws predicate-id ws "," ws "\"graph\"" ws ":" ws graph-id ws "," ws "\"direction\"" ws ":" ws ("\"forward\"" | "\"reverse\"") ws "," ws "\"output\"" ws ":" ws "\"values\"" ws "," ws "\"rationale\"" ws ":" ws rationale ws "}" ws
+clarification ::= "{" ws "\"version\"" ws ":" ws "\"nl-ask-draft-v1\"" ws "," ws "\"status\"" ws ":" ws "\"needs_clarification\"" ws "," ws "\"rationale\"" ws ":" ws rationale ws "}" ws
+unsupported ::= "{" ws "\"version\"" ws ":" ws "\"nl-ask-draft-v1\"" ws "," ws "\"status\"" ws ":" ws "\"unsupported\"" ws "," ws "\"rationale\"" ws ":" ws rationale ws "}" ws
+rationale ::= "\"" char{1,512} "\""
+char ::= [^"\\\x00-\x1F] | "\\" (["\\/bfnrt] | "u" [0-9a-fA-F]{4})
+ws ::= [ \t\n\r]{0,16}
