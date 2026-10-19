@@ -1,0 +1,29 @@
+{
+  "version": "explicit-predicate-development-registration-v1",
+  "archive_sha256": "3d4385b47620221b36a4f9dced6c2f15c26e987fcc42ab5ba669b558be8b3ccf",
+  "checksums_sha256": "539e6b406f35eb450e82c7d561dc13bd45405fd79fa4c2f79610aa687754da0d",
+  "questions_sha256": "ba5db633fa2be7ce3a09d96590e6f16bfaad228be26264e788badc89d619b682",
+  "prompt_seal_sha256": "575ebd831634de87449367bb7ddc33364994280d5c861aa3bb5b30a4f4c4bc84",
+  "panel": {
+    "version": "explicit-predicate-development-v1",
+    "cases": 60,
+    "permitted_graph_predicates": 17,
+    "generation_rule": "Every permitted graph/predicate; lexical-sorted witnessed and empty starts, forward and reverse. Literal objects are not entity starts.",
+    "v1g_denominator_member": false,
+    "native_inference_authorized": false,
+    "inference_performed": false,
+    "status": "Model-free development only; exact questions/requests need a separate registration before inference",
+    "input_sha256": {
+      "tools/explicit_predicate_development.py": "7a7e5af210e5e335d119f29de09a5dfc367890a7379cdcfcb6a6847f6e902d0b",
+      "studies/nl-ask-v1/evaluation/snapshot.nq": "c35b205e7e76b2440b7680ac9139796413401f1a6acfeadc483967f6e5334ae9",
+      "studies/nl-ask-v1/evaluation/catalog.json": "7ae4e994df8d969cd5aaf1af0dcd9f43241a00d17cccf3454dca17aaf76559da",
+      "studies/nl-ask-v1/evaluation/policy.json": "ef4cd25d9647e7866c7bab2e9fbb0ccee853a9c787e37543a5e3f87c5b9c7840",
+      "studies/nl-ask-v1/evaluation/discovery.json": "8d622930f6ef50be91e35db8b98377681b50c2828eb446dd5058e40c6cbed9cc"
+    }
+  },
+  "native_inference_authorized": false,
+  "inference_performed": false,
+  "v1g_denominator_contribution": 0,
+  "model_generated_rdf_executions": 0,
+  "native_execution_registration": "Separate exact runtime/question registration required before any inference"
+}
