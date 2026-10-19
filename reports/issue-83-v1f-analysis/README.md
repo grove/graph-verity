@@ -27,6 +27,11 @@ preparation receipts, runtime source and retained runtime binaries verified
 without loading weights or invoking a backend. Exact hashes, toolchain, Python
 packages and native hardware/resource receipts are retained. No downloads,
 conversion, native generation or model-generated RDF execution occurred.
+The native tokenizer environment also exactly matches the retained v1e inventory:
+Python 3.12.14; package-list SHA-256
+`402becc4d2873a93331e253f9b17e62e9969c0da8cbff5e867696cb3f78f3851`.
+The machine report's no-run reasons reproduce the historical frozen baseline,
+including its then-unaccessed asset state; these fresh operator checks are separate.
 
 At **2026-10-19 10:03:32 UTC**, after asset hashing, the native host probe found
 **2,330.88 MiB swap used, above the 1,024 MiB limit**. Load/CPU/free-memory/disk,
@@ -164,4 +169,21 @@ Never refresh a historical freeze to accept changed source or binary bytes.
 Native inference needs its own authorization; v1g needs both its execution freeze
 and separate authorization. Zero #75 live integration, sealed-holdout access,
 unattended Ask, fabricated reviewers, model-generated RDF executions or automatic
-merge. Verification results are recorded separately after the full pipeline.
+merge.
+
+## Verification
+
+The complete required pipeline **passed at `7e21f1c`**, including **260 current
+Python tests** (six new analyzer tests), required headless-browser checks, Rust
+workspace tests, Clippy, formatting, frozen-history replay, reference checks and
+source-integrity/canary checks. The first full run also passed at `a2b0062`; the
+only intervening change makes synthetic test transport portable across Rust hosts.
+Production freeze/binary gates remain unchanged. Original frozen source, packets,
+binary and all 801 historical hashes verified again after the final pipeline.
+
+[verification.json](verification.json) and [scope notes](verification-notes.json)
+record the final commands and outcomes. [Complete logs](verification-logs.tar.gz)
+and their [hash inventory](verification-logs.json) retain both full passing runs,
+the final six-test check and the native tokenizer environment receipt. Only these
+receipts and report metadata follow the verified code commit. No native inference,
+human review, v1g run or semantic readiness is implied by passing model-free tests.

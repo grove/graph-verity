@@ -1,0 +1,17 @@
+{
+  "verified_code_commit": "7e21f1cd9bf337bd834fdb82ce9dd179ecda0f69",
+  "status": "passed",
+  "command": "CARGO_NET_OFFLINE=true REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py",
+  "current_python_tests": 260,
+  "new_analyzer_tests": 6,
+  "first_full_run": "passed at a2b0062",
+  "final_full_run": "passed at 7e21f1c",
+  "final_followup": "Only retained verification/environment receipts and explanatory report metadata change after the final passing pipeline; no implementation, prompt, freeze or historical evidence changes.",
+  "inference_performed": false,
+  "model_generated_rdf_executions": 0,
+  "holdout_accessed": false,
+  "independent_human_review": "pending, not a diagnostic completion gate",
+  "authorization_blocker": "Native v1f and v1g inference separately unauthorized",
+  "host_blocker": "Dated host snapshot: swap 2330.88 MiB exceeds 1024 MiB; fresh gates required for future attempts",
+  "post_pipeline_frozen_inputs_binary_and_history_verified": true
+}
