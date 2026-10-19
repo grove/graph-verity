@@ -157,6 +157,8 @@ The separate [M1 Pro route comparison](reports/issue-32-compact-ab/README.md)
 retains the single public v2 run against frozen v1. Normal CI verifies saved evidence
 without inference; this comparison does not establish Phase 0 readiness.
 
+The separate [native one-hop adapter #83](docs/native-one-hop-v1.md) adds an offline, explicitly opted-in CPU runner with fresh host gates, native template/tokenizer/GBNF controls and strict Rust preview. See its [retained attempts and remaining live gates](reports/issue-83-native-one-hop/README.md); it does not connect live proposals to the browser or authorize RDF execution.
+
 Experimental Phase 2 grounding: [question vocabulary packet v1](docs/question-vocabulary-packet-v1.md) provides source-authorized, graph-qualified BM25 candidate tables and model-free saved-packet replay. It does not execute natural-language questions; the [#72 contract and evaluation manifest](studies/nl-ask-v1/README.md) are frozen, with independent human review still pending.
 
 Run all Python regressions with `python tools/run_python_tests.py`; the unchanged #57 pilot and #53 native replay use their original source fingerprints from a pinned historical commit. The remaining suites and lexical rank/score checks test current code.
