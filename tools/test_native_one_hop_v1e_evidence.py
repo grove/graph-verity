@@ -1,6 +1,7 @@
 """Immutable v1e source/raw-byte replay. Never access model assets or infer."""
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 import tempfile
 import unittest
@@ -40,7 +41,11 @@ class EvidenceTests(unittest.TestCase):
             self.assertEqual(a.read(root / 'freeze/checksums.json'), a.v.inventory(root / 'freeze'))
             for name,digest in frozen['input_sha256'].items():
                 self.assertEqual(a.sha(root / 'source' / name), digest, name)
-                self.assertEqual(a.sha(a.ROOT / name), digest, name)
+                if name == 'tools/native_one_hop.py':
+                    original = subprocess.check_output(['git', 'show', 'f212b00d03ffe970885fcdbce0e01faeaf784a69:' + name], cwd=a.ROOT)
+                    self.assertEqual(hashlib.sha256(original).hexdigest(), digest, name)
+                else:
+                    self.assertEqual(a.sha(a.ROOT / name), digest, name)
             covered = set()
             for key in frozen['config']['variants']:
                 run = root / key

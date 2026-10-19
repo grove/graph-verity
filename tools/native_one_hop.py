@@ -31,7 +31,7 @@ read, dump, require = v.read, v.dump, v.require
 
 def config():
     cfg = read(CONFIG)
-    require(cfg["version"] in {"issue83-native-cpu-v1c", "issue83-native-cpu-v1d", "issue83-native-cpu-v1e"}, "Unknown native adapter")
+    require(cfg["version"] in {"issue83-native-cpu-v1c", "issue83-native-cpu-v1d", "issue83-native-cpu-v1e", "issue83-native-cpu-v1f-diagnostic"}, "Unknown native adapter")
     cpu = read(ROOT / cfg["cpu_protocol"])
     require(cpu["cpu_threads"] == 4 and cpu["gpu_layers"] == 0 and cpu["concurrency"] == 1
             and cpu["temperature"] == 0 and cpu["quantization"] == "Q4_K_M"
@@ -111,7 +111,7 @@ def freeze(out, binary=BINARY):
                     context[collection] = [r for r in oracle[collection] if (graphs[r["graph"]], r["iri"]) in retained]
             if cfg.get("context_revision"):
                 context = presentation.enrich(context, oracle, data)
-                if cfg["version"] == "issue83-native-cpu-v1e":
+                if cfg["context_revision"] == "source-language-groups-v1e":
                     context = presentation.language_view(context)
             dump(out / "contexts" / f"{q['id']}-{stage}.json", context)
     # Resolution fixtures are for the offline Rust preview/scorer only, never serialized into prompts.
@@ -128,6 +128,9 @@ def freeze(out, binary=BINARY):
     if cfg.get("fixture_file"):
         paths += [ROOT / cfg["fixture_file"], ROOT / "tools/native_one_hop_semantics.py",
                   ROOT / "docs/native-one-hop-v1e.md"]
+    if cfg.get("diagnostic_only"):
+        paths += [ROOT / "tools/native_one_hop_diagnostic.py", ROOT / "docs/native-one-hop-v1f-diagnostic.md",
+                  ROOT / "configs/native-one-hop-v1f-diagnostic.audit.json"]
     require(json.loads(v.cli(binary, "schema-nl-ask")) == read(ROOT / "schemas/nl-ask-draft-v1.json"), "Rust schema drift")
     dump(out / "freeze.json", dict(version=cfg["version"], config=cfg, exposed_evaluation=True,
          input_sha256={str(p.relative_to(ROOT)): sha(p) for p in paths if p.is_file()},
@@ -412,6 +415,8 @@ def sample_rss(out, done, result):
 def run(folder, out, key, allow_inference=False, evaluate=False, binary=BINARY):
     require(allow_inference, "Operator --allow-inference is required before any native runtime or asset access")
     require(not os.environ.get("CI") and not os.environ.get("GITHUB_ACTIONS"), "Inference is forbidden in CI")
+    if config().get("diagnostic_only"):
+        require(not evaluate, "Diagnostic coverage is separate from strict --evaluate")
     (ROOT / "artifacts").mkdir(exist_ok=True)
     with (ROOT / "artifacts/native-one-hop.lock").open("a") as lock:
         try:
@@ -463,6 +468,10 @@ def _run(folder, out, key, evaluate=False, binary=BINARY):
     done = threading.Event()
     rss = dict(peak_kib=0, samples=0, error=None)
     fixtures = read(folder / "operator-fixtures.json")
+    if cfg.get("diagnostic_only"):
+        import native_one_hop_diagnostic as diagnostic
+        state["diagnostic"] = diagnostic.accounting(cfg)
+        state["checks"] = {k: c for k, c in state["checks"].items() if k.startswith("sampling-")}
     def generate(case_id, stage, destination, constrained=True, context=None, system=None):
         destination.mkdir(parents=True)
         check_name = "smoke-" + case_id if destination.parent.name == "smoke" else destination.name
@@ -524,6 +533,9 @@ def _run(folder, out, key, evaluate=False, binary=BINARY):
                 require(accepted == constrained, "Native constrained/unconstrained sampling control failed")
                 if constrained:
                     require(checked["returncode"] == 0, "Constrained sampling rejected by Rust")
+            if cfg.get("diagnostic_only"):
+                diagnostic.observe(folder, out, state, runtime, rss, binary)
+                return state
             repeats = []
             for i in range(2):
                 dest = out / "controls" / f"repeat-{i}"
@@ -588,7 +600,7 @@ def _run(folder, out, key, evaluate=False, binary=BINARY):
         if isinstance(error, (KeyboardInterrupt, SystemExit)):
             raise
     finally:
-        if cfg.get("repeatability") and "repeatability" not in state:
+        if cfg.get("repeatability") and not cfg.get("diagnostic_only") and "repeatability" not in state:
             from native_one_hop_semantics import repeatability
             paths = [out / "controls" / f"repeat-{i}/proposal.txt" for i in range(2)]
             state["repeatability"] = repeatability([p.read_bytes() for p in paths if p.exists()])
@@ -647,8 +659,12 @@ def _run(folder, out, key, evaluate=False, binary=BINARY):
         state["process_tree_rss"] = rss
         state["resource_gates_passed"] = bool(rss["samples"] and not rss["error"]
             and rss["peak_kib"] <= cfg["engineering_gates_per_stage"]["sampled_concurrent_process_tree_rss_gib_max"] * 2**20)
+        if cfg.get("diagnostic_only") and state["status"] == "completed_diagnostic" and not state["resource_gates_passed"]:
+            state.update(status="blocked_or_failed", error="Diagnostic final resource gate failed")
         state["resource_limitations"] = "200ms concurrent process-tree RSS sampling may miss peaks and double-count shared pages; no disk-cold or human decision latency claim"
         state["finished_at"] = datetime.now(timezone.utc).isoformat()
+        if cfg.get("diagnostic_only"):
+            diagnostic.finish(state)
         for check in state["checks"].values():
             if check["status"] == "unattempted":
                 check["reason"] = state["status"]
@@ -677,7 +693,7 @@ def replay(folder, run_dir, binary=BINARY):
 def main():
     global CONFIG
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--variant", choices=["v1c", "v1d", "v1e"], default="v1c")
+    parser.add_argument("--variant", choices=["v1c", "v1d", "v1e", "v1f-diagnostic"], default="v1c")
     parser.add_argument("command", choices=["freeze", "preflight", "assets", "run", "replay"])
     parser.add_argument("--freeze", type=Path, default=REPORT / "freeze")
     parser.add_argument("--out", type=Path)

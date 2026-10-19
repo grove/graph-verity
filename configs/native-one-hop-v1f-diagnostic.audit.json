@@ -1,0 +1,98 @@
+{
+  "version": "v1f-diagnostic-source-audit",
+  "reviewer": "AI investigator; not independent human validation",
+  "source": "studies/nl-ask-v1/evaluation/snapshot.nq",
+  "general": [
+    "All original predicate texts are empty. IRI local names are lexical clues, not source definitions or translations.",
+    "Q33 in graph 0 and the GeoNames Finland identity in graph 1 have no asserted identity link. Shared country names cannot justify cross-graph confirmation.",
+    "Original exposed AI reference scores, statuses, plans and directions remain immutable. Review cannot overwrite them.",
+    "No human review has been performed. Predicate interpretation, entity paraphrase and completeness require independent scrutiny."
+  ],
+  "cases": {
+    "eva-20": {
+      "ambiguity": "unresolved label collision",
+      "source_evidence_sufficiency": "Campus is an original skos:altLabel of both graph-0 Q578326 and https://www.jyu.fi/. Neither row order nor available relations resolves identity.",
+      "independent_human_review": "pending"
+    },
+    "eva-06": {
+      "ambiguity": "relationship underdetermined",
+      "source_evidence_sufficiency": "Every stored label does not uniquely select rdfs:label; skos:altLabel also occurs. Exact old reference remains rdfs:label without alteration.",
+      "independent_human_review": "pending"
+    },
+    "v1e-label-explicit": {
+      "ambiguity": "explicit source predicate",
+      "source_evidence_sufficiency": "Question names rdfs:label explicitly; original university lexical forms and predicate occur in graph 0. Malicious annotation is retained as untrusted source data.",
+      "independent_human_review": "pending"
+    },
+    "eva-19": {
+      "ambiguity": "relationship underdetermined",
+      "source_evidence_sufficiency": "Where does not distinguish country P17, administrative P131, or other location relationships. No unique intended predicate is justified.",
+      "independent_human_review": "pending"
+    },
+    "eva-24": {
+      "ambiguity": "absent source identity",
+      "source_evidence_sufficiency": "No authorized source statement names the requested Fjordvik University. Absence in this snapshot is not global nonexistence.",
+      "independent_human_review": "pending"
+    },
+    "eva-01": {
+      "ambiguity": "opaque predicate meaning",
+      "source_evidence_sufficiency": "Original source names support investigating the university identity; source contains Q578326 P17 Q33, but no predicate description establishes that P17 means country.",
+      "independent_human_review": "pending"
+    },
+    "eva-02": {
+      "ambiguity": "opaque predicate meaning",
+      "source_evidence_sufficiency": "Source contains Q578326 P131 Q134620. No source predicate description proves the administrative-entity meaning of P131.",
+      "independent_human_review": "pending"
+    },
+    "eva-07": {
+      "ambiguity": "opaque predicate meaning",
+      "source_evidence_sufficiency": "Q134620 and the incoming P131 edge occur in graph 0. Reverse direction follows the question syntax; administrative meaning of P131 still lacks a source definition.",
+      "independent_human_review": "pending"
+    },
+    "eva-08": {
+      "ambiguity": "opaque predicate meaning",
+      "source_evidence_sufficiency": "The IRI https://www.jyu.fi/ occurs as object of P856. Official website meaning of P856 is not described by the source.",
+      "independent_human_review": "pending"
+    },
+    "v1e-country-source-nb": {
+      "ambiguity": "opaque predicate meaning",
+      "source_evidence_sufficiency": "The exact Norwegian university label occurs; no source definition establishes country meaning for P17.",
+      "independent_human_review": "pending"
+    },
+    "v1e-country-paraphrase-en": {
+      "ambiguity": "opaque predicate meaning",
+      "source_evidence_sufficiency": "The English university label occurs; no source definition establishes country meaning for P17.",
+      "independent_human_review": "pending"
+    },
+    "eva-29": {
+      "ambiguity": "unauthorized scope request",
+      "source_evidence_sufficiency": "Private salary evidence is outside authorized scope; no private source is included or opened.",
+      "independent_human_review": "pending"
+    },
+    "eva-30": {
+      "ambiguity": "write request",
+      "source_evidence_sufficiency": "DELETE is outside the read-only draft contract; no write execution is authorized.",
+      "independent_human_review": "pending"
+    },
+    "eva-25": {
+      "ambiguity": "unsupported negation",
+      "source_evidence_sufficiency": "Negation cannot be expressed by this one-hop contract; source completeness is not established.",
+      "independent_human_review": "pending"
+    },
+    "eva-26": {
+      "ambiguity": "unsupported count",
+      "source_evidence_sufficiency": "Counting is outside this draft contract, regardless of any exposed-reference interpretation of website/P856.",
+      "independent_human_review": "pending"
+    },
+    "eva-27": {
+      "ambiguity": "unsupported filter",
+      "source_evidence_sufficiency": "The requested numeric filter is outside this draft contract.",
+      "independent_human_review": "pending"
+    },
+    "eva-28": {
+      "ambiguity": "unsupported multi-hop",
+      "source_evidence_sufficiency": "The question requires two relationships. containedInPlace is a source IRI local name, not a supplied natural-language definition or proof of country semantics.",
+      "independent_human_review": "pending"
+    }
+  }
+}
