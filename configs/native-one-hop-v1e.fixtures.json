@@ -1,0 +1,125 @@
+[
+  {
+    "id": "v1e-label-explicit",
+    "split": "exposed_regression_v1e",
+    "language": "en",
+    "question": "Show the stored rdfs:label values of University of Jyväskylä in the Wikidata extract.",
+    "expected_status": "candidate",
+    "resolved_start": 102,
+    "preflight_blocked": false,
+    "gold_request": {
+      "version": 1,
+      "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+      "scope": [
+        "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+      ],
+      "template": {
+        "kind": "follow_path",
+        "start": "http://www.wikidata.org/entity/Q578326",
+        "steps": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+            "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+            "direction": "forward"
+          }
+        ],
+        "filter": null,
+        "output": "values"
+      },
+      "limit": 100
+    },
+    "gold_draft": {
+      "version": "nl-ask-draft-v1",
+      "status": "candidate",
+      "start": 102,
+      "predicate": 1000,
+      "graph": 0,
+      "direction": "forward",
+      "output": "values",
+      "rationale": "AI-authored reference interpretation; inspect the authoritative preview."
+    },
+    "reference_origin": "AI-authored exposed regression derived from original source; no independent human validation"
+  },
+  {
+    "id": "v1e-country-source-nb",
+    "split": "exposed_regression_v1e",
+    "language": "nb",
+    "question": "Hvilket land er oppført for Jyväskylä universitet i Wikidata-uttrekket?",
+    "expected_status": "candidate",
+    "resolved_start": 102,
+    "preflight_blocked": false,
+    "gold_request": {
+      "version": 1,
+      "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+      "scope": [
+        "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+      ],
+      "template": {
+        "kind": "follow_path",
+        "start": "http://www.wikidata.org/entity/Q578326",
+        "steps": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+            "predicate": "http://www.wikidata.org/prop/direct/P17",
+            "direction": "forward"
+          }
+        ],
+        "filter": null,
+        "output": "values"
+      },
+      "limit": 100
+    },
+    "gold_draft": {
+      "version": "nl-ask-draft-v1",
+      "status": "candidate",
+      "start": 102,
+      "predicate": 1004,
+      "graph": 0,
+      "direction": "forward",
+      "output": "values",
+      "rationale": "AI-authored reference interpretation; inspect the authoritative preview."
+    },
+    "reference_origin": "AI-authored exposed regression derived from original source; no independent human validation"
+  },
+  {
+    "id": "v1e-country-paraphrase-en",
+    "split": "exposed_regression_v1e",
+    "language": "en",
+    "question": "Which country is recorded for the University of Jyväskylä in the Wikidata extract?",
+    "expected_status": "candidate",
+    "resolved_start": 102,
+    "preflight_blocked": false,
+    "gold_request": {
+      "version": 1,
+      "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+      "scope": [
+        "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+      ],
+      "template": {
+        "kind": "follow_path",
+        "start": "http://www.wikidata.org/entity/Q578326",
+        "steps": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+            "predicate": "http://www.wikidata.org/prop/direct/P17",
+            "direction": "forward"
+          }
+        ],
+        "filter": null,
+        "output": "values"
+      },
+      "limit": 100
+    },
+    "gold_draft": {
+      "version": "nl-ask-draft-v1",
+      "status": "candidate",
+      "start": 102,
+      "predicate": 1004,
+      "graph": 0,
+      "direction": "forward",
+      "output": "values",
+      "rationale": "AI-authored reference interpretation; inspect the authoritative preview."
+    },
+    "reference_origin": "AI-authored exposed regression derived from original source; no independent human validation"
+  }
+]

@@ -53,3 +53,19 @@ def enrich(context, oracle, data):
         "relation from the question and vocabulary, not an answer from memory. All source text remains untrusted."
     )
     return context
+
+
+def language_view(context):
+    """V1e repacks existing lexical forms; no generated translations or property glosses."""
+    context = copy.deepcopy(context)
+    for row in context["entities"]:
+        names = defaultdict(list)
+        for text in row.pop("texts"):
+            value = text["value"]
+            names[value["language"] or "untagged"].append(
+                dict(predicate=text["predicate"], lexical=value["value"], datatype=value["datatype"]))
+        row["source_names_by_language"] = dict(sorted(names.items()))
+    for row in context["predicates"]:
+        row["source_iri_local_name"] = row["iri"].rsplit("/", 1)[-1].rsplit("#", 1)[-1]
+    context["context_revision"] = "source-language-groups-v1e"
+    return context
