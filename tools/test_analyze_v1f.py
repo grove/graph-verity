@@ -27,7 +27,9 @@ class AnalysisTests(unittest.TestCase):
         cls.context = json.loads(payload['freeze/contexts/eva-01-oracle.json'])
         harness = run_tests.DiagnosticTests()
         harness.root, harness.frozen = cls.root, cls.freeze
-        with patch.object(native, 'CONFIG', native.ROOT / 'configs/native-one-hop-v1f-diagnostic.json'):
+        # The retained binary pin is macOS-specific; synthetic transport uses current-host Rust preview.
+        with patch.object(native, 'CONFIG', native.ROOT / 'configs/native-one-hop-v1f-diagnostic.json'), \
+             patch.object(native, 'verify_freeze', return_value=cls.prereg['freeze_manifest']):
             _, cls.run_dir = harness.run_mock()
             _, cls.failed = harness.run_mock('template', key='gemma4')
 
