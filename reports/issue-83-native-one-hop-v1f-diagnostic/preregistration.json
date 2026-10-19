@@ -1,11 +1,11 @@
 {
   "version": "issue83-native-cpu-v1f-diagnostic-preregistration",
-  "registered_at": "2026-10-19T09:17:06.343399+00:00",
-  "source_commit": "d090cd3d4e992c33ad895a9ad61b7cb5df3d757b",
+  "registered_at": "2026-10-19T09:26:55.883351+00:00",
+  "source_commit": "60a878220b5266a51ffae8a59ee402da0010d86c",
   "base_commit": "3b874232f77f21b3b4d976aac905f604f6054c0c",
   "inference_authorized": false,
   "inference_performed": false,
-  "freeze_sha256": "269e5d401ebfa1019c61ae373efdfd0abd7d61f859db5a7511b7f1a72360495d",
+  "freeze_sha256": "8475600f50d3646feef4e954dd1ae4fb1471681a2257253b25ca10d4ed475b51",
   "freeze_manifest": {
     "version": "issue83-native-cpu-v1f-diagnostic",
     "config": {
@@ -199,16 +199,16 @@
       "configs/native-one-hop-v1e.fixtures.json": "7f6f8085350532eb17b48f6772c0aec73f7f7dbf3d37030149bdf761ed659ee1",
       "tools/native_one_hop_semantics.py": "9e693264eb50ebc49f2ebaa149b33313c9c151b64fb89ade5cef8ce1c9236b58",
       "docs/native-one-hop-v1e.md": "a3622b30f274a56fe6f0484c66d7400a9af12bd09d51c90b47fad169118fcc6c",
-      "tools/native_one_hop_diagnostic.py": "d756aa96b3be9ff7aae3bddae4e1e36f5578cefa58c74c29cffd62e8d0d443c9",
-      "docs/native-one-hop-v1f-diagnostic.md": "c7eda80d8d128bc3380a628077096de633fe364c803c6ced3d3760beb5b2a91a",
+      "tools/native_one_hop_diagnostic.py": "f5e3ca52e5bbf03bc8350966b8f7fe5c2c0c103210fc44781e59f1aff264ac0a",
+      "docs/native-one-hop-v1f-diagnostic.md": "9dd87632037556f56c70e7b2bee370852ed28132784f860eb2c7ec6db47f7b30",
       "configs/native-one-hop-v1f-diagnostic.audit.json": "1da2ad93282cb8770ff1b357fdddce1e1cdb1ec246974724160f778147262c75"
     },
     "binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
-    "source_commit": "d090cd3d4e992c33ad895a9ad61b7cb5df3d757b",
+    "source_commit": "60a878220b5266a51ffae8a59ee402da0010d86c",
     "executions": 0,
     "inference_performed": false
   },
-  "evidence_archive_sha256": "5ff94294f7631d962d85a9e18934f8e5451317111b44816b2a15de4ae6fb1399",
+  "evidence_archive_sha256": "cff48454f21f05816a1ebe6fcf2d76ad959dd75f3281828463abc2b1d60d4a01",
   "historical_sha256": "0103d8cb0ab669a632d4187d2fcc8ce56e6b7610006d10c00af74f7981defdd3",
   "blind_review_checksums_sha256": "6b9fd48d658df279cc9f0086c98ba2eeb109622eb0bf745db356060814d5a43c",
   "coordinator_sha256": "b056575de9e8ca8b8acd24d6774f3574c94d7e408d98950548dc0ca2ea46d089",
@@ -222,5 +222,11 @@
   "sampling_requests_per_model": 2,
   "max_requests_per_model": 38,
   "strict_full_evaluate": false,
-  "independent_human_review": "pending"
+  "independent_human_review": "pending",
+  "registration_revision": 2,
+  "superseded_registration": {
+    "path": "superseded-registration-1/preregistration.json",
+    "sha256": "bd3f274ec5a96d5f0156ae20edc23a21a33339dad601b77dfd171422555ac54b",
+    "reason": "Correct attempted-generation accounting for template failure before any completion request; no inference under either registration."
+  }
 }

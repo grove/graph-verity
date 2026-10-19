@@ -12,12 +12,15 @@ gates, their original decisions and all prior evidence remain unchanged.
 
 ## What is frozen
 
-[preregistration.json](preregistration.json) binds implementation commit `d090cd3`,
+[preregistration.json](preregistration.json) binds implementation commit `60a8782`,
 the model-free packet freeze, source/binary hashes, all 801 historical report,
 study and configuration file hashes, and the blind review package before any
 inference. [evidence.tar.gz](evidence.tar.gz) contains the 206 exact freeze/source
 files; [evidence-files.json](evidence-files.json) inventories every archived byte.
 The same pinned models/runtime and original CPU/offline/resource limits apply.
+[Registration 1](superseded-registration-1/README.md) is retained unchanged;
+registration 2 corrects accounting for template failures before a completion
+request. Neither registration authorized or performed inference.
 Local native assets are freshly checked only as part of a separately authorized
 run, before host preflight and loading.
 

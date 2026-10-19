@@ -1,0 +1,1 @@
+Superseded model-free registration at dea4261. No native inference was authorized or performed. Preserved unchanged because the successor corrects attempted-generation accounting when template checks fail before a completion request. The original freeze/source/preregistration bytes and hashes remain here.
