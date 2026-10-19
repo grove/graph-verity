@@ -101,9 +101,7 @@ def main() -> int:
         state["rustc"] = run("rust-version", ["rustc", "-Vv"]).strip()
         run("dependency-fetch", ["cargo", "fetch", "--locked"])
         run("reporting-tests", [sys.executable, "tools/run_python_tests.py"])
-        run("nl-ask-freeze", [sys.executable, "tools/nl_ask_benchmark.py", "verify"])
-        run("nl-ask-reference", [sys.executable, "tools/nl_ask_benchmark.py", "baseline",
-                                 "--split", "development"])
+        run("nl-ask-frozen-history", [sys.executable, "tools/run_python_tests.py", "nl-ask-history"])
         run("retrieval-freeze", [sys.executable, "tools/retrieval.py", "verify"])
         run("issue9-forensics", [sys.executable, "tools/issue9_forensics.py", "verify",
                                  "--out", str(OUT / "issue9-forensics.json")])

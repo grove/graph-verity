@@ -294,3 +294,7 @@ impl Snapshot {
 pub fn schema() -> serde_json::Value {
     serde_json::to_value(schemars::schema_for!(Draft)).expect("Schema serialization is infallible")
 }
+
+// Keep the frozen discovery/v1 source identity unchanged.
+#[path = "neighborhood.rs"]
+pub mod neighborhood;

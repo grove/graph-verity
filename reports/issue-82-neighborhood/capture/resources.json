@@ -1,0 +1,607 @@
+{
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "python": "3.12.14 (main, Aug 14 2026, 15:24:41) [Clang 22.1.3 ]",
+  "binary_sha256": "79ce8db57e5e7b38dc495e10220d5db3ee98d65cfe9d9e90125526eba8ca8644",
+  "session_sha256": "3c6ad25eb5f42dfd18c878e82feea85e5068e34f311652579e4579b43548ce71",
+  "binary_bytes": 31690360,
+  "session_bytes": 25058296,
+  "os_file_cache": "uncontrolled",
+  "resident_rss_semantics": "ps RSS KiB sampled after each request; not peak or allocator measurement",
+  "cold_rss_semantics": "fresh CLI process maximum RSS from time; OS caches uncontrolled",
+  "methods": {
+    "v1": {
+      "pid": 71613,
+      "ready": {
+        "build_ms": 10.407665999999999,
+        "index_bytes": 25063,
+        "manifest": {
+          "config_hash": "sha256:5d7abb5d8f840a52126429c9d3ac6a430f42cb9c77ebe5c138dbeb42de54d34e",
+          "graph_hashes": {
+            "urn:graph-verity:nl-ask-v1:evaluation:gemet": "sha256:0370c54603dc6e46b7c572293bd8aa223184c4a33b97e7127b4513739caa47f2",
+            "urn:graph-verity:nl-ask-v1:evaluation:geonames": "sha256:8c726159f8df023a8bc71d57b9678ddf8d38b78e0b54409cb42355e20a88fce3",
+            "urn:graph-verity:nl-ask-v1:evaluation:wikidata": "sha256:77d8633718193ca40dcbc6f3055ad640b7479b7e8e046e249d8fc04ce75190fd"
+          },
+          "index_revision": "sha256:a65d1ae1ab6502bfeaaca0549e37eea09c974d83e114702692617ac83e7203a1",
+          "policy_hash": "sha256:23e29ac8561bd2dc5490c27ea6c780a17bcf083d79f15ba9fcc7fae194513dc4",
+          "rules": "unicode-lowercase-alphanumeric-v1; no NFC, stemming, transliteration or stopwords; IRI plus observed text; en/no/nb/nn language families and untagged; descriptions including skos:definition first 512 Unicode scalars; graph-local explicit wikibase:directClaim label/alias retrieval via source statements, observed predicates only, no inference or chaining",
+          "scope": [
+            "urn:graph-verity:nl-ask-v1:evaluation:gemet",
+            "urn:graph-verity:nl-ask-v1:evaluation:geonames",
+            "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+          ],
+          "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+          "sources": {
+            "urn:graph-verity:nl-ask-v1:evaluation:gemet": {
+              "importer_revision": "nl-ask-v1-source-recipe",
+              "license": "CC-BY-4.0",
+              "source": "EEA GEMET original concept labels/definitions and explicit incoming/outgoing relations",
+              "source_revision": "4.2.3"
+            },
+            "urn:graph-verity:nl-ask-v1:evaluation:geonames": {
+              "importer_revision": "nl-ask-v1-source-recipe",
+              "license": "CC-BY-4.0",
+              "source": "GeoNames via datasets/world-cities archived CSV; existing worldcities_transfer.py mapping, renamed graph",
+              "source_revision": "73c9f54ab9f305168c76d0802db151e30a157b28"
+            },
+            "urn:graph-verity:nl-ask-v1:evaluation:wikidata": {
+              "importer_revision": "nl-ask-v1-source-recipe",
+              "license": "CC0-1.0; overlay Apache-2.0",
+              "source": "Wikidata archived direct claims and original en/nb/nn labels; plus explicitly synthetic overlay.nq labels",
+              "source_revision": "2535539461"
+            }
+          },
+          "version": 1
+        },
+        "ready": true
+      },
+      "samples": [
+        {
+          "id": "eva-01",
+          "retrieval_ms": 13.582959,
+          "resident_roundtrip_ms": 14.378667001437861,
+          "resident_rss_kib": 10064,
+          "cold_cli_ms": 31.403624998347368,
+          "packet_bytes": 14182
+        },
+        {
+          "id": "eva-02",
+          "retrieval_ms": 12.954167,
+          "resident_roundtrip_ms": 13.697791000595316,
+          "resident_rss_kib": 10112,
+          "cold_cli_ms": 30.353915997693548,
+          "packet_bytes": 14545
+        },
+        {
+          "id": "eva-03",
+          "retrieval_ms": 6.9647499999999996,
+          "resident_roundtrip_ms": 7.385208999039605,
+          "resident_rss_kib": 10160,
+          "cold_cli_ms": 24.774999998044223,
+          "packet_bytes": 9423
+        },
+        {
+          "id": "eva-04",
+          "retrieval_ms": 7.045334,
+          "resident_roundtrip_ms": 7.478666997485561,
+          "resident_rss_kib": 10176,
+          "cold_cli_ms": 24.88466700015124,
+          "packet_bytes": 9423
+        },
+        {
+          "id": "eva-05",
+          "retrieval_ms": 5.223584,
+          "resident_roundtrip_ms": 5.541541999264155,
+          "resident_rss_kib": 10192,
+          "cold_cli_ms": 22.481416999653447,
+          "packet_bytes": 5787
+        },
+        {
+          "id": "eva-06",
+          "retrieval_ms": 8.396125000000001,
+          "resident_roundtrip_ms": 8.895582999684848,
+          "resident_rss_kib": 10192,
+          "cold_cli_ms": 26.048542000353336,
+          "packet_bytes": 11025
+        },
+        {
+          "id": "eva-07",
+          "retrieval_ms": 5.053041,
+          "resident_roundtrip_ms": 5.285374998493353,
+          "resident_rss_kib": 10192,
+          "cold_cli_ms": 22.143333000713028,
+          "packet_bytes": 3938
+        },
+        {
+          "id": "eva-08",
+          "retrieval_ms": 38.368166,
+          "resident_roundtrip_ms": 39.988290998735465,
+          "resident_rss_kib": 10736,
+          "cold_cli_ms": 57.80666699865833,
+          "packet_bytes": 41527
+        },
+        {
+          "id": "eva-09",
+          "retrieval_ms": 8.750708,
+          "resident_roundtrip_ms": 9.22566699955496,
+          "resident_rss_kib": 10736,
+          "cold_cli_ms": 26.18912500111037,
+          "packet_bytes": 10209
+        },
+        {
+          "id": "eva-10",
+          "retrieval_ms": 7.645,
+          "resident_roundtrip_ms": 8.093624997854931,
+          "resident_rss_kib": 10736,
+          "cold_cli_ms": 25.654707998910453,
+          "packet_bytes": 9537
+        },
+        {
+          "id": "eva-11",
+          "retrieval_ms": 4.912792,
+          "resident_roundtrip_ms": 5.18108300093445,
+          "resident_rss_kib": 10752,
+          "cold_cli_ms": 22.157583000080194,
+          "packet_bytes": 4915
+        },
+        {
+          "id": "eva-12",
+          "retrieval_ms": 6.764875,
+          "resident_roundtrip_ms": 7.175041999289533,
+          "resident_rss_kib": 10752,
+          "cold_cli_ms": 24.554291998356348,
+          "packet_bytes": 9049
+        },
+        {
+          "id": "eva-13",
+          "retrieval_ms": 5.348333,
+          "resident_roundtrip_ms": 5.6678749970160425,
+          "resident_rss_kib": 10752,
+          "cold_cli_ms": 23.102041999663925,
+          "packet_bytes": 5837
+        },
+        {
+          "id": "eva-14",
+          "retrieval_ms": 10.301791,
+          "resident_roundtrip_ms": 10.770583001431078,
+          "resident_rss_kib": 10752,
+          "cold_cli_ms": 27.555750002647983,
+          "packet_bytes": 9954
+        },
+        {
+          "id": "eva-15",
+          "retrieval_ms": 8.318292,
+          "resident_roundtrip_ms": 8.736416999454377,
+          "resident_rss_kib": 10752,
+          "cold_cli_ms": 26.832042000023648,
+          "packet_bytes": 8952
+        },
+        {
+          "id": "eva-16",
+          "retrieval_ms": 9.063791,
+          "resident_roundtrip_ms": 9.500542000751011,
+          "resident_rss_kib": 10752,
+          "cold_cli_ms": 26.61904200067511,
+          "packet_bytes": 9633
+        },
+        {
+          "id": "eva-17",
+          "retrieval_ms": 8.032791,
+          "resident_roundtrip_ms": 8.460459001071285,
+          "resident_rss_kib": 10752,
+          "cold_cli_ms": 26.530667000770336,
+          "packet_bytes": 8958
+        },
+        {
+          "id": "eva-18",
+          "retrieval_ms": 10.715250000000001,
+          "resident_roundtrip_ms": 11.202416997548426,
+          "resident_rss_kib": 10768,
+          "cold_cli_ms": 29.36458399926778,
+          "packet_bytes": 10632
+        },
+        {
+          "id": "eva-19",
+          "retrieval_ms": 5.281459,
+          "resident_roundtrip_ms": 5.601374999969266,
+          "resident_rss_kib": 10768,
+          "cold_cli_ms": 22.5967500009574,
+          "packet_bytes": 5758
+        },
+        {
+          "id": "eva-20",
+          "retrieval_ms": 8.413917,
+          "resident_roundtrip_ms": 8.919165997212986,
+          "resident_rss_kib": 10784,
+          "cold_cli_ms": 26.90187500047614,
+          "packet_bytes": 10599
+        },
+        {
+          "id": "eva-21",
+          "retrieval_ms": 3.0927089999999997,
+          "resident_roundtrip_ms": 3.2940830024017487,
+          "resident_rss_kib": 10784,
+          "cold_cli_ms": 20.39958300156286,
+          "packet_bytes": 3198
+        },
+        {
+          "id": "eva-22",
+          "retrieval_ms": 5.168041,
+          "resident_roundtrip_ms": 5.507832996954676,
+          "resident_rss_kib": 10784,
+          "cold_cli_ms": 23.26299999913317,
+          "packet_bytes": 6815
+        },
+        {
+          "id": "eva-23",
+          "retrieval_ms": 3.1709590000000003,
+          "resident_roundtrip_ms": 3.411249999771826,
+          "resident_rss_kib": 10784,
+          "cold_cli_ms": 21.23133299755864,
+          "packet_bytes": 3182
+        },
+        {
+          "id": "eva-24",
+          "retrieval_ms": 7.423166999999999,
+          "resident_roundtrip_ms": 7.892958998127142,
+          "resident_rss_kib": 10784,
+          "cold_cli_ms": 25.489083000138635,
+          "packet_bytes": 9409
+        },
+        {
+          "id": "eva-25",
+          "retrieval_ms": 5.046584,
+          "resident_roundtrip_ms": 5.33233299938729,
+          "resident_rss_kib": 10784,
+          "cold_cli_ms": 22.69562500077882,
+          "packet_bytes": 4889
+        },
+        {
+          "id": "eva-26",
+          "retrieval_ms": 7.159458,
+          "resident_roundtrip_ms": 7.643707998795435,
+          "resident_rss_kib": 10784,
+          "cold_cli_ms": 25.010917001054622,
+          "packet_bytes": 9421
+        },
+        {
+          "id": "eva-27",
+          "retrieval_ms": 5.131792,
+          "resident_roundtrip_ms": 5.4337919973477256,
+          "resident_rss_kib": 10784,
+          "cold_cli_ms": 23.337292001087917,
+          "packet_bytes": 4909
+        },
+        {
+          "id": "eva-28",
+          "retrieval_ms": 9.967458,
+          "resident_roundtrip_ms": 10.48129099945072,
+          "resident_rss_kib": 10784,
+          "cold_cli_ms": 27.95512499869801,
+          "packet_bytes": 11011
+        },
+        {
+          "id": "eva-29",
+          "retrieval_ms": 5.283833,
+          "resident_roundtrip_ms": 5.636667003273033,
+          "resident_rss_kib": 10784,
+          "cold_cli_ms": 23.548000001028413,
+          "packet_bytes": 5806
+        },
+        {
+          "id": "eva-30",
+          "retrieval_ms": 7.245083,
+          "resident_roundtrip_ms": 7.684791999054141,
+          "resident_rss_kib": 10784,
+          "cold_cli_ms": 25.224332999641774,
+          "packet_bytes": 9385
+        }
+      ],
+      "session_wall_ms": 1224.3537089998426
+    },
+    "v2": {
+      "pid": 71704,
+      "ready": {
+        "build_ms": 10.317292,
+        "index_bytes": 25063,
+        "manifest": {
+          "config_hash": "sha256:5d7abb5d8f840a52126429c9d3ac6a430f42cb9c77ebe5c138dbeb42de54d34e",
+          "graph_hashes": {
+            "urn:graph-verity:nl-ask-v1:evaluation:gemet": "sha256:0370c54603dc6e46b7c572293bd8aa223184c4a33b97e7127b4513739caa47f2",
+            "urn:graph-verity:nl-ask-v1:evaluation:geonames": "sha256:8c726159f8df023a8bc71d57b9678ddf8d38b78e0b54409cb42355e20a88fce3",
+            "urn:graph-verity:nl-ask-v1:evaluation:wikidata": "sha256:77d8633718193ca40dcbc6f3055ad640b7479b7e8e046e249d8fc04ce75190fd"
+          },
+          "index_revision": "sha256:a65d1ae1ab6502bfeaaca0549e37eea09c974d83e114702692617ac83e7203a1",
+          "policy_hash": "sha256:23e29ac8561bd2dc5490c27ea6c780a17bcf083d79f15ba9fcc7fae194513dc4",
+          "rules": "unicode-lowercase-alphanumeric-v1; no NFC, stemming, transliteration or stopwords; IRI plus observed text; en/no/nb/nn language families and untagged; descriptions including skos:definition first 512 Unicode scalars; graph-local explicit wikibase:directClaim label/alias retrieval via source statements, observed predicates only, no inference or chaining",
+          "scope": [
+            "urn:graph-verity:nl-ask-v1:evaluation:gemet",
+            "urn:graph-verity:nl-ask-v1:evaluation:geonames",
+            "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+          ],
+          "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+          "sources": {
+            "urn:graph-verity:nl-ask-v1:evaluation:gemet": {
+              "importer_revision": "nl-ask-v1-source-recipe",
+              "license": "CC-BY-4.0",
+              "source": "EEA GEMET original concept labels/definitions and explicit incoming/outgoing relations",
+              "source_revision": "4.2.3"
+            },
+            "urn:graph-verity:nl-ask-v1:evaluation:geonames": {
+              "importer_revision": "nl-ask-v1-source-recipe",
+              "license": "CC-BY-4.0",
+              "source": "GeoNames via datasets/world-cities archived CSV; existing worldcities_transfer.py mapping, renamed graph",
+              "source_revision": "73c9f54ab9f305168c76d0802db151e30a157b28"
+            },
+            "urn:graph-verity:nl-ask-v1:evaluation:wikidata": {
+              "importer_revision": "nl-ask-v1-source-recipe",
+              "license": "CC0-1.0; overlay Apache-2.0",
+              "source": "Wikidata archived direct claims and original en/nb/nn labels; plus explicitly synthetic overlay.nq labels",
+              "source_revision": "2535539461"
+            }
+          },
+          "version": 1
+        },
+        "ready": true
+      },
+      "samples": [
+        {
+          "id": "eva-01",
+          "retrieval_ms": 24.565834000000002,
+          "resident_roundtrip_ms": 25.719707999087404,
+          "resident_rss_kib": 10544,
+          "cold_cli_ms": 42.25162500006263,
+          "packet_bytes": 25300
+        },
+        {
+          "id": "eva-02",
+          "retrieval_ms": 28.638875000000002,
+          "resident_roundtrip_ms": 29.969041999720503,
+          "resident_rss_kib": 10848,
+          "cold_cli_ms": 47.8501249999681,
+          "packet_bytes": 32776
+        },
+        {
+          "id": "eva-03",
+          "retrieval_ms": 21.3535,
+          "resident_roundtrip_ms": 22.390375001123175,
+          "resident_rss_kib": 10864,
+          "cold_cli_ms": 38.282167002762435,
+          "packet_bytes": 23824
+        },
+        {
+          "id": "eva-04",
+          "retrieval_ms": 21.176334,
+          "resident_roundtrip_ms": 22.193041997525143,
+          "resident_rss_kib": 10864,
+          "cold_cli_ms": 39.337000001978595,
+          "packet_bytes": 23824
+        },
+        {
+          "id": "eva-05",
+          "retrieval_ms": 14.556375,
+          "resident_roundtrip_ms": 15.212833000987303,
+          "resident_rss_kib": 10880,
+          "cold_cli_ms": 31.53220799867995,
+          "packet_bytes": 13930
+        },
+        {
+          "id": "eva-06",
+          "retrieval_ms": 20.323042,
+          "resident_roundtrip_ms": 21.33250000042608,
+          "resident_rss_kib": 10928,
+          "cold_cli_ms": 38.40100000161328,
+          "packet_bytes": 23859
+        },
+        {
+          "id": "eva-07",
+          "retrieval_ms": 8.999709,
+          "resident_roundtrip_ms": 9.286749998864252,
+          "resident_rss_kib": 10928,
+          "cold_cli_ms": 27.507082999363774,
+          "packet_bytes": 4774
+        },
+        {
+          "id": "eva-08",
+          "retrieval_ms": 41.731541,
+          "resident_roundtrip_ms": 43.45341699809069,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 62.80116600100882,
+          "packet_bytes": 45535
+        },
+        {
+          "id": "eva-09",
+          "retrieval_ms": 19.585541000000003,
+          "resident_roundtrip_ms": 20.53774999876623,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 38.542291997146094,
+          "packet_bytes": 22168
+        },
+        {
+          "id": "eva-10",
+          "retrieval_ms": 18.403334,
+          "resident_roundtrip_ms": 19.227709002734628,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 36.060583999642404,
+          "packet_bytes": 20169
+        },
+        {
+          "id": "eva-11",
+          "retrieval_ms": 11.645916,
+          "resident_roundtrip_ms": 12.176333999377675,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 29.5240420018672,
+          "packet_bytes": 10282
+        },
+        {
+          "id": "eva-12",
+          "retrieval_ms": 18.110167,
+          "resident_roundtrip_ms": 18.93829199980246,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 35.48129100090591,
+          "packet_bytes": 19350
+        },
+        {
+          "id": "eva-13",
+          "retrieval_ms": 14.2585,
+          "resident_roundtrip_ms": 14.910750000126427,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 32.1302080010355,
+          "packet_bytes": 13980
+        },
+        {
+          "id": "eva-14",
+          "retrieval_ms": 18.047166999999998,
+          "resident_roundtrip_ms": 18.83537499816157,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 35.558292001951486,
+          "packet_bytes": 16425
+        },
+        {
+          "id": "eva-15",
+          "retrieval_ms": 16.636208,
+          "resident_roundtrip_ms": 17.302084001130424,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 35.03283399913926,
+          "packet_bytes": 15423
+        },
+        {
+          "id": "eva-16",
+          "retrieval_ms": 16.129167,
+          "resident_roundtrip_ms": 16.795790998003213,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 33.66891699988628,
+          "packet_bytes": 15448
+        },
+        {
+          "id": "eva-17",
+          "retrieval_ms": 16.217917,
+          "resident_roundtrip_ms": 16.913999999815132,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 33.95062499839696,
+          "packet_bytes": 15429
+        },
+        {
+          "id": "eva-18",
+          "retrieval_ms": 18.465875,
+          "resident_roundtrip_ms": 19.185667002602713,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 35.56954099985887,
+          "packet_bytes": 16447
+        },
+        {
+          "id": "eva-19",
+          "retrieval_ms": 13.934042,
+          "resident_roundtrip_ms": 14.57658399885986,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 32.057915999757824,
+          "packet_bytes": 13901
+        },
+        {
+          "id": "eva-20",
+          "retrieval_ms": 21.684083,
+          "resident_roundtrip_ms": 22.711083001922816,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 39.78729199661757,
+          "packet_bytes": 25000
+        },
+        {
+          "id": "eva-21",
+          "retrieval_ms": 6.418958,
+          "resident_roundtrip_ms": 6.632874999922933,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 23.849875000450993,
+          "packet_bytes": 3399
+        },
+        {
+          "id": "eva-22",
+          "retrieval_ms": 13.360333,
+          "resident_roundtrip_ms": 13.947499999630963,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 31.142958003329113,
+          "packet_bytes": 13285
+        },
+        {
+          "id": "eva-23",
+          "retrieval_ms": 6.335833,
+          "resident_roundtrip_ms": 6.55279199781944,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 23.96279100139509,
+          "packet_bytes": 3383
+        },
+        {
+          "id": "eva-24",
+          "retrieval_ms": 20.425375,
+          "resident_roundtrip_ms": 21.406125000794418,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 39.31337500034715,
+          "packet_bytes": 23810
+        },
+        {
+          "id": "eva-25",
+          "retrieval_ms": 12.00225,
+          "resident_roundtrip_ms": 12.521917000412941,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 29.948666000564117,
+          "packet_bytes": 10256
+        },
+        {
+          "id": "eva-26",
+          "retrieval_ms": 21.285542,
+          "resident_roundtrip_ms": 22.300417000224115,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 40.007625000725966,
+          "packet_bytes": 23822
+        },
+        {
+          "id": "eva-27",
+          "retrieval_ms": 12.293792,
+          "resident_roundtrip_ms": 12.822916000004625,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 30.459082998277154,
+          "packet_bytes": 10276
+        },
+        {
+          "id": "eva-28",
+          "retrieval_ms": 22.115,
+          "resident_roundtrip_ms": 23.05691699802992,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 39.55808299724595,
+          "packet_bytes": 22636
+        },
+        {
+          "id": "eva-29",
+          "retrieval_ms": 15.188459,
+          "resident_roundtrip_ms": 15.818125000805594,
+          "resident_rss_kib": 11168,
+          "cold_cli_ms": 34.17762499884702,
+          "packet_bytes": 13949
+        },
+        {
+          "id": "eva-30",
+          "retrieval_ms": 20.81875,
+          "resident_roundtrip_ms": 21.76800000233925,
+          "resident_rss_kib": 11184,
+          "cold_cli_ms": 38.63745899798232,
+          "packet_bytes": 23786
+        }
+      ],
+      "session_wall_ms": 1807.8079170009005
+    }
+  },
+  "input_bytes": {
+    "studies/nl-ask-v1/evaluation/snapshot.nq": 5700,
+    "studies/nl-ask-v1/evaluation/policy.json": 260,
+    "studies/nl-ask-v1/evaluation/scope.json": 156,
+    "studies/nl-ask-v1/evaluation/discovery.json": 1079
+  },
+  "load_before": [
+    2.609375,
+    3.8955078125,
+    7.50439453125
+  ],
+  "load_after": [
+    2.720703125,
+    3.89697265625,
+    7.4833984375
+  ]
+}

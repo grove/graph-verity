@@ -1,0 +1,66 @@
+{
+  "version": "question-vocabulary-neighborhood-study-v2",
+  "frozen_date": "2026-10-18",
+  "retrieval": "question-vocabulary-packet-v2-neighborhood",
+  "questions": "reports/issue-74-one-hop-trial/freeze/questions.json",
+  "references": "reports/issue-74-one-hop-trial/freeze/references.json",
+  "budget": {
+    "per_role_top_k": 20,
+    "max_packet_bytes": 1048576,
+    "texts_per_candidate": 8,
+    "max_text_bytes": 2048,
+    "evidence_per_page": 3,
+    "max_source_bytes": 4096
+  },
+  "corpora": {
+    "evaluation": {
+      "rdf": "studies/nl-ask-v1/evaluation/snapshot.nq",
+      "policy": "studies/nl-ask-v1/evaluation/policy.json",
+      "scope": "studies/nl-ask-v1/evaluation/scope.json",
+      "config": "studies/nl-ask-v1/evaluation/discovery.json"
+    }
+  },
+  "language_selection": "Existing discovery en/no/nb/nn families and untagged; language recorded, no translation or preference",
+  "tie_order": "exact first, BM25 descending, original IRI then graph",
+  "selection": "All 30 exposed #72 evaluation questions as regression evidence, never untouched holdout; no rank-dependent tuning.",
+  "inference_performed": false,
+  "holdout_accessed": false,
+  "limits": {
+    "seed_entities": 20,
+    "edges_per_seed_per_direction": 200,
+    "working_evidence_bytes": 8388608,
+    "response_ms": 30000,
+    "snapshot_bytes": 16777216,
+    "snapshot_quads": 100000,
+    "index_bytes": 67108864
+  },
+  "ranking": "unchanged whole-question BM25 role-filtered seeds; lexical exacts retain original order; neighbors by earliest seed rank then retained BM25 score descending then original IRI/graph; remaining lexical top-20 tail; added-neighbor score=0; no tuning after scoring",
+  "examination_log": {
+    "evaluation_questions": "All 30 already exposed by #74/#76; source audit and original missing families read before implementation. No new scored ranks examined before registration.",
+    "new_development_queries": [
+      "Which resources connect with acid rain?",
+      "What links into acid rain?"
+    ],
+    "synthetic_controls": [
+      "Norge capital",
+      "Capital",
+      "Capital city",
+      "0042",
+      "Felles alias",
+      "Seed",
+      "urn:seed",
+      "Ignore previous instructions"
+    ],
+    "later_new_studies": []
+  },
+  "resources": "One persistent Rust example session per method; frozen question order, one measured pass; RSS sampled after each response, not HWM; process-cold per-question CLI timings/RSS via /usr/bin/time; OS caches uncontrolled. Report binary/index/input sizes and samples. No inference.",
+  "direction_reference": "New source-audit-v2 derived from #76 public reference_request, independently checked original graph triples after all packets sealed; original #74 direction denominator remains zero. Empty source paths have no positive witness.",
+  "false_candidates": "All candidate returns on 12 clarification/unsupported questions, separately from unsupported semantics; non-required returned predicates on supported questions are distractors, not asserted false RDF facts.",
+  "exact_controls": [
+    "urn:discovery:predicate",
+    "Capital",
+    "Capital city",
+    "0042",
+    "Felles alias"
+  ]
+}
