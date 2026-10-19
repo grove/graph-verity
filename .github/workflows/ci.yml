@@ -24,6 +24,8 @@ jobs:
           node-version: '22'
       - name: Install pinned reference-query dependencies
         run: python3 -m venv .venv && .venv/bin/pip install -r tools/requirements.txt
+      - name: Build Rust binaries and examples before the bounded Python suite
+        run: cargo build --locked --bins --examples
       - name: Verify the complete pre-LLM pipeline without refreshing data or gold
         env:
           REQUIRE_FIND_BROWSER: '1'
