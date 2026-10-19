@@ -12,6 +12,10 @@ jobs:
   test:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
+    env:
+      # Replay hashes binaries repeatedly; omit debug symbols, retaining debug assertions.
+      CARGO_PROFILE_DEV_DEBUG: '0'
+      CARGO_PROFILE_DEV_STRIP: symbols
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
@@ -24,6 +28,8 @@ jobs:
           node-version: '22'
       - name: Install pinned reference-query dependencies
         run: python3 -m venv .venv && .venv/bin/pip install -r tools/requirements.txt
+      - name: Build Rust binaries and examples before the bounded Python suite
+        run: cargo build --locked --bins --examples
       - name: Verify the complete pre-LLM pipeline without refreshing data or gold
         env:
           REQUIRE_FIND_BROWSER: '1'
