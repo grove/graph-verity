@@ -58,3 +58,16 @@ exact packet membership, numeric/graph/role forgery rejection and deterministic
 development generation are covered. No model-generated RDF query is executed.
 No sealed holdout, #75 integration, threshold relaxation, human-review requirement
 or automatic merge is introduced.
+
+Full verification passed on the registered source/artifact commit with
+`REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py`.
+[verification.json](verification.json) records every command and expected exit;
+[verification-logs.tar.gz](verification-logs.tar.gz) retains the complete captured
+stdout/stderr with [file hashes](verification-files.json). This includes 266
+current Python tests, 15 original pilot tests, frozen NL Ask/vocabulary replays,
+headless browsers, all Rust tests, formatting/Clippy, source canaries, byte rebuild,
+reference/schema/catalog parity, and unchanged historical negative outcomes.
+The receipt records no model invocation or holdout evaluation. Both exact pinned
+Rust executables were also retained locally under
+`artifacts/issue-83-v1g-execution-v1/` in the original workspace; they are not model
+weights or inference evidence.
