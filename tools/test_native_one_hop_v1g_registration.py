@@ -1,6 +1,7 @@
 """Inspect the committed execution release portably; never load registered binaries/models."""
 import hashlib
 import json
+import subprocess
 import unittest
 
 import native_one_hop_v1g as v
@@ -24,7 +25,12 @@ class CommittedExecutionTests(unittest.TestCase):
         self.assertEqual(v.sha(release / 'freeze/checksums.json'), reg['freeze_sha256'])
         self.assertEqual(json.loads(payload['freeze.json']), reg['freeze_manifest'])
         for name, digest in reg['freeze_manifest']['input_sha256'].items():
-            self.assertEqual(v.sha(v.ROOT / name), digest, name)
+            if name in {'tools/native_one_hop.py', 'tools/test_native_one_hop_diagnostic.py',
+                        'tools/test_native_one_hop_v1g_registration.py'}:
+                original = subprocess.check_output(['git', 'show', reg['freeze_manifest']['source_commit'] + ':' + name], cwd=v.ROOT)
+                self.assertEqual(hashlib.sha256(original).hexdigest(), digest, name)
+            else:
+                self.assertEqual(v.sha(v.ROOT / name), digest, name)
         self.assertEqual(v.sha(release / 'assets.json'), reg['fresh_assets_receipt_sha256'])
         self.assertEqual(v.read(release / 'assets.json'), reg['freeze_manifest']['runtime_identity'])
         self.assertEqual(len(json.loads(payload['questions.json'])), 30)

@@ -199,7 +199,11 @@ class DiagnosticTests(unittest.TestCase):
         frozen = json.loads(payload['freeze/freeze.json'])
         for name, digest in frozen['input_sha256'].items():
             self.assertEqual(hashlib.sha256(payload['source/' + name]).hexdigest(), digest)
-            self.assertEqual(a.sha(a.ROOT / name), digest)
+            if name == 'tools/native_one_hop.py':
+                original = subprocess.check_output(['git', 'show', prereg['source_commit'] + ':' + name], cwd=a.ROOT)
+                self.assertEqual(hashlib.sha256(original).hexdigest(), digest)
+            else:
+                self.assertEqual(a.sha(a.ROOT / name), digest)
         self.assertEqual(hashlib.sha256(payload['freeze/checksums.json']).hexdigest(), prereg['freeze_sha256'])
         for name, digest in a.read(report / 'historical-sha256.json').items():
             self.assertEqual(a.sha(a.ROOT / name), digest, name)

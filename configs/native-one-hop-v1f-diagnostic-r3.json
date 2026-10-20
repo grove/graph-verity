@@ -1,0 +1,81 @@
+{
+  "version": "issue83-native-cpu-v1f-diagnostic-r3",
+  "contract": "nl-ask-draft-v1",
+  "historical_assets": "configs/grounded-models-v1.json",
+  "cpu_protocol": "configs/one-hop-trial-v1.json",
+  "prompt_file": "configs/native-one-hop-v1e.prompt.txt",
+  "grammar_file": "configs/native-one-hop-v1.gbnf",
+  "variants": [
+    "qwen35",
+    "gemma4"
+  ],
+  "split": "evaluation",
+  "stages": [
+    "oracle",
+    "retrieval"
+  ],
+  "smoke_cases": [
+    "eva-01",
+    "eva-02",
+    "eva-07",
+    "eva-08",
+    "v1e-country-source-nb",
+    "v1e-country-paraphrase-en"
+  ],
+  "control_cases": {
+    "ambiguous_start": "eva-20",
+    "source_label": "eva-06",
+    "malicious_label_explicit": "v1e-label-explicit",
+    "private_scope": "eva-29",
+    "write": "eva-30",
+    "unclear_relation": "eva-19",
+    "absent_start": "eva-24",
+    "negation": "eva-25",
+    "count": "eva-26",
+    "filter": "eva-27",
+    "multi_hop": "eva-28"
+  },
+  "host_max_age_seconds": 60,
+  "hardware": {
+    "cpu": "Apple M1 Pro",
+    "memory_bytes": 34359738368,
+    "architecture": "arm64"
+  },
+  "thermal": "No thermal/performance warning, CPU limits absent or 100 percent; AC power required",
+  "max_stream_bytes": 2097152,
+  "rss_sampling_seconds": 0.2,
+  "mode": "diagnostic_only: independent semantic observations; no semantic GO or strict evaluation",
+  "evaluation_exposure": "All 30 #72 evaluation cases already exposed by #74; not a pristine holdout",
+  "execution": "Rust preview only; no approval or RDF execution command; no #75 integration",
+  "decision": "INCONCLUSIVE_REVISE always; diagnostic completion is never semantic readiness or product authorization.",
+  "control_prompt_file": "configs/native-one-hop-controls-v1.prompt.txt",
+  "context_revision": "source-language-groups-v1e",
+  "hypothesis": "Measure every independent exposed semantic control and six smoke cases without relaxing strict evaluation or Rust preview.",
+  "controls_before_smoke": "All semantic controls and six smoke cases attempted independently in each condition. Semantic failure and individually rejected drafts remain failures. Runtime, integrity, resource and authorization failures stop all later observations.",
+  "scoring": "Original exact exposed-reference scores immutable. Ambiguity and source-evidence audit reported separately; pending independent human review.",
+  "scope_policy": "Original authorized source only. Separate oracle and frozen whole-question BM25-v1 diagnostic records; neighborhood-v2 not registered.",
+  "source_evidence": "Same authorized source edges and collisions as v1d; source names grouped by original language, predicate IRI local names extracted mechanically. No translations, invented property definitions, selected IDs or gold directions.",
+  "fixture_file": "configs/native-one-hop-v1e.fixtures.json",
+  "repeatability": {
+    "generations": 2,
+    "gate": "Diagnostic measurement only; failed repeat recorded. Exact prompt and request identity mismatch is a fatal integrity failure.",
+    "diagnostics": [
+      "structured_plan_equal",
+      "complete_json_bytes_equal",
+      "status_equal",
+      "rationale_text_equal",
+      "separate_reference_agreement",
+      "post_generation_rationale_assertion_review"
+    ]
+  },
+  "ambiguous_reference_controls": {
+    "source_label": [
+      "needs_clarification"
+    ]
+  },
+  "rationale_review": {
+    "method": "Blind independent human review pending; source sufficiency audit is AI investigator analysis only.",
+    "gate": "No semantic GO; unsupported or unreviewed claims are not validated."
+  },
+  "diagnostic_only": true
+}
