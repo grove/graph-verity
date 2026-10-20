@@ -31,7 +31,7 @@ read, dump, require = v.read, v.dump, v.require
 
 def config():
     cfg = read(CONFIG)
-    require(cfg["version"] in {"issue83-native-cpu-v1c", "issue83-native-cpu-v1d", "issue83-native-cpu-v1e", "issue83-native-cpu-v1f-diagnostic"}, "Unknown native adapter")
+    require(cfg["version"] in {"issue83-native-cpu-v1c", "issue83-native-cpu-v1d", "issue83-native-cpu-v1e", "issue83-native-cpu-v1f-diagnostic", "issue83-native-cpu-v1f-diagnostic-r3"}, "Unknown native adapter")
     cpu = read(ROOT / cfg["cpu_protocol"])
     require(cpu["cpu_threads"] == 4 and cpu["gpu_layers"] == 0 and cpu["concurrency"] == 1
             and cpu["temperature"] == 0 and cpu["quantization"] == "Q4_K_M"
@@ -693,7 +693,7 @@ def replay(folder, run_dir, binary=BINARY):
 def main():
     global CONFIG
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--variant", choices=["v1c", "v1d", "v1e", "v1f-diagnostic"], default="v1c")
+    parser.add_argument("--variant", choices=["v1c", "v1d", "v1e", "v1f-diagnostic", "v1f-diagnostic-r3"], default="v1c")
     parser.add_argument("command", choices=["freeze", "preflight", "assets", "run", "replay"])
     parser.add_argument("--freeze", type=Path, default=REPORT / "freeze")
     parser.add_argument("--out", type=Path)
@@ -725,4 +725,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # The diagnostic helper imports this named module; select the variant there too.
+    from native_one_hop import main as adapter_main
+    adapter_main()
