@@ -1,0 +1,77 @@
+{
+  "recorded_at": "2026-10-20T19:29:57.254125+00:00",
+  "status": "passed",
+  "pipeline_command": "REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py",
+  "pipeline_commit": "e58024f56bbf0d820c8b6dce86832b3c4172be6f",
+  "pipeline_receipt": "verification.json",
+  "additional_checks": [
+    {
+      "command": [
+        "cargo",
+        "build",
+        "--locked",
+        "--offline",
+        "--bins",
+        "--examples"
+      ],
+      "returncode": 0,
+      "log": "v1f-repair-build.log"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools",
+        "-p",
+        "test_native_one_hop_configuration.py",
+        "-v"
+      ],
+      "returncode": 0,
+      "tests_passed": 8,
+      "log": "v1f-repair-configuration.log"
+    },
+    {
+      "command": "Both unchanged shell blocks in reports/issue-83-v1f-authorized-attempt-20261020/README.md, executed with /bin/sh -ec in a git archive export of a60bb8aaf653c77fe29682c0f73f46fc8790b5ab; existing .venv and exact Rust binary symlinked",
+      "returncode": 0,
+      "log": "v1f-repair-history.log",
+      "analysis_json_and_markdown_byte_identical": true
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "a60bb8a"
+      ],
+      "returncode": 0
+    }
+  ],
+  "current_python_tests_passed": 274,
+  "frozen_pilot_tests_passed": 15,
+  "rust_tests_passed": 100,
+  "unavailable_model_free_checks": [],
+  "inference_performed": false,
+  "executions": 0,
+  "decision": "INCONCLUSIVE_REVISE",
+  "exploratory_runs": [
+    {
+      "command": ".venv/bin/python -m unittest discover -s tools -p test_native_one_hop_configuration.py -v",
+      "result": "Initial 6-test fixture had one path-resolution error when ROOT was patched before computing a relative path; fixed before the registered source commit. Final 8-test suite passes."
+    },
+    {
+      "command": ".venv/bin/python -m unittest discover -s tools -p 'test_native_one_hop*.py' -v",
+      "tests_run": 41,
+      "failures": 2,
+      "errors": 1,
+      "log": "v1f-repair-targeted.log",
+      "result": "Exploratory sandbox run during source edits: ps denied; v1g synthetic run stopped; historical fingerprint test needed original Git blobs for changed test files. Stable-source host pipeline passes all tests without disabling guards."
+    },
+    {
+      "log": "v1f-repair-history-initial.log",
+      "result": "Both original reproduction commands passed, then an auxiliary comparison used failure-matrix.md instead of generated README.md. Corrected comparison passed; see v1f-repair-history.log."
+    }
+  ]
+}
