@@ -170,7 +170,11 @@ tar -xzf experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz -
   --freeze "$replay_dir/freeze" --run "$replay_dir/run"
 ```
 
-See `verification.json` and `validation-logs.tar.gz` for complete validation
+The complete pipeline passed on code commit `443c6ae`: 277 current Python tests,
+15 frozen pilot tests, 100 Rust tests, formatting, Clippy, required browser
+checks, source canaries and historical replays. All 39 pipeline commands met
+their expected outcomes. See [verification.json](verification.json),
+[validation.json](validation.json) and [validation-logs.tar.gz](validation-logs.tar.gz) for complete validation
 commands and retained logs. The three added regressions check byte-reproducible
 analysis with process creation forbidden, missing-case denominators, archive
 tampering and registered-source tampering despite an updated outer inventory.
