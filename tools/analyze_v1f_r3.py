@@ -11,7 +11,7 @@ from rdflib import Dataset
 
 import analyze_v1f as a
 
-REPORT = a.ROOT / 'reports/issue-83-v1f-r3-retained-qwen'
+REPORT = a.ROOT / 'experiments/native-one-hop-v1f-diagnostic-r3-evidence'
 REGISTRATION = a.ROOT / 'experiments/native-one-hop-v1f-diagnostic-r3/registration.json'
 
 

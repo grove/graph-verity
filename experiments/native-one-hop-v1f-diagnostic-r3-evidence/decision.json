@@ -7,8 +7,11 @@
   "registered_source_commit": "eda247679a6b10fa2ef4f5a21ece12d0f0c53213",
   "registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
   "freeze_sha256": "82bf3f4fa6f0e6ffcf5d664880d2b8bc98369b67c903c1cc8a9a176867de0c3d",
-  "original_inference_authorization": "unresolved; no claim of retroactive authorization",
-  "review_user_approval": "Do it! I approve.",
+  "original_inference_authorization": "Current owner authorization received: I authorize all of it. Contemporaneous pre-run record unavailable; no backdated approval claim.",
+  "review_user_approval": [
+    "Do it! I approve.",
+    "I authorize all of it."
+  ],
   "new_inference_performed": false,
   "model_generated_rdf_executions": 0,
   "integration_authorized": false,
@@ -45,13 +48,13 @@
       }
     }
   },
-  "gemma_status": "No retained run supplied; not launched or authorized by this review; shared context-limit failure and original Qwen provenance unresolved.",
+  "gemma_status": "No retained run supplied; not launched by this review. Shared context-limit failure prevents automatic progression. No exact Gemma command has been presented for separate approval.",
   "blockers": [
-    "Original inference authorization provenance unresolved",
+    "Contemporaneous pre-run authorization record unavailable; current owner authorization recorded separately",
     "Registered retrieval/smoke-eva-08 has 18926 input tokens plus 512 reserve against context 16384; no generation request",
     "Three Qwen diagnostic observations and all Gemma observations have no completion request",
     "Latest preliminary host load 9.5283 exceeds registered maximum 7.5; no readiness retry",
     "Independent semantic review pending; exposed reference agreement is not truth"
   ],
-  "next_step": "Recover original Qwen authorization and review evidence independently; any context/config change requires a separately registered revision and new explicit inference authorization."
+  "next_step": "Independently review semantic outputs and source ambiguity; retain the missing pre-run authorization record as a provenance limitation. Any context/config change requires a separately registered revision and an exact approved command after fresh host/integrity gates."
 }

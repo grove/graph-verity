@@ -3,11 +3,13 @@
 The pre-existing Qwen attempt completed **33/36 diagnostic observations** and
 both native sampling controls, then stopped on the frozen context limit. This
 review launched no inference and performed no retry. Original inference
-authorization provenance is **unresolved**: the retained run contains no approval
-record, and issue #83 had no comments when inspected. The present user's
-“Do it! I approve.” authorizes this model-free review and evidence publication;
-it does not establish that earlier inference was authorized. If the original
-record is recovered, retain it as a separate provenance supplement.
+authorization has now been affirmed by the owner with **“I authorize all of it.”**
+The [current approval supplement](authorization-supplement.json) preserves that
+message. The retained run contains no contemporaneous pre-run approval record,
+and issue #83 had no comments when inspected; this remains a provenance
+limitation. The earlier “Do it! I approve.” covered this review and publication.
+Neither message is backdated. The unchanged archive and initial machine analysis
+retain the unresolved provenance as recorded before the follow-up approval.
 
 Decision: **INCONCLUSIVE_REVISE**, with no semantic GO, model ranking, exact
 answer-accuracy or product-readiness claim. Keep #83 open and #75 integration
@@ -48,6 +50,10 @@ requires an actual completion request; preparing a prompt does not count.
 | Qwen / frozen BM25-v1 | 17 | 14 | 14 | 3 | 14/14 | 6/14 |
 | Gemma / oracle | 19 | 0 | 0 | 19 | Unmeasured | Unmeasured |
 | Gemma / frozen BM25-v1 | 17 | 0 | 0 | 17 | Unmeasured | Unmeasured |
+
+The separate original 30-case strict oracle and retrieval stages were not run.
+Their saved 18/6/6 reference denominators remain unchanged and are not combined
+with these diagnostic observations.
 
 All 33 semantic responses were strict-contract and native-GBNF valid. Rust
 accepted each; there were **zero deterministic draft rejections**. Qwen itself
@@ -98,6 +104,15 @@ metadata is empty; opaque P17/P131/P856 identities and adjacency are not relatio
 definitions. No Q33/Finland cross-graph identity is inferred. Rationale analysis
 only recognizes narrow explicit English ID assertions; other prose is unassessed.
 
+The separate [AI rationale audit](rationale-audit.json) identifies a concrete
+table contradiction missed by those narrow rules: oracle `smoke-eva-01` calls
+predicate 1004 `schema:Country` in graph 1 and repeatedly P1448, although the
+visible table binds it to P17 in graph 0; P1448 is 1003. Its accepted clarification
+does not validate that rationale. The reverse P131 rationale recognizes
+102 -> 100 and reverse traversal but still abstains for lack of other subjects.
+These are source-grounded investigator observations, not independent human
+review or causal explanations.
+
 ## Native integrity, resources and fatal stop
 
 Original native unconstrained/constrained sampling controls passed: the first
@@ -140,8 +155,8 @@ output directory:
 
 ```sh
 .venv/bin/python tools/analyze_v1f_r3.py --out artifacts/issue83-r3-reanalysis
-cmp artifacts/issue83-r3-reanalysis/analysis.json reports/issue-83-v1f-r3-retained-qwen/analysis.json
-cmp artifacts/issue83-r3-reanalysis/failure-matrix.md reports/issue-83-v1f-r3-retained-qwen/failure-matrix.md
+cmp artifacts/issue83-r3-reanalysis/analysis.json experiments/native-one-hop-v1f-diagnostic-r3-evidence/analysis.json
+cmp artifacts/issue83-r3-reanalysis/failure-matrix.md experiments/native-one-hop-v1f-diagnostic-r3-evidence/failure-matrix.md
 .venv/bin/python -m unittest discover -s tools -p test_analyze_v1f_r3.py -v
 ```
 
@@ -150,7 +165,7 @@ This extracts into a newly created directory and never overwrites a run/freeze:
 
 ```sh
 replay_dir=$(mktemp -d artifacts/issue83-r3-replay.XXXXXX)
-tar -xzf reports/issue-83-v1f-r3-retained-qwen/evidence.tar.gz -C "$replay_dir"
+tar -xzf experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz -C "$replay_dir"
 .venv/bin/python tools/native_one_hop.py --variant v1f-diagnostic-r3 replay \
   --freeze "$replay_dir/freeze" --run "$replay_dir/run"
 ```
@@ -164,9 +179,10 @@ the unchanged registered sources/binary, and original run identity.
 
 ## Decision and remaining work
 
-[decision.json](decision.json) retains **INCONCLUSIVE_REVISE**. Recover the original
-inference approval; independently review the exposed semantic questions, source
-ambiguity and outputs; address context budgeting only in a separately registered
-successor. These results do not authorize new Qwen inference or Gemma loading.
+[decision.json](decision.json) retains **INCONCLUSIVE_REVISE**. Current owner
+authorization is recorded; a contemporaneous pre-run record remains unavailable.
+Independently review the exposed semantic questions, source ambiguity and
+outputs; address context budgeting only in a separately registered successor.
+These results do not establish passing gates for new Qwen inference or Gemma loading.
 Gemma needs its own exact command, fresh destination, passing shared integrity
 and host gates, and separate explicit approval. No merge is authorized.
