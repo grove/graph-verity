@@ -1,0 +1,43 @@
+{
+  "version": "issue83-v1f-authorized-attempt-20261020",
+  "base_commit": "ae2785d82f849e1a00b7a0c72ae73fc25c235774",
+  "decision": "INCONCLUSIVE_REVISE",
+  "semantic_go": false,
+  "user_authorization": "I authorize them!",
+  "commands": [
+    ".venv/bin/python tools/native_one_hop.py --variant v1f-diagnostic run --freeze artifacts/issue83-v1f-restored/freeze --model qwen35 --allow-inference --out artifacts/issue83-v1f-qwen35",
+    ".venv/bin/python tools/native_one_hop.py --variant v1f-diagnostic run --freeze artifacts/issue83-v1f-restored/freeze --model gemma4 --allow-inference --out artifacts/issue83-v1f-gemma4"
+  ],
+  "freeze_sha256": "8475600f50d3646feef4e954dd1ae4fb1471681a2257253b25ca10d4ed475b51",
+  "preregistration_sha256": "7bd8457fba69c13bcf715efdc5994da4481bb03214e0513cde0aa6add4b4a666",
+  "frozen_archive_sha256": "cff48454f21f05816a1ebe6fcf2d76ad959dd75f3281828463abc2b1d60d4a01",
+  "qwen35": {
+    "command_exit": 1,
+    "status": "blocked_or_failed",
+    "error": "ValueError: Adapter configuration changed",
+    "inference_performed": true,
+    "generation_attempts": 2,
+    "generation_completed": 2,
+    "diagnostic_attempts": 0,
+    "diagnostic_completed": 0,
+    "diagnostic_unattempted": 36,
+    "run_sha256": "1ed5ea8b7ba5c8ed949b046a64c7529876916d95a442fdca572f8628886a8d79",
+    "checksums_sha256": "026580f7dac6765c74abc9bea486564549da0db3203d3060d0c312fde17d9499"
+  },
+  "gemma4": {
+    "authorized": true,
+    "launched": false,
+    "reason": "Stopped after shared frozen adapter configuration integrity failure in Qwen; no retries or bypass",
+    "generation_attempts": 0,
+    "diagnostic_attempts": 0,
+    "diagnostic_unattempted": 36
+  },
+  "analyzer_baseline_note": "Unchanged analyzer fills missing Gemma run with historical authorization_absent baseline. Current campaign authorization and shared-integrity stop reason are recorded here.",
+  "semantic_failure_categories_observed": [],
+  "successful_semantic_interpretations_observed": [],
+  "model_generated_rdf_executions": 0,
+  "integration_authorized": false,
+  "v1g_authorized": false,
+  "issue_83_remains_open": true,
+  "retries": 0
+}

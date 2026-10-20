@@ -1,0 +1,45 @@
+COMMANDS
+mkdir -p artifacts/issue83-v1f-restored
+tar -xzf reports/issue-83-native-one-hop-v1f-diagnostic/evidence.tar.gz -C artifacts/issue83-v1f-restored
+tar -xzf reports/issue-83-v1f-authorized-attempt-20261020/evidence.tar.gz -C artifacts
+.venv/bin/python tools/native_one_hop.py --variant v1f-diagnostic replay --freeze artifacts/issue83-v1f-restored/freeze --run artifacts/issue83-v1f-qwen35
+.venv/bin/python tools/analyze_v1f.py --run artifacts/issue83-v1f-qwen35 --out artifacts/issue83-v1f-reanalysis
+
+EXIT 0
+STDOUT
+{"verified": true, "model_loaded": false, "executions": 0, "inference_performed": false, "recorded_status": "blocked_or_failed"}
+
+STDERR
+
+
+COMMANDS
+.venv/bin/python - <<'PY'
+import importlib.util, sys
+from pathlib import Path
+sys.path.insert(0, 'tools')
+import native_one_hop_diagnostic as diagnostic
+spec = importlib.util.spec_from_file_location('v1f_cli_probe', 'tools/native_one_hop.py')
+cli = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(cli)
+cli.CONFIG = cli.ROOT / 'configs/native-one-hop-v1f-diagnostic.json'
+freeze = Path('artifacts/issue83-v1f-restored/freeze')
+cli.verify_freeze(freeze)
+assert cli is not diagnostic.a
+try:
+    diagnostic.a.verify_freeze(freeze)
+except ValueError as error:
+    assert str(error) == 'Adapter configuration changed'
+else:
+    raise AssertionError('Expected the registered module configuration mismatch')
+print('Reproduced the blocker without inference or RDF execution')
+PY
+
+EXIT 0
+STDOUT
+Reproduced the blocker without inference or RDF execution
+
+STDERR
+
+
+Fresh-checkout analysis JSON and Markdown exactly match the committed report bytes.
+No inference or RDF execution.

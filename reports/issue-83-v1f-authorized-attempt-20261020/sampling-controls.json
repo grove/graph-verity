@@ -1,0 +1,76 @@
+{
+  "model": "qwen35",
+  "semantic_diagnostic_evidence": false,
+  "controls": [
+    {
+      "name": "sampling-False",
+      "raw_utf8": "{\"version\":\"nl-ask-draft-v1\",\"status\":\"unsupported\",\"rationale\":\"control\",\"forbidden\":true}",
+      "raw_base64": "eyJ2ZXJzaW9uIjoibmwtYXNrLWRyYWZ0LXYxIiwic3RhdHVzIjoidW5zdXBwb3J0ZWQiLCJyYXRpb25hbGUiOiJjb250cm9sIiwiZm9yYmlkZGVuIjp0cnVlfQ==",
+      "raw_sha256": "740fcf571939506541f4c1975e60b5250054560a8417e546f02131301091ba57",
+      "raw_bytes": 91,
+      "rust": {
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"invalid_contract: Expected strict nl-ask-draft-v1\",\"status\":\"error\"}\n"
+      },
+      "native_gbnf_accepted": false,
+      "control_passed": true,
+      "token_count": 26,
+      "input_token_count": 245,
+      "elapsed_ms": 10329.387624999981,
+      "native_timings": {
+        "cache_n": 0,
+        "prompt_n": 245,
+        "prompt_ms": 5025.24,
+        "prompt_per_token_ms": 20.511183673469386,
+        "prompt_per_second": 48.753890361455376,
+        "predicted_n": 26,
+        "predicted_ms": 1599.016,
+        "predicted_per_token_ms": 63.960640000000005,
+        "predicted_per_second": 15.634615288402367
+      },
+      "native_runtime_sha256": "5bd7c35eb6330a74b23765198aa57f3a763d630c8db4c5e6341669ec490efbb0",
+      "parity": {
+        "restored_bos": "",
+        "prompt_sha256": "c21c55f7c8aad6a5a11a7f7e88e5e568dca528461f1bbc3b99e8a7ff63d0c6c1",
+        "token_ids_equal": true,
+        "prompt_bytes_equal": true
+      }
+    },
+    {
+      "name": "sampling-True",
+      "raw_utf8": "{\"version\":\"nl-ask-draft-v1\",\"status\":\"unsupported\",\"rationale\":\"control\"}",
+      "raw_base64": "eyJ2ZXJzaW9uIjoibmwtYXNrLWRyYWZ0LXYxIiwic3RhdHVzIjoidW5zdXBwb3J0ZWQiLCJyYXRpb25hbGUiOiJjb250cm9sIn0=",
+      "raw_sha256": "8c4aed547d78bb744b32cc308a4b5140f98cd36567951aa53e8edd66a9328fda",
+      "raw_bytes": 74,
+      "rust": {
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"control\"\n}\n",
+        "stderr": ""
+      },
+      "native_gbnf_accepted": true,
+      "control_passed": true,
+      "token_count": 21,
+      "input_token_count": 245,
+      "elapsed_ms": 3896.969416000047,
+      "native_timings": {
+        "cache_n": 241,
+        "prompt_n": 4,
+        "prompt_ms": 120.617,
+        "prompt_per_token_ms": 30.15425,
+        "prompt_per_second": 33.162821161196185,
+        "predicted_n": 21,
+        "predicted_ms": 1326.548,
+        "predicted_per_token_ms": 66.3274,
+        "predicted_per_second": 15.076725455844795
+      },
+      "native_runtime_sha256": "e44f54c79ebdbf4612c85204d81a44a47d278fed498c78328021a39a9c0a6535",
+      "parity": {
+        "restored_bos": "",
+        "prompt_sha256": "c21c55f7c8aad6a5a11a7f7e88e5e568dca528461f1bbc3b99e8a7ff63d0c6c1",
+        "token_ids_equal": true,
+        "prompt_bytes_equal": true
+      }
+    }
+  ]
+}
