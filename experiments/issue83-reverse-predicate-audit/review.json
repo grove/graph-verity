@@ -1,0 +1,158 @@
+{
+  "version": "issue83-reverse-predicate-model-free-audit-v1",
+  "origin": "AI-authored source-bound audit, not independent human review",
+  "based_on_merged_main": "d5c0692efb68011348347a0bc0494e87e81f78f8",
+  "decision": "INCONCLUSIVE_REVISE",
+  "inference_performed": false,
+  "model_generated_rdf_executions": 0,
+  "independent_human_semantic_review": "pending",
+  "references_exposed_AI_authored": true,
+  "repository_source_paths": [
+    "studies/nl-ask-v1/evaluation/snapshot.nq",
+    "studies/nl-ask-v1/cases.json",
+    "experiments/native-one-hop-v1h-investigation/generated/coordinator/original-host-catalog.json",
+    "experiments/native-one-hop-v1h-investigation/generated/failure-by-failure.json",
+    "experiments/native-one-hop-v1h-qwen-status-precedence-first-evidence/analysis.json",
+    "experiments/native-one-hop-v1h-budget-gemma4-swap2048-evidence/failure-matrix.md"
+  ],
+  "source_graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+  "reverse_cases": [
+    {
+      "case_id": "eva-07",
+      "language": "nb",
+      "start": 100,
+      "predicate": 1002,
+      "graph": 0,
+      "direction": "reverse",
+      "output": "values",
+      "subject": "http://www.wikidata.org/entity/Q578326",
+      "relation": "http://www.wikidata.org/prop/direct/P131",
+      "object": "http://www.wikidata.org/entity/Q134620",
+      "exposed_reference_status": "candidate",
+      "predicate_natural_language_source_definition": "unavailable in frozen source metadata",
+      "primary_witness": "<http://www.wikidata.org/entity/Q578326> <http://www.wikidata.org/prop/direct/P131> <http://www.wikidata.org/entity/Q134620> <urn:graph-verity:nl-ask-v1:evaluation:wikidata> .",
+      "outcomes": [
+        {
+          "condition": "oracle",
+          "qwen_r3_status": "needs_clarification",
+          "qwen_status_precedence": "needs_clarification",
+          "qwen_status_precedence_sha256": "15ee05eb482a52bd36a89c8be3b5371e3a8c7319d7fb390c0ca4060f31fe5f02",
+          "qwen_status_precedence_complete": true,
+          "required_numeric_vocabulary": {
+            "start": true,
+            "predicate": true,
+            "graph": true
+          },
+          "qwen_r3_attempted": true
+        },
+        {
+          "condition": "retrieval",
+          "qwen_r3_status": "needs_clarification",
+          "qwen_status_precedence": "unsupported",
+          "qwen_status_precedence_sha256": "1a1b0c73a91f20b731aab4194a5d46df2089195dca7d1c57c9b558745c267692",
+          "qwen_status_precedence_complete": true,
+          "required_numeric_vocabulary": {
+            "start": true,
+            "predicate": false,
+            "graph": true
+          },
+          "qwen_r3_attempted": true
+        }
+      ]
+    },
+    {
+      "case_id": "eva-08",
+      "language": "en",
+      "start": 103,
+      "predicate": 1006,
+      "graph": 0,
+      "direction": "reverse",
+      "output": "values",
+      "subject": "http://www.wikidata.org/entity/Q578326",
+      "relation": "http://www.wikidata.org/prop/direct/P856",
+      "object": "https://www.jyu.fi/",
+      "exposed_reference_status": "candidate",
+      "predicate_natural_language_source_definition": "unavailable in frozen source metadata",
+      "primary_witness": "<http://www.wikidata.org/entity/Q578326> <http://www.wikidata.org/prop/direct/P856> <https://www.jyu.fi/> <urn:graph-verity:nl-ask-v1:evaluation:wikidata> .",
+      "outcomes": [
+        {
+          "condition": "oracle",
+          "qwen_r3_status": "needs_clarification",
+          "qwen_status_precedence": "needs_clarification",
+          "qwen_status_precedence_sha256": "44779ae81222d0e6f53fdf12edc1e20756d3f86a199d71b618a4139f85c1edf7",
+          "qwen_status_precedence_complete": true,
+          "required_numeric_vocabulary": {
+            "start": true,
+            "predicate": true,
+            "graph": true
+          },
+          "qwen_r3_attempted": true
+        },
+        {
+          "condition": "retrieval",
+          "qwen_r3_status": null,
+          "qwen_status_precedence": "needs_clarification",
+          "qwen_status_precedence_sha256": "c5a42d14357bc9253576082e20538f0915f2914393b9a38003912dcc5ee9677a",
+          "qwen_status_precedence_complete": true,
+          "required_numeric_vocabulary": {
+            "start": true,
+            "predicate": true,
+            "graph": true
+          },
+          "qwen_r3_attempted": false
+        }
+      ]
+    }
+  ],
+  "gemma_observations": [
+    {
+      "case_id": "eva-07",
+      "condition": "oracle",
+      "status": "candidate",
+      "proposed_start": 102,
+      "proposed_direction": "forward",
+      "rust_accepted": false,
+      "reference_agreement": false,
+      "interpretation": "Retained report identifies forward start 102 instead of reverse start 100."
+    },
+    {
+      "case_id": "eva-08",
+      "condition": "oracle",
+      "status": "candidate",
+      "proposed_start": 102,
+      "proposed_direction": "forward",
+      "rust_accepted": false,
+      "reference_agreement": false,
+      "interpretation": "Retained report identifies forward start 102 instead of reverse start 103."
+    },
+    {
+      "case_id": "eva-07",
+      "condition": "retrieval",
+      "status": "unsupported",
+      "rust_accepted": true,
+      "reference_agreement": false,
+      "numeric_predicate_available": false
+    },
+    {
+      "case_id": "eva-08",
+      "condition": "retrieval",
+      "status": null,
+      "generated_complete": false,
+      "runtime_stop": "timeout with zero response bytes",
+      "reference_agreement": null
+    }
+  ],
+  "conclusions": [
+    "Each source witness establishes a stored graph edge and graph-qualified reverse path structure; predicate natural-language meanings remain undocumented.",
+    "The Qwen oracle output declines reverse candidates despite authorized numeric IDs; Gemma oracle produces forward wrong-start candidates which Rust rejects.",
+    "The retrieval condition has distinct failures: P131 numeric predicate missing for eva-07, while P856 exists for eva-08 but its meaning is not defined.",
+    "Plural resources do not by themselves require multiple-hop operations or more than one answer.",
+    "Exposed-reference agreement is not independent semantic truth or answer accuracy."
+  ],
+  "next_gates": [
+    "Keep historical references and source files unchanged.",
+    "Collect independent source-backed predicate-meaning review or clearly document unavailable licensed definitions.",
+    "Separate any new direction-language ablation from source-metadata or retrieval changes; preregister and obtain fresh authorization before native inference.",
+    "No #75 integration or generated RDF execution; #83 remains open."
+  ]
+}
