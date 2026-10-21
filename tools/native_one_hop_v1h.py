@@ -11,9 +11,11 @@ import json
 import os
 from pathlib import Path
 import signal
+import shutil
 import subprocess
 import sys
 import tarfile
+import tempfile
 import threading
 import time
 
@@ -118,7 +120,11 @@ def count_tokens(folder, out, models, sections=False):
     dump(out/'job.json', token_job(folder, models, sections))
     receipt = read(ROOT/'reports/issue-74-one-hop-trial/assets.json')
     python = receipt['candidates'][models[0]]['preparation_receipt']['commands'][2][0]
-    code = a.bounded([python, ROOT/'tools/native_one_hop_v1h_tokens.py', out/'job.json', out/'counts.json'], out, 'tokenizer', 120)
+    with tempfile.TemporaryDirectory(prefix='v1h-tokenizer-') as temp:
+        scratch = Path(temp)
+        code = a.bounded([python, ROOT/'tools/native_one_hop_v1h_tokens.py', out/'job.json', out/'counts.json'], scratch, 'tokenizer', 120)
+        for name in ['tokenizer-command.json','tokenizer.stdout','tokenizer.stderr']:
+            shutil.copyfile(scratch/name,out/name)
     require(code == 0, 'Pinned model-free tokenizer failed; retain tokenizer receipt')
     result = read(out/'counts.json')
     validate_counts(result, models)
@@ -255,6 +261,7 @@ def observe(folder, out, state, runtime, rss):
             d.resource_guard(rss,cfg)
             trusted = dest/'trusted-preflight'
             trusted.mkdir()
+            dump(trusted/'context.json',context)
             dump(trusted/'proposal.txt',dict(version='nl-ask-draft-v1',status='unsupported',rationale='Host catalog preflight'))
             checked = a.preview_raw(context,trusted/'proposal.txt',trusted,fixtures[cid])
             require(checked['returncode'] == 0,'Trusted catalog preflight failed')
@@ -262,8 +269,16 @@ def observe(folder, out, state, runtime, rss):
             row['runtime'] = runtime.generate(context,dest)
             raw = (dest/'proposal.txt').read_bytes()
             draft = strict_draft(raw)
+            try:
+                parsed = json.loads(raw)
+                row['json_valid'] = True
+            except (ValueError,UnicodeDecodeError):
+                parsed = None
+                row['json_valid'] = False
             row.update(raw_output=raw.decode('utf-8',errors='replace'),raw_base64=base64.b64encode(raw).decode(),
-                       raw_sha256=hashlib.sha256(raw).hexdigest(),strict_contract_valid=draft is not None)
+                       raw_sha256=hashlib.sha256(raw).hexdigest(),strict_contract_valid=draft is not None,
+                       model_origin_status=parsed.get('status') if isinstance(parsed,dict) else None,
+                       plan={k:parsed.get(k) if isinstance(parsed,dict) else None for k in ['start','predicate','graph','direction','output']})
             checked = a.preview_raw(context,dest/'proposal.txt',dest,fixtures[cid])
             row['rust_preview'] = checked
             row['reference'] = a.semantic_outcome(cid,dest/'proposal.txt',checked)
@@ -313,7 +328,8 @@ def run(folder, out, model, allow_inference=False):
         dump(ledger,attempts+[model])
         out.mkdir(parents=True)
         state = dict(version=VERSION,model=model,status='preparing',freeze_sha256=sha(folder/'checksums.json'),
-            diagnostic=d.accounting(config()),checks={},executions=0,integration_authorized=False,holdout_accessed=False,
+            diagnostic=d.accounting(config()),checks={f'sampling-{c}':dict(status='unattempted') for c in [False,True]},
+            executions=0,integration_authorized=False,holdout_accessed=False,
             inference_performed=False,model_loaded=False,generation_attempts=0,generation_completed=0,decision='INCONCLUSIVE_REVISE',
             model_ranking=None,exact_answer_accuracy=None,independent_human_approvals=0)
         runtime, monitor = None, None
@@ -342,10 +358,14 @@ def run(folder, out, model, allow_inference=False):
                     dest = out/'controls'/row['name']
                     dest.mkdir(parents=True)
                     dump(dest/'context.json',row['context'])
-                    runtime.generate(row['context'],dest,constrained=constrained,system=(ROOT/config()['control_prompt_file']).read_text())
-                    checked = a.preview_raw(row['context'],dest/'proposal.txt',dest,dict(resolved_start=None,blocked=False))
+                    state['checks'][row['name']]['status'] = 'attempting'
+                    try:
+                        runtime.generate(row['context'],dest,constrained=constrained,system=(ROOT/config()['control_prompt_file']).read_text())
+                    finally:
+                        if (dest/'proposal.txt').exists():
+                            checked = a.preview_raw(row['context'],dest/'proposal.txt',dest,dict(resolved_start=None,blocked=False))
                     accepted = a.grammar_check((dest/'proposal.txt').read_text(),row['context'],dest)
-                    state['checks'][row['name']] = dict(grammar_accepted=accepted,passed=accepted==constrained)
+                    state['checks'][row['name']] = dict(status='measured',grammar_accepted=accepted,passed=accepted==constrained)
                     require(accepted==constrained and (not constrained or checked['returncode']==0),'Native sampling control failed')
                 observe(folder,out,state,runtime,rss)
         except BaseException as error:
@@ -367,18 +387,39 @@ def run(folder, out, model, allow_inference=False):
                 except ValueError as error:
                     state.update(status='blocked_or_failed',error=str(error))
             d.finish(state)
+            for check in state['checks'].values():
+                if check['status'] in ['attempting','unattempted']:
+                    check['reason'] = state['status']
             require(state['generation_attempts']<=38,'Request limit exceeded')
             dump(out/'run.json',state)
             dump(out/'checksums.json',a.v.inventory(out))
         return state
 
 
+def replay(folder, run_dir=None):
+    verify(folder)
+    if run_dir is None:
+        return dict(verified=True,inference_performed=False,executions=0)
+    require(read(run_dir/'checksums.json') == a.v.inventory(run_dir),'Changed retained run')
+    state = read(run_dir/'run.json')
+    require(state['version'] == VERSION and state['freeze_sha256'] == sha(folder/'checksums.json')
+            and state['executions'] == 0 and not state['integration_authorized'],'Run identity/authority mismatch')
+    count = 0
+    for saved in sorted(run_dir.rglob('rust.json')):
+        with tempfile.TemporaryDirectory(prefix='v1h-rust-replay-') as temp:
+            result = a.preview_raw(read(saved.parent/'context.json'),saved.parent/'proposal.txt',Path(temp),read(saved.parent/'catalog.json'))
+            require(result == read(saved),'Original-byte Rust preview drift: '+str(saved))
+            count += 1
+    return dict(verified=True,rust_previews=count,recorded_status=state['status'],inference_performed=False,executions=0)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command',choices=['freeze','verify','register','budget','run'])
+    parser.add_argument('command',choices=['freeze','verify','register','budget','replay','run'])
     parser.add_argument('--freeze',type=Path)
     parser.add_argument('--out',type=Path)
     parser.add_argument('--model',choices=['qwen35','gemma4'])
+    parser.add_argument('--run',type=Path)
     parser.add_argument('--allow-inference',action='store_true')
     args = parser.parse_args()
     signal.signal(signal.SIGTERM,lambda *_:sys.exit('Operator cancelled'))
@@ -390,6 +431,8 @@ def main():
     folder = args.freeze.resolve()
     if args.command=='register':
         register(folder)
+    elif args.command=='replay':
+        print(json.dumps(replay(folder,args.run.resolve() if args.run else None)))
     elif args.command=='run':
         require(args.model and args.out,'--model and fresh --out required')
         state = run(folder,args.out.resolve(),args.model,args.allow_inference)

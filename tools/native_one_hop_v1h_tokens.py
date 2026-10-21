@@ -51,7 +51,7 @@ def main():
             parities.append(record['identity'])
         result['models'][model] = dict(rows=rows, native_parities_reproduced=parities,
                                       tokenizer_files=spec['file_sha256'])
-    Path(sys.argv[2]).write_text(json.dumps(result, indent=2, ensure_ascii=False)+'\n')
+    Path(sys.argv[2]).write_text(json.dumps(result, ensure_ascii=False, separators=(',', ':'))+'\n')
 
 
 if __name__ == '__main__':
