@@ -189,6 +189,11 @@ class BudgetTests(unittest.TestCase):
                     self.assertEqual(state['diagnostic']['completed'],36)
                 for path in (root/'run').rglob('rust-preview-command.json'):
                     self.assertEqual(v.read(path)[1],'nl-ask-preview')
+                # Synthetic transport replays through current-host Rust; CI never loads the registered macOS binary.
+                with patch.object(v,'verify',return_value=frozen):
+                    replayed = v.replay(folder,root/'run')
+                self.assertTrue(replayed['verified'])
+                self.assertEqual(replayed['rust_previews'],4 if private else 74)
 
 
 if __name__ == '__main__':
