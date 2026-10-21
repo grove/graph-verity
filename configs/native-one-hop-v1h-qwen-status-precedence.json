@@ -1,0 +1,59 @@
+{
+  "version": "issue83-native-cpu-v1h-qwen-status-precedence",
+  "base_registration": "experiments/native-one-hop-v1f-diagnostic-r3/registration.json",
+  "encoding": "lossless-packet-columns-v1",
+  "hypothesis": "Explicit forbidden-operation > genuine clarification > fully supported candidate status precedence improves unsupported classification without losing clarification or supported plans.",
+  "comparison": "Original frozen Qwen v1h oracle and BM25-v1 evidence; only status-rule order and explicit precedence change.",
+  "decision": "INCONCLUSIVE_REVISE",
+  "inference_authorized": false,
+  "diagnostic_observations_per_model": 36,
+  "maximum_completion_requests_per_model": 38,
+  "token_fit_rule": "input_tokens + 512 < 16384; every scheduled prompt is recounted with pinned local tokenizer before model loading; native template/token parity is mandatory before each generation",
+  "retries": 0,
+  "semantic_prompt_change": true,
+  "retrieval_change": false,
+  "executions": 0,
+  "integration_authorized": false,
+  "prompt_file": "configs/native-one-hop-v1h-qwen-status-precedence.prompt.txt",
+  "variants": [
+    "qwen35"
+  ],
+  "parent_registration": "experiments/native-one-hop-v1h-budget/registration.json",
+  "parent_registration_sha256": "beb4e84519294d9f6b870236573c3728f4ccc028465db73c0cb97ab36a414bc7",
+  "baseline_evidence": "experiments/native-one-hop-v1h-budget-qwen35-evidence/evidence.tar.gz",
+  "baseline_evidence_sha256": "6d15494ea7b8dedf33f5a95529d0a96075d18158c7700b2214db6411fd969eb7",
+  "proposed_output": "artifacts/issue83-v1h-qwen-status-precedence-first",
+  "independent_human_review": "deferred",
+  "issue83": "keep_open",
+  "issue75_integration": "disabled",
+  "primary_evaluation": {
+    "unsupported_baseline": {
+      "oracle": [
+        2,
+        6
+      ],
+      "retrieval": [
+        4,
+        6
+      ]
+    },
+    "unsupported_target": "Strictly improve model-origin unsupported classification in each condition on the same six forbidden-operation identities.",
+    "clarification_guard": {
+      "oracle": [
+        3,
+        3
+      ],
+      "retrieval": [
+        3,
+        3
+      ]
+    },
+    "supported_regressions": "List every newly unsupported or clarifying response on candidate references; separately flag loss of each baseline valid candidate. Keep source-label candidate reference and separate four-case AI ambiguity audit unchanged."
+  },
+  "reporting": [
+    "Full 36-observation schedule plus two sampling controls; retain partial, failed and unattempted outcomes with null missing semantics; paired completed identities separately.",
+    "All five plan fields, forward and reverse separately; model status distinct from Rust rejection.",
+    "Source-table/rationale contradictions independently with exact raw excerpts, source paths and values; narrow automatic detection is not sufficient.",
+    "Source sufficiency limits, four-case AI ambiguity audit, native controls, canaries, latency and sampled process-tree RSS; human judgments remain null."
+  ]
+}
