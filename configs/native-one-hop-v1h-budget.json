@@ -1,0 +1,17 @@
+{
+  "version": "issue83-native-cpu-v1h-budget",
+  "base_registration": "experiments/native-one-hop-v1f-diagnostic-r3/registration.json",
+  "encoding": "lossless-packet-columns-v1",
+  "hypothesis": "Lossless packet-only columnar presentation fits the existing context budget without changing source information or retrieval membership. Semantic effects of the presentation are unknown.",
+  "comparison": "r3 oracle unchanged; r3 retrieval retains every original packet value under a reversible representation. This is a presentation/budget ablation, not a semantic prompt or retrieval change.",
+  "decision": "INCONCLUSIVE_REVISE",
+  "inference_authorized": false,
+  "diagnostic_observations_per_model": 36,
+  "maximum_completion_requests_per_model": 38,
+  "token_fit_rule": "input_tokens + 512 < 16384; every scheduled prompt is recounted with pinned local tokenizer before model loading; native template/token parity is mandatory before each generation",
+  "retries": 0,
+  "semantic_prompt_change": false,
+  "retrieval_change": false,
+  "executions": 0,
+  "integration_authorized": false
+}

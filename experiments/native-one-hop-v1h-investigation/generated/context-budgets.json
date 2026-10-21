@@ -1,0 +1,3883 @@
+{
+  "method": "Exact pinned tokenizer/native-template text rendering. Section contributions are telescoping differences in original key order; they sum exactly and are order-dependent.",
+  "models": {
+    "qwen35": {
+      "rows": [
+        {
+          "condition": "sampling",
+          "name": "sampling-False",
+          "case_id": "eva-01",
+          "kind": "native_sampling_control",
+          "original": {
+            "input_tokens": 245,
+            "output_reserve": 512,
+            "total_required": 757,
+            "fits": true,
+            "prompt_sha256": "c21c55f7c8aad6a5a11a7f7e88e5e568dca528461f1bbc3b99e8a7ff63d0c6c1",
+            "tokens_sha256": "656e7f10473803d8922504fda580274e1edadc8cae05897ee4053ffdff0f6bf8",
+            "section_contributions": {
+              "system/template/empty-user-object": 68,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "entities": 3,
+              "predicates": 4,
+              "question": 32
+            }
+          },
+          "columnar": {
+            "input_tokens": 245,
+            "output_reserve": 512,
+            "total_required": 757,
+            "fits": true,
+            "prompt_sha256": "c21c55f7c8aad6a5a11a7f7e88e5e568dca528461f1bbc3b99e8a7ff63d0c6c1",
+            "tokens_sha256": "656e7f10473803d8922504fda580274e1edadc8cae05897ee4053ffdff0f6bf8",
+            "section_contributions": {
+              "system/template/empty-user-object": 68,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "entities": 3,
+              "predicates": 4,
+              "question": 32
+            }
+          }
+        },
+        {
+          "condition": "sampling",
+          "name": "sampling-True",
+          "case_id": "eva-01",
+          "kind": "native_sampling_control",
+          "original": {
+            "input_tokens": 245,
+            "output_reserve": 512,
+            "total_required": 757,
+            "fits": true,
+            "prompt_sha256": "c21c55f7c8aad6a5a11a7f7e88e5e568dca528461f1bbc3b99e8a7ff63d0c6c1",
+            "tokens_sha256": "656e7f10473803d8922504fda580274e1edadc8cae05897ee4053ffdff0f6bf8",
+            "section_contributions": {
+              "system/template/empty-user-object": 68,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "entities": 3,
+              "predicates": 4,
+              "question": 32
+            }
+          },
+          "columnar": {
+            "input_tokens": 245,
+            "output_reserve": 512,
+            "total_required": 757,
+            "fits": true,
+            "prompt_sha256": "c21c55f7c8aad6a5a11a7f7e88e5e568dca528461f1bbc3b99e8a7ff63d0c6c1",
+            "tokens_sha256": "656e7f10473803d8922504fda580274e1edadc8cae05897ee4053ffdff0f6bf8",
+            "section_contributions": {
+              "system/template/empty-user-object": 68,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "entities": 3,
+              "predicates": 4,
+              "question": 32
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "repeat-0",
+          "case_id": "eva-01",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4031,
+            "output_reserve": 512,
+            "total_required": 4543,
+            "fits": true,
+            "prompt_sha256": "1f53aba1437359a60a2174d3f0d738f8fa4fa45839de5682482449e8012e8d3a",
+            "tokens_sha256": "928d6ef16be1e217b81fb0d79c6a2d4762691ff27b214bc6865b45321c1f73ab",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4031,
+            "output_reserve": 512,
+            "total_required": 4543,
+            "fits": true,
+            "prompt_sha256": "1f53aba1437359a60a2174d3f0d738f8fa4fa45839de5682482449e8012e8d3a",
+            "tokens_sha256": "928d6ef16be1e217b81fb0d79c6a2d4762691ff27b214bc6865b45321c1f73ab",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "repeat-1",
+          "case_id": "eva-01",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4031,
+            "output_reserve": 512,
+            "total_required": 4543,
+            "fits": true,
+            "prompt_sha256": "1f53aba1437359a60a2174d3f0d738f8fa4fa45839de5682482449e8012e8d3a",
+            "tokens_sha256": "928d6ef16be1e217b81fb0d79c6a2d4762691ff27b214bc6865b45321c1f73ab",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4031,
+            "output_reserve": 512,
+            "total_required": 4543,
+            "fits": true,
+            "prompt_sha256": "1f53aba1437359a60a2174d3f0d738f8fa4fa45839de5682482449e8012e8d3a",
+            "tokens_sha256": "928d6ef16be1e217b81fb0d79c6a2d4762691ff27b214bc6865b45321c1f73ab",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "ambiguous_start",
+          "case_id": "eva-20",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4012,
+            "output_reserve": 512,
+            "total_required": 4524,
+            "fits": true,
+            "prompt_sha256": "e923601889a0afde3c5e9aa98b2a8e941cbd7abcdc1d59dccf4b51809e5c2a29",
+            "tokens_sha256": "c4c4ece7ade14b37d8beda9de5a02cfee0d06cfcd4662598dc75a49bc97ac801",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 9,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4012,
+            "output_reserve": 512,
+            "total_required": 4524,
+            "fits": true,
+            "prompt_sha256": "e923601889a0afde3c5e9aa98b2a8e941cbd7abcdc1d59dccf4b51809e5c2a29",
+            "tokens_sha256": "c4c4ece7ade14b37d8beda9de5a02cfee0d06cfcd4662598dc75a49bc97ac801",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 9,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "source_label",
+          "case_id": "eva-06",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4023,
+            "output_reserve": 512,
+            "total_required": 4535,
+            "fits": true,
+            "prompt_sha256": "2dc055ceb69a0728c6190eed0ea06f2cd68d38aa24a83cc6f7881120b7a2660d",
+            "tokens_sha256": "0649830bbefd4cad3902d60d6773febcd622daba1fe9a09607329ea0414311b0",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4023,
+            "output_reserve": 512,
+            "total_required": 4535,
+            "fits": true,
+            "prompt_sha256": "2dc055ceb69a0728c6190eed0ea06f2cd68d38aa24a83cc6f7881120b7a2660d",
+            "tokens_sha256": "0649830bbefd4cad3902d60d6773febcd622daba1fe9a09607329ea0414311b0",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "malicious_label_explicit",
+          "case_id": "v1e-label-explicit",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4026,
+            "output_reserve": 512,
+            "total_required": 4538,
+            "fits": true,
+            "prompt_sha256": "0ecca3eaa4e65734c1e3b269671d711baa9a191b6e18f785308d0c24d9064988",
+            "tokens_sha256": "3b1caf1d1001d61d37a339d2ac8d64d834dd5de4c4bca853430af2bc9218c417",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 23,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4026,
+            "output_reserve": 512,
+            "total_required": 4538,
+            "fits": true,
+            "prompt_sha256": "0ecca3eaa4e65734c1e3b269671d711baa9a191b6e18f785308d0c24d9064988",
+            "tokens_sha256": "3b1caf1d1001d61d37a339d2ac8d64d834dd5de4c4bca853430af2bc9218c417",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 23,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "private_scope",
+          "case_id": "eva-29",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4029,
+            "output_reserve": 512,
+            "total_required": 4541,
+            "fits": true,
+            "prompt_sha256": "031709dc6d569dbb47bf64941df5f8cd7a3adf0b951e0e7d3e88c5ca80e0231a",
+            "tokens_sha256": "8433db9b4487cb7269b848c5063431712a7aab8e19f9dc5b3f6852ace0f16aac",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 26,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4029,
+            "output_reserve": 512,
+            "total_required": 4541,
+            "fits": true,
+            "prompt_sha256": "031709dc6d569dbb47bf64941df5f8cd7a3adf0b951e0e7d3e88c5ca80e0231a",
+            "tokens_sha256": "8433db9b4487cb7269b848c5063431712a7aab8e19f9dc5b3f6852ace0f16aac",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 26,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "write",
+          "case_id": "eva-30",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4018,
+            "output_reserve": 512,
+            "total_required": 4530,
+            "fits": true,
+            "prompt_sha256": "9411c9b15cc0bc8e992dbd675771bc0289288f04da536cbfa562baae24400e5f",
+            "tokens_sha256": "a6734016034d736d4ed1cf0547d50678f8aa87bcbe1622c3dd95ad7235635994",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 15,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4018,
+            "output_reserve": 512,
+            "total_required": 4530,
+            "fits": true,
+            "prompt_sha256": "9411c9b15cc0bc8e992dbd675771bc0289288f04da536cbfa562baae24400e5f",
+            "tokens_sha256": "a6734016034d736d4ed1cf0547d50678f8aa87bcbe1622c3dd95ad7235635994",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 15,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "unclear_relation",
+          "case_id": "eva-19",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4018,
+            "output_reserve": 512,
+            "total_required": 4530,
+            "fits": true,
+            "prompt_sha256": "de58f8a243908deb32c093827e4b84919f09656d46006fb4c1753668adcf2955",
+            "tokens_sha256": "0085618773c7402dfd8de19e1ebdc1d412eede113722f240fc1e604b5c7cba09",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4018,
+            "output_reserve": 512,
+            "total_required": 4530,
+            "fits": true,
+            "prompt_sha256": "de58f8a243908deb32c093827e4b84919f09656d46006fb4c1753668adcf2955",
+            "tokens_sha256": "0085618773c7402dfd8de19e1ebdc1d412eede113722f240fc1e604b5c7cba09",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "absent_start",
+          "case_id": "eva-24",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4018,
+            "output_reserve": 512,
+            "total_required": 4530,
+            "fits": true,
+            "prompt_sha256": "e3d78e0ea725553dc9a594973c57a637af3b4f3d9696853d0fffa541421ae09c",
+            "tokens_sha256": "daff25970a6f45cc44903af654b784feeff42df85421e7fad4b5a85531a79b02",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4018,
+            "output_reserve": 512,
+            "total_required": 4530,
+            "fits": true,
+            "prompt_sha256": "e3d78e0ea725553dc9a594973c57a637af3b4f3d9696853d0fffa541421ae09c",
+            "tokens_sha256": "daff25970a6f45cc44903af654b784feeff42df85421e7fad4b5a85531a79b02",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "negation",
+          "case_id": "eva-25",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4019,
+            "output_reserve": 512,
+            "total_required": 4531,
+            "fits": true,
+            "prompt_sha256": "0982fbc78d70482a3d1944878fa418dddc8690ef08030a355daaf32f6bb7228b",
+            "tokens_sha256": "69d4c85fde2edee59b2087be5f0909d5c57bc32365f275208fd97016e1263288",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 15,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4019,
+            "output_reserve": 512,
+            "total_required": 4531,
+            "fits": true,
+            "prompt_sha256": "0982fbc78d70482a3d1944878fa418dddc8690ef08030a355daaf32f6bb7228b",
+            "tokens_sha256": "69d4c85fde2edee59b2087be5f0909d5c57bc32365f275208fd97016e1263288",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 15,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "count",
+          "case_id": "eva-26",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4020,
+            "output_reserve": 512,
+            "total_required": 4532,
+            "fits": true,
+            "prompt_sha256": "621644a43a0ff1f31f6b7162cb71f1b193d2536eb096723af8ecc5142895c054",
+            "tokens_sha256": "ea0852f25c0b3444f37d139d649fc904530484b1e2a4940bf7ad53282bb3b001",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 16,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4020,
+            "output_reserve": 512,
+            "total_required": 4532,
+            "fits": true,
+            "prompt_sha256": "621644a43a0ff1f31f6b7162cb71f1b193d2536eb096723af8ecc5142895c054",
+            "tokens_sha256": "ea0852f25c0b3444f37d139d649fc904530484b1e2a4940bf7ad53282bb3b001",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 16,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "filter",
+          "case_id": "eva-27",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4027,
+            "output_reserve": 512,
+            "total_required": 4539,
+            "fits": true,
+            "prompt_sha256": "37c2950dd0cdfe7b8fc19634d5e193ae282826e39eaa2701b80f12e57b2c1908",
+            "tokens_sha256": "02c2d4ede521d6fba138f82611be5dbe0e953697456c007c16922649794a04d3",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4027,
+            "output_reserve": 512,
+            "total_required": 4539,
+            "fits": true,
+            "prompt_sha256": "37c2950dd0cdfe7b8fc19634d5e193ae282826e39eaa2701b80f12e57b2c1908",
+            "tokens_sha256": "02c2d4ede521d6fba138f82611be5dbe0e953697456c007c16922649794a04d3",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "multi_hop",
+          "case_id": "eva-28",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4018,
+            "output_reserve": 512,
+            "total_required": 4530,
+            "fits": true,
+            "prompt_sha256": "fcd96445d8e7f82d0e8d834511a183c005e4d0a6ff3ce89d30eeb06c97a8c06e",
+            "tokens_sha256": "a16caa39ed859d6381d3fc91c21824a0c85ef645ec44a430790c1fb5bdb65080",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4018,
+            "output_reserve": 512,
+            "total_required": 4530,
+            "fits": true,
+            "prompt_sha256": "fcd96445d8e7f82d0e8d834511a183c005e4d0a6ff3ce89d30eeb06c97a8c06e",
+            "tokens_sha256": "a16caa39ed859d6381d3fc91c21824a0c85ef645ec44a430790c1fb5bdb65080",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "smoke-eva-01",
+          "case_id": "eva-01",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4031,
+            "output_reserve": 512,
+            "total_required": 4543,
+            "fits": true,
+            "prompt_sha256": "1f53aba1437359a60a2174d3f0d738f8fa4fa45839de5682482449e8012e8d3a",
+            "tokens_sha256": "928d6ef16be1e217b81fb0d79c6a2d4762691ff27b214bc6865b45321c1f73ab",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4031,
+            "output_reserve": 512,
+            "total_required": 4543,
+            "fits": true,
+            "prompt_sha256": "1f53aba1437359a60a2174d3f0d738f8fa4fa45839de5682482449e8012e8d3a",
+            "tokens_sha256": "928d6ef16be1e217b81fb0d79c6a2d4762691ff27b214bc6865b45321c1f73ab",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "smoke-eva-02",
+          "case_id": "eva-02",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4022,
+            "output_reserve": 512,
+            "total_required": 4534,
+            "fits": true,
+            "prompt_sha256": "82098e81f0823b8ad4beddba34b150d1b5136775935e75d2ffb33586fc5ab7ca",
+            "tokens_sha256": "1b7f6e684dce104eabcc766436f77e94d5b3cc78d9b2512048c27db76a298069",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 18,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4022,
+            "output_reserve": 512,
+            "total_required": 4534,
+            "fits": true,
+            "prompt_sha256": "82098e81f0823b8ad4beddba34b150d1b5136775935e75d2ffb33586fc5ab7ca",
+            "tokens_sha256": "1b7f6e684dce104eabcc766436f77e94d5b3cc78d9b2512048c27db76a298069",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 18,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "smoke-eva-07",
+          "case_id": "eva-07",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4033,
+            "output_reserve": 512,
+            "total_required": 4545,
+            "fits": true,
+            "prompt_sha256": "b8cfdac869ff71a691756369a64c7c7a6d00e5dcacb8a7750469c56572645d6d",
+            "tokens_sha256": "0555fd6c2a13be0b986583bc85addc70f7eca86f064ea8e49789e38590184d04",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 29,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4033,
+            "output_reserve": 512,
+            "total_required": 4545,
+            "fits": true,
+            "prompt_sha256": "b8cfdac869ff71a691756369a64c7c7a6d00e5dcacb8a7750469c56572645d6d",
+            "tokens_sha256": "0555fd6c2a13be0b986583bc85addc70f7eca86f064ea8e49789e38590184d04",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 29,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "smoke-eva-08",
+          "case_id": "eva-08",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4022,
+            "output_reserve": 512,
+            "total_required": 4534,
+            "fits": true,
+            "prompt_sha256": "066109fd89695e0232d95159863d0a1415678ff2aa0b8b2f9d0fe52c37a59f16",
+            "tokens_sha256": "158b04c1033f4518b0455b1e52bb640d809c2d99538c24a8e46ebefa245a400e",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 18,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4022,
+            "output_reserve": 512,
+            "total_required": 4534,
+            "fits": true,
+            "prompt_sha256": "066109fd89695e0232d95159863d0a1415678ff2aa0b8b2f9d0fe52c37a59f16",
+            "tokens_sha256": "158b04c1033f4518b0455b1e52bb640d809c2d99538c24a8e46ebefa245a400e",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 18,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "smoke-v1e-country-source-nb",
+          "case_id": "v1e-country-source-nb",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4029,
+            "output_reserve": 512,
+            "total_required": 4541,
+            "fits": true,
+            "prompt_sha256": "9a43dd63155cce18ca986142173b34d93cbcf34c06aac027c02f04b5d7ccb1bc",
+            "tokens_sha256": "db187ba59d0a05900bc1e8802483ac2c0c5186928cd19cfc2065a6b56847cf32",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 25,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4029,
+            "output_reserve": 512,
+            "total_required": 4541,
+            "fits": true,
+            "prompt_sha256": "9a43dd63155cce18ca986142173b34d93cbcf34c06aac027c02f04b5d7ccb1bc",
+            "tokens_sha256": "db187ba59d0a05900bc1e8802483ac2c0c5186928cd19cfc2065a6b56847cf32",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 25,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "smoke-v1e-country-paraphrase-en",
+          "case_id": "v1e-country-paraphrase-en",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4024,
+            "output_reserve": 512,
+            "total_required": 4536,
+            "fits": true,
+            "prompt_sha256": "c1fbd53e91f467d0879a3a9eadaa3a5e47e1ac3c4f335e17416f67a7ab0a889c",
+            "tokens_sha256": "238a3aa507acb1f368464895e63f343bb89f4c3c1271a0776cb34f37177ba393",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4024,
+            "output_reserve": 512,
+            "total_required": 4536,
+            "fits": true,
+            "prompt_sha256": "c1fbd53e91f467d0879a3a9eadaa3a5e47e1ac3c4f335e17416f67a7ab0a889c",
+            "tokens_sha256": "238a3aa507acb1f368464895e63f343bb89f4c3c1271a0776cb34f37177ba393",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "ambiguous_start",
+          "case_id": "eva-20",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 5507,
+            "output_reserve": 512,
+            "total_required": 6019,
+            "fits": true,
+            "prompt_sha256": "da3d5442aa67d572ddfa191e661e48fb87831dc6082f5b707ef17d0c3b048179",
+            "tokens_sha256": "273c4a6ea213c7893e40d6a11af949598c6fe0254a722671e7e4437203a4b0c2",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 9,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 557,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 3736,
+              "identity_collisions": 41,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4708,
+            "output_reserve": 512,
+            "total_required": 5220,
+            "fits": true,
+            "prompt_sha256": "71a9dda0ea8b0ab07e8f337a4d0b3590518ca543c5391ba5be9f634a8786fc16",
+            "tokens_sha256": "1d6f411ead902ab000a32fd097da680ddd46475c0e820f35d5e737ab6ee64029",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 9,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 557,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 2938,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "source_label",
+          "case_id": "eva-06",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 5744,
+            "output_reserve": 512,
+            "total_required": 6256,
+            "fits": true,
+            "prompt_sha256": "92371b728097e6988a76c78e7acad1cdf671819db3731fecfaf658231cf61468",
+            "tokens_sha256": "6de9cdff185718759635f405045e6d8fb3ca1749ca79408de11be9c8a3438e16",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 472,
+              "predicates": 176,
+              "source_provenance": 263,
+              "packet": 3885,
+              "identity_collisions": 31,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4805,
+            "output_reserve": 512,
+            "total_required": 5317,
+            "fits": true,
+            "prompt_sha256": "d230b5c21a4f4e4b3cb8939051723ae8d0b68230e92dfbe813f1505e1ae62051",
+            "tokens_sha256": "60f6cab43624dbc1fd1e251f7a51a1685b37dd8b98db5a9e1d0a4ef4f0b74f88",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 472,
+              "predicates": 176,
+              "source_provenance": 263,
+              "packet": 2947,
+              "identity_collisions": 30,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "malicious_label_explicit",
+          "case_id": "v1e-label-explicit",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 7942,
+            "output_reserve": 512,
+            "total_required": 8454,
+            "fits": true,
+            "prompt_sha256": "1a0d51c8e1bd5bb3bd9039b7627e1e9cffee710995e0cc2045872815d0efa47f",
+            "tokens_sha256": "6990a1a7a15af9639036da4f4d353efe44c423c473da5f5d2fdef183cbbc8a90",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 23,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 536,
+              "predicates": 524,
+              "source_provenance": 263,
+              "packet": 5668,
+              "identity_collisions": 31,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 6534,
+            "output_reserve": 512,
+            "total_required": 7046,
+            "fits": true,
+            "prompt_sha256": "cd44d25b19f2b048c80c4f2ad0b3c719a86535c63687b81df49e198c4791240f",
+            "tokens_sha256": "64f7cdcf9c676301fb2758179896c61e423af190658417e124293ebb228a1f8d",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 23,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 536,
+              "predicates": 524,
+              "source_provenance": 263,
+              "packet": 4261,
+              "identity_collisions": 30,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "private_scope",
+          "case_id": "eva-29",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 3730,
+            "output_reserve": 512,
+            "total_required": 4242,
+            "fits": true,
+            "prompt_sha256": "6450373d3fa08ab661c2c2986e89931ea0b29df6e4dc210de8ce47918e41c6dc",
+            "tokens_sha256": "1dd9c53796e067a3cdea71f42e3614ecf67c40d9322e17788e2ab9bba1a3133d",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 26,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 317,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 2192,
+              "identity_collisions": 31,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 3477,
+            "output_reserve": 512,
+            "total_required": 3989,
+            "fits": true,
+            "prompt_sha256": "9f34631a69518e68884b421b19319c37a553cbe90577ff00342688fcf4212bf0",
+            "tokens_sha256": "ef55edbdc513834aca82d2bf272e7839be31f7c8b1508411a9abad659dcb2166",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 26,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 317,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 1940,
+              "identity_collisions": 30,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "write",
+          "case_id": "eva-30",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4997,
+            "output_reserve": 512,
+            "total_required": 5509,
+            "fits": true,
+            "prompt_sha256": "8a792e90183f4ec5ec18bca3be888155dee798bab556684e760ef871c02eb41c",
+            "tokens_sha256": "60d9a51ffb37dd7deb5fc3cdad333e5010dc6ddc9e7d8c05f1957b216c232bf8",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 15,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 472,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 3315,
+              "identity_collisions": 31,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4357,
+            "output_reserve": 512,
+            "total_required": 4869,
+            "fits": true,
+            "prompt_sha256": "d89a01332eef20bce24238466be2a16466bec9b835b524d4ddbafdb1a9a4d919",
+            "tokens_sha256": "a6a398a5864bbc208d04cf972813f1d0db2a9871e68d70992c963bd77d8e1232",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 15,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 472,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 2676,
+              "identity_collisions": 30,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "unclear_relation",
+          "case_id": "eva-19",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 3709,
+            "output_reserve": 512,
+            "total_required": 4221,
+            "fits": true,
+            "prompt_sha256": "7d40f1917460700097a75dd264afa0f925a22ca7fcb3d634819bff29b1518b30",
+            "tokens_sha256": "b601e77d288d247177c0af9b4aeb29be55e48ea7644acff408e8ac8734572637",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 317,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 2182,
+              "identity_collisions": 31,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 3456,
+            "output_reserve": 512,
+            "total_required": 3968,
+            "fits": true,
+            "prompt_sha256": "3fa94b7e0385946947095150159206b9bbcdf1ec866905b241ce2992b5e0009d",
+            "tokens_sha256": "fece4e91ec900d8fb14c15deff8b23bcb8cd0a2302496ecf3a3fb535cbc8d066",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 317,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 1930,
+              "identity_collisions": 30,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "absent_start",
+          "case_id": "eva-24",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4991,
+            "output_reserve": 512,
+            "total_required": 5503,
+            "fits": true,
+            "prompt_sha256": "9c710eb32ae74fae62eda8ca38a7738b27ac95bb2a7b140aa84f911a8a551951",
+            "tokens_sha256": "36cd9b399e23fed65d66f77b1932d5122351119f01ef5ec54652d265696c7a1a",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 472,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 3309,
+              "identity_collisions": 31,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4351,
+            "output_reserve": 512,
+            "total_required": 4863,
+            "fits": true,
+            "prompt_sha256": "9c325f388d7da2ec3fdf0af07a0886a7bbb375a012275c175c61c6d8f1152fbc",
+            "tokens_sha256": "7997b2d4528ca4f9c6dc2f2994144c7239d274529621ef6612a7715a63f64a87",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 472,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 2670,
+              "identity_collisions": 30,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "negation",
+          "case_id": "eva-25",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 3116,
+            "output_reserve": 512,
+            "total_required": 3628,
+            "fits": true,
+            "prompt_sha256": "473060e11c097aa38a9f95fb9b4d67aa1f443d0190104b129377d6672d1dd10a",
+            "tokens_sha256": "9f0626837797627f807f8e0cc79ebbbafe0759154de5f00e882457c63dccd847",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 15,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 74,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 1841,
+              "identity_collisions": 21,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 3064,
+            "output_reserve": 512,
+            "total_required": 3576,
+            "fits": true,
+            "prompt_sha256": "0270250f47a0936b8ca48b533aa9bacd35d95754842224fe9227e03bfedf1031",
+            "tokens_sha256": "86c875a697416e9d75da8433e47f8336dd343a41215cbd20543fad53a279044f",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 15,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 74,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 1790,
+              "identity_collisions": 20,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "count",
+          "case_id": "eva-26",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4998,
+            "output_reserve": 512,
+            "total_required": 5510,
+            "fits": true,
+            "prompt_sha256": "c887a2a88d87e37ee4a40046e229b4463f000e2b5cb02a25dc259a7ff437eeb0",
+            "tokens_sha256": "4ad6ff3891dedc2b0d368ffb5641f95f098467b8d90a6297e0783efe36c92d37",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 16,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 472,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 3314,
+              "identity_collisions": 31,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4358,
+            "output_reserve": 512,
+            "total_required": 4870,
+            "fits": true,
+            "prompt_sha256": "347899d2446dbf044283fdf88fb65cf57adc4d71f1b12f2bfad7c0a749b478e3",
+            "tokens_sha256": "9d3c1f6612fa9799ece5b8374c2d04df1aa1b5681c2dce1d79630cc08f717655",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 16,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 472,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 2675,
+              "identity_collisions": 30,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "filter",
+          "case_id": "eva-27",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 3137,
+            "output_reserve": 512,
+            "total_required": 3649,
+            "fits": true,
+            "prompt_sha256": "8b11cad5c77d27be44ca15ec427fd25c69d36980c84f0b25828fa4857432f292",
+            "tokens_sha256": "dd7a91150488b099d1985be3895411222fd154924a0e4c0e65563f1f33301e9d",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 74,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 1854,
+              "identity_collisions": 21,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 3085,
+            "output_reserve": 512,
+            "total_required": 3597,
+            "fits": true,
+            "prompt_sha256": "df44b9465a3fbee5b238c3d2ce28c11386c8ad28043d65a388922fc6686082c4",
+            "tokens_sha256": "9459424c609220441173e11bfd4360cb952c7a75296e93c109db50acf1789e4e",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 3,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 74,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 1803,
+              "identity_collisions": 20,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "multi_hop",
+          "case_id": "eva-28",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 5357,
+            "output_reserve": 512,
+            "total_required": 5869,
+            "fits": true,
+            "prompt_sha256": "1c183d189e6c78f81b5b105bb36ae03ece84daafce1de2518665d21836bd54cd",
+            "tokens_sha256": "cdb9f8dc7abb67c1a4d8ffa59dc872a37c17910f728e07ca5fc44230872f9481",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 320,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 3837,
+              "identity_collisions": 21,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 4694,
+            "output_reserve": 512,
+            "total_required": 5206,
+            "fits": true,
+            "prompt_sha256": "c140c78ee81e13d4dc1db9c2cb8697734e61905eca863e5f5a7ebdee32765aa8",
+            "tokens_sha256": "2410c34c5c05438ccc233933d694c956fac0f3ed999a0af21710e3c06ccc0f4a",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 320,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 3175,
+              "identity_collisions": 20,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "smoke-eva-01",
+          "case_id": "eva-01",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 7207,
+            "output_reserve": 512,
+            "total_required": 7719,
+            "fits": true,
+            "prompt_sha256": "2c44326389e69cc5b44f570d329768927b81cbf374453e950c72466535b24511",
+            "tokens_sha256": "11f28fe8e46264ea958de73250e261418038f4cb5d636588abd6f23d130454dc",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 536,
+              "predicates": 352,
+              "source_provenance": 263,
+              "packet": 5100,
+              "identity_collisions": 31,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 6094,
+            "output_reserve": 512,
+            "total_required": 6606,
+            "fits": true,
+            "prompt_sha256": "526929dbc3e5ea334b905e8758c01a13957866305aa8112338815099083acabd",
+            "tokens_sha256": "f409f6e5e0f2eb0b29503676d1a32b3da0316828ccd06c07b17879a8a317927b",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 536,
+              "predicates": 352,
+              "source_provenance": 263,
+              "packet": 3988,
+              "identity_collisions": 30,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "smoke-eva-02",
+          "case_id": "eva-02",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 6878,
+            "output_reserve": 512,
+            "total_required": 7390,
+            "fits": true,
+            "prompt_sha256": "adbb03275da4da422ad6bb3f919412442a81bd022f593683558761bea435dc1c",
+            "tokens_sha256": "2f57952c1d06e87131e7389aa791afb3b1ddf3400aa8e671edd0a2fe91ac8aa9",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 18,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 670,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 4994,
+              "identity_collisions": 31,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 5742,
+            "output_reserve": 512,
+            "total_required": 6254,
+            "fits": true,
+            "prompt_sha256": "eb6024b2f4791786fe11052aa779ac559ac6245f36076116f01edaf970599a63",
+            "tokens_sha256": "ee1f83565ddcfc95fe5e28ecd04852cbec4b5ee991a1abb48f0f848e3a7e0ad3",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 18,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 670,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 3859,
+              "identity_collisions": 30,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "smoke-eva-07",
+          "case_id": "eva-07",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 2803,
+            "output_reserve": 512,
+            "total_required": 3315,
+            "fits": true,
+            "prompt_sha256": "50eccee833fa8c26d095c3d29ea2c532bdc32bd68617a0ec79949c978d366bf9",
+            "tokens_sha256": "fdfd93a7f59fb0acb39065f18764f48970d74c11308659866f89aec4fd9282db",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 29,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 37,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 1551,
+              "identity_collisions": 21,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 2808,
+            "output_reserve": 512,
+            "total_required": 3320,
+            "fits": true,
+            "prompt_sha256": "291c870ae761b0ddaea71146e98ab1c281cdcb04fe9d6bb6406cf181166e88e2",
+            "tokens_sha256": "bd196c7c911ff7c68af08d733488edc0674a52fd04aff1782f14f2abd8467021",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 29,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 37,
+              "predicates": 4,
+              "source_provenance": 263,
+              "packet": 1557,
+              "identity_collisions": 20,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "smoke-eva-08",
+          "case_id": "eva-08",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 18926,
+            "output_reserve": 512,
+            "total_required": 19438,
+            "fits": false,
+            "prompt_sha256": "288f43f0d96f75d957eeca16d5b450d166f717491f1897cdbcf947557318d95e",
+            "tokens_sha256": "a579437e300d51662cd789afe5aa490e8b0b9d5013eb309fe1114fb2cf49750f",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 18,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "packet": 14903,
+              "identity_collisions": 41,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 14019,
+            "output_reserve": 512,
+            "total_required": 14531,
+            "fits": true,
+            "prompt_sha256": "d0597993b8735f10813c53a80354b4c554fb0e526f153e63d8a9721f320ffc2c",
+            "tokens_sha256": "fa6abfdb8a73f64b7b2dbfe8428450f9dff34a1918d6bc1ec44b5b581e648270",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 18,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 1092,
+              "predicates": 1711,
+              "source_provenance": 263,
+              "packet": 9997,
+              "identity_collisions": 40,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "smoke-v1e-country-source-nb",
+          "case_id": "v1e-country-source-nb",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 7212,
+            "output_reserve": 512,
+            "total_required": 7724,
+            "fits": true,
+            "prompt_sha256": "89e26fabda6efe0b995fee6334947569f15e771eb92a10a80066f35c14c3d487",
+            "tokens_sha256": "0a505a497472819ff3f0671adebfd4decd221fc50dcd5c573ea727dc0bf7f70e",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 25,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 536,
+              "predicates": 352,
+              "source_provenance": 263,
+              "packet": 5107,
+              "identity_collisions": 31,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 6099,
+            "output_reserve": 512,
+            "total_required": 6611,
+            "fits": true,
+            "prompt_sha256": "2d693f317e4c7d4e98647c00c445c54ec667048338980243d88061ce78148b9c",
+            "tokens_sha256": "1128440571fd559aa1a63f9bb3f1dbaae09309e23e29179dea6d8d5fef59ccd7",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 25,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 536,
+              "predicates": 352,
+              "source_provenance": 263,
+              "packet": 3995,
+              "identity_collisions": 30,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "smoke-v1e-country-paraphrase-en",
+          "case_id": "v1e-country-paraphrase-en",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 8150,
+            "output_reserve": 512,
+            "total_required": 8662,
+            "fits": true,
+            "prompt_sha256": "f7eecdb168adde20efc5caf449fe618d5b2963818acda9a7913367335d7b25ff",
+            "tokens_sha256": "de2c8d653f10dfd3fb923244bf93ecc61e5c887b340cc4d951878938910bb3ee",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 627,
+              "predicates": 352,
+              "source_provenance": 263,
+              "packet": 5959,
+              "identity_collisions": 31,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          },
+          "columnar": {
+            "input_tokens": 6788,
+            "output_reserve": 512,
+            "total_required": 7300,
+            "fits": true,
+            "prompt_sha256": "4021ffce92196f19a9bcf999f849d4a3e7c42c69a1e37c90ffbcd0de0d5f6a43",
+            "tokens_sha256": "7d47d5118b97fe624603a3ca9f9adf3873331c76132432dfb2b5d3c151fcaa58",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 4,
+              "snapshot_id": 65,
+              "graphs": 73,
+              "trust": 13,
+              "entities": 627,
+              "predicates": 352,
+              "source_provenance": 263,
+              "packet": 4598,
+              "identity_collisions": 30,
+              "context_revision": 10,
+              "presentation_rules": 148
+            }
+          }
+        }
+      ],
+      "native_parities_reproduced": [
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/controls/sampling-False/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/controls/sampling-True/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/absent_start/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/ambiguous_start/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/count/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/filter/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/malicious_label_explicit/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/multi_hop/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/negation/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/private_scope/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/repeat-0/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/repeat-1/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/smoke-eva-01/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/smoke-eva-02/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/smoke-eva-07/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/smoke-eva-08/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/smoke-v1e-country-paraphrase-en/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/smoke-v1e-country-source-nb/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/source_label/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/unclear_relation/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/oracle/write/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/absent_start/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/ambiguous_start/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/count/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/filter/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/malicious_label_explicit/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/multi_hop/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/negation/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/private_scope/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/smoke-eva-01/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/smoke-eva-02/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/smoke-eva-07/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/smoke-eva-08/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/source_label/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/unclear_relation/native-template.stdout",
+        "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz:run/diagnostic/retrieval/write/native-template.stdout"
+      ]
+    },
+    "gemma4": {
+      "rows": [
+        {
+          "condition": "sampling",
+          "name": "sampling-False",
+          "case_id": "eva-01",
+          "kind": "native_sampling_control",
+          "original": {
+            "input_tokens": 252,
+            "output_reserve": 512,
+            "total_required": 764,
+            "fits": true,
+            "prompt_sha256": "6f679e37a588f323a7b5b5b78e9fe0682ab77a1be8c18099f8f96a7f055bd0b1",
+            "tokens_sha256": "d22485bacb1e650a47917e438ff3dd94b56f3f51b385b4531aff3d1e522349bd",
+            "section_contributions": {
+              "system/template/empty-user-object": 69,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "entities": 3,
+              "predicates": 4,
+              "question": 33
+            }
+          },
+          "columnar": {
+            "input_tokens": 252,
+            "output_reserve": 512,
+            "total_required": 764,
+            "fits": true,
+            "prompt_sha256": "6f679e37a588f323a7b5b5b78e9fe0682ab77a1be8c18099f8f96a7f055bd0b1",
+            "tokens_sha256": "d22485bacb1e650a47917e438ff3dd94b56f3f51b385b4531aff3d1e522349bd",
+            "section_contributions": {
+              "system/template/empty-user-object": 69,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "entities": 3,
+              "predicates": 4,
+              "question": 33
+            }
+          }
+        },
+        {
+          "condition": "sampling",
+          "name": "sampling-True",
+          "case_id": "eva-01",
+          "kind": "native_sampling_control",
+          "original": {
+            "input_tokens": 252,
+            "output_reserve": 512,
+            "total_required": 764,
+            "fits": true,
+            "prompt_sha256": "6f679e37a588f323a7b5b5b78e9fe0682ab77a1be8c18099f8f96a7f055bd0b1",
+            "tokens_sha256": "d22485bacb1e650a47917e438ff3dd94b56f3f51b385b4531aff3d1e522349bd",
+            "section_contributions": {
+              "system/template/empty-user-object": 69,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "entities": 3,
+              "predicates": 4,
+              "question": 33
+            }
+          },
+          "columnar": {
+            "input_tokens": 252,
+            "output_reserve": 512,
+            "total_required": 764,
+            "fits": true,
+            "prompt_sha256": "6f679e37a588f323a7b5b5b78e9fe0682ab77a1be8c18099f8f96a7f055bd0b1",
+            "tokens_sha256": "d22485bacb1e650a47917e438ff3dd94b56f3f51b385b4531aff3d1e522349bd",
+            "section_contributions": {
+              "system/template/empty-user-object": 69,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "entities": 3,
+              "predicates": 4,
+              "question": 33
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "repeat-0",
+          "case_id": "eva-01",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4376,
+            "output_reserve": 512,
+            "total_required": 4888,
+            "fits": true,
+            "prompt_sha256": "e1756c9382967b40c44646c16e8692438d716140628ce93c404dbf74798374f2",
+            "tokens_sha256": "fbc7205c526de4bf3b14e9bdd8d02c251a64e3e6d0196aa946a68fc2e2e92071",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4376,
+            "output_reserve": 512,
+            "total_required": 4888,
+            "fits": true,
+            "prompt_sha256": "e1756c9382967b40c44646c16e8692438d716140628ce93c404dbf74798374f2",
+            "tokens_sha256": "fbc7205c526de4bf3b14e9bdd8d02c251a64e3e6d0196aa946a68fc2e2e92071",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "repeat-1",
+          "case_id": "eva-01",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4376,
+            "output_reserve": 512,
+            "total_required": 4888,
+            "fits": true,
+            "prompt_sha256": "e1756c9382967b40c44646c16e8692438d716140628ce93c404dbf74798374f2",
+            "tokens_sha256": "fbc7205c526de4bf3b14e9bdd8d02c251a64e3e6d0196aa946a68fc2e2e92071",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4376,
+            "output_reserve": 512,
+            "total_required": 4888,
+            "fits": true,
+            "prompt_sha256": "e1756c9382967b40c44646c16e8692438d716140628ce93c404dbf74798374f2",
+            "tokens_sha256": "fbc7205c526de4bf3b14e9bdd8d02c251a64e3e6d0196aa946a68fc2e2e92071",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "ambiguous_start",
+          "case_id": "eva-20",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4358,
+            "output_reserve": 512,
+            "total_required": 4870,
+            "fits": true,
+            "prompt_sha256": "1d8496676a706086f85d45d2efc1bc2abd84cf54a6a15628bbf7ffeea68620d1",
+            "tokens_sha256": "088c505e6612b230643cd183e05d1e5aee4b6099f6ead13ec53d33e9eda8d715",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 9,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4358,
+            "output_reserve": 512,
+            "total_required": 4870,
+            "fits": true,
+            "prompt_sha256": "1d8496676a706086f85d45d2efc1bc2abd84cf54a6a15628bbf7ffeea68620d1",
+            "tokens_sha256": "088c505e6612b230643cd183e05d1e5aee4b6099f6ead13ec53d33e9eda8d715",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 9,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "source_label",
+          "case_id": "eva-06",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4371,
+            "output_reserve": 512,
+            "total_required": 4883,
+            "fits": true,
+            "prompt_sha256": "7ccd8d30eb7bfa68d196c6356c2d2bcd4d1467acb028f31964a7a09816f0e2f9",
+            "tokens_sha256": "6852f62a4f318842e3719e915105cedeac352b8108e8b9bc661716b8ae8e281e",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 22,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4371,
+            "output_reserve": 512,
+            "total_required": 4883,
+            "fits": true,
+            "prompt_sha256": "7ccd8d30eb7bfa68d196c6356c2d2bcd4d1467acb028f31964a7a09816f0e2f9",
+            "tokens_sha256": "6852f62a4f318842e3719e915105cedeac352b8108e8b9bc661716b8ae8e281e",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 22,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "malicious_label_explicit",
+          "case_id": "v1e-label-explicit",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4373,
+            "output_reserve": 512,
+            "total_required": 4885,
+            "fits": true,
+            "prompt_sha256": "8e19f97db3d1bfd1f8beeec69a7ce73c61aa93fe92f0029df070f8acd5b3c24e",
+            "tokens_sha256": "65b204c0e0c67653597525c9be9cff9450b49e41904b4fb30cc4763fc6e0e1f8",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4373,
+            "output_reserve": 512,
+            "total_required": 4885,
+            "fits": true,
+            "prompt_sha256": "8e19f97db3d1bfd1f8beeec69a7ce73c61aa93fe92f0029df070f8acd5b3c24e",
+            "tokens_sha256": "65b204c0e0c67653597525c9be9cff9450b49e41904b4fb30cc4763fc6e0e1f8",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "private_scope",
+          "case_id": "eva-29",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4375,
+            "output_reserve": 512,
+            "total_required": 4887,
+            "fits": true,
+            "prompt_sha256": "e96b328fcebe8e2546e2a677a93bdbd756c5cea43f1710d567b9444e7259208c",
+            "tokens_sha256": "e7954f0787fef1c028a892c306ce32ca21628a02398170253b1dc5458509a1d2",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 26,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4375,
+            "output_reserve": 512,
+            "total_required": 4887,
+            "fits": true,
+            "prompt_sha256": "e96b328fcebe8e2546e2a677a93bdbd756c5cea43f1710d567b9444e7259208c",
+            "tokens_sha256": "e7954f0787fef1c028a892c306ce32ca21628a02398170253b1dc5458509a1d2",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 26,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "write",
+          "case_id": "eva-30",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4363,
+            "output_reserve": 512,
+            "total_required": 4875,
+            "fits": true,
+            "prompt_sha256": "e6fc4bfe0bc3368b71fa95891a1e31356ad6adad0c2ebdacfc09254a98ac0818",
+            "tokens_sha256": "12aee02a3765df585e5c1a3f8607ba93797a82abc07f98522267f2a7bc8c4d3d",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 15,
+              "language": 3,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4363,
+            "output_reserve": 512,
+            "total_required": 4875,
+            "fits": true,
+            "prompt_sha256": "e6fc4bfe0bc3368b71fa95891a1e31356ad6adad0c2ebdacfc09254a98ac0818",
+            "tokens_sha256": "12aee02a3765df585e5c1a3f8607ba93797a82abc07f98522267f2a7bc8c4d3d",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 15,
+              "language": 3,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "unclear_relation",
+          "case_id": "eva-19",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4365,
+            "output_reserve": 512,
+            "total_required": 4877,
+            "fits": true,
+            "prompt_sha256": "e3765ff80c60724c5fd1f0e3fc8cc12216e92119aa287a73a7c713fd9a584365",
+            "tokens_sha256": "2d9373bf28b54441294c79d8e70e151067379f330315b3dbc36d51e4da29ba76",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 16,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4365,
+            "output_reserve": 512,
+            "total_required": 4877,
+            "fits": true,
+            "prompt_sha256": "e3765ff80c60724c5fd1f0e3fc8cc12216e92119aa287a73a7c713fd9a584365",
+            "tokens_sha256": "2d9373bf28b54441294c79d8e70e151067379f330315b3dbc36d51e4da29ba76",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 16,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "absent_start",
+          "case_id": "eva-24",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4363,
+            "output_reserve": 512,
+            "total_required": 4875,
+            "fits": true,
+            "prompt_sha256": "0ed3ae987f9701f9849c7f8781858a2b4232a579e673a63b4301db929dde5054",
+            "tokens_sha256": "e1a9d0af5865faf6c04c2483bae7644cf762c5268ea7f94eb66d0137b52d2521",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4363,
+            "output_reserve": 512,
+            "total_required": 4875,
+            "fits": true,
+            "prompt_sha256": "0ed3ae987f9701f9849c7f8781858a2b4232a579e673a63b4301db929dde5054",
+            "tokens_sha256": "e1a9d0af5865faf6c04c2483bae7644cf762c5268ea7f94eb66d0137b52d2521",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "negation",
+          "case_id": "eva-25",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4366,
+            "output_reserve": 512,
+            "total_required": 4878,
+            "fits": true,
+            "prompt_sha256": "8b9b1e48440f4c59e4fcfa90615e43b4007cb2ba1e03660bd715c3efd4974e38",
+            "tokens_sha256": "ea3c5fa312568f51591e61ae7f0a378cb85ff44c6ffdbd32e5ec4c6e53fdabac",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 17,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4366,
+            "output_reserve": 512,
+            "total_required": 4878,
+            "fits": true,
+            "prompt_sha256": "8b9b1e48440f4c59e4fcfa90615e43b4007cb2ba1e03660bd715c3efd4974e38",
+            "tokens_sha256": "ea3c5fa312568f51591e61ae7f0a378cb85ff44c6ffdbd32e5ec4c6e53fdabac",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 17,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "count",
+          "case_id": "eva-26",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4367,
+            "output_reserve": 512,
+            "total_required": 4879,
+            "fits": true,
+            "prompt_sha256": "41c724b410c6669691a44afe5a221b7ea645c4b6e6e65316b124c67cb0a63526",
+            "tokens_sha256": "548749501fb6646e1bbfae745496de2948f39ca3e97ec16433e7518cf3192daa",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 18,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4367,
+            "output_reserve": 512,
+            "total_required": 4879,
+            "fits": true,
+            "prompt_sha256": "41c724b410c6669691a44afe5a221b7ea645c4b6e6e65316b124c67cb0a63526",
+            "tokens_sha256": "548749501fb6646e1bbfae745496de2948f39ca3e97ec16433e7518cf3192daa",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 18,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "filter",
+          "case_id": "eva-27",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4373,
+            "output_reserve": 512,
+            "total_required": 4885,
+            "fits": true,
+            "prompt_sha256": "54bf63701802b60b58f633079303ef6bd9627ab75ab8eba2de6ff528e949d07c",
+            "tokens_sha256": "232f47c2f26b3340a841b36219941f88d7bec4f5db77f1309a77bae1b794bb57",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4373,
+            "output_reserve": 512,
+            "total_required": 4885,
+            "fits": true,
+            "prompt_sha256": "54bf63701802b60b58f633079303ef6bd9627ab75ab8eba2de6ff528e949d07c",
+            "tokens_sha256": "232f47c2f26b3340a841b36219941f88d7bec4f5db77f1309a77bae1b794bb57",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "multi_hop",
+          "case_id": "eva-28",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4363,
+            "output_reserve": 512,
+            "total_required": 4875,
+            "fits": true,
+            "prompt_sha256": "672a5dba227773ae98f05fd02d965c31bcf3f0fffdba954a4d3649a1b49b4048",
+            "tokens_sha256": "561521d6ed7efb2e3e7b4c40917ade0e256bc8653b252a369fce754b2349ff5b",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4363,
+            "output_reserve": 512,
+            "total_required": 4875,
+            "fits": true,
+            "prompt_sha256": "672a5dba227773ae98f05fd02d965c31bcf3f0fffdba954a4d3649a1b49b4048",
+            "tokens_sha256": "561521d6ed7efb2e3e7b4c40917ade0e256bc8653b252a369fce754b2349ff5b",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "smoke-eva-01",
+          "case_id": "eva-01",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4376,
+            "output_reserve": 512,
+            "total_required": 4888,
+            "fits": true,
+            "prompt_sha256": "e1756c9382967b40c44646c16e8692438d716140628ce93c404dbf74798374f2",
+            "tokens_sha256": "fbc7205c526de4bf3b14e9bdd8d02c251a64e3e6d0196aa946a68fc2e2e92071",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4376,
+            "output_reserve": 512,
+            "total_required": 4888,
+            "fits": true,
+            "prompt_sha256": "e1756c9382967b40c44646c16e8692438d716140628ce93c404dbf74798374f2",
+            "tokens_sha256": "fbc7205c526de4bf3b14e9bdd8d02c251a64e3e6d0196aa946a68fc2e2e92071",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "smoke-eva-02",
+          "case_id": "eva-02",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4369,
+            "output_reserve": 512,
+            "total_required": 4881,
+            "fits": true,
+            "prompt_sha256": "f50101cf6ba59c61feb07b272e42c8f48e1bca8baa878053e45ee2cfbfb59682",
+            "tokens_sha256": "416fe4ebe8e17bd669f8af71d289f033221133c7fdc5ea3853123b410706ed66",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4369,
+            "output_reserve": 512,
+            "total_required": 4881,
+            "fits": true,
+            "prompt_sha256": "f50101cf6ba59c61feb07b272e42c8f48e1bca8baa878053e45ee2cfbfb59682",
+            "tokens_sha256": "416fe4ebe8e17bd669f8af71d289f033221133c7fdc5ea3853123b410706ed66",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "smoke-eva-07",
+          "case_id": "eva-07",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4377,
+            "output_reserve": 512,
+            "total_required": 4889,
+            "fits": true,
+            "prompt_sha256": "12a418224136566e3cab4e822e05b59b8018fd74ae6d8b86218e190d36ac3ae9",
+            "tokens_sha256": "9e9d13ee3e43ecf1391769b66be953ef8682e092aed675d2e8f01f45e6a1d697",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 28,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4377,
+            "output_reserve": 512,
+            "total_required": 4889,
+            "fits": true,
+            "prompt_sha256": "12a418224136566e3cab4e822e05b59b8018fd74ae6d8b86218e190d36ac3ae9",
+            "tokens_sha256": "9e9d13ee3e43ecf1391769b66be953ef8682e092aed675d2e8f01f45e6a1d697",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 28,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "smoke-eva-08",
+          "case_id": "eva-08",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4369,
+            "output_reserve": 512,
+            "total_required": 4881,
+            "fits": true,
+            "prompt_sha256": "1af5569e5a1c3780dc6d3462bcd4dad36456c5203780e8aef90a635f8a56e7f4",
+            "tokens_sha256": "bb6ba18edb8f56f7cf8be9093a27f1c1a7adcf7c5bf3ed0fc45e64f6f23a6c2b",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4369,
+            "output_reserve": 512,
+            "total_required": 4881,
+            "fits": true,
+            "prompt_sha256": "1af5569e5a1c3780dc6d3462bcd4dad36456c5203780e8aef90a635f8a56e7f4",
+            "tokens_sha256": "bb6ba18edb8f56f7cf8be9093a27f1c1a7adcf7c5bf3ed0fc45e64f6f23a6c2b",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "smoke-v1e-country-source-nb",
+          "case_id": "v1e-country-source-nb",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4373,
+            "output_reserve": 512,
+            "total_required": 4885,
+            "fits": true,
+            "prompt_sha256": "ef3fa91812a81135817f19bd47fa1dfaab5a836896878805a80060eb2156ef1d",
+            "tokens_sha256": "41257673a438d22b31401c8e098d7331e781ac56a36ded463c9d3f598e64d69e",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4373,
+            "output_reserve": 512,
+            "total_required": 4885,
+            "fits": true,
+            "prompt_sha256": "ef3fa91812a81135817f19bd47fa1dfaab5a836896878805a80060eb2156ef1d",
+            "tokens_sha256": "41257673a438d22b31401c8e098d7331e781ac56a36ded463c9d3f598e64d69e",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "oracle",
+          "name": "smoke-v1e-country-paraphrase-en",
+          "case_id": "v1e-country-paraphrase-en",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4370,
+            "output_reserve": 512,
+            "total_required": 4882,
+            "fits": true,
+            "prompt_sha256": "bfa85282bed07d22427ba9f90012d4ce306129bbf8a9b50eb33e58fea552ad11",
+            "tokens_sha256": "75082f47d79d6b6a6f2f5a388d01e4e3cf4b2c2fcf1f0e7b31afc50ea049a5fa",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 21,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4370,
+            "output_reserve": 512,
+            "total_required": 4882,
+            "fits": true,
+            "prompt_sha256": "bfa85282bed07d22427ba9f90012d4ce306129bbf8a9b50eb33e58fea552ad11",
+            "tokens_sha256": "75082f47d79d6b6a6f2f5a388d01e4e3cf4b2c2fcf1f0e7b31afc50ea049a5fa",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 21,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "ambiguous_start",
+          "case_id": "eva-20",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 5950,
+            "output_reserve": 512,
+            "total_required": 6462,
+            "fits": true,
+            "prompt_sha256": "3de1b4d3591bc032fe043e745f01a4cd05803a7bb5a290821666be620478a2fe",
+            "tokens_sha256": "4220c787ce4affb93bb4fa18c189d7fa16d5e24c654bddf0112c75758b29e2d3",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 9,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 637,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 4063,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 5015,
+            "output_reserve": 512,
+            "total_required": 5527,
+            "fits": true,
+            "prompt_sha256": "efe34fa2f798263a434a492091ed88ed5e02267b51c83a423c13fa1eb0f9c92c",
+            "tokens_sha256": "4412a5bd86eb5ba0b2bc4821ab85f3b7f7082988ad382f700a1a06ea2d62d4c4",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 9,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 637,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 3129,
+              "identity_collisions": 41,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "source_label",
+          "case_id": "eva-06",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 6218,
+            "output_reserve": 512,
+            "total_required": 6730,
+            "fits": true,
+            "prompt_sha256": "29ffdd457c45bd05ffcbd616e4ff3ce9ebf4150e131f358f5c4133cd351114b8",
+            "tokens_sha256": "4ceabc36d165723db77c4120a645e14eced5e0b4f81ec68da3b1d0d209528ff4",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 22,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 539,
+              "predicates": 192,
+              "source_provenance": 283,
+              "packet": 4238,
+              "identity_collisions": 32,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 5113,
+            "output_reserve": 512,
+            "total_required": 5625,
+            "fits": true,
+            "prompt_sha256": "2e84393254ca8350edccac6db5d44645e96d630cb74f861a29b3936621d1a979",
+            "tokens_sha256": "e0ff4956bf5094fc6d6ced3f13985686aabbe6ac5d0d8fda3057e7eaff71fe1a",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 22,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 539,
+              "predicates": 192,
+              "source_provenance": 283,
+              "packet": 3134,
+              "identity_collisions": 31,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "malicious_label_explicit",
+          "case_id": "v1e-label-explicit",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 8558,
+            "output_reserve": 512,
+            "total_required": 9070,
+            "fits": true,
+            "prompt_sha256": "678a1cfab9bc14619d44b593aa4638d6d24aedb0d7da1f406d6d54a006daa691",
+            "tokens_sha256": "22d7aaacffcdc338f3512c530574efa1f62595ed86db5061878b92ae51657063",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 617,
+              "predicates": 566,
+              "source_provenance": 283,
+              "packet": 6124,
+              "identity_collisions": 32,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 6919,
+            "output_reserve": 512,
+            "total_required": 7431,
+            "fits": true,
+            "prompt_sha256": "e948538fcbb9e09e788dd0205f49ac24dba8eac8d6f4f837bb5339f6855b8147",
+            "tokens_sha256": "6d8c28ca313c5b191365b6d3e29e966c17c697736354beec7743050a6399ed86",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 617,
+              "predicates": 566,
+              "source_provenance": 283,
+              "packet": 4486,
+              "identity_collisions": 31,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "private_scope",
+          "case_id": "eva-29",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 4003,
+            "output_reserve": 512,
+            "total_required": 4515,
+            "fits": true,
+            "prompt_sha256": "d3d0f9009ee7d664d72087d7cb8b471de5d109c7e5143590303172468820fb04",
+            "tokens_sha256": "f23baddf2fe63035efed683328ed6f1b2c51e5ce48a75bcf9490b586872d146f",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 26,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 361,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 2385,
+              "identity_collisions": 32,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 3688,
+            "output_reserve": 512,
+            "total_required": 4200,
+            "fits": true,
+            "prompt_sha256": "67621edf0f304c761c7fc28d628336274bfc98a0e10d1f543ba73df5f86aa0c9",
+            "tokens_sha256": "966ba4454e5e92dc2e82548bc9a6bd302ff835137cad8793176465aa5cfd6754",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 26,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 361,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 2071,
+              "identity_collisions": 31,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "write",
+          "case_id": "eva-30",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 5397,
+            "output_reserve": 512,
+            "total_required": 5909,
+            "fits": true,
+            "prompt_sha256": "edf755d5b66a5ec536b86f55791327da95ade783ed150ccc302a2b727f7879f9",
+            "tokens_sha256": "32a8e7ee169a2b32386e09017dff4766b4913a3f689bc8dab0323e5e403065c3",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 15,
+              "language": 3,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 539,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 3613,
+              "identity_collisions": 32,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4638,
+            "output_reserve": 512,
+            "total_required": 5150,
+            "fits": true,
+            "prompt_sha256": "bf53e76ba21735b151a7d6d98d941f9be9f3459c93bcb6681b0427ab16a6cb73",
+            "tokens_sha256": "58e95a0b804c230a15b710d63ae3a7660abfbc52229c0f5fbf853068d500bb70",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 15,
+              "language": 3,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 539,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 2855,
+              "identity_collisions": 31,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "unclear_relation",
+          "case_id": "eva-19",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 3982,
+            "output_reserve": 512,
+            "total_required": 4494,
+            "fits": true,
+            "prompt_sha256": "d6e9c4eb1a8d0f0008f12ef9e8da7b3519bd1743145da6aaf33fe7f3a70deda5",
+            "tokens_sha256": "61c08ed1d2c96b0bb3af9e6712005ab7e7f3bca3e4982ee7fa0229097cd66c54",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 16,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 361,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 2374,
+              "identity_collisions": 32,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 3667,
+            "output_reserve": 512,
+            "total_required": 4179,
+            "fits": true,
+            "prompt_sha256": "72786c41469abfc3f3ead23dce9324f689754998cc0357f6a6c10857ca9dec1f",
+            "tokens_sha256": "90926b306bd7277bf12ea1f426c12b2299912a367603bd4c24fac83d82b09bd3",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 16,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 361,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 2060,
+              "identity_collisions": 31,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "absent_start",
+          "case_id": "eva-24",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 5389,
+            "output_reserve": 512,
+            "total_required": 5901,
+            "fits": true,
+            "prompt_sha256": "32f0bcf7c76a6224cdddd8d5fd693f16969fa87307f68d4b4cd9c5cb08a37bfd",
+            "tokens_sha256": "a7985cf1fca244af3cec8442d54df97d8c2a47c986fcb0e951b685bb00c1a9c4",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 539,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 3605,
+              "identity_collisions": 32,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4630,
+            "output_reserve": 512,
+            "total_required": 5142,
+            "fits": true,
+            "prompt_sha256": "991dacf31d638a55e387af1cecd74f3bfe95bed3e7a004db2d889e671fad737e",
+            "tokens_sha256": "10e679a16c39422160a0611f5b48c68792b67caf46c7221a21394755644b3fca",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 539,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 2847,
+              "identity_collisions": 31,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "negation",
+          "case_id": "eva-25",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 3307,
+            "output_reserve": 512,
+            "total_required": 3819,
+            "fits": true,
+            "prompt_sha256": "e12bc1b93f13731a3b69f1fc159c5e0863ac05cbf6f5548a067bfb55c47ea0a7",
+            "tokens_sha256": "5f85e00529a1f3aed6ea539d68c8ac6c409757ebd097343bdbadfced25d1a792",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 17,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 85,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 1983,
+              "identity_collisions": 23,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 3233,
+            "output_reserve": 512,
+            "total_required": 3745,
+            "fits": true,
+            "prompt_sha256": "ae16b906fdc5e5324cdad8562ea1c7b29d554490e858f33584d648ecb8f8d306",
+            "tokens_sha256": "310ad3b3419adaccb4571b64ab8342775116d359829bad8ec6e3aa78bd175f75",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 17,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 85,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 1910,
+              "identity_collisions": 22,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "count",
+          "case_id": "eva-26",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 5401,
+            "output_reserve": 512,
+            "total_required": 5913,
+            "fits": true,
+            "prompt_sha256": "44cf3a8198f19d300b72618ec305d4ee284212c3a65d477cf449eeee8d941e86",
+            "tokens_sha256": "a81bc7b174ec1807cb55e35ef392e1a90b42ea1759ea1b8036fb74a652e80ce7",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 18,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 539,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 3613,
+              "identity_collisions": 32,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4642,
+            "output_reserve": 512,
+            "total_required": 5154,
+            "fits": true,
+            "prompt_sha256": "a19d28c867be3c1dafec587d9bd15a4d9ecb63118b29182bd40e65b40ad4223a",
+            "tokens_sha256": "aed80cefe642b2cf77489cccfa3f88f09d47b85079f1cd04a02a7f1ed7ce8fae",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 18,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 539,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 2855,
+              "identity_collisions": 31,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "filter",
+          "case_id": "eva-27",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 3327,
+            "output_reserve": 512,
+            "total_required": 3839,
+            "fits": true,
+            "prompt_sha256": "a507c0616bf74a0b044b423ee94e70b1c65f4c35151ff3078e4e91608c40314a",
+            "tokens_sha256": "cd8ccb8a689c5deb08919211918d0cf960a393cec53cb1f30260778afe6341b0",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 85,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 1996,
+              "identity_collisions": 23,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 3253,
+            "output_reserve": 512,
+            "total_required": 3765,
+            "fits": true,
+            "prompt_sha256": "dbb5c3044867ae7d3354c3064fad19a2c1917b080be988992c0aa8171afe1d6d",
+            "tokens_sha256": "69cdde55f23ca7005289cdecbe972da15fa976bc438108720b044576a8a94d5e",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 85,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 1923,
+              "identity_collisions": 22,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "multi_hop",
+          "case_id": "eva-28",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 5732,
+            "output_reserve": 512,
+            "total_required": 6244,
+            "fits": true,
+            "prompt_sha256": "7684815e1edbc3a23a0583774a7f83415d88a672da7bee56de11bed295eeb540",
+            "tokens_sha256": "75fa17ad02d42287394fd568bd0cf4ff59d7b8fec10987cbfaf3c2601f651de7",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 370,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 4126,
+              "identity_collisions": 23,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 4956,
+            "output_reserve": 512,
+            "total_required": 5468,
+            "fits": true,
+            "prompt_sha256": "d1f27bc75c62ce6c44e7e4a9feca8c3f32bcabdb919cb11af81fda761cd152a4",
+            "tokens_sha256": "41c9da4ec4b57957d75a789d7e951a56f6f45e9095572647bcd75902cc64a76f",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 14,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 370,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 3351,
+              "identity_collisions": 22,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "smoke-eva-01",
+          "case_id": "eva-01",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 7752,
+            "output_reserve": 512,
+            "total_required": 8264,
+            "fits": true,
+            "prompt_sha256": "11d89cfedd77a895f9095ba78f4f55c76c090f9e84c0e88ab6576996c060589b",
+            "tokens_sha256": "828ae492c30d8ff410ee4bbada9c2b351770209c94045ca91d6aa966aff446f8",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 617,
+              "predicates": 378,
+              "source_provenance": 283,
+              "packet": 5503,
+              "identity_collisions": 32,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 6455,
+            "output_reserve": 512,
+            "total_required": 6967,
+            "fits": true,
+            "prompt_sha256": "7b1a24166a812172aa1ad8b0e8379f86c5ab1c3dd96976843a3874ca893b82fc",
+            "tokens_sha256": "58060c79a114704d94d4f95edd25573d8860bbf41db68e16c08106ac0a9060ed",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 27,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 617,
+              "predicates": 378,
+              "source_provenance": 283,
+              "packet": 4207,
+              "identity_collisions": 31,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "smoke-eva-02",
+          "case_id": "eva-02",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 7431,
+            "output_reserve": 512,
+            "total_required": 7943,
+            "fits": true,
+            "prompt_sha256": "45a7c67afdeae7fcf05ad9266abc7104d4873f99cfa845e868f3b6ac5b0b8d3c",
+            "tokens_sha256": "0b6c66ac00e68ffe68d34b1ad594c92972f1d738174a3a4e67bef1788b4eb145",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 775,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 5405,
+              "identity_collisions": 32,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 6098,
+            "output_reserve": 512,
+            "total_required": 6610,
+            "fits": true,
+            "prompt_sha256": "08a55e2d058966ef8a3d72c5c95ae1b8f79050b5cd9157abf4cae8ef96f00d89",
+            "tokens_sha256": "94fee4a3d9f5b72124efb61dd661cc2dc5b28b33cf7619ed8a9bf6aff6e64d5d",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 775,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 4073,
+              "identity_collisions": 31,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "smoke-eva-07",
+          "case_id": "eva-07",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 2962,
+            "output_reserve": 512,
+            "total_required": 3474,
+            "fits": true,
+            "prompt_sha256": "b5eb6e59ac3584f99d2dfdb2c1b4fd88862569e48dead4e681ff35a9ee93bb49",
+            "tokens_sha256": "d8aab8e5e53cfaee823a61047d862ed2e4fc413e7677ddf3e4420a6715fe8ff6",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 28,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 43,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 1669,
+              "identity_collisions": 23,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 2953,
+            "output_reserve": 512,
+            "total_required": 3465,
+            "fits": true,
+            "prompt_sha256": "29321bca4e40fee7a868003f27a8a1b3e1dd1a1d1f5408379433b6129c0f0807",
+            "tokens_sha256": "7591ad0e809158aa03eb6c2bee9ff3aa897b3367a3cccc45d27a68dccc73a0d8",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 28,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 43,
+              "predicates": 4,
+              "source_provenance": 283,
+              "packet": 1661,
+              "identity_collisions": 22,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "smoke-eva-08",
+          "case_id": "eva-08",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 20353,
+            "output_reserve": 512,
+            "total_required": 20865,
+            "fits": false,
+            "prompt_sha256": "9466ecbad74a0935a170eb80a33f83077c7bb409d85e6b5b1cf05742ecbfe33e",
+            "tokens_sha256": "e22e6dd68376c1a913adf35c6ffe21b6fa32e35d2c3c021c71899550418c0c03",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "packet": 15984,
+              "identity_collisions": 42,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 14703,
+            "output_reserve": 512,
+            "total_required": 15215,
+            "fits": true,
+            "prompt_sha256": "7fa3664e554622d0095a71d0e7f33d4d4915133df77226d9577b214df48df810",
+            "tokens_sha256": "78778d71925409c1360e01b046e6840add07c57263e45fb7a3e749bf1a99810f",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 20,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 1270,
+              "predicates": 1842,
+              "source_provenance": 283,
+              "packet": 10335,
+              "identity_collisions": 41,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "smoke-v1e-country-source-nb",
+          "case_id": "v1e-country-source-nb",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 7744,
+            "output_reserve": 512,
+            "total_required": 8256,
+            "fits": true,
+            "prompt_sha256": "f71f66cfc6a4201ebc487927d5d40bc4f59cd58dc4a3e1e7bf75ed07eca9da5f",
+            "tokens_sha256": "642473486d04dbcad6e5705027252cca26b254611c1cc9cda978151232420794",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 617,
+              "predicates": 378,
+              "source_provenance": 283,
+              "packet": 5498,
+              "identity_collisions": 32,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 6447,
+            "output_reserve": 512,
+            "total_required": 6959,
+            "fits": true,
+            "prompt_sha256": "5ceb15d09e6c0b5a362dc23633d7f33124c47cc9bf1f937f3ebae60845776ad6",
+            "tokens_sha256": "1faff6f1ae8ebf95fb87c9ef0ade8c7be1fdf8bc73ada61e2be3250b08412838",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 24,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 617,
+              "predicates": 378,
+              "source_provenance": 283,
+              "packet": 4202,
+              "identity_collisions": 31,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        },
+        {
+          "condition": "retrieval",
+          "name": "smoke-v1e-country-paraphrase-en",
+          "case_id": "v1e-country-paraphrase-en",
+          "kind": "semantic_diagnostic",
+          "original": {
+            "input_tokens": 8750,
+            "output_reserve": 512,
+            "total_required": 9262,
+            "fits": true,
+            "prompt_sha256": "37bf43acede069a596e80be8e4192d24b11103e179a4c23248113d07a9d580d7",
+            "tokens_sha256": "00be19d673aa9ddeb21dd03a65da3055a1b569f8b74b4de276d4d1bf5e2c8322",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 21,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 724,
+              "predicates": 378,
+              "source_provenance": 283,
+              "packet": 6400,
+              "identity_collisions": 32,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          },
+          "columnar": {
+            "input_tokens": 7178,
+            "output_reserve": 512,
+            "total_required": 7690,
+            "fits": true,
+            "prompt_sha256": "4359f5624833ef366b192163eee4ab0e4fc12b789e4e6e2e59ccc3eb0dfa7502",
+            "tokens_sha256": "8350300d810fb7b46db6d3aabacf2499a6329e1e48799c310b9cea4448825b93",
+            "section_contributions": {
+              "system/template/empty-user-object": 585,
+              "question": 21,
+              "language": 4,
+              "snapshot_id": 66,
+              "graphs": 77,
+              "trust": 13,
+              "entities": 724,
+              "predicates": 378,
+              "source_provenance": 283,
+              "packet": 4829,
+              "identity_collisions": 31,
+              "context_revision": 14,
+              "presentation_rules": 153
+            }
+          }
+        }
+      ],
+      "native_parities_reproduced": [
+        "reports/issue-83-native-one-hop-v1e/evidence.tar.gz:gemma4/controls/ambiguous_start/native-template.stdout",
+        "reports/issue-83-native-one-hop-v1e/evidence.tar.gz:gemma4/controls/malicious_label_explicit/native-template.stdout",
+        "reports/issue-83-native-one-hop-v1e/evidence.tar.gz:gemma4/controls/private_scope/native-template.stdout",
+        "reports/issue-83-native-one-hop-v1e/evidence.tar.gz:gemma4/controls/repeat-0/native-template.stdout",
+        "reports/issue-83-native-one-hop-v1e/evidence.tar.gz:gemma4/controls/repeat-1/native-template.stdout",
+        "reports/issue-83-native-one-hop-v1e/evidence.tar.gz:gemma4/controls/sampling-False/native-template.stdout",
+        "reports/issue-83-native-one-hop-v1e/evidence.tar.gz:gemma4/controls/sampling-True/native-template.stdout",
+        "reports/issue-83-native-one-hop-v1e/evidence.tar.gz:gemma4/controls/source_label/native-template.stdout",
+        "reports/issue-83-native-one-hop-v1e/evidence.tar.gz:gemma4/controls/unclear_relation/native-template.stdout",
+        "reports/issue-83-native-one-hop-v1e/evidence.tar.gz:gemma4/controls/write/native-template.stdout"
+      ]
+    }
+  }
+}

@@ -30,6 +30,17 @@ jobs:
         run: python3 -m venv .venv && .venv/bin/pip install -r tools/requirements.txt
       - name: Build Rust binaries and examples before the bounded Python suite
         run: cargo build --locked --bins --examples
+      - name: Check Chrome cold startup before the bounded browser walkthroughs
+        run: |
+          mkdir -p artifacts/pre-llm
+          browser_profile=$(mktemp -d)
+          trap 'rm -rf "$browser_profile"' EXIT
+          google-chrome --version
+          timeout 45s google-chrome --headless=new --no-first-run --no-default-browser-check \
+            --disable-background-networking --disable-component-update --disable-sync \
+            --metrics-recording-only --user-data-dir="$browser_profile" --dump-dom about:blank \
+            > artifacts/pre-llm/browser-startup.stdout.txt 2> artifacts/pre-llm/browser-startup.stderr.txt
+          grep -Fq '<html><head></head><body></body></html>' artifacts/pre-llm/browser-startup.stdout.txt
       - name: Verify the complete pre-LLM pipeline without refreshing data or gold
         env:
           REQUIRE_FIND_BROWSER: '1'

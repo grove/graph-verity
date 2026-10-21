@@ -1,0 +1,106 @@
+{
+  "version": "v1h-model-free-validation-v1",
+  "validated_commit": "048bb08d34e363060acec137c3ff6dcfd7001237",
+  "full_pipeline_status": "passed",
+  "pipeline_checks": 39,
+  "current_python_tests": 286,
+  "frozen_pilot_tests": 15,
+  "rust_tests": 100,
+  "required_browser_checks": true,
+  "commands": [
+    {
+      "command": ".venv/bin/python tools/native_one_hop.py --variant v1f-diagnostic-r3 assets --out artifacts/issue83-v1h-investigation-20261021/assets.json",
+      "exit_code": 0,
+      "weights_loaded": false
+    },
+    {
+      "command": ".venv/bin/python tools/native_one_hop_v1h.py freeze --out artifacts/issue83-v1h-investigation-20261021/candidate-3",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python tools/native_one_hop_v1h.py register --freeze artifacts/issue83-v1h-investigation-20261021/candidate-3",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python tools/investigate_v1h.py --freeze artifacts/issue83-v1h-investigation-20261021/candidate-3 --out experiments/native-one-hop-v1h-investigation/generated",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python -m unittest discover -s tools -p test_*v1h*.py -v",
+      "exit_code": 0,
+      "tests": 9
+    },
+    {
+      "command": ".venv/bin/python tools/native_one_hop_v1h.py replay --freeze artifacts/v1h-budget",
+      "exit_code": 0,
+      "restored_into_fresh_directory": true
+    },
+    {
+      "command": ".venv/bin/python tools/native_one_hop_v1h.py budget --freeze artifacts/v1h-budget --model qwen35 --out artifacts/issue83-v1h-investigation-20261021/restored-qwen-recount",
+      "exit_code": 0,
+      "all_38_original_and_columnar_prompts_and_tokens_identical": true
+    },
+    {
+      "command": ".venv/bin/python tools/native_one_hop.py --variant v1f-diagnostic-r3 replay --freeze artifacts/v1f-diagnostic-r3 --run artifacts/issue83-v1f-r3-qwen35-first",
+      "exit_code": 0,
+      "original_rust_previews": 69
+    },
+    {
+      "command": "cargo build --locked --offline --bins --examples",
+      "exit_code": 0,
+      "cwd": "artifacts/issue83-v1h-investigation-20261021/verification-checkout",
+      "registered_executable_rebuilt": false
+    },
+    {
+      "command": "REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py",
+      "exit_code": 0,
+      "cwd": "artifacts/issue83-v1h-investigation-20261021/verification-checkout",
+      "environment": {
+        "GIT_DIR": "/Users/grove/projects/graph-verity/.git",
+        "GIT_WORK_TREE": "/Users/grove/projects/graph-verity/artifacts/issue83-v1h-investigation-20261021/verification-checkout"
+      }
+    }
+  ],
+  "exploratory_notes": [
+    {
+      "kind": "model-free prototype",
+      "result": "Repeated-string interning and repeated-value interning still exceed the original budget. Source-preserving columns are separately named and all before/after measurements retained."
+    },
+    {
+      "kind": "unregistered candidate 1",
+      "result": "Verbose token receipt exceeded the unchanged 16 MiB per-archive-member guard in focused-test setup. No model inference. Retained candidate, compacted receipt JSON without removing any data, and used a fresh candidate path."
+    },
+    {
+      "kind": "review-package candidate 1",
+      "result": "Blinding regression found resolved_start:null in the copied host catalog. Kept original catalog in coordinator material and omitted preview-only fields from initial reviewer catalog. Original model-visible contexts/triples unchanged. Final focused tests pass."
+    },
+    {
+      "kind": "synthetic transport",
+      "result": "Full 38-request schedule and private-stop path use fake transport with current-host Rust preview. These are regression tests, not model evidence. Original-byte replay verifies 74 complete-path and four private-stop previews."
+    }
+  ],
+  "candidates": [
+    {
+      "candidate": 1,
+      "source_commit": "8c0f4939c0fe67281785b90806ee83d1a737f327",
+      "freeze_sha256": "3f2c980d927bbc47052eb76ce4b53f446dab50b8abbdc7f514d693777adcb468",
+      "token_receipt_sha256": "d1b69770643779fb8e62c7e60a48d974d942baf4788fbfb0afc0f4074dc67ceb",
+      "registered_as_final": false
+    },
+    {
+      "candidate": 2,
+      "source_commit": "4316a7c83e373ab88960a28f0ca58dffb50169d7",
+      "freeze_sha256": "924ced6d9b0fed9df5814d04abd528380324ddf276f94242940dcce95cfcfc94",
+      "token_receipt_sha256": "affcbaddfcfe3396ab0325de801f439a528556200d1a8079c4a45fe8413e3484",
+      "registered_as_final": false
+    },
+    {
+      "candidate": 3,
+      "source_commit": "d485b9fcaf2de834d07788e8f15fc193b6cce664",
+      "freeze_sha256": "d73ba8e301bd488b6fa60b75f3569f64d5d5ec981139a76fbecc66a1948613e8",
+      "token_receipt_sha256": "affcbaddfcfe3396ab0325de801f439a528556200d1a8079c4a45fe8413e3484",
+      "registered_as_final": true
+    }
+  ],
+  "model_inference_performed": false
+}
