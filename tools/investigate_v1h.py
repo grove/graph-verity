@@ -69,7 +69,9 @@ def build(out, freeze):
     data.parse(data=source.decode(),format='nquads')
     v.require({str(g.identifier) for g in data.graphs() if len(g)}<=set(scope),'Unauthorized graph in review source')
     review['phase1-source/source.nq'] = source
-    review['phase1-source/catalog.json'] = payload['freeze/catalog.json']
+    original_catalog = json.loads(payload['freeze/catalog.json'])
+    review['phase1-source/catalog.json'] = encoded({k:value for k,value in original_catalog.items()
+                                                   if k not in {'resolved_start','blocked','limit'}})
     for name in ['scope.json','policy.json','discovery.json']:
         review['phase1-source/'+name] = payload['source/studies/nl-ask-v1/evaluation/'+name]
     catalog = json.loads(payload['freeze/catalog.json'])
@@ -149,6 +151,7 @@ the coordinator package; do not open them before recording your assessments.
     v.dump(out/'blind-review-files.json',dict(archive_sha256=v.sha(out/'blind-review.tar.gz'),files={n:hashlib.sha256(raw).hexdigest() for n,raw in sorted(review.items())}))
     coordinator = out/'coordinator'
     coordinator.mkdir()
+    (coordinator/'original-host-catalog.json').write_bytes(payload['freeze/catalog.json'])
     v.dump(coordinator/'mapping.json',sorted(mapping,key=lambda r:r['review_id']))
     v.dump(coordinator/'exposed-references-and-prior-AI-analysis.json',dict(cases=rows,prior_rationale_audit=v.read(original/'rationale-audit.json')))
     v.dump(out/'failure-by-failure.json',dict(origin='Source-grounded AI investigation; independent human review pending',cases=failures))

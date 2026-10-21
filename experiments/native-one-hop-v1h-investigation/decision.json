@@ -1,0 +1,32 @@
+{
+  "version": "issue83-v1h-budget-model-free-investigation",
+  "decision": "INCONCLUSIVE_REVISE",
+  "semantic_go": false,
+  "human_review": "pending; zero completed independent reviews",
+  "inference_authorized": false,
+  "inference_performed": false,
+  "models": {
+    "qwen35": {
+      "scheduled": 36,
+      "attempted": 0,
+      "completed": 0,
+      "semantic_numerator": null
+    },
+    "gemma4": {
+      "scheduled": 36,
+      "attempted": 0,
+      "completed": 0,
+      "semantic_numerator": null
+    }
+  },
+  "successor": "issue83-native-cpu-v1h-budget",
+  "new_resource_configuration": false,
+  "semantic_prompt_ablation_registered": false,
+  "alternative_retrieval_registered": false,
+  "v1g_unchanged": true,
+  "integration_75_enabled": false,
+  "issue_83_remains_open": true,
+  "source_meaning_limit": "Original P17/P131/P856 meanings have no descriptive predicate metadata; exposed AI references are not independent truth.",
+  "next_step": "Independent staged human review, then consider the exact bounded Qwen budget-only command under separate explicit authorization and fresh original gates.",
+  "proposed_command": ".venv/bin/python tools/native_one_hop_v1h.py run --freeze artifacts/v1h-budget --model qwen35 --allow-inference --out artifacts/issue83-v1h-budget-qwen35-first"
+}
