@@ -1,0 +1,914 @@
+{
+  "version": "issue83-predicate-provenance-v1",
+  "base_after_merged_pr100": "82e81a3e30c315c27d86b5c125143020a172af18",
+  "origin": "Source-grounded coding-agent audit; independent human review pending",
+  "inference_performed": false,
+  "executions": 0,
+  "decision": "INCONCLUSIVE_REVISE",
+  "input_sha256": {
+    "studies/nl-ask-v1/sources/Q578326.ttl": "3cf5c243dab29b603e3db395f2c1d3c093ac47abd6a68da34d86ddf27f79e6f3",
+    "studies/nl-ask-v1/evaluation/snapshot.nq": "c35b205e7e76b2440b7680ac9139796413401f1a6acfeadc483967f6e5334ae9",
+    "studies/nl-ask-v1/manifest.json": "7d77fe90d019164969f06127245d88b8505ca9c88ff1b66e89032c1bda0ef3c7",
+    "tools/nl_ask_benchmark.py": "eee9d4a7d18f96256997ec4c2db28bc4c08e0f461f286c640168f2004db3a63f",
+    "studies/nl-ask-v1/cases.json": "4a3da0c9dbfea53d12b6249131a8998780bf5e440eded8872dda7ad66eaba3d7",
+    "studies/nl-ask-v1/evaluation/discovery.json": "8d622930f6ef50be91e35db8b98377681b50c2828eb446dd5058e40c6cbed9cc",
+    "experiments/issue83-reverse-predicate-audit/review.json": "b7837cd4bc95c9ab12adabf7449cd146763b65b7bc8d992d0fbcb3c47468159c",
+    "experiments/native-one-hop-v1h-investigation/generated/coordinator/original-host-catalog.json": "7ae4e994df8d969cd5aaf1af0dcd9f43241a00d17cccf3454dca17aaf76559da",
+    "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz": "8e8d927865844b8213ab4845556484f42e93be5f3bf813f540e810d7ad47599a",
+    "experiments/native-one-hop-v1h-budget-qwen35-evidence/evidence.tar.gz": "6d15494ea7b8dedf33f5a95529d0a96075d18158c7700b2214db6411fd969eb7",
+    "experiments/native-one-hop-v1h-qwen-status-precedence-first-evidence/evidence.tar.gz": "399db69966be69512871d74a928ed8445fef65fa10ed800731977eb98f05dfe7",
+    "experiments/native-one-hop-v1h-budget-gemma4-swap2048-evidence/evidence.tar.gz": "02bc0e64418eb3d0bdf71825940e89b7f956aefc11b4410dd2b66a5a81abbde5",
+    "data/wikidata/raw/P131-2555801353.ttl": "ce916cfa8383d7a3c37888f385b89462fb506ce0abbd32040b99c2d07619b296",
+    "data/wikidata/manifest.json": "b3152d97b094f1c5d355a9f12ef0aaeba5de0699573621495b94ad57f13a99e4"
+  },
+  "predicates": [
+    {
+      "property": "P131",
+      "case_id": "eva-07",
+      "graph": {
+        "id": 0,
+        "iri": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+        "origin": "Importer-assigned named graphs, not upstream named graphs; no entailment."
+      },
+      "predicate_binding": {
+        "id": 1002,
+        "graph": 0,
+        "iri": "http://www.wikidata.org/prop/direct/P131"
+      },
+      "exposed_AI_reference": {
+        "version": "nl-ask-draft-v1",
+        "status": "candidate",
+        "start": 100,
+        "predicate": 1002,
+        "graph": 0,
+        "direction": "reverse",
+        "output": "values",
+        "rationale": "AI-authored reference interpretation; inspect the authoritative preview."
+      },
+      "source_edge": {
+        "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+        "statement": "<http://www.wikidata.org/entity/Q578326> <http://www.wikidata.org/prop/direct/P131> <http://www.wikidata.org/entity/Q134620> .",
+        "statement_utf8_sha256": "d5a5ff8acb8d3f91ec0774803e2234651ad69a1a5111808a65c05c56343398fb"
+      },
+      "snapshot_witness": {
+        "source": "studies/nl-ask-v1/evaluation/snapshot.nq",
+        "statement": "<http://www.wikidata.org/entity/Q578326> <http://www.wikidata.org/prop/direct/P131> <http://www.wikidata.org/entity/Q134620> <urn:graph-verity:nl-ask-v1:evaluation:wikidata> .",
+        "statement_utf8_sha256": "f9e33a3b25dc12fbf98dc315364f95f532c0b12f4b81fae922da61da4df6cef6"
+      },
+      "direct_claim_mapping": {
+        "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+        "statement": "<http://www.wikidata.org/entity/P131> <http://wikiba.se/ontology#directClaim> <http://www.wikidata.org/prop/direct/P131> .",
+        "statement_utf8_sha256": "cdfe17d6003af9486d08f030cc575d92b027c234f567fe2108de474acc1c745a"
+      },
+      "property_metadata": [
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/P131> <http://schema.org/description> \"the item is located on the territory of the following administrative entity. Use P276 for specifying locations that are non-administrative places and for items about events. Use P1382 if the item falls only partially into the administrative entity\"@en .",
+          "statement_utf8_sha256": "ffd9a0a5909eab1928a2c5c99ac2f044408725262a7a570b7c2352db72c7d90f",
+          "language": "en",
+          "datatype": null,
+          "lexical": "the item is located on the territory of the following administrative entity. Use P276 for specifying locations that are non-administrative places and for items about events. Use P1382 if the item falls only partially into the administrative entity"
+        },
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/P131> <http://schema.org/name> \"located in the administrative territorial entity\"@en .",
+          "statement_utf8_sha256": "add5b53144d8c3d3e49666bd75135c12f9a4576c1bec82e6da9957d9325e1d44",
+          "language": "en",
+          "datatype": null,
+          "lexical": "located in the administrative territorial entity"
+        },
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/P131> <http://www.w3.org/2000/01/rdf-schema#label> \"located in the administrative territorial entity\"@en .",
+          "statement_utf8_sha256": "68aeeadb06c7540e1c5b4c6a432a4771cca0c6715c9580a691681131b87117df",
+          "language": "en",
+          "datatype": null,
+          "lexical": "located in the administrative territorial entity"
+        },
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/P131> <http://www.w3.org/2004/02/skos/core#prefLabel> \"located in the administrative territorial entity\"@en .",
+          "statement_utf8_sha256": "cd52ebabeaedbbef67cec830bc971346805eb6b487a36894d98d8309792366a1",
+          "language": "en",
+          "datatype": null,
+          "lexical": "located in the administrative territorial entity"
+        }
+      ],
+      "languages": [
+        "en"
+      ],
+      "snapshot_property_subject_statements": 0,
+      "snapshot_direct_predicate_literal_statements": 0,
+      "metadata_in_frozen_prompt": false,
+      "licensing": {
+        "file": "studies/nl-ask-v1/sources/Q578326.ttl",
+        "url": "https://www.wikidata.org/wiki/Special:EntityData/Q578326.ttl",
+        "revision_url": "https://www.wikidata.org/wiki/Special:EntityData/Q578326.ttl?revision=2535539461",
+        "revision": 2535539461,
+        "retrieved_at_utc": "2026-10-18T08:16:10.014443+00:00",
+        "license": "CC0-1.0",
+        "license_url": "https://www.wikidata.org/wiki/Wikidata:Licensing"
+      },
+      "statement_provenance": [
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/statement/Q578326-0980534b-4d7a-9989-6b23-f0b284424624> <http://wikiba.se/ontology#rank> <http://wikiba.se/ontology#NormalRank> .",
+          "statement_utf8_sha256": "2b9557ddbb8c7b61b878968f4aa47c5107d1d6b0607da753e9bf614cb0169969"
+        },
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/statement/Q578326-0980534b-4d7a-9989-6b23-f0b284424624> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://wikiba.se/ontology#BestRank> .",
+          "statement_utf8_sha256": "1528d2a980695c86640922619c4e330007f57fb4e7b272d5392e39a23ad41d6a"
+        },
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/statement/Q578326-0980534b-4d7a-9989-6b23-f0b284424624> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://wikiba.se/ontology#Statement> .",
+          "statement_utf8_sha256": "4af2025603ac32b75272c02775b5ffdeb1d2fe5b060baa20cfa36f2fc4b23936"
+        },
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/statement/Q578326-0980534b-4d7a-9989-6b23-f0b284424624> <http://www.wikidata.org/prop/statement/P131> <http://www.wikidata.org/entity/Q134620> .",
+          "statement_utf8_sha256": "909a42803cfdbfe09205ee4e2866d0cc0b95d3b20533b245b2047cf543212744"
+        }
+      ],
+      "limitation": "Archived source documentation supports predicate meaning, not independent human interpretation or real-world truth. No property-page revision identity is inferred from the enclosing item revision."
+    },
+    {
+      "property": "P856",
+      "case_id": "eva-08",
+      "graph": {
+        "id": 0,
+        "iri": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+        "origin": "Importer-assigned named graphs, not upstream named graphs; no entailment."
+      },
+      "predicate_binding": {
+        "id": 1006,
+        "graph": 0,
+        "iri": "http://www.wikidata.org/prop/direct/P856"
+      },
+      "exposed_AI_reference": {
+        "version": "nl-ask-draft-v1",
+        "status": "candidate",
+        "start": 103,
+        "predicate": 1006,
+        "graph": 0,
+        "direction": "reverse",
+        "output": "values",
+        "rationale": "AI-authored reference interpretation; inspect the authoritative preview."
+      },
+      "source_edge": {
+        "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+        "statement": "<http://www.wikidata.org/entity/Q578326> <http://www.wikidata.org/prop/direct/P856> <https://www.jyu.fi/> .",
+        "statement_utf8_sha256": "75c6bd37dd10ba75594846d9690596d19d3d75b4feabf08cc8dda92e5f93a80f"
+      },
+      "snapshot_witness": {
+        "source": "studies/nl-ask-v1/evaluation/snapshot.nq",
+        "statement": "<http://www.wikidata.org/entity/Q578326> <http://www.wikidata.org/prop/direct/P856> <https://www.jyu.fi/> <urn:graph-verity:nl-ask-v1:evaluation:wikidata> .",
+        "statement_utf8_sha256": "25ed5e8d20f2167bb8683f04558f70208c35d40f6930f7992ff7e7c6c1375bd1"
+      },
+      "direct_claim_mapping": {
+        "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+        "statement": "<http://www.wikidata.org/entity/P856> <http://wikiba.se/ontology#directClaim> <http://www.wikidata.org/prop/direct/P856> .",
+        "statement_utf8_sha256": "5c2adb517ccd70aeb68edaf086f9d1a262c90b4049ebea0a1faf8e0db0a32d92"
+      },
+      "property_metadata": [
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/P856> <http://schema.org/description> \"URL of the official page of an item (current or former). Usage: If a listed URL no longer points to the official website, do not remove it, but see the \\\"Hijacked or dead websites\\\" section of the Talk page\"@en .",
+          "statement_utf8_sha256": "19db8579156ae5c56bdfdec0160077eecb2855fb9dec6068ba17d25805e3bd6c",
+          "language": "en",
+          "datatype": null,
+          "lexical": "URL of the official page of an item (current or former). Usage: If a listed URL no longer points to the official website, do not remove it, but see the \"Hijacked or dead websites\" section of the Talk page"
+        },
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/P856> <http://schema.org/name> \"official website\"@en .",
+          "statement_utf8_sha256": "2189884229b40e1d4e4296c70c50d003ccbfa13ae2e4e7492e705c799f1790c6",
+          "language": "en",
+          "datatype": null,
+          "lexical": "official website"
+        },
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/P856> <http://www.w3.org/2000/01/rdf-schema#label> \"official website\"@en .",
+          "statement_utf8_sha256": "d0dca6f16b47fa5ce24467371e457a6ecc1468ea1a24f434c75aa21bd17193ec",
+          "language": "en",
+          "datatype": null,
+          "lexical": "official website"
+        },
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/P856> <http://www.w3.org/2004/02/skos/core#prefLabel> \"official website\"@en .",
+          "statement_utf8_sha256": "9ac41af419e96d38244e50529f67b10504273953143e1add5d751b964bfeaf02",
+          "language": "en",
+          "datatype": null,
+          "lexical": "official website"
+        }
+      ],
+      "languages": [
+        "en"
+      ],
+      "snapshot_property_subject_statements": 0,
+      "snapshot_direct_predicate_literal_statements": 0,
+      "metadata_in_frozen_prompt": false,
+      "licensing": {
+        "file": "studies/nl-ask-v1/sources/Q578326.ttl",
+        "url": "https://www.wikidata.org/wiki/Special:EntityData/Q578326.ttl",
+        "revision_url": "https://www.wikidata.org/wiki/Special:EntityData/Q578326.ttl?revision=2535539461",
+        "revision": 2535539461,
+        "retrieved_at_utc": "2026-10-18T08:16:10.014443+00:00",
+        "license": "CC0-1.0",
+        "license_url": "https://www.wikidata.org/wiki/Wikidata:Licensing"
+      },
+      "statement_provenance": [
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/statement/Q578326-84d00326-4954-12bc-0990-c69f6d9f6237> <http://wikiba.se/ontology#rank> <http://wikiba.se/ontology#NormalRank> .",
+          "statement_utf8_sha256": "b8ce2b2652d0a11edf1847d087578e3b78f1c550ec5173d0a0ea42872ce539d5"
+        },
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/statement/Q578326-84d00326-4954-12bc-0990-c69f6d9f6237> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://wikiba.se/ontology#BestRank> .",
+          "statement_utf8_sha256": "ece85da7a9c314b70b170dfa3324b244e76495c42f4534d7cd81289c9a13a4da"
+        },
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/statement/Q578326-84d00326-4954-12bc-0990-c69f6d9f6237> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://wikiba.se/ontology#Statement> .",
+          "statement_utf8_sha256": "c7ff9f90641c01ea78e6690b60e5d81eb2baf8e79b7c573049a94d8a6d6f6113"
+        },
+        {
+          "source": "studies/nl-ask-v1/sources/Q578326.ttl",
+          "statement": "<http://www.wikidata.org/entity/statement/Q578326-84d00326-4954-12bc-0990-c69f6d9f6237> <http://www.wikidata.org/prop/statement/P856> <https://www.jyu.fi/> .",
+          "statement_utf8_sha256": "20dd1bd31b4497626470420b80649408d1f1a5eb3c8216ed9855b73a0049a2bf"
+        }
+      ],
+      "limitation": "Archived source documentation supports predicate meaning, not independent human interpretation or real-world truth. No property-page revision identity is inferred from the enclosing item revision."
+    }
+  ],
+  "observations": [
+    {
+      "experiment": "native-one-hop-v1f-diagnostic-r3-evidence",
+      "model": "qwen35",
+      "condition": "oracle",
+      "case_id": "eva-07",
+      "archive": "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz",
+      "raw_member": "run/diagnostic/oracle/smoke-eva-07/proposal.txt",
+      "raw_sha256": "fb8813e2da8052b47c725f9a8423dd5b1e33226a90f3d282bb01d221acff655f",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question asks for resources where Q134620 is the administrative unit. The graph contains a predicate P131 (id 1002) linking entity 102 (University of Jyväskylä) to entity 100 (Q134620). However, the question implies finding other entities (resources) that have Q134620 as their administrative unit, which requires a reverse query on P131 starting from 100. The provided observed_usage for P131 only shows 102 -> 100. There is no evidence in the tables of other entities linked to 100 via P131. Additionally, "
+      },
+      "context_member": "run/diagnostic/oracle/smoke-eva-07/context.json",
+      "context_sha256": "7a62d3985126ec6fd711e239ff36cb79bb9259da40bfc5619e3aa1c5fec3afe5",
+      "attempted": true,
+      "completed": true,
+      "outcome": "model_semantic_failure",
+      "error": null,
+      "measured_model_status": "needs_clarification",
+      "rust_accepted": true,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": null,
+        "predicate": null,
+        "graph": null,
+        "direction": null,
+        "output": null
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": true,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1f-diagnostic-r3-evidence",
+      "model": "qwen35",
+      "condition": "oracle",
+      "case_id": "eva-08",
+      "archive": "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz",
+      "raw_member": "run/diagnostic/oracle/smoke-eva-08/proposal.txt",
+      "raw_sha256": "a447c648883a81ac433f2e4d6e46c4173fc6c4735f052e4a54113a447a182665",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question asks for resources (subjects) that have a specific website (object) as their official website. The provided data shows a relation (P856) between the University of Jyväskylä (102) and the URL (103), but the predicate is not explicitly named 'official website' in the vocabulary. Additionally, the question implies a search for multiple resources, but the data only contains one candidate subject. The specific predicate 'official website' is not found in the predicate list, and the relation P856 is "
+      },
+      "context_member": "run/diagnostic/oracle/smoke-eva-08/context.json",
+      "context_sha256": "cefb03f191f8a44df2c8c610ca90cf593fcaed74097df46c4b62e4706c681964",
+      "attempted": true,
+      "completed": true,
+      "outcome": "model_semantic_failure",
+      "error": null,
+      "measured_model_status": "needs_clarification",
+      "rust_accepted": true,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": null,
+        "predicate": null,
+        "graph": null,
+        "direction": null,
+        "output": null
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": true,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1f-diagnostic-r3-evidence",
+      "model": "qwen35",
+      "condition": "retrieval",
+      "case_id": "eva-07",
+      "archive": "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz",
+      "raw_member": "run/diagnostic/retrieval/smoke-eva-07/proposal.txt",
+      "raw_sha256": "2db92a91b84a7878365bde5c9951ee91c2be9fb8d29dda7d9fe765d7cfb829c8",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question asks for resources where Q134620 is the 'administrative unit' (administrativ enhet). The provided vocabulary contains no predicate matching this concept. Additionally, the question implies a search within 'universitetsgrafen' (university graph), but the available graphs are Wikidata, GeoNames, and GEMET, none of which are explicitly identified as the university graph in the provided data."
+      },
+      "context_member": "run/diagnostic/retrieval/smoke-eva-07/context.json",
+      "context_sha256": "af463b44feeb74368c519cef583d7bb7909bf03624ac8eacf2607093f328bd56",
+      "attempted": true,
+      "completed": true,
+      "outcome": "model_semantic_failure",
+      "error": null,
+      "measured_model_status": "needs_clarification",
+      "rust_accepted": true,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": null,
+        "predicate": null,
+        "graph": null,
+        "direction": null,
+        "output": null
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": false,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1f-diagnostic-r3-evidence",
+      "model": "qwen35",
+      "condition": "retrieval",
+      "case_id": "eva-08",
+      "archive": "experiments/native-one-hop-v1f-diagnostic-r3-evidence/evidence.tar.gz",
+      "raw_member": "run/diagnostic/retrieval/smoke-eva-08/proposal.txt",
+      "raw_sha256": null,
+      "raw_draft": null,
+      "context_member": "run/diagnostic/retrieval/smoke-eva-08/context.json",
+      "context_sha256": "5518062f9e2e359c8a0d69dbd031777f6cf36f66d8fd8d05612d8b47f7ab9a5a",
+      "attempted": false,
+      "completed": false,
+      "outcome": "fatal_failure",
+      "error": "ValueError: Context budget exceeded",
+      "measured_model_status": null,
+      "rust_accepted": null,
+      "exposed_reference_agreement": null,
+      "five_fields": null,
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": true,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1h-budget-qwen35-evidence",
+      "model": "qwen35",
+      "condition": "oracle",
+      "case_id": "eva-07",
+      "archive": "experiments/native-one-hop-v1h-budget-qwen35-evidence/evidence.tar.gz",
+      "raw_member": "run/diagnostic/oracle/smoke-eva-07/proposal.txt",
+      "raw_sha256": "fb8813e2da8052b47c725f9a8423dd5b1e33226a90f3d282bb01d221acff655f",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question asks for resources where Q134620 is the administrative unit. The graph contains a predicate P131 (id 1002) linking entity 102 (University of Jyväskylä) to entity 100 (Q134620). However, the question implies finding other entities (resources) that have Q134620 as their administrative unit, which requires a reverse query on P131 starting from 100. The provided observed_usage for P131 only shows 102 -> 100. There is no evidence in the tables of other entities linked to 100 via P131. Additionally, "
+      },
+      "context_member": "run/diagnostic/oracle/smoke-eva-07/context.json",
+      "context_sha256": "7a62d3985126ec6fd711e239ff36cb79bb9259da40bfc5619e3aa1c5fec3afe5",
+      "attempted": true,
+      "completed": true,
+      "outcome": "model_semantic_failure",
+      "error": null,
+      "measured_model_status": "needs_clarification",
+      "rust_accepted": true,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": null,
+        "predicate": null,
+        "graph": null,
+        "direction": null,
+        "output": null
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": true,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1h-budget-qwen35-evidence",
+      "model": "qwen35",
+      "condition": "oracle",
+      "case_id": "eva-08",
+      "archive": "experiments/native-one-hop-v1h-budget-qwen35-evidence/evidence.tar.gz",
+      "raw_member": "run/diagnostic/oracle/smoke-eva-08/proposal.txt",
+      "raw_sha256": "a447c648883a81ac433f2e4d6e46c4173fc6c4735f052e4a54113a447a182665",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question asks for resources (subjects) that have a specific website (object) as their official website. The provided data shows a relation (P856) between the University of Jyväskylä (102) and the URL (103), but the predicate is not explicitly named 'official website' in the vocabulary. Additionally, the question implies a search for multiple resources, but the data only contains one candidate subject. The specific predicate 'official website' is not found in the predicate list, and the relation P856 is "
+      },
+      "context_member": "run/diagnostic/oracle/smoke-eva-08/context.json",
+      "context_sha256": "cefb03f191f8a44df2c8c610ca90cf593fcaed74097df46c4b62e4706c681964",
+      "attempted": true,
+      "completed": true,
+      "outcome": "model_semantic_failure",
+      "error": null,
+      "measured_model_status": "needs_clarification",
+      "rust_accepted": true,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": null,
+        "predicate": null,
+        "graph": null,
+        "direction": null,
+        "output": null
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": true,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1h-budget-qwen35-evidence",
+      "model": "qwen35",
+      "condition": "retrieval",
+      "case_id": "eva-07",
+      "archive": "experiments/native-one-hop-v1h-budget-qwen35-evidence/evidence.tar.gz",
+      "raw_member": "run/diagnostic/retrieval/smoke-eva-07/proposal.txt",
+      "raw_sha256": "03f069007c504bb143b4d1f92b2b0419527f7a515c2696641b7b6a1ef6a5af8e",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question asks for resources in the 'universitetsgrafen' (university graph) where Q134620 is the administrative unit. The provided graph list includes wikidata (0), geonames (1), and gemet (2). The entity Q134620 is listed in the packet with graph 0 (wikidata). However, the question implies a specific 'universitetsgrafen' which is not explicitly identified as one of the available graph IDs (0, 1, or 2) in the provided context, nor is there a clear mapping to confirm which graph ID corresponds to the 'unv"
+      },
+      "context_member": "run/diagnostic/retrieval/smoke-eva-07/context.json",
+      "context_sha256": "58939903440fc9290d8e58736141292a3d915df21063d632499d2c002dd026f0",
+      "attempted": true,
+      "completed": true,
+      "outcome": "model_semantic_failure",
+      "error": null,
+      "measured_model_status": "needs_clarification",
+      "rust_accepted": true,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": null,
+        "predicate": null,
+        "graph": null,
+        "direction": null,
+        "output": null
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": false,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1h-budget-qwen35-evidence",
+      "model": "qwen35",
+      "condition": "retrieval",
+      "case_id": "eva-08",
+      "archive": "experiments/native-one-hop-v1h-budget-qwen35-evidence/evidence.tar.gz",
+      "raw_member": "run/diagnostic/retrieval/smoke-eva-08/proposal.txt",
+      "raw_sha256": "9d494989fb7f166eb724048e106c8705688eae46ecc1ac54428974e665051824",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question asks for resources listing 'https://www.jyu.fi/' as their official website. The graph contains an entity (id 103) with IRI 'https://www.jyu.fi/' and another (id 102) with IRI 'http://www.wikidata.org/entity/Q578326'. There is a stored relation (predicate id 1006, IRI P856) between them. However, the question implies finding all subjects that have this specific IRI as an object. The provided data shows one specific usage of P856 (subject 102, object 103). To answer 'Which resources', I need to检索"
+      },
+      "context_member": "run/diagnostic/retrieval/smoke-eva-08/context.json",
+      "context_sha256": "849f73ce589759786a75e89290217320ee57b13a7fe7a777549d5fff10504616",
+      "attempted": true,
+      "completed": true,
+      "outcome": "model_semantic_failure",
+      "error": null,
+      "measured_model_status": "needs_clarification",
+      "rust_accepted": true,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": null,
+        "predicate": null,
+        "graph": null,
+        "direction": null,
+        "output": null
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": true,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1h-qwen-status-precedence-first-evidence",
+      "model": "qwen35",
+      "condition": "oracle",
+      "case_id": "eva-07",
+      "archive": "experiments/native-one-hop-v1h-qwen-status-precedence-first-evidence/evidence.tar.gz",
+      "raw_member": "run/diagnostic/oracle/smoke-eva-07/proposal.txt",
+      "raw_sha256": "15ee05eb482a52bd36a89c8be3b5371e3a8c7319d7fb390c0ca4060f31fe5f02",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question asks for 'ressurser' (resources) in the university graph (graph 0) where Q134620 is the administrative unit. The provided data shows Q134620 (entity 100) is linked to University of Jyväskylä (entity 102) via P131 (part of). However, the specific predicate 'administrative unit' (e.g., P131 or similar) is not explicitly named in the question, and 'ressurser' is not a defined entity or predicate in the provided vocabulary. Clarification is needed on which specific predicate represents 'administrat"
+      },
+      "context_member": "run/diagnostic/oracle/smoke-eva-07/context.json",
+      "context_sha256": "7a62d3985126ec6fd711e239ff36cb79bb9259da40bfc5619e3aa1c5fec3afe5",
+      "attempted": true,
+      "completed": true,
+      "outcome": "model_semantic_failure",
+      "error": null,
+      "measured_model_status": "needs_clarification",
+      "rust_accepted": true,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": null,
+        "predicate": null,
+        "graph": null,
+        "direction": null,
+        "output": null
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": true,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1h-qwen-status-precedence-first-evidence",
+      "model": "qwen35",
+      "condition": "oracle",
+      "case_id": "eva-08",
+      "archive": "experiments/native-one-hop-v1h-qwen-status-precedence-first-evidence/evidence.tar.gz",
+      "raw_member": "run/diagnostic/oracle/smoke-eva-08/proposal.txt",
+      "raw_sha256": "44779ae81222d0e6f53fdf12edc1e20756d3f86a199d71b618a4139f85c1edf7",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question asks for resources (subjects) that have a specific website (object) as their official website. The provided data contains an entity (id 103) with IRI 'https://www.jyu.fi/' and an entity (id 102) with an 'officialWebsite' predicate (P856) linking to id 103. However, the question implies a search for *all* such resources, while the provided 'observed_usage' for predicate P856 only lists the single usage where subject 102 points to object 103. The system instructions state that 'Evidence is...in'."
+      },
+      "context_member": "run/diagnostic/oracle/smoke-eva-08/context.json",
+      "context_sha256": "cefb03f191f8a44df2c8c610ca90cf593fcaed74097df46c4b62e4706c681964",
+      "attempted": true,
+      "completed": true,
+      "outcome": "model_semantic_failure",
+      "error": null,
+      "measured_model_status": "needs_clarification",
+      "rust_accepted": true,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": null,
+        "predicate": null,
+        "graph": null,
+        "direction": null,
+        "output": null
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": true,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1h-qwen-status-precedence-first-evidence",
+      "model": "qwen35",
+      "condition": "retrieval",
+      "case_id": "eva-07",
+      "archive": "experiments/native-one-hop-v1h-qwen-status-precedence-first-evidence/evidence.tar.gz",
+      "raw_member": "run/diagnostic/retrieval/smoke-eva-07/proposal.txt",
+      "raw_sha256": "1a1b0c73a91f20b731aab4194a5d46df2089195dca7d1c57c9b558745c267692",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "unsupported",
+        "rationale": "The question requests a relation ('administrativ enhet') that is not present in the supplied predicates table, and the start entity Q134620 is not found in the requested graph (universitetsgrafen/gemet) within the provided entity list."
+      },
+      "context_member": "run/diagnostic/retrieval/smoke-eva-07/context.json",
+      "context_sha256": "58939903440fc9290d8e58736141292a3d915df21063d632499d2c002dd026f0",
+      "attempted": true,
+      "completed": true,
+      "outcome": "model_semantic_failure",
+      "error": null,
+      "measured_model_status": "unsupported",
+      "rust_accepted": true,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": null,
+        "predicate": null,
+        "graph": null,
+        "direction": null,
+        "output": null
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": false,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1h-qwen-status-precedence-first-evidence",
+      "model": "qwen35",
+      "condition": "retrieval",
+      "case_id": "eva-08",
+      "archive": "experiments/native-one-hop-v1h-qwen-status-precedence-first-evidence/evidence.tar.gz",
+      "raw_member": "run/diagnostic/retrieval/smoke-eva-08/proposal.txt",
+      "raw_sha256": "c5a42d14357bc9253576082e20538f0915f2914393b9a38003912dcc5ee9677a",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "needs_clarification",
+        "rationale": "The question asks for resources listing 'https://www.jyu.fi/' as their official website. The provided vocabulary contains an entity (id 103) with IRI 'https://www.jyu.fi/' and an entity (id 102) with labels including 'University of Jyväskylä'. However, the vocabulary does not contain a predicate representing 'official website' or 'homepage'. The only related predicate is P856 (http://www.wikidata.org/prop/direct/P856), which is observed with subject 102 and object 103. Without an explicit predicate for 'has"
+      },
+      "context_member": "run/diagnostic/retrieval/smoke-eva-08/context.json",
+      "context_sha256": "849f73ce589759786a75e89290217320ee57b13a7fe7a777549d5fff10504616",
+      "attempted": true,
+      "completed": true,
+      "outcome": "model_semantic_failure",
+      "error": null,
+      "measured_model_status": "needs_clarification",
+      "rust_accepted": true,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": null,
+        "predicate": null,
+        "graph": null,
+        "direction": null,
+        "output": null
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": true,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1h-budget-gemma4-swap2048-evidence",
+      "model": "gemma4",
+      "condition": "oracle",
+      "case_id": "eva-07",
+      "archive": "experiments/native-one-hop-v1h-budget-gemma4-swap2048-evidence/evidence.tar.gz",
+      "raw_member": "variant/run/diagnostic/oracle/smoke-eva-07/proposal.txt",
+      "raw_sha256": "830fd64141ddde0846d8482a437d3a605426a60bfd4a920ed82b7e2d4578313f",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "candidate",
+        "start": 102,
+        "predicate": 1002,
+        "graph": 0,
+        "direction": "forward",
+        "output": "values",
+        "rationale": "The question asks for resources where Q134620 (entity 100) is the administrative unit. In the Wikidata graph, predicate 1002 (P131) represents 'instance of' or 'administrative unit' context; specifically, entity 102 (University of Jyväskylä) has a relation to entity 100 via P131."
+      },
+      "context_member": "variant/run/diagnostic/oracle/smoke-eva-07/context.json",
+      "context_sha256": "7a62d3985126ec6fd711e239ff36cb79bb9259da40bfc5619e3aa1c5fec3afe5",
+      "attempted": true,
+      "completed": true,
+      "outcome": "validator_rejection",
+      "error": null,
+      "measured_model_status": "candidate",
+      "rust_accepted": false,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": 102,
+        "predicate": 1002,
+        "graph": 0,
+        "direction": "forward",
+        "output": "values"
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": true,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1h-budget-gemma4-swap2048-evidence",
+      "model": "gemma4",
+      "condition": "oracle",
+      "case_id": "eva-08",
+      "archive": "experiments/native-one-hop-v1h-budget-gemma4-swap2048-evidence/evidence.tar.gz",
+      "raw_member": "variant/run/diagnostic/oracle/smoke-eva-08/proposal.txt",
+      "raw_sha256": "8f98dd7687d367083d6b273d291907cdf8c97f44e122fca401a0e7ca121b3ced",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "candidate",
+        "start": 102,
+        "predicate": 1006,
+        "graph": 0,
+        "direction": "forward",
+        "output": "values",
+        "rationale": "The entity 102 (University of Jyväskylä) has a property 1006 (P856) which points to the website 103 (https://www.jyu.fi/)."
+      },
+      "context_member": "variant/run/diagnostic/oracle/smoke-eva-08/context.json",
+      "context_sha256": "cefb03f191f8a44df2c8c610ca90cf593fcaed74097df46c4b62e4706c681964",
+      "attempted": true,
+      "completed": true,
+      "outcome": "validator_rejection",
+      "error": null,
+      "measured_model_status": "candidate",
+      "rust_accepted": false,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": 102,
+        "predicate": 1006,
+        "graph": 0,
+        "direction": "forward",
+        "output": "values"
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": true,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1h-budget-gemma4-swap2048-evidence",
+      "model": "gemma4",
+      "condition": "retrieval",
+      "case_id": "eva-07",
+      "archive": "experiments/native-one-hop-v1h-budget-gemma4-swap2048-evidence/evidence.tar.gz",
+      "raw_member": "variant/run/diagnostic/retrieval/smoke-eva-07/proposal.txt",
+      "raw_sha256": "1081ee4c745c32dfc346289371824e4e5e7ea20e2b13d97ad86193b5ba810f1a",
+      "raw_draft": {
+        "version": "nl-ask-draft-v1",
+        "status": "unsupported",
+        "rationale": "The question asks for resources where Q134620 is an administrative unit, but the available predicates do not include a specific 'administrative unit' or 'administrative_unit' property. Additionally, the query involves a count or list of multiple resources, which is not supported."
+      },
+      "context_member": "variant/run/diagnostic/retrieval/smoke-eva-07/context.json",
+      "context_sha256": "58939903440fc9290d8e58736141292a3d915df21063d632499d2c002dd026f0",
+      "attempted": true,
+      "completed": true,
+      "outcome": "model_semantic_failure",
+      "error": null,
+      "measured_model_status": "unsupported",
+      "rust_accepted": true,
+      "exposed_reference_agreement": false,
+      "five_fields": {
+        "start": null,
+        "predicate": null,
+        "graph": null,
+        "direction": null,
+        "output": null
+      },
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": false,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    },
+    {
+      "experiment": "native-one-hop-v1h-budget-gemma4-swap2048-evidence",
+      "model": "gemma4",
+      "condition": "retrieval",
+      "case_id": "eva-08",
+      "archive": "experiments/native-one-hop-v1h-budget-gemma4-swap2048-evidence/evidence.tar.gz",
+      "raw_member": "variant/run/diagnostic/retrieval/smoke-eva-08/proposal.txt",
+      "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_draft": null,
+      "context_member": "variant/run/diagnostic/retrieval/smoke-eva-08/context.json",
+      "context_sha256": "849f73ce589759786a75e89290217320ee57b13a7fe7a777549d5fff10504616",
+      "attempted": true,
+      "completed": false,
+      "outcome": "fatal_failure",
+      "error": "TimeoutError: timed out",
+      "measured_model_status": null,
+      "rust_accepted": null,
+      "exposed_reference_agreement": null,
+      "five_fields": null,
+      "numeric_vocabulary": {
+        "entities": true,
+        "predicates": true,
+        "graphs": true
+      },
+      "independent_human_correctness": null
+    }
+  ],
+  "supplemental_P131": {
+    "provenance": {
+      "bytes": 107768,
+      "content_type": "text/turtle; charset=UTF-8",
+      "english_label_at_capture": "located in the administrative territorial entity",
+      "entity": "P131",
+      "file": "data/wikidata/raw/P131-2555801353.ttl",
+      "license": "CC0-1.0",
+      "metadata_lookup_url": "https://www.wikidata.org/wiki/Special:EntityData/P131.json",
+      "retrieved_at_utc": "2026-10-16T12:35:55.529271+00:00",
+      "revision": 2555801353,
+      "sha256": "ce916cfa8383d7a3c37888f385b89462fb506ce0abbd32040b99c2d07619b296",
+      "url": "https://www.wikidata.org/wiki/Special:EntityData/P131.ttl?flavor=dump&revision=2555801353"
+    },
+    "metadata": [
+      {
+        "source": "data/wikidata/raw/P131-2555801353.ttl",
+        "statement": "<http://www.wikidata.org/entity/P131> <http://schema.org/description> \"the item is located on the territory of the following administrative entity. Use P276 for specifying locations that are non-administrative places and for items about events. Use P1382 if the item falls only partially into the administrative entity\"@en .",
+        "statement_utf8_sha256": "ffd9a0a5909eab1928a2c5c99ac2f044408725262a7a570b7c2352db72c7d90f",
+        "language": "en"
+      },
+      {
+        "source": "data/wikidata/raw/P131-2555801353.ttl",
+        "statement": "<http://www.wikidata.org/entity/P131> <http://schema.org/description> \"elementet har beliggenhet i følgende administrative enhet\"@nb .",
+        "statement_utf8_sha256": "3b7d4619bc5b72b0456a35a4a99d95794fa8c3567795f9bfb7ea25f83fb703b2",
+        "language": "nb"
+      },
+      {
+        "source": "data/wikidata/raw/P131-2555801353.ttl",
+        "statement": "<http://www.wikidata.org/entity/P131> <http://schema.org/name> \"located in the administrative territorial entity\"@en .",
+        "statement_utf8_sha256": "add5b53144d8c3d3e49666bd75135c12f9a4576c1bec82e6da9957d9325e1d44",
+        "language": "en"
+      },
+      {
+        "source": "data/wikidata/raw/P131-2555801353.ttl",
+        "statement": "<http://www.wikidata.org/entity/P131> <http://schema.org/name> \"ligger i administrativ enhet\"@nb .",
+        "statement_utf8_sha256": "dad6ab3cafa08de1678b32ee90a05478d2210648b925ab0e60dcc9070f8719cb",
+        "language": "nb"
+      },
+      {
+        "source": "data/wikidata/raw/P131-2555801353.ttl",
+        "statement": "<http://www.wikidata.org/entity/P131> <http://schema.org/name> \"ligg i administrativ eining\"@nn .",
+        "statement_utf8_sha256": "0da9cf88ee889e2cfd6c7860663c95e45ad55705c26aea8531618ba4b5951a6d",
+        "language": "nn"
+      },
+      {
+        "source": "data/wikidata/raw/P131-2555801353.ttl",
+        "statement": "<http://www.wikidata.org/entity/P131> <http://www.w3.org/2000/01/rdf-schema#label> \"located in the administrative territorial entity\"@en .",
+        "statement_utf8_sha256": "68aeeadb06c7540e1c5b4c6a432a4771cca0c6715c9580a691681131b87117df",
+        "language": "en"
+      },
+      {
+        "source": "data/wikidata/raw/P131-2555801353.ttl",
+        "statement": "<http://www.wikidata.org/entity/P131> <http://www.w3.org/2000/01/rdf-schema#label> \"ligger i administrativ enhet\"@nb .",
+        "statement_utf8_sha256": "996825324d4811636729ecfe5f1a4aa971b200a1efc177c5131b57a538277967",
+        "language": "nb"
+      },
+      {
+        "source": "data/wikidata/raw/P131-2555801353.ttl",
+        "statement": "<http://www.wikidata.org/entity/P131> <http://www.w3.org/2000/01/rdf-schema#label> \"ligg i administrativ eining\"@nn .",
+        "statement_utf8_sha256": "0c4b4018c79afc93964433dc739a92eeb6fac70064a791990bdcd4f7d00c360b",
+        "language": "nn"
+      },
+      {
+        "source": "data/wikidata/raw/P131-2555801353.ttl",
+        "statement": "<http://www.wikidata.org/entity/P131> <http://www.w3.org/2004/02/skos/core#prefLabel> \"located in the administrative territorial entity\"@en .",
+        "statement_utf8_sha256": "cd52ebabeaedbbef67cec830bc971346805eb6b487a36894d98d8309792366a1",
+        "language": "en"
+      },
+      {
+        "source": "data/wikidata/raw/P131-2555801353.ttl",
+        "statement": "<http://www.wikidata.org/entity/P131> <http://www.w3.org/2004/02/skos/core#prefLabel> \"ligger i administrativ enhet\"@nb .",
+        "statement_utf8_sha256": "ac7f474207d4526fb3feb6188166fd2c978eb4ac5cd5d71c669d8d064acaa7cc",
+        "language": "nb"
+      },
+      {
+        "source": "data/wikidata/raw/P131-2555801353.ttl",
+        "statement": "<http://www.wikidata.org/entity/P131> <http://www.w3.org/2004/02/skos/core#prefLabel> \"ligg i administrativ eining\"@nn .",
+        "statement_utf8_sha256": "c65fd20f8b54c1f4ea83613b3f5407d380cf47b66d8641759ef4fc8178007757",
+        "language": "nn"
+      }
+    ],
+    "membership": "Separate existing archive, outside frozen evaluation source membership; never imported into prompts."
+  },
+  "evidence_classes": {
+    "edge_existence": "Archived direct triples and imported named-graph witnesses establish these particular stored edges.",
+    "predicate_documentation": "Archived English property labels/descriptions plus explicit wikibase:directClaim mappings establish source-documented meanings. They were excluded by source_quads before freezing.",
+    "model_inference": "Original raw rationales are observations, not source definitions or causal explanations.",
+    "exposed_reference": "Unchanged AI-authored case references are comparison targets; agreement is not independent correctness."
+  },
+  "limitations": [
+    "The original item archive contains licensed definitions for both properties; their absence from the frozen snapshot is not absence from the archive.",
+    "The source_quads recipe imports only focal-entity direct fields and selected labels, then synthetic overlay; property metadata is excluded. Audit metadata is never inserted into prompts.",
+    "The item archive supplies English property metadata only. A separate existing P131 property archive has multilingual metadata but is outside the frozen evaluation source membership and is not imported.",
+    "Named graphs and numeric IDs are importer/host assignments. Q134620 and university-graph wording still lack source naming support in the model-visible snapshot.",
+    "P131 and P856 statements have normal/best rank but no prov:wasDerivedFrom statement reference in this item archive. CC0 metadata does not independently verify the claims.",
+    "Direction wording is cleanly isolatable as an input factor; its causal effect cannot be separated from missing semantic definitions using these two exposed probes alone."
+  ]
+}
