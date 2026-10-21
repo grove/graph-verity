@@ -1,0 +1,21 @@
+{
+  "origin": "AI investigator reading of original bytes; not independent human semantic review",
+  "automated_rule_note": "The reused scorer recognizes only whole explicit English ID assertions. Its zero recognized contradictions does not validate unrestricted rationales.",
+  "observations": [
+    {
+      "observation": "oracle/smoke-eva-01",
+      "raw_sha256": "3cd88539ca8f32e032a15e6bbbc82299c0ce5e5133af30150933dd07e022857b",
+      "finding": "Rationale maps predicate 1004 to schema:Country in graph 1 and repeatedly to P1448. The actual visible table maps 1004 to P17 in graph 0, and P1448 is 1003. This is a direct source/table contradiction despite grammatical JSON and accepted clarification."
+    },
+    {
+      "observation": "oracle/smoke-eva-07",
+      "raw_sha256": "fb8813e2da8052b47c725f9a8423dd5b1e33226a90f3d282bb01d221acff655f",
+      "finding": "Rationale identifies 102 -> 100 via P131 and describes reverse traversal, but declines because it sees no other subjects. This is observed abstention despite recognizing the requested direction; it is not evidence that reverse semantics were successfully proposed."
+    },
+    {
+      "observation": "oracle/smoke-eva-02",
+      "raw_sha256": "132c8755757a8981bd702288eeeb0ab7d06dc3f70dd4026b2b7cff8db8a43b11",
+      "finding": "Candidate fields agree with the exposed plan. Rationale expands P131 to a natural-language definition absent from supplied predicate text. Reference agreement alone does not independently validate this meaning."
+    }
+  ]
+}

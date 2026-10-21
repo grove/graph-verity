@@ -1,0 +1,60 @@
+{
+  "version": "issue83-v1f-r3-retained-qwen-review-v1",
+  "decision": "INCONCLUSIVE_REVISE",
+  "semantic_go": false,
+  "registered_revision": "issue83-native-cpu-v1f-diagnostic-r3",
+  "base_commit": "84e20c5bb816a7c95e422e7b58e3585b79dfbf52",
+  "registered_source_commit": "eda247679a6b10fa2ef4f5a21ece12d0f0c53213",
+  "registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+  "freeze_sha256": "82bf3f4fa6f0e6ffcf5d664880d2b8bc98369b67c903c1cc8a9a176867de0c3d",
+  "original_inference_authorization": "Current owner authorization received: I authorize all of it. Contemporaneous pre-run record unavailable; no backdated approval claim.",
+  "review_user_approval": [
+    "Do it! I approve.",
+    "I authorize all of it."
+  ],
+  "new_inference_performed": false,
+  "model_generated_rdf_executions": 0,
+  "integration_authorized": false,
+  "v1g_performed": false,
+  "issue_83_remains_open": true,
+  "retries": 0,
+  "models": {
+    "qwen35": {
+      "oracle": {
+        "scheduled": 19,
+        "attempted": 19,
+        "completed": 19,
+        "unattempted": 0
+      },
+      "retrieval": {
+        "scheduled": 17,
+        "attempted": 14,
+        "completed": 14,
+        "unattempted": 3
+      }
+    },
+    "gemma4": {
+      "oracle": {
+        "scheduled": 19,
+        "attempted": 0,
+        "completed": 0,
+        "unattempted": 19
+      },
+      "retrieval": {
+        "scheduled": 17,
+        "attempted": 0,
+        "completed": 0,
+        "unattempted": 17
+      }
+    }
+  },
+  "gemma_status": "No retained run supplied; not launched by this review. Shared context-limit failure prevents automatic progression. No exact Gemma command has been presented for separate approval.",
+  "blockers": [
+    "Contemporaneous pre-run authorization record unavailable; current owner authorization recorded separately",
+    "Registered retrieval/smoke-eva-08 has 18926 input tokens plus 512 reserve against context 16384; no generation request",
+    "Three Qwen diagnostic observations and all Gemma observations have no completion request",
+    "Latest preliminary host load 9.5283 exceeds registered maximum 7.5; no readiness retry",
+    "Independent semantic review pending; exposed reference agreement is not truth"
+  ],
+  "next_step": "Independently review semantic outputs and source ambiguity; retain the missing pre-run authorization record as a provenance limitation. Any context/config change requires a separately registered revision and an exact approved command after fresh host/integrity gates."
+}

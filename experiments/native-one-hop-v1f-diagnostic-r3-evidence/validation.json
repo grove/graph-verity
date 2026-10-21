@@ -1,0 +1,65 @@
+{
+  "version": "issue83-v1f-r3-evidence-verification-v1",
+  "validated_code_commit": "443c6ae9e19dbb931b036e42ab22b4f39d4902ea",
+  "full_pipeline": {
+    "command": "REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py",
+    "cwd": "artifacts/issue83-v1f-r3-review-20261020/verification-final",
+    "environment": {
+      "GIT_DIR": "/Users/grove/projects/graph-verity/.git",
+      "GIT_WORK_TREE": "/Users/grove/projects/graph-verity/artifacts/issue83-v1f-r3-review-20261020/verification-final"
+    },
+    "checkout_git_metadata": "Symlink to existing repository metadata for read-only historical object access; isolated build output",
+    "exit_code": 0,
+    "commands": 39,
+    "current_python_tests": 277,
+    "frozen_pilot_tests": 15,
+    "rust_tests": 100,
+    "required_browser_checks": true
+  },
+  "build": {
+    "command": "cargo build --locked --offline --bins --examples",
+    "exit_code": 0,
+    "registered_executable_rebuilt": false
+  },
+  "supplementary": [
+    {
+      "command": ".venv/bin/python tools/native_one_hop.py --variant v1f-diagnostic-r3 replay --freeze artifacts/v1f-diagnostic-r3 --run artifacts/issue83-v1f-r3-qwen35-first",
+      "exit_code": 0,
+      "raw_rust_previews": 69
+    },
+    {
+      "command": ".venv/bin/python tools/analyze_v1f_r3.py --out artifacts/issue83-v1f-r3-review-20261020/analysis-final-experiment",
+      "exit_code": 0
+    },
+    {
+      "command": "PYTHONPATH=tools .venv/bin/python -m unittest test_native_one_hop_configuration.ConfigurationTests.test_registered_successor_binds_sources_settings_and_preserves_history test_analyze_v1f_r3 -v",
+      "exit_code": 0,
+      "tests_passed": 4
+    },
+    {
+      "command": ".venv/bin/python -m unittest discover -s tools -p test_analyze_v1f*.py -v",
+      "exit_code": 0,
+      "tests_passed": 9,
+      "scope": "Earlier analyzer location before evidence relocation; final r3 tests also pass in complete pipeline"
+    },
+    {
+      "command": "Original-host documented fresh archive extraction and r3 raw Rust replay",
+      "exit_code": 0
+    }
+  ],
+  "earlier_verification_failures": [
+    {
+      "code_commit": "6a3dc314b429738f5bd7d497684542b62696f729",
+      "status": "failed",
+      "reason": "New evidence under reports violated unchanged historical reports-tree assertion; 276/277 tests passed. Resolved by moving only new evidence into a separate experiments directory.",
+      "log_prefix": "first-location"
+    },
+    {
+      "code_commit": "443c6ae9e19dbb931b036e42ab22b4f39d4902ea",
+      "status": "failed",
+      "reason": "Isolated checkout lacked ROOT/.git for nested historical replay. Current 277 tests and 15 pilot tests passed. Resolved by supplying existing Git metadata; no test or registered source change.",
+      "log_prefix": "missing-git"
+    }
+  ],
+  "no_inference": true
+}
