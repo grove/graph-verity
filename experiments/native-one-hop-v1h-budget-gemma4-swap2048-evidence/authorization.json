@@ -1,0 +1,33 @@
+{
+  "version": "issue83-v1h-swap2048-exact-command-authorization-v1",
+  "owner_message_exact": "I authorize it",
+  "proposal_command_exact": ".venv/bin/python tools/native_one_hop_v1h_swap2048.py run \\\n  --freeze artifacts/v1h-budget \\\n  --allow-inference \\\n  --out artifacts/issue83-v1h-budget-gemma4-swap2048-first\n",
+  "proposal_context": "Owner reply immediately after the exact registered swap2048 Gemma command proposal and request for single-run authorization in this conversation.",
+  "recorded_at": "2026-10-21T10:45:45.561644+00:00",
+  "timestamp_scope": "Receipt recording time; no independent user-message timestamp supplied.",
+  "execution_commit": "60b9fa3de6fdb6f0c49c7a51d7267067ed817281",
+  "variant": "issue83-native-cpu-v1h-budget-swap2048",
+  "registration_sha256": "b70476e3ae2118c7a4e5fd15cc581a26697d6286afd5f31e123d693345200c05",
+  "parent_registration_sha256": "beb4e84519294d9f6b870236573c3728f4ccc028465db73c0cb97ab36a414bc7",
+  "freeze_archive_sha256": "61e2feb6883bcbcadfa8ace259b3e2f9ef2f2c8c3d771a0523ebbba7e8d295df",
+  "freeze_checksums_sha256": "d73ba8e301bd488b6fa60b75f3569f64d5d5ec981139a76fbecc66a1948613e8",
+  "registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+  "model": "gemma4",
+  "sampling_controls": 2,
+  "semantic_observations": 36,
+  "maximum_requests": 38,
+  "retries": 0,
+  "swap_ceiling_mib": 2048,
+  "rss_ceiling_gib": 24,
+  "output_directory": "artifacts/issue83-v1h-budget-gemma4-swap2048-first",
+  "output_absent_at_receipt": true,
+  "prior_attempts": [
+    "qwen35"
+  ],
+  "effect_authorized": "Exactly one execution of the proposed swap2048 Gemma command, conditional on fresh passing gates; model-free comparison and evidence PR under the original user request.",
+  "rdf_execution_authorized": false,
+  "integration_authorized": false,
+  "status_rule_ablation_authorized": false,
+  "independent_human_review": "deferred",
+  "decision": "INCONCLUSIVE_REVISE"
+}
