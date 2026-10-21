@@ -1,0 +1,124 @@
+{
+  "status": "passed",
+  "validated_commit": "fffd94b65e7f523ab86a52e6bc5a23b023782401",
+  "full_pipeline_checks": 39,
+  "current_python_tests": 304,
+  "frozen_pilot_tests": 15,
+  "rust_tests": 100,
+  "focused_status_precedence_tests": 7,
+  "python_tests_skipped": false,
+  "required_browser_checks": true,
+  "native_grammar_controls": 12,
+  "independent_recount_exact_bytes_and_token_ids": true,
+  "original_byte_rust_replay_previews": {
+    "qwen": 74,
+    "gemma": 70
+  },
+  "historical_hashes_verified": 801,
+  "parent_source_hashes_verified": 76,
+  "new_source_hashes_verified": 83,
+  "baseline_retained_files_verified": 942,
+  "pinned_assets_match_original_registration": true,
+  "registered_binary_unchanged": true,
+  "registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+  "inference_performed": false,
+  "inference_attempts": 0,
+  "inference_retries": 0,
+  "model_generated_rdf_executions": 0,
+  "decision": "INCONCLUSIVE_REVISE",
+  "independent_human_review": "deferred",
+  "issue83": "keep_open",
+  "issue75_integration": "disabled",
+  "full_pipeline": {
+    "status": "passed",
+    "validated_commit": "fffd94b65e7f523ab86a52e6bc5a23b023782401",
+    "checkout": "/Users/grove/projects/graph-verity/artifacts/issue83-qwen-status-precedence-validation/verification-checkout",
+    "original_registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "model_loading_permitted": false,
+    "downloads_permitted": false,
+    "environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "REQUIRE_FIND_BROWSER": "1",
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1"
+    },
+    "commands": [
+      {
+        "label": "isolated-build",
+        "args": [
+          "cargo",
+          "build",
+          "--locked",
+          "--offline",
+          "--bins",
+          "--examples"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.15494870800466742
+      },
+      {
+        "label": "complete-pipeline",
+        "args": [
+          "/Users/grove/projects/graph-verity/artifacts/issue83-qwen-status-precedence-validation/verification-checkout/.venv/bin/python",
+          "-u",
+          "tools/verify_pre_llm.py"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 647.9044109160022
+      }
+    ],
+    "original_registered_binary_after_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "registered_binary_unchanged": true
+  },
+  "initial_sandbox_attempt": {
+    "status": "failed",
+    "current_python_tests": 304,
+    "failures": 8,
+    "errors": 44,
+    "cause": "Sandbox denied loopback socket binding and process inspection (EPERM); no experiment source change. Complete host-permission rerun passed.",
+    "full_pipeline": {
+      "status": "failed",
+      "validated_commit": "fffd94b65e7f523ab86a52e6bc5a23b023782401",
+      "checkout": "/Users/grove/projects/graph-verity/artifacts/issue83-qwen-status-precedence-validation/verification-checkout",
+      "original_registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+      "model_loading_permitted": false,
+      "downloads_permitted": false,
+      "environment": {
+        "CARGO_NET_OFFLINE": "true",
+        "REQUIRE_FIND_BROWSER": "1",
+        "HF_HUB_OFFLINE": "1",
+        "TRANSFORMERS_OFFLINE": "1"
+      },
+      "commands": [
+        {
+          "label": "isolated-build",
+          "args": [
+            "cargo",
+            "build",
+            "--locked",
+            "--offline",
+            "--bins",
+            "--examples"
+          ],
+          "returncode": 0,
+          "elapsed_seconds": 14.298129542003153
+        },
+        {
+          "label": "complete-pipeline",
+          "args": [
+            "/Users/grove/projects/graph-verity/artifacts/issue83-qwen-status-precedence-validation/verification-checkout/.venv/bin/python",
+            "-u",
+            "tools/verify_pre_llm.py"
+          ],
+          "returncode": 1,
+          "elapsed_seconds": 582.0702044589998
+        }
+      ],
+      "error": "ValueError: complete-pipeline failed",
+      "original_registered_binary_after_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+      "registered_binary_unchanged": true
+    }
+  },
+  "complete_log_archive_sha256": "100c90294a5d4bacded0dde26bceb60f0ccc4f155576d75162aa1fa8e4b89ebf",
+  "scope": "Exact final source/registration candidate validated; subsequent additions are model-free receipts/logs only."
+}

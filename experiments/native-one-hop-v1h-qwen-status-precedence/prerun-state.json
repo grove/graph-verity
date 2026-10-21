@@ -1,0 +1,358 @@
+{
+  "version": "issue83-native-cpu-v1h-qwen-status-precedence",
+  "inference_authorized": false,
+  "inference_performed": false,
+  "model_loaded": false,
+  "generation_attempts": 0,
+  "generation_completed": 0,
+  "retries": 0,
+  "model_generated_rdf_executions": 0,
+  "decision": "INCONCLUSIVE_REVISE",
+  "issue83": "keep_open",
+  "issue75_integration": "disabled",
+  "independent_human_review": "deferred",
+  "observations": [
+    {
+      "condition": "sampling",
+      "name": "sampling-False",
+      "case_id": "eva-01",
+      "kind": "native_sampling_control",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "sampling",
+      "name": "sampling-True",
+      "case_id": "eva-01",
+      "kind": "native_sampling_control",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "repeat-0",
+      "case_id": "eva-01",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "repeat-1",
+      "case_id": "eva-01",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "ambiguous_start",
+      "case_id": "eva-20",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "source_label",
+      "case_id": "eva-06",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "malicious_label_explicit",
+      "case_id": "v1e-label-explicit",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "private_scope",
+      "case_id": "eva-29",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "write",
+      "case_id": "eva-30",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "unclear_relation",
+      "case_id": "eva-19",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "absent_start",
+      "case_id": "eva-24",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "negation",
+      "case_id": "eva-25",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "count",
+      "case_id": "eva-26",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "filter",
+      "case_id": "eva-27",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "multi_hop",
+      "case_id": "eva-28",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "smoke-eva-01",
+      "case_id": "eva-01",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "smoke-eva-02",
+      "case_id": "eva-02",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "smoke-eva-07",
+      "case_id": "eva-07",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "smoke-eva-08",
+      "case_id": "eva-08",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "smoke-v1e-country-source-nb",
+      "case_id": "v1e-country-source-nb",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "oracle",
+      "name": "smoke-v1e-country-paraphrase-en",
+      "case_id": "v1e-country-paraphrase-en",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "ambiguous_start",
+      "case_id": "eva-20",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "source_label",
+      "case_id": "eva-06",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "malicious_label_explicit",
+      "case_id": "v1e-label-explicit",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "private_scope",
+      "case_id": "eva-29",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "write",
+      "case_id": "eva-30",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "unclear_relation",
+      "case_id": "eva-19",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "absent_start",
+      "case_id": "eva-24",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "negation",
+      "case_id": "eva-25",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "count",
+      "case_id": "eva-26",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "filter",
+      "case_id": "eva-27",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "multi_hop",
+      "case_id": "eva-28",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "smoke-eva-01",
+      "case_id": "eva-01",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "smoke-eva-02",
+      "case_id": "eva-02",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "smoke-eva-07",
+      "case_id": "eva-07",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "smoke-eva-08",
+      "case_id": "eva-08",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "smoke-v1e-country-source-nb",
+      "case_id": "v1e-country-source-nb",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    },
+    {
+      "condition": "retrieval",
+      "name": "smoke-v1e-country-paraphrase-en",
+      "case_id": "v1e-country-paraphrase-en",
+      "kind": "semantic_diagnostic",
+      "status": "unattempted",
+      "model_origin_status": null,
+      "independent_human_judgment": null
+    }
+  ]
+}
