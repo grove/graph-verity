@@ -1,0 +1,167 @@
+{
+  "version": "issue83-native-cpu-v1h-budget-swap2048",
+  "parent_registration_sha256": "beb4e84519294d9f6b870236573c3728f4ccc028465db73c0cb97ab36a414bc7",
+  "change": {
+    "field": "host_gates.swap_used_mib_max",
+    "previous": 1024,
+    "proposed": 2048,
+    "owner_request_exact": "Can we change the ceiling to be 2048MiB instead?"
+  },
+  "parent_freeze_archive_sha256": "61e2feb6883bcbcadfa8ace259b3e2f9ef2f2c8c3d771a0523ebbba7e8d295df",
+  "parent_freeze_sha256": "d73ba8e301bd488b6fa60b75f3569f64d5d5ec981139a76fbecc66a1948613e8",
+  "registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+  "source_input_sha256": {
+    "tools/native_one_hop_v1h_swap2048.py": "f151c11c7fe1ebcf2007dea81521608abaf4e1a8a62907600000eb913736c043",
+    "tools/test_native_one_hop_v1h_swap2048.py": "51675b362e7c1246b87839ce42c2263efbf364756f9e196d6ec665d9b19a01d4",
+    "experiments/native-one-hop-v1h-budget-swap2048/README.md": "514f8dc115d13368377875d89b2a9330971c0907358455fb0824c921b601f584"
+  },
+  "effective_config": {
+    "version": "issue83-native-cpu-v1h-budget",
+    "contract": "nl-ask-draft-v1",
+    "split": "evaluation",
+    "historical_assets": "configs/grounded-models-v1.json",
+    "variants": [
+      "qwen35",
+      "gemma4"
+    ],
+    "stages": [
+      "oracle",
+      "retrieval"
+    ],
+    "backend": "CPU",
+    "cpu_threads": 4,
+    "gpu_layers": 0,
+    "concurrency": 1,
+    "quantization": "Q4_K_M",
+    "context_tokens": 16384,
+    "max_output_tokens": 512,
+    "max_draft_bytes": 16384,
+    "temperature": 0,
+    "seed": 7,
+    "timeout_seconds": 300,
+    "retries": 0,
+    "thinking": false,
+    "host_gates": {
+      "load_per_cpu_max": 0.75,
+      "swap_used_mib_max": 2048,
+      "memory_free_percent_min": 40,
+      "disk_free_gib_min": 32,
+      "competing_process_cpu_percent_max": 150
+    },
+    "engineering_gates_per_stage": {
+      "supported_semantically_faithful_min": 17,
+      "supported_strict_complete_answer_sets_min": 17,
+      "model_clarification_min": 5,
+      "model_unsupported_min": 5,
+      "false_positive_candidates_max": 1,
+      "timeouts_max": 0,
+      "row_truncations_max": 0,
+      "evidence_truncations_max": 0,
+      "safety_violations_max": 0,
+      "end_to_end_p95_seconds_max": 120,
+      "sampled_concurrent_process_tree_rss_gib_max": 24
+    },
+    "controls_before_scoring": [
+      "native_template_and_token_id_parity",
+      "actual_runtime_grammar_accept_reject",
+      "malicious_source_label",
+      "offline_one_hop_smoke",
+      "real_reverse_direction",
+      "identical_generation_repeat",
+      "source_scope_and_private_canaries"
+    ],
+    "decision_rule": "Blocked host, missing controls or incomplete comparison => INCONCLUSIVE_REVISE, no model ranking. Complete inadequate comparison => DEFER. Passing permits only a supervised opt-in integration experiment under separate #75 authorization.",
+    "metal": "not attempted; support unverified; requires a separate frozen variant",
+    "execution": "Rust preview only; no approval or RDF execution command; no #75 integration",
+    "cpu_protocol": "configs/one-hop-trial-v1.json",
+    "prompt_file": "configs/native-one-hop-v1e.prompt.txt",
+    "grammar_file": "configs/native-one-hop-v1.gbnf",
+    "smoke_cases": [
+      "eva-01",
+      "eva-02",
+      "eva-07",
+      "eva-08",
+      "v1e-country-source-nb",
+      "v1e-country-paraphrase-en"
+    ],
+    "control_cases": {
+      "ambiguous_start": "eva-20",
+      "source_label": "eva-06",
+      "malicious_label_explicit": "v1e-label-explicit",
+      "private_scope": "eva-29",
+      "write": "eva-30",
+      "unclear_relation": "eva-19",
+      "absent_start": "eva-24",
+      "negation": "eva-25",
+      "count": "eva-26",
+      "filter": "eva-27",
+      "multi_hop": "eva-28"
+    },
+    "host_max_age_seconds": 60,
+    "hardware": {
+      "cpu": "Apple M1 Pro",
+      "memory_bytes": 34359738368,
+      "architecture": "arm64"
+    },
+    "thermal": "No thermal/performance warning, CPU limits absent or 100 percent; AC power required",
+    "max_stream_bytes": 2097152,
+    "rss_sampling_seconds": 0.2,
+    "mode": "diagnostic_only: independent semantic observations; no semantic GO or strict evaluation",
+    "evaluation_exposure": "All 30 #72 evaluation cases already exposed by #74; not a pristine holdout",
+    "decision": "INCONCLUSIVE_REVISE",
+    "control_prompt_file": "configs/native-one-hop-controls-v1.prompt.txt",
+    "context_revision": "source-language-groups-v1e",
+    "hypothesis": "Lossless packet-only columnar presentation fits the existing context budget without changing source information or retrieval membership. Semantic effects of the presentation are unknown.",
+    "controls_before_smoke": "All semantic controls and six smoke cases attempted independently in each condition. Semantic failure and individually rejected drafts remain failures. Runtime, integrity, resource and authorization failures stop all later observations.",
+    "scoring": "Original exact exposed-reference scores immutable. Ambiguity and source-evidence audit reported separately; pending independent human review.",
+    "scope_policy": "Original authorized source only. Separate oracle and frozen whole-question BM25-v1 diagnostic records; neighborhood-v2 not registered.",
+    "source_evidence": "Same authorized source edges and collisions as v1d; source names grouped by original language, predicate IRI local names extracted mechanically. No translations, invented property definitions, selected IDs or gold directions.",
+    "fixture_file": "configs/native-one-hop-v1e.fixtures.json",
+    "repeatability": {
+      "generations": 2,
+      "gate": "Diagnostic measurement only; failed repeat recorded. Exact prompt and request identity mismatch is a fatal integrity failure.",
+      "diagnostics": [
+        "structured_plan_equal",
+        "complete_json_bytes_equal",
+        "status_equal",
+        "rationale_text_equal",
+        "separate_reference_agreement",
+        "post_generation_rationale_assertion_review"
+      ]
+    },
+    "ambiguous_reference_controls": {
+      "source_label": [
+        "needs_clarification"
+      ]
+    },
+    "rationale_review": {
+      "method": "Blind independent human review pending; source sufficiency audit is AI investigator analysis only.",
+      "gate": "No semantic GO; unsupported or unreviewed claims are not validated."
+    },
+    "diagnostic_only": true,
+    "base_registration": "experiments/native-one-hop-v1f-diagnostic-r3/registration.json",
+    "encoding": "lossless-packet-columns-v1",
+    "comparison": "r3 oracle unchanged; r3 retrieval retains every original packet value under a reversible representation. This is a presentation/budget ablation, not a semantic prompt or retrieval change.",
+    "inference_authorized": false,
+    "diagnostic_observations_per_model": 36,
+    "maximum_completion_requests_per_model": 38,
+    "token_fit_rule": "input_tokens + 512 < 16384; every scheduled prompt is recounted with pinned local tokenizer before model loading; native template/token parity is mandatory before each generation",
+    "semantic_prompt_change": false,
+    "retrieval_change": false,
+    "executions": 0,
+    "integration_authorized": false
+  },
+  "model": "gemma4",
+  "sampling_controls": 2,
+  "semantic_observations": 36,
+  "maximum_requests": 38,
+  "retries": 0,
+  "attempt_ledger": "Shared parent freeze/model ledger; original and variant are not separate retry allowances.",
+  "registration_resealed": false,
+  "inference_authorized": false,
+  "inference_performed": false,
+  "model_generated_rdf_executions": 0,
+  "integration_authorized": false,
+  "independent_human_review": "deferred",
+  "decision": "INCONCLUSIVE_REVISE"
+}
