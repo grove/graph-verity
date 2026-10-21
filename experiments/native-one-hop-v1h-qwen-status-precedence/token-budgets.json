@@ -1,0 +1,885 @@
+{
+  "inference_performed": false,
+  "rows": [
+    {
+      "condition": "sampling",
+      "name": "sampling-False",
+      "case_id": "eva-01",
+      "kind": "native_sampling_control",
+      "baseline_columnar_input_tokens": 245,
+      "original": {
+        "input_tokens": 245,
+        "output_reserve": 512,
+        "total_required": 757,
+        "fits": true,
+        "prompt_sha256": "c21c55f7c8aad6a5a11a7f7e88e5e568dca528461f1bbc3b99e8a7ff63d0c6c1",
+        "tokens_sha256": "656e7f10473803d8922504fda580274e1edadc8cae05897ee4053ffdff0f6bf8"
+      },
+      "columnar": {
+        "input_tokens": 245,
+        "output_reserve": 512,
+        "total_required": 757,
+        "fits": true,
+        "prompt_sha256": "c21c55f7c8aad6a5a11a7f7e88e5e568dca528461f1bbc3b99e8a7ff63d0c6c1",
+        "tokens_sha256": "656e7f10473803d8922504fda580274e1edadc8cae05897ee4053ffdff0f6bf8"
+      }
+    },
+    {
+      "condition": "sampling",
+      "name": "sampling-True",
+      "case_id": "eva-01",
+      "kind": "native_sampling_control",
+      "baseline_columnar_input_tokens": 245,
+      "original": {
+        "input_tokens": 245,
+        "output_reserve": 512,
+        "total_required": 757,
+        "fits": true,
+        "prompt_sha256": "c21c55f7c8aad6a5a11a7f7e88e5e568dca528461f1bbc3b99e8a7ff63d0c6c1",
+        "tokens_sha256": "656e7f10473803d8922504fda580274e1edadc8cae05897ee4053ffdff0f6bf8"
+      },
+      "columnar": {
+        "input_tokens": 245,
+        "output_reserve": 512,
+        "total_required": 757,
+        "fits": true,
+        "prompt_sha256": "c21c55f7c8aad6a5a11a7f7e88e5e568dca528461f1bbc3b99e8a7ff63d0c6c1",
+        "tokens_sha256": "656e7f10473803d8922504fda580274e1edadc8cae05897ee4053ffdff0f6bf8"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "repeat-0",
+      "case_id": "eva-01",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4031,
+      "original": {
+        "input_tokens": 4061,
+        "output_reserve": 512,
+        "total_required": 4573,
+        "fits": true,
+        "prompt_sha256": "cdcdf6edb3510040a1b558278cff1c7f15f648f5781545978f606000e3083dc5",
+        "tokens_sha256": "93efb2f3190c50be9587a7664b17e081b38a0fb869ce5618fa3a89ab0912b6b5"
+      },
+      "columnar": {
+        "input_tokens": 4061,
+        "output_reserve": 512,
+        "total_required": 4573,
+        "fits": true,
+        "prompt_sha256": "cdcdf6edb3510040a1b558278cff1c7f15f648f5781545978f606000e3083dc5",
+        "tokens_sha256": "93efb2f3190c50be9587a7664b17e081b38a0fb869ce5618fa3a89ab0912b6b5"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "repeat-1",
+      "case_id": "eva-01",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4031,
+      "original": {
+        "input_tokens": 4061,
+        "output_reserve": 512,
+        "total_required": 4573,
+        "fits": true,
+        "prompt_sha256": "cdcdf6edb3510040a1b558278cff1c7f15f648f5781545978f606000e3083dc5",
+        "tokens_sha256": "93efb2f3190c50be9587a7664b17e081b38a0fb869ce5618fa3a89ab0912b6b5"
+      },
+      "columnar": {
+        "input_tokens": 4061,
+        "output_reserve": 512,
+        "total_required": 4573,
+        "fits": true,
+        "prompt_sha256": "cdcdf6edb3510040a1b558278cff1c7f15f648f5781545978f606000e3083dc5",
+        "tokens_sha256": "93efb2f3190c50be9587a7664b17e081b38a0fb869ce5618fa3a89ab0912b6b5"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "ambiguous_start",
+      "case_id": "eva-20",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4012,
+      "original": {
+        "input_tokens": 4042,
+        "output_reserve": 512,
+        "total_required": 4554,
+        "fits": true,
+        "prompt_sha256": "f3408bc18e18f4c99de5edbe0665f7daa584d9e5c52b612d00ee52d6762829f8",
+        "tokens_sha256": "7a201724d3d374d061e427f5e7ded54d1895198c09403578aa32226111b937dd"
+      },
+      "columnar": {
+        "input_tokens": 4042,
+        "output_reserve": 512,
+        "total_required": 4554,
+        "fits": true,
+        "prompt_sha256": "f3408bc18e18f4c99de5edbe0665f7daa584d9e5c52b612d00ee52d6762829f8",
+        "tokens_sha256": "7a201724d3d374d061e427f5e7ded54d1895198c09403578aa32226111b937dd"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "source_label",
+      "case_id": "eva-06",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4023,
+      "original": {
+        "input_tokens": 4053,
+        "output_reserve": 512,
+        "total_required": 4565,
+        "fits": true,
+        "prompt_sha256": "044f49920d485e102931a022574d7313d1e867956230f57fff8a5e519df785cd",
+        "tokens_sha256": "2434f71803590c7c70f959d0238e0a6d27c8279d2b1957da34f2a76da06a4597"
+      },
+      "columnar": {
+        "input_tokens": 4053,
+        "output_reserve": 512,
+        "total_required": 4565,
+        "fits": true,
+        "prompt_sha256": "044f49920d485e102931a022574d7313d1e867956230f57fff8a5e519df785cd",
+        "tokens_sha256": "2434f71803590c7c70f959d0238e0a6d27c8279d2b1957da34f2a76da06a4597"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "malicious_label_explicit",
+      "case_id": "v1e-label-explicit",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4026,
+      "original": {
+        "input_tokens": 4056,
+        "output_reserve": 512,
+        "total_required": 4568,
+        "fits": true,
+        "prompt_sha256": "c46044ece512ed1dbc6344a86ff65615da54db333227f279b89dc5cd87ae06d5",
+        "tokens_sha256": "38b85066a9127666f328a43bafc63a852fe1738d2b7eefb342428eacc46f77f6"
+      },
+      "columnar": {
+        "input_tokens": 4056,
+        "output_reserve": 512,
+        "total_required": 4568,
+        "fits": true,
+        "prompt_sha256": "c46044ece512ed1dbc6344a86ff65615da54db333227f279b89dc5cd87ae06d5",
+        "tokens_sha256": "38b85066a9127666f328a43bafc63a852fe1738d2b7eefb342428eacc46f77f6"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "private_scope",
+      "case_id": "eva-29",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4029,
+      "original": {
+        "input_tokens": 4059,
+        "output_reserve": 512,
+        "total_required": 4571,
+        "fits": true,
+        "prompt_sha256": "898e173f9425df9eae5686fbf4ed90a89a09d7cc635d7c2d0feb0795c1acf4c6",
+        "tokens_sha256": "e800d95e6abe27ed74b607591a4254d2602bd4f69dc8a38494b6668d1dc5751f"
+      },
+      "columnar": {
+        "input_tokens": 4059,
+        "output_reserve": 512,
+        "total_required": 4571,
+        "fits": true,
+        "prompt_sha256": "898e173f9425df9eae5686fbf4ed90a89a09d7cc635d7c2d0feb0795c1acf4c6",
+        "tokens_sha256": "e800d95e6abe27ed74b607591a4254d2602bd4f69dc8a38494b6668d1dc5751f"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "write",
+      "case_id": "eva-30",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4018,
+      "original": {
+        "input_tokens": 4048,
+        "output_reserve": 512,
+        "total_required": 4560,
+        "fits": true,
+        "prompt_sha256": "12c99d29253e8ab050577acf5403d38183451ceb4f1367cb61431bb9d449e222",
+        "tokens_sha256": "3ad24b20b66f171126327a20470513022758f2acad4d1148a7bbf7274bf7f6b2"
+      },
+      "columnar": {
+        "input_tokens": 4048,
+        "output_reserve": 512,
+        "total_required": 4560,
+        "fits": true,
+        "prompt_sha256": "12c99d29253e8ab050577acf5403d38183451ceb4f1367cb61431bb9d449e222",
+        "tokens_sha256": "3ad24b20b66f171126327a20470513022758f2acad4d1148a7bbf7274bf7f6b2"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "unclear_relation",
+      "case_id": "eva-19",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4018,
+      "original": {
+        "input_tokens": 4048,
+        "output_reserve": 512,
+        "total_required": 4560,
+        "fits": true,
+        "prompt_sha256": "1e273966bfd34be80d83ad26a7323e3336e95b8c7766a484ed2ebea052428e83",
+        "tokens_sha256": "101bcd0c2a523d972f6971a03fc759cdc10d2fd898be26ad7a68f93f9de9b09e"
+      },
+      "columnar": {
+        "input_tokens": 4048,
+        "output_reserve": 512,
+        "total_required": 4560,
+        "fits": true,
+        "prompt_sha256": "1e273966bfd34be80d83ad26a7323e3336e95b8c7766a484ed2ebea052428e83",
+        "tokens_sha256": "101bcd0c2a523d972f6971a03fc759cdc10d2fd898be26ad7a68f93f9de9b09e"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "absent_start",
+      "case_id": "eva-24",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4018,
+      "original": {
+        "input_tokens": 4048,
+        "output_reserve": 512,
+        "total_required": 4560,
+        "fits": true,
+        "prompt_sha256": "0d8d0bfca5d7a62a6d4637f0b320b6f553884bae5300a0e1f74960b03dff6526",
+        "tokens_sha256": "76af0a9597c301a322bfea27884a66c392f5b1785dda886aa3cbe64b02ed5a43"
+      },
+      "columnar": {
+        "input_tokens": 4048,
+        "output_reserve": 512,
+        "total_required": 4560,
+        "fits": true,
+        "prompt_sha256": "0d8d0bfca5d7a62a6d4637f0b320b6f553884bae5300a0e1f74960b03dff6526",
+        "tokens_sha256": "76af0a9597c301a322bfea27884a66c392f5b1785dda886aa3cbe64b02ed5a43"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "negation",
+      "case_id": "eva-25",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4019,
+      "original": {
+        "input_tokens": 4049,
+        "output_reserve": 512,
+        "total_required": 4561,
+        "fits": true,
+        "prompt_sha256": "100036ef00bcc9825832037bb17b3ff771d3f3e95eaf66541b22c2d20fa050d0",
+        "tokens_sha256": "18ddaa7780a212c78540af41b9e65bc5fd449d1d019bd7cc949c5ad1dfa6983f"
+      },
+      "columnar": {
+        "input_tokens": 4049,
+        "output_reserve": 512,
+        "total_required": 4561,
+        "fits": true,
+        "prompt_sha256": "100036ef00bcc9825832037bb17b3ff771d3f3e95eaf66541b22c2d20fa050d0",
+        "tokens_sha256": "18ddaa7780a212c78540af41b9e65bc5fd449d1d019bd7cc949c5ad1dfa6983f"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "count",
+      "case_id": "eva-26",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4020,
+      "original": {
+        "input_tokens": 4050,
+        "output_reserve": 512,
+        "total_required": 4562,
+        "fits": true,
+        "prompt_sha256": "2e6993407ce4a61232965291739fb83d29354a2f9dcec75f2e69e5e14c8622b2",
+        "tokens_sha256": "1ea5326001cd8d16deaecee7e9e148e76af42862753f2c3da69540afefa74df3"
+      },
+      "columnar": {
+        "input_tokens": 4050,
+        "output_reserve": 512,
+        "total_required": 4562,
+        "fits": true,
+        "prompt_sha256": "2e6993407ce4a61232965291739fb83d29354a2f9dcec75f2e69e5e14c8622b2",
+        "tokens_sha256": "1ea5326001cd8d16deaecee7e9e148e76af42862753f2c3da69540afefa74df3"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "filter",
+      "case_id": "eva-27",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4027,
+      "original": {
+        "input_tokens": 4057,
+        "output_reserve": 512,
+        "total_required": 4569,
+        "fits": true,
+        "prompt_sha256": "8f4e1e0346da542046b6f3d1828008a6567c25dd72318648a64a1b6affba05d8",
+        "tokens_sha256": "e215b7eab8d28de028eeea6fbaccb2b2fbd6e83080a8210630ae262d3ef0cfa6"
+      },
+      "columnar": {
+        "input_tokens": 4057,
+        "output_reserve": 512,
+        "total_required": 4569,
+        "fits": true,
+        "prompt_sha256": "8f4e1e0346da542046b6f3d1828008a6567c25dd72318648a64a1b6affba05d8",
+        "tokens_sha256": "e215b7eab8d28de028eeea6fbaccb2b2fbd6e83080a8210630ae262d3ef0cfa6"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "multi_hop",
+      "case_id": "eva-28",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4018,
+      "original": {
+        "input_tokens": 4048,
+        "output_reserve": 512,
+        "total_required": 4560,
+        "fits": true,
+        "prompt_sha256": "2311d7dc492414db54b6cb341968684bcbcfbe23f5d794756f2ec815773e3ffc",
+        "tokens_sha256": "6af09c1f3dc328878ac645ae9f6bef1c83801c6177d032901bb897fcd77e4fb0"
+      },
+      "columnar": {
+        "input_tokens": 4048,
+        "output_reserve": 512,
+        "total_required": 4560,
+        "fits": true,
+        "prompt_sha256": "2311d7dc492414db54b6cb341968684bcbcfbe23f5d794756f2ec815773e3ffc",
+        "tokens_sha256": "6af09c1f3dc328878ac645ae9f6bef1c83801c6177d032901bb897fcd77e4fb0"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "smoke-eva-01",
+      "case_id": "eva-01",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4031,
+      "original": {
+        "input_tokens": 4061,
+        "output_reserve": 512,
+        "total_required": 4573,
+        "fits": true,
+        "prompt_sha256": "cdcdf6edb3510040a1b558278cff1c7f15f648f5781545978f606000e3083dc5",
+        "tokens_sha256": "93efb2f3190c50be9587a7664b17e081b38a0fb869ce5618fa3a89ab0912b6b5"
+      },
+      "columnar": {
+        "input_tokens": 4061,
+        "output_reserve": 512,
+        "total_required": 4573,
+        "fits": true,
+        "prompt_sha256": "cdcdf6edb3510040a1b558278cff1c7f15f648f5781545978f606000e3083dc5",
+        "tokens_sha256": "93efb2f3190c50be9587a7664b17e081b38a0fb869ce5618fa3a89ab0912b6b5"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "smoke-eva-02",
+      "case_id": "eva-02",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4022,
+      "original": {
+        "input_tokens": 4052,
+        "output_reserve": 512,
+        "total_required": 4564,
+        "fits": true,
+        "prompt_sha256": "30af3f02baf70eaf00d4e14d825b2526aad868fce037a4220a1d876e4884c99d",
+        "tokens_sha256": "50243b865bb56ca95cf2028f4d221aa86569bb501116946a113537c77ee39acd"
+      },
+      "columnar": {
+        "input_tokens": 4052,
+        "output_reserve": 512,
+        "total_required": 4564,
+        "fits": true,
+        "prompt_sha256": "30af3f02baf70eaf00d4e14d825b2526aad868fce037a4220a1d876e4884c99d",
+        "tokens_sha256": "50243b865bb56ca95cf2028f4d221aa86569bb501116946a113537c77ee39acd"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "smoke-eva-07",
+      "case_id": "eva-07",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4033,
+      "original": {
+        "input_tokens": 4063,
+        "output_reserve": 512,
+        "total_required": 4575,
+        "fits": true,
+        "prompt_sha256": "3cef257425ece815f45308bc6d650f9bfda5051280db610230e1b32d46b2553e",
+        "tokens_sha256": "f09d62f72668666edb78bfc2c475b45bfe57b259418d2a6b2cae5cdab44a986b"
+      },
+      "columnar": {
+        "input_tokens": 4063,
+        "output_reserve": 512,
+        "total_required": 4575,
+        "fits": true,
+        "prompt_sha256": "3cef257425ece815f45308bc6d650f9bfda5051280db610230e1b32d46b2553e",
+        "tokens_sha256": "f09d62f72668666edb78bfc2c475b45bfe57b259418d2a6b2cae5cdab44a986b"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "smoke-eva-08",
+      "case_id": "eva-08",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4022,
+      "original": {
+        "input_tokens": 4052,
+        "output_reserve": 512,
+        "total_required": 4564,
+        "fits": true,
+        "prompt_sha256": "f6bad14f17a89ee307a773785d8a35fae5ebebca0bf2e1b41be687ce26d26113",
+        "tokens_sha256": "18c2ef4a2071bdbc3f3193e6b5fa21015a1f6bd4f1a3012020b6da0ece8fa843"
+      },
+      "columnar": {
+        "input_tokens": 4052,
+        "output_reserve": 512,
+        "total_required": 4564,
+        "fits": true,
+        "prompt_sha256": "f6bad14f17a89ee307a773785d8a35fae5ebebca0bf2e1b41be687ce26d26113",
+        "tokens_sha256": "18c2ef4a2071bdbc3f3193e6b5fa21015a1f6bd4f1a3012020b6da0ece8fa843"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "smoke-v1e-country-source-nb",
+      "case_id": "v1e-country-source-nb",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4029,
+      "original": {
+        "input_tokens": 4059,
+        "output_reserve": 512,
+        "total_required": 4571,
+        "fits": true,
+        "prompt_sha256": "b76cadaab583c4caf1c2bb2d741b7cc169f578fde1fa5834895637687d1cabae",
+        "tokens_sha256": "fcec335d6b1707ba7337ac42ef10897d09df80e479fc3a9ffca1d8ad90b1856c"
+      },
+      "columnar": {
+        "input_tokens": 4059,
+        "output_reserve": 512,
+        "total_required": 4571,
+        "fits": true,
+        "prompt_sha256": "b76cadaab583c4caf1c2bb2d741b7cc169f578fde1fa5834895637687d1cabae",
+        "tokens_sha256": "fcec335d6b1707ba7337ac42ef10897d09df80e479fc3a9ffca1d8ad90b1856c"
+      }
+    },
+    {
+      "condition": "oracle",
+      "name": "smoke-v1e-country-paraphrase-en",
+      "case_id": "v1e-country-paraphrase-en",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4024,
+      "original": {
+        "input_tokens": 4054,
+        "output_reserve": 512,
+        "total_required": 4566,
+        "fits": true,
+        "prompt_sha256": "1c8036261caa68ff30552ed9cee077f433965405a278089d5420adbe0d2b2f50",
+        "tokens_sha256": "ac24c6377a76dc202cb02bc964294fed8e799c109eb575100f1e7d3e780e2ee1"
+      },
+      "columnar": {
+        "input_tokens": 4054,
+        "output_reserve": 512,
+        "total_required": 4566,
+        "fits": true,
+        "prompt_sha256": "1c8036261caa68ff30552ed9cee077f433965405a278089d5420adbe0d2b2f50",
+        "tokens_sha256": "ac24c6377a76dc202cb02bc964294fed8e799c109eb575100f1e7d3e780e2ee1"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "ambiguous_start",
+      "case_id": "eva-20",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4708,
+      "original": {
+        "input_tokens": 5537,
+        "output_reserve": 512,
+        "total_required": 6049,
+        "fits": true,
+        "prompt_sha256": "9399fabe3d874471318e3395cb6df86db0d5d4b8b90e90571e9ce6fcef8d9814",
+        "tokens_sha256": "b7e106817b0d8db4d713d94b3cbfc217f6274571d84cc20133acd4a4b0a6fd65"
+      },
+      "columnar": {
+        "input_tokens": 4738,
+        "output_reserve": 512,
+        "total_required": 5250,
+        "fits": true,
+        "prompt_sha256": "0e7188be716a7bad5d54015de67c03b6c94225bcd8047068a6ab90e0262e5039",
+        "tokens_sha256": "c91fe42f9bac27a94103e72f5b8e862c1f9a0ee9fcaf3063ad636939e6184bdc"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "source_label",
+      "case_id": "eva-06",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4805,
+      "original": {
+        "input_tokens": 5774,
+        "output_reserve": 512,
+        "total_required": 6286,
+        "fits": true,
+        "prompt_sha256": "50e906207bfddac881c10b4fb0c2663a36be7efa1def2f8640debdbf044fb3e0",
+        "tokens_sha256": "c1e236d9ad2ba7302f9f2069ef0d97873c1fa6683606957f25dd50db87d71449"
+      },
+      "columnar": {
+        "input_tokens": 4835,
+        "output_reserve": 512,
+        "total_required": 5347,
+        "fits": true,
+        "prompt_sha256": "b4b21bc441c178a7dbb4bd385adb2f1b4efbd9d22cce1a4feaa6b66ecb3ba96d",
+        "tokens_sha256": "cf2c25660842b711befa729d8eff9328b7943bc92dd41847cd60c68f46103fd0"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "malicious_label_explicit",
+      "case_id": "v1e-label-explicit",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 6534,
+      "original": {
+        "input_tokens": 7972,
+        "output_reserve": 512,
+        "total_required": 8484,
+        "fits": true,
+        "prompt_sha256": "d9cec3db625e088ecb895ecd4e489caa74a861b356486d3fff0e6f2ac67ea673",
+        "tokens_sha256": "019ea90e332567083cea63d9b1fd7a8ae77fa99f6a8a2b14cb5a19128c209129"
+      },
+      "columnar": {
+        "input_tokens": 6564,
+        "output_reserve": 512,
+        "total_required": 7076,
+        "fits": true,
+        "prompt_sha256": "1f1f8963aa0f06768924b7b551f38727d30d0e6cdd6c6dac992379e76284c29f",
+        "tokens_sha256": "fc3119539c1c6521073d4e9615199fc25416316531ffbd2bfabd5a97423a529c"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "private_scope",
+      "case_id": "eva-29",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 3477,
+      "original": {
+        "input_tokens": 3760,
+        "output_reserve": 512,
+        "total_required": 4272,
+        "fits": true,
+        "prompt_sha256": "d7e1dd7487f30ae8931f7ec051fa6db6e90b6a13a113092c95962c283b79ca21",
+        "tokens_sha256": "196a8d1f10b57690c09cba88780789ab7a83a89bfa3eb6fc34b51c0bc36de387"
+      },
+      "columnar": {
+        "input_tokens": 3507,
+        "output_reserve": 512,
+        "total_required": 4019,
+        "fits": true,
+        "prompt_sha256": "b30b4dfce885c3437d1194a7e288e8c6dc81f2b5f34647fe1d5da6a4b115db0b",
+        "tokens_sha256": "458c0c84047956ab44fafab92734f8992827b4726d6c79f6cac66317c6770fb0"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "write",
+      "case_id": "eva-30",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4357,
+      "original": {
+        "input_tokens": 5027,
+        "output_reserve": 512,
+        "total_required": 5539,
+        "fits": true,
+        "prompt_sha256": "cd2a2ae1631fc5526ff16fb7b4c1eb0c9876252cfe1748ec6234065bc871e4a9",
+        "tokens_sha256": "f279fa88b2980df56e34a3c4c958fe75495093608b46c82b9247b00352c11a33"
+      },
+      "columnar": {
+        "input_tokens": 4387,
+        "output_reserve": 512,
+        "total_required": 4899,
+        "fits": true,
+        "prompt_sha256": "e9e748b7424c75562e181e489ba82390daf4865487f0be3774345c25951e9c92",
+        "tokens_sha256": "bd147cf812a7cae120b6903819916a881f83569e157e54690e1e8d25cae29f26"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "unclear_relation",
+      "case_id": "eva-19",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 3456,
+      "original": {
+        "input_tokens": 3739,
+        "output_reserve": 512,
+        "total_required": 4251,
+        "fits": true,
+        "prompt_sha256": "7f6dc23319a2e919a28f3f4c0cff76e255cb67c05aca8eda90ec2126ec5829a2",
+        "tokens_sha256": "9eed87eef33ad346ab2432e0ad099c60035608f8d713c3fe4697c9379cc78dca"
+      },
+      "columnar": {
+        "input_tokens": 3486,
+        "output_reserve": 512,
+        "total_required": 3998,
+        "fits": true,
+        "prompt_sha256": "ffe92aa434bc25e793c3e7760c0b5edcbe71eee769979cb153f1ae820edb2d02",
+        "tokens_sha256": "d521c43acafaa6c8d92320f1c53a06fa737dfa4d5dba5f7ca7befca34f15ecd2"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "absent_start",
+      "case_id": "eva-24",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4351,
+      "original": {
+        "input_tokens": 5021,
+        "output_reserve": 512,
+        "total_required": 5533,
+        "fits": true,
+        "prompt_sha256": "e5fe6a406f92e0a69826f445ab8e9af0056259b141dae3d50152e14a589fa39b",
+        "tokens_sha256": "9cb88dba0f3d6a45dae120f2409e3486e52fa2b68babb4f873e71dc1c06b2e7f"
+      },
+      "columnar": {
+        "input_tokens": 4381,
+        "output_reserve": 512,
+        "total_required": 4893,
+        "fits": true,
+        "prompt_sha256": "1cd7ddca8cb837c4c633b8ad18a3e7f69727d3b6d61793a6ab91f13935db0878",
+        "tokens_sha256": "3246dc152de88b7028956c50a7cd84dee1d30f32acf2ff620fb9b23fbce82a74"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "negation",
+      "case_id": "eva-25",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 3064,
+      "original": {
+        "input_tokens": 3146,
+        "output_reserve": 512,
+        "total_required": 3658,
+        "fits": true,
+        "prompt_sha256": "3bd816b7c596430ac2be3aecd9781639b595cb80aa4ecd9286505c2c0c47b8bb",
+        "tokens_sha256": "f35418294267e3aa9f73e3110e8c1e212f67811331e36011628d9446e148f6b8"
+      },
+      "columnar": {
+        "input_tokens": 3094,
+        "output_reserve": 512,
+        "total_required": 3606,
+        "fits": true,
+        "prompt_sha256": "9675b351512b09c0d96e0e7744e1c1c478f47b189e436ece559803d33bb8aab2",
+        "tokens_sha256": "1332dea52956609e81cac1793151cc2a0086237e7b2f031c63bbccd3e25ea320"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "count",
+      "case_id": "eva-26",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4358,
+      "original": {
+        "input_tokens": 5028,
+        "output_reserve": 512,
+        "total_required": 5540,
+        "fits": true,
+        "prompt_sha256": "fcb0efe93a2b892060ffd369af8157d1bb79dddd9ad16718b4787e3463868763",
+        "tokens_sha256": "42769b34056a9630b2fc13efc380d50eea9b003cd9d9de1ccbe69ab54286d6e2"
+      },
+      "columnar": {
+        "input_tokens": 4388,
+        "output_reserve": 512,
+        "total_required": 4900,
+        "fits": true,
+        "prompt_sha256": "f42b574f191bdd0fdc8d5e1015f3088311edd1bc6fa632c9c334449fd3e11ba9",
+        "tokens_sha256": "b3e5788992e26e01c958dac4666dfb798874648495602c71cc552e011d39bc6f"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "filter",
+      "case_id": "eva-27",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 3085,
+      "original": {
+        "input_tokens": 3167,
+        "output_reserve": 512,
+        "total_required": 3679,
+        "fits": true,
+        "prompt_sha256": "d4baa0a712ea22629e1623cf7871f2aa63b6ae2d9d0438246967e836d91b0696",
+        "tokens_sha256": "0bba010f330d15994d04189398ab7d032baef0cfd367e28365e3d31630f7e66c"
+      },
+      "columnar": {
+        "input_tokens": 3115,
+        "output_reserve": 512,
+        "total_required": 3627,
+        "fits": true,
+        "prompt_sha256": "dd896f084f19f2fb418624c40e1debf5906d9d77fd0ebe63ef6caa2df0b29218",
+        "tokens_sha256": "b61ce63f2966f747cb1ff532ec95984d7d8999d51ca9f827af6feefbfd1d51c9"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "multi_hop",
+      "case_id": "eva-28",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 4694,
+      "original": {
+        "input_tokens": 5387,
+        "output_reserve": 512,
+        "total_required": 5899,
+        "fits": true,
+        "prompt_sha256": "2518e7a2ac777f326f4adaef5d2989e0380d6893ace19d626222da5c83488086",
+        "tokens_sha256": "b30794fd94d59fee6ff5228fa9ba8b82c9fff7a51b5363cf06439d785a1f04db"
+      },
+      "columnar": {
+        "input_tokens": 4724,
+        "output_reserve": 512,
+        "total_required": 5236,
+        "fits": true,
+        "prompt_sha256": "8cd2b9e5c503ae08b7628833a15fdcbd5df0b0d4d0d999fc2038244a71235cf6",
+        "tokens_sha256": "cf1e074fbf5de440bc9f2fcdea821304c54d400eb6829c51dfe0545591460940"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "smoke-eva-01",
+      "case_id": "eva-01",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 6094,
+      "original": {
+        "input_tokens": 7237,
+        "output_reserve": 512,
+        "total_required": 7749,
+        "fits": true,
+        "prompt_sha256": "b9e0ee00d94c101f72c22bbb575fe475dcce655007c2c9df9c717f7e9ede175d",
+        "tokens_sha256": "f56c13fa506ebe5f68529219f2ebdf347704874762bac8964b9acb047f3d6a87"
+      },
+      "columnar": {
+        "input_tokens": 6124,
+        "output_reserve": 512,
+        "total_required": 6636,
+        "fits": true,
+        "prompt_sha256": "f4f462031ce25f5af8029207fcc690ada329db453ad4a8be77c658c97d2c62a8",
+        "tokens_sha256": "403639244115bdbcc30095015b51646cffffa3aac5b74ecbe5d8b5eeac00230c"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "smoke-eva-02",
+      "case_id": "eva-02",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 5742,
+      "original": {
+        "input_tokens": 6908,
+        "output_reserve": 512,
+        "total_required": 7420,
+        "fits": true,
+        "prompt_sha256": "4c59bd70f8de3c75989c5bb0f4861b1b1d745a3a91fdc8c6571240255f04a9b0",
+        "tokens_sha256": "0e93828dc9471a8652cdcd8db1595649eeed1e872e087090442d7547e8f67045"
+      },
+      "columnar": {
+        "input_tokens": 5772,
+        "output_reserve": 512,
+        "total_required": 6284,
+        "fits": true,
+        "prompt_sha256": "da3100e56dbe6e41ccf1629d70c5ebbdccbe64cbfc348e74bce34596e3811894",
+        "tokens_sha256": "e1b3b47a63208a9dc74b9d1fe98c9f763bbce9be63739792fbcdf07b72be80e5"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "smoke-eva-07",
+      "case_id": "eva-07",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 2808,
+      "original": {
+        "input_tokens": 2833,
+        "output_reserve": 512,
+        "total_required": 3345,
+        "fits": true,
+        "prompt_sha256": "38487ec001f628b22ee133cf950990f466419e3ef039b0e516cce6b592d23107",
+        "tokens_sha256": "8c3d36c9107d8de29b696b14c2befa71fb13be653b5a041ed3f10179782a596b"
+      },
+      "columnar": {
+        "input_tokens": 2838,
+        "output_reserve": 512,
+        "total_required": 3350,
+        "fits": true,
+        "prompt_sha256": "1efb2130e42f9d30c3a168f32e0ccdac0d543d838869f41f1064b26cd7435559",
+        "tokens_sha256": "41d5a5cefdaa9df47290a532820646413801d52345ac81b41a1f16a1c37f8a19"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "smoke-eva-08",
+      "case_id": "eva-08",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 14019,
+      "original": {
+        "input_tokens": 18956,
+        "output_reserve": 512,
+        "total_required": 19468,
+        "fits": false,
+        "prompt_sha256": "46a1ddf9765b57f0b8e54ca04995488e3af28ea2269a164be79097293a6eb0d4",
+        "tokens_sha256": "cf09c8935e942528767005780fada8dfc0f262fb73ddf91b0b7b41a35d61e86f"
+      },
+      "columnar": {
+        "input_tokens": 14049,
+        "output_reserve": 512,
+        "total_required": 14561,
+        "fits": true,
+        "prompt_sha256": "f92435e419e5071a68e1dda739a75f22122ee36652bcb41d9cd3553d8323778d",
+        "tokens_sha256": "4e58317a4c0b7a1ab5701d5ddd9fb3e73ef2ea9276ed34f979cafb198cfce493"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "smoke-v1e-country-source-nb",
+      "case_id": "v1e-country-source-nb",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 6099,
+      "original": {
+        "input_tokens": 7242,
+        "output_reserve": 512,
+        "total_required": 7754,
+        "fits": true,
+        "prompt_sha256": "79501a76778f1ee3b9b7bcaeb9d3547dde5a2a6818d028056cb1c3688de6a214",
+        "tokens_sha256": "1262ea0481aa45cdb9f6c840fe91b82a9f102a8a47053e15c6740ef379040c0d"
+      },
+      "columnar": {
+        "input_tokens": 6129,
+        "output_reserve": 512,
+        "total_required": 6641,
+        "fits": true,
+        "prompt_sha256": "15ff0bcc00147c3f67e71b499838f0fad082fb7a0478c5408cb54e6f8187549e",
+        "tokens_sha256": "58d6e70d1cd91d2e88be5218c484601993ead164790bbbbacf9b3ec7e6e14435"
+      }
+    },
+    {
+      "condition": "retrieval",
+      "name": "smoke-v1e-country-paraphrase-en",
+      "case_id": "v1e-country-paraphrase-en",
+      "kind": "semantic_diagnostic",
+      "baseline_columnar_input_tokens": 6788,
+      "original": {
+        "input_tokens": 8180,
+        "output_reserve": 512,
+        "total_required": 8692,
+        "fits": true,
+        "prompt_sha256": "d51a05f7a76ccee8b9948609b926c3ae82d35bd76f6adf4d68615a8d04bef7bb",
+        "tokens_sha256": "95edb66ec44f38411a7fdc982a91cbac7ac16d4f26d4bd016be53ebe75b14b28"
+      },
+      "columnar": {
+        "input_tokens": 6818,
+        "output_reserve": 512,
+        "total_required": 7330,
+        "fits": true,
+        "prompt_sha256": "cf9df58684c5d980f4c2dab9bbaef4c00e57e0d0afe730a432963269d2909cfd",
+        "tokens_sha256": "5b3e6e7dda952bf4386a2d789534415e83b6ed82147f722ed31181ddd56be02f"
+      }
+    }
+  ],
+  "python": "3.12.14 (main, Aug 14 2026, 15:24:41) [Clang 22.1.3 ]",
+  "packages": {
+    "transformers": "5.20.1",
+    "tokenizers": "0.23.3",
+    "jinja2": "3.1.6"
+  }
+}

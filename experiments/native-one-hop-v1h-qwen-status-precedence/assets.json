@@ -1,0 +1,351 @@
+{
+  "version": "issue74-assets-v1",
+  "inference_performed": false,
+  "historical_config_sha256": "18a6d5c8521763b0e006597d2e1fa004ca17387f070ebd5157e5ed56b7c6d8b2",
+  "runtime_revision": "c0fd78626405c6d9b934efef0ec7291fcc20e3d6",
+  "runtime_archive_sha256": "777e63ee32b4a192420eda6856327c1dc9a06e292a23a4c271f54412483cc5e8",
+  "legal_archive_sha256": "985c34c93730b8da35a0176e9492f095934121c2364b96d74e3c094cdc881934",
+  "candidates": {
+    "qwen35": {
+      "upstream": {
+        "repo": "Qwen/Qwen3.5-9B",
+        "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+        "architecture": "Qwen3_5ForConditionalGeneration",
+        "license": "Apache-2.0",
+        "files": {
+          "LICENSE": {
+            "sha256": "bbedc3fda3305820b977265f01b8619d87570a6739de3a5582c3464840f1e57a",
+            "bytes": 11544
+          },
+          "README.md": {
+            "sha256": "c5f5a8c2dddab69cfbf05279235aa5fddb137939a06539c4c7637aa900fef6d0",
+            "bytes": 77643
+          },
+          "chat_template.jinja": {
+            "sha256": "a4aee8afcf2e0711942cf848899be66016f8d14a889ff9ede07bca099c28f715",
+            "bytes": 7756
+          },
+          "config.json": {
+            "sha256": "d0883072e01861ed0b2d47be3c16c36a8e81c224c7ffaa310c6558fb3f932b05",
+            "bytes": 3126
+          },
+          "merges.txt": {
+            "sha256": "a9d356d7bdf1ef4949e3e748e95b8e10ad9d4e2e838eddc38a0a7b6b94d1db8d",
+            "bytes": 3353259
+          },
+          "model.safetensors-00001-of-00004.safetensors": {
+            "sha256": "db6f444b43d318c92f360a13a25561a6a65b10c0631b8ed305a426dbaa6c380e",
+            "bytes": 5276436216
+          },
+          "model.safetensors-00002-of-00004.safetensors": {
+            "sha256": "31c7d7e2dd5d207840b31cc59083c8f4c4718959149e0358c0364052bb9a0330",
+            "bytes": 5335161512
+          },
+          "model.safetensors-00003-of-00004.safetensors": {
+            "sha256": "7ec36ba3a4176a44c3c0876ad80c56a2f70c84bf008d82e9501df642f17dadec",
+            "bytes": 5368717440
+          },
+          "model.safetensors-00004-of-00004.safetensors": {
+            "sha256": "b62b0c4cd7e44edee103ee8f4fe225f246d5e768e07bfd5f25b63a8aa1fdd0c6",
+            "bytes": 3325995712
+          },
+          "model.safetensors.index.json": {
+            "sha256": "26d3539b516be613f39563617cb9d33b3f83d401298125be392c80cefb8f7fe5",
+            "bytes": 79657
+          },
+          "preprocessor_config.json": {
+            "sha256": "27225450ac9c6529872ee1924fcb0962ff5634834f817040f444118116f4e516",
+            "bytes": 390
+          },
+          "tokenizer.json": {
+            "sha256": "5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42",
+            "bytes": 12807982
+          },
+          "tokenizer_config.json": {
+            "sha256": "316230d6a809701f4db5ea8f8fc862bc3a6f3229c937c174e674ff3ca0a64ac8",
+            "bytes": 16710
+          },
+          "video_preprocessor_config.json": {
+            "sha256": "7768af27c1fafa9cc9011c1dc20067e03f8915e03b63504550e11d5066986d13",
+            "bytes": 385
+          },
+          "vocab.json": {
+            "sha256": "ce99b4cb2983d118806ce0a8b777a35b093e2000a503ebde25853284c9dfa003",
+            "bytes": 6722759
+          }
+        }
+      },
+      "verified_native_files": true,
+      "verified_retained_files": {
+        "qwen35-Q4_K_M.gguf": {
+          "sha256": "fa502d3cb95fab7a6a563b9e057d94e6bae5ca737f056a4ffd05a9c25232d951",
+          "bytes": 5780090752,
+          "retained": true
+        },
+        "build/bin/llama-server": {
+          "sha256": "40188c617d6dc1d7f060587233a9eaf7d3929e1740db0e4650c31b74616be78a",
+          "bytes": 13420320,
+          "retained": true
+        },
+        "build/bin/llama-quantize": {
+          "sha256": "d08bf862557d17b111e5afd778d3cb241850c76e5358f01fae430ffe99c9f566",
+          "bytes": 5938032,
+          "retained": true
+        },
+        "build/bin/test-gbnf-validator": {
+          "sha256": "225167e1c32e139e4da426845cef7a330a2a7f340a43ab1b6dc95bcd9b2b63c2",
+          "bytes": 5199920,
+          "retained": true
+        }
+      },
+      "preparation_receipt": {
+        "config_sha256": "18a6d5c8521763b0e006597d2e1fa004ca17387f070ebd5157e5ed56b7c6d8b2",
+        "model": "qwen35",
+        "commands": [
+          [
+            "cmake",
+            "-S",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/upstream/llama.cpp-c0fd78626405c6d9b934efef0ec7291fcc20e3d6",
+            "-B",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/build",
+            "-DGGML_METAL=OFF",
+            "-DGGML_BLAS=OFF",
+            "-DGGML_ACCELERATE=OFF",
+            "-DLLAMA_OPENSSL=OFF",
+            "-DLLAMA_BUILD_TESTS=ON",
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_SHARED_LIBS=OFF"
+          ],
+          [
+            "cmake",
+            "--build",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/build",
+            "--target",
+            "llama-server",
+            "llama-quantize",
+            "test-gbnf-validator",
+            "-j",
+            "4"
+          ],
+          [
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/converter-py312/bin/python",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/upstream/llama.cpp-c0fd78626405c6d9b934efef0ec7291fcc20e3d6/convert_hf_to_gguf.py",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/upstream/qwen35",
+            "--outfile",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/qwen35-f16.gguf",
+            "--outtype",
+            "f16"
+          ],
+          [
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/build/bin/llama-quantize",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/qwen35-f16.gguf",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/qwen35-Q4_K_M.gguf",
+            "Q4_K_M",
+            "4"
+          ]
+        ],
+        "build_flags": [
+          "-DGGML_METAL=OFF",
+          "-DGGML_BLAS=OFF",
+          "-DGGML_ACCELERATE=OFF",
+          "-DLLAMA_OPENSSL=OFF",
+          "-DLLAMA_BUILD_TESTS=ON",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DBUILD_SHARED_LIBS=OFF"
+        ],
+        "runtime_revision": "c0fd78626405c6d9b934efef0ec7291fcc20e3d6",
+        "runtime_archive_sha256": "777e63ee32b4a192420eda6856327c1dc9a06e292a23a4c271f54412483cc5e8",
+        "converter_environment": "annotated-doc==0.0.5\nanyio==4.15.1\ncertifi==2026.7.22\ncharset-normalizer==3.5.2\nclick==8.5.0\nfilelock==4.2.0\nfsspec==2026.9.0\nh11==0.16.0\nhf-xet==1.7.0\nhttpcore2==2.13.1\nhttpx2==2.13.1\nhuggingface_hub==2.2.0\nidna==3.20\nJinja2==3.1.6\nmarkdown-it-py==4.2.0\nMarkupSafe==3.0.4\nmdurl==0.1.2\nmpmath==1.3.0\nnetworkx==3.7\nnumpy==2.2.6\npackaging==26.3\npip==25.0.1\nprotobuf==4.25.8\nPygments==2.21.0\nPyYAML==6.0.3\nregex==2026.9.29\nrequests==2.34.2\nrich==15.0.0\nsafetensors==0.8.0\nsentencepiece==0.2.1\nsetuptools==81.0.0\nshellingham==1.5.4\nsympy==1.14.0\ntokenizers==0.23.3\ntorch==2.11.0\ntqdm==4.70.1\ntransformers==5.20.1\ntruststore==0.10.5\ntyper==0.27.3\ntyping_extensions==4.16.0\nurllib3==2.8.0\n",
+        "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+        "cmake": "cmake version 4.4.4\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+        "files": {
+          "qwen35-f16.gguf": {
+            "sha256": "c3cb9c367db1bbdab8caf6fe1de864a2c5c11c766171ac42d05a8b9799f1074b",
+            "bytes": 18407321472,
+            "retained": false
+          },
+          "qwen35-Q4_K_M.gguf": {
+            "sha256": "fa502d3cb95fab7a6a563b9e057d94e6bae5ca737f056a4ffd05a9c25232d951",
+            "bytes": 5780090752,
+            "retained": true
+          },
+          "build/bin/llama-server": {
+            "sha256": "40188c617d6dc1d7f060587233a9eaf7d3929e1740db0e4650c31b74616be78a",
+            "bytes": 13420320,
+            "retained": true
+          },
+          "build/bin/llama-quantize": {
+            "sha256": "d08bf862557d17b111e5afd778d3cb241850c76e5358f01fae430ffe99c9f566",
+            "bytes": 5938032,
+            "retained": true
+          },
+          "build/bin/test-gbnf-validator": {
+            "sha256": "225167e1c32e139e4da426845cef7a330a2a7f340a43ab1b6dc95bcd9b2b63c2",
+            "bytes": 5199920,
+            "retained": true
+          }
+        },
+        "intermediate_cleanup": "SHA256 verified after successful quantization; native and Q4 weights retained"
+      },
+      "preparation_receipt_sha256": "cb30fe3eebb0f7fec1cbda90174d219be0e877a45cb2705db2663cc2b0e7083b",
+      "native_plus_quantized_bytes": 25109482843
+    },
+    "gemma4": {
+      "upstream": {
+        "repo": "google/gemma-4-12B-it",
+        "revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+        "architecture": "Gemma4UnifiedForConditionalGeneration",
+        "license": "Apache-2.0",
+        "files": {
+          "README.md": {
+            "sha256": "04a06469e3d83b941eaa776a3647b8690b5a7cc5c833af2381e5345bb1bb45c0",
+            "bytes": 28484
+          },
+          "chat_template.jinja": {
+            "sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4",
+            "bytes": 18683
+          },
+          "config.json": {
+            "sha256": "478c46e8d2c52d5c2d85bf67e3b3e8c90e7c9d91086cee27e3c267907e936bd9",
+            "bytes": 4423
+          },
+          "generation_config.json": {
+            "sha256": "a8349d9bd64cc5841297fcb5002f0fdc4749c473c8f1b10ea337f9ce4ee7014e",
+            "bytes": 260
+          },
+          "model.safetensors": {
+            "sha256": "5a84cb313260ac447237b890387116dfa8682e49a6b44bc585ae8353abbff18d",
+            "bytes": 23919549408
+          },
+          "processor_config.json": {
+            "sha256": "6b938e76555b3e9946890770e1abcd442a4718f34041a58e8139dc8ad34545c9",
+            "bytes": 1382
+          },
+          "tokenizer.json": {
+            "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f",
+            "bytes": 32169626
+          },
+          "tokenizer_config.json": {
+            "sha256": "a62f4e85a47c0c136edaaa3a4f591fd6783717299a9def47e5ad03a49f6a5eb9",
+            "bytes": 3089
+          }
+        }
+      },
+      "verified_native_files": true,
+      "verified_retained_files": {
+        "gemma4-Q4_K_M.gguf": {
+          "sha256": "6f25c570ce17ff06980ecb03edea67ce0e1bad39419a8e8091ba2298ae014431",
+          "bytes": 7381383296,
+          "retained": true
+        },
+        "build/bin/llama-server": {
+          "sha256": "40188c617d6dc1d7f060587233a9eaf7d3929e1740db0e4650c31b74616be78a",
+          "bytes": 13420320,
+          "retained": true
+        },
+        "build/bin/llama-quantize": {
+          "sha256": "d08bf862557d17b111e5afd778d3cb241850c76e5358f01fae430ffe99c9f566",
+          "bytes": 5938032,
+          "retained": true
+        },
+        "build/bin/test-gbnf-validator": {
+          "sha256": "225167e1c32e139e4da426845cef7a330a2a7f340a43ab1b6dc95bcd9b2b63c2",
+          "bytes": 5199920,
+          "retained": true
+        }
+      },
+      "preparation_receipt": {
+        "config_sha256": "18a6d5c8521763b0e006597d2e1fa004ca17387f070ebd5157e5ed56b7c6d8b2",
+        "model": "gemma4",
+        "commands": [
+          [
+            "cmake",
+            "-S",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/upstream/llama.cpp-c0fd78626405c6d9b934efef0ec7291fcc20e3d6",
+            "-B",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/build",
+            "-DGGML_METAL=OFF",
+            "-DGGML_BLAS=OFF",
+            "-DGGML_ACCELERATE=OFF",
+            "-DLLAMA_OPENSSL=OFF",
+            "-DLLAMA_BUILD_TESTS=ON",
+            "-DCMAKE_BUILD_TYPE=Release",
+            "-DBUILD_SHARED_LIBS=OFF"
+          ],
+          [
+            "cmake",
+            "--build",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/build",
+            "--target",
+            "llama-server",
+            "llama-quantize",
+            "test-gbnf-validator",
+            "-j",
+            "4"
+          ],
+          [
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/converter-py312/bin/python",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/upstream/llama.cpp-c0fd78626405c6d9b934efef0ec7291fcc20e3d6/convert_hf_to_gguf.py",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/upstream/gemma4",
+            "--outfile",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/gemma4-f16.gguf",
+            "--outtype",
+            "f16"
+          ],
+          [
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/build/bin/llama-quantize",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/gemma4-f16.gguf",
+            "/Users/grove/projects/graph-verity/artifacts/issue-48/gemma4-Q4_K_M.gguf",
+            "Q4_K_M",
+            "4"
+          ]
+        ],
+        "build_flags": [
+          "-DGGML_METAL=OFF",
+          "-DGGML_BLAS=OFF",
+          "-DGGML_ACCELERATE=OFF",
+          "-DLLAMA_OPENSSL=OFF",
+          "-DLLAMA_BUILD_TESTS=ON",
+          "-DCMAKE_BUILD_TYPE=Release",
+          "-DBUILD_SHARED_LIBS=OFF"
+        ],
+        "runtime_revision": "c0fd78626405c6d9b934efef0ec7291fcc20e3d6",
+        "runtime_archive_sha256": "777e63ee32b4a192420eda6856327c1dc9a06e292a23a4c271f54412483cc5e8",
+        "converter_environment": "annotated-doc==0.0.5\nanyio==4.15.1\ncertifi==2026.7.22\ncharset-normalizer==3.5.2\nclick==8.5.0\nfilelock==4.2.0\nfsspec==2026.9.0\nh11==0.16.0\nhf-xet==1.7.0\nhttpcore2==2.13.1\nhttpx2==2.13.1\nhuggingface_hub==2.2.0\nidna==3.20\nJinja2==3.1.6\nmarkdown-it-py==4.2.0\nMarkupSafe==3.0.4\nmdurl==0.1.2\nmpmath==1.3.0\nnetworkx==3.7\nnumpy==2.2.6\npackaging==26.3\npip==25.0.1\nprotobuf==4.25.8\nPygments==2.21.0\nPyYAML==6.0.3\nregex==2026.9.29\nrequests==2.34.2\nrich==15.0.0\nsafetensors==0.8.0\nsentencepiece==0.2.1\nsetuptools==81.0.0\nshellingham==1.5.4\nsympy==1.14.0\ntokenizers==0.23.3\ntorch==2.11.0\ntqdm==4.70.1\ntransformers==5.20.1\ntruststore==0.10.5\ntyper==0.27.3\ntyping_extensions==4.16.0\nurllib3==2.8.0\n",
+        "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Library/Developer/CommandLineTools/usr/bin\n",
+        "cmake": "cmake version 4.4.4\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+        "files": {
+          "gemma4-f16.gguf": {
+            "sha256": "d1cda784e6cc0e0ee2ef519d5fff092887de45e9538bf25b58b40d1f40cd1a91",
+            "bytes": 23832066176,
+            "retained": false
+          },
+          "gemma4-Q4_K_M.gguf": {
+            "sha256": "6f25c570ce17ff06980ecb03edea67ce0e1bad39419a8e8091ba2298ae014431",
+            "bytes": 7381383296,
+            "retained": true
+          },
+          "build/bin/llama-server": {
+            "sha256": "40188c617d6dc1d7f060587233a9eaf7d3929e1740db0e4650c31b74616be78a",
+            "bytes": 13420320,
+            "retained": true
+          },
+          "build/bin/llama-quantize": {
+            "sha256": "d08bf862557d17b111e5afd778d3cb241850c76e5358f01fae430ffe99c9f566",
+            "bytes": 5938032,
+            "retained": true
+          },
+          "build/bin/test-gbnf-validator": {
+            "sha256": "225167e1c32e139e4da426845cef7a330a2a7f340a43ab1b6dc95bcd9b2b63c2",
+            "bytes": 5199920,
+            "retained": true
+          }
+        }
+      },
+      "preparation_receipt_sha256": "a1596dbfd9a86cf1f9b844cb6151081fddf8b447efa452be790b025a42055a05",
+      "native_plus_quantized_bytes": 31333158651
+    }
+  },
+  "runtime_source_tree_verified": true,
+  "original_licenses_verified": true
+}
