@@ -1,0 +1,71 @@
+{
+  "status": "passed",
+  "recorded_at": "2026-10-21T12:50:13.301477+00:00",
+  "validated_commit": "d84bd02e3c35aec2ecf50c99bcce48224eb0459c",
+  "full_pipeline_checks": 39,
+  "current_python_tests": 297,
+  "frozen_pilot_tests": 15,
+  "python_tests_skipped": false,
+  "rust_tests": 100,
+  "focused_comparison_tests": 4,
+  "original_byte_rust_replay_previews": 70,
+  "original_registered_source_hashes_verified": 76,
+  "historical_hashes_verified": 801,
+  "original_retained_files_match_merged_main": 898,
+  "variant_source_hashes_verified": 3,
+  "registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+  "original_registration_resealed": false,
+  "original_binary_unchanged": true,
+  "complete_log_archive_sha256": "dc3cf58ee3ca024952bc856af4936a69d866b3060bebdb645e7653c05ad1a5e4",
+  "full_pipeline": {
+    "status": "passed",
+    "validated_commit": "d84bd02e3c35aec2ecf50c99bcce48224eb0459c",
+    "checkout": "/Users/grove/projects/graph-verity/artifacts/issue83-v1h-gemma-evidence-validation-20261021T123930Z/verification-checkout",
+    "original_registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "model_loading_permitted": false,
+    "downloads_permitted": false,
+    "environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "REQUIRE_FIND_BROWSER": "1",
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1"
+    },
+    "commands": [
+      {
+        "label": "isolated-build",
+        "args": [
+          "cargo",
+          "build",
+          "--locked",
+          "--offline",
+          "--bins",
+          "--examples"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 6.87030587499612
+      },
+      {
+        "label": "complete-pipeline",
+        "args": [
+          "/Users/grove/projects/graph-verity/artifacts/issue83-v1h-gemma-evidence-validation-20261021T123930Z/verification-checkout/.venv/bin/python",
+          "-u",
+          "tools/verify_pre_llm.py"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 578.5341133330076
+      }
+    ],
+    "original_registered_binary_after_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "registered_binary_unchanged": true
+  },
+  "model_free_verification_inference": false,
+  "gemma_inference_command_exit_code": 1,
+  "gemma_inference_attempts": 1,
+  "inference_retries": 0,
+  "model_generated_rdf_executions": 0,
+  "semantic_decision": "INCONCLUSIVE_REVISE",
+  "independent_human_review": "deferred",
+  "issue83": "keep_open",
+  "issue75_integration": "disabled",
+  "scope": "Exact candidate code/evidence validated; later additions are these validation receipts/logs and report checksum only."
+}
