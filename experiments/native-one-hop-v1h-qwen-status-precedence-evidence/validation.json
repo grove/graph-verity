@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "full_pipeline": {
+    "status": "passed",
+    "validated_commit": "e540f90e7624ef63cc031128a0704b1222450082",
+    "checkout": "/Users/grove/projects/graph-verity/artifacts/issue83-qwen-status-precedence-execution/verification-checkout",
+    "original_registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "model_loading_permitted": false,
+    "downloads_permitted": false,
+    "environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "REQUIRE_FIND_BROWSER": "1",
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1"
+    },
+    "commands": [
+      {
+        "label": "isolated-build",
+        "args": [
+          "cargo",
+          "build",
+          "--locked",
+          "--offline",
+          "--bins",
+          "--examples"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 11.71443808299955
+      },
+      {
+        "label": "complete-pipeline",
+        "args": [
+          "/Users/grove/projects/graph-verity/artifacts/issue83-qwen-status-precedence-execution/verification-checkout/.venv/bin/python",
+          "-u",
+          "tools/verify_pre_llm.py"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 614.0262344170042
+      }
+    ],
+    "original_registered_binary_after_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "registered_binary_unchanged": true
+  },
+  "full_pipeline_checks": 39,
+  "python_test_counts": [
+    304,
+    15
+  ],
+  "python_tests_skipped": false,
+  "rust_tests_passed": 100,
+  "native_grammar_controls_passed": 12,
+  "native_sampling_controls_attempted": 0,
+  "baseline_original_byte_rust_previews_replayed": 74,
+  "new_model_output_rust_previews": 0,
+  "independent_tokenizer_recount_exact": true,
+  "analyzer_exact_reproduction_passed": true,
+  "tampered_archive_rejection_passed": true,
+  "original_tracked_files_unchanged": 1286,
+  "inference_command_issued": false,
+  "model_loaded": false,
+  "generation_attempts": 0,
+  "retries": 0,
+  "model_generated_rdf_executions": 0,
+  "independent_human_review": "pending",
+  "scope": "Full existing pipeline at exact authorized PR commit; evidence analyzer separately self-checked. Only new evidence/report files added afterward."
+}
