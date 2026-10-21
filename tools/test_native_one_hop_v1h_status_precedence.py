@@ -45,7 +45,7 @@ class StatusPrecedenceTests(unittest.TestCase):
         new_prompt = (v.ROOT / v.h.read(v.CONFIG)['prompt_file']).read_text()
         for row, old in zip(rows[2:], original[2:]):
             for variant in ['original', 'columnar']:
-                self.assertEqual(row[variant]['prompt'], old[variant]['prompt'].replace(old_prompt, new_prompt, 1))
+                self.assertEqual(row[variant]['prompt'], old[variant]['prompt'].replace(old_prompt.rstrip(), new_prompt.rstrip(), 1))
                 self.assertEqual(row[variant]['input_tokens'] - old[variant]['input_tokens'], 30)
         self.assertEqual(len(self.counts['models']['qwen35']['native_parities_reproduced']), 36)
         for row in rows:

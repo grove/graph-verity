@@ -124,3 +124,9 @@ inputs; tests establish contract/source preservation, not future model behavior.
 Direction failures, missing vocabulary and opaque source meaning are unresolved.
 Historical baseline/cache/host differences prevent statistical, causal or model
 superiority claims. RSS sampling can miss peaks and double-count shared pages.
+
+The first unpublished, unrun registration is retained byte for byte in
+[superseded-registration-1](superseded-registration-1/reason.json). A regression
+assertion initially omitted Qwen template whitespace trimming; only that assertion
+was corrected before the final registration. Prompt bytes, token arrays and all
+experimental factors are unchanged. This consumed zero inference attempts.
