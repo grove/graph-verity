@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "focused_tests": 3,
+  "focused_tests_exit_code": 0,
+  "original_byte_rust_replay_previews": 74,
+  "original_byte_rust_replay_exit_code": 0,
+  "preauthorization_runner_tests": 7,
+  "preauthorization_native_grammar_controls": 12,
+  "inference_command_exit_code": 0,
+  "initial_full_pipeline": {
+    "validated_commit": "d86575f8b8be8da1e7b1821a20114d945d9207fe",
+    "status": "failed",
+    "failed_check": "reporting-tests",
+    "current_python_tests": 289,
+    "passed": 288,
+    "errors": 1,
+    "error": "test_hybrid_review_cold.ColdStartup.test_invalid_result_and_timeout_terminate_worker_group: PermissionError [Errno 1] Operation not permitted from os.killpg(process.pid, SIGKILL)",
+    "registered_binary_unchanged": true
+  },
+  "cleanup_diagnostic": {
+    "command": ".venv/bin/python -m unittest discover -s tools -p test_hybrid_review_cold.py -v",
+    "exit_code": 0,
+    "tests": 7,
+    "source_changed": false
+  },
+  "inference_retries": 0,
+  "validated_commit": "6983eeddf281afcd88a96ee048c04f8bb35562bc",
+  "full_pipeline_checks": 39,
+  "full_pipeline_environment": {
+    "CARGO_NET_OFFLINE": "true",
+    "REQUIRE_FIND_BROWSER": "1",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1"
+  },
+  "current_python_tests": 289,
+  "frozen_pilot_tests": 15,
+  "rust_tests": 100,
+  "required_browser_checks": true,
+  "complete_log_archive_sha256": "2e6e4172faadb55ea344da9e3b013f25f450ddf5fc2a1529aa0b92fa2a6c1ab7",
+  "original_registered_binary_unchanged": true,
+  "final_full_pipeline": {
+    "validated_commit": "6983eeddf281afcd88a96ee048c04f8bb35562bc",
+    "original_registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "checkout": "/Users/grove/projects/graph-verity/artifacts/issue83-v1h-qwen-validation-2/verification-checkout",
+    "downloads_permitted": false,
+    "model_loading_permitted": false,
+    "commands": [
+      {
+        "name": "isolated-build",
+        "args": [
+          "cargo",
+          "build",
+          "--locked",
+          "--offline",
+          "--bins",
+          "--examples"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 7.057169457999407
+      },
+      {
+        "name": "complete-pipeline",
+        "args": [
+          "/Users/grove/projects/graph-verity/artifacts/issue83-v1h-qwen-validation-2/verification-checkout/.venv/bin/python",
+          "tools/verify_pre_llm.py"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 589.8104486660013
+      }
+    ],
+    "status": "passed",
+    "original_registered_binary_after_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "registered_binary_unchanged": true
+  }
+}
