@@ -15,7 +15,8 @@ authorized controlled research, but prevents independently validated semantic
 readiness claims. Decision remains **INCONCLUSIVE_REVISE**, with no model ranking,
 semantic GO, exact-answer accuracy or product-readiness claim. Keep #83 open and
 #75 integration disabled. No model-generated RDF execution, sealed holdout access,
-Gemma/v1g inference, threshold change, download, user-process interruption or
+Gemma/v1g inference, threshold change, model/runtime/dependency download,
+user-process interruption or
 automatic retry occurred. No further inference or automatic merge is proposed.
 
 ## Authorization and registered identities
@@ -247,8 +248,8 @@ freeze, reproduces **all 74 saved Rust previews** without loading models:
 ```
 
 The complete model-free pipeline and final preservation results are recorded in
-`validation.json` and `preservation.json`; complete logs are retained alongside
-them. It runs in a separate source/build tree with `CARGO_NET_OFFLINE=true` and
+[validation.json](validation.json) and [preservation.json](preservation.json);
+complete logs are retained alongside them. It runs in a separate source/build tree with `CARGO_NET_OFFLINE=true` and
 `REQUIRE_FIND_BROWSER=1`, preserving the registered executable. No historical
 hash, registration or source is refreshed to accept the new evidence.
 

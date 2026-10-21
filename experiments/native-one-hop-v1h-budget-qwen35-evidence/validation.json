@@ -1,10 +1,27 @@
 {
-  "status": "full_pipeline_pending",
+  "status": "initial_full_pipeline_failed_revalidation_pending",
   "focused_tests": 3,
   "focused_tests_exit_code": 0,
   "original_byte_rust_replay_previews": 74,
   "original_byte_rust_replay_exit_code": 0,
   "preauthorization_runner_tests": 7,
   "preauthorization_native_grammar_controls": 12,
-  "inference_command_exit_code": 0
+  "inference_command_exit_code": 0,
+  "initial_full_pipeline": {
+    "validated_commit": "d86575f8b8be8da1e7b1821a20114d945d9207fe",
+    "status": "failed",
+    "failed_check": "reporting-tests",
+    "current_python_tests": 289,
+    "passed": 288,
+    "errors": 1,
+    "error": "test_hybrid_review_cold.ColdStartup.test_invalid_result_and_timeout_terminate_worker_group: PermissionError [Errno 1] Operation not permitted from os.killpg(process.pid, SIGKILL)",
+    "registered_binary_unchanged": true
+  },
+  "cleanup_diagnostic": {
+    "command": ".venv/bin/python -m unittest discover -s tools -p test_hybrid_review_cold.py -v",
+    "exit_code": 0,
+    "tests": 7,
+    "source_changed": false
+  },
+  "inference_retries": 0
 }
