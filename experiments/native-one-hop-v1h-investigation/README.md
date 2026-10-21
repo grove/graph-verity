@@ -152,8 +152,14 @@ The synthetic transport is not model evidence. Ordinary CI never requires model
 assets or invokes the tokenizer environment; actual pinned-tokenizer receipts
 are hash-bound in the committed freeze.
 
-Exact validation commands/results/logs and historical preservation receipts are
-retained alongside this report. Earlier unregistered candidates, including an
+The complete model-free pipeline passed on commit `048bb08`: all 39 pipeline
+checks met their expected outcomes, including 286 current Python tests, 15
+frozen pilot tests, 100 Rust tests, formatting, Clippy, required browser checks,
+source canaries and historical replays. The nine focused regressions pass.
+Fresh restored Qwen recount reproduces all 38 original and columnar prompts and
+complete token arrays; original r3 Rust replay passes all 69 saved previews.
+See [validation.json](validation.json), [verification.json](verification.json),
+[complete logs](validation-logs.tar.gz) and [preservation.json](preservation.json). Earlier unregistered candidates, including an
 oversized verbose token receipt and a null host-field review-package test
 failure, are documented; no historical freeze was resealed to accept them.
 
