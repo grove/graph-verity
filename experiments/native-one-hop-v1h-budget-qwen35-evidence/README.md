@@ -247,11 +247,29 @@ freeze, reproduces **all 74 saved Rust previews** without loading models:
   --freeze artifacts/v1h-budget --run artifacts/issue83-v1h-budget-qwen35-first
 ```
 
-The complete model-free pipeline and final preservation results are recorded in
-[validation.json](validation.json) and [preservation.json](preservation.json);
-complete logs are retained alongside them. It runs in a separate source/build tree with `CARGO_NET_OFFLINE=true` and
-`REQUIRE_FIND_BROWSER=1`, preserving the registered executable. No historical
-hash, registration or source is refreshed to accept the new evidence.
+The complete offline model-free pipeline **passed all 39 checks** on snapshot
+`6983eeddf281afcd88a96ee048c04f8bb35562bc`: 289 current Python tests, 15 frozen
+pilot tests, 100 Rust tests, formatting, Clippy, required browser checks, source
+canaries and historical replays. The three new evidence-analysis/tampering tests
+also pass, including process-free byte reproduction of all three generated
+reports. Final results are in [validation.json](validation.json),
+[verification.json](verification.json) and [preservation.json](preservation.json).
+
+The first full local attempt stopped after 288/289 current Python tests passed:
+the existing cold-start teardown test raised macOS `PermissionError` at
+`os.killpg(process.pid, SIGKILL)`. All seven unchanged cleanup tests passed in
+isolation; the fresh full model-free run then passed. No production/registered
+source, timeout or threshold was changed. Both attempts and the focused diagnosis
+remain in [complete validation logs](validation-logs.tar.gz), with all 127 files
+bound by [validation-logs-files.json](validation-logs-files.json). The native Qwen
+attempt remained single and unchanged.
+
+Validation used separate source/build trees with `CARGO_NET_OFFLINE=true` and
+`REQUIRE_FIND_BROWSER=1`, preserving the original registered executable. All
+801 historical hashes and all 76 registered source hashes still match after
+validation; previous registrations/reports remain untouched. No historical hash,
+registration or source is refreshed to accept the new evidence. Changes after
+the validated snapshot only retain these logs and update report metadata/links.
 
 ## Recommendation
 
