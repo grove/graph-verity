@@ -1,0 +1,71 @@
+{
+  "status": "passed",
+  "full_pipeline": {
+    "status": "passed",
+    "validated_commit": "e540f90e7624ef63cc031128a0704b1222450082",
+    "checkout": "/Users/grove/projects/graph-verity/artifacts/issue83-qwen-status-precedence-first-validation/verification-checkout",
+    "original_registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "model_loading_permitted": false,
+    "downloads_permitted": false,
+    "environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "REQUIRE_FIND_BROWSER": "1",
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1"
+    },
+    "commands": [
+      {
+        "label": "isolated-build",
+        "args": [
+          "cargo",
+          "build",
+          "--locked",
+          "--offline",
+          "--bins",
+          "--examples"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 11.536407667008461
+      },
+      {
+        "label": "complete-pipeline",
+        "args": [
+          "/Users/grove/projects/graph-verity/artifacts/issue83-qwen-status-precedence-first-validation/verification-checkout/.venv/bin/python",
+          "-u",
+          "tools/verify_pre_llm.py"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 588.9120082079899
+      }
+    ],
+    "original_registered_binary_after_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "registered_binary_unchanged": true
+  },
+  "full_pipeline_checks": 39,
+  "python_test_counts": [
+    304,
+    15
+  ],
+  "python_tests_skipped": false,
+  "rust_tests_passed": 100,
+  "evidence_tests": 2,
+  "analyzer_exact_reproduction_passed": true,
+  "tampered_archive_rejection_passed": true,
+  "required_browsers": true,
+  "all_original_tracked_bytes_unchanged": 1286,
+  "original_byte_rust_replay": {
+    "verified": true,
+    "rust_previews": 74,
+    "recorded_status": "completed_diagnostic",
+    "inference_performed": false,
+    "executions": 0
+  },
+  "run_status": "completed_diagnostic",
+  "generation_attempts": 38,
+  "generation_completed": 38,
+  "further_inference_performed_by_validation": false,
+  "model_generated_rdf_executions": 0,
+  "independent_human_review": "pending",
+  "decision": "INCONCLUSIVE_REVISE",
+  "scope": "Full unchanged applicable pipeline at the exact authorized source commit in isolated checkout after inference stopped; new evidence analyzer/tests separately validated."
+}
