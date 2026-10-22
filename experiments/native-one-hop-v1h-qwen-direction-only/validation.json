@@ -1,0 +1,231 @@
+{
+  "status": "passed",
+  "validated_commit": "c0fa7de20edfacada8aa5e3bb7fa9e7d323282b9",
+  "source_commit": "e5e665febb8b51fd4a7c225df87a2a0dff9cc124",
+  "registered_revision": "issue83-native-cpu-v1h-qwen-direction-only",
+  "registration_sha256": "dceb7ded1c5914097dfc6f8b384b51157668dda34f89cbdcec5b8903bc46e68c",
+  "archive_sha256": "6f4fd8de5597f300cf8808b645dbb1cf254ef082c6661a512c2724a22289332d",
+  "freeze_sha256": "88cc121a9b90b273212dbda262936bb2509d6ec19159fed3a15815a271513a15",
+  "exact_command": "REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py",
+  "full_pipeline_checks": 39,
+  "python_test_counts": [
+    312,
+    15
+  ],
+  "rust_tests": 100,
+  "focused_direction_tests": 8,
+  "python_tests_skipped": false,
+  "required_browser_checks": true,
+  "full_pipeline": {
+    "status": "passed",
+    "validated_commit": "c0fa7de20edfacada8aa5e3bb7fa9e7d323282b9",
+    "checkout": "/Users/grove/projects/graph-verity/artifacts/issue83-direction-validation/verification-checkout",
+    "original_registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "model_loading_permitted": false,
+    "downloads_permitted": false,
+    "environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "REQUIRE_FIND_BROWSER": "1",
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1"
+    },
+    "commands": [
+      {
+        "label": "isolated-build",
+        "args": [
+          "cargo",
+          "build",
+          "--locked",
+          "--offline",
+          "--bins",
+          "--examples"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.08545504200446885
+      },
+      {
+        "label": "complete-pipeline",
+        "args": [
+          "/Users/grove/projects/graph-verity/artifacts/issue83-direction-validation/verification-checkout/.venv/bin/python",
+          "-u",
+          "tools/verify_pre_llm.py"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 621.8905444160046
+      }
+    ],
+    "original_registered_binary_after_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "registered_binary_unchanged": true
+  },
+  "focused": {
+    "status": "passed",
+    "validated_commit": "c0fa7de20edfacada8aa5e3bb7fa9e7d323282b9",
+    "commands": [
+      {
+        "label": "direction-tests",
+        "args": [
+          "/Users/grove/projects/graph-verity/.venv/bin/python",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tools",
+          "-p",
+          "test_native_one_hop_v1h_direction.py",
+          "-v"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 16.307834541003103
+      },
+      {
+        "label": "predicate-audit",
+        "args": [
+          "/Users/grove/projects/graph-verity/.venv/bin/python",
+          "tools/audit_v1h_predicates.py",
+          "--check"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 1.2649440829991363
+      },
+      {
+        "label": "qwen-baseline-analysis",
+        "args": [
+          "/Users/grove/projects/graph-verity/.venv/bin/python",
+          "experiments/native-one-hop-v1h-qwen-status-precedence-first-evidence/analyze.py",
+          "--check"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 5.838255916998605
+      },
+      {
+        "label": "gemma-comparison",
+        "args": [
+          "/Users/grove/projects/graph-verity/.venv/bin/python",
+          "tools/compare_v1h_models.py",
+          "--out",
+          "/Users/grove/projects/graph-verity/artifacts/issue83-direction-validation/gemma-comparison"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 3.5978634589992
+      }
+    ],
+    "inference_performed": false,
+    "executions": 0
+  },
+  "replay_tokenizer": {
+    "status": "passed",
+    "replays": {
+      "native-one-hop-v1h-budget-qwen35-evidence": {
+        "rust_previews": 74,
+        "archive_sha256": "6d15494ea7b8dedf33f5a95529d0a96075d18158c7700b2214db6411fd969eb7"
+      },
+      "native-one-hop-v1h-qwen-status-precedence-first-evidence": {
+        "rust_previews": 74,
+        "archive_sha256": "399db69966be69512871d74a928ed8445fef65fa10ed800731977eb98f05dfe7"
+      },
+      "native-one-hop-v1h-budget-gemma4-swap2048-evidence": {
+        "rust_previews": 70,
+        "archive_sha256": "02bc0e64418eb3d0bdf71825940e89b7f956aefc11b4410dd2b66a5a81abbde5"
+      }
+    },
+    "native_grammar_controls": 12,
+    "independent_recount_exact": true,
+    "prompts": 38,
+    "semantic": 36,
+    "native_history_parities": 36,
+    "max_columnar_input": 14099,
+    "max_columnar_total": 14611,
+    "max_original_input": 19006,
+    "output_reserve": 512,
+    "context": 16384,
+    "inference_performed": false,
+    "executions": 0
+  },
+  "preservation": {
+    "status": "passed",
+    "base_commit": "82e81a3e30c315c27d86b5c125143020a172af18",
+    "original_tracked_files_verified": 1311,
+    "historical_hashes_verified": 801,
+    "historical_registrations": [
+      {
+        "path": "experiments/native-one-hop-v1f-diagnostic-r3/registration.json",
+        "sha256": "c11c945b2898ebffb1d9cd2bb6e9a0dacf6b5f933a78cc4fe7fb4b10e81751fa",
+        "archive_sha256": "e21fa724755513425c4b676d2e830b37a1e7f17aca19b990b1e5a331a0091538",
+        "source_commit": "eda247679a6b10fa2ef4f5a21ece12d0f0c53213",
+        "source_hashes": 68,
+        "binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db"
+      },
+      {
+        "path": "experiments/native-one-hop-v1g/registration.json",
+        "sha256": "59a37795be9edddc0233961bba83b0af4d697f76c01d7ba2f6f20f02542ccd30",
+        "design_only": true,
+        "source_hashes": 101
+      },
+      {
+        "path": "experiments/native-one-hop-v1h-budget-swap2048/registration.json",
+        "sha256": "b70476e3ae2118c7a4e5fd15cc581a26697d6286afd5f31e123d693345200c05",
+        "variant": true,
+        "source_hashes": 3,
+        "parent_archive_sha256": "61e2feb6883bcbcadfa8ace259b3e2f9ef2f2c8c3d771a0523ebbba7e8d295df"
+      },
+      {
+        "path": "experiments/native-one-hop-v1h-budget/registration.json",
+        "sha256": "beb4e84519294d9f6b870236573c3728f4ccc028465db73c0cb97ab36a414bc7",
+        "archive_sha256": "61e2feb6883bcbcadfa8ace259b3e2f9ef2f2c8c3d771a0523ebbba7e8d295df",
+        "source_commit": "d485b9fcaf2de834d07788e8f15fc193b6cce664",
+        "source_hashes": 76,
+        "binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db"
+      },
+      {
+        "path": "experiments/native-one-hop-v1h-qwen-status-precedence/registration.json",
+        "sha256": "d0d0943d82702ec42d247d825fbb4ad5b5caae9b031c4905067f51e7784979c5",
+        "archive_sha256": "542d0fcd2e893ced7adfe06ac4ccf176f11e4ad8ed60b4e8e165a1f499003415",
+        "source_commit": "ede2113f5948e64f117a18db271f7c11019f0941",
+        "source_hashes": 83,
+        "binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db"
+      },
+      {
+        "path": "experiments/native-one-hop-v1h-qwen-status-precedence/superseded-registration-1/registration.json",
+        "sha256": "020d7c32d33e25073a018ce7b436ec90c2d5334237ef1e911e36de85049c48b6",
+        "archive_sha256": "93bb7c0b7ef691748d2b70e1b215e866705933ee0a7de9f02936bc9a6c886056",
+        "source_commit": "0b9eb79755cb40d80c8527ca63b85b82c305df88",
+        "source_hashes": 83,
+        "binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db"
+      }
+    ],
+    "new_source_hashes_verified": 99,
+    "registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "pinned_assets_match": true,
+    "new_output_absent": true,
+    "new_attempt_ledger_absent": true,
+    "ledger_path": "artifacts/v1h-budget-attempts-88cc121a9b90b273212dbda262936bb2509d6ec19159fed3a15815a271513a15.json",
+    "inference_performed": false,
+    "executions": 0,
+    "independent_human_review": "pending"
+  },
+  "initial_host_attempt": {
+    "status": "failed",
+    "current_python_tests": 312,
+    "passed": 311,
+    "errors": 1,
+    "reason": "Existing local_find no-JavaScript browser condition timed out. Isolated unchanged check passed in 8.428s; full unchanged pipeline rerun. All attempts retained.",
+    "log_prefix": "host-attempt-1/"
+  },
+  "initial_sandbox_attempt": {
+    "status": "failed",
+    "current_python_tests": 312,
+    "failures": 8,
+    "errors": 44,
+    "reason": "Sandbox denied localhost socket binding; unchanged model-free pipeline rerun with host execution. Full original logs retained.",
+    "log_prefix": "sandbox-attempt/"
+  },
+  "new_inference": false,
+  "model_generated_rdf_executions": 0,
+  "independent_human_review": "pending",
+  "decision": "INCONCLUSIVE_REVISE",
+  "issue83": "keep_open",
+  "issue75_integration": "disabled",
+  "native_parity_scope": "Pinned tokenizer reproduces 36 retained historical native records. New prompts recounted twice offline; fresh native server parity is mandatory per future generation and was not performed because model loading is unauthorized.",
+  "validation_scope": "All source and registration bytes tested at c0fa7de20edfacada8aa5e3bb7fa9e7d323282b9 in isolated checkout; later commit adds only these validation receipts, logs and preservation receipts.",
+  "future_authorization_command": ".venv/bin/python tools/native_one_hop_v1h_direction.py run --freeze artifacts/v1h-qwen-direction-only --model qwen35 --allow-inference --out artifacts/issue83-v1h-qwen-direction-only-first"
+}

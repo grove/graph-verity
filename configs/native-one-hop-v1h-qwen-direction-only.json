@@ -1,0 +1,71 @@
+{
+  "version": "issue83-native-cpu-v1h-qwen-direction-only",
+  "base_registration": "experiments/native-one-hop-v1f-diagnostic-r3/registration.json",
+  "encoding": "lossless-packet-columns-v1",
+  "hypothesis": "Explicit object-anchored reverse plan construction improves exposed reverse-reference agreement; predicate meaning remains an independent limitation.",
+  "comparison": "Original Qwen status-precedence first evidence; only reverse one-hop construction wording changes.",
+  "decision": "INCONCLUSIVE_REVISE",
+  "inference_authorized": false,
+  "diagnostic_observations_per_model": 36,
+  "maximum_completion_requests_per_model": 38,
+  "token_fit_rule": "input_tokens + 512 < 16384; every scheduled prompt is recounted with pinned local tokenizer before model loading; native template/token parity is mandatory before each generation",
+  "retries": 0,
+  "semantic_prompt_change": true,
+  "retrieval_change": false,
+  "executions": 0,
+  "integration_authorized": false,
+  "prompt_file": "configs/native-one-hop-v1h-qwen-direction-only.prompt.txt",
+  "variants": [
+    "qwen35"
+  ],
+  "parent_registration": "experiments/native-one-hop-v1h-qwen-status-precedence/registration.json",
+  "parent_registration_sha256": "d0d0943d82702ec42d247d825fbb4ad5b5caae9b031c4905067f51e7784979c5",
+  "baseline_evidence": "experiments/native-one-hop-v1h-qwen-status-precedence-first-evidence/evidence.tar.gz",
+  "baseline_evidence_sha256": "399db69966be69512871d74a928ed8445fef65fa10ed800731977eb98f05dfe7",
+  "proposed_output": "artifacts/issue83-v1h-qwen-direction-only-first",
+  "independent_human_review": "deferred",
+  "issue83": "keep_open",
+  "issue75_integration": "disabled",
+  "primary_evaluation": {
+    "reverse_reference_baseline": {
+      "oracle": [
+        0,
+        2
+      ],
+      "retrieval": [
+        0,
+        2
+      ]
+    },
+    "primary_target": "Measure exposed reverse-reference agreement separately in each condition, including every failed or unattempted observation; no semantic correctness claim.",
+    "unsupported_baseline": {
+      "oracle": [
+        3,
+        6
+      ],
+      "retrieval": [
+        5,
+        6
+      ]
+    },
+    "clarification_guard": {
+      "oracle": [
+        3,
+        3
+      ],
+      "retrieval": [
+        3,
+        3
+      ]
+    },
+    "supported_regressions": "List every lost baseline candidate, forward regression, wrong-start and wrong-direction candidate; keep exposed references and separate AI ambiguity audit unchanged."
+  },
+  "reporting": [
+    "Full 36-observation schedule plus two sampling controls; retain partial, failed and unattempted outcomes with null missing semantics; paired completed identities separately.",
+    "All five plan fields, forward and reverse separately; model status distinct from Rust rejection.",
+    "Source-table/rationale contradictions independently with exact raw excerpts, source paths and values; narrow automatic detection is not sufficient.",
+    "Source sufficiency limits, four-case AI ambiguity audit, native controls, canaries, latency and sampled process-tree RSS; human judgments remain null.",
+    "Separate each of the five plan fields, predicate/graph-binding contradictions, source insufficiency and missing numeric vocabulary. Full scheduled oracle 19 and retrieval 17, reverse 2 each, unsupported 6 each, clarification 3 each; paired completed denominators separately.",
+    "No statistical superiority, exact-answer accuracy, independent-human-review or semantic-readiness claim."
+  ]
+}
