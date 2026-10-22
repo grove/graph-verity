@@ -30,19 +30,25 @@ def current_tests(suite):
             yield test
 
 
-def main():
+def current_modules(shard=None):
+    paths = [path for path in sorted((ROOT / "tools").glob("test_*.py"))
+             if path.name not in {"test_pilot_study.py", "test_nl_ask_evaluation.py"}]
+    return paths if shard is None else paths[shard::2]
+
+
+def main(shard=None):
     sys.path.insert(0, str(ROOT / "tools"))
     loader = unittest.TestLoader()
     suite = unittest.TestSuite()
-    for path in sorted((ROOT / "tools").glob("test_*.py")):
+    for path in current_modules(shard):
         # The original pilot hashes every Rust file; current-code coverage lives in
         # the other suites. Never refresh its source fingerprints to accept new code.
-        if path.name not in {"test_pilot_study.py", "test_nl_ask_evaluation.py"}:
-            suite.addTests(current_tests(loader.loadTestsFromName(path.stem)))
+        suite.addTests(current_tests(loader.loadTestsFromName(path.stem)))
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     if not result.wasSuccessful():
         return 1
-    replay_frozen_studies()
+    if shard is None:
+        replay_frozen_studies()
     return 0
 
 
@@ -122,11 +128,15 @@ def replay_nl_ask_history():
 
 
 if __name__ == "__main__":
-    if sys.argv[1:] == ["question-vocabulary"]:
+    if sys.argv[1:] in (["current", "0"], ["current", "1"]):
+        sys.exit(main(int(sys.argv[2])))
+    elif sys.argv[1:] == ["pilot-history"]:
+        replay_frozen_studies()
+    elif sys.argv[1:] == ["question-vocabulary"]:
         replay_question_vocabulary()
     elif sys.argv[1:] == ["nl-ask-history"]:
         replay_nl_ask_history()
     elif not sys.argv[1:]:
         sys.exit(main())
     else:
-        sys.exit("usage: run_python_tests.py [question-vocabulary|nl-ask-history]")
+        sys.exit("usage: run_python_tests.py [current 0|current 1|pilot-history|question-vocabulary|nl-ask-history]")
