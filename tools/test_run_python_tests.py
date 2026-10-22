@@ -42,7 +42,8 @@ class RunnerTests(unittest.TestCase):
                 return self.name
         source_check = NamedTest("test_nl_ask_benchmark.NarrowAskTests.test_frozen_sources_splits_and_manifest")
         trial_check = NamedTest("test_one_hop_trial.OneHopTrialTests.test_committed_freeze_and_decision_replay_without_models")
+        v1g_check = NamedTest("test_native_one_hop_v1g_registration.CommittedExecutionTests.test_committed_execution_and_separate_development_bytes")
         contract = NamedTest("test_nl_ask_benchmark.NarrowAskTests.test_schema_matches_rust_and_all_frozen_references_preview_without_execution")
         error = unittest.loader._FailedTest("test_import_failure", ImportError("fixture"))
-        suite = unittest.TestSuite([unittest.TestSuite([source_check, contract]), trial_check, error])
+        suite = unittest.TestSuite([unittest.TestSuite([source_check, contract]), trial_check, v1g_check, error])
         self.assertEqual(list(runner.current_tests(suite)), [contract, error])

@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PILOT_COMMIT = "f12422a0b106faa84c2f1cd05c8ee99fea14c185"
 NL_ASK_COMMIT = "bba81fc68c3b7f6a63aa3c104baf3ea29d49e754"
 VOCABULARY_COMMIT = "6d90bf8df3ce87c286d3ccd67097f817afdf16a3"
+V1G_COMMIT = "e7d5dbfe3f2a80e14b08df7c2d10693fd2eb0ae9"
 
 
 def current_tests(suite):
@@ -22,6 +23,7 @@ def current_tests(suite):
     frozen_only = {
         "test_nl_ask_benchmark.NarrowAskTests.test_frozen_sources_splits_and_manifest",
         "test_one_hop_trial.OneHopTrialTests.test_committed_freeze_and_decision_replay_without_models",
+        "test_native_one_hop_v1g_registration.CommittedExecutionTests.test_committed_execution_and_separate_development_bytes",
     }
     for test in suite:
         if isinstance(test, unittest.TestSuite):
@@ -89,6 +91,29 @@ def replay_frozen_studies():
                         "--freeze", "reports/issue-53-selective-hybrid/freeze",
                         "--out", "reports/issue-53-selective-hybrid/run",
                         "--binary", str(source / "target/debug/examples/retrieval_session")], cwd=ROOT, check=True)
+    replay_v1g_history()
+
+
+def replay_v1g_history():
+    release = Path("experiments/native-one-hop-v1g/execution-v1")
+    with source_export(V1G_COMMIT) as (source, _):
+        def hashes(root):
+            return {p.relative_to(root): hashlib.sha256(p.read_bytes()).hexdigest()
+                    for p in root.rglob("*") if p.is_file()}
+        assert hashes(ROOT / release) == hashes(source / release), "Changed frozen v1g evidence"
+        reg = json.loads((ROOT / release / "freeze/execution-registration.json").read_bytes())
+        corrected_source = {
+            "tools/native_one_hop.py", "tools/test_native_one_hop_diagnostic.py",
+            "tools/test_native_one_hop_v1g_registration.py", "tools/run_python_tests.py",
+            "tools/verify_pre_llm.py", "tools/test_run_python_tests.py", "tools/test_verify_pre_llm.py",
+        }
+        for name, digest in reg["freeze_manifest"]["input_sha256"].items():
+            if name not in corrected_source:
+                assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest, name
+        env = dict(os.environ, GIT_DIR=str(ROOT / ".git"), GIT_WORK_TREE=str(source))
+        subprocess.run([sys.executable, "-m", "unittest", "discover", "-s", "tools",
+                        "-p", "test_native_one_hop_v1g_registration.py", "-v"],
+                       cwd=source, env=env, check=True)
 
 
 def replay_question_vocabulary():
@@ -130,7 +155,7 @@ def replay_nl_ask_history():
 if __name__ == "__main__":
     if sys.argv[1:] in (["current", "0"], ["current", "1"]):
         sys.exit(main(int(sys.argv[2])))
-    elif sys.argv[1:] == ["pilot-history"]:
+    elif sys.argv[1:] == ["frozen-history"]:
         replay_frozen_studies()
     elif sys.argv[1:] == ["question-vocabulary"]:
         replay_question_vocabulary()
@@ -139,4 +164,4 @@ if __name__ == "__main__":
     elif not sys.argv[1:]:
         sys.exit(main())
     else:
-        sys.exit("usage: run_python_tests.py [current 0|current 1|pilot-history|question-vocabulary|nl-ask-history]")
+        sys.exit("usage: run_python_tests.py [current 0|current 1|frozen-history|question-vocabulary|nl-ask-history]")

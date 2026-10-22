@@ -26,9 +26,7 @@ class CommittedExecutionTests(unittest.TestCase):
         self.assertEqual(json.loads(payload['freeze.json']), reg['freeze_manifest'])
         for name, digest in reg['freeze_manifest']['input_sha256'].items():
             if name in {'tools/native_one_hop.py', 'tools/test_native_one_hop_diagnostic.py',
-                        'tools/test_native_one_hop_v1g_registration.py',
-                        'tools/run_python_tests.py', 'tools/verify_pre_llm.py',
-                        'tools/test_run_python_tests.py', 'tools/test_verify_pre_llm.py'}:
+                        'tools/test_native_one_hop_v1g_registration.py'}:
                 original = subprocess.check_output(['git', 'show', reg['freeze_manifest']['source_commit'] + ':' + name], cwd=v.ROOT)
                 self.assertEqual(hashlib.sha256(original).hexdigest(), digest, name)
             else:

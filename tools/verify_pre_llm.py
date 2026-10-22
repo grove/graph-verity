@@ -111,7 +111,7 @@ def main() -> int:
         run("dependency-fetch", ["cargo", "fetch", "--locked"])
         for shard in ("0", "1"):
             run(f"reporting-tests-{shard}", [sys.executable, "tools/run_python_tests.py", "current", shard])
-        run("pilot-frozen-history", [sys.executable, "tools/run_python_tests.py", "pilot-history"])
+        run("python-frozen-history", [sys.executable, "tools/run_python_tests.py", "frozen-history"])
         run("nl-ask-frozen-history", [sys.executable, "tools/run_python_tests.py", "nl-ask-history"])
         run("retrieval-freeze", [sys.executable, "tools/retrieval.py", "verify"])
         run("issue9-forensics", [sys.executable, "tools/issue9_forensics.py", "verify",
