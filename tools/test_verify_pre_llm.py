@@ -1,7 +1,39 @@
 """Regression tests for honest oracle report denominators; no RDF/model required."""
 import copy
+import json
+from pathlib import Path
+import subprocess
+import tempfile
 import unittest
+from unittest.mock import patch
+import verify_pre_llm as verify
 from verify_pre_llm import oracle_summary
+
+
+class CommandLogsTests(unittest.TestCase):
+    def test_timeout_preserves_partial_bytes_and_failed_command(self):
+        partial = subprocess.TimeoutExpired(["git", "diff"], 600,
+                                            output=b"partial stdout\xff", stderr=b"last test running\n")
+        with tempfile.TemporaryDirectory() as directory, patch.object(verify, "OUT", Path(directory)), \
+             patch.object(verify.platform, "platform", return_value="test-platform"), \
+             patch.object(verify.subprocess, "run", side_effect=[
+                 subprocess.CompletedProcess([], 0, "fixture-commit\n", ""), partial]):
+            self.assertEqual(verify.main(), 1)
+            self.assertEqual((verify.OUT / "initial-clean-tree.stdout.txt").read_bytes(), partial.output)
+            self.assertEqual((verify.OUT / "initial-clean-tree.stderr.txt").read_bytes(), partial.stderr)
+            state = json.loads((verify.OUT / "verification.json").read_bytes())
+            self.assertEqual(state["status"], "failed")
+            self.assertEqual(state["commands"][-1]["label"], "initial-clean-tree")
+            self.assertTrue(state["commands"][-1]["timed_out"])
+            self.assertIsNone(state["commands"][-1]["returncode"])
+
+    def test_timeout_without_output_still_writes_empty_logs(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(verify, "OUT", Path(directory)), \
+             patch.object(verify.platform, "platform", return_value="test-platform"), \
+             patch.object(verify.subprocess, "run", side_effect=subprocess.TimeoutExpired(["git"], 600)):
+            self.assertEqual(verify.main(), 1)
+            self.assertEqual((verify.OUT / "git-revision.stdout.txt").read_bytes(), b"")
+            self.assertEqual((verify.OUT / "git-revision.stderr.txt").read_bytes(), b"")
 
 
 class OracleSummaryTests(unittest.TestCase):

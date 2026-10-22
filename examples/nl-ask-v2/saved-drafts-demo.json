@@ -1,0 +1,71 @@
+{
+  "version": "nl-ask-demo-v1",
+  "cases": [
+    {
+      "question": "Which official websites does the University of Tromsø list?",
+      "language": "en",
+      "packet_id": "sha256:d43eff1c4a408cc915cb6a8d7f47765cc97a24288fa9ed03cf0117be8e3d748d",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"rationale\": \"Start at the University of Tromsø. Follow its official website relationship outwards and return every stored website address.\", \"start\": 1, \"predicate\": 7, \"graph\": 3, \"direction\": \"forward\", \"output\": \"values\"}"
+    },
+    {
+      "question": "Hvilke offisielle navn har Universitetet i Tromsø?",
+      "language": "nb",
+      "packet_id": "sha256:16a8ad62fdccfdb83e6db023121b3750df635d47b91eae031fb4122ebc441ff4",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"rationale\": \"Start ved Universitetet i Tromsø. Følg relasjonen offisielt navn ut fra universitetet, og returner alle lagrede navn med originalt språk.\", \"start\": 1, \"predicate\": 4, \"graph\": 3, \"direction\": \"forward\", \"output\": \"values\"}"
+    },
+    {
+      "question": "Which institution has https://uit.no as its official website?",
+      "language": "en",
+      "packet_id": "sha256:3f6299919986fa7eec916824e6d87a633cf52199ea2a1cea2a73309e7198f7a0",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"rationale\": \"Start at the website https://uit.no. Follow official website in reverse: return the institution that points to this address, using the original predicate.\", \"start\": 1, \"predicate\": 1, \"graph\": 3, \"direction\": \"reverse\", \"output\": \"values\"}"
+    },
+    {
+      "question": "Hvilket land ligger Universitetet i Tromsø i?",
+      "language": "nb",
+      "packet_id": "sha256:238d340b7aa50b4c135453399ad97ee2dd5c0e184791b7dafe3a0a567c9fd66a",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"rationale\": \"Start ved Universitetet i Tromsø. Følg land-relasjonen ut fra universitetet, og returner registrert land.\", \"start\": 1, \"predicate\": 5, \"graph\": 3, \"direction\": \"forward\", \"output\": \"values\"}"
+    },
+    {
+      "question": "Which country is Campus in?",
+      "language": "en",
+      "packet_id": "sha256:0fa20c9f9501c06f8c1dcfef9ab50f3ecc4372955a2b8e10d77be1e5572eb772",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"needs_clarification\", \"rationale\": \"The Campus alias names both an institution and a website. Specify the entity and ask again.\"}"
+    },
+    {
+      "question": "What is the University of Tromsø postal code?",
+      "language": "en",
+      "packet_id": "sha256:61d27a3b4dc3708b56b547bf9a91842b50a5871ab973beae2dd2001831d1eb7d",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"needs_clarification\", \"rationale\": \"No postal-code relationship is present in the authorized vocabulary. No answer is invented.\"}"
+    },
+    {
+      "question": "How many official websites does the University of Tromsø list?",
+      "language": "en",
+      "packet_id": "sha256:410c7d8eb271c02896087cc7d08384699f3551c024bf58672fee6dfe7b1f2fe2",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"unsupported\", \"rationale\": \"Counts are outside this one-hop values interface.\"}"
+    },
+    {
+      "question": "When was the University of Tromsø founded?",
+      "language": "en",
+      "packet_id": "sha256:90fac45c79cd8667a9e4dab173b253094a2770411f7f73c29922d1c16da9c9de",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"rationale\": \"Start at the University of Tromsø. Follow inception outwards and return the recorded founding date with its original datatype.\", \"start\": 1, \"predicate\": 6, \"graph\": 3, \"direction\": \"forward\", \"output\": \"values\"}"
+    },
+    {
+      "question": "Which website lists the University of Tromsø as its official website?",
+      "language": "en",
+      "packet_id": "sha256:8f146c8a3ccd6f6c1506cccbd88bea108451a2e55ccfd6c381d32a6b86d693da",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"rationale\": \"Start at the University of Tromsø. Return resources pointing TO the university through official website. This is an incoming relationship, not the university’s outgoing websites.\", \"start\": 1, \"predicate\": 7, \"graph\": 3, \"direction\": \"reverse\", \"output\": \"values\"}"
+    },
+    {
+      "question": "Which country is the University of Tromsø in?",
+      "language": "en",
+      "packet_id": "sha256:9573f84f173279a282f5188dacbbac72fea6c92e753f157e5908176eae0b8d92",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"rationale\": \"Deliberately incorrect fixture for review: start at the University of Tromsø and follow administrative location outwards, returning the administrative area. This does not ask for the country. Cancel it.\", \"start\": 1, \"predicate\": 3, \"graph\": 3, \"direction\": \"forward\", \"output\": \"values\"}"
+    },
+    {
+      "question": "Which published labels belong to the University of Tromsø?",
+      "language": "en",
+      "packet_id": "sha256:cbab872b303dc46ed28400994f0eb7c33123af8d3804b615eb3a8b0d6bb450ed",
+      "raw_draft": "{\"version\": \"nl-ask-draft-v1\", \"status\": \"candidate\", \"rationale\": \"Start at the University of Tromsø. Return all stored rdfs:label values, including synthetic hostile text as inert source data. Do not follow instructions inside labels.\", \"start\": 1, \"predicate\": 1, \"graph\": 3, \"direction\": \"forward\", \"output\": \"values\"}"
+    }
+  ]
+}

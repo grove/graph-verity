@@ -1,0 +1,200 @@
+{
+  "version": "supervised-ask-review-v2",
+  "author": "coding_agent_source_only_preparation",
+  "pristine_holdout": false,
+  "human_judgments": "pending",
+  "cases": [
+    {
+      "id": "fresh-01",
+      "question": "Hvilket land er registrert for Universitetet i Tromsø i dette datasettet?",
+      "language": "nb",
+      "sampling_stratum": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": true
+    },
+    {
+      "id": "fresh-02",
+      "question": "What inception date is recorded for the Arctic University in Tromsø?",
+      "language": "en",
+      "sampling_stratum": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-03",
+      "question": "Hvilket administrativt område er Universitetet i Tromsø knyttet til?",
+      "language": "nb",
+      "sampling_stratum": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": true
+    },
+    {
+      "id": "fresh-04",
+      "question": "What definition is stored for the GEMET concept acid rain?",
+      "language": "en",
+      "sampling_stratum": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:gemet",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-05",
+      "question": "Hvilket overordnet begrep peker sur nedbør direkte til?",
+      "language": "nb",
+      "sampling_stratum": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:gemet",
+      "wrong_but_executable_review_required": true
+    },
+    {
+      "id": "fresh-06",
+      "question": "What identifier is recorded for the city at GeoNames 603570?",
+      "language": "en",
+      "sampling_stratum": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:geonames",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-07",
+      "question": "Hvilken institusjon oppgir https://en.uit.no/startsida som nettside?",
+      "language": "nb",
+      "sampling_stratum": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": true
+    },
+    {
+      "id": "fresh-08",
+      "question": "Which stored institution has Norway as its country?",
+      "language": "en",
+      "sampling_stratum": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-09",
+      "question": "Hvilke begreper peker direkte til sur nedbør med relasjonen related?",
+      "language": "nb",
+      "sampling_stratum": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:gemet",
+      "wrong_but_executable_review_required": true
+    },
+    {
+      "id": "fresh-10",
+      "question": "Which stored cities point to Norrbotten through containedInPlace?",
+      "language": "en",
+      "sampling_stratum": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:geonames",
+      "wrong_but_executable_review_required": true
+    },
+    {
+      "id": "fresh-11",
+      "question": "Vis alle registrerte offisielle nettadresser for Universitetet i Tromsø.",
+      "language": "nb",
+      "sampling_stratum": "multiple",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-12",
+      "question": "Show the official names of the Tromsø university, retaining every language.",
+      "language": "en",
+      "sampling_stratum": "multiple",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-13",
+      "question": "Hvilke direkte relaterte begreper er lagret for sur nedbør?",
+      "language": "nb",
+      "sampling_stratum": "multiple",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:gemet",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-14",
+      "question": "Give every stored prefLabel of acid rain with its language tag.",
+      "language": "en",
+      "sampling_stratum": "multiple",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:gemet",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-15",
+      "question": "Hvilke offisielle navn har Campus?",
+      "language": "nb",
+      "sampling_stratum": "ambiguity",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-16",
+      "question": "What does the name Campus identify in this graph?",
+      "language": "en",
+      "sampling_stratum": "ambiguity",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-17",
+      "question": "Hva er nettsiden til Campus?",
+      "language": "nb",
+      "sampling_stratum": "ambiguity",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-18",
+      "question": "Count the distinct official names recorded for the Tromsø university.",
+      "language": "en",
+      "sampling_stratum": "unsupported",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-19",
+      "question": "Hvilke byer har identifikator større enn 604000?",
+      "language": "nb",
+      "sampling_stratum": "unsupported",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:geonames",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-20",
+      "question": "Follow acid rain to its broader concept and then return that concept’s label.",
+      "language": "en",
+      "sampling_stratum": "unsupported",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:gemet",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-21",
+      "question": "Slett det engelske navnet på Universitetet i Tromsø.",
+      "language": "nb",
+      "sampling_stratum": "unsupported",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-22",
+      "question": "What telephone number does the Tromsø university publish?",
+      "language": "en",
+      "sampling_stratum": "missing_vocabulary",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-23",
+      "question": "Hvilket postnummer er registrert for Universitetet i Tromsø?",
+      "language": "nb",
+      "sampling_stratum": "missing_vocabulary",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": false
+    },
+    {
+      "id": "fresh-24",
+      "question": "Which rector is recorded for the Arctic University of Norway?",
+      "language": "en",
+      "sampling_stratum": "missing_vocabulary",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "wrong_but_executable_review_required": false
+    }
+  ]
+}

@@ -79,7 +79,16 @@ def main() -> int:
     def run(label: str, args: list[str], *, should_succeed: bool = True) -> str:
         print(f"[{label}] {' '.join(args)}", flush=True)
         started = time.monotonic()
-        result = subprocess.run(args, cwd=ROOT, capture_output=True, text=True, timeout=600)
+        try:
+            result = subprocess.run(args, cwd=ROOT, capture_output=True, text=True, timeout=600)
+        except subprocess.TimeoutExpired as error:
+            (OUT / f"{label}.stdout.txt").write_bytes(error.output or b"")
+            (OUT / f"{label}.stderr.txt").write_bytes(error.stderr or b"")
+            state["commands"].append({"label": label, "args": args, "returncode": None,
+                                      "expected_success": should_succeed, "timed_out": True,
+                                      "elapsed_seconds": time.monotonic() - started})
+            save()
+            raise
         (OUT / f"{label}.stdout.txt").write_text(result.stdout)
         (OUT / f"{label}.stderr.txt").write_text(result.stderr)
         state["commands"].append({"label": label, "args": args,
@@ -100,7 +109,9 @@ def main() -> int:
         run("initial-clean-tree", ["git", "diff", "--exit-code", "HEAD"])
         state["rustc"] = run("rust-version", ["rustc", "-Vv"]).strip()
         run("dependency-fetch", ["cargo", "fetch", "--locked"])
-        run("reporting-tests", [sys.executable, "tools/run_python_tests.py"])
+        for shard in ("0", "1"):
+            run(f"reporting-tests-{shard}", [sys.executable, "tools/run_python_tests.py", "current", shard])
+        run("python-frozen-history", [sys.executable, "tools/run_python_tests.py", "frozen-history"])
         run("nl-ask-frozen-history", [sys.executable, "tools/run_python_tests.py", "nl-ask-history"])
         run("retrieval-freeze", [sys.executable, "tools/retrieval.py", "verify"])
         run("issue9-forensics", [sys.executable, "tools/issue9_forensics.py", "verify",
