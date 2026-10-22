@@ -24,13 +24,19 @@ and byte-exact partial timeout logs (including empty output). The driver now
 records the timed-out command with `returncode: null` and `timed_out: true` before
 failing, so CI artifacts retain the last observed tests on a future timeout.
 
-The four modified existing files are current verification code and its unit tests:
+The runner correction changes these four current verification files:
 `tools/run_python_tests.py`, `tools/verify_pre_llm.py`,
 `tools/test_run_python_tests.py`, and `tools/test_verify_pre_llm.py`.
+The v1g registration test additionally treats these four source files like its
+three existing corrected-source exceptions: it verifies their registered bytes
+with `git show <immutable source_commit>:<path>`. Artifact/evidence checks still
+verify current immutable bytes. This avoids repinning an old registration to the
+new runner. The first 185-test partition exposed this guard in 183.073 seconds;
+the registration check then passed with the original hash values intact.
 No historical registration, frozen source snapshot, raw response, reference,
 evidence archive or old validation receipt is edited or rehashed. The original
 1,378-file preservation receipt describes its earlier validated commit; this
-follow-up deliberately changes these four current verification files.
+follow-up deliberately changes those four files and the current registration verifier.
 
 Focused checks:
 
