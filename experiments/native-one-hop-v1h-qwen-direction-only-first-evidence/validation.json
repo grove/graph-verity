@@ -1,0 +1,83 @@
+{
+  "status": "passed",
+  "full_pipeline": {
+    "status": "passed",
+    "validated_commit": "cf08c28cb1c5396eaa703f5678c89a526e2b9884",
+    "checkout": "/Users/grove/projects/graph-verity/artifacts/issue83-direction-execution/validation/verification-checkout",
+    "original_registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "model_loading_permitted": false,
+    "downloads_permitted": false,
+    "environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "REQUIRE_FIND_BROWSER": "1",
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1"
+    },
+    "commands": [
+      {
+        "label": "isolated-build",
+        "args": [
+          "cargo",
+          "build",
+          "--locked",
+          "--offline",
+          "--bins",
+          "--examples"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 6.4371701659983955
+      },
+      {
+        "label": "complete-pipeline",
+        "args": [
+          "/Users/grove/projects/graph-verity/artifacts/issue83-direction-execution/validation/verification-checkout/.venv/bin/python",
+          "-u",
+          "tools/verify_pre_llm.py"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 620.9943917499913
+      }
+    ],
+    "original_registered_binary_after_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "registered_binary_unchanged": true
+  },
+  "full_pipeline_checks": 39,
+  "python_test_counts": [
+    312,
+    15
+  ],
+  "python_tests_skipped": false,
+  "rust_tests_passed": 100,
+  "evidence_tests": 3,
+  "analyzer_exact_reproduction_passed": true,
+  "tampered_archive_rejection_passed": true,
+  "resealed_false_review_excerpt_rejection_passed": true,
+  "required_browsers": true,
+  "all_original_tracked_bytes_unchanged": 1327,
+  "original_byte_rust_replay": {
+    "status": "passed",
+    "current": {
+      "verified": true,
+      "rust_previews": 74,
+      "recorded_status": "completed_diagnostic",
+      "inference_performed": false,
+      "executions": 0
+    },
+    "baseline": {
+      "rust_previews": 74,
+      "archive_sha256": "399db69966be69512871d74a928ed8445fef65fa10ed800731977eb98f05dfe7"
+    },
+    "registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "inference_performed": false,
+    "model_generated_rdf_executions": 0
+  },
+  "run_status": "completed_diagnostic",
+  "generation_attempts": 38,
+  "generation_completed": 38,
+  "further_inference_performed_by_validation": false,
+  "model_generated_rdf_executions": 0,
+  "independent_human_review": "pending",
+  "decision": "INCONCLUSIVE_REVISE",
+  "authorization_exhausted": true,
+  "scope": "Full unchanged applicable pipeline at the exact authorized source commit in isolated checkout after inference stopped; new evidence analyzer/tests separately validated."
+}
