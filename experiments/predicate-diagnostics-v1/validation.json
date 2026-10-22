@@ -1,0 +1,79 @@
+{
+  "status": "passed",
+  "validated_commit": "62135f31a9c180215713bf01107f329930f63453",
+  "preparation_commit": "12c554723a8f3c07b2adaff6922ae8c767f366ca",
+  "full_pipeline_checks": 39,
+  "full_pipeline": {
+    "status": "passed",
+    "validated_commit": "62135f31a9c180215713bf01107f329930f63453",
+    "checkout": "/Users/grove/projects/graph-verity/artifacts/predicate-validation/checkout",
+    "original_registered_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "model_loading_permitted": false,
+    "downloads_permitted": false,
+    "environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "REQUIRE_FIND_BROWSER": "1",
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1"
+    },
+    "commands": [
+      {
+        "label": "isolated-build",
+        "args": [
+          "cargo",
+          "build",
+          "--locked",
+          "--offline",
+          "--bins",
+          "--examples"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 0.15718887498951517
+      },
+      {
+        "label": "complete-pipeline",
+        "args": [
+          "/Users/grove/projects/graph-verity/artifacts/predicate-validation/checkout/.venv/bin/python",
+          "-u",
+          "tools/verify_pre_llm.py"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 640.1403977079899
+      }
+    ],
+    "original_registered_binary_after_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+    "registered_binary_unchanged": true
+  },
+  "python_tests": 325,
+  "frozen_pilot_tests": 15,
+  "rust_tests": 100,
+  "focused_tests": 13,
+  "grammar_controls": 12,
+  "required_browsers": true,
+  "skips": false,
+  "sandbox_attempt": {
+    "status": "failed_environment",
+    "python_tests": 325,
+    "failures": 8,
+    "errors": 44,
+    "reason": "Sandbox denied loopback socket binding; unchanged host rerun passed"
+  },
+  "registered_archive_sha256": "e219adf9ddaf721c65b69c2e1c5a7ad63d1e6dca464a6f1b4ea067fbdb9b670b",
+  "tokenizer_observations": 126,
+  "maximum_input_plus_512_tokens": 11525,
+  "retained_native_parities_reproduced": 36,
+  "new_request_native_parity": "deferred_until_separate_explicit_model_loading_authorization",
+  "synthetic_rust_previews": 124,
+  "synthetic_accepted": 114,
+  "literal_range_reverse_empty_path_rejections": 10,
+  "original_tracked_files_preserved": 1342,
+  "historical_hashes_preserved": 801,
+  "inference_performed": false,
+  "model_generated_rdf_executions": 0,
+  "holdout_accessed": false,
+  "issue83": "keep_open",
+  "issue75_integration": "disabled",
+  "independent_human_review": "deferred",
+  "decision": "INCONCLUSIVE_REVISE",
+  "scope": "Complete unchanged pipeline at registration commit; new receipt replay verifier independently exercised. Final evidence files do not change frozen preparation inputs."
+}

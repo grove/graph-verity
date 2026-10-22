@@ -1,0 +1,43 @@
+{
+  "version": "source-predicate-metadata-v1",
+  "input_sha256": {
+    "studies/nl-ask-v1/sources/Q578326.ttl": "3cf5c243dab29b603e3db395f2c1d3c093ac47abd6a68da34d86ddf27f79e6f3",
+    "studies/nl-ask-v1/manifest.json": "7d77fe90d019164969f06127245d88b8505ca9c88ff1b66e89032c1bda0ef3c7",
+    "studies/nl-ask-v1/evaluation/snapshot.nq": "c35b205e7e76b2440b7680ac9139796413401f1a6acfeadc483967f6e5334ae9",
+    "studies/nl-ask-v1/evaluation/catalog.json": "7ae4e994df8d969cd5aaf1af0dcd9f43241a00d17cccf3454dca17aaf76559da",
+    "studies/nl-ask-v1/evaluation/policy.json": "ef4cd25d9647e7866c7bab2e9fbb0ccee853a9c787e37543a5e3f87c5b9c7840",
+    "studies/nl-ask-v1/evaluation/scope.json": "695845b6f1395516a98e03d0efb06bbad652317fc4b081f2d63edca9a99c188d",
+    "studies/nl-ask-v1/evaluation/discovery.json": "8d622930f6ef50be91e35db8b98377681b50c2828eb446dd5058e40c6cbed9cc"
+  },
+  "sources": [
+    {
+      "file": "studies/nl-ask-v1/sources/Q578326.ttl",
+      "graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+      "dataset": "https://www.wikidata.org/wiki/Special:EntityData/Q578326",
+      "provenance": {
+        "file": "studies/nl-ask-v1/sources/Q578326.ttl",
+        "url": "https://www.wikidata.org/wiki/Special:EntityData/Q578326.ttl",
+        "revision_url": "https://www.wikidata.org/wiki/Special:EntityData/Q578326.ttl?revision=2535539461",
+        "revision": 2535539461,
+        "retrieved_at_utc": "2026-10-18T08:16:10.014443+00:00",
+        "license": "CC0-1.0",
+        "license_url": "https://www.wikidata.org/wiki/Wikidata:Licensing"
+      }
+    }
+  ],
+  "languages": [
+    "en",
+    "nb",
+    "nn",
+    "no"
+  ],
+  "mapping_predicates": [
+    "http://wikiba.se/ontology#directClaim"
+  ],
+  "text_predicates": [
+    "http://schema.org/description",
+    "http://schema.org/name",
+    "http://www.w3.org/2000/01/rdf-schema#label",
+    "http://www.w3.org/2004/02/skos/core#prefLabel"
+  ]
+}

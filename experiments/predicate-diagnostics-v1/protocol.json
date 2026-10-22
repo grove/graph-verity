@@ -1,0 +1,45 @@
+{
+  "version": "issue83-predicate-diagnostics-v1",
+  "decision": "INCONCLUSIVE_REVISE",
+  "inference_authorized": false,
+  "independent_human_review": "deferred",
+  "issue83": "keep_open",
+  "issue75_integration": "disabled",
+  "model": "qwen35",
+  "prompt": "Unchanged #102 direction-only system prompt in every semantic observation; unchanged sampling-control prompt.",
+  "construction": {
+    "question": "Can the model construct a forward/reverse plan given an exact predicate, start and graph IRI?",
+    "panel": "All 60 mechanically generated explicit-predicate-development-v1 questions, original order; original oracle vocabulary, no added metadata. No historical natural-language comparison is a causal ablation.",
+    "expected": "Original source-derived five fields and graph-qualified witnesses, including empty paths. Empty paths still require the explicit requested candidate; literal objects are never starts.",
+    "primary": "Exact status and all five fields, separately forward/reverse and witnessed/empty_path; every field and wrong-start/direction individually. Mechanical request fidelity, not natural-language semantic correctness."
+  },
+  "metadata": {
+    "question": "Does verified retained source metadata improve natural-language interpretation at fixed vocabulary membership?",
+    "panel": "All 30 unchanged exposed natural-language evaluation questions plus the retained v1e-label-explicit source-injection control, each paired with/without metadata; original full oracle membership only.",
+    "only_factor": "Predicate source_metadata arrays: empty versus exact mapped retained labels/descriptions. Source graph/role/numeric membership, original question, system prompt, entity names, usages, collision warnings, grammar, runtime, sampling and scoring references identical within each pair. Packet identities differ only in host sidecars. No explicit-IRI rewording in this experiment.",
+    "order": "Original question order, injection last; no_metadata first for even zero-based pair index, metadata first for odd index. Single sequential process, fresh independent completion per observation.",
+    "primary": "Paired change in unchanged exposed-AI-reference agreement, with all scheduled and paired-completed denominators. Five fields and model-origin statuses independently; forward/reverse and control categories separately. Missing outcomes are null, never successes. Unchanged ambiguity audit and source insufficiency remain separate from reference agreement.",
+    "negative_controls": "Non-Wikidata relations have no newly mapped meanings. Report these separately from relations with verified metadata; do not invent W3C/Schema/GEMET property meanings from local names or concept definitions."
+  },
+  "native_requests": {
+    "sampling_controls": 2,
+    "identical_explicit_prompt_repeats": 2,
+    "explicit_iri_construction": 60,
+    "natural_language_metadata": 62,
+    "maximum_total": 126,
+    "retries": 0
+  },
+  "controls": {
+    "ambiguous_identity": "eva-20 Campus; source-label ambiguity eva-06 retained as an exposed-reference tension, never relabeled",
+    "unsupported_operations": ["eva-25", "eva-26", "eva-27", "eva-28", "eva-30"],
+    "private_scope": "eva-29 plus unchanged Rust/source canaries",
+    "source_injection": "v1e-label-explicit in both metadata arms; every source string untrusted/inert; no generated query execution",
+    "stale_packet": "Model-free rejection of changed source, metadata, graph-qualified binding, context or saved packet identity before Rust preview",
+    "incorrect_direction": "Model-free intentionally flipped candidate may pass Rust but must fail field scoring; all scheduled explicit reverse probes remain included",
+    "native": "Before any future generation: fresh unchanged host/resource admission, asset checks, constrained/unconstrained sampling controls and fresh native template/token-array parity for EVERY exact message; 12 existing grammar accept/reject controls. Fatal integrity/runtime/resource failure stops remaining requests; ordinary interpretation errors remain observations."
+  },
+  "resource_limits": "Inherit original #102 config verbatim: 1024 MiB swap admission, 24 GiB sampled process-tree RSS, 16384 context, 512 output reserve, input+512 strictly below 16384, 4 CPU threads, zero GPU layers, concurrency 1, 300-second completion deadline, zero retries. No limit relaxation or downloads.",
+  "interpretation": "Explicit-IRI failures with complete vocabulary indicate request-to-plan construction problems even without predicate meanings. Explicit success plus metadata-only paired gains is evidence consistent with missing source meaning; no gain does not prove metadata is irrelevant. Persistent ambiguity, language mismatch and exposed-reference tensions can remain. Synthetic checks prove engineering contracts only. Rust acceptance, reference agreement and independent semantic correctness are separate.",
+  "reporting": "Retain original raw bytes/SSE, every failed/unattempted request, prompt/token/native parity, GBNF, Rust preview, latency/RSS, model status and five fields; report full and paired denominators, target-metadata availability, exact source evidence and rationale contradictions. Human correctness stays null; no superiority/readiness or real-world truth claim. No RDF execution.",
+  "authorization": "Preparation, registration and scoring are model-free. No native runner is exposed here. A future runner/review and separate explicit authorization naming this exact archive, reviewed revision, 126-request cap and fresh output are required. No merge, holdout, #75, reference rewrite or source download is authorized."
+}
