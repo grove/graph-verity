@@ -1,0 +1,620 @@
+{
+  "version": 1,
+  "status": "passed",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "logical_cpus_visible": 10,
+  "python": "3.12.14 (main, Aug 14 2026, 15:24:41) [Clang 22.1.3 ]",
+  "github_run_id": null,
+  "commands": [
+    {
+      "label": "git-revision",
+      "args": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.011736666987417266
+    },
+    {
+      "label": "initial-clean-tree",
+      "args": [
+        "git",
+        "diff",
+        "--exit-code",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.6759713329956867
+    },
+    {
+      "label": "rust-version",
+      "args": [
+        "rustc",
+        "-Vv"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.027862916002050042
+    },
+    {
+      "label": "dependency-fetch",
+      "args": [
+        "cargo",
+        "fetch",
+        "--locked"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.06091870798263699
+    },
+    {
+      "label": "reporting-tests",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/run_python_tests.py"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 567.6820219170186
+    },
+    {
+      "label": "nl-ask-frozen-history",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/run_python_tests.py",
+        "nl-ask-history"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 68.79535449997638
+    },
+    {
+      "label": "retrieval-freeze",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/retrieval.py",
+        "verify"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.0382620420132298
+    },
+    {
+      "label": "issue9-forensics",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/issue9_forensics.py",
+        "verify",
+        "--out",
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/artifacts/pre-llm/issue9-forensics.json"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.04973666599835269
+    },
+    {
+      "label": "format",
+      "args": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--check"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.18994087498867884
+    },
+    {
+      "label": "clippy",
+      "args": [
+        "cargo",
+        "clippy",
+        "--workspace",
+        "--all-targets",
+        "--locked",
+        "--offline",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 6.257285375002539
+    },
+    {
+      "label": "rust-tests",
+      "args": [
+        "cargo",
+        "test",
+        "--workspace",
+        "--locked",
+        "--offline"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 14.207401125022443
+    },
+    {
+      "label": "question-vocabulary-replay",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/run_python_tests.py",
+        "question-vocabulary"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 26.62023554201005
+    },
+    {
+      "label": "hybrid-source-scope-canary",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/hybrid_retrieval.py",
+        "scope-canary",
+        "--binary",
+        "target/debug/verity"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 5.318420291994698
+    },
+    {
+      "label": "hybrid-native-lexical-replay",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/hybrid_retrieval.py",
+        "verify-lexical",
+        "--binary",
+        "target/debug/verity",
+        "--out",
+        "reports/issue-50-real-rdf-hybrid/run"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 3.63607266600593
+    },
+    {
+      "label": "selective-current-lexical",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/frozen_pilot.py",
+        "selective-current"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 4.2569435839832295
+    },
+    {
+      "label": "smoke",
+      "args": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--quiet",
+        "-p",
+        "verity_cli",
+        "--",
+        "smoke",
+        "tests/fixtures/smoke.trig",
+        "trig"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.5099386670044623
+    },
+    {
+      "label": "dataset-verify",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/dataset.py",
+        "verify"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 2.747070707991952
+    },
+    {
+      "label": "dataset-rebuild",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/dataset.py",
+        "rebuild",
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/artifacts/pre-llm/rebuilt.nq"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 1.2638397499977145
+    },
+    {
+      "label": "gold-verify",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/benchmark.py",
+        "verify"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 2.6470878749969415
+    },
+    {
+      "label": "worldcities-transfer-source",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/worldcities_transfer.py",
+        "verify"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.13898083398817107
+    },
+    {
+      "label": "worldcities-transfer-reference",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/verify_worldcities_benchmark.py",
+        "verify"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.3458134579996113
+    },
+    {
+      "label": "review-report",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/benchmark.py",
+        "review"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 2.637059583008522
+    },
+    {
+      "label": "schema",
+      "args": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--quiet",
+        "-p",
+        "verity_cli",
+        "--",
+        "schema"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.49247091700090095
+    },
+    {
+      "label": "inspect",
+      "args": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--quiet",
+        "-p",
+        "verity_cli",
+        "--",
+        "inspect",
+        "data/wikidata/snapshot.nq",
+        "nquads"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.5504045829875395
+    },
+    {
+      "label": "catalog-first",
+      "args": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--quiet",
+        "-p",
+        "verity_cli",
+        "--",
+        "catalog",
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "data/wikidata/scope.json"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.557311040989589
+    },
+    {
+      "label": "catalog-second",
+      "args": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--quiet",
+        "-p",
+        "verity_cli",
+        "--",
+        "catalog",
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "data/wikidata/scope.json"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.5660475420008879
+    },
+    {
+      "label": "oracle",
+      "args": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--quiet",
+        "-p",
+        "verity_cli",
+        "--",
+        "evaluate",
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "benchmarks/wikidata.json",
+        "dev",
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/artifacts/pre-llm/oracle"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 1.4222177079936955
+    },
+    {
+      "label": "worldcities-transfer-oracle",
+      "args": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--quiet",
+        "-p",
+        "verity_cli",
+        "--",
+        "evaluate",
+        "data/worldcities-transfer/snapshot.nq",
+        "nquads",
+        "data/worldcities-transfer/policy.json",
+        "benchmarks/worldcities-transfer.json",
+        "transfer_dev",
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/artifacts/pre-llm/worldcities-transfer-oracle"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 1.253695958002936
+    },
+    {
+      "label": "locked-evaluation-denied",
+      "args": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--quiet",
+        "-p",
+        "verity_cli",
+        "--",
+        "evaluate",
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "PRIVATE_NOT_PRESENT_DO_NOT_OPEN",
+        "locked_holdout",
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/artifacts/pre-llm/never-created"
+      ],
+      "returncode": 1,
+      "expected_success": false,
+      "elapsed_seconds": 0.6103789170156233
+    },
+    {
+      "label": "phase0-historical-report",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/phase0.py",
+        "report",
+        "--out",
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/artifacts/pre-llm/phase0-ebkp99wo/baseline"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 1.5590153329831082
+    },
+    {
+      "label": "phase0-rust-replay",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/phase0.py",
+        "replay",
+        "--out",
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/artifacts/pre-llm/phase0-ebkp99wo/replay"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 2.017010041017784
+    },
+    {
+      "label": "phase0-baseline-integrity",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/phase0.py",
+        "verify",
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/artifacts/pre-llm/phase0-ebkp99wo/baseline/manifest.json",
+        "--check-inputs"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.0686300830275286
+    },
+    {
+      "label": "phase0-replay-integrity",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/phase0.py",
+        "verify",
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/artifacts/pre-llm/phase0-ebkp99wo/replay/manifest.json",
+        "--check-inputs"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.07375133299501613
+    },
+    {
+      "label": "phase0-run-comparison",
+      "args": [
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+        "tools/phase0.py",
+        "compare",
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/artifacts/pre-llm/phase0-ebkp99wo/baseline",
+        "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/artifacts/pre-llm/phase0-ebkp99wo/replay"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.08636762498645112
+    },
+    {
+      "label": "manual",
+      "args": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--quiet",
+        "-p",
+        "verity_cli",
+        "--",
+        "run",
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "examples/manual-plan.json"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.5363367499958258
+    },
+    {
+      "label": "replay",
+      "args": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--quiet",
+        "-p",
+        "verity_cli",
+        "--",
+        "replay",
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "data/wikidata/scope.json",
+        "examples/question.txt",
+        "examples/fixture-response.json"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.555907916976139
+    },
+    {
+      "label": "invalid-response",
+      "args": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--quiet",
+        "-p",
+        "verity_cli",
+        "--",
+        "replay",
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "data/wikidata/scope.json",
+        "examples/question.txt",
+        "examples/invalid-response.json"
+      ],
+      "returncode": 1,
+      "expected_success": false,
+      "elapsed_seconds": 0.5469120000198018
+    },
+    {
+      "label": "unsupported-response",
+      "args": [
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--quiet",
+        "-p",
+        "verity_cli",
+        "--",
+        "replay",
+        "data/wikidata/snapshot.nq",
+        "nquads",
+        "data/wikidata/policy.json",
+        "data/wikidata/scope.json",
+        "examples/question.txt",
+        "examples/unsupported-response.json"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.5381652079813648
+    },
+    {
+      "label": "final-clean-tree",
+      "args": [
+        "git",
+        "diff",
+        "--exit-code",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "expected_success": true,
+      "elapsed_seconds": 0.03477783300331794
+    }
+  ],
+  "model_invoked": false,
+  "holdout_evaluated": false,
+  "git_commit": "d4f1fb8a3b178f0f8293e3ec2610de2eb7a1d37f",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13) (Homebrew)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: aarch64-apple-darwin\nrelease: 1.99.1\nLLVM version: 23.1.3",
+  "benchmark_review": {
+    "approved_by_split": {},
+    "decisions": {
+      "pending": 130
+    },
+    "final_ready": false,
+    "initial_ready": false,
+    "version": 1
+  },
+  "transfer_summary": {
+    "different_source_and_ontology": true,
+    "transfer_development_executable_passed": 35,
+    "recorded_abstentions_not_model_tested": 5,
+    "locked_holdout_evaluated": false,
+    "model_transfer_accuracy": null
+  },
+  "summary": {
+    "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
+    "executable_checks_passed": 38,
+    "executable_checks_total": 38,
+    "recorded_abstention_cases_not_model_tested": 8,
+    "model_accuracy": null,
+    "model_abstention_accuracy": null,
+    "interpretation": "compiler_oracle_against_machine_authored_human_review_pending_gold"
+  }
+}
