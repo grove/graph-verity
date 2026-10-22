@@ -1,0 +1,873 @@
+{
+  "version": "supervised-ask-v2-compiler-assessment",
+  "mode": "preview_only_no_RDF_execution",
+  "inputs_sha256": {
+    "experiments/predicate-diagnostics-v1/model-free-replay.json": "0af90bbc90bcd9a5fc9866ab8501bce5f5541d485fcc863e0349117744f6d759",
+    "experiments/native-one-hop-v1g/execution-v1/explicit-predicate-development.tar.gz": "3d4385b47620221b36a4f9dced6c2f15c26e987fcc42ab5ba669b558be8b3ccf",
+    "studies/nl-ask-v1/evaluation/catalog.json": "7ae4e994df8d969cd5aaf1af0dcd9f43241a00d17cccf3454dca17aaf76559da",
+    "crates/verity_core/src/compiler.rs": "3155caad912653f997f442d3c74e0e8bc32f765ec2bb2c1413a8b21ded8d74e1",
+    "crates/verity_core/src/ask.rs": "0a963469a5dc679bad4097e5cee211a7e51fbbcf800f9d336a537d3d7d1287e0"
+  },
+  "cases": [
+    {
+      "id": "explicit-003",
+      "question": "List subjects pointing to <http://www.wikidata.org/entity/Q134620> using explicit predicate <http://www.w3.org/2000/01/rdf-schema#label> in graph <urn:graph-verity:nl-ask-v1:evaluation:wikidata>.",
+      "numeric_draft": {
+        "start": 100,
+        "predicate": 1000,
+        "graph": 0,
+        "direction": "reverse",
+        "output": "values"
+      },
+      "constructed_request": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+        ],
+        "limit": 100,
+        "template": {
+          "kind": "follow_path",
+          "start": "http://www.wikidata.org/entity/Q134620",
+          "steps": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+              "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+              "direction": "reverse"
+            }
+          ],
+          "filter": null,
+          "output": "values"
+        }
+      },
+      "constructed_plan": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+        ],
+        "limit": 100,
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+            "predicate": "http://www.w3.org/2000/01/rdf-schema#label",
+            "direction": "reverse",
+            "from": {
+              "kind": "iri",
+              "iri": "http://www.wikidata.org/entity/Q134620"
+            },
+            "to": {
+              "kind": "variable",
+              "name": "step1"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "step1"
+          }
+        ],
+        "group_by": [],
+        "having": []
+      },
+      "original_nl_rejection": {
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"deterministic_preflight_block: Host snapshot, source, scope, resolution or limits prohibit this draft\",\"status\":\"error\"}\n"
+      },
+      "current_core_rejection": {
+        "command": [
+          "target/debug/verity",
+          "ask-preview",
+          "studies/nl-ask-v1/evaluation/snapshot.nq",
+          "nquads",
+          "studies/nl-ask-v1/evaluation/policy.json",
+          "<temporary request.json containing constructed_request>"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"datatype: IRI object is incompatible with the scoped predicate range\",\"status\":\"error\"}\n"
+      },
+      "typed_contract_requires_rejection": true,
+      "future_correction": "revise_mechanical_probe_generator",
+      "compiler_change_justified": false,
+      "historical_reference_edit_permitted": false
+    },
+    {
+      "id": "explicit-006",
+      "question": "List subjects pointing to <http://www.wikidata.org/entity/Q134620> using explicit predicate <http://www.w3.org/2004/02/skos/core#altLabel> in graph <urn:graph-verity:nl-ask-v1:evaluation:wikidata>.",
+      "numeric_draft": {
+        "start": 100,
+        "predicate": 1001,
+        "graph": 0,
+        "direction": "reverse",
+        "output": "values"
+      },
+      "constructed_request": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+        ],
+        "limit": 100,
+        "template": {
+          "kind": "follow_path",
+          "start": "http://www.wikidata.org/entity/Q134620",
+          "steps": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+              "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+              "direction": "reverse"
+            }
+          ],
+          "filter": null,
+          "output": "values"
+        }
+      },
+      "constructed_plan": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+        ],
+        "limit": 100,
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+            "predicate": "http://www.w3.org/2004/02/skos/core#altLabel",
+            "direction": "reverse",
+            "from": {
+              "kind": "iri",
+              "iri": "http://www.wikidata.org/entity/Q134620"
+            },
+            "to": {
+              "kind": "variable",
+              "name": "step1"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "step1"
+          }
+        ],
+        "group_by": [],
+        "having": []
+      },
+      "original_nl_rejection": {
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"deterministic_preflight_block: Host snapshot, source, scope, resolution or limits prohibit this draft\",\"status\":\"error\"}\n"
+      },
+      "current_core_rejection": {
+        "command": [
+          "target/debug/verity",
+          "ask-preview",
+          "studies/nl-ask-v1/evaluation/snapshot.nq",
+          "nquads",
+          "studies/nl-ask-v1/evaluation/policy.json",
+          "<temporary request.json containing constructed_request>"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"datatype: IRI object is incompatible with the scoped predicate range\",\"status\":\"error\"}\n"
+      },
+      "typed_contract_requires_rejection": true,
+      "future_correction": "revise_mechanical_probe_generator",
+      "compiler_change_justified": false,
+      "historical_reference_edit_permitted": false
+    },
+    {
+      "id": "explicit-013",
+      "question": "List subjects pointing to <http://www.wikidata.org/entity/Q134620> using explicit predicate <http://www.wikidata.org/prop/direct/P1448> in graph <urn:graph-verity:nl-ask-v1:evaluation:wikidata>.",
+      "numeric_draft": {
+        "start": 100,
+        "predicate": 1003,
+        "graph": 0,
+        "direction": "reverse",
+        "output": "values"
+      },
+      "constructed_request": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+        ],
+        "limit": 100,
+        "template": {
+          "kind": "follow_path",
+          "start": "http://www.wikidata.org/entity/Q134620",
+          "steps": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+              "predicate": "http://www.wikidata.org/prop/direct/P1448",
+              "direction": "reverse"
+            }
+          ],
+          "filter": null,
+          "output": "values"
+        }
+      },
+      "constructed_plan": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+        ],
+        "limit": 100,
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+            "predicate": "http://www.wikidata.org/prop/direct/P1448",
+            "direction": "reverse",
+            "from": {
+              "kind": "iri",
+              "iri": "http://www.wikidata.org/entity/Q134620"
+            },
+            "to": {
+              "kind": "variable",
+              "name": "step1"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "step1"
+          }
+        ],
+        "group_by": [],
+        "having": []
+      },
+      "original_nl_rejection": {
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"deterministic_preflight_block: Host snapshot, source, scope, resolution or limits prohibit this draft\",\"status\":\"error\"}\n"
+      },
+      "current_core_rejection": {
+        "command": [
+          "target/debug/verity",
+          "ask-preview",
+          "studies/nl-ask-v1/evaluation/snapshot.nq",
+          "nquads",
+          "studies/nl-ask-v1/evaluation/policy.json",
+          "<temporary request.json containing constructed_request>"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"datatype: IRI object is incompatible with the scoped predicate range\",\"status\":\"error\"}\n"
+      },
+      "typed_contract_requires_rejection": true,
+      "future_correction": "revise_mechanical_probe_generator",
+      "compiler_change_justified": false,
+      "historical_reference_edit_permitted": false
+    },
+    {
+      "id": "explicit-020",
+      "question": "List subjects pointing to <http://www.wikidata.org/entity/Q134620> using explicit predicate <http://www.wikidata.org/prop/direct/P571> in graph <urn:graph-verity:nl-ask-v1:evaluation:wikidata>.",
+      "numeric_draft": {
+        "start": 100,
+        "predicate": 1005,
+        "graph": 0,
+        "direction": "reverse",
+        "output": "values"
+      },
+      "constructed_request": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+        ],
+        "limit": 100,
+        "template": {
+          "kind": "follow_path",
+          "start": "http://www.wikidata.org/entity/Q134620",
+          "steps": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+              "predicate": "http://www.wikidata.org/prop/direct/P571",
+              "direction": "reverse"
+            }
+          ],
+          "filter": null,
+          "output": "values"
+        }
+      },
+      "constructed_plan": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:wikidata"
+        ],
+        "limit": 100,
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:wikidata",
+            "predicate": "http://www.wikidata.org/prop/direct/P571",
+            "direction": "reverse",
+            "from": {
+              "kind": "iri",
+              "iri": "http://www.wikidata.org/entity/Q134620"
+            },
+            "to": {
+              "kind": "variable",
+              "name": "step1"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "step1"
+          }
+        ],
+        "group_by": [],
+        "having": []
+      },
+      "original_nl_rejection": {
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"deterministic_preflight_block: Host snapshot, source, scope, resolution or limits prohibit this draft\",\"status\":\"error\"}\n"
+      },
+      "current_core_rejection": {
+        "command": [
+          "target/debug/verity",
+          "ask-preview",
+          "studies/nl-ask-v1/evaluation/snapshot.nq",
+          "nquads",
+          "studies/nl-ask-v1/evaluation/policy.json",
+          "<temporary request.json containing constructed_request>"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"datatype: IRI object is incompatible with the scoped predicate range\",\"status\":\"error\"}\n"
+      },
+      "typed_contract_requires_rejection": true,
+      "future_correction": "revise_mechanical_probe_generator",
+      "compiler_change_justified": false,
+      "historical_reference_edit_permitted": false
+    },
+    {
+      "id": "explicit-028",
+      "question": "List subjects pointing to <https://sws.geonames.org/630752/> using explicit predicate <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> in graph <urn:graph-verity:nl-ask-v1:evaluation:geonames>.",
+      "numeric_draft": {
+        "start": 107,
+        "predicate": 1007,
+        "graph": 1,
+        "direction": "reverse",
+        "output": "values"
+      },
+      "constructed_request": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:geonames"
+        ],
+        "limit": 100,
+        "template": {
+          "kind": "follow_path",
+          "start": "https://sws.geonames.org/630752/",
+          "steps": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:evaluation:geonames",
+              "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+              "direction": "reverse"
+            }
+          ],
+          "filter": null,
+          "output": "values"
+        }
+      },
+      "constructed_plan": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:geonames"
+        ],
+        "limit": 100,
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:geonames",
+            "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "direction": "reverse",
+            "from": {
+              "kind": "iri",
+              "iri": "https://sws.geonames.org/630752/"
+            },
+            "to": {
+              "kind": "variable",
+              "name": "step1"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "step1"
+          }
+        ],
+        "group_by": [],
+        "having": []
+      },
+      "original_nl_rejection": {
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"deterministic_preflight_block: Host snapshot, source, scope, resolution or limits prohibit this draft\",\"status\":\"error\"}\n"
+      },
+      "current_core_rejection": {
+        "command": [
+          "target/debug/verity",
+          "ask-preview",
+          "studies/nl-ask-v1/evaluation/snapshot.nq",
+          "nquads",
+          "studies/nl-ask-v1/evaluation/policy.json",
+          "<temporary request.json containing constructed_request>"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"class: Type object is not an observed class\",\"status\":\"error\"}\n"
+      },
+      "typed_contract_requires_rejection": true,
+      "future_correction": "revise_mechanical_probe_generator",
+      "compiler_change_justified": false,
+      "historical_reference_edit_permitted": false
+    },
+    {
+      "id": "explicit-035",
+      "question": "List subjects pointing to <https://schema.org/AdministrativeArea> using explicit predicate <https://schema.org/identifier> in graph <urn:graph-verity:nl-ask-v1:evaluation:geonames>.",
+      "numeric_draft": {
+        "start": 104,
+        "predicate": 1009,
+        "graph": 1,
+        "direction": "reverse",
+        "output": "values"
+      },
+      "constructed_request": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:geonames"
+        ],
+        "limit": 100,
+        "template": {
+          "kind": "follow_path",
+          "start": "https://schema.org/AdministrativeArea",
+          "steps": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:evaluation:geonames",
+              "predicate": "https://schema.org/identifier",
+              "direction": "reverse"
+            }
+          ],
+          "filter": null,
+          "output": "values"
+        }
+      },
+      "constructed_plan": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:geonames"
+        ],
+        "limit": 100,
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:geonames",
+            "predicate": "https://schema.org/identifier",
+            "direction": "reverse",
+            "from": {
+              "kind": "iri",
+              "iri": "https://schema.org/AdministrativeArea"
+            },
+            "to": {
+              "kind": "variable",
+              "name": "step1"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "step1"
+          }
+        ],
+        "group_by": [],
+        "having": []
+      },
+      "original_nl_rejection": {
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"deterministic_preflight_block: Host snapshot, source, scope, resolution or limits prohibit this draft\",\"status\":\"error\"}\n"
+      },
+      "current_core_rejection": {
+        "command": [
+          "target/debug/verity",
+          "ask-preview",
+          "studies/nl-ask-v1/evaluation/snapshot.nq",
+          "nquads",
+          "studies/nl-ask-v1/evaluation/policy.json",
+          "<temporary request.json containing constructed_request>"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"datatype: IRI object is incompatible with the scoped predicate range\",\"status\":\"error\"}\n"
+      },
+      "typed_contract_requires_rejection": true,
+      "future_correction": "revise_mechanical_probe_generator",
+      "compiler_change_justified": false,
+      "historical_reference_edit_permitted": false
+    },
+    {
+      "id": "explicit-038",
+      "question": "List subjects pointing to <https://schema.org/AdministrativeArea> using explicit predicate <https://schema.org/name> in graph <urn:graph-verity:nl-ask-v1:evaluation:geonames>.",
+      "numeric_draft": {
+        "start": 104,
+        "predicate": 1010,
+        "graph": 1,
+        "direction": "reverse",
+        "output": "values"
+      },
+      "constructed_request": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:geonames"
+        ],
+        "limit": 100,
+        "template": {
+          "kind": "follow_path",
+          "start": "https://schema.org/AdministrativeArea",
+          "steps": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:evaluation:geonames",
+              "predicate": "https://schema.org/name",
+              "direction": "reverse"
+            }
+          ],
+          "filter": null,
+          "output": "values"
+        }
+      },
+      "constructed_plan": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:geonames"
+        ],
+        "limit": 100,
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:geonames",
+            "predicate": "https://schema.org/name",
+            "direction": "reverse",
+            "from": {
+              "kind": "iri",
+              "iri": "https://schema.org/AdministrativeArea"
+            },
+            "to": {
+              "kind": "variable",
+              "name": "step1"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "step1"
+          }
+        ],
+        "group_by": [],
+        "having": []
+      },
+      "original_nl_rejection": {
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"deterministic_preflight_block: Host snapshot, source, scope, resolution or limits prohibit this draft\",\"status\":\"error\"}\n"
+      },
+      "current_core_rejection": {
+        "command": [
+          "target/debug/verity",
+          "ask-preview",
+          "studies/nl-ask-v1/evaluation/snapshot.nq",
+          "nquads",
+          "studies/nl-ask-v1/evaluation/policy.json",
+          "<temporary request.json containing constructed_request>"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"datatype: IRI object is incompatible with the scoped predicate range\",\"status\":\"error\"}\n"
+      },
+      "typed_contract_requires_rejection": true,
+      "future_correction": "revise_mechanical_probe_generator",
+      "compiler_change_justified": false,
+      "historical_reference_edit_permitted": false
+    },
+    {
+      "id": "explicit-042",
+      "question": "List subjects pointing to <http://www.eionet.europa.eu/gemet/concept/12011> using explicit predicate <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> in graph <urn:graph-verity:nl-ask-v1:evaluation:gemet>.",
+      "numeric_draft": {
+        "start": 111,
+        "predicate": 1011,
+        "graph": 2,
+        "direction": "reverse",
+        "output": "values"
+      },
+      "constructed_request": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:gemet"
+        ],
+        "limit": 100,
+        "template": {
+          "kind": "follow_path",
+          "start": "http://www.eionet.europa.eu/gemet/concept/12011",
+          "steps": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:evaluation:gemet",
+              "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+              "direction": "reverse"
+            }
+          ],
+          "filter": null,
+          "output": "values"
+        }
+      },
+      "constructed_plan": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:gemet"
+        ],
+        "limit": 100,
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:gemet",
+            "predicate": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            "direction": "reverse",
+            "from": {
+              "kind": "iri",
+              "iri": "http://www.eionet.europa.eu/gemet/concept/12011"
+            },
+            "to": {
+              "kind": "variable",
+              "name": "step1"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "step1"
+          }
+        ],
+        "group_by": [],
+        "having": []
+      },
+      "original_nl_rejection": {
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"deterministic_preflight_block: Host snapshot, source, scope, resolution or limits prohibit this draft\",\"status\":\"error\"}\n"
+      },
+      "current_core_rejection": {
+        "command": [
+          "target/debug/verity",
+          "ask-preview",
+          "studies/nl-ask-v1/evaluation/snapshot.nq",
+          "nquads",
+          "studies/nl-ask-v1/evaluation/policy.json",
+          "<temporary request.json containing constructed_request>"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"class: Type object is not an observed class\",\"status\":\"error\"}\n"
+      },
+      "typed_contract_requires_rejection": true,
+      "future_correction": "revise_mechanical_probe_generator",
+      "compiler_change_justified": false,
+      "historical_reference_edit_permitted": false
+    },
+    {
+      "id": "explicit-049",
+      "question": "List subjects pointing to <http://www.eionet.europa.eu/gemet/concept/12011> using explicit predicate <http://www.w3.org/2004/02/skos/core#definition> in graph <urn:graph-verity:nl-ask-v1:evaluation:gemet>.",
+      "numeric_draft": {
+        "start": 111,
+        "predicate": 1013,
+        "graph": 2,
+        "direction": "reverse",
+        "output": "values"
+      },
+      "constructed_request": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:gemet"
+        ],
+        "limit": 100,
+        "template": {
+          "kind": "follow_path",
+          "start": "http://www.eionet.europa.eu/gemet/concept/12011",
+          "steps": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:evaluation:gemet",
+              "predicate": "http://www.w3.org/2004/02/skos/core#definition",
+              "direction": "reverse"
+            }
+          ],
+          "filter": null,
+          "output": "values"
+        }
+      },
+      "constructed_plan": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:gemet"
+        ],
+        "limit": 100,
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:gemet",
+            "predicate": "http://www.w3.org/2004/02/skos/core#definition",
+            "direction": "reverse",
+            "from": {
+              "kind": "iri",
+              "iri": "http://www.eionet.europa.eu/gemet/concept/12011"
+            },
+            "to": {
+              "kind": "variable",
+              "name": "step1"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "step1"
+          }
+        ],
+        "group_by": [],
+        "having": []
+      },
+      "original_nl_rejection": {
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"deterministic_preflight_block: Host snapshot, source, scope, resolution or limits prohibit this draft\",\"status\":\"error\"}\n"
+      },
+      "current_core_rejection": {
+        "command": [
+          "target/debug/verity",
+          "ask-preview",
+          "studies/nl-ask-v1/evaluation/snapshot.nq",
+          "nquads",
+          "studies/nl-ask-v1/evaluation/policy.json",
+          "<temporary request.json containing constructed_request>"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"datatype: IRI object is incompatible with the scoped predicate range\",\"status\":\"error\"}\n"
+      },
+      "typed_contract_requires_rejection": true,
+      "future_correction": "revise_mechanical_probe_generator",
+      "compiler_change_justified": false,
+      "historical_reference_edit_permitted": false
+    },
+    {
+      "id": "explicit-056",
+      "question": "List subjects pointing to <http://www.eionet.europa.eu/gemet/concept/12011> using explicit predicate <http://www.w3.org/2004/02/skos/core#prefLabel> in graph <urn:graph-verity:nl-ask-v1:evaluation:gemet>.",
+      "numeric_draft": {
+        "start": 111,
+        "predicate": 1015,
+        "graph": 2,
+        "direction": "reverse",
+        "output": "values"
+      },
+      "constructed_request": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:gemet"
+        ],
+        "limit": 100,
+        "template": {
+          "kind": "follow_path",
+          "start": "http://www.eionet.europa.eu/gemet/concept/12011",
+          "steps": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:evaluation:gemet",
+              "predicate": "http://www.w3.org/2004/02/skos/core#prefLabel",
+              "direction": "reverse"
+            }
+          ],
+          "filter": null,
+          "output": "values"
+        }
+      },
+      "constructed_plan": {
+        "version": 1,
+        "snapshot_id": "sha256:3c3566a64b607958c87de370c891eed500b0b698e78101e15df333edfaecc289",
+        "scope": [
+          "urn:graph-verity:nl-ask-v1:evaluation:gemet"
+        ],
+        "limit": 100,
+        "patterns": [
+          {
+            "graph": "urn:graph-verity:nl-ask-v1:evaluation:gemet",
+            "predicate": "http://www.w3.org/2004/02/skos/core#prefLabel",
+            "direction": "reverse",
+            "from": {
+              "kind": "iri",
+              "iri": "http://www.eionet.europa.eu/gemet/concept/12011"
+            },
+            "to": {
+              "kind": "variable",
+              "name": "step1"
+            }
+          }
+        ],
+        "filters": [],
+        "projection": [
+          {
+            "kind": "variable",
+            "name": "step1"
+          }
+        ],
+        "group_by": [],
+        "having": []
+      },
+      "original_nl_rejection": {
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"deterministic_preflight_block: Host snapshot, source, scope, resolution or limits prohibit this draft\",\"status\":\"error\"}\n"
+      },
+      "current_core_rejection": {
+        "command": [
+          "target/debug/verity",
+          "ask-preview",
+          "studies/nl-ask-v1/evaluation/snapshot.nq",
+          "nquads",
+          "studies/nl-ask-v1/evaluation/policy.json",
+          "<temporary request.json containing constructed_request>"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "{\"detail\":\"datatype: IRI object is incompatible with the scoped predicate range\",\"status\":\"error\"}\n"
+      },
+      "typed_contract_requires_rejection": true,
+      "future_correction": "revise_mechanical_probe_generator",
+      "compiler_change_justified": false,
+      "historical_reference_edit_permitted": false
+    }
+  ]
+}
