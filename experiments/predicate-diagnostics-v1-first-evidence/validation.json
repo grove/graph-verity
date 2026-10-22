@@ -1,0 +1,95 @@
+{
+  "status": "passed_after_model_free_timeout",
+  "validated_execution_commit": "d4f1fb8a3b178f0f8293e3ec2610de2eb7a1d37f",
+  "full_pipeline_scope": "Unchanged execution source; new evidence analyzer/tests validated separately. Existing trusted model-free fixture/oracle tests; generated model outputs are preview-only.",
+  "full_pipeline": {
+    "status": "passed",
+    "validated_commit": "d4f1fb8a3b178f0f8293e3ec2610de2eb7a1d37f",
+    "checkout": "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout",
+    "registered_binaries_before": {
+      "target/debug/verity": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+      "target/debug/examples/v1g_preview": "6eae400e6f75fcb9ec4626d2780875c06c295196ca4181d0c778637015aa0043"
+    },
+    "model_loading_permitted": false,
+    "downloads_permitted": false,
+    "environment": {
+      "CARGO_NET_OFFLINE": "true",
+      "REQUIRE_FIND_BROWSER": "1",
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1"
+    },
+    "commands": [
+      {
+        "label": "isolated-build",
+        "args": [
+          "cargo",
+          "build",
+          "--locked",
+          "--offline",
+          "--bins",
+          "--examples"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 10.622047458018642
+      },
+      {
+        "label": "complete-pipeline",
+        "args": [
+          "/Users/grove/projects/graph-verity/artifacts/predicate-native-first-evidence-validation-2/checkout/.venv/bin/python",
+          "-u",
+          "tools/verify_pre_llm.py"
+        ],
+        "returncode": 0,
+        "elapsed_seconds": 719.6874777500052
+      }
+    ],
+    "registered_binaries_after": {
+      "target/debug/verity": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+      "target/debug/examples/v1g_preview": "6eae400e6f75fcb9ec4626d2780875c06c295196ca4181d0c778637015aa0043"
+    },
+    "registered_binaries_unchanged": true
+  },
+  "full_pipeline_checks": 39,
+  "current_python_tests": 335,
+  "frozen_pilot_tests": 15,
+  "rust_tests": 100,
+  "focused_tests": 23,
+  "evidence_tests": 3,
+  "required_browsers": true,
+  "skips": false,
+  "earlier_pipeline_failure": {
+    "status": "failed_timeout",
+    "command": [
+      ".venv/bin/python",
+      "tools/verify_pre_llm.py"
+    ],
+    "wrapper_exit_code": 1,
+    "timeout_seconds": 600,
+    "failed_check": "reporting-tests",
+    "verification_receipt": "checkout/artifacts/pre-llm/verification.json",
+    "complete_python_test_count": null,
+    "partial_python_test_output_retained": false,
+    "missing_evidence": "The unchanged pipeline catches TimeoutExpired but only records its error string, not the exception stdout/stderr. Partial per-test output from this invocation is unavailable.",
+    "registered_binaries_unchanged": true,
+    "native_inference_repeated": false
+  },
+  "failed_initial_pipeline_receipt_preserved": true,
+  "native_command_invocations": 1,
+  "native_request_attempts": 78,
+  "native_request_completions": 77,
+  "native_failure": "TimeoutError: timed out",
+  "native_unattempted": 48,
+  "retries": 0,
+  "original_byte_rust_replays": 78,
+  "original_synthetic_rust_replays": 124,
+  "model_generated_rdf_executions": 0,
+  "validation_logs_archive_sha256": "9548acfa4e1d2ad851f49002ac133e1486c1a1c10c6ac72cc6f72f38c0073a27",
+  "validation_logs_manifest_sha256": "b2c0edf002a10f4dd5a96a457610d15a1d230e330726a8158ef663c96f7a009f",
+  "validation_log_files": 133,
+  "evidence_archive_sha256": "ccc895ab74ede072593ed8df3b0ec140edcf7454534c4316a92f605c56e6cbb1",
+  "registered_binaries_unchanged": true,
+  "issue83": "keep_open",
+  "issue75_integration": "disabled",
+  "independent_human_review": "deferred",
+  "decision": "INCONCLUSIVE_REVISE"
+}
