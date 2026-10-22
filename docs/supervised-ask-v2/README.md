@@ -61,3 +61,25 @@ The new material locations deliberately keep the existing broad frozen-directory
 assertion intact. No test runner, historical assertion or historical source file
 is changed. The new report and review kit live beside the separately versioned
 demo rather than reopening a historical registration's protected directories.
+
+## Final observed result
+
+The complete model-free pipeline **passed all 39 checks** on
+`cb6db9f388c33a0a0fb474ef52b831510b2934fd`: **347 current Python tests, 15 frozen pilot tests,
+100 Rust tests**, required Chrome walkthroughs, format/Clippy, frozen history,
+source-scope canaries, deterministic dataset rebuild, oracle/manual/fixture
+checks and final clean-tree verification. There were no skips. The 12 v2 focused
+tests, 13 focused Rust tests, three #105 evidence tests and eight unchanged
+native configuration tests also passed. The earlier full-run error and all
+focused failures remain in the archive. No timeout deadline was changed.
+
+[Machine validation](validation.json) records exact commands, durations and both
+full attempts. [Preservation](preservation.json) verifies **1,378 baseline files
+unchanged**, with their full SHA-256/Git blob inventory inside the hash-bound
+[log archive](validation-logs.tar.gz) and [archive inventory](validation-logs-files.json).
+The final PR receipt commit adds documentation/receipts only; implementation and
+review-package content are exactly the validated commit above.
+
+[Automated desktop capture](review.png) shows the reviewed UI; it is a browser
+test artifact, not evidence of human comprehension. All 24 fresh-question human
+assessments and actual system outputs remain pending.
