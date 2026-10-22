@@ -142,6 +142,18 @@ class SupervisedAsk(unittest.TestCase):
         self.assertEqual(empty['answers'], [])
         self.assertTrue(empty['outcome']['result']['complete_within_scope'])
 
+    def test_wrong_direction_is_reviewable_and_never_runs_automatically(self):
+        q = self.question()
+        draft = json.loads(self.bundle.proposal['raw_draft'])
+        draft['direction'] = 'reverse'
+        self.bundle.proposal['raw_draft'] = json.dumps(draft)
+        with patch.object(self.bundle, 'ask') as execute:
+            p = self.result(ask.PREFIX + 'preview', dict(proposal_token=q['proposal_token'], start=draft['start']))
+            self.assertEqual(p['resolved']['preview']['plan']['patterns'][0]['direction'], 'reverse')
+            execute.assert_not_called()
+            self.confirm(p, 'cancel')
+            execute.assert_not_called()
+
     def test_absent_edited_expired_cancelled_new_tab_and_replayed_approval(self):
         with patch.object(self.bundle, 'ask') as execute:
             self.assertEqual(self.call(ask.PREFIX + 'confirm', dict(token='none', decision='approve'))[0], 400)
@@ -252,7 +264,7 @@ class ReviewMaterials(unittest.TestCase):
     def test_pending_review_packages_and_pinned_sources(self):
         import hashlib
         from collections import Counter
-        directory = ask.ROOT / 'studies/supervised-ask-v2'
+        directory = ask.ROOT / 'examples/nl-ask-v2/review'
         manifest = json.loads((directory / 'manifest.json').read_bytes())
         for name, digest in manifest['files_sha256'].items():
             self.assertEqual(hashlib.sha256((ask.ROOT / name).read_bytes()).hexdigest(), digest, name)
@@ -275,7 +287,7 @@ class ReviewMaterials(unittest.TestCase):
     def test_compiler_assessment_reproduces_exact_ten_rejections_without_execution(self):
         import assess_ask_compiler
         actual = assess_ask_compiler.assess()
-        expected = json.loads((ask.ROOT / 'reports/supervised-ask-v2/compiler-assessment.json').read_bytes())
+        expected = json.loads((ask.ROOT / 'docs/supervised-ask-v2/compiler-assessment.json').read_bytes())
         self.assertEqual(actual, expected)
 
 

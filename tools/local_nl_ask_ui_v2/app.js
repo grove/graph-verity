@@ -96,7 +96,7 @@ $("preview").addEventListener("click", async () => {
       term.textContent = label; description.textContent = value;
       $("plan-fields").append(term, description);
     }
-    showJSON("sources", data.sources);
+    showJSON("sources", {graph: step.graph, source: data.sources[step.graph]});
     $("expiry").textContent = `This separate, single-use approval expires within ${Math.floor(data.review_seconds)} seconds.`;
     $("choose").hidden = true;
     $("review").hidden = false;

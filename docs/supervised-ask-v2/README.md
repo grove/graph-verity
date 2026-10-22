@@ -11,8 +11,8 @@ unsupported counts, wrong-but-executable interpretation and empty results.
 Source triples, graph, snapshot, source/license and original term metadata remain
 visible. No live draft is connected to execution.
 
-- [Demonstration and boundaries](../../docs/supervised-ask-v2.md)
-- [Fresh review protocol, metrics and packages](../../studies/supervised-ask-v2/protocol.md)
+- [Demonstration and boundaries](../supervised-ask-v2.md)
+- [Fresh review protocol, metrics and packages](../../examples/nl-ask-v2/review/protocol.md)
 - [All ten compiler incompatibilities](compiler-assessment.md) and [exact requests/rejections](compiler-assessment.json)
 - Validation and preservation receipts are added after the complete run below.
 
@@ -37,16 +37,27 @@ attempts, corrections and reruns are included rather than overwritten.
    packet before resolution; no canonical or source validation is weakened.
    Third host attempt: all nine tests passed, including Chrome.
 2. `ASK_SCREENSHOT=.../artifacts/supervised-ask-v2/review.png REQUIRE_FIND_BROWSER=1 .venv/bin/python -m unittest discover -s tools -p test_supervised_ask.py -v`
-   Final focused check includes two additional review-material/compiler tests.
+   This check passed 11 tests. A fifth focused run after plain-language explanations, desktop/mobile layout checks, the wrong-direction cancellation test and material relocation passed all 12 tests (26.308 seconds).
 3. `cargo test --locked --offline -p verity_core --test nl_ask --test ask`
    Focused core contract and exact-plan validation.
-4. `.venv/bin/python tools/assess_ask_compiler.py > reports/supervised-ask-v2/compiler-assessment.json`
+4. `.venv/bin/python tools/assess_ask_compiler.py > docs/supervised-ask-v2/compiler-assessment.json`
    Preview only; asserts the ten cases and unchanged rejection categories. The
    initial assessment assertion expected only range errors; inspection found two
    observed-class errors, now separately recorded. No compiler behavior changed.
 5. `REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py`
-   Full model-free Rust/Python/browser/format/Clippy/source/history pipeline;
-   run on a clean committed candidate, without changing any existing deadlines.
+   First full run on `98e2e9ba09975493126f0a1c017407ae441f55a5`: 346 current
+   Python tests completed in 548.553 seconds; 345 passed and one frozen-directory
+   guard errored because new files were added under `reports/` and `studies/`.
+   All new workflow tests passed. No historical bytes had changed. Only the new
+   materials were moved to this documentation directory and the v2 demo review
+   directory. The unchanged eight-test native configuration suite then passed.
+   The complete pipeline is rerun on the final committed implementation with
+   the same deadlines and required browsers.
 
 See the final machine receipt for exact statuses, counts, command arguments and
 hashes. Inference and human evaluation are intentionally unperformed.
+
+The new material locations deliberately keep the existing broad frozen-directory
+assertion intact. No test runner, historical assertion or historical source file
+is changed. The new report and review kit live beside the separately versioned
+demo rather than reopening a historical registration's protected directories.

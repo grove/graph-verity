@@ -94,6 +94,7 @@ try {
     return preview;
   }
   await send('Network.enable'); await send('Runtime.enable'); await send('Page.enable');
+  await send('Emulation.setDeviceMetricsOverride', {width:1280,height:900,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate',{url});
   await until("!document.getElementById('ask').disabled");
   assert.match(await evaluate("document.getElementById('runtime').textContent"), /SAVED-DRAFT DEMO/);
@@ -105,6 +106,8 @@ try {
   const norwegian = 'Hvilke offisielle navn har Universitetet i Tromsø?';
   const wrong = 'Which country is the University of Tromsø in?';
   const preview = await review(wrong, 'en', '/entity/Q279724');
+  assert.match(await evaluate("document.getElementById('explanation').textContent"), /administrative location/);
+  assert.equal(await evaluate("(() => {const a=[...document.querySelectorAll('.columns article')];return a[0].getBoundingClientRect().top === a[1].getBoundingClientRect().top})()"),true);
   assert.ok(preview.plan.patterns[0].predicate.endsWith('/P131'));
   if (process.env.ASK_SCREENSHOT) {
     const shot = await send('Page.captureScreenshot', {captureBeyondViewport:true});
@@ -169,6 +172,8 @@ try {
   }
   assert.equal(await evaluate("document.querySelectorAll('img, iframe, object, script:not([src])').length"),0);
   assert.ok(requests.every(u => new URL(u).origin === new URL(url).origin || u === 'about:blank'));
+  await send('Emulation.setDeviceMetricsOverride', {width:390,height:844,deviceScaleFactor:1,mobile:true});
+  assert.ok(await evaluate('document.documentElement.scrollWidth <= document.documentElement.clientWidth'));
   assert.deepEqual(exceptions,[]);
   console.log('Supervised Ask v2: bilingual, reverse, multiple, empty, inert injection, ambiguity, missing vocabulary, wrong executable plan, Enter/Escape/cancel/edit and exact approval passed');
 } finally {

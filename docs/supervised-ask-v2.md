@@ -103,17 +103,17 @@ runs at a time. There is no arbitrary query, count/filter or two-hop generation.
 
 ## Evaluation and remaining gates
 
-[Fresh review materials](../studies/supervised-ask-v2/protocol.md) contain 24 new
+[Fresh review materials](../examples/nl-ask-v2/review/protocol.md) contain 24 new
 NO/EN questions and separate source, system and usability packages. All human
 judgments and actual fresh-system fields are **pending**. Human evidence is zero;
 this public source-derived preparation is not a pristine holdout. Metrics and
 stop rules are predeclared before any new model generation. Model-free CI and
 fixture browser replay establish engineering behavior only.
 
-[Compiler assessment](../reports/supervised-ask-v2/compiler-assessment.md) explains
+[Compiler assessment](supervised-ask-v2/compiler-assessment.md) explains
 each of #105's ten incompatible reverse references and proposes an independent
 probe-generator follow-up. No compiler check or historical reference is changed.
-[Validation receipts](../reports/supervised-ask-v2/README.md) record checks, failures,
+[Validation receipts](supervised-ask-v2/README.md) record checks, failures,
 reruns and historical preservation.
 
 The next smallest live milestone is a separately authorized, registered local-model
