@@ -123,3 +123,36 @@ previous fsynced lines remain. Tracebacks omit locals and signal attribution.
 RSS sampling retains its original missed-peak/shared-page limits. Added fsyncs
 introduce small timing overhead. No native/model startup or inference is tested
 or authorized here; semantic understanding and independent review stay unmeasured.
+
+## Validation and preservation receipts
+
+The [validation receipt](validation.json) records the complete 41-check model-free
+pipeline at `ed12d0d0a1b05b9e6263b02d4ee3c35ac6bda913`: 195 + 177 current
+Python tests, historical replay, 100 Rust tests, formatting, Clippy, required real
+browser coverage, source rebuilds, oracle/fixture checks and the final clean-tree
+check. All 11 focused interruption tests passed; all pinned tokenizer arrays,
+counts and rendered prompts reproduced exactly; the 12 native grammar controls
+passed without loading weights. Subsequent commits add documentation/receipts only.
+
+The [complete logs](validation-logs.tar.gz) and their
+[original/published hash index](validation-log-files.json) retain failed checks
+and successful reruns. The first focused run addressed the wrong mock in an
+assertion; this was corrected before registration. The first full pipeline run
+passed both current shards but failed frozen-history replay because a global
+`CARGO_TARGET_DIR` redirected disposable historical binaries. The successful full
+rerun used an archived Cargo shim: isolate builds in the main checkout, use each
+historical export's own temporary build directory. No project source, registered
+binary, resource policy or check deadline was changed to make validation pass.
+The pipeline keeps its 600-second per-check deadline; tokenizer 120 seconds and
+native grammar checks 10 seconds remain unchanged. Attempt receipts also retain
+the outer validation deadlines; the first focused invocation had none configured.
+
+The [preservation proof](preservation.json) verifies all 1,677 baseline tracked and
+historical-attempt files byte for byte, including all original registrations,
+archives, forensic evidence, consumed ledger/run and registered Rust binary.
+All 40,345 retained asset files have unchanged membership, sizes and modification
+times; weights were not rehashed by these preparation checks. The successor's
+ledger, run, journal and diagnostics are absent. No model was loaded or downloaded,
+no completion was requested, no sealed holdout accessed and no model-generated RDF
+executed. The unchanged asset integrity and fresh host gates still run before a
+future separately authorized model load.
