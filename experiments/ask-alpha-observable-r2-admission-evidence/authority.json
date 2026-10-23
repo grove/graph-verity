@@ -1,0 +1,32 @@
+{
+  "version": "ask-alpha-observable-r2-authority-boundary-v1",
+  "authorization_source": "explicit owner message following read-only preparation in this task",
+  "experiment": "ask-alpha-preview-v1-observable-r2",
+  "authorized_command": [
+    ".venv/bin/python",
+    "tools/ask_alpha_trial_observable_r2.py",
+    "run",
+    "--allow-inference"
+  ],
+  "maximum_invocations": 1,
+  "actual_invocations": 0,
+  "stop_reason": "pre-invocation swap gate failed",
+  "admission_rechecks_after_failure": 0,
+  "registration_consumed": false,
+  "owner_requires_zero_retries": true,
+  "model": "Qwen3.5-9B Q4_K_M",
+  "cpu_only": true,
+  "threads": 4,
+  "gpu_layers": 0,
+  "concurrency": 1,
+  "max_completion_requests": 64,
+  "retries": 0,
+  "generated_rdf_executions": 0,
+  "thresholds_relaxed": false,
+  "other_model_experiments_invoked": false,
+  "issue75_integration": "disabled",
+  "issue83": "keep_open",
+  "decision": "INCONCLUSIVE_REVISE",
+  "publication_authorized": true,
+  "merge_authorized": false
+}
