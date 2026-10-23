@@ -175,6 +175,10 @@ try {
   await send('Emulation.setDeviceMetricsOverride', {width:390,height:844,deviceScaleFactor:1,mobile:true});
   assert.ok(await evaluate('document.documentElement.scrollWidth <= document.documentElement.clientWidth'));
   assert.deepEqual(exceptions,[]);
+  if (process.env.ASK_ALPHA_BROWSER) {
+    const { check } = await import('./ask_alpha_browser.mjs');
+    await check({ send, evaluate, until, click, review, confirms });
+  }
   console.log('Supervised Ask v2: bilingual, reverse, multiple, empty, inert injection, ambiguity, missing vocabulary, wrong executable plan, Enter/Escape/cancel/edit and exact approval passed');
 } finally {
   if (websocket) websocket.close();

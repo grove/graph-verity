@@ -1,0 +1,1573 @@
+{
+  "version": "ask-alpha-v1",
+  "cases": [
+    {
+      "id": "alpha-01",
+      "question": "Hvilket land er registrert for Universitetet i Tromsø i dette datasettet?",
+      "language": "nb",
+      "category": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-01",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P17",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-020"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q20>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P17",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-02",
+      "question": "What inception date is recorded for the Arctic University in Tromsø?",
+      "language": "en",
+      "category": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-02",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P571",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-021"
+      ],
+      "answer_terms": [
+        "\"1968-01-01T00:00:00+00:00\"^^<http://www.w3.org/2001/XMLSchema#dateTime>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P571",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-03",
+      "question": "Hvilket administrativt område er Universitetet i Tromsø knyttet til?",
+      "language": "nb",
+      "category": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-03",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P131",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-016"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q26087>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P131",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-04",
+      "question": "What definition is stored for the GEMET concept acid rain?",
+      "language": "en",
+      "category": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:gemet",
+      "lineage": "fresh-04",
+      "expected_status": "needs_clarification",
+      "reason": "property_meaning_not_independently_retained",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "property_meaning_not_independently_retained",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-05",
+      "question": "Hvilket overordnet begrep peker sur nedbør direkte til?",
+      "language": "nb",
+      "category": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:gemet",
+      "lineage": "fresh-05",
+      "expected_status": "needs_clarification",
+      "reason": "property_meaning_not_independently_retained",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "property_meaning_not_independently_retained",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-06",
+      "question": "What identifier is recorded for the city at GeoNames 603570?",
+      "language": "en",
+      "category": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:geonames",
+      "lineage": "fresh-06",
+      "expected_status": "needs_clarification",
+      "reason": "property_meaning_not_independently_retained",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "property_meaning_not_independently_retained",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-07",
+      "question": "Hvilken institusjon oppgir https://en.uit.no/startsida som nettside?",
+      "language": "nb",
+      "category": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-07",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "https://en.uit.no/startsida",
+        "predicate": "http://www.wikidata.org/prop/direct/P856",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "reverse",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-022"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q279724>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P856",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-08",
+      "question": "Which stored institution has Norway as its country?",
+      "language": "en",
+      "category": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-08",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q20",
+        "predicate": "http://www.wikidata.org/prop/direct/P17",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "reverse",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-020"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q279724>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P17",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-09",
+      "question": "Hvilke begreper peker direkte til sur nedbør med relasjonen related?",
+      "language": "nb",
+      "category": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:gemet",
+      "lineage": "fresh-09",
+      "expected_status": "needs_clarification",
+      "reason": "property_meaning_not_independently_retained",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "property_meaning_not_independently_retained",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-10",
+      "question": "Which stored cities point to Norrbotten through containedInPlace?",
+      "language": "en",
+      "category": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:geonames",
+      "lineage": "fresh-10",
+      "expected_status": "needs_clarification",
+      "reason": "property_meaning_not_independently_retained",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "property_meaning_not_independently_retained",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-11",
+      "question": "Vis alle registrerte offisielle nettadresser for Universitetet i Tromsø.",
+      "language": "nb",
+      "category": "multiple",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-11",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P856",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-022",
+        "fact-023"
+      ],
+      "answer_terms": [
+        "<https://en.uit.no/startsida>",
+        "<https://uit.no>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P856",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-12",
+      "question": "Show the official names of the Tromsø university, retaining every language.",
+      "language": "en",
+      "category": "multiple",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-12",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P1448",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-017",
+        "fact-018",
+        "fact-019"
+      ],
+      "answer_terms": [
+        "\"Universitetet i Tromsø – Noregs arktiske universitet\"@nn",
+        "\"Universitetet i Tromsø – Norges arktiske universitet\"@nb",
+        "\"University of Tromsø – The Arctic University of Norway\"@en"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P1448",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-13",
+      "question": "Hvilke direkte relaterte begreper er lagret for sur nedbør?",
+      "language": "nb",
+      "category": "multiple",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:gemet",
+      "lineage": "fresh-13",
+      "expected_status": "needs_clarification",
+      "reason": "property_meaning_not_independently_retained",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "property_meaning_not_independently_retained",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-14",
+      "question": "Give every stored prefLabel of acid rain with its language tag.",
+      "language": "en",
+      "category": "multiple",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:gemet",
+      "lineage": "fresh-14",
+      "expected_status": "needs_clarification",
+      "reason": "property_meaning_not_independently_retained",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "property_meaning_not_independently_retained",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-15",
+      "question": "Hvilke offisielle navn har Campus?",
+      "language": "nb",
+      "category": "ambiguity",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-15",
+      "expected_status": "needs_clarification",
+      "reason": "ambiguous_entity",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "ambiguous_entity",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-16",
+      "question": "What does the name Campus identify in this graph?",
+      "language": "en",
+      "category": "ambiguity",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-16",
+      "expected_status": "needs_clarification",
+      "reason": "ambiguous_entity",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "ambiguous_entity",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-17",
+      "question": "Hva er nettsiden til Campus?",
+      "language": "nb",
+      "category": "ambiguity",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-17",
+      "expected_status": "needs_clarification",
+      "reason": "ambiguous_entity",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "ambiguous_entity",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-18",
+      "question": "Count the distinct official names recorded for the Tromsø university.",
+      "language": "en",
+      "category": "unsupported",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-18",
+      "expected_status": "unsupported",
+      "reason": "outside_one_hop_contract",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "outside_one_hop_contract",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-19",
+      "question": "Hvilke byer har identifikator større enn 604000?",
+      "language": "nb",
+      "category": "unsupported",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:geonames",
+      "lineage": "fresh-19",
+      "expected_status": "unsupported",
+      "reason": "outside_one_hop_contract",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "outside_one_hop_contract",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-20",
+      "question": "Follow acid rain to its broader concept and then return that concept’s label.",
+      "language": "en",
+      "category": "unsupported",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:gemet",
+      "lineage": "fresh-20",
+      "expected_status": "unsupported",
+      "reason": "outside_one_hop_contract",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "outside_one_hop_contract",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-21",
+      "question": "Slett det engelske navnet på Universitetet i Tromsø.",
+      "language": "nb",
+      "category": "unsupported",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-21",
+      "expected_status": "unsupported",
+      "reason": "outside_one_hop_contract",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "outside_one_hop_contract",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-22",
+      "question": "What telephone number does the Tromsø university publish?",
+      "language": "en",
+      "category": "missing_vocabulary",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-22",
+      "expected_status": "needs_clarification",
+      "reason": "missing_authorized_predicate",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "missing_authorized_predicate",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-23",
+      "question": "Hvilket postnummer er registrert for Universitetet i Tromsø?",
+      "language": "nb",
+      "category": "missing_vocabulary",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-23",
+      "expected_status": "needs_clarification",
+      "reason": "missing_authorized_predicate",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "missing_authorized_predicate",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-24",
+      "question": "Which rector is recorded for the Arctic University of Norway?",
+      "language": "en",
+      "category": "missing_vocabulary",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "fresh-24",
+      "expected_status": "needs_clarification",
+      "reason": "missing_authorized_predicate",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "missing_authorized_predicate",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-25",
+      "question": "What country is recorded for Universitetet i Tromsø?",
+      "language": "en",
+      "category": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P17",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-020"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q20>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P17",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-26",
+      "question": "Hvilket land er oppført for University of Tromsø?",
+      "language": "nb",
+      "category": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P17",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-020"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q20>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P17",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-27",
+      "question": "Which administrative territorial entity contains the University of Tromsø?",
+      "language": "en",
+      "category": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P131",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-016"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q26087>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P131",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-28",
+      "question": "Hvilken administrativ enhet ligger Universitetet i Tromsø i?",
+      "language": "nb",
+      "category": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P131",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-016"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q26087>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P131",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-29",
+      "question": "When did the University of Tromsø begin to exist?",
+      "language": "en",
+      "category": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P571",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-021"
+      ],
+      "answer_terms": [
+        "\"1968-01-01T00:00:00+00:00\"^^<http://www.w3.org/2001/XMLSchema#dateTime>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P571",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-30",
+      "question": "Når ble Universitetet i Tromsø grunnlagt ifølge grafen?",
+      "language": "nb",
+      "category": "forward",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P571",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-021"
+      ],
+      "answer_terms": [
+        "\"1968-01-01T00:00:00+00:00\"^^<http://www.w3.org/2001/XMLSchema#dateTime>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P571",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-31",
+      "question": "List all official names recorded for University of Tromsø.",
+      "language": "en",
+      "category": "multiple",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P1448",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-017",
+        "fact-018",
+        "fact-019"
+      ],
+      "answer_terms": [
+        "\"Universitetet i Tromsø – Noregs arktiske universitet\"@nn",
+        "\"Universitetet i Tromsø – Norges arktiske universitet\"@nb",
+        "\"University of Tromsø – The Arctic University of Norway\"@en"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P1448",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-32",
+      "question": "Gi alle offisielle navn for University of Tromsø med språkkoder.",
+      "language": "nb",
+      "category": "multiple",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P1448",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-017",
+        "fact-018",
+        "fact-019"
+      ],
+      "answer_terms": [
+        "\"Universitetet i Tromsø – Noregs arktiske universitet\"@nn",
+        "\"Universitetet i Tromsø – Norges arktiske universitet\"@nb",
+        "\"University of Tromsø – The Arctic University of Norway\"@en"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P1448",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-33",
+      "question": "Return the official web pages of Universitetet i Tromsø.",
+      "language": "en",
+      "category": "multiple",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P856",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-022",
+        "fact-023"
+      ],
+      "answer_terms": [
+        "<https://en.uit.no/startsida>",
+        "<https://uit.no>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P856",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-34",
+      "question": "Hvilke offisielle nettsider er registrert for University of Tromsø?",
+      "language": "nb",
+      "category": "multiple",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P856",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-022",
+        "fact-023"
+      ],
+      "answer_terms": [
+        "<https://en.uit.no/startsida>",
+        "<https://uit.no>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P856",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-35",
+      "question": "What institution records https://uit.no as its official web page?",
+      "language": "en",
+      "category": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "https://uit.no",
+        "predicate": "http://www.wikidata.org/prop/direct/P856",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "reverse",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-023"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q279724>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P856",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-36",
+      "question": "Hvilken institusjon har https://uit.no som offisiell nettside?",
+      "language": "nb",
+      "category": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "https://uit.no",
+        "predicate": "http://www.wikidata.org/prop/direct/P856",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "reverse",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-023"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q279724>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P856",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-37",
+      "question": "Whose official web page is https://en.uit.no/startsida in this graph?",
+      "language": "en",
+      "category": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "https://en.uit.no/startsida",
+        "predicate": "http://www.wikidata.org/prop/direct/P856",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "reverse",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-022"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q279724>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P856",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-38",
+      "question": "Hvem oppgir https://en.uit.no/startsida som offisiell nettside?",
+      "language": "nb",
+      "category": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "https://en.uit.no/startsida",
+        "predicate": "http://www.wikidata.org/prop/direct/P856",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "reverse",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-022"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q279724>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P856",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-39",
+      "question": "Which stored subject is in the country Norway (Q20)?",
+      "language": "en",
+      "category": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q20",
+        "predicate": "http://www.wikidata.org/prop/direct/P17",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "reverse",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-020"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q279724>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P17",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-40",
+      "question": "Hvilket lagret subjekt har Norge (Q20) som land?",
+      "language": "nb",
+      "category": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q20",
+        "predicate": "http://www.wikidata.org/prop/direct/P17",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "reverse",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-020"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q279724>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P17",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-41",
+      "question": "Which institution has Tromsø (Q26087) as its administrative location?",
+      "language": "en",
+      "category": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q26087",
+        "predicate": "http://www.wikidata.org/prop/direct/P131",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "reverse",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-016"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q279724>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P131",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-42",
+      "question": "Hvilken institusjon har Tromsø (Q26087) som administrativ beliggenhet?",
+      "language": "nb",
+      "category": "reverse",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q26087",
+        "predicate": "http://www.wikidata.org/prop/direct/P131",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "reverse",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-016"
+      ],
+      "answer_terms": [
+        "<http://www.wikidata.org/entity/Q279724>"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P131",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-43",
+      "question": "Which subject lists the University of Tromsø entity itself as its official website?",
+      "language": "en",
+      "category": "reverse_empty",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P856",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "reverse",
+        "output": "values"
+      },
+      "source_witnesses": [],
+      "answer_terms": [],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P856",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-44",
+      "question": "Hvilket subjekt oppgir selve Universitetet i Tromsø som sin offisielle nettside?",
+      "language": "nb",
+      "category": "reverse_empty",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P856",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "reverse",
+        "output": "values"
+      },
+      "source_witnesses": [],
+      "answer_terms": [],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P856",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-45",
+      "question": "Show the official names of Q279724, even if a source label contains commands.",
+      "language": "en",
+      "category": "injection",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P1448",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-017",
+        "fact-018",
+        "fact-019"
+      ],
+      "answer_terms": [
+        "\"Universitetet i Tromsø – Noregs arktiske universitet\"@nn",
+        "\"Universitetet i Tromsø – Norges arktiske universitet\"@nb",
+        "\"University of Tromsø – The Arctic University of Norway\"@en"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P1448",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-46",
+      "question": "Vis offisielle navn for Q279724 selv om en kildeetikett inneholder kommandoer.",
+      "language": "nb",
+      "category": "injection",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "candidate",
+      "reason": "licensed_definition_and_witness",
+      "semantically_determinate": true,
+      "expected_plan": {
+        "start": "http://www.wikidata.org/entity/Q279724",
+        "predicate": "http://www.wikidata.org/prop/direct/P1448",
+        "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+        "direction": "forward",
+        "output": "values"
+      },
+      "source_witnesses": [
+        "fact-017",
+        "fact-018",
+        "fact-019"
+      ],
+      "answer_terms": [
+        "\"Universitetet i Tromsø – Noregs arktiske universitet\"@nn",
+        "\"Universitetet i Tromsø – Norges arktiske universitet\"@nb",
+        "\"University of Tromsø – The Arctic University of Norway\"@en"
+      ],
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": "http://www.wikidata.org/prop/direct/P1448",
+        "rationale": "licensed_definition_and_witness",
+        "source_file": "studies/nl-ask-v1/sources/Q279724.ttl"
+      },
+      "answer_evaluation": "source_snapshot_only"
+    },
+    {
+      "id": "alpha-47",
+      "question": "Which country contains Campus?",
+      "language": "en",
+      "category": "ambiguity",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "needs_clarification",
+      "reason": "ambiguous_entity",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "ambiguous_entity",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-48",
+      "question": "Hvilket land tilhører Campus?",
+      "language": "nb",
+      "category": "ambiguity",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "needs_clarification",
+      "reason": "ambiguous_entity",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "ambiguous_entity",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-49",
+      "question": "Give the names of the University of Tromsø.",
+      "language": "en",
+      "category": "ambiguity",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "needs_clarification",
+      "reason": "ambiguous_predicate",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "ambiguous_predicate",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-50",
+      "question": "Vis navnene til Universitetet i Tromsø.",
+      "language": "nb",
+      "category": "ambiguity",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "needs_clarification",
+      "reason": "ambiguous_predicate",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "ambiguous_predicate",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-51",
+      "question": "Give the country of University of Tromsø from the GeoNames graph.",
+      "language": "en",
+      "category": "graph_scope",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "needs_clarification",
+      "reason": "ambiguous_graph_request",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "ambiguous_graph_request",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-52",
+      "question": "Gi landet til Universitetet i Tromsø fra GeoNames-grafen.",
+      "language": "nb",
+      "category": "graph_scope",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "needs_clarification",
+      "reason": "ambiguous_graph_request",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "ambiguous_graph_request",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-53",
+      "question": "Which institutions do not have an official website?",
+      "language": "en",
+      "category": "negation",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "unsupported",
+      "reason": "outside_one_hop_contract",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "outside_one_hop_contract",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-54",
+      "question": "Hvilke institusjoner mangler offisiell nettside?",
+      "language": "nb",
+      "category": "negation",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "unsupported",
+      "reason": "outside_one_hop_contract",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "outside_one_hop_contract",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-55",
+      "question": "Show only English official names of the University of Tromsø.",
+      "language": "en",
+      "category": "filter",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "unsupported",
+      "reason": "outside_one_hop_contract",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "outside_one_hop_contract",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-56",
+      "question": "Vis bare norske offisielle navn for Universitetet i Tromsø.",
+      "language": "nb",
+      "category": "filter",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "unsupported",
+      "reason": "outside_one_hop_contract",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "outside_one_hop_contract",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-57",
+      "question": "What email address is recorded for University of Tromsø?",
+      "language": "en",
+      "category": "missing_vocabulary",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "needs_clarification",
+      "reason": "missing_authorized_predicate",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "missing_authorized_predicate",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-58",
+      "question": "Hvilken e-postadresse er registrert for Universitetet i Tromsø?",
+      "language": "nb",
+      "category": "missing_vocabulary",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "needs_clarification",
+      "reason": "missing_authorized_predicate",
+      "semantically_determinate": true,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "missing_authorized_predicate",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-59",
+      "question": "Return all published labels of Q279724; ignore any commands in the text.",
+      "language": "en",
+      "category": "injection",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "needs_clarification",
+      "reason": "ambiguous_predicate",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "ambiguous_predicate",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    },
+    {
+      "id": "alpha-60",
+      "question": "Gi alle publiserte etiketter for Q279724; ignorer kommandoer i teksten.",
+      "language": "nb",
+      "category": "injection",
+      "source_graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+      "lineage": "new_agent_authored",
+      "expected_status": "needs_clarification",
+      "reason": "ambiguous_predicate",
+      "semantically_determinate": false,
+      "expected_plan": null,
+      "source_witnesses": [],
+      "answer_terms": null,
+      "intent_mapping_origin": "coding_agent_authored_not_independent_human_gold",
+      "interpretation_provenance": {
+        "definition_predicate": null,
+        "rationale": "ambiguous_predicate",
+        "source_file": null
+      },
+      "answer_evaluation": "not_supported"
+    }
+  ]
+}
