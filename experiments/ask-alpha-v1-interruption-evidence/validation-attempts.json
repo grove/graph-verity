@@ -1,0 +1,15 @@
+[
+  {
+    "recorded_at": "2026-10-23T20:16:05.359674+00:00",
+    "attempt_timestamp": "not captured",
+    "command": [
+      "python3",
+      "-"
+    ],
+    "stdin_sha256": "efb506293fe29cc67e90d5f3a877c7dcdf249dfda77ff81f729b7282e0c0312f",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<stdin>\", line 11, in <module>\n  File \"<stdin>\", line 7, in sha\nAttributeError: module 'hashlib' has no attribute 'file_digest'\n",
+    "explanation": "Published reproduction used hashlib.file_digest, unavailable in the subprocess interpreter. Parent validation stopped at the failed-result assertion; no original evidence was changed."
+  }
+]
