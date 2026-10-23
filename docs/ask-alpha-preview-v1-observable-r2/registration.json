@@ -1,0 +1,30 @@
+{
+  "version": "ask-alpha-preview-v1-observable-r2",
+  "archive_sha256": "310216acbaeb34d15752b7452658a39a4eaa358c4456d451085770efb95fe516",
+  "checksums_sha256": "e232828473b7e09487d1f6a85ed1db15ce1948f2b52342f93317937aa04cbf00",
+  "source_commit": "4c1888e441e3db26073fd06ced05447aff195346",
+  "command": [
+    ".venv/bin/python",
+    "tools/ask_alpha_trial_observable_r2.py",
+    "run",
+    "--allow-inference"
+  ],
+  "completion_requests": 64,
+  "semantic_cases": 60,
+  "model": "qwen35",
+  "retries": 0,
+  "output": "artifacts/ask-alpha-preview-v1-observable-r2/run",
+  "ledger": "artifacts/ask-alpha-preview-v1-observable-r2/attempt.json",
+  "inference_authorized": false,
+  "inference_performed": false,
+  "executions": 0,
+  "decision": "INCONCLUSIVE_REVISE",
+  "human_comprehension": "unmeasured",
+  "issue75_integration": "disabled",
+  "issue83": "keep_open",
+  "predecessor_registration_sha256": "55af85f8f5c15e45b46653d78e6e92cfe5c03a84fabfcf75be622e63c8386464",
+  "observability": {
+    "journal": "artifacts/ask-alpha-preview-v1-observable-r2/stages.jsonl",
+    "diagnostics": "artifacts/ask-alpha-preview-v1-observable-r2/diagnostics.json"
+  }
+}
