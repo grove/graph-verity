@@ -1,0 +1,71 @@
+{
+  "base": "03732b9cac8f1d5423783dec5026e99cfae5f517",
+  "original_tracked_files": 1402,
+  "unchanged_original_files": 1401,
+  "allowed_test_only_changes": {
+    "tools/supervised_ask_browser.mjs": {
+      "original_sha256": "52f77d0b914037821b6bebf8fd62451661a99245121a4429e09c7931c13e089a",
+      "current_sha256": "c48017bc4d2a246f4bc0e2acb38ac97f80dd2bdca8b07bac80c96feae06d5e53"
+    }
+  },
+  "original_registration_files": 18,
+  "original_registration_sha256": {
+    "benchmarks/question-vocabulary-v2-neighborhood/registration.json": "bbd6cfd8cf9f2ca2a1dd3140bb11e680dbaa8c17f1525cbdd7059b24dfa1b0b6",
+    "experiments/native-one-hop-v1f-diagnostic-r3/registration.json": "c11c945b2898ebffb1d9cd2bb6e9a0dacf6b5f933a78cc4fe7fb4b10e81751fa",
+    "experiments/native-one-hop-v1g/execution-v1/development-registration.json": "ef41b51dbd18707e2574ac1c08c629e1b4ea902f83644e4bac73ff4512359bef",
+    "experiments/native-one-hop-v1g/execution-v1/freeze/execution-registration.json": "ff570f5da573c9230a5f7062ef639540e93240010994580438548f60de830ae5",
+    "experiments/native-one-hop-v1g/registration.json": "59a37795be9edddc0233961bba83b0af4d697f76c01d7ba2f6f20f02542ccd30",
+    "experiments/native-one-hop-v1h-budget-swap2048/registration.json": "b70476e3ae2118c7a4e5fd15cc581a26697d6286afd5f31e123d693345200c05",
+    "experiments/native-one-hop-v1h-budget/registration.json": "beb4e84519294d9f6b870236573c3728f4ccc028465db73c0cb97ab36a414bc7",
+    "experiments/native-one-hop-v1h-qwen-direction-only/registration.json": "dceb7ded1c5914097dfc6f8b384b51157668dda34f89cbdcec5b8903bc46e68c",
+    "experiments/native-one-hop-v1h-qwen-status-precedence/registration.json": "d0d0943d82702ec42d247d825fbb4ad5b5caae9b031c4905067f51e7784979c5",
+    "experiments/native-one-hop-v1h-qwen-status-precedence/superseded-registration-1/registration.json": "020d7c32d33e25073a018ce7b436ec90c2d5334237ef1e911e36de85049c48b6",
+    "experiments/predicate-diagnostics-v1-execution-v1/registration.json": "6ff9ca9824d62dc5f7457e142b308039f7ff033480b9dc871c22573892319e65",
+    "experiments/predicate-diagnostics-v1/registration.json": "2cf1d0109db425023f03af1b6da729ca1eccc651eeaa144b84dec66b28ece207",
+    "reports/issue-53-selective-hybrid/preregistration.json": "b24fd9c609e8d790961858bc7dc1cf1f3cd0c7933cd2f52b65a28dfa5bc38e6d",
+    "reports/issue-83-native-one-hop-v1d/preregistration.json": "aa7a1ab28b5db153ad94b5b489ad57d71e5959ded0449f949aaef80f4c14abdf",
+    "reports/issue-83-native-one-hop-v1e/preregistration.json": "6eb1eb6bf61d5153dabd99a71c978bda96612152ae2e8a42b0f08fd18f12c4bf",
+    "reports/issue-83-native-one-hop-v1f-diagnostic/preregistration.json": "7bd8457fba69c13bcf715efdc5994da4481bb03214e0513cde0aa6add4b4a666",
+    "reports/issue-83-native-one-hop-v1f-diagnostic/superseded-registration-1/preregistration.json": "bd3f274ec5a96d5f0156ae20edc23a21a33339dad601b77dfd171422555ac54b",
+    "tools/test_native_one_hop_v1g_registration.py": "28bf79f0e34c9cc2cebc0955184966caf56927c53c11f55415fe9f10d961274b"
+  },
+  "rust_binaries": {
+    "target/debug/verity": {
+      "expected_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+      "actual_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db"
+    }
+  },
+  "native_identities": {
+    "inference_performed": false,
+    "files": {
+      "qwen35-Q4_K_M.gguf": {
+        "expected_sha256": "fa502d3cb95fab7a6a563b9e057d94e6bae5ca737f056a4ffd05a9c25232d951",
+        "actual_sha256": "fa502d3cb95fab7a6a563b9e057d94e6bae5ca737f056a4ffd05a9c25232d951",
+        "matched": true,
+        "bytes": 5780090752
+      },
+      "build/bin/llama-server": {
+        "expected_sha256": "40188c617d6dc1d7f060587233a9eaf7d3929e1740db0e4650c31b74616be78a",
+        "actual_sha256": "40188c617d6dc1d7f060587233a9eaf7d3929e1740db0e4650c31b74616be78a",
+        "matched": true,
+        "bytes": 13420320
+      },
+      "build/bin/llama-quantize": {
+        "expected_sha256": "d08bf862557d17b111e5afd778d3cb241850c76e5358f01fae430ffe99c9f566",
+        "actual_sha256": "d08bf862557d17b111e5afd778d3cb241850c76e5358f01fae430ffe99c9f566",
+        "matched": true,
+        "bytes": 5938032
+      },
+      "build/bin/test-gbnf-validator": {
+        "expected_sha256": "225167e1c32e139e4da426845cef7a330a2a7f340a43ab1b6dc95bcd9b2b63c2",
+        "actual_sha256": "225167e1c32e139e4da426845cef7a330a2a7f340a43ab1b6dc95bcd9b2b63c2",
+        "matched": true,
+        "bytes": 5199920
+      }
+    }
+  },
+  "original_sources_references_snapshots_archives_and_security_rules_unchanged": true,
+  "inference_performed": false,
+  "trial_ledger_absent": true,
+  "trial_run_absent": true
+}

@@ -1,0 +1,25 @@
+{
+  "version": "ask-alpha-preview-v1",
+  "archive_sha256": "4c094d907b8debd770a0c4c9d564cc339deb91302c166ed90164f2ad34a3998a",
+  "checksums_sha256": "f92647c5fb0b114acb3af07af3fdb10f474e82cf78ba4a66039237ed073e9301",
+  "source_commit": "74d840108e65e5152f0a2f1542bb4baedaeafbbc",
+  "command": [
+    ".venv/bin/python",
+    "tools/ask_alpha_trial.py",
+    "run",
+    "--allow-inference"
+  ],
+  "completion_requests": 64,
+  "semantic_cases": 60,
+  "model": "qwen35",
+  "retries": 0,
+  "output": "artifacts/ask-alpha-v1/run",
+  "ledger": "artifacts/ask-alpha-v1/attempt.json",
+  "inference_authorized": false,
+  "inference_performed": false,
+  "executions": 0,
+  "decision": "INCONCLUSIVE_REVISE",
+  "human_comprehension": "unmeasured",
+  "issue75_integration": "disabled",
+  "issue83": "keep_open"
+}
