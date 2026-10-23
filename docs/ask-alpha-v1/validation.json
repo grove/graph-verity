@@ -1,0 +1,84 @@
+{
+  "version": "ask-alpha-validation-v1",
+  "decision": "INCONCLUSIVE_REVISE",
+  "validated_code_commit": "6962fc54baa0641441169f2472f60c6f137b9edb",
+  "registered_source_commit": "74d840108e65e5152f0a2f1542bb4baedaeafbbc",
+  "pipeline": {
+    "status": "passed",
+    "checks": 41,
+    "check_timeout_seconds": 600,
+    "current_python_tests": [
+      170,
+      191
+    ],
+    "frozen_pilot_tests": 15,
+    "frozen_v1g_fingerprint_guard": 1,
+    "nl_ask_history_tests": [
+      6,
+      6,
+      4
+    ],
+    "rust_tests": 100,
+    "required_browser": true,
+    "skips": 0
+  },
+  "focused": {
+    "tests": 10,
+    "status": "passed",
+    "elapsed_seconds": 21.905,
+    "browser_timeout_seconds": 120
+  },
+  "preparation": {
+    "inference_performed": false,
+    "tokenizer_timeout_seconds": 120,
+    "scheduled_requests": 64,
+    "semantic_cases": 60,
+    "maximum_input_tokens": 12413,
+    "output_reserve": 512,
+    "maximum_total_tokens": 12925,
+    "context_limit": 16384,
+    "registration_sha256": "55af85f8f5c15e45b46653d78e6e92cfe5c03a84fabfcf75be622e63c8386464",
+    "archive_sha256": "4c094d907b8debd770a0c4c9d564cc339deb91302c166ed90164f2ad34a3998a"
+  },
+  "initial_failures": [
+    {
+      "log": "focused/focused-first.stderr",
+      "reason": "Verifier used Graph returned by Dataset.parse; isolated test server blocked by filesystem sandbox",
+      "resolution": "Keep Dataset instance; run authorized loopback browser test on host"
+    },
+    {
+      "log": "focused/focused-second.stderr",
+      "reason": "Restrictive browser fixture wrapper failed to retain unresolved None outcome",
+      "resolution": "Correct test fixture wrapper; product unchanged"
+    },
+    {
+      "log": "focused/runner-test.stderr",
+      "reason": "Mock adapter did not replay the saved packet",
+      "resolution": "Correct mock; real source gate unchanged"
+    },
+    {
+      "log": "focused/runner-second.stderr",
+      "reason": "Mock runner attempted real trusted-source preview against fake binary",
+      "resolution": "Mock the trusted preflight in timeout-only test; real preflight retained"
+    }
+  ],
+  "logs": {
+    "archive_sha256": "9e93cdb7b78075c1299505b802e0b55dfe0e0efd37b5bc4fdc9dbfce9f84d75b",
+    "files": 116,
+    "index": "validation-logs-files.json",
+    "original_failed_logs_retained_locally": "artifacts/ask-local-alpha/work",
+    "publication_redaction": "Expired private loopback URL fragments removed; original/published hashes both retained"
+  },
+  "no_models_invoked": true,
+  "no_network_inference": true,
+  "no_model_download": true,
+  "no_sealed_holdout_access": true,
+  "no_model_generated_rdf_execution": true,
+  "trial_ledger_absent": true,
+  "trial_run_absent": true,
+  "human_reviewers": 0,
+  "human_observations": 0,
+  "issue75_integration": "disabled",
+  "issue83": "keep_open",
+  "automatic_merge": false
+}
