@@ -47,7 +47,7 @@ QWEN_CONTROL_TOKEN = re.compile(
     r"<\|(?:endoftext|im_start|im_end|object_ref_start|object_ref_end|"
     r"box_start|box_end|quad_start|quad_end|vision_start|vision_end|"
     r"vision_pad|image_pad|video_pad|fim_prefix|fim_middle|fim_suffix|"
-    r"fim_pad|repo_name|file_sep)\|>|</?(?:s|think|tool_call|tool_response)>"
+    r"fim_pad|repo_name|file_sep)\|>|</s>|</?(?:think|tool_call|tool_response)>"
 )
 STOP_WORDS = {
     "what", "when", "where", "which", "whose", "this", "that", "does", "have",
