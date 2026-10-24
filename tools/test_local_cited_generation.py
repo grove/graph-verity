@@ -258,8 +258,10 @@ class LocalGenerationTests(unittest.TestCase):
             packet, self.manifest, self.index, "public",
             self.registration, self.authorization, self.ledger,
             transport=change_then_answer)
-        self.assertEqual(result["status"], "source_only")
-        self.assertEqual(result["reason"], "inference_or_grounding_failed")
+        self.assertEqual(result["status"], "source_unavailable")
+        self.assertEqual(result["reason"], "source_changed_during_inference")
+        self.assertEqual(result["evidence"], [])
+        self.assertIsNone(result["answer"])
 
     def test_real_loopback_http_contract_uses_fake_server_only(self):
         packet = self.packet("en")
