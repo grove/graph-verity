@@ -15,7 +15,6 @@ import math
 import os
 from pathlib import Path, PurePosixPath
 import re
-import stat
 import tempfile
 
 VERSION = "document-bm25-v1"
@@ -201,6 +200,19 @@ def write_index(path: Path, index: dict, manifest_path: Path):
         raise ValueError("Index destination must be a regular file")
     if path.resolve(strict=False) == manifest_path.resolve(strict=False):
         raise ValueError("Index cannot overwrite its source manifest")
+    # Never silently replace a source/other file or a different-scope index.
+    if path.exists():
+        try:
+            previous = json.loads(limited_file(path, MAX_INDEX))
+            if (not isinstance(previous, dict) or
+                    not isinstance(previous.get("payload"), dict) or
+                    previous["payload"].get("version") != VERSION or
+                    previous["payload"].get("scope") != index["payload"]["scope"] or
+                    previous.get("index_sha256") != sha(serialized(previous["payload"]))):
+                raise ValueError("Index identity mismatch")
+        except (ValueError, UnicodeError, OSError, TypeError,
+                json.JSONDecodeError) as error:
+            raise ValueError("Refuse to overwrite a non-index or modified file") from error
     data = serialized(index) + b"\n"
     if len(data) > MAX_INDEX:
         raise ValueError("Index exceeds size limit")
@@ -288,7 +300,7 @@ def search_index(index: dict, query: str, limit: int = 5):
             len(query.encode("utf-8")) > MAX_QUERY or
             type(limit) is not int or not 1 <= limit <= 20):
         raise ValueError("Invalid query or result limit")
-    query_terms = set(tokens(query))
+    query_terms = tuple(sorted(set(tokens(query))))
     if not query_terms:
         raise ValueError("Query contains no searchable terms")
     chunks = index["payload"]["chunks"]
