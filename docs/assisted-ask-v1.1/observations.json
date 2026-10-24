@@ -1,0 +1,1291 @@
+{
+  "base_commit": "294fcf0589b02dca1ff497b3cfe37689551e4986",
+  "inference_performed": false,
+  "journeys": [
+    {
+      "ui_language": "en",
+      "predicate": "P856",
+      "preview": {
+        "status": "awaiting_confirmation",
+        "experimental": true,
+        "approval_id": "sha256:f314a4f08ca0b1992c6e846ac35dc7921d554e1c72dbba992d4b1a97cf2f9526",
+        "plan": {
+          "version": 1,
+          "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+          "scope": [
+            "urn:graph-verity:nl-ask-v1:development:wikidata"
+          ],
+          "patterns": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+              "from": {
+                "kind": "iri",
+                "iri": "http://www.wikidata.org/entity/Q279724"
+              },
+              "predicate": "http://www.wikidata.org/prop/direct/P856",
+              "direction": "forward",
+              "to": {
+                "kind": "variable",
+                "name": "step1"
+              }
+            }
+          ],
+          "filters": [],
+          "projection": [
+            {
+              "kind": "variable",
+              "name": "step1"
+            }
+          ],
+          "group_by": [],
+          "having": [],
+          "limit": 100
+        },
+        "summary": [
+          "Immutable snapshot: \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\"",
+          "Exact authorized named-graph scope: [\"urn:graph-verity:nl-ask-v1:development:wikidata\"]",
+          "Start at IRI \"http://www.wikidata.org/entity/Q279724\". All steps must match (a conjunction); only explicit stored triples are used.",
+          "Step 1 (outgoing) in graph \"urn:graph-verity:nl-ask-v1:development:wikidata\": IRI \"http://www.wikidata.org/entity/Q279724\" -- predicate IRI \"http://www.wikidata.org/prop/direct/P856\" --> variable ?step1.",
+          "Typed filters: none.",
+          "Return distinct ?step1 values; intermediate nodes are not returned.",
+          "Row limit: 100 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately."
+        ],
+        "ambiguity": "exact_iris_required; no_label_resolution_or_natural_language_interpretation",
+        "limitations": "Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO."
+      },
+      "receipt": {
+        "status": "executed",
+        "outcome": {
+          "status": "executed",
+          "method": "experimental_user_confirmed_deterministic_template",
+          "approval_id": "sha256:f314a4f08ca0b1992c6e846ac35dc7921d554e1c72dbba992d4b1a97cf2f9526",
+          "result": {
+            "status": "executed",
+            "origin": "manual",
+            "interpretation_correctness": "not_assessed",
+            "real_world_truth": "not_established",
+            "absence_policy": "open_world_missing_facts_are_not_false",
+            "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+            "scope": [
+              "urn:graph-verity:nl-ask-v1:development:wikidata"
+            ],
+            "plan": {
+              "version": 1,
+              "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+              "scope": [
+                "urn:graph-verity:nl-ask-v1:development:wikidata"
+              ],
+              "patterns": [
+                {
+                  "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+                  "from": {
+                    "kind": "iri",
+                    "iri": "http://www.wikidata.org/entity/Q279724"
+                  },
+                  "predicate": "http://www.wikidata.org/prop/direct/P856",
+                  "direction": "forward",
+                  "to": {
+                    "kind": "variable",
+                    "name": "step1"
+                  }
+                }
+              ],
+              "filters": [],
+              "projection": [
+                {
+                  "kind": "variable",
+                  "name": "step1"
+                }
+              ],
+              "group_by": [],
+              "having": [],
+              "limit": 100
+            },
+            "sparql": "SELECT DISTINCT ?step1 WHERE {\nGRAPH <urn:graph-verity:nl-ask-v1:development:wikidata> { <http://www.wikidata.org/entity/Q279724> <http://www.wikidata.org/prop/direct/P856> ?step1 . }\n}\nORDER BY ?step1\nLIMIT 101",
+            "catalog_digest": "sha256:06ae46d97f8793a04e2ec176eb572123308732d15d44d758ab34678be139b8f9",
+            "bindings": [
+              {
+                "step1": {
+                  "kind": "iri",
+                  "value": "https://en.uit.no/startsida"
+                }
+              },
+              {
+                "step1": {
+                  "kind": "iri",
+                  "value": "https://uit.no"
+                }
+              }
+            ],
+            "complete_within_scope": true,
+            "evidence": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P856"
+                },
+                "object": {
+                  "kind": "iri",
+                  "value": "https://en.uit.no/startsida"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              },
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P856"
+                },
+                "object": {
+                  "kind": "iri",
+                  "value": "https://uit.no"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_verification": "verified_against_snapshot",
+            "evidence_complete_for_returned_rows": true,
+            "evidence_semantics": "union_of_contributing_pattern_statements_for_returned_rows_or_groups; counts_require_the_scoped_query_not_just_positive_witnesses",
+            "validation_ms": 0.425,
+            "query_ms": 1.530125,
+            "evidence_ms": 0.673833
+          }
+        },
+        "answers": [
+          {
+            "value": {
+              "kind": "iri",
+              "value": "https://en.uit.no/startsida"
+            },
+            "observed_labels": [],
+            "source_triples": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P856"
+                },
+                "object": {
+                  "kind": "iri",
+                  "value": "https://en.uit.no/startsida"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_complete": true
+          },
+          {
+            "value": {
+              "kind": "iri",
+              "value": "https://uit.no"
+            },
+            "observed_labels": [],
+            "source_triples": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P856"
+                },
+                "object": {
+                  "kind": "iri",
+                  "value": "https://uit.no"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_complete": true
+          }
+        ],
+        "provenance": {
+          "proposal_origin": "manual_structured_selection_v1",
+          "inference_performed": false,
+          "original_question": "only English names",
+          "original_question_status": "unverified_user_intent_not_interpreted",
+          "language": "en",
+          "selected_operation": {
+            "version": 1,
+            "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+            "scope": [
+              "urn:graph-verity:nl-ask-v1:development:wikidata"
+            ],
+            "limit": 100,
+            "template": {
+              "kind": "follow_path",
+              "start": "http://www.wikidata.org/entity/Q279724",
+              "steps": [
+                {
+                  "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+                  "predicate": "http://www.wikidata.org/prop/direct/P856",
+                  "direction": "forward"
+                }
+              ],
+              "filter": null,
+              "output": "values"
+            }
+          },
+          "answer_claim": "selected_graph_operation_only; original_question_not_verified",
+          "operator_confirmation": {
+            "decision": "approve",
+            "approval_id": "sha256:f314a4f08ca0b1992c6e846ac35dc7921d554e1c72dbba992d4b1a97cf2f9526",
+            "resolved_start": 1,
+            "single_use": true
+          }
+        },
+        "sources": {
+          "urn:graph-verity:nl-ask-v1:development:wikidata": {
+            "source": "Wikidata archived direct claims and original en/nb/nn labels; plus explicitly synthetic overlay.nq labels",
+            "license": "CC0-1.0; overlay Apache-2.0",
+            "source_revision": "2520553171",
+            "importer_revision": "nl-ask-v1-source-recipe"
+          }
+        }
+      }
+    },
+    {
+      "ui_language": "en",
+      "predicate": "P1448",
+      "preview": {
+        "status": "awaiting_confirmation",
+        "experimental": true,
+        "approval_id": "sha256:5820011f98cce4b2b3c1726ce7d1f5e6fa9051c15520aa3d6ad87bec04743970",
+        "plan": {
+          "version": 1,
+          "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+          "scope": [
+            "urn:graph-verity:nl-ask-v1:development:wikidata"
+          ],
+          "patterns": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+              "from": {
+                "kind": "iri",
+                "iri": "http://www.wikidata.org/entity/Q279724"
+              },
+              "predicate": "http://www.wikidata.org/prop/direct/P1448",
+              "direction": "forward",
+              "to": {
+                "kind": "variable",
+                "name": "step1"
+              }
+            }
+          ],
+          "filters": [],
+          "projection": [
+            {
+              "kind": "variable",
+              "name": "step1"
+            }
+          ],
+          "group_by": [],
+          "having": [],
+          "limit": 100
+        },
+        "summary": [
+          "Immutable snapshot: \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\"",
+          "Exact authorized named-graph scope: [\"urn:graph-verity:nl-ask-v1:development:wikidata\"]",
+          "Start at IRI \"http://www.wikidata.org/entity/Q279724\". All steps must match (a conjunction); only explicit stored triples are used.",
+          "Step 1 (outgoing) in graph \"urn:graph-verity:nl-ask-v1:development:wikidata\": IRI \"http://www.wikidata.org/entity/Q279724\" -- predicate IRI \"http://www.wikidata.org/prop/direct/P1448\" --> variable ?step1.",
+          "Typed filters: none.",
+          "Return distinct ?step1 values; intermediate nodes are not returned.",
+          "Row limit: 100 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately."
+        ],
+        "ambiguity": "exact_iris_required; no_label_resolution_or_natural_language_interpretation",
+        "limitations": "Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO."
+      },
+      "receipt": {
+        "status": "executed",
+        "outcome": {
+          "status": "executed",
+          "method": "experimental_user_confirmed_deterministic_template",
+          "approval_id": "sha256:5820011f98cce4b2b3c1726ce7d1f5e6fa9051c15520aa3d6ad87bec04743970",
+          "result": {
+            "status": "executed",
+            "origin": "manual",
+            "interpretation_correctness": "not_assessed",
+            "real_world_truth": "not_established",
+            "absence_policy": "open_world_missing_facts_are_not_false",
+            "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+            "scope": [
+              "urn:graph-verity:nl-ask-v1:development:wikidata"
+            ],
+            "plan": {
+              "version": 1,
+              "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+              "scope": [
+                "urn:graph-verity:nl-ask-v1:development:wikidata"
+              ],
+              "patterns": [
+                {
+                  "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+                  "from": {
+                    "kind": "iri",
+                    "iri": "http://www.wikidata.org/entity/Q279724"
+                  },
+                  "predicate": "http://www.wikidata.org/prop/direct/P1448",
+                  "direction": "forward",
+                  "to": {
+                    "kind": "variable",
+                    "name": "step1"
+                  }
+                }
+              ],
+              "filters": [],
+              "projection": [
+                {
+                  "kind": "variable",
+                  "name": "step1"
+                }
+              ],
+              "group_by": [],
+              "having": [],
+              "limit": 100
+            },
+            "sparql": "SELECT DISTINCT ?step1 WHERE {\nGRAPH <urn:graph-verity:nl-ask-v1:development:wikidata> { <http://www.wikidata.org/entity/Q279724> <http://www.wikidata.org/prop/direct/P1448> ?step1 . }\n}\nORDER BY ?step1\nLIMIT 101",
+            "catalog_digest": "sha256:06ae46d97f8793a04e2ec176eb572123308732d15d44d758ab34678be139b8f9",
+            "bindings": [
+              {
+                "step1": {
+                  "kind": "literal",
+                  "value": "Universitetet i Tromsø – Noregs arktiske universitet",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "nn"
+                }
+              },
+              {
+                "step1": {
+                  "kind": "literal",
+                  "value": "Universitetet i Tromsø – Norges arktiske universitet",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "nb"
+                }
+              },
+              {
+                "step1": {
+                  "kind": "literal",
+                  "value": "University of Tromsø – The Arctic University of Norway",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "en"
+                }
+              }
+            ],
+            "complete_within_scope": true,
+            "evidence": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P1448"
+                },
+                "object": {
+                  "kind": "literal",
+                  "value": "Universitetet i Tromsø – Noregs arktiske universitet",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "nn"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              },
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P1448"
+                },
+                "object": {
+                  "kind": "literal",
+                  "value": "Universitetet i Tromsø – Norges arktiske universitet",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "nb"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              },
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P1448"
+                },
+                "object": {
+                  "kind": "literal",
+                  "value": "University of Tromsø – The Arctic University of Norway",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "en"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_verification": "verified_against_snapshot",
+            "evidence_complete_for_returned_rows": true,
+            "evidence_semantics": "union_of_contributing_pattern_statements_for_returned_rows_or_groups; counts_require_the_scoped_query_not_just_positive_witnesses",
+            "validation_ms": 0.42095899999999997,
+            "query_ms": 0.511625,
+            "evidence_ms": 0.6482089999999999
+          }
+        },
+        "answers": [
+          {
+            "value": {
+              "kind": "literal",
+              "value": "Universitetet i Tromsø – Noregs arktiske universitet",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "nn"
+            },
+            "observed_labels": [],
+            "source_triples": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P1448"
+                },
+                "object": {
+                  "kind": "literal",
+                  "value": "Universitetet i Tromsø – Noregs arktiske universitet",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "nn"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_complete": true
+          },
+          {
+            "value": {
+              "kind": "literal",
+              "value": "Universitetet i Tromsø – Norges arktiske universitet",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "nb"
+            },
+            "observed_labels": [],
+            "source_triples": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P1448"
+                },
+                "object": {
+                  "kind": "literal",
+                  "value": "Universitetet i Tromsø – Norges arktiske universitet",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "nb"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_complete": true
+          },
+          {
+            "value": {
+              "kind": "literal",
+              "value": "University of Tromsø – The Arctic University of Norway",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "observed_labels": [],
+            "source_triples": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P1448"
+                },
+                "object": {
+                  "kind": "literal",
+                  "value": "University of Tromsø – The Arctic University of Norway",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "en"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_complete": true
+          }
+        ],
+        "provenance": {
+          "proposal_origin": "manual_structured_selection_v1",
+          "inference_performed": false,
+          "original_question": "only English names",
+          "original_question_status": "unverified_user_intent_not_interpreted",
+          "language": "en",
+          "selected_operation": {
+            "version": 1,
+            "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+            "scope": [
+              "urn:graph-verity:nl-ask-v1:development:wikidata"
+            ],
+            "limit": 100,
+            "template": {
+              "kind": "follow_path",
+              "start": "http://www.wikidata.org/entity/Q279724",
+              "steps": [
+                {
+                  "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+                  "predicate": "http://www.wikidata.org/prop/direct/P1448",
+                  "direction": "forward"
+                }
+              ],
+              "filter": null,
+              "output": "values"
+            }
+          },
+          "answer_claim": "selected_graph_operation_only; original_question_not_verified",
+          "operator_confirmation": {
+            "decision": "approve",
+            "approval_id": "sha256:5820011f98cce4b2b3c1726ce7d1f5e6fa9051c15520aa3d6ad87bec04743970",
+            "resolved_start": 1,
+            "single_use": true
+          }
+        },
+        "sources": {
+          "urn:graph-verity:nl-ask-v1:development:wikidata": {
+            "source": "Wikidata archived direct claims and original en/nb/nn labels; plus explicitly synthetic overlay.nq labels",
+            "license": "CC0-1.0; overlay Apache-2.0",
+            "source_revision": "2520553171",
+            "importer_revision": "nl-ask-v1-source-recipe"
+          }
+        }
+      }
+    },
+    {
+      "ui_language": "nb",
+      "predicate": "P856",
+      "preview": {
+        "status": "awaiting_confirmation",
+        "experimental": true,
+        "approval_id": "sha256:f314a4f08ca0b1992c6e846ac35dc7921d554e1c72dbba992d4b1a97cf2f9526",
+        "plan": {
+          "version": 1,
+          "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+          "scope": [
+            "urn:graph-verity:nl-ask-v1:development:wikidata"
+          ],
+          "patterns": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+              "from": {
+                "kind": "iri",
+                "iri": "http://www.wikidata.org/entity/Q279724"
+              },
+              "predicate": "http://www.wikidata.org/prop/direct/P856",
+              "direction": "forward",
+              "to": {
+                "kind": "variable",
+                "name": "step1"
+              }
+            }
+          ],
+          "filters": [],
+          "projection": [
+            {
+              "kind": "variable",
+              "name": "step1"
+            }
+          ],
+          "group_by": [],
+          "having": [],
+          "limit": 100
+        },
+        "summary": [
+          "Immutable snapshot: \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\"",
+          "Exact authorized named-graph scope: [\"urn:graph-verity:nl-ask-v1:development:wikidata\"]",
+          "Start at IRI \"http://www.wikidata.org/entity/Q279724\". All steps must match (a conjunction); only explicit stored triples are used.",
+          "Step 1 (outgoing) in graph \"urn:graph-verity:nl-ask-v1:development:wikidata\": IRI \"http://www.wikidata.org/entity/Q279724\" -- predicate IRI \"http://www.wikidata.org/prop/direct/P856\" --> variable ?step1.",
+          "Typed filters: none.",
+          "Return distinct ?step1 values; intermediate nodes are not returned.",
+          "Row limit: 100 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately."
+        ],
+        "ambiguity": "exact_iris_required; no_label_resolution_or_natural_language_interpretation",
+        "limitations": "Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO."
+      },
+      "receipt": {
+        "status": "executed",
+        "outcome": {
+          "status": "executed",
+          "method": "experimental_user_confirmed_deterministic_template",
+          "approval_id": "sha256:f314a4f08ca0b1992c6e846ac35dc7921d554e1c72dbba992d4b1a97cf2f9526",
+          "result": {
+            "status": "executed",
+            "origin": "manual",
+            "interpretation_correctness": "not_assessed",
+            "real_world_truth": "not_established",
+            "absence_policy": "open_world_missing_facts_are_not_false",
+            "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+            "scope": [
+              "urn:graph-verity:nl-ask-v1:development:wikidata"
+            ],
+            "plan": {
+              "version": 1,
+              "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+              "scope": [
+                "urn:graph-verity:nl-ask-v1:development:wikidata"
+              ],
+              "patterns": [
+                {
+                  "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+                  "from": {
+                    "kind": "iri",
+                    "iri": "http://www.wikidata.org/entity/Q279724"
+                  },
+                  "predicate": "http://www.wikidata.org/prop/direct/P856",
+                  "direction": "forward",
+                  "to": {
+                    "kind": "variable",
+                    "name": "step1"
+                  }
+                }
+              ],
+              "filters": [],
+              "projection": [
+                {
+                  "kind": "variable",
+                  "name": "step1"
+                }
+              ],
+              "group_by": [],
+              "having": [],
+              "limit": 100
+            },
+            "sparql": "SELECT DISTINCT ?step1 WHERE {\nGRAPH <urn:graph-verity:nl-ask-v1:development:wikidata> { <http://www.wikidata.org/entity/Q279724> <http://www.wikidata.org/prop/direct/P856> ?step1 . }\n}\nORDER BY ?step1\nLIMIT 101",
+            "catalog_digest": "sha256:06ae46d97f8793a04e2ec176eb572123308732d15d44d758ab34678be139b8f9",
+            "bindings": [
+              {
+                "step1": {
+                  "kind": "iri",
+                  "value": "https://en.uit.no/startsida"
+                }
+              },
+              {
+                "step1": {
+                  "kind": "iri",
+                  "value": "https://uit.no"
+                }
+              }
+            ],
+            "complete_within_scope": true,
+            "evidence": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P856"
+                },
+                "object": {
+                  "kind": "iri",
+                  "value": "https://en.uit.no/startsida"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              },
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P856"
+                },
+                "object": {
+                  "kind": "iri",
+                  "value": "https://uit.no"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_verification": "verified_against_snapshot",
+            "evidence_complete_for_returned_rows": true,
+            "evidence_semantics": "union_of_contributing_pattern_statements_for_returned_rows_or_groups; counts_require_the_scoped_query_not_just_positive_witnesses",
+            "validation_ms": 0.42075,
+            "query_ms": 0.5003749999999999,
+            "evidence_ms": 0.639166
+          }
+        },
+        "answers": [
+          {
+            "value": {
+              "kind": "iri",
+              "value": "https://en.uit.no/startsida"
+            },
+            "observed_labels": [],
+            "source_triples": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P856"
+                },
+                "object": {
+                  "kind": "iri",
+                  "value": "https://en.uit.no/startsida"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_complete": true
+          },
+          {
+            "value": {
+              "kind": "iri",
+              "value": "https://uit.no"
+            },
+            "observed_labels": [],
+            "source_triples": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P856"
+                },
+                "object": {
+                  "kind": "iri",
+                  "value": "https://uit.no"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_complete": true
+          }
+        ],
+        "provenance": {
+          "proposal_origin": "manual_structured_selection_v1",
+          "inference_performed": false,
+          "original_question": "only English names",
+          "original_question_status": "unverified_user_intent_not_interpreted",
+          "language": "nb",
+          "selected_operation": {
+            "version": 1,
+            "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+            "scope": [
+              "urn:graph-verity:nl-ask-v1:development:wikidata"
+            ],
+            "limit": 100,
+            "template": {
+              "kind": "follow_path",
+              "start": "http://www.wikidata.org/entity/Q279724",
+              "steps": [
+                {
+                  "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+                  "predicate": "http://www.wikidata.org/prop/direct/P856",
+                  "direction": "forward"
+                }
+              ],
+              "filter": null,
+              "output": "values"
+            }
+          },
+          "answer_claim": "selected_graph_operation_only; original_question_not_verified",
+          "operator_confirmation": {
+            "decision": "approve",
+            "approval_id": "sha256:f314a4f08ca0b1992c6e846ac35dc7921d554e1c72dbba992d4b1a97cf2f9526",
+            "resolved_start": 1,
+            "single_use": true
+          }
+        },
+        "sources": {
+          "urn:graph-verity:nl-ask-v1:development:wikidata": {
+            "source": "Wikidata archived direct claims and original en/nb/nn labels; plus explicitly synthetic overlay.nq labels",
+            "license": "CC0-1.0; overlay Apache-2.0",
+            "source_revision": "2520553171",
+            "importer_revision": "nl-ask-v1-source-recipe"
+          }
+        }
+      }
+    },
+    {
+      "ui_language": "nb",
+      "predicate": "P1448",
+      "preview": {
+        "status": "awaiting_confirmation",
+        "experimental": true,
+        "approval_id": "sha256:5820011f98cce4b2b3c1726ce7d1f5e6fa9051c15520aa3d6ad87bec04743970",
+        "plan": {
+          "version": 1,
+          "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+          "scope": [
+            "urn:graph-verity:nl-ask-v1:development:wikidata"
+          ],
+          "patterns": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+              "from": {
+                "kind": "iri",
+                "iri": "http://www.wikidata.org/entity/Q279724"
+              },
+              "predicate": "http://www.wikidata.org/prop/direct/P1448",
+              "direction": "forward",
+              "to": {
+                "kind": "variable",
+                "name": "step1"
+              }
+            }
+          ],
+          "filters": [],
+          "projection": [
+            {
+              "kind": "variable",
+              "name": "step1"
+            }
+          ],
+          "group_by": [],
+          "having": [],
+          "limit": 100
+        },
+        "summary": [
+          "Immutable snapshot: \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\"",
+          "Exact authorized named-graph scope: [\"urn:graph-verity:nl-ask-v1:development:wikidata\"]",
+          "Start at IRI \"http://www.wikidata.org/entity/Q279724\". All steps must match (a conjunction); only explicit stored triples are used.",
+          "Step 1 (outgoing) in graph \"urn:graph-verity:nl-ask-v1:development:wikidata\": IRI \"http://www.wikidata.org/entity/Q279724\" -- predicate IRI \"http://www.wikidata.org/prop/direct/P1448\" --> variable ?step1.",
+          "Typed filters: none.",
+          "Return distinct ?step1 values; intermediate nodes are not returned.",
+          "Row limit: 100 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately."
+        ],
+        "ambiguity": "exact_iris_required; no_label_resolution_or_natural_language_interpretation",
+        "limitations": "Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO."
+      },
+      "receipt": {
+        "status": "executed",
+        "outcome": {
+          "status": "executed",
+          "method": "experimental_user_confirmed_deterministic_template",
+          "approval_id": "sha256:5820011f98cce4b2b3c1726ce7d1f5e6fa9051c15520aa3d6ad87bec04743970",
+          "result": {
+            "status": "executed",
+            "origin": "manual",
+            "interpretation_correctness": "not_assessed",
+            "real_world_truth": "not_established",
+            "absence_policy": "open_world_missing_facts_are_not_false",
+            "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+            "scope": [
+              "urn:graph-verity:nl-ask-v1:development:wikidata"
+            ],
+            "plan": {
+              "version": 1,
+              "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+              "scope": [
+                "urn:graph-verity:nl-ask-v1:development:wikidata"
+              ],
+              "patterns": [
+                {
+                  "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+                  "from": {
+                    "kind": "iri",
+                    "iri": "http://www.wikidata.org/entity/Q279724"
+                  },
+                  "predicate": "http://www.wikidata.org/prop/direct/P1448",
+                  "direction": "forward",
+                  "to": {
+                    "kind": "variable",
+                    "name": "step1"
+                  }
+                }
+              ],
+              "filters": [],
+              "projection": [
+                {
+                  "kind": "variable",
+                  "name": "step1"
+                }
+              ],
+              "group_by": [],
+              "having": [],
+              "limit": 100
+            },
+            "sparql": "SELECT DISTINCT ?step1 WHERE {\nGRAPH <urn:graph-verity:nl-ask-v1:development:wikidata> { <http://www.wikidata.org/entity/Q279724> <http://www.wikidata.org/prop/direct/P1448> ?step1 . }\n}\nORDER BY ?step1\nLIMIT 101",
+            "catalog_digest": "sha256:06ae46d97f8793a04e2ec176eb572123308732d15d44d758ab34678be139b8f9",
+            "bindings": [
+              {
+                "step1": {
+                  "kind": "literal",
+                  "value": "Universitetet i Tromsø – Noregs arktiske universitet",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "nn"
+                }
+              },
+              {
+                "step1": {
+                  "kind": "literal",
+                  "value": "Universitetet i Tromsø – Norges arktiske universitet",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "nb"
+                }
+              },
+              {
+                "step1": {
+                  "kind": "literal",
+                  "value": "University of Tromsø – The Arctic University of Norway",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "en"
+                }
+              }
+            ],
+            "complete_within_scope": true,
+            "evidence": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P1448"
+                },
+                "object": {
+                  "kind": "literal",
+                  "value": "Universitetet i Tromsø – Noregs arktiske universitet",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "nn"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              },
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P1448"
+                },
+                "object": {
+                  "kind": "literal",
+                  "value": "Universitetet i Tromsø – Norges arktiske universitet",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "nb"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              },
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P1448"
+                },
+                "object": {
+                  "kind": "literal",
+                  "value": "University of Tromsø – The Arctic University of Norway",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "en"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_verification": "verified_against_snapshot",
+            "evidence_complete_for_returned_rows": true,
+            "evidence_semantics": "union_of_contributing_pattern_statements_for_returned_rows_or_groups; counts_require_the_scoped_query_not_just_positive_witnesses",
+            "validation_ms": 0.40879099999999996,
+            "query_ms": 0.47362499999999996,
+            "evidence_ms": 0.6112500000000001
+          }
+        },
+        "answers": [
+          {
+            "value": {
+              "kind": "literal",
+              "value": "Universitetet i Tromsø – Noregs arktiske universitet",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "nn"
+            },
+            "observed_labels": [],
+            "source_triples": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P1448"
+                },
+                "object": {
+                  "kind": "literal",
+                  "value": "Universitetet i Tromsø – Noregs arktiske universitet",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "nn"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_complete": true
+          },
+          {
+            "value": {
+              "kind": "literal",
+              "value": "Universitetet i Tromsø – Norges arktiske universitet",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "nb"
+            },
+            "observed_labels": [],
+            "source_triples": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P1448"
+                },
+                "object": {
+                  "kind": "literal",
+                  "value": "Universitetet i Tromsø – Norges arktiske universitet",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "nb"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_complete": true
+          },
+          {
+            "value": {
+              "kind": "literal",
+              "value": "University of Tromsø – The Arctic University of Norway",
+              "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+              "language": "en"
+            },
+            "observed_labels": [],
+            "source_triples": [
+              {
+                "subject": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/entity/Q279724"
+                },
+                "predicate": {
+                  "kind": "iri",
+                  "value": "http://www.wikidata.org/prop/direct/P1448"
+                },
+                "object": {
+                  "kind": "literal",
+                  "value": "University of Tromsø – The Arctic University of Norway",
+                  "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                  "language": "en"
+                },
+                "source_graph": {
+                  "kind": "iri",
+                  "value": "urn:graph-verity:nl-ask-v1:development:wikidata"
+                }
+              }
+            ],
+            "evidence_complete": true
+          }
+        ],
+        "provenance": {
+          "proposal_origin": "manual_structured_selection_v1",
+          "inference_performed": false,
+          "original_question": "only English names",
+          "original_question_status": "unverified_user_intent_not_interpreted",
+          "language": "nb",
+          "selected_operation": {
+            "version": 1,
+            "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+            "scope": [
+              "urn:graph-verity:nl-ask-v1:development:wikidata"
+            ],
+            "limit": 100,
+            "template": {
+              "kind": "follow_path",
+              "start": "http://www.wikidata.org/entity/Q279724",
+              "steps": [
+                {
+                  "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+                  "predicate": "http://www.wikidata.org/prop/direct/P1448",
+                  "direction": "forward"
+                }
+              ],
+              "filter": null,
+              "output": "values"
+            }
+          },
+          "answer_claim": "selected_graph_operation_only; original_question_not_verified",
+          "operator_confirmation": {
+            "decision": "approve",
+            "approval_id": "sha256:5820011f98cce4b2b3c1726ce7d1f5e6fa9051c15520aa3d6ad87bec04743970",
+            "resolved_start": 1,
+            "single_use": true
+          }
+        },
+        "sources": {
+          "urn:graph-verity:nl-ask-v1:development:wikidata": {
+            "source": "Wikidata archived direct claims and original en/nb/nn labels; plus explicitly synthetic overlay.nq labels",
+            "license": "CC0-1.0; overlay Apache-2.0",
+            "source_revision": "2520553171",
+            "importer_revision": "nl-ask-v1-source-recipe"
+          }
+        }
+      }
+    }
+  ],
+  "contract_probes": [
+    {
+      "probe": "language_only_filter",
+      "rust_rejected": true
+    },
+    {
+      "probe": "unimplemented_ask_v2",
+      "rust_rejected": true
+    },
+    {
+      "probe": "empty_lexical_en_equality_is_not_language_only",
+      "rows": 0,
+      "en_names_present": 1,
+      "rust_preview": {
+        "status": "awaiting_confirmation",
+        "experimental": true,
+        "approval_id": "sha256:22df63923e96a8508485660461b27d10b5f87842e9ed39cd4fe4a531305ca064",
+        "plan": {
+          "version": 1,
+          "snapshot_id": "sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b",
+          "scope": [
+            "urn:graph-verity:nl-ask-v1:development:wikidata"
+          ],
+          "patterns": [
+            {
+              "graph": "urn:graph-verity:nl-ask-v1:development:wikidata",
+              "from": {
+                "kind": "iri",
+                "iri": "http://www.wikidata.org/entity/Q279724"
+              },
+              "predicate": "http://www.wikidata.org/prop/direct/P1448",
+              "direction": "forward",
+              "to": {
+                "kind": "variable",
+                "name": "step1"
+              }
+            }
+          ],
+          "filters": [
+            {
+              "variable": "step1",
+              "op": "eq",
+              "value": {
+                "lexical": "",
+                "datatype": "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString",
+                "language": "en"
+              }
+            }
+          ],
+          "projection": [
+            {
+              "kind": "variable",
+              "name": "step1"
+            }
+          ],
+          "group_by": [],
+          "having": [],
+          "limit": 100
+        },
+        "summary": [
+          "Immutable snapshot: \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\"",
+          "Exact authorized named-graph scope: [\"urn:graph-verity:nl-ask-v1:development:wikidata\"]",
+          "Start at IRI \"http://www.wikidata.org/entity/Q279724\". All steps must match (a conjunction); only explicit stored triples are used.",
+          "Step 1 (outgoing) in graph \"urn:graph-verity:nl-ask-v1:development:wikidata\": IRI \"http://www.wikidata.org/entity/Q279724\" -- predicate IRI \"http://www.wikidata.org/prop/direct/P1448\" --> variable ?step1.",
+          "Keep ?step1 = literal lexical \"\", datatype IRI \"http://www.w3.org/1999/02/22-rdf-syntax-ns#langString\", language \"en\".",
+          "Return distinct ?step1 values; intermediate nodes are not returned.",
+          "Row limit: 100 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately."
+        ],
+        "ambiguity": "exact_iris_required; no_label_resolution_or_natural_language_interpretation",
+        "limitations": "Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO."
+      }
+    }
+  ]
+}
