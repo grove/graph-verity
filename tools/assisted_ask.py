@@ -60,19 +60,28 @@ class Bundle(bridge.Bundle):
                           runtime_message='INCONCLUSIVE_REVISE. Structured choices only; no question interpretation.')
             return result
         if route == PREFIX + 'preview':
-            self.pending = self.proposal = None
-            self.current()
+            super().api(bridge.PREFIX + 'unreview', {}, tab)
+            self.proposal = None
             if (not isinstance(request, dict) or set(request) != {'entity', 'predicate', 'question', 'language'}
                     or not isinstance(request['question'], str) or len(request['question'].encode()) > 4096
                     or request['language'] not in ('en', 'nb')):
                 raise ValueError('Explicit choices and optional unverified question required')
             self.assemble(request['entity'], request['predicate'])
             sources = json.loads(Path(self.common[4]).read_bytes())['graphs']
-            self.proposal = dict(entity=request['entity'], predicate=request['predicate'],
-                                 packet=dict(request={k: request[k] for k in ('question', 'language')},
-                                             sources={GRAPH: sources[GRAPH]}),
-                                 token=secrets.token_hex(32), expires=time.monotonic() + find.REVIEW_SECONDS)
-            return super().api(bridge.PREFIX + 'preview', dict(proposal_token=self.proposal['token'], start=1), tab)
+            proposal = dict(entity=request['entity'], predicate=request['predicate'],
+                            packet=dict(request={k: request[k] for k in ('question', 'language')},
+                                        sources={GRAPH: sources[GRAPH]}))
+            resolved = self.resolve(proposal, 1)
+            provenance = self.provenance(proposal)
+            self.current()
+            if time.monotonic() >= self.expires:
+                raise ValueError('Expired session')
+            token = secrets.token_hex(32)
+            self.pending = dict(token=token, expires=time.monotonic() + find.REVIEW_SECONDS,
+                                proposal=proposal, start=1, resolved=resolved, provenance=provenance)
+            return dict(status='awaiting_confirmation', resolved=resolved, token=token,
+                        review_seconds=min(find.REVIEW_SECONDS, max(0, self.expires - time.monotonic())),
+                        sources=proposal['packet']['sources'], provenance=provenance)
         if route in (PREFIX + 'confirm', PREFIX + 'cancel'):
             return super().api(bridge.PREFIX + route[len(PREFIX):], request, tab)
         self.pending = self.proposal = None

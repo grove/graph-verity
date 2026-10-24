@@ -35,6 +35,11 @@ Recorded development failures:
    preview. Review now focuses its accessible heading, preserving a deliberate
    separate keyboard approval action. No validator or approval check was relaxed.
 4. Focused run 4: all checks passed. Earlier logs remain retained separately.
+5. The PR #111 preservation checker initially rejected an edit to the historical
+   adapter's pinned source bytes. Removed the shared provenance-hook change:
+   Assisted Ask creates a compatible manual review record, then uses the unchanged
+   confirmation method. The historical adapter and its original fixture/model
+   boundaries remain byte-for-byte intact. No registration was resealed.
 
 Full model-free pipeline and preservation receipts are recorded below after the
 isolated validation run. Launch and exact scope: [Assisted Ask v1](../assisted-ask-v1.md).

@@ -76,8 +76,8 @@ unknown entities/predicates, numeric aliases and alternate graphs are rejected.
 The UI offers no alternative operation automatically.
 
 The new `/api/assisted-ask-v1/` routes reuse the existing exact-approval bridge.
-A narrow provenance hook preserves existing saved-fixture origin unchanged;
-Assisted Ask records `manual_structured_selection_v1`, `inference_performed:
+Assisted Ask creates the same server-held review record with a narrow manual
+proposal origin and reuses the unchanged confirmation method. It records `manual_structured_selection_v1`, `inference_performed:
 false`, and the existing Rust executor origin `manual`. It never promotes a model
 or fixture to manual authority. Old preview/Find/model routes are unavailable in
 this server. Session credential, Host/Origin checks, tab revocation, disconnect

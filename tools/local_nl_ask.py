@@ -115,14 +115,6 @@ class Bundle(find.Bundle):
         selection["resolved_start"] = start
         return self.json_call("nl-ask-preview", [selection, proposal["raw_draft"]], unresolved=start is None)
 
-    def provenance(self, proposal):
-        return dict(proposal_origin="saved_draft_demo", inference_performed=False,
-                    original_question=proposal["packet"]["request"]["question"],
-                    language=proposal["packet"]["request"]["language"],
-                    packet=proposal["packet"], table=table(proposal["packet"], min(20, self.policy["max_rows"])),
-                    draft_version="nl-ask-draft-v1", raw_draft=proposal["raw_draft"],
-                    operator_confirmation=None)
-
     def api(self, route, request, tab=None):
         self.current()
         if route == "/api/session":
@@ -199,7 +191,12 @@ class Bundle(find.Bundle):
             if time.monotonic() >= min(self.expires, proposal["expires"]):
                 raise ValueError("Expired preview")
             token = secrets.token_hex(32)
-            provenance = self.provenance(proposal)
+            provenance = dict(proposal_origin="saved_draft_demo", inference_performed=False,
+                              original_question=proposal["packet"]["request"]["question"],
+                              language=proposal["packet"]["request"]["language"],
+                              packet=proposal["packet"], table=table(proposal["packet"], min(20, self.policy["max_rows"])),
+                              draft_version="nl-ask-draft-v1", raw_draft=proposal["raw_draft"],
+                              operator_confirmation=None)
             self.pending = dict(token=token, expires=time.monotonic() + find.REVIEW_SECONDS,
                                 proposal=proposal, start=request["start"], resolved=resolved, provenance=provenance)
             return dict(status="awaiting_confirmation", resolved=resolved, token=token,
