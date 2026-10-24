@@ -1,145 +1,166 @@
-# Graph Verity — local, verifiable Knowledge Graph RAG
+# Graph Verity — a simple, graph-enhanced local RAG (Phase 2)
 
-**Status:** Phase 2 architecture proposal, **not yet built**. **Decision:** `INCONCLUSIVE_REVISE`.  
-**Goal:** Ask a question in Norwegian or English and receive a useful, locally **generated** answer, backed by original RDF triples from an authorized knowledge graph.  
-**Design principle:** *Use language and graph structure to find the right evidence; use Rust to retrieve it; use a local model to explain only that evidence.*
+**Status:** Architecture proposal, **not yet implemented**. **Decision:** `INCONCLUSIVE_REVISE`.  
+**Product north star:** Ask naturally in Norwegian or English. Graph Verity retrieves relevant **source documents and/or original RDF facts**, uses knowledge-graph relationships and trusted SHACL constraints when they help, then a **local generative model produces a short cited answer**.  
+**Project decision:** **Evolve Graph Verity in the same repository.** The traditional RAG foundation and graph-enhancement modules are parts of **one** product, not rival applications.
 
-Tracks: [#71 — Phase 2](https://github.com/grove/graph-verity/issues/71), [#114 — text retrieval](https://github.com/grove/graph-verity/issues/114), [#117 — R-GCN/CompGCN](https://github.com/grove/graph-verity/issues/117), [#115 — SHACL/graph operations](https://github.com/grove/graph-verity/issues/115), [#118 — evidence-grounded generation](https://github.com/grove/graph-verity/issues/118). Reuse the [Phase 2 roadmap](../phase-2-natural-language-ask.md) and [Assisted Ask v1](../assisted-ask-v1.md); do not introduce a second planner or executor.
+Tracking: [#71 Phase 2](https://github.com/grove/graph-verity/issues/71), [#119 document/vector RAG foundation](https://github.com/grove/graph-verity/issues/119), [#114 graph vocabulary retrieval](https://github.com/grove/graph-verity/issues/114), [#115 SHACL/verified graph evidence](https://github.com/grove/graph-verity/issues/115), [#117 R-GCN/CompGCN research](https://github.com/grove/graph-verity/issues/117), [#118 grounded generation](https://github.com/grove/graph-verity/issues/118). Build on the existing [Phase 2 roadmap](../phase-2-natural-language-ask.md) and [Assisted Ask v1](../assisted-ask-v1.md), not a second graph planner/executor.
 
-## 1. Product: what counts as RAG?
+## 1. Product outcome — better RAG, not just graph QA
 
-**Retrieval-Augmented Generation = RETRIEVE → AUGMENT → GENERATE.** A search result or a formatted RDF table is *not yet RAG*. The product must ultimately use **actual retrieved graph facts as the factual context for a local generative model** and return a natural, cited answer.
+**RAG = RETRIEVE → AUGMENT → GENERATE.** Returning RDF rows or retrieving candidate predicate names alone does not complete RAG. Our goal is a **useful, locally generated, citation-backed answer**, not a more complicated interface than ordinary RAG.
 
-Example: “Hva er de offisielle nettsidene til Universitetet i Tromsø?”
+A user might ask either:
 
-1. **Discover:** Match the university and official-website predicate using exact/semantic text plus existing graph relationships. Present a clear interpretation, with alternatives when ambiguous.
-2. **Confirm and query:** The user explicitly approves a specific entity, predicate, **direction**, named graph and scope. Rust constructs/revalidates the supported plan and Oxigraph retrieves real stored values and their source triples.
-3. **Augment:** Build a small, typed **evidence packet**: returned RDF terms, supporting triples, source IDs, provenance and completeness limits. Do **not** substitute top-k suggested vocabulary, SHACL expectations or GNN-predicted edges for factual results.
-4. **Generate:** A pinned local model uses that packet to write a concise Norwegian/English answer with citations to its exact source statements.
-5. **Check and show:** Validate citation IDs, quoted identifiers/values and the permitted answer family; display answer + expandable original evidence. If generation is absent, unfaithful or too expensive, show a truthful **deterministic result fallback**, not invented prose.
+- **Document question:** “What does this policy say about application deadlines?” A plain text passage may be enough. Retrieve matching chunks from an authorized local document index, cite the actual document span, and generate a short answer. **No graph operation is required.**
+- **Graph-rich question:** “Which organization is responsible for this service, and what is its official website?” Text search may find the service and organization; **graph-linked entities, original directed edges and SHACL property guidance** may disambiguate roles and supply an additional, original source-witnessed fact. If a supported graph query is needed, display the exact operation and require **distinct user approval** before it runs. Combine the document and graph evidence in one cited answer.
 
-This should feel like **one simple Ask screen**, not six research tools. The first demo can be the current authorized university/P856-P1448 one-hop scope; it must demonstrate actual model generation before being called a **completed RAG slice**. General natural-language interpretation is still unproven: the user confirms the proposed operation, not the original question's truth.
+The product should **selectively enrich conventional RAG with a knowledge graph**, not force every question through a GNN, a SHACL validator, a multi-hop planner or an approval dialog. Keep the interface a single Ask flow with unobtrusive citations and expandable source details.
 
-**Hypothesis, not marketing claim:** Graph paths, typed relationships, SHACL guidance and triple-level citations may help outperform plain document-chunk RAG in correctness, relevance and explainability. Test that against a **simple text-RAG baseline on the same RDF source**, not just against earlier Graph Verity versions.
+**We must earn the word “better.”** A vector database and a graph are not improvements by themselves. Compare against a strong **plain local text-RAG baseline using the same content, answer model and machine**. Demonstrate material gains in grounded answer quality, difficult relations/multi-hop coverage, NO/EN retrieval, citations or usefulness **without unacceptable false positives, memory, latency or complexity**.
 
-## 2. One coherent system
+## 2. One coherent architecture
 
 ~~~mermaid
 flowchart TD
-    Q["NO/EN question"] --> T["BM25 exact search + optional EmbeddingGemma"]
-    Q --> G["Witnessed directed RDF graph neighborhoods"]
-    G --> H["Optional R-GCN / CompGCN reranking (research)"]
-    T --> C["Authorized entity / predicate / path candidates"]
-    G --> C
-    H --> C
-    S["Trusted SHACL shapes and original predicate metadata"] --> C
-    C --> I["User sees interpreted operation + uncertainty"]
-    I --> P["Distinct explicit approval of Rust preview"]
-    P --> X["Read-only Oxigraph retrieves actual RDF facts"]
-    X --> E["EVIDENCE: typed bindings, source triples, graph and snapshot"]
-    E --> A["AUGMENT: bounded local-model context"]
-    A --> L["GENERATE: short cited answer"]
-    L --> V["Check claims / citations / completeness"]
-    V --> Y["Answer + original evidence"]
-    V --> Z["On failure: deterministic values or clarification"]
+    Q["User question (Norwegian / English)"] --> B["Local document retrieval: BM25 + vector index"]
+    Q --> V["Optional graph vocabulary and entity linking"]
+    D["Authorized documents, stable chunks and source spans"] --> B
+    R["Authorized RDF graph and original triples"] --> V
+    R --> N["Observed directed neighborhoods and paths"]
+    N --> V
+    N --> G["Optional R-GCN / CompGCN graph reranking (research)"]
+    G --> V
+    S["Trusted SHACL shapes / property descriptions"] --> V
+    V --> I["Graph interpretation candidates; clarify or ask for exact approval"]
+    I --> X["Existing Rust preview + single-use approval"]
+    X --> O["Bounded read-only Oxigraph results and RDF triple witnesses"]
+    B --> E["Unified source evidence packet: document spans + RDF facts"]
+    O --> E
+    E --> A["AUGMENT: small provenance-bearing local model context"]
+    A --> L["GENERATE: natural NO/EN cited answer"]
+    L --> C["Check citations, supported claims and incompleteness"]
+    C --> Y["Answer with expandable original sources"]
+    C --> F["On failure: deterministic evidence or truthful abstention"]
 ~~~
 
-The **two retrieval stages must remain distinct**:
+**Important branch:** The path `B → E` works **without** `V/X/O` for ordinary document questions. The graph path adds evidence only when it is actually appropriate and authorized; the diagram does not imply free-text prompts automatically execute graph queries. The model **never** chooses execution permission.
 
-- **Vocabulary/structure discovery:** top-k entities, predicates and paths to *suggest*. BM25/EmbeddingGemma, actual adjacency and optional GNNs may rank them. Neither a high score nor an apparently valid SHACL path proves what the user meant.
-- **Authoritative fact retrieval:** only the **exact approved**, Rust-validated bounded read-only Oxigraph query can determine which RDF statements are recorded. The resulting source triples become the generator's factual input. A graph source witness is evidence *within its snapshot*, not proof of real-world truth.
+Three different retrieval concepts must not be confused:
 
-The local LLM may eventually help propose interpretations, but never selects query authority, generates raw executable SPARQL, creates RDF triples, overrides source facts or auto-approves. Start with the existing explicit choices and independently measured supported question families.
+1. **Document retrieval** fetches authorized, citeable *source text spans* (traditional RAG). A vector score is a relevance estimate, not proof.
+2. **Graph discovery** finds candidate entities, predicates and paths using BM25, EmbeddingGemma, witnessed adjacency and optionally GNN reranking. Its top-k outputs are **not answer facts**.
+3. **Verified graph fact retrieval** uses the *exact user-approved* typed Rust plan in Oxigraph, returning recorded RDF terms and supporting triples from a named graph/snapshot. Only this third kind supplies **original RDF source claims** for the answer packet.
 
-## 3. Simple components with clear boundaries
+The source material and resulting evidence are then **augmented into one bounded prompt** for the generator. SHACL guidance and learned graph predictions are explanatory *metadata*, not replacement source facts.
 
-| Component | Job | Keep it honest |
+## 3. Components and interfaces — keep the stack small
+
+| Component | Concrete job | Scope/decision |
 | --- | --- | --- |
-| **BM25** | Exact identifiers, labels, lexical matches | Current Find default; preserve first-rank exact IDs and no-match behavior |
-| **EmbeddingGemma 2** | Bilingual semantic/paraphrase retrieval of original graph vocabulary | Research variant; retrieval score is not calibrated intent confidence, and earlier hybrid no-match regressions remain |
-| **Directed neighborhoods** | Retrieve *witnessed* incoming/outgoing RDF edges and bounded paths | Mandatory simple structural baseline before training a GNN; preserve source/graph/direction |
-| **R-GCN / CompGCN** | Learn relational entity and entity+predicate representations, potentially rerank witnessed candidates/paths | **First-class original motivation (#117)**; trained models are optional. Predicted links are hypotheses, never original RDF facts |
-| **SHACL + property definitions** | Give trusted type, property-path, node-kind and constraint guidance where real shapes/metadata exist | Shape provenance matters; SHACL cannot certify user intent, source completeness or world truth |
-| **Rust + Oxigraph** | Authoritative plan, separate single-use approval, scoped execution and evidence | Reuse existing Confirmed/Assisted Ask; no separate engine, unapproved writes or raw SPARQL |
-| **Local generator + checker** | Turn **returned facts** into useful natural prose with resolvable citations | **Required end-state (#118)**, separately authorized inference; deterministic fallback must remain available |
+| **Local document ingester + chunk store (#119)** | Turn approved Markdown/text (other formats later) into stable versioned chunks, language/source spans and citations | **New baseline**; permissions/licensing and index freshness are checked before text enters retrieval or a model |
+| **BM25 + local vector search (#119)** | Lexical and embedding-based retrieval of document chunks, with optional fusion | A **local vector database or simple persistent vector index** is an implementation choice, not an automatic extra server. Reuse indexed embeddings; benchmark first |
+| **EmbeddingGemma 2 (#114/#119)** | NO/EN semantic matching of chunks and graph vocabulary/relationships | Pinned research model exists; graph-Ask and document chunk-serving integration are **not yet implemented**. Keep exact-ID/no-match protections |
+| **Original RDF graph + neighborhoods** | Real directed edges, typed entities and paths, graph-qualified identifiers and original witnesses | Reuse Rust/Oxigraph, deterministic traversal and source scope. Never invent an inverse source triple |
+| **R-GCN / CompGCN (#117)** | Learn multi-relational patterns that might rerank *witnessed* graph entities/paths beyond text similarity | **Original core research motivation**; first-class paired study against simple adjacency. Not a mandatory runtime or source-truth authority |
+| **SHACL / property metadata (#115)** | Explain expected property paths, classes, node kinds and datatypes; constrain/clarify where trusted shapes exist | Separate licensed shape provenance; no guarantee a question was interpreted or all facts conform |
+| **Rust approved graph query (#115)** | Exact interpreted graph operation, manual review, expiring single-use approval, bounded read-only Oxigraph | Reuse the working Confirmed/Assisted Ask boundary. Plain permitted document retrieval does **not** require a fake graph approval |
+| **Evidence pack, local LLM and checks (#118)** | Combine citeable document spans **and/or** original RDF bindings; write and verify a short natural answer | **Required RAG stage**. Model inference is separate opt-in/authorization; deterministic evidence fallback stays available |
 
-**Design for efficiency:** one local app/loopback entry point, reuse pinned indexes and Rust engine, and **don't load every model for every question**. Route simple exact lookups to cheap retrieval; activate embeddings/GNNs only when a measured benefit justifies them. Generate only after a valid approved fact query; avoid giving a large language model a whole graph dump. Profile total model+process RSS, startup, warm latency and rebuild cost on the M1 Pro / 32 GiB instead of promising speeds.
+**Practical code organization:** stay in the current repository, keep `verity_core`/Oxigraph as the graph authority, and add small modular adapters for document ingestion, lexical/vector retrieval and evidence-grounded generation. One local UI and a versioned *evidence interface* suffice. Do not introduce independent microservices, new graph databases, multiple vector backends or mandatory concurrent model processes without benchmark evidence.
 
-## 4. Shared source, candidate and answer contracts
+**Resource policy:** A single-user M1 Pro / 32 GiB should not have to keep EmbeddingGemma, a GNN and a generative model resident concurrently. Cheap exact/BM25 paths first; optional dense/graph reranking when they help; bounded retrieval context and source clipping; cold/warm time, peak total RSS, build/index/refresh cost and disk measured honestly.
 
-**Candidate packet: advisory only.** Reuse the existing graph-qualified vocabulary packet rather than introducing new parallel frameworks. Preserve original question/language, authorized graph/snapshot/policy/index revision, role, original entity/predicate IRI, labels/descriptions with language and source/license, exact direction/path source witnesses, and optional *separately labelled* BM25/dense/adjacency/R-GCN/CompGCN ranks. Record ambiguity, missing vocabulary, unsupported requests, no-match and clipping as distinct states. Filter **scope and permissions before indexing or retrieval**, including structural embeddings. Snapshot or encoder mismatch must invalidate a learned index; GNN-inferred edges never become source triples.
+## 4. Provenance and evidence contracts
 
-**SHACL guidance: narrow and explicit.** Accept only source-published or separately operator-authorized shapes with shape graph, license, revision/hash, RDF graph mapping and disclosed author. If unavailable, use source-authored predicate definitions and witnessed paths, not fabricated shape authority. A small documented SHACL 2017 property-shape subset (`sh:path`, supported `sh:inversePath`, `sh:datatype`, `sh:class`, `sh:nodeKind` and bounded cardinality annotations) is sufficient initially. Any demo shapes must be labelled operator-authored and remain separate from original source RDF. Do not silently treat SHACL conformance as proven or interpret cardinality as global closed-world completeness.
+**Document citations:** source document ID, version/content digest, license/permission, local language, exact original span/offset, chunk ID, truncation and a stable citation target. The vector index contains **no privileged text** outside the source's authorized scope. A snippet is a citation to a *document passage*, not automatically proof of an RDF relationship.
 
-**Evidence packet: the critical RAG boundary.** Build it **after approved execution**, from actual Oxigraph results. The format should be small, versioned and hash/snapshot-bound. A minimal illustrative schema (not an actual receipt) is:
+**Graph candidates:** source-scoped entity/predicate/path IRI, graph, role, label/language/definition, original edge witnesses and separate BM25/dense/neighborhood/GNN ranking metadata. Missing SHACL or learned scores are ordinary states. A GNN-predicted link is a **hypothesis**, never a source triple, no matter how plausible. Structural embeddings are keyed to model+weights, graph, scope, relation IDs and snapshot; stale results fail closed.
+
+**SHACL shapes:** use only source-published or clearly operator-authorized shapes. Keep shape source/license, shape-graph, hash/version and named-graph mapping separate from imported RDF. For an initial subset, consider simple `sh:path` and supported `sh:inversePath`, `sh:datatype`, `sh:class`, `sh:nodeKind` and cardinality metadata; fail transparently on unsupported constructs. A shape's expectation is not evidence that an edge exists and missing triples are not necessarily false.
+
+**Unified generation evidence packet:** Build it **after permitted document retrieval and, if invoked, approved graph execution**. The packet should be small, typed, source/version-bound and model-independent. Illustrative (not a currently implemented API):
 
 ~~~json
 {
   "version": "kg-rag-evidence-v1",
-  "question": "<original NO/EN text>",
-  "language": "nb",
-  "confirmed_operation": "<exact Rust preview identity>",
-  "scope": ["<authorized named graph>"],
-  "snapshot_id": "<actual pinned snapshot>",
-  "source": {"revision": "<source revision>", "license": "<license>"},
-  "bindings": [{
-    "id": "r1",
-    "term": {"kind": "iri", "value": "<original RDF IRI>"},
-    "supporting_citation_ids": ["t1"]
+  "question": "<original Norwegian or English question>",
+  "language": "en",
+  "document_evidence": [{
+    "citation_id": "d1",
+    "document_id": "<source ID>",
+    "version_digest": "<source digest>",
+    "span": {"start": 0, "end": 42},
+    "text": "<exact permitted document excerpt>",
+    "license": "<license/permission>"
   }],
-  "citations": [{
-    "id": "t1",
+  "graph_evidence": [{
+    "citation_id": "g1",
+    "confirmed_operation": "<Rust approval-bound plan ID>",
+    "snapshot": "<exact authorized graph snapshot>",
+    "graph": "<named graph>",
     "subject": "<original subject IRI>",
     "predicate": "<original predicate IRI>",
-    "object": "<original RDF term with datatype/language if literal>",
-    "graph": "<original named graph>",
-    "source_witness": "<verifiable source triple reference>"
+    "object": "<original typed RDF term incl language/datatype>",
+    "source_revision": "<source revision>",
+    "license": "<license>"
   }],
-  "completeness": {"rows_clipped": false, "evidence_clipped": false},
-  "limits": "<actual applied row/evidence/time budgets>"
+  "completeness": {
+    "documents_clipped": false,
+    "graph_rows_clipped": false,
+    "graph_evidence_clipped": false,
+    "graph_not_invoked": false
+  }
 }
 ~~~
 
-Actual schema must preserve lexical values, language tags, datatypes, licenses and **independent** row/evidence completeness. Generated citations are IDs referencing *these original triples*, not URLs or pseudo-sources invented by a model. Give the model a **bounded, escaped evidence view**; treat question text, labels and RDF literals as untrusted content, never higher-priority instructions. If a query asked for a language filter/count/reverse path that was not implemented, the unfiltered result must **never** be passed off as answering it.
+Both arrays are **optional**, but generation needs **at least one valid authorized factual source**. When `graph_not_invoked` is true, `graph_evidence` is empty; do not invent a graph query or citation to fill it. In a real implementation preserve full result bindings, graph limits/timeouts, document retrieval truncation and separate source identities, not just the simplified example.
 
-**Generation and checking:** Prompt a separately authorized local model to produce a short NO/EN sentence grounded in these bindings with inline citation IDs and explicit snapshot/completeness caveats. Verify every citation ID resolves to permitted returned triples; quoted URLs/IRIs, numbers, languages, predicates and supported simple answer clauses match the corresponding binding and approved operation. Reject invented entities, unsupported aggregation, reversed claims, false graph provenance and “all/none/only” over incomplete results. **A valid citation ID alone does not prove semantic entailment**: the checker covers declared answer families only, so measure claim faithfulness independently and fail closed outside coverage. When a model or checker fails, show deterministic RDF values and say why a generated answer is unavailable.
+An RDF triple **derived from a document by automated extraction** is *derived information*; retain a verifiable document-span origin, extraction/verification status and clearly separate it from externally supplied original RDF. Do not silently assert extracted links as ground truth, conflate document claims with graph authority or hide source conflicts.
 
-**Authority:** Original RDF facts and source triples are authoritative *for the authorized snapshot*. SHACL shapes are separately provenance-checked metadata. BM25, EmbeddingGemma, R-GCN/CompGCN and LLM output are **non-authoritative suggestions**. Only the user-confirmed, scope-validated, expiring single-use Rust query can retrieve answer facts.
+**Generation:** A pinned local LLM receives only the bounded authorized evidence plus the approved operation/uncertainty status if relevant. Source text is **untrusted input**, not a system instruction. The answer may cite `d1` for a document statement and `g1` for an original RDF statement. The post-check validates citation IDs, exact quoted IDs/URLs/numeric values where supported, mapping to genuine spans/triples and known answer-family constraints. **A real citation does not guarantee the whole sentence is entailed**; measure claim faithfulness against independent references, fail closed outside checker coverage, and use a deterministic evidence/abstention fallback when generation is invalid or absent.
 
-## 5. Prove value against ordinary RAG
+**Authorization:** Retrieval and indexing must respect source permissions before any text, private graph membership, embedding or score is exposed. **Only graph operations** use the existing distinct approval and Rust/Oxigraph revalidation. No model can mint scope, create facts, issue raw SPARQL or approve execution.
 
-Compare the **same licensed graph, question set, local machine and comparable generator**; isolate where different retrieval context sizes or answering models would confound attribution.
+## 5. Prove we deliver *better* RAG
 
-| Comparison | Question answered |
+An honest comparison uses the same licensed source material, questions, machine, evaluation rules and (where possible) generation model and context budget. Report both **controlled matched-source ablations** and **realistic mixed documents + RDF** conditions; never attribute more available source data to the model architecture itself.
+
+| Experiment | What it determines |
 | --- | --- |
-| **Deterministic RDF display** vs **grounded local generator** | Does generation actually improve understanding/usefulness without making up facts? |
-| **Simple text-chunk RAG** over the same RDF-derived, source-tagged facts vs KG-RAG | Does structure + graph query + SHACL actually improve answers over ordinary RAG? |
-| BM25 vs EmbeddingGemma/hybrid, same role/graph/scope | Do NO/EN paraphrases improve without breaking exact-ID or no-match behavior? |
-| Source-witnessed adjacency vs R-GCN vs CompGCN | Does learned structural retrieval offer incremental path/entity/predicate ranking value over cheap traversal? |
-| With/without trusted SHACL guidance | Does schema context reduce wrong relationships/directions, without excluding valid facts? |
+| **Document chunks + BM25 + local cited generation** | Cheapest baseline people can actually use |
+| **Document chunks + vector search / hybrid retrieval + same generator** | Whether embeddings improve NO/EN paraphrases and answer support without false matches |
+| **Same document RAG + source-linked RDF graph retrieval** | Incremental gain for entity relations, multi-hop paths and original graph evidence |
+| **Graph enrichment with/without trusted SHACL** | Better structural choices or fewer bad interpretations, without suppressing real witnessed facts |
+| **Witnessed adjacency vs R-GCN vs CompGCN** | Whether learned graph structures add value over cheap deterministic traversal and text search |
+| **Generated cited answers vs deterministic retrieved evidence** | Whether an LLM makes results easier to understand without inventing claims |
 
-Freeze evaluations before new inference/training. Separate **candidate recall**, correct entity/predicate/direction, successful approved query, exact returned bindings, **answer-level support**, real-world truth (not established by RDF), false confidence, appropriate clarification/abstention, source-citation validity, NO/EN fluency, comprehension, cold/warm latency and full-process RSS. Existing agent-authored development references are not independently human verified; zero human observations means **human comprehension remains unmeasured**. Test adverse cases: wrong direction, absent facts, clipping, private graph labels, stale SHACL/index, predicted but unobserved links, no-match, unsupported filters and malicious literal text.
+Metrics: answer-level factual grounding and citation support **by type** (document span vs RDF triple), exact entity/predicate/direction, multi-hop evidence coverage, positive/negative retrieval recall, no-match/abstention false confidence, question-answer usefulness, NO/EN performance, cold/warm latency p50/p95, total process-tree RSS, model/index storage and refresh cost.
 
-**Decision:** Adopt each extra component **only if it beats a simpler baseline on the defined user task within the local resource budget**. In particular, GNNs need measured retrieval lift over direct neighborhoods; a full LLM must improve user-facing wording while maintaining source faithfulness. An impressive graph model score is not a factual RAG answer.
+**Do not confuse benchmarks:** #50/#53 demonstrated some embedding retrieval gains and false-candidate regressions, but did not prove better answer generation. [PR #111](https://github.com/grove/graph-verity/pull/111) showed **20/29** matched supported *agent-authored development* plans and **9/40** wrong-but-executable candidates; syntactic Rust acceptance isn't question correctness. Existing agent-authored relevance/intent gold isn't independent human review. Gather real feedback when practical; do not fabricate participants.
 
-## 6. Small implementation roadmap
+**Promotion rule:** each extra step—dense retrieval, graph traversal, SHACL, GNN, LLM reranking—must earn its runtime/maintenance cost against the **simpler local RAG** under explicit error, quality, resource and UX gates. The **product includes actual evidence-grounded local generation**, but for simple questions it may legitimately use text-only evidence. Unanswered/conflicting/incomplete cases should be visible, not disguised.
 
-| Track | Delivery | Role in end-to-end RAG |
+## 6. Staged deliveries, one evolving project
+
+| Issue | Small first output | Product role |
 | --- | --- | --- |
-| **#114** | BM25 + opt-in EmbeddingGemma entity/predicate suggestions, exact/no-match guards | Helps interpret the question |
-| **#117 (parallel)** | Pinned graph adequacy + direct-adjacency baseline, then separately approved R-GCN/CompGCN comparison | Optional structural retrieval improvement; not a release blocker |
-| **#115** | Trusted SHACL guidance, direction/scope constraints and Rust-approved RDF facts | Produces the **actual evidence** |
-| **#118** | Typed evidence packet, citation/claim checks, fallback; then separately authorized native local answer generation | **Completes retrieval → augmentation → generation** |
-| **Integration/release decision** | One clean NO/EN question-to-cited-answer journey; compare with simple text RAG and measure quality/cost | Ship the **smallest useful** local stack |
+| **#119 — traditional RAG foundation** | Authorized local documents, stable chunks/spans, BM25 and optional persistent vector search, unified document evidence | Usable documents-only retrieval baseline |
+| **#114 — graph semantic discovery** | Authorized NO/EN entities and predicates from BM25/EmbeddingGemma, exact/no-match protections | Helps select when graph relations matter |
+| **#115 — SHACL and graph evidence** | Trusted shape metadata, supported directed graph operations, independent user approval, original RDF witnesses | Adds source-backed graph facts to the shared evidence packet |
+| **#117 — R-GCN/CompGCN (parallel)** | Real graph adequacy, simple witnessed neighborhoods, later separately authorized GNN comparisons | Optional structural ranking enhancement; **first-class research, not a product blocker** |
+| **#118 — local grounded generation** | Typed mixed-evidence packet, citation/claim checks, deterministic fallback; after new explicit authorization, real local model answer generation | Completes traditional and graph-augmented **RETRIEVE → AUGMENT → GENERATE** |
 
-The first product slice should reuse the existing narrow assisted query, prove the **full pipeline with one real local generated answer** under a separately approved and measured inference gate, then extend coverage based on what users actually ask. #117 remains a first-class experiment in parallel, **not an excuse to delay a simple working RAG demo**.
+Build thin vertical slices rather than waiting until every algorithm works. An initial **documents-only RAG** can run before graph enrichment, and a graph-assisted slice can reuse the proven Rust path; both use the **same UI, evidence contract and generator**. After both are available, evaluate their incremental advantage before additional complexity.
 
-## 7. Present truth and safety boundaries
+**When to split repositories:** only if later there are genuinely separate independently deployed products, incompatible target users/platforms or clearly reusable published libraries needing independent release cycles. Do **not** fork now; use modular components/feature gates within Graph Verity.
 
-**Implemented:** local graph catalog, BM25 Find, Rust/Oxigraph typed read-only query+source evidence, exact approval, narrow model-free Assisted Ask v1. **Evaluated but not product-integrated:** EmbeddingGemma 2 (paraphrase gains alongside false-candidate/exact-rank regressions). **Planned/unverified:** SHACL-guided serving, R-GCN/CompGCN retrieval, verified-evidence packet to real local answer generation, general NO/EN NL query interpretation and independent human review. The [Ask Alpha r2 trial](https://github.com/grove/graph-verity/pull/111) matched **20/29** supported *agent-written development* reference plans and produced **9/40** wrong-but-executable candidates; it did **not** prove safe free-form Ask.
+## 7. Current implementation and safety truth
 
-**No stage of this design grants execution authority to a model.** Maintain explicit independent user approval for read-only graph execution; never execute generated SPARQL, fabricate facts from shape constraints or GNN predictions, open private graph scope or claim that missing RDF means real-world nonexistence. Keep historic experiments, registrations, consumed ledgers and sealed holdouts untouched.
+**Working today:** the existing graph catalog, BM25 Find, typed Rust/Oxigraph read-only retrieval and original RDF evidence, one-shot operator approval and narrow model-free Assisted Ask v1. **Measured but not integrated:** EmbeddingGemma 2 experiments. **Not yet shipped:** general document-chunk RAG/vector store, SHACL-guided serving, R-GCN/CompGCN, a mixed doc/graph evidence pack, local source-grounded RAG generation and independently verified human answer understanding. This document is a proposal, not retrospective proof those components exist.
 
-Any **new** embedding, GNN or generative model inference requires distinct protocol freeze, pinned assets, exact explicit owner authorization and passing M1 Pro host gates; normal CI stays model-free. Keep [#83](https://github.com/grove/graph-verity/issues/83) open, live [#75](https://github.com/grove/graph-verity/issues/75) disabled, [#58](https://github.com/grove/graph-verity/issues/58) human review pending and **`INCONCLUSIVE_REVISE`** until separately justified.
+Keep **INCONCLUSIVE_REVISE**, issue [#83](https://github.com/grove/graph-verity/issues/83) open, live [#75](https://github.com/grove/graph-verity/issues/75) integration disabled and [#58](https://github.com/grove/graph-verity/issues/58) independent relevance review pending. No model-generated graph writes/queries, remote `SERVICE`, cross-scope leakage, unproven GNN links as RDF facts, or silent result-language/filter substitution.
 
-**North star:** *A simple local assistant that uses graph structure and SHACL to retrieve trustworthy source evidence—and a local model to turn that evidence into useful, checkable language.*
+Any **new embedding/GNN/generative inference**, assets/downloads or training requires a newly frozen version and **separate explicit owner authorization** with applicable host memory/swap and provenance gates; normal CI stays model-free. Do not modify historical model evidence, consumed ledgers, original snapshots or sealed holdouts. A failed model check must fall back to source evidence, not be represented as success.
+
+**North star:** *One local RAG application that works on ordinary documents and becomes significantly better where trusted graph relationships, SHACL and learned graph structure genuinely help.*
