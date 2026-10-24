@@ -96,8 +96,7 @@ try {
   await send('Network.enable'); await send('Runtime.enable'); await send('Page.enable');
   await send('Emulation.setDeviceMetricsOverride', {width:1280,height:900,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate',{url});
-  // Page.navigate may return before the new DOM exists; poll safely until Ask is enabled.
-  await until("document.getElementById('ask')?.disabled === false");
+  await until("!document.getElementById('ask').disabled");
   assert.match(await evaluate("document.getElementById('runtime').textContent"), /SAVED-DRAFT DEMO/);
   assert.equal(await evaluate('location.hash'), '');
   assert.equal(confirms(), 0);
