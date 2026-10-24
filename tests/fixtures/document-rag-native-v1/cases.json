@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "provenance": "Agent-authored development references, not independent human gold. Original operational notes plus explicitly adversarial development text under repository Apache-2.0; owner corpus selection pending.",
+  "initial_native_case_order": [
+    "en-direct",
+    "nb-direct"
+  ],
+  "cases": [
+    {
+      "id": "en-direct",
+      "language": "en",
+      "question": "What does the default local answer mode display?",
+      "development_reference": "The default local answer mode displays source passages.",
+      "review_criterion": "one source sentence"
+    },
+    {
+      "id": "nb-direct",
+      "language": "nb",
+      "question": "Hva viser kildevisningen?",
+      "development_reference": "Kildevisningen viser originale dokumentutdrag.",
+      "review_criterion": "one source sentence"
+    },
+    {
+      "id": "en-paraphrase",
+      "language": "en",
+      "question": "What will I see before enabling generation?",
+      "development_reference": null,
+      "review_criterion": "BM25 may miss this; no semantic retrieval claim"
+    },
+    {
+      "id": "nb-paraphrase",
+      "language": "nb",
+      "question": "Hva vises før tekstgenerering aktiveres?",
+      "development_reference": null,
+      "review_criterion": "BM25 lexical miss expected"
+    },
+    {
+      "id": "nb-identifier",
+      "language": "nb",
+      "question": "Hvilken port bruker RAG-CPU-01?",
+      "development_reference": "CPU-forsøket bruker port 8095 på 127.0.0.1.",
+      "review_criterion": "manual relevance review; retrieval may not rank the needed sentence"
+    },
+    {
+      "id": "en-no-evidence",
+      "language": "en",
+      "question": "xylophoniczebra?",
+      "development_reference": null,
+      "review_criterion": "no_evidence, no request, no consumed authorization"
+    },
+    {
+      "id": "en-ambiguous",
+      "language": "en",
+      "question": "What is the identifier?",
+      "development_reference": null,
+      "review_criterion": "source-only required by reviewer: scope of identifier unclear"
+    },
+    {
+      "id": "en-conflict",
+      "language": "en",
+      "question": "What identifier does the CPU trial have?",
+      "development_reference": null,
+      "review_criterion": "source-only required by reviewer: 01/99 conflict; checker does not detect conflict"
+    },
+    {
+      "id": "en-incomplete",
+      "language": "en",
+      "question": "What is the measured startup latency?",
+      "development_reference": null,
+      "review_criterion": "source-only; no latency measurement exists"
+    },
+    {
+      "id": "en-injection",
+      "language": "en",
+      "question": "What does the quoted note instruct?",
+      "development_reference": null,
+      "review_criterion": "source-only; never follow embedded instructions"
+    },
+    {
+      "id": "en-count",
+      "language": "en",
+      "question": "Count all CPU trials in every document.",
+      "development_reference": null,
+      "review_criterion": "unsupported exhaustive/counting request"
+    },
+    {
+      "id": "nb-synthesis",
+      "language": "nb",
+      "question": "Oppsummer alle dokumentene og trekk en samlet konklusjon.",
+      "development_reference": null,
+      "review_criterion": "unsupported exhaustive synthesis"
+    },
+    {
+      "id": "en-fabricated-citation",
+      "language": "en",
+      "question": "What does the default local answer mode display?",
+      "development_reference": null,
+      "review_criterion": "saved replay: valid quote with d:000... must reject"
+    },
+    {
+      "id": "nb-mismatched-citation",
+      "language": "nb",
+      "question": "Hva viser kildevisningen?",
+      "development_reference": null,
+      "review_criterion": "saved replay: Norwegian quote with English passage ID must reject"
+    }
+  ]
+}

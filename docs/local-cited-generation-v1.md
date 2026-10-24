@@ -50,11 +50,22 @@ For a future owner-approved run only, supply all four deliberate opt-in argument
     --ledger-dir /private/inference-ledger
     --execute-authorized-inference
 
-Registration keys are: version=1, backend=llama.cpp-openai-chat-loopback-v1, host=127.0.0.1, port, model_name, absolute model_path and sha256, absolute runtime_path and sha256, system_prompt_sha256, context_tokens (512-8192), max_output_tokens (32-256), timeout_seconds (5-120), seed and temperature=0. All registered local model/runtime file bytes are hashed before the network request.
+Live inference now requires a **v2 runtime registration** and owner-supplied
+trial/owner/request/ledger bindings. V1 runtime registrations are rejected. The
+[first native trial runbook](local-document-rag-native-v1.md) gives the complete
+schema, source-pinned development collection, proposed Qwen3-4B Q4_K_M identity,
+CPU command, host admission, private receipts and remaining operator checks.
+Neither that proposal nor this documentation grants download/startup/inference
+authorization. Request timeout is bounded to 5–300 seconds; the proposed first
+CPU trial uses 300 seconds. All local assets are hashed before admission.
 
-**Important:** Hashing on-disk files and checking the HTTP model alias does not attest that the active server has loaded those files. The operator must separately confirm server PID and command, tokenizer/template identity, host contention, swap/RAM, CPU/Metal settings and offline-only behavior. This code never starts that server; the owner stops it after the run.
-
-The run authorization must come from a new explicit owner decision and include version=1, unique authorization_id, action=one_shot_local_document_answer, canonical registration_sha256, exact packet_sha256, question_sha256, scope, short UTC expires_utc, host_preflight=operator_verified_quiescent_host and owner_approved=true. A one-use record in an existing private 0700 ledger is created as mode 0600 **before** the model request. Failed, timed-out and rejected runs consume the approval. Do not generate or edit those private authorization files merely because this PR exists.
+Disk hashes, process/start/command/listener observations and the HTTP alias are
+recorded separately; none alone proves the resident model identity. Each one-shot
+approval binds the exact request and canonical private ledger. Consumption is
+exclusive and durable before transport, including failed requests. Private unique
+run folders preserve prepared requests, bounded raw HTTP responses and final
+success/failure/resource receipts. The request-window RSS guard is sampled and
+cannot replace operator monitoring or server shutdown.
 
 No model request is made unless the explicit flag, strict registration, approved exact scope/question/source hashes and unused authorization all validate. Local HTTP is fixed to 127.0.0.1 with no redirects/proxy. Model output is bounded, requires a complete stop condition, and must exactly quote a real in-scope document passage. Edits to source files during inference suppress both generated answers **and stale fallback excerpts**.
 
