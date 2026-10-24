@@ -1,0 +1,71 @@
+{
+  "experiment": "ask-alpha-preview-v1-observable-r2",
+  "reviewed_pr": 109,
+  "reviewed_head": "0d0a1ada6bf563ca4c094f845f6f3aaee125779c",
+  "merged_source": "d71b544ad5ccbfdcb8b6a847c362075e5e422b83",
+  "registered_source": "4c1888e441e3db26073fd06ced05447aff195346",
+  "registration_sha256": "3eab8a532fa45b81301df9d4fba2b50b8153433f44bd752d63d05cacd42ab98d",
+  "archive_sha256": "310216acbaeb34d15752b7452658a39a4eaa358c4456d451085770efb95fe516",
+  "command": [
+    ".venv/bin/python",
+    "tools/ask_alpha_trial_observable_r2.py",
+    "run",
+    "--allow-inference"
+  ],
+  "authorization": "Exact owner authorization in this task; unspent after blocked admission PR #110; owner subsequently instructed Try now. Only this single invocation is covered.",
+  "prior_admission_pr": "https://github.com/grove/graph-verity/pull/110",
+  "model": "Qwen3.5-9B Q4_K_M",
+  "model_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+  "model_sha256": "fa502d3cb95fab7a6a563b9e057d94e6bae5ca737f056a4ffd05a9c25232d951",
+  "rust_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+  "runtime_revision": "c0fd78626405c6d9b934efef0ec7291fcc20e3d6",
+  "native_server_sha256": "40188c617d6dc1d7f060587233a9eaf7d3929e1740db0e4650c31b74616be78a",
+  "policy": {
+    "backend": "CPU",
+    "cpu_threads": 4,
+    "gpu_layers": 0,
+    "concurrency": 1,
+    "context_tokens": 16384,
+    "max_output_tokens": 512,
+    "timeout_seconds": 300,
+    "retries": 0,
+    "host_gates": {
+      "load_per_cpu_max": 0.75,
+      "swap_used_mib_max": 1024,
+      "memory_free_percent_min": 40,
+      "disk_free_gib_min": 32,
+      "competing_process_cpu_percent_max": 150
+    },
+    "hardware": {
+      "cpu": "Apple M1 Pro",
+      "memory_bytes": 34359738368,
+      "architecture": "arm64"
+    },
+    "thermal": "No thermal/performance warning, CPU limits absent or 100 percent; AC power required",
+    "rss_sampling_seconds": 0.2,
+    "token_fit_rule": "input_tokens + 512 < 16384; every scheduled prompt is recounted with pinned local tokenizer before model loading; native template/token parity is mandatory before each generation",
+    "rss_ceiling_gib": 24,
+    "max_stream_bytes": 2097152,
+    "max_draft_bytes": 16384,
+    "host_max_age_seconds": 60
+  },
+  "max_completion_requests": 64,
+  "schedule": {
+    "native_sampling_controls": 2,
+    "construction_controls": 2,
+    "semantic": 60,
+    "nb": 30,
+    "en": 30
+  },
+  "decision": "INCONCLUSIVE_REVISE",
+  "independent_human_reviews": 0,
+  "issue75_integration": "disabled",
+  "issue83": "keep_open",
+  "auto_merge": false,
+  "inference_invocations_authorized": 1,
+  "inference_invocations_observed": 1,
+  "inference_authorization_exhausted": true,
+  "registration_consumed": true,
+  "rdf_plan_executions_authorized": 0,
+  "rdf_plan_executions_observed": 0
+}

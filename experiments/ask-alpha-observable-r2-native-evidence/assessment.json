@@ -1,0 +1,336 @@
+{
+  "version": "ask-alpha-observable-r2-native-assessment-v1",
+  "decision": "INCONCLUSIVE_REVISE",
+  "inference_performed": true,
+  "invocations": 1,
+  "authorization_exhausted": true,
+  "registration_consumed": true,
+  "executions": 0,
+  "origin": "retained_local_model",
+  "native": {
+    "scheduled": 64,
+    "attempted": 64,
+    "completed": 64,
+    "failed": 0,
+    "unattempted": 0,
+    "candidate_bytes_received": 22990
+  },
+  "semantic": {
+    "scheduled": 60,
+    "attempted": 60,
+    "completed": 60,
+    "failed": 0,
+    "unattempted": 0
+  },
+  "controls": {
+    "scheduled": 4,
+    "completed": 4,
+    "repeatability": {
+      "generations": 2,
+      "strict_drafts_valid": true,
+      "model_statuses": [
+        "candidate",
+        "candidate"
+      ],
+      "status_equal": true,
+      "structured_plans": [
+        {
+          "start": 1,
+          "predicate": 5,
+          "graph": 3,
+          "direction": "forward",
+          "output": "values"
+        },
+        {
+          "start": 1,
+          "predicate": 5,
+          "graph": 3,
+          "direction": "forward",
+          "output": "values"
+        }
+      ],
+      "structured_plan_equal": true,
+      "complete_json_bytes_equal": true,
+      "rationale_text_equal": true,
+      "semantic_correctness": "separately_scored_against_exposed_references",
+      "gate_passed": true
+    }
+  },
+  "registered_summary": {
+    "scheduled": 60,
+    "completed_latency": {
+      "samples": 60,
+      "p50_ms": 29647.50047950656,
+      "p95_ms": 253462.50179200433,
+      "p99_ms": 299123.2885000063
+    },
+    "outcomes": {
+      "completed": 60
+    },
+    "five_field_scheduled": {
+      "numerator": 20,
+      "denominator": 29
+    },
+    "five_field_completed": {
+      "numerator": 20,
+      "denominator": 29
+    },
+    "fields": {
+      "start": {
+        "numerator": 26,
+        "denominator": 29
+      },
+      "predicate": {
+        "numerator": 25,
+        "denominator": 29
+      },
+      "graph": {
+        "numerator": 27,
+        "denominator": 29
+      },
+      "direction": {
+        "numerator": 20,
+        "denominator": 29
+      },
+      "output": {
+        "numerator": 27,
+        "denominator": 29
+      }
+    },
+    "clarification": {
+      "numerator": 6,
+      "denominator": 23
+    },
+    "unsupported": {
+      "numerator": 6,
+      "denominator": 8
+    },
+    "false_clarification": 1,
+    "false_unsupported": 7,
+    "wrong_but_executable": {
+      "numerator": 9,
+      "denominator": 40
+    },
+    "wrong_but_executable_scheduled": {
+      "numerator": 9,
+      "denominator": 60
+    },
+    "unresolved_candidates": 11,
+    "unjustified_relationship_selections": 13,
+    "retrieval": {
+      "numerator": 28,
+      "denominator": 29
+    },
+    "rust": {
+      "accepted": 60
+    },
+    "source_evidence": {
+      "numerator": 0,
+      "denominator": 0
+    }
+  },
+  "determinate_non_execution": {
+    "scheduled": 13,
+    "status_agreement": 6,
+    "non_candidate": 11,
+    "operations": {
+      "scheduled": 8,
+      "unsupported": 6
+    },
+    "missing_authorized_predicates": {
+      "scheduled": 5,
+      "clarification": 0
+    }
+  },
+  "unresolved": {
+    "scheduled": 18,
+    "completed": 18,
+    "model_statuses": {
+      "candidate": 11,
+      "needs_clarification": 6,
+      "unsupported": 1
+    },
+    "target_clarification": 6,
+    "non_executing": 7,
+    "meaning": "Predeclared conservative targets; no independent human semantic truth"
+  },
+  "supported_language": {
+    "en": {
+      "scheduled": 30,
+      "agreement": {
+        "numerator": 10,
+        "denominator": 14
+      }
+    },
+    "nb": {
+      "scheduled": 30,
+      "agreement": {
+        "numerator": 10,
+        "denominator": 15
+      }
+    }
+  },
+  "supported_direction": {
+    "forward": {
+      "numerator": 17,
+      "denominator": 17
+    },
+    "reverse": {
+      "numerator": 3,
+      "denominator": 12
+    }
+  },
+  "wrong_but_executable_ids": [
+    "alpha-07",
+    "alpha-08",
+    "alpha-36",
+    "alpha-38",
+    "alpha-39",
+    "alpha-41",
+    "alpha-44",
+    "alpha-55",
+    "alpha-56"
+  ],
+  "retrieval_misses": [
+    {
+      "id": "alpha-08",
+      "missing": [
+        "start"
+      ]
+    }
+  ],
+  "rationale_audit_counts": {
+    "rationale_contradiction": 16,
+    "unsupported_relationship_claim": 7,
+    "unsupported_operation_claim": 2,
+    "unsupported_ambiguity_claim": 1,
+    "source_meaning_unvalidated": 11,
+    "rationale_truncated_at_bound": 4
+  },
+  "minimum_scope": {
+    "ids": [
+      "alpha-11",
+      "alpha-12",
+      "alpha-31",
+      "alpha-32",
+      "alpha-33",
+      "alpha-34",
+      "alpha-45",
+      "alpha-46"
+    ],
+    "scheduled": 8,
+    "completed": 8,
+    "five_field_matches": 8,
+    "overall_result": "not_established_required_surrounding_controls_fail",
+    "summary": {
+      "scheduled": 8,
+      "completed_latency": {
+        "samples": 8,
+        "p50_ms": 23252.6303959894,
+        "p95_ms": 27861.707332951482,
+        "p99_ms": 27861.707332951482
+      },
+      "outcomes": {
+        "completed": 8
+      },
+      "five_field_scheduled": {
+        "numerator": 8,
+        "denominator": 8
+      },
+      "five_field_completed": {
+        "numerator": 8,
+        "denominator": 8
+      },
+      "fields": {
+        "start": {
+          "numerator": 8,
+          "denominator": 8
+        },
+        "predicate": {
+          "numerator": 8,
+          "denominator": 8
+        },
+        "graph": {
+          "numerator": 8,
+          "denominator": 8
+        },
+        "direction": {
+          "numerator": 8,
+          "denominator": 8
+        },
+        "output": {
+          "numerator": 8,
+          "denominator": 8
+        }
+      },
+      "clarification": {
+        "numerator": 0,
+        "denominator": 0
+      },
+      "unsupported": {
+        "numerator": 0,
+        "denominator": 0
+      },
+      "false_clarification": 0,
+      "false_unsupported": 0,
+      "wrong_but_executable": {
+        "numerator": 0,
+        "denominator": 8
+      },
+      "wrong_but_executable_scheduled": {
+        "numerator": 0,
+        "denominator": 8
+      },
+      "unresolved_candidates": 0,
+      "unjustified_relationship_selections": 0,
+      "retrieval": {
+        "numerator": 8,
+        "denominator": 8
+      },
+      "rust": {
+        "accepted": 8
+      },
+      "source_evidence": {
+        "numerator": 0,
+        "denominator": 0
+      }
+    },
+    "language_agreement": {
+      "nb": {
+        "matches": 4,
+        "scheduled": 4
+      },
+      "en": {
+        "matches": 4,
+        "scheduled": 4
+      }
+    }
+  },
+  "alpha_gates": {
+    "supported_agreement": false,
+    "forward": true,
+    "reverse": false,
+    "zero_known_wrong_accepted": false,
+    "zero_unresolved_candidates": false,
+    "clarification": false,
+    "unsupported_operations": false,
+    "full_source_coverage": false,
+    "warm_p50": true,
+    "warm_p95": false,
+    "native_resource_and_deadline_failures": 0,
+    "language_strata": false
+  },
+  "stage_diagnostics": {
+    "status": "completed",
+    "failure": null,
+    "exception": null,
+    "evidence_finalization": "completed",
+    "model_startup_confirmed": true
+  },
+  "independent_human_reviews": 0,
+  "human_comprehension_observations": 0,
+  "model_answer_accuracy": null,
+  "issue75_integration": "disabled",
+  "issue83": "keep_open",
+  "auto_merge": false
+}

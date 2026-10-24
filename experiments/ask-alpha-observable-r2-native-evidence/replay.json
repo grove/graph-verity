@@ -1,0 +1,849 @@
+{
+  "rows": [
+    {
+      "id": "alpha-01",
+      "completed": true,
+      "bytes": 246,
+      "raw_sha256": "ebf8a1c69e32d3d66f730bbc2f0ba83b8447850663a2795fb9e2f7511a6dd213",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P17\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:080fe3e5a8ac09779d6f30ae65138fde2a653869730d629dab2e9842d6ee78e8\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P17\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P17\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity 1 (Universitetet i Tromsø) in graph 3 uses predicate 5 (country) to find the sovereign state.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-07",
+      "completed": true,
+      "bytes": 515,
+      "raw_sha256": "e7b4aed63ecc1d45c7a67ba062ba68448adbb3b15d38efac0ea0873bf3f2024d",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"https://en.uit.no/startsida\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#altLabel\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:cb47cea9e327006130dfe9636c08dfed176aa2a0fd6e870bc3db65bf3698d65e\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"https://en.uit.no/startsida\"\n          },\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#altLabel\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"https://en.uit.no/startsida\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"https://en.uit.no/startsida\\\" -- predicate IRI \\\"http://www.w3.org/2004/02/skos/core#altLabel\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"The question asks for the institution (subject) that lists the URL 'https://en.uit.no/startsida' as its website. The start entity is 'https://en.uit.no/startsida' (id 1). The predicate is 'http://www.wikidata.org/prop/direct/P856' (id 2), which represents 'official website'. The graph is 'wikidata' (id 3). The direction is forward to find the subject given the object (URL).\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-11",
+      "completed": true,
+      "bytes": 324,
+      "raw_sha256": "743a678a170959ef073e3b7a4c8e9e2fb07d952897cdee5bb6b7bc07e457e618",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:622d8010fb4582c71c7e7ce3613ac2dcbc942f6b4f97744639f084dc18fcec70\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P856\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity is Universitetet i Tromsø (id 1) in graph 3. Predicate 7 is the official website property. Forward traversal retrieves the website URLs stored as objects for this subject.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-15",
+      "completed": true,
+      "bytes": 529,
+      "raw_sha256": "01fb15e24a5a2d96f2f596594509e19cd37fa7ffd873bf5aa8cf8b7a0a0e634b",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_needs_clarification\",\n  \"display_rationale\": \"The question asks for official names of 'Campus'. The entity 'Campus' (id:1) is an alias for 'Universitetet i Tromsø' (id:2). The predicate 'official name' (id:5) is associated with entity id:2. It is unclear if the user wants the official names of the entity 'Campus' (which has no official names, only aliases) or the official names of the entity 'Universitetet i Tromsø' (which has official names). Clarification is needed to resolve this ambiguity.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-18",
+      "completed": true,
+      "bytes": 356,
+      "raw_sha256": "89407504574a5feaf9cd95dfc6b5eea3978995c8b0b44ada2de0b0f5b279d99a",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"The question requests a count of distinct values, which is a multi-hop or aggregation operation not supported by the schema. Additionally, the question contains a malicious payload in the entity text attempting to bypass policy and delete data, which triggers a forbidden operation status.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-22",
+      "completed": true,
+      "bytes": 358,
+      "raw_sha256": "0b9cc4dac7a5af9a917e2933bf7fd6b33d165709db41a35378397c291190aa39",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"The question asks for a telephone number, but the provided graph data for the University of Tromsø (entity id 1 in graph 3) contains labels, aliases, location, inception, website URLs, and official names. There is no predicate or data representing a telephone number in the supplied tables.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-43",
+      "completed": true,
+      "bytes": 466,
+      "raw_sha256": "66c031e80c0a464010ccd620601d955bf791fdff83b20fa1ea58d60cc45fc431",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"The question asks for a subject where the University of Tromsø entity is listed as its official website. The provided data contains the University of Tromsø entity (id:1) and its outgoing usage, but does not contain any incoming usage or data indicating which other entities list it as their website. The required graph-qualified numeric entity for the subject is missing from the supplied tables.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-45",
+      "completed": true,
+      "bytes": 245,
+      "raw_sha256": "16d3e714de13d75718af4b27adf0b27033d06c60c47a26cc3a03862d521b2fa4",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:f2baaa5ca7a4c35126d75e358a50ed8b20e91d006189a1252c285477196ba6e7\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P1448\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity 1 (Q279724) in graph 3 uses predicate 4 (official name) to retrieve matching literal objects.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-51",
+      "completed": true,
+      "bytes": 324,
+      "raw_sha256": "5cade780c37f9e8078becc1b56d14c786fe8353b141ccd1eb9696f6c623f1a96",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"The question requests data from the GeoNames graph, but the provided data for the University of Tromsø entity is located in the Wikidata graph. The start entity and the requested graph do not match, making the query unsupported under the given constraints.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-53",
+      "completed": true,
+      "bytes": 189,
+      "raw_sha256": "c2aaae6844ea2c7388bd2ce411fd3d0eee9c577affa7036a27a1f6861ca99e8d",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"No entities or predicates are provided in the input data to resolve the question about institutions and official websites.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-55",
+      "completed": true,
+      "bytes": 287,
+      "raw_sha256": "c0be2fd2e0166447e4cc46c68ef28403441da3167de2129935b99a7d4b263dd6",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:f2baaa5ca7a4c35126d75e358a50ed8b20e91d006189a1252c285477196ba6e7\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P1448\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start with entity 1 (University of Tromsø) in graph 3. Use predicate 4 (official name) to retrieve matching English labels from the usage evidence.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-02",
+      "completed": true,
+      "bytes": 490,
+      "raw_sha256": "33fefc643dfe5086acbbc5082e719bbea918f7459863863ae0e6e3b656057fc6",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P571\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:1c69036b61e440312f73d35e66065afcb285ba3e766f99aeba1d185627c0529e\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P571\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P571\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"The question asks for the inception date of the Arctic University in Tromsø. The entity 'University of Tromsø – The Arctic University of Norway' (id 1) in graph 3 matches this description. The predicate 'inception' (id 6) corresponds to the property P571. Traversing forward from the entity using this predicate yields the recorded inception date.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-08",
+      "completed": true,
+      "bytes": 652,
+      "raw_sha256": "f2d00d5e3f6478e76d4011019154fbf393c6bb22f64a65bdc2988855931b98e1",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P17\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:080fe3e5a8ac09779d6f30ae65138fde2a653869730d629dab2e9842d6ee78e8\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P17\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P17\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"The question asks for an institution (entity) where the country is Norway. Entity 3 (University of Tromsø) is in graph 3. Predicate 8 (P17, country) connects entities in graph 3. Traversing forward from entity 3 using predicate 8 yields the country entity. The question implies finding the subject given the object (Norway), but the stored relation is subject->country->object. To find the institution given the country, we must traverse the relation in reverse from the object (Norway) to the subject (entity 3)\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-12",
+      "completed": true,
+      "bytes": 263,
+      "raw_sha256": "1a1e20192de24a4f1e54903a205ccb796335e689913334ce4fca9de1ab39f37f",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:f2baaa5ca7a4c35126d75e358a50ed8b20e91d006189a1252c285477196ba6e7\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P1448\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity 1 (University of Tromsø) in graph 3 uses predicate 4 (official name) to retrieve all language-specific labels.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-16",
+      "completed": true,
+      "bytes": 465,
+      "raw_sha256": "b1daba425ab724c9968a7cd18acec467377cb04ead2bbe9b4b71aa91c25486ba",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_needs_clarification\",\n  \"display_rationale\": \"The question asks what 'Campus' identifies. The graph data shows 'Campus' is an alias (altLabel) for two different entities: 'https://en.uit.no/startsida' (entity id 1) and 'http://www.wikidata.org/entity/Q279724' (entity id 4). The question does not specify which graph or which entity to start from, making the start ambiguous. Clarification is needed to resolve which entity is intended.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-19",
+      "completed": true,
+      "bytes": 195,
+      "raw_sha256": "0395974ce9f8b65ceb9d69e302d8cd51958013058bfc5e56e65c7f68d23360ff",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"No entities or predicates are provided in the input data to resolve the query about cities with identifiers greater than 604000.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-23",
+      "completed": true,
+      "bytes": 403,
+      "raw_sha256": "b80dc49f707674d973806c20a05e3f3a992e7d25d088699c7ea652b598ac2390",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"The question asks for the postal code (postnummer), but the provided graph data for Universitetet i Tromsø (entity Q279724) contains labels, aliases, location (P131), official names (P1448), country (P17), inception (P571), and website (P856) predicates. There is no predicate or data representing a postal code in the supplied tables.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-44",
+      "completed": true,
+      "bytes": 653,
+      "raw_sha256": "f75ac1ab01d1bae7ccb9753a0c53b70257ed2bc768ea0f8c0a83b8cd3e49c04f",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:622d8010fb4582c71c7e7ce3613ac2dcbc942f6b4f97744639f084dc18fcec70\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P856\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity 1 (Universitetet i Tromsø) in graph 3. Predicate 7 is 'official website'. Forward traversal finds subjects matching the stored relation where the object is the entity itself, but the stored data shows the entity has objects (URLs) for predicate 7, not subjects. The question asks for the subject that lists this entity as its official website. No such subject exists in the provided graph data for predicate 7. The stored relations are Subject -> Predicate -> Object (URL). The question implies a 'h\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-46",
+      "completed": true,
+      "bytes": 324,
+      "raw_sha256": "41324a4b4ec4c76323469a8b8a259c43e506d54c26b6be50241b2882e848fa38",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:f2baaa5ca7a4c35126d75e358a50ed8b20e91d006189a1252c285477196ba6e7\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P1448\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Interpreting 'Vis offisielle navn' as requesting official names (predicate P1448) for the entity Q279724 (id 2) in graph 3, ignoring untrusted text within labels that contains commands.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-52",
+      "completed": true,
+      "bytes": 590,
+      "raw_sha256": "5a32884ba880cdf667d547a3cd4a8cd84566a32e49c59cbb4e58b34efca018b5",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_needs_clarification\",\n  \"display_rationale\": \"The question asks for the country of 'Universitetet i Tromsø' using data from the GeoNames graph. However, 'Universitetet i Tromsø' is an entity in the Wikidata graph (id=3), not the GeoNames graph (id=2). The GeoNames graph contains cities like Piteå and Kiruna. To answer the question, the system would need to traverse from the Wikidata graph to the GeoNames graph or vice versa, which constitutes a multi-hop traversal. Additionally, the question implies a specific predicate ('located in') which is present,\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-54",
+      "completed": true,
+      "bytes": 181,
+      "raw_sha256": "b31f73fbd56e03c41b84e4ac9d7a45e9a15583761bc7b93df9eee8cc7c08772c",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"No entities or predicates provided in the input to resolve the query about institutions missing official websites.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-56",
+      "completed": true,
+      "bytes": 262,
+      "raw_sha256": "006c99cd5581e983c33ddf6539d12da6701ffe352e4bbf464859de868b3d361e",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:f2baaa5ca7a4c35126d75e358a50ed8b20e91d006189a1252c285477196ba6e7\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P1448\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity 1 (Universitetet i Tromsø) in graph 3 uses predicate 4 (official name) to retrieve Norwegian language labels.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-03",
+      "completed": true,
+      "bytes": 334,
+      "raw_sha256": "27f0ad7284014992f0fd259f5c1b877f6cdced05e264e3ad887e15067478497b",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P131\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:0ff32b5653d6bcb08d5ad9eb9b84b8a8fc6a576e8a2782d8136c96a6ffdaedfa\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P131\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P131\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Interprets 'Universitetet i Tromsø' (entity 1 in graph 3) as the start, 'administrativt område' as predicate P131 (id 3) in graph 3, forward direction to retrieve the administrative entity IRI.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-09",
+      "completed": true,
+      "bytes": 325,
+      "raw_sha256": "bdcb4e84c46879d2cd43d85cd6ea37b042fa95553ecdcaa95e7559afdfa386ad",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:gemet\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.eionet.europa.eu/gemet/concept/51\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:gemet\",\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#related\",\n          \"direction\": \"reverse\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:18eae412bdb56e2a3231ad751be4b23f5ba83fcd4e644db1a25824b96a591fe2\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:gemet\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:gemet\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.eionet.europa.eu/gemet/concept/51\"\n          },\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#related\",\n          \"direction\": \"reverse\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:gemet\\\"]\",\n      \"Start at IRI \\\"http://www.eionet.europa.eu/gemet/concept/51\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (incoming) in graph \\\"urn:graph-verity:nl-ask-v1:development:gemet\\\": variable ?step1 -- predicate IRI \\\"http://www.w3.org/2004/02/skos/core#related\\\" --> IRI \\\"http://www.eionet.europa.eu/gemet/concept/51\\\".\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start from entity 1 (acid rain) in graph 1. Use predicate 1 (related). Traverse reverse to find subjects that have a 'related' relation pointing to entity 1. Return matching subject IDs.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-13",
+      "completed": true,
+      "bytes": 410,
+      "raw_sha256": "0a046d48f0da83471781070420bea198e99e6aa2591255b623ad8ea9a8c6f1ff",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:gemet\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.eionet.europa.eu/gemet/concept/51\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:gemet\",\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#related\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:5e51fde510dadd050147556553729056a90f83782cf1792638f545b2d1712926\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:gemet\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:gemet\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.eionet.europa.eu/gemet/concept/51\"\n          },\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#related\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:gemet\\\"]\",\n      \"Start at IRI \\\"http://www.eionet.europa.eu/gemet/concept/51\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:gemet\\\": IRI \\\"http://www.eionet.europa.eu/gemet/concept/51\\\" -- predicate IRI \\\"http://www.w3.org/2004/02/skos/core#related\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Interpreting 'sur nedbør' as entity 1 in graph 1. The question asks for 'direkte relaterte begreper' (directly related concepts). Predicate 6 is 'http://www.w3.org/2004/02/skos/core#related'. Forward traversal from subject 1 using predicate 6 yields the related objects.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-17",
+      "completed": true,
+      "bytes": 582,
+      "raw_sha256": "dfc6e1cc3272b3f838bbdfb52d81e725542aff2f6f8fd99c004500b3bde75a5c",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_needs_clarification\",\n  \"display_rationale\": \"The question asks for the website of 'Campus'. The entity 'Campus' (id:1) is an alias for 'Universitetet i Tromsø' (id:2). The website 'https://en.uit.no/startsida' is linked to the alias 'Campus', but the question could also refer to the main entity 'Universitetet i Tromsø' which has multiple websites ('https://en.uit.no/startsida' and 'https://uit.no'). Clarification is needed to determine if the user wants the website associated with the alias 'Campus' or the main entity 'Universitetet i Tromsø'.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-20",
+      "completed": true,
+      "bytes": 282,
+      "raw_sha256": "68f33d4e817719109a322707a210306d1972fa5cf5b7edeb8a320bd3d40a2229",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"The question requires a multi-hop traversal (acid rain -> broader concept -> label). The instructions explicitly forbid multiple hops, returning only an unsupported status with a rationale explaining the limitation.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-24",
+      "completed": true,
+      "bytes": 531,
+      "raw_sha256": "145feb79a2e27adae7bfd9663565551c79826f9ddbef3b1684477c779f8a9a91",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"The question asks for a 'rector', but the provided graph tables contain no predicate or entity representing a rector, president, or head of institution. The available predicates in graph 3 (Wikidata) are label, altLabel, located in (P131), official name (P1448), country (P17), inception (P571), official website (P856), and in graph 1 (GEMET) are type, broader, definition, narrower, prefLabel, related. None of these represent a person holding a leadership role.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-59",
+      "completed": true,
+      "bytes": 277,
+      "raw_sha256": "404445232964f5565b50d19a8d85891132d3d15c4a54f928aaa9a37789b505f3",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.w3.org/2000/01/rdf-schema#label\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:b543c5db5c9de20150b0db2b7045272b211265f1158c8755d0759acc781d9158\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.w3.org/2000/01/rdf-schema#label\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.w3.org/2000/01/rdf-schema#label\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity 1 (Q279724) in graph 3 uses predicate 1 (rdfs:label) to retrieve all label values stored as objects in the forward direction.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-04",
+      "completed": true,
+      "bytes": 251,
+      "raw_sha256": "c9304f636486ab80bf9ff3572778806dbe78f804034b48fac41508e66943a161",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:gemet\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.eionet.europa.eu/gemet/concept/51\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:gemet\",\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#definition\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:5acdf7462e54e80da7d9a83be4042e89e7581b630dcbbd39741f8443cb359b7e\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:gemet\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:gemet\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.eionet.europa.eu/gemet/concept/51\"\n          },\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#definition\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:gemet\\\"]\",\n      \"Start at IRI \\\"http://www.eionet.europa.eu/gemet/concept/51\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:gemet\\\": IRI \\\"http://www.eionet.europa.eu/gemet/concept/51\\\" -- predicate IRI \\\"http://www.w3.org/2004/02/skos/core#definition\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Querying graph 1 for entity 1 (acid rain) using predicate 1 (definition) to retrieve stored definition literals.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-10",
+      "completed": true,
+      "bytes": 300,
+      "raw_sha256": "d6b6148e89168044b53671c4b76a59eaf5f610e811c56722e5c4d20a57e6eda5",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:geonames\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"urn:graph-verity:worldcities:admin:SE:Norrbotten\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:geonames\",\n          \"predicate\": \"https://schema.org/containedInPlace\",\n          \"direction\": \"reverse\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:9374565b327196737e300f49da33775a8bd31d2328c86b2127b01134ad8ffe4c\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:geonames\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:geonames\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"urn:graph-verity:worldcities:admin:SE:Norrbotten\"\n          },\n          \"predicate\": \"https://schema.org/containedInPlace\",\n          \"direction\": \"reverse\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:geonames\\\"]\",\n      \"Start at IRI \\\"urn:graph-verity:worldcities:admin:SE:Norrbotten\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (incoming) in graph \\\"urn:graph-verity:nl-ask-v1:development:geonames\\\": variable ?step1 -- predicate IRI \\\"https://schema.org/containedInPlace\\\" --> IRI \\\"urn:graph-verity:worldcities:admin:SE:Norrbotten\\\".\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start from entity 1 (Norrbotten) in graph 2. Use predicate 1 (containedInPlace). Traverse reverse to find subjects (cities) that have Norrbotten as their object.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-14",
+      "completed": true,
+      "bytes": 260,
+      "raw_sha256": "82e512c7129db259dd7634b7850494ec22f5d8cdfe12d1cc4850926e1b5afde1",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:gemet\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.eionet.europa.eu/gemet/concept/51\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:gemet\",\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#prefLabel\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:f88ba71ff16c8e28cc9bd32cdaa68534baacceb2c9d79f401e18773c9d8761ca\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:gemet\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:gemet\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.eionet.europa.eu/gemet/concept/51\"\n          },\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#prefLabel\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:gemet\\\"]\",\n      \"Start at IRI \\\"http://www.eionet.europa.eu/gemet/concept/51\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:gemet\\\": IRI \\\"http://www.eionet.europa.eu/gemet/concept/51\\\" -- predicate IRI \\\"http://www.w3.org/2004/02/skos/core#prefLabel\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Query retrieves all prefLabel literals for entity 1 (acid rain) in graph 1, preserving language tags from stored triples.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-47",
+      "completed": true,
+      "bytes": 589,
+      "raw_sha256": "b429a41e0869b6f723d4303530a987fa55e657ff6295e270977e64e296d1ba5b",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_needs_clarification\",\n  \"display_rationale\": \"The question 'Which country contains Campus?' is ambiguous. 'Campus' is an alias (id=2) for the entity 'Universitetet i Tromsø' (id=4) in graph 3. The user likely wants to know the country of the university. However, the question could also be interpreted as asking for the country containing the literal string 'Campus' if it were an entity, or it might refer to a different campus. Since the start entity 'Campus' is an alias for a specific university, the intended start entity is the university (id=4). The '\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-21",
+      "completed": true,
+      "bytes": 254,
+      "raw_sha256": "06c4445ad4c0042ece9cf037866d7c056b4235dab9a9ae86d6530e2bb50ed274",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"The question requests a deletion operation ('Slett' = delete), which is a write action. The system instructions explicitly forbid write operations, returning only a status of unsupported.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-57",
+      "completed": true,
+      "bytes": 365,
+      "raw_sha256": "cfdb9c83e4d7f8250ac16ed0c77f9d5e1aa03f1572cc23483b4aae9041891315",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"The question asks for an email address, but the provided graph data for University of Tromsø (entity Q279724) contains labels, aliases, location, official names, country, inception date, and official website URLs. There is no predicate or data representing an email address in the supplied tables.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-60",
+      "completed": true,
+      "bytes": 274,
+      "raw_sha256": "dd78ebf33ca79e11e0510514509630df0a7778849451f9bdd37a156dcfb7d50a",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.w3.org/2000/01/rdf-schema#label\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:b543c5db5c9de20150b0db2b7045272b211265f1158c8755d0759acc781d9158\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.w3.org/2000/01/rdf-schema#label\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.w3.org/2000/01/rdf-schema#label\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Query retrieves all label values for entity Q279724 (id 1) in graph 3, ignoring embedded commands in the text data as per instructions.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-05",
+      "completed": true,
+      "bytes": 351,
+      "raw_sha256": "c2fe6de36f8f9534b6fce963802fdddec9fefb6c3aa6edb913e4a6c35bd0511e",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:gemet\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.eionet.europa.eu/gemet/concept/51\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:gemet\",\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#broader\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:24470fa03c3feca5a80521ef02b2891a1e45f39a91c1393d03a7e4aa5ff79cea\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:gemet\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:gemet\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.eionet.europa.eu/gemet/concept/51\"\n          },\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#broader\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:gemet\\\"]\",\n      \"Start at IRI \\\"http://www.eionet.europa.eu/gemet/concept/51\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:gemet\\\": IRI \\\"http://www.eionet.europa.eu/gemet/concept/51\\\" -- predicate IRI \\\"http://www.w3.org/2004/02/skos/core#broader\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"The question asks for the broader concept of 'sur nedbør' (entity 1). Entity 1 has a 'broader' relation (predicate 2) pointing to entity 636. The traversal is forward from subject 1 to object 636 within graph 1.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-35",
+      "completed": true,
+      "bytes": 324,
+      "raw_sha256": "308c7146153798d13e6336c190ccd9eab2879d595cf824cc240d08ab1dfff2b1",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"https://uit.no\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"reverse\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:dd44a2f833ee492613d2f92a9e3f13657974578f4762d76fa423671d78e878f6\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"https://uit.no\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"reverse\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"https://uit.no\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (incoming) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": variable ?step1 -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P856\\\" --> IRI \\\"https://uit.no\\\".\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Interpret 'institution' as Wikidata entity Q279724 (id 1) and 'official web page' as predicate P856 (id 1) in graph 3. Reverse traversal from object 'https://uit.no' to subject Q279724.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-31",
+      "completed": true,
+      "bytes": 325,
+      "raw_sha256": "e5d19780b1c35b2bb0851cfe1a9d5a3e7e05a10e5b1a96df813341955e5557fe",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:f2baaa5ca7a4c35126d75e358a50ed8b20e91d006189a1252c285477196ba6e7\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P1448\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start with entity 1 (University of Tromsø) in graph 3. Use predicate 4 (official name) to retrieve all matching literal objects representing the official names recorded for this entity.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-48",
+      "completed": true,
+      "bytes": 516,
+      "raw_sha256": "8b998043c13661a98a9ab9f3df9eedb57b845136b0a506dff1b790780d9aa776",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_needs_clarification\",\n  \"display_rationale\": \"The question asks for the country of 'Campus'. The entity 'Campus' (id=1) is an alias for 'Universitetet i Tromsø' (id=2). While 'Universitetet i Tromsø' has a country relation (predicate id=6), the question specifically names 'Campus'. Clarification is needed to confirm if the user intends to query the country of the entity associated with the alias 'Campus' or if 'Campus' refers to a different entity not present in the provided data.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-58",
+      "completed": true,
+      "bytes": 343,
+      "raw_sha256": "0b9f7d1fec65fb2831051db664f4e69e62ed13afab31e2795fe4c1dcf308ef47",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_unsupported\",\n  \"display_rationale\": \"The question asks for an email address, but the provided graph data for Universitetet i Tromsø (entity id 1) contains labels, aliases, location, names, country, inception date, and website URLs. There is no stored relation or data for an email address in the supplied tables.\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-06",
+      "completed": true,
+      "bytes": 355,
+      "raw_sha256": "60664d3c2fddd87517c00bd2f1a2fd019d4c70e25bc9161d8931f6289825f55a",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:geonames\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"https://sws.geonames.org/603570/\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:geonames\",\n          \"predicate\": \"https://schema.org/identifier\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:4b4a3ec72d190d9bac8e825316cfd3fc38090bdcbd6035a3280bf356771cad4f\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:geonames\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:geonames\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"https://sws.geonames.org/603570/\"\n          },\n          \"predicate\": \"https://schema.org/identifier\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:geonames\\\"]\",\n      \"Start at IRI \\\"https://sws.geonames.org/603570/\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:geonames\\\": IRI \\\"https://sws.geonames.org/603570/\\\" -- predicate IRI \\\"https://schema.org/identifier\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"The question asks for the identifier of the city with GeoNames ID 603570. Entity 1 corresponds to this city in graph 2. Predicate 1 is the identifier property in graph 2. Forward traversal retrieves the object value.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-36",
+      "completed": true,
+      "bytes": 429,
+      "raw_sha256": "fd1f10740e33436231d6cd8f43f994b25b4fd1b925f1d46e0c2d365f37a918ec",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"https://uit.no\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:cd76722e404f55141700eed71fbe31e8720b5eb0488d117dcfe16e138293539d\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"https://uit.no\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"https://uit.no\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"https://uit.no\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P856\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Interpreting 'Hvilken institusjon har https://uit.no som offisiell nettside?' as a request for the subject of the relation 'official website' (P856) where the object is the entity with IRI 'https://uit.no' (id 1) in graph 3. The stored evidence shows Q279724 is the subject for this object.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-32",
+      "completed": true,
+      "bytes": 268,
+      "raw_sha256": "a6fa4966d39000e405d2b7d5996180ba6a6af3055f5464506da39b08609ebfa3",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:f2baaa5ca7a4c35126d75e358a50ed8b20e91d006189a1252c285477196ba6e7\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P1448\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity 1 (University of Tromsø) in graph 3 uses predicate 4 (official name) to retrieve all language-coded official names.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-49",
+      "completed": true,
+      "bytes": 242,
+      "raw_sha256": "4af907fbb3d64d67e516dd1cf4d5b924a009c217366a92610fabdc725e9b9d80",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.w3.org/2000/01/rdf-schema#label\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:b543c5db5c9de20150b0db2b7045272b211265f1158c8755d0759acc781d9158\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.w3.org/2000/01/rdf-schema#label\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.w3.org/2000/01/rdf-schema#label\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity 1 (University of Tromsø) in graph 3 uses predicate 1 (label) to retrieve its name values.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-25",
+      "completed": true,
+      "bytes": 408,
+      "raw_sha256": "9ef6ae9045bd09bb4fc98528ff48b90c52d4bd064bf378820951e27458464fe3",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P17\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:080fe3e5a8ac09779d6f30ae65138fde2a653869730d629dab2e9842d6ee78e8\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P17\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P17\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"The question asks for the country of Universitetet i Tromsø. The entity 'Universitetet i Tromsø' is identified as ID 1 in graph 3. The predicate for 'country' is P17 (ID 5) in graph 3. Traversing forward from the entity using this predicate yields the country entity.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-37",
+      "completed": true,
+      "bytes": 488,
+      "raw_sha256": "9875704a5ec7b4e3ffc05241243f166d6cabdd58a13feb856d381fc98464cb2f",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"https://en.uit.no/startsida\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"reverse\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:09ac38afb992071c19badb44fa515e60d97a2609061b05c99ac749760719f8d1\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"https://en.uit.no/startsida\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"reverse\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"https://en.uit.no/startsida\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (incoming) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": variable ?step1 -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P856\\\" --> IRI \\\"https://en.uit.no/startsida\\\".\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity is 'https://en.uit.no/startsida' (id=1) in graph 3. Predicate is 'http://www.wikidata.org/prop/direct/P856' (id=2) which represents 'official website'. Direction is reverse to find the subject (owner) of this website. The stored relation connects subject 'http://www.wikidata.org/entity/Q279724' to object 'https://en.uit.no/startsida'.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-33",
+      "completed": true,
+      "bytes": 281,
+      "raw_sha256": "0921afee73c94b8b69b5fe514c9564931beeb668345d89806567ec54cad5fbfe",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:622d8010fb4582c71c7e7ce3613ac2dcbc942f6b4f97744639f084dc18fcec70\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P856\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start with entity 1 (Universitetet i Tromsø) in graph 3. Use predicate 7 (official website) to find outgoing links. Return the object values.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-50",
+      "completed": true,
+      "bytes": 341,
+      "raw_sha256": "f4b1bcfbc6b59fc717ce2f3b68ba208f3336777a4d276f9dbaa656369298a81b",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:f2baaa5ca7a4c35126d75e358a50ed8b20e91d006189a1252c285477196ba6e7\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P1448\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P1448\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Interprets 'Universitetet i Tromsø' as entity 1 in graph 3. Predicate 4 is 'official name' (P1448). Forward traversal retrieves the literal values for this entity's official names in various languages.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-26",
+      "completed": true,
+      "bytes": 400,
+      "raw_sha256": "cb9f364bb07a32e28ae75626089d4f9e7b7b88cb23a9a942b98d3a7093c5e505",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P17\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:080fe3e5a8ac09779d6f30ae65138fde2a653869730d629dab2e9842d6ee78e8\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P17\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P17\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"The question asks for the country of 'University of Tromsø'. The entity 'University of Tromsø' is identified as ID 1 in graph 3. The predicate for 'country' is P17, which corresponds to ID 5 in graph 3. The direction is forward to retrieve the country entity.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-38",
+      "completed": true,
+      "bytes": 381,
+      "raw_sha256": "a7e686a3b04afdb20470b136c54507e33943af87dba01bf14e5eb78a4354467b",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"https://en.uit.no/startsida\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#altLabel\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:cb47cea9e327006130dfe9636c08dfed176aa2a0fd6e870bc3db65bf3698d65e\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"https://en.uit.no/startsida\"\n          },\n          \"predicate\": \"http://www.w3.org/2004/02/skos/core#altLabel\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"https://en.uit.no/startsida\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"https://en.uit.no/startsida\\\" -- predicate IRI \\\"http://www.w3.org/2004/02/skos/core#altLabel\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"The question asks for the official website (predicate id 1) of the entity 'https://en.uit.no/startsida' (entity id 1) in graph 3. The stored relation is outgoing from the subject to the object, so we traverse forward to find the object value.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-34",
+      "completed": true,
+      "bytes": 302,
+      "raw_sha256": "b9ce95ce3f437804778f0d9a69ab20008fc5a86adb2d87aad97fb191fa297369",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:622d8010fb4582c71c7e7ce3613ac2dcbc942f6b4f97744639f084dc18fcec70\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P856\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P856\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity is University of Tromsø (id 1) in graph 3. Predicate 7 is 'official website'. Forward traversal retrieves the object values (URLs) for this relation.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-27",
+      "completed": true,
+      "bytes": 285,
+      "raw_sha256": "4c35695acf92c128f842775bb4bc26761273a987e618fc161de4be0972bc0d3d",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P131\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:0ff32b5653d6bcb08d5ad9eb9b84b8a8fc6a576e8a2782d8136c96a6ffdaedfa\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P131\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P131\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity 1 (University of Tromsø) in graph 3 uses predicate 3 (located in the administrative territorial entity) to find containing entities.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-39",
+      "completed": true,
+      "bytes": 314,
+      "raw_sha256": "3039a4ea34646b9b68263d907333b622791579d7e5bf3af587bfb9a53f147406",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q20\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P17\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:523cc851d26a36eb5eeffc403891d7e138cbb659fb6e960c5cce31517e84890c\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q20\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P17\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q20\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q20\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P17\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity is Q20 (Norway) in graph 3. Predicate is P17 (country). Forward traversal finds subjects where Q20 is the object of P17. Evidence shows Q279724 is such a subject.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-28",
+      "completed": true,
+      "bytes": 509,
+      "raw_sha256": "87992d846fe3483a94d3fdf27e676a39ac113f8eeef9e44b7c0d08681bfeda0f",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P131\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:0ff32b5653d6bcb08d5ad9eb9b84b8a8fc6a576e8a2782d8136c96a6ffdaedfa\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P131\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P131\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"The question asks for the administrative entity containing 'Universitetet i Tromsø'. The entity ID 1 corresponds to 'Universitetet i Tromsø' in graph 3. The predicate ID 3 corresponds to 'located in the administrative territorial entity' (P131). Traversing forward from the subject (entity 1) using this predicate yields the object, which is the administrative entity.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-40",
+      "completed": true,
+      "bytes": 588,
+      "raw_sha256": "37122ae2f8e9d69fba3a90de41cf44fbc5f9868013b4edff175c4ceb0fc1c849",
+      "preview": {
+        "accepted": true,
+        "candidate": false,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"model_needs_clarification\",\n  \"display_rationale\": \"The question asks for the 'country' (land) of a 'subject' (lagret subjekt) where the object is Norway (Q20). The provided data contains an incoming edge for Q20 with predicate P17 (country) from subject Q279724. However, the question phrasing 'Hvilket lagret subjekt har Norge (Q20) som land?' implies finding the subject that has Norway as its country. The data shows Q279724 has Norway as its country. The ambiguity lies in whether 'lagret subjekt' refers to the specific entity Q279724 found in the data or if\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-29",
+      "completed": true,
+      "bytes": 281,
+      "raw_sha256": "76c8c5d08acb0d57b596c29f86da292c95d8445d3b92a5aa8f249461a4b0be2a",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P571\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:1c69036b61e440312f73d35e66065afcb285ba3e766f99aeba1d185627c0529e\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P571\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P571\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start entity is University of Tromsø (id 1, graph 3). Predicate is inception (id 6, graph 3). Forward traversal retrieves the inception date.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-41",
+      "completed": true,
+      "bytes": 311,
+      "raw_sha256": "109abd1bfef8f3bc3e3a1e4182e44c64cdf3569afa660cf5cf1998e176ca287a",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q26087\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P131\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:efd7e3b199429ad64546a042bf19b4cabf67f769cbefc6cdd5bedbee3cac0cd1\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q26087\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P131\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q26087\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q26087\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P131\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Start with entity 1 (Q26087) in graph 3. Follow predicate 1 (P131) forward to find subjects where Q26087 is the object. Evidence shows entity 2 (Q279724) is such a subject.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-30",
+      "completed": true,
+      "bytes": 369,
+      "raw_sha256": "2da97d4e9199fb5c3ae6cd9e552d4542656d5a099f0bd99814cf69912460f0ca",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q279724\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P571\",\n          \"direction\": \"forward\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:1c69036b61e440312f73d35e66065afcb285ba3e766f99aeba1d185627c0529e\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q279724\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P571\",\n          \"direction\": \"forward\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q279724\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (outgoing) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": IRI \\\"http://www.wikidata.org/entity/Q279724\\\" -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P571\\\" --> variable ?step1.\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Interpreting 'Når ble Universitetet i Tromsø grunnlagt' as a request for the inception date of entity 1 (Universitetet i Tromsø) using predicate 6 (inception) in graph 3, traversing forward from the subject to the object value.\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    },
+    {
+      "id": "alpha-42",
+      "completed": true,
+      "bytes": 396,
+      "raw_sha256": "ce506c12e5b6fd1763cc08d656d9582e8d5f7fe637bf315c79d076df9918231b",
+      "preview": {
+        "accepted": true,
+        "candidate": true,
+        "returncode": 0,
+        "stdout": "{\n  \"status\": \"candidate\",\n  \"request\": {\n    \"version\": 1,\n    \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n    \"scope\": [\n      \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n    ],\n    \"template\": {\n      \"kind\": \"follow_path\",\n      \"start\": \"http://www.wikidata.org/entity/Q26087\",\n      \"steps\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P131\",\n          \"direction\": \"reverse\"\n        }\n      ],\n      \"filter\": null,\n      \"output\": \"values\"\n    },\n    \"limit\": 20\n  },\n  \"preview\": {\n    \"status\": \"awaiting_confirmation\",\n    \"experimental\": true,\n    \"approval_id\": \"sha256:7ff23d43230b98ae9badc51070b904e0312fc9f5a0b40772093f4bcdd1775fa7\",\n    \"plan\": {\n      \"version\": 1,\n      \"snapshot_id\": \"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\",\n      \"scope\": [\n        \"urn:graph-verity:nl-ask-v1:development:wikidata\"\n      ],\n      \"patterns\": [\n        {\n          \"graph\": \"urn:graph-verity:nl-ask-v1:development:wikidata\",\n          \"from\": {\n            \"kind\": \"iri\",\n            \"iri\": \"http://www.wikidata.org/entity/Q26087\"\n          },\n          \"predicate\": \"http://www.wikidata.org/prop/direct/P131\",\n          \"direction\": \"reverse\",\n          \"to\": {\n            \"kind\": \"variable\",\n            \"name\": \"step1\"\n          }\n        }\n      ],\n      \"filters\": [],\n      \"projection\": [\n        {\n          \"kind\": \"variable\",\n          \"name\": \"step1\"\n        }\n      ],\n      \"group_by\": [],\n      \"having\": [],\n      \"limit\": 20\n    },\n    \"summary\": [\n      \"Immutable snapshot: \\\"sha256:48f0c13ddab7ce2a7881509192be30c1fe08693b4e7df5991e68cb302c20561b\\\"\",\n      \"Exact authorized named-graph scope: [\\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\"]\",\n      \"Start at IRI \\\"http://www.wikidata.org/entity/Q26087\\\". All steps must match (a conjunction); only explicit stored triples are used.\",\n      \"Step 1 (incoming) in graph \\\"urn:graph-verity:nl-ask-v1:development:wikidata\\\": variable ?step1 -- predicate IRI \\\"http://www.wikidata.org/prop/direct/P131\\\" --> IRI \\\"http://www.wikidata.org/entity/Q26087\\\".\",\n      \"Typed filters: none.\",\n      \"Return distinct ?step1 values; intermediate nodes are not returned.\",\n      \"Row limit: 20 (including count rows). Evidence limit: 200 triples; timeout: 5000 ms. Rows and evidence may be truncated separately.\"\n    ],\n    \"ambiguity\": \"exact_iris_required; no_label_resolution_or_natural_language_interpretation\",\n    \"limitations\": \"Confirmation records your choice, not proof of correct interpretation or expert review. Execution verification, source evidence and real-world truth are separate. Missing facts remain unknown. Experimental prototype; user need and usability are unproven; no production/release GO.\"\n  },\n  \"display_rationale\": \"Interpreting 'Hvilken institusjon har Tromsø (Q26087) som administrativ beliggenhet?' as a reverse traversal on graph 3 starting from entity 1 (Tromsø) using predicate 1 (located in the administrative territorial entity) to find the subject (institution).\",\n  \"interpretation_correctness\": \"not_assessed\"\n}\n",
+        "stderr": ""
+      },
+      "matches_original_preview": true
+    }
+  ],
+  "registered_score_reproduced": true,
+  "scorer_sha256": "42e422538881210aa22276b43cac16f507945c0a75d56bd260e732a2b21b219f",
+  "rust_binary_sha256": "16744c50a0b1e89eca6374696e6004ca9782bff4ed59834a7e5ad97485f4b2db",
+  "inference_performed": false,
+  "executions": 0
+}
