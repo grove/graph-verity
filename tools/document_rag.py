@@ -254,36 +254,16 @@ def load_index(manifest_path: Path, index_path: Path, scope: str):
             not isinstance(payload["chunks"], list) or
             not 1 <= len(payload["chunks"]) <= MAX_CHUNKS):
         raise ValueError("Index documents do not match the selected sources")
-    by_id = {record["id"]: (record, source) for record, source, _ in sources}
-    seen = set()
-    for chunk in payload["chunks"]:
-        if not isinstance(chunk, dict):
-            raise ValueError("Invalid indexed passage")
-        doc_id = chunk.get("document_id")
-        if doc_id not in by_id:
-            raise ValueError("Index contains unapproved document")
-        record, source = by_id[doc_id]
-        span = chunk.get("span")
-        if not isinstance(span, dict):
-            raise ValueError("Invalid source span")
-        start, end = span.get("start_byte"), span.get("end_byte")
-        if (type(start) is not int or type(end) is not int or
-                not 0 <= start < end <= len(source)):
-            raise ValueError("Indexed source offset is invalid")
-        excerpt = source[start:end].decode("utf-8")
-        identity = (doc_id, start, end)
-        frequency = Counter(tokens(excerpt))
-        if (identity in seen or excerpt != chunk.get("text") or
-                chunk.get("citation_id") != passage_id(record, start, end) or
-                chunk.get("source") != record["path"] or
-                chunk.get("version_digest") != record["sha256"] or
-                chunk.get("scope") != scope or
-                chunk.get("language") != record["language"] or
-                chunk.get("license") != record["license"] or
-                chunk.get("tf") != dict(frequency) or
-                chunk.get("length") != sum(frequency.values())):
-            raise ValueError("Stored passage cannot be verified against original bytes")
-        seen.add(identity)
+    # The embedded SHA-256 is a corruption check, not an authentication tag.
+    # Reconstruct expected source chunks so even a repacked index cannot silently
+    # drop passages, swap rankings or invent citation targets.
+    expected_chunks = [
+        chunk
+        for record, original, text in sources
+        for chunk in chunks_for(record, original, text)
+    ]
+    if payload["chunks"] != expected_chunks:
+        raise ValueError("Stored passages cannot be verified against original bytes")
     return index
 
 
