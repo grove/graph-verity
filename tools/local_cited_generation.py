@@ -16,7 +16,13 @@ import os
 from pathlib import Path
 import re
 import stat
+import socket
+import subprocess
+import threading
 import time
+import uuid
+
+from local_parser import process_tree_rss
 
 import document_rag as documents
 import grounded_rag as evidence
@@ -26,7 +32,7 @@ BACKEND = "llama.cpp-openai-chat-loopback-v1"
 MAX_COMPLETION_BYTES = 16 * 1024
 MAX_PROMPT_BYTES = 16 * 1024
 MAX_QUOTE = 280
-MAX_REGISTRATION_BYTES = 4096
+MAX_REGISTRATION_BYTES = 8192
 MAX_AUTHORIZATION_BYTES = 4096
 MAX_MODEL_BYTES = 12 * 1024**3
 MAX_EXECUTABLE_BYTES = 128 * 1024**2
@@ -71,13 +77,17 @@ def _sha_file(path: str, max_size: int) -> str:
     p = Path(path)
     require(p.is_absolute() and not p.is_symlink() and p.is_file(),
             "Registered asset must be an absolute regular non-symlink file")
-    size = p.stat().st_size
+    before = p.stat()
+    size = before.st_size
     require(0 < size <= max_size, "Registered asset exceeds size budget")
     digest = hashlib.sha256()
     with p.open("rb") as stream:
         for block in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(block)
-    require(p.stat().st_size == size, "Registered asset changed while hashing")
+    after = p.stat()
+    require(all(getattr(before, key) == getattr(after, key) for key in
+                ("st_dev", "st_ino", "st_size", "st_mtime_ns", "st_ctime_ns")),
+            "Registered asset changed while hashing")
     return "sha256:" + digest.hexdigest()
 
 
@@ -88,8 +98,12 @@ def load_registration(path: Path) -> dict:
         "model_sha256", "runtime_path", "runtime_sha256",
         "system_prompt_sha256", "context_tokens", "max_output_tokens",
         "timeout_seconds", "seed", "temperature",
+        "runtime_revision", "model_revision", "gguf_revision", "server_pid",
+        "server_started", "chat_template_path", "chat_template_sha256",
+        "tokenizer_config_path", "tokenizer_config_sha256",
+        "tokenizer_path", "tokenizer_sha256", "cpu_threads", "gpu_layers",
     }, "Incorrect local runtime registration")
-    require(reg["version"] == 1 and reg["backend"] == BACKEND and
+    require(reg["version"] == 2 and reg["backend"] == BACKEND and
             reg["host"] == "127.0.0.1", "Only explicitly registered local endpoint allowed")
     require(type(reg["port"]) is int and 1024 <= reg["port"] <= 65535,
             "Unbounded local port")
@@ -101,7 +115,7 @@ def load_registration(path: Path) -> dict:
             32 <= reg["max_output_tokens"] <= 256 and
             reg["max_output_tokens"] < reg["context_tokens"] // 2, "Unbounded completion")
     require(type(reg["timeout_seconds"]) is int and
-            5 <= reg["timeout_seconds"] <= 120, "Unbounded model timeout")
+            5 <= reg["timeout_seconds"] <= 300, "Unbounded model timeout")
     require(type(reg["seed"]) is int and 0 <= reg["seed"] <= 2**31 - 1 and
             type(reg["temperature"]) in (int, float) and
             reg["temperature"] == 0, "Non-deterministic decoding not supported")
@@ -114,8 +128,23 @@ def load_registration(path: Path) -> dict:
             reg["runtime_sha256"], "Wrong runtime asset")
     require(_sha_file(reg["model_path"], MAX_MODEL_BYTES) ==
             reg["model_sha256"], "Wrong model asset")
-    # Asset checks do NOT attest which binary/model is serving the TCP port.
-    # Operator must separately verify the quiescent local host and server PID.
+    require(type(reg["cpu_threads"]) is int and reg["cpu_threads"] == 4 and
+            type(reg["gpu_layers"]) is int and reg["gpu_layers"] == 0,
+            "First trial requires four CPU threads and zero GPU layers")
+    require(type(reg["server_pid"]) is int and reg["server_pid"] > 1 and
+            type(reg["server_started"]) is str and
+            0 < len(reg["server_started"]) <= 64, "Missing server process identity")
+    for key in ("runtime_revision", "model_revision", "gguf_revision"):
+        require(type(reg[key]) is str and re.fullmatch(r"[0-9a-f]{40}", reg[key]),
+                "Missing immutable revision")
+    for prefix in ("chat_template", "tokenizer_config", "tokenizer"):
+        require(_sha_file(reg[prefix + "_path"], 16 * 1024**2) ==
+                reg[prefix + "_sha256"], "Wrong " + prefix + " identity")
+    config = json.loads(documents.limited_file(
+        Path(reg["tokenizer_config_path"]), 64 * 1024))
+    require(documents.sha(config["chat_template"].encode("utf-8")) ==
+            reg["chat_template_sha256"], "Template differs from tokenizer configuration")
+    # These are separate observations, not proof of resident model tensors.
     return reg
 
 
@@ -199,18 +228,26 @@ def check_answer(packet: dict, candidate, *, actual_model: bool = False) -> dict
     }
 
 
-def _read_authorization(path: Path, packet: dict, reg: dict) -> dict:
+def _read_authorization(path: Path, packet: dict, reg: dict, ledger: Path) -> dict:
     auth = json.loads(documents.limited_file(path, MAX_AUTHORIZATION_BYTES))
     require(type(auth) is dict and set(auth) == {
         "version", "authorization_id", "action", "registration_sha256",
         "packet_sha256", "question_sha256", "scope", "expires_utc",
-        "host_preflight", "owner_approved",
+        "host_preflight", "owner_approved", "owner_identity",
+        "trial_id", "ledger_path", "request_sha256",
     }, "Incorrect run authorization")
     require(auth["version"] == 1 and
             auth["action"] == "one_shot_local_document_answer" and
             auth["owner_approved"] is True and
             auth["host_preflight"] == "operator_verified_quiescent_host",
             "Separate owner approval and host preflight required")
+    require(type(auth["owner_identity"]) is str and
+            IDENTIFIER.fullmatch(auth["owner_identity"]), "Missing owner identity")
+    require(type(auth["trial_id"]) is str and IDENTIFIER.fullmatch(auth["trial_id"]),
+            "Missing trial identity")
+    require(auth["ledger_path"] == str(ledger) and auth["request_sha256"] ==
+            documents.sha(request_payload(reg, build_messages(packet))),
+            "Approval does not bind this ledger and exact request")
     require(type(auth["authorization_id"]) is str and
             IDENTIFIER.fullmatch(auth["authorization_id"]),
             "Invalid authorization identifier")
@@ -231,7 +268,7 @@ def _read_authorization(path: Path, packet: dict, reg: dict) -> dict:
     return auth
 
 
-def _reserve_once(ledger: Path, auth: dict, packet: dict, reg: dict):
+def _reserve_once(ledger: Path, auth: dict, packet: dict, reg: dict, run_id: str):
     require(ledger.is_dir() and not ledger.is_symlink() and
             stat.S_IMODE(ledger.stat().st_mode) & 0o077 == 0,
             "Use an existing private (0700) non-symlink inference ledger directory")
@@ -245,6 +282,8 @@ def _reserve_once(ledger: Path, auth: dict, packet: dict, reg: dict):
         with os.fdopen(fd, "w", encoding="utf-8") as output:
             json.dump({
                 "version": 1, "authorization_id": auth["authorization_id"],
+                "run_id": run_id, "owner_identity": auth["owner_identity"],
+                "trial_id": auth["trial_id"],
                 "registration_sha256": fingerprint(reg),
                 "packet_sha256": fingerprint(packet),
                 "status": "consumed_before_any_inference",
@@ -253,111 +292,348 @@ def _reserve_once(ledger: Path, auth: dict, packet: dict, reg: dict):
             output.write("\n")
             output.flush()
             os.fsync(output.fileno())
+        directory = os.open(ledger, os.O_RDONLY)
+        try:
+            os.fsync(directory)
+        finally:
+            os.close(directory)
     except BaseException:
         # Even failed writes do not restore a consumed authorization.
         raise
 
 
-def request_local_completion(reg: dict, messages: list[dict]):
-    """Single bounded HTTP request to a previously operator-started loopback server.
+def server_command(reg: dict) -> list[str]:
+    """The one controlled CPU command; never executed by this adapter."""
+    return [reg["runtime_path"], "--model", reg["model_path"],
+            "--host", "127.0.0.1", "--port", str(reg["port"]),
+            "--alias", reg["model_name"], "--threads", "4", "--threads-batch", "4",
+            "--n-gpu-layers", "0", "--ctx-size", str(reg["context_tokens"]),
+            "--parallel", "1", "--n-predict", str(reg["max_output_tokens"]),
+            "--no-warmup", "--jinja", "--chat-template-file", reg["chat_template_path"]]
 
-    No HTTP redirects, proxy resolution, shell commands or external requests.
-    This does NOT start or attest the model process; that is the owner's separate
-    runtime/host preflight duty before admitting an inference.
-    """
-    request = {
+
+def _command(args):
+    try:
+        return subprocess.run(args, capture_output=True, text=True,
+                              check=True, timeout=5).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        return None
+
+
+def host_observation(reg: dict) -> dict:
+    """Read-only macOS observations. Missing evidence blocks admission."""
+    swap = _command(["sysctl", "vm.swapusage"])
+    pressure = _command(["memory_pressure", "-Q"])
+    processes = _command(["ps", "-axo", "pid=,ppid=,pcpu=,rss=,comm="])
+    swap_match = re.search(r"used\s*=\s*([\d.]+)M", swap or "")
+    free_match = re.search(r"memory free percentage:\s*(\d+)%", pressure or "")
+    started = _command(["ps", "-p", str(reg["server_pid"]), "-o", "lstart="])
+    command = _command(["ps", "-ww", "-p", str(reg["server_pid"]), "-o", "command="])
+    listener = _command(["lsof", "-nP", "-a", "-p", str(reg["server_pid"]),
+                         "-iTCP:" + str(reg["port"]), "-sTCP:LISTEN", "-Fn"])
+    rows = []
+    complete = bool(processes)
+    for line in (processes or "").splitlines():
+        fields = line.split(None, 4)
+        try:
+            require(len(fields) == 5, "Incomplete process row")
+            rows.append(dict(pid=int(fields[0]), ppid=int(fields[1]),
+                             cpu=float(fields[2]), rss_kib=int(fields[3]),
+                             executable=fields[4]))
+        except ValueError:
+            complete = False
+    competing = [p for p in rows if p["pid"] != reg["server_pid"] and any(
+        name in p["executable"].lower() for name in
+        ("llama", "ollama", "mlx", "embedding", "gnn", "torch"))]
+    host = dict(captured_utc=datetime.now(timezone.utc).isoformat(),
+                load_per_cpu=os.getloadavg()[0] / (os.cpu_count() or 1),
+                hardware=_command(["sysctl", "-n", "machdep.cpu.brand_string"]),
+                ram_bytes=_command(["sysctl", "-n", "hw.memsize"]),
+                swap_raw=swap, memory_pressure_raw=pressure,
+                vm_stat=_command(["vm_stat"]), processes=rows,
+                swap_used_mib=float(swap_match[1]) if swap_match else "unmeasured",
+                memory_free_percent=int(free_match[1]) if free_match else "unmeasured",
+                server_started=started, server_command=command, listener=listener,
+                competing_model_processes=competing,
+                process_inventory="observed" if complete and rows else "unmeasured")
+    return host
+
+
+def admit_host(reg: dict, host: dict):
+    require(host["hardware"] == "Apple M1 Pro" and host["ram_bytes"] == str(32 * 1024**3),
+            "Host is not the registered M1 Pro / 32 GiB")
+    require(type(host["swap_used_mib"]) in (int, float) and host["swap_used_mib"] <= 1024 and
+            type(host["memory_free_percent"]) is int and host["memory_free_percent"] >= 40,
+            "Host memory/swap admission failed or unmeasured")
+    require(host["load_per_cpu"] <= .75, "Host CPU contention")
+    require(host["process_inventory"] == "observed" and
+            not host["competing_model_processes"], "Competing models or unmeasured processes")
+    require(any(p["pid"] == reg["server_pid"] and 0 < p["rss_kib"] <= 8 * 1024**2
+                for p in host["processes"]), "Runtime RSS unavailable or over budget")
+    require(host["server_started"] == reg["server_started"] and
+            host["server_command"] == " ".join(server_command(reg)),
+            "Runtime unavailable or server process identity changed")
+    listeners = [x[1:] for x in (host["listener"] or "").splitlines() if x.startswith("n")]
+    require(listeners == ["127.0.0.1:" + str(reg["port"])],
+            "Runtime PID is not the sole registered loopback listener")
+
+
+class RunMemory:
+    """Sample external server and client trees; shared pages may be double counted."""
+    def __init__(self, pid):
+        self.pid = pid
+        self.done = threading.Event()
+        self.worker = threading.Thread(target=self.sample, daemon=True)
+        self.metrics = dict(samples=0, model_peak_rss_kib="unmeasured",
+                            model_tree_peak_rss_kib="unmeasured",
+                            total_tree_peak_rss_kib="unmeasured", error=None)
+        self.exceeded = False
+        self.abort = None
+
+    def sample(self):
+        while not self.done.is_set():
+            table = _command(["ps", "-axo", "pid=,ppid=,rss="])
+            try:
+                rows = [tuple(map(int, row.split())) for row in (table or "").splitlines()]
+                require(any(pid == self.pid and rss > 0 for pid, _, rss in rows), "Server RSS unmeasured")
+                values = dict(model_peak_rss_kib=next(rss for pid, _, rss in rows if pid == self.pid),
+                              model_tree_peak_rss_kib=process_tree_rss(table, [self.pid]),
+                              total_tree_peak_rss_kib=process_tree_rss(table, [self.pid, os.getpid()]))
+                for key, value in values.items():
+                    prior = self.metrics[key]
+                    self.metrics[key] = max(prior if type(prior) is int else value, value)
+                self.metrics["samples"] += 1
+                self.exceeded |= values["total_tree_peak_rss_kib"] > 8 * 1024**2
+                if self.exceeded and self.abort is not None:
+                    self.abort()
+            except (ValueError, TypeError) as exc:
+                self.metrics["error"] = str(exc)
+            self.done.wait(.2)
+
+
+def _private_write(path: Path, raw: bytes):
+    fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+    with os.fdopen(fd, "wb") as stream:
+        stream.write(raw)
+        stream.flush()
+        os.fsync(stream.fileno())
+
+
+def request_payload(reg: dict, messages: list[dict]) -> bytes:
+    raw = documents.serialized({
         "model": reg["model_name"], "messages": messages,
         "temperature": 0, "seed": reg["seed"], "stream": False,
-        "max_tokens": reg["max_output_tokens"],
-    }
-    raw = documents.serialized(request)
+        "max_tokens": reg["max_output_tokens"], "cache_prompt": False,
+    })
     require(len(raw) < MAX_PROMPT_BYTES + 8192, "Oversized generation request")
+    # UTF-8 byte count is a conservative token upper bound for this byte-BPE model.
+    require(sum(len(m["content"].encode("utf-8")) for m in messages) + 256 +
+            reg["max_output_tokens"] <= reg["context_tokens"], "Context byte/token budget exceeded")
+    return raw
+
+
+def request_local_completion(reg: dict, messages: list[dict], *, receipt=None, run=None, memory=None):
+    """One bounded request, retaining exact received bytes even on rejection."""
+    receipt = receipt if receipt is not None else {}
+    receipt.update(http_status="unmeasured", finish_reason="unmeasured",
+                   token_usage="unmeasured", reported_model_alias="unmeasured")
+    raw = request_payload(reg, messages)
     conn = http.client.HTTPConnection("127.0.0.1", reg["port"],
                                       timeout=reg["timeout_seconds"])
+    payload = bytearray()
+    exchange_started = time.monotonic()
+    receipt["http_started_utc"] = datetime.now(timezone.utc).isoformat()
+    deadline = exchange_started + reg["timeout_seconds"]
     try:
-        conn.request("POST", "/v1/chat/completions", raw, {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Connection": "close",
-        })
-        response = conn.getresponse()
-        require(response.status == 200, "Local generation endpoint unavailable")
-        payload = response.read(MAX_COMPLETION_BYTES + 1)
-        require(len(payload) <= MAX_COMPLETION_BYTES, "Oversized local model response")
+        conn.connect()
+        # Bound the whole exchange, including slow headers/body, rather than each read.
+        sock = conn.sock
+        def disconnect():
+            try:
+                sock.shutdown(socket.SHUT_RDWR)
+            except OSError:
+                pass
+        if memory is not None:
+            memory.abort = disconnect
+        def expire():
+            receipt["deadline_expired"] = True
+            disconnect()
+        timer = threading.Timer(max(.001, deadline - time.monotonic()), expire)
+        timer.daemon = True
+        timer.start()
+        try:
+            receipt["request_send_attempted"] = True
+            conn.request("POST", "/v1/chat/completions", raw, {
+                "Content-Type": "application/json", "Accept": "application/json",
+                "Connection": "close",
+            })
+            response = conn.getresponse()
+            receipt["http_status"] = response.status
+            receipt["response_headers"] = {key: response.getheader(key, "")[:256]
+                                           for key in ("Content-Type", "Content-Length", "Server")}
+            while len(payload) <= MAX_COMPLETION_BYTES:
+                try:
+                    block = response.read1(min(4096, MAX_COMPLETION_BYTES + 1 - len(payload)))
+                except http.client.IncompleteRead as exc:
+                    payload.extend(exc.partial[:MAX_COMPLETION_BYTES + 1 - len(payload)])
+                    receipt["body_read_error"] = "incomplete_read"
+                    raise
+                if not block:
+                    break
+                payload.extend(block)
+            receipt["response_truncated_by_limit"] = len(payload) > MAX_COMPLETION_BYTES
+            require(not receipt.get("deadline_expired"), "Local generation deadline expired")
+            require(response.status == 200, "Local generation endpoint unavailable")
+            require(len(payload) <= MAX_COMPLETION_BYTES, "Oversized local model response")
+            length = response.getheader("Content-Length")
+            require(length is None or int(length) == len(payload), "Disconnected/truncated HTTP body")
+        finally:
+            timer.cancel()
     finally:
         conn.close()
+        receipt["http_ended_utc"] = datetime.now(timezone.utc).isoformat()
+        receipt["http_elapsed_ms"] = round((time.monotonic() - exchange_started) * 1000, 2)
+        retained = bytes(payload[:MAX_COMPLETION_BYTES])
+        receipt["retained_response_bytes"] = len(retained)
+        receipt["raw_response_sha256"] = documents.sha(retained)
+        if run is not None:
+            _private_write(run / "response.bin", retained)
     decoded = json.loads(payload.decode("utf-8"))
-    require(type(decoded) is dict and
-            decoded.get("model") == reg["model_name"] and
-            type(decoded.get("choices")) is list and
-            len(decoded["choices"]) == 1, "Unexpected model or response envelope")
+    require(type(decoded) is dict, "Malformed response envelope")
+    receipt["reported_model_alias"] = decoded.get("model")
+    receipt["token_usage"] = decoded.get("usage", "unmeasured")
+    choices = decoded.get("choices")
+    if type(choices) is list and len(choices) == 1 and type(choices[0]) is dict:
+        receipt["finish_reason"] = choices[0].get("finish_reason")
+    require(decoded.get("model") == reg["model_name"] and
+            type(decoded.get("choices")) is list and len(decoded["choices"]) == 1,
+            "Unexpected model or response envelope")
     choice = decoded["choices"][0]
+    receipt["finish_reason"] = choice.get("finish_reason") if type(choice) is dict else None
     require(type(choice) is dict and choice.get("finish_reason") == "stop" and
             type(choice.get("message")) is dict and
             type(choice["message"].get("content")) is str,
             "Truncated or malformed model completion")
     answer = choice["message"]["content"]
-    require(len(answer.encode("utf-8")) <= evidence.MAX_CANDIDATE,
-            "Unbounded generated text")
+    require(len(answer.encode("utf-8")) <= evidence.MAX_CANDIDATE, "Unbounded generated text")
     return json.loads(answer)
 
 
 def attempt_generation(packet: dict, manifest: Path, index_path: Path,
                        scope: str, reg_path: Path, approval_path: Path,
                        ledger: Path, *, transport=request_local_completion) -> dict:
-    """One model request only if an owner-supplied one-use admission matches."""
-    if not packet["document_evidence"]:
-        return evidence.fallback(packet, reason="no_document_evidence")
-    messages = build_messages(packet)
-    registration = load_registration(reg_path)
-    authorization = _read_authorization(approval_path, packet, registration)
-    # Refresh source witness immediately before consuming the one-use approval.
-    require(evidence.retrieve(manifest, index_path, scope,
-                              packet["question"], packet["language"],
-                              min(evidence.MAX_EVIDENCE,
-                                  max(1, len(packet["document_evidence"])))) == packet,
-            "Current document evidence changed before generation")
-    _reserve_once(ledger, authorization, packet, registration)
+    """Reserve once before transport; private receipts survive failed admission too."""
+    require(ledger.is_absolute() and ledger.resolve() == ledger and ledger.is_dir() and
+            stat.S_IMODE(ledger.stat().st_mode) & 0o077 == 0,
+            "Use an explicitly selected private non-symlink ledger directory")
+    run = ledger / ("run-" + uuid.uuid4().hex)
+    run.mkdir(mode=0o700)
     started = time.monotonic()
+    receipt = dict(version=2, run_id=run.name, started_utc=datetime.now(timezone.utc).isoformat(),
+                   model_request_attempted=False, request_send_attempted=False,
+                   transport_kind="native_http" if transport is request_local_completion else "synthetic_test",
+                   citation_check="not_run", error=None, final_view=None,
+                   server_inference_execution="unattested_http_request_only")
+    memory = None
+    result = None
     try:
-        candidate = transport(registration, messages)
-        # Do not return a model answer if a source changed while generation ran.
-        require(evidence.retrieve(manifest, index_path, scope, packet["question"],
-                                  packet["language"], max(
-                                      1, len(packet["document_evidence"]))) == packet,
-                "Document sources changed during inference")
-        result = check_answer(packet, candidate, actual_model=True)
-        if result["status"] != "generated_checked_extractive":
-            result = evidence.fallback(packet, reason="model_abstained")
-    except (ValueError, OSError, UnicodeError, KeyError, TypeError,
-            json.JSONDecodeError, http.client.HTTPException):
-        # Recheck even on timeout/invalid output: revoked or edited sources
-        # must never leak through an old packet's deterministic fallback.
+        _private_write(run / "packet.json", documents.serialized(packet))
+        if not packet["document_evidence"]:
+            result = evidence.fallback(packet, reason="no_document_evidence")
+            return result
+        messages = build_messages(packet)
+        _private_write(run / "registration-input.json", documents.limited_file(
+            reg_path, MAX_REGISTRATION_BYTES))
+        _private_write(run / "authorization-input.json", documents.limited_file(
+            approval_path, MAX_AUTHORIZATION_BYTES))
+        registration = load_registration(reg_path)
+        authorization = _read_authorization(approval_path, packet, registration, ledger)
+        raw_request = request_payload(registration, messages)
+        host = host_observation(registration)
+        prepared = dict(registration=registration, authorization=authorization,
+                        registration_sha256=fingerprint(registration),
+                        packet_sha256=fingerprint(packet), question_sha256=documents.sha(
+                            packet["question"].encode("utf-8")), language=packet["language"],
+                        scope=scope, retrieval=packet["retrieval"],
+                        prompt_sha256=fingerprint(messages), request_sha256=documents.sha(raw_request),
+                        server_command=server_command(registration), host_before=host,
+                        adapter_sha256=documents.sha(Path(__file__).read_bytes()))
+        _private_write(run / "prepared.json", documents.serialized(prepared))
+        _private_write(run / "request.json", raw_request)
+        admit_host(registration, host)
+        require(scope == packet["document_scope"], "Wrong selected scope")
+        require(evidence.retrieve(manifest, index_path, scope,
+                                  packet["question"], packet["language"],
+                                  max(1, len(packet["document_evidence"]))) == packet,
+                "Current document evidence changed before generation")
+        require(_read_authorization(approval_path, packet, registration, ledger) == authorization,
+                "Authorization changed during preflight")
+        _reserve_once(ledger, authorization, packet, registration, run.name)
+        memory = RunMemory(registration["server_pid"])
+        memory.worker.start()
+        receipt["model_request_attempted"] = True
         try:
-            still_current = evidence.retrieve(
-                manifest, index_path, scope, packet["question"],
-                packet["language"], max(1, len(packet["document_evidence"]))) == packet
-        except (ValueError, OSError, UnicodeError, KeyError, TypeError):
-            still_current = False
-        if still_current:
+            try:
+                if transport is request_local_completion:
+                    candidate = transport(registration, messages, receipt=receipt, run=run, memory=memory)
+                else:
+                    candidate = transport(registration, messages)
+                    _private_write(run / "synthetic-candidate.json", documents.serialized(candidate))
+            finally:
+                memory.done.set()
+                memory.worker.join(timeout=6)
+            receipt["host_after"] = host_observation(registration)
+            admit_host(registration, receipt["host_after"])
+            require(memory.metrics["samples"] > 0 and memory.metrics["error"] is None,
+                    "Request memory sampling incomplete or unmeasured")
+            require(not memory.exceeded, "Sampled process-tree memory budget exceeded")
+            receipt["citation_check"] = "checking"
+            result = check_answer(packet, candidate, actual_model=True)
+            receipt["citation_check"] = ("exact_quote_and_citation_only" if
+                result["status"] == "generated_checked_extractive" else "model_abstained")
+        except (ValueError, OSError, UnicodeError, KeyError, TypeError,
+                http.client.HTTPException) as exc:
+            receipt["error"] = dict(type=type(exc).__name__, message=str(exc)[:1024])
+            receipt["citation_check"] = ("rejected" if receipt["citation_check"] == "checking"
+                                          else "not_run")
             result = evidence.fallback(packet, reason="inference_or_grounding_failed")
+        # Recheck even after timeout or invalid output; never leak a stale fallback.
+        try:
+            current = evidence.retrieve(manifest, index_path, scope, packet["question"],
+                                        packet["language"], max(1, len(packet["document_evidence"]))) == packet
+        except (ValueError, OSError, UnicodeError, KeyError, TypeError):
+            current = False
+        receipt["sources_still_current"] = current
+        if not current:
+            result = dict(status="source_unavailable", reason="source_changed_during_inference",
+                          answer=None, evidence=[], model_invoked=False,
+                          completeness={**packet["completeness"], "documents_status": "stale_source"},
+                          semantic_entailment="not_assessed")
+        result.update(model_request_attempted=True, registered_model_alias=registration["model_name"],
+                      run_authorization_id=authorization["authorization_id"],
+                      receipt_directory=str(run),
+                      actual_model_attestation="separate_disk_process_endpoint_observations_only")
+        return result
+    except BaseException as exc:
+        receipt["error"] = dict(type=type(exc).__name__, message=str(exc)[:1024])
+        raise
+    finally:
+        if memory is not None:
+            memory.done.set()
+            if memory.worker.ident is not None:
+                memory.worker.join(timeout=6)
+            receipt["memory"] = {**memory.metrics, "budget_exceeded": memory.exceeded,
+                                 "scope": "sampled_request_window_excludes_server_startup"}
+            if "host_after" not in receipt:
+                receipt["host_after"] = host_observation(registration)
         else:
-            result = {
-                "status": "source_unavailable",
-                "reason": "source_changed_during_inference",
-                "answer": None, "evidence": [], "model_invoked": False,
-                "completeness": {
-                    **packet["completeness"], "documents_status": "stale_source"
-                },
-                "semantic_entailment": "not_assessed",
-            }
-    # A request was attempted; do not turn it into a model-free success claim.
-    result["model_request_attempted"] = True
-    result["registered_model_alias"] = registration["model_name"]
-    result["run_authorization_id"] = authorization["authorization_id"]
-    result["elapsed_ms"] = round((time.monotonic() - started) * 1000, 2)
-    result["actual_model_attestation"] = "operator_host_preflight_required"
-    return result
+            receipt["memory"] = "unmeasured"
+        receipt["ended_utc"] = datetime.now(timezone.utc).isoformat()
+        receipt["elapsed_ms"] = round((time.monotonic() - started) * 1000, 2)
+        if result is not None:
+            result["elapsed_ms"] = receipt["elapsed_ms"]
+        receipt["final_view"] = result
+        _private_write(run / "receipt.json", documents.serialized(receipt))
 
 
 def main(argv=None):
@@ -396,6 +672,8 @@ def main(argv=None):
                     view = evidence.fallback(packet, reason="saved_completion_rejected")
             else:
                 view = evidence.fallback(packet, reason="inference_not_authorized")
+        if view.get("status") == "source_unavailable":
+            packet = None  # Revoked source excerpts must also leave the CLI envelope.
         print(json.dumps({"packet": packet, "view": view}, ensure_ascii=False,
                          sort_keys=True, indent=2))
     except (ValueError, OSError, UnicodeError, TypeError, KeyError,

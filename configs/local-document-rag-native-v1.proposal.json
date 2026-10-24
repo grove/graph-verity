@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "status": "PROPOSAL_NOT_AUTHORIZATION",
+  "trial_id": "document-rag-native-cpu-v1",
+  "model": {
+    "repository": "Qwen/Qwen3-4B-Instruct-2507",
+    "revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+    "license": "Apache-2.0",
+    "mode": "instruct_non_thinking"
+  },
+  "gguf": {
+    "repository": "unsloth/Qwen3-4B-Instruct-2507-GGUF",
+    "revision": "a06e946bb6b655725eafa393f4a9745d460374c9",
+    "file": "Qwen3-4B-Instruct-2507-Q4_K_M.gguf",
+    "quantization": "Q4_K_M",
+    "published_bytes": 2497281120,
+    "published_sha256": "sha256:3605803b982cb64aead44f6c1b2ae36e3acdb41d8e46c8a94c6533bc4c67e597",
+    "local_bytes_verified": false
+  },
+  "tokenizer_config_sha256": "sha256:a62ff0a2472a0fa1b8eaabcb57c59b58afa42a22831dc141400b6e0cf2b65ce3",
+  "chat_template_sha256": "sha256:64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326",
+  "published_tokenizer_json_sha256": "sha256:aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+  "runtime": {
+    "repository": "ggml-org/llama.cpp",
+    "revision": null,
+    "binary_sha256": null,
+    "build_flags": [
+      "-DGGML_METAL=OFF",
+      "-DGGML_BLAS=OFF",
+      "-DGGML_ACCELERATE=OFF",
+      "-DLLAMA_CURL=OFF",
+      "-DBUILD_SHARED_LIBS=OFF",
+      "-DCMAKE_BUILD_TYPE=Release"
+    ],
+    "compatibility": "upstream documents Qwen3 GGUF; exact build and packaging remain unverified"
+  },
+  "limits": {
+    "cpu_threads": 4,
+    "gpu_layers": 0,
+    "context_tokens": 8192,
+    "max_output_tokens": 256,
+    "temperature": 0,
+    "seed": 7,
+    "concurrency": 1,
+    "retries": 0,
+    "startup_timeout_seconds": 300,
+    "request_timeout_seconds": 300,
+    "host_min_free_percent": 40,
+    "host_max_swap_mib": 1024,
+    "host_max_load_per_cpu": 0.75,
+    "sampled_total_tree_max_gib": 8,
+    "host": "127.0.0.1",
+    "port": 8095
+  },
+  "sources_manifest_sha256": "sha256:e53192a75e2a78c9072beb09be297888935a9da22b0c604bfc97eeb8c7d4dbc9",
+  "unverified": [
+    "Runtime revision/build/binary and startup behavior",
+    "Local weight bytes and GGUF embedded tokenizer metadata",
+    "Quantizer source revision/conversion provenance and native-vs-GGUF token equivalence",
+    "Actual M1 Pro RAM/swap/contention/thermal state and latency/peak memory",
+    "Owner selection of source corpus and human relevance/conflict review"
+  ],
+  "inference_occurred": false
+}
