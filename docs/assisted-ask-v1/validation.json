@@ -1,0 +1,687 @@
+{
+  "decision": "INCONCLUSIVE_REVISE",
+  "candidate_commit": "be8d0a71af5728e1fb1d5833f195073b0b424589",
+  "command": "REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py",
+  "working_directory": "/private/tmp/graph-verity-assisted-verify",
+  "isolated_build": true,
+  "pipeline": {
+    "version": 1,
+    "status": "passed",
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "logical_cpus_visible": 10,
+    "python": "3.12.14 (main, Aug 14 2026, 15:24:41) [Clang 22.1.3 ]",
+    "github_run_id": null,
+    "commands": [
+      {
+        "label": "git-revision",
+        "args": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.012004708987660706
+      },
+      {
+        "label": "initial-clean-tree",
+        "args": [
+          "git",
+          "diff",
+          "--exit-code",
+          "HEAD"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.4012761249905452
+      },
+      {
+        "label": "rust-version",
+        "args": [
+          "rustc",
+          "-Vv"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.028099833987653255
+      },
+      {
+        "label": "dependency-fetch",
+        "args": [
+          "cargo",
+          "fetch",
+          "--locked"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.06503745797090232
+      },
+      {
+        "label": "reporting-tests-0",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/run_python_tests.py",
+          "current",
+          "0"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 339.67769604100613
+      },
+      {
+        "label": "reporting-tests-1",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/run_python_tests.py",
+          "current",
+          "1"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 215.77429758396465
+      },
+      {
+        "label": "python-frozen-history",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/run_python_tests.py",
+          "frozen-history"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 45.96394466701895
+      },
+      {
+        "label": "nl-ask-frozen-history",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/run_python_tests.py",
+          "nl-ask-history"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 60.917790540959686
+      },
+      {
+        "label": "retrieval-freeze",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/retrieval.py",
+          "verify"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.034184041956905276
+      },
+      {
+        "label": "issue9-forensics",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/issue9_forensics.py",
+          "verify",
+          "--out",
+          "/private/tmp/graph-verity-assisted-verify/artifacts/pre-llm/issue9-forensics.json"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.046868041972629726
+      },
+      {
+        "label": "format",
+        "args": [
+          "cargo",
+          "fmt",
+          "--all",
+          "--check"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.1934783750330098
+      },
+      {
+        "label": "clippy",
+        "args": [
+          "cargo",
+          "clippy",
+          "--workspace",
+          "--all-targets",
+          "--locked",
+          "--offline",
+          "--",
+          "-D",
+          "warnings"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 5.818014249962289
+      },
+      {
+        "label": "rust-tests",
+        "args": [
+          "cargo",
+          "test",
+          "--workspace",
+          "--locked",
+          "--offline"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 13.04344779200619
+      },
+      {
+        "label": "question-vocabulary-replay",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/run_python_tests.py",
+          "question-vocabulary"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 20.352327417000197
+      },
+      {
+        "label": "hybrid-source-scope-canary",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/hybrid_retrieval.py",
+          "scope-canary",
+          "--binary",
+          "target/debug/verity"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 4.0243289169739
+      },
+      {
+        "label": "hybrid-native-lexical-replay",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/hybrid_retrieval.py",
+          "verify-lexical",
+          "--binary",
+          "target/debug/verity",
+          "--out",
+          "reports/issue-50-real-rdf-hybrid/run"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 2.8496276670484804
+      },
+      {
+        "label": "selective-current-lexical",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/frozen_pilot.py",
+          "selective-current"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 3.3787660840316676
+      },
+      {
+        "label": "smoke",
+        "args": [
+          "cargo",
+          "run",
+          "--locked",
+          "--offline",
+          "--quiet",
+          "-p",
+          "verity_cli",
+          "--",
+          "smoke",
+          "tests/fixtures/smoke.trig",
+          "trig"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.4385874170111492
+      },
+      {
+        "label": "dataset-verify",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/dataset.py",
+          "verify"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 2.1185399999958463
+      },
+      {
+        "label": "dataset-rebuild",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/dataset.py",
+          "rebuild",
+          "/private/tmp/graph-verity-assisted-verify/artifacts/pre-llm/rebuilt.nq"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 1.0739222089760005
+      },
+      {
+        "label": "gold-verify",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/benchmark.py",
+          "verify"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 2.257761707995087
+      },
+      {
+        "label": "worldcities-transfer-source",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/worldcities_transfer.py",
+          "verify"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.08939216699218377
+      },
+      {
+        "label": "worldcities-transfer-reference",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/verify_worldcities_benchmark.py",
+          "verify"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.2649945419980213
+      },
+      {
+        "label": "review-report",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/benchmark.py",
+          "review"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 2.263325417006854
+      },
+      {
+        "label": "schema",
+        "args": [
+          "cargo",
+          "run",
+          "--locked",
+          "--offline",
+          "--quiet",
+          "-p",
+          "verity_cli",
+          "--",
+          "schema"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.4563507499988191
+      },
+      {
+        "label": "inspect",
+        "args": [
+          "cargo",
+          "run",
+          "--locked",
+          "--offline",
+          "--quiet",
+          "-p",
+          "verity_cli",
+          "--",
+          "inspect",
+          "data/wikidata/snapshot.nq",
+          "nquads"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.46143812499940395
+      },
+      {
+        "label": "catalog-first",
+        "args": [
+          "cargo",
+          "run",
+          "--locked",
+          "--offline",
+          "--quiet",
+          "-p",
+          "verity_cli",
+          "--",
+          "catalog",
+          "data/wikidata/snapshot.nq",
+          "nquads",
+          "data/wikidata/policy.json",
+          "data/wikidata/scope.json"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.47423379198880866
+      },
+      {
+        "label": "catalog-second",
+        "args": [
+          "cargo",
+          "run",
+          "--locked",
+          "--offline",
+          "--quiet",
+          "-p",
+          "verity_cli",
+          "--",
+          "catalog",
+          "data/wikidata/snapshot.nq",
+          "nquads",
+          "data/wikidata/policy.json",
+          "data/wikidata/scope.json"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.46715695899911225
+      },
+      {
+        "label": "oracle",
+        "args": [
+          "cargo",
+          "run",
+          "--locked",
+          "--offline",
+          "--quiet",
+          "-p",
+          "verity_cli",
+          "--",
+          "evaluate",
+          "data/wikidata/snapshot.nq",
+          "nquads",
+          "data/wikidata/policy.json",
+          "benchmarks/wikidata.json",
+          "dev",
+          "/private/tmp/graph-verity-assisted-verify/artifacts/pre-llm/oracle"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 1.0126613340107724
+      },
+      {
+        "label": "worldcities-transfer-oracle",
+        "args": [
+          "cargo",
+          "run",
+          "--locked",
+          "--offline",
+          "--quiet",
+          "-p",
+          "verity_cli",
+          "--",
+          "evaluate",
+          "data/worldcities-transfer/snapshot.nq",
+          "nquads",
+          "data/worldcities-transfer/policy.json",
+          "benchmarks/worldcities-transfer.json",
+          "transfer_dev",
+          "/private/tmp/graph-verity-assisted-verify/artifacts/pre-llm/worldcities-transfer-oracle"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 1.0389501249883324
+      },
+      {
+        "label": "locked-evaluation-denied",
+        "args": [
+          "cargo",
+          "run",
+          "--locked",
+          "--offline",
+          "--quiet",
+          "-p",
+          "verity_cli",
+          "--",
+          "evaluate",
+          "data/wikidata/snapshot.nq",
+          "nquads",
+          "data/wikidata/policy.json",
+          "PRIVATE_NOT_PRESENT_DO_NOT_OPEN",
+          "locked_holdout",
+          "/private/tmp/graph-verity-assisted-verify/artifacts/pre-llm/never-created"
+        ],
+        "returncode": 1,
+        "expected_success": false,
+        "elapsed_seconds": 0.4748027499881573
+      },
+      {
+        "label": "phase0-historical-report",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/phase0.py",
+          "report",
+          "--out",
+          "/private/tmp/graph-verity-assisted-verify/artifacts/pre-llm/phase0-0683ta__/baseline"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.7738033329951577
+      },
+      {
+        "label": "phase0-rust-replay",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/phase0.py",
+          "replay",
+          "--out",
+          "/private/tmp/graph-verity-assisted-verify/artifacts/pre-llm/phase0-0683ta__/replay"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 1.4225507500232197
+      },
+      {
+        "label": "phase0-baseline-integrity",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/phase0.py",
+          "verify",
+          "/private/tmp/graph-verity-assisted-verify/artifacts/pre-llm/phase0-0683ta__/baseline/manifest.json",
+          "--check-inputs"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.0527602499932982
+      },
+      {
+        "label": "phase0-replay-integrity",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/phase0.py",
+          "verify",
+          "/private/tmp/graph-verity-assisted-verify/artifacts/pre-llm/phase0-0683ta__/replay/manifest.json",
+          "--check-inputs"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.05288845900213346
+      },
+      {
+        "label": "phase0-run-comparison",
+        "args": [
+          "/private/tmp/graph-verity-assisted-verify/.venv/bin/python",
+          "tools/phase0.py",
+          "compare",
+          "/private/tmp/graph-verity-assisted-verify/artifacts/pre-llm/phase0-0683ta__/baseline",
+          "/private/tmp/graph-verity-assisted-verify/artifacts/pre-llm/phase0-0683ta__/replay"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.05803012504475191
+      },
+      {
+        "label": "manual",
+        "args": [
+          "cargo",
+          "run",
+          "--locked",
+          "--offline",
+          "--quiet",
+          "-p",
+          "verity_cli",
+          "--",
+          "run",
+          "data/wikidata/snapshot.nq",
+          "nquads",
+          "data/wikidata/policy.json",
+          "examples/manual-plan.json"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.49191899999277666
+      },
+      {
+        "label": "replay",
+        "args": [
+          "cargo",
+          "run",
+          "--locked",
+          "--offline",
+          "--quiet",
+          "-p",
+          "verity_cli",
+          "--",
+          "replay",
+          "data/wikidata/snapshot.nq",
+          "nquads",
+          "data/wikidata/policy.json",
+          "data/wikidata/scope.json",
+          "examples/question.txt",
+          "examples/fixture-response.json"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.4893271659966558
+      },
+      {
+        "label": "invalid-response",
+        "args": [
+          "cargo",
+          "run",
+          "--locked",
+          "--offline",
+          "--quiet",
+          "-p",
+          "verity_cli",
+          "--",
+          "replay",
+          "data/wikidata/snapshot.nq",
+          "nquads",
+          "data/wikidata/policy.json",
+          "data/wikidata/scope.json",
+          "examples/question.txt",
+          "examples/invalid-response.json"
+        ],
+        "returncode": 1,
+        "expected_success": false,
+        "elapsed_seconds": 0.4778118749964051
+      },
+      {
+        "label": "unsupported-response",
+        "args": [
+          "cargo",
+          "run",
+          "--locked",
+          "--offline",
+          "--quiet",
+          "-p",
+          "verity_cli",
+          "--",
+          "replay",
+          "data/wikidata/snapshot.nq",
+          "nquads",
+          "data/wikidata/policy.json",
+          "data/wikidata/scope.json",
+          "examples/question.txt",
+          "examples/unsupported-response.json"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.4765264170127921
+      },
+      {
+        "label": "final-clean-tree",
+        "args": [
+          "git",
+          "diff",
+          "--exit-code",
+          "HEAD"
+        ],
+        "returncode": 0,
+        "expected_success": true,
+        "elapsed_seconds": 0.016007333993911743
+      }
+    ],
+    "model_invoked": false,
+    "holdout_evaluated": false,
+    "git_commit": "be8d0a71af5728e1fb1d5833f195073b0b424589",
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13) (Homebrew)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: aarch64-apple-darwin\nrelease: 1.99.1\nLLVM version: 23.1.3",
+    "benchmark_review": {
+      "approved_by_split": {},
+      "decisions": {
+        "pending": 130
+      },
+      "final_ready": false,
+      "initial_ready": false,
+      "version": 1
+    },
+    "transfer_summary": {
+      "different_source_and_ontology": true,
+      "transfer_development_executable_passed": 35,
+      "recorded_abstentions_not_model_tested": 5,
+      "locked_holdout_evaluated": false,
+      "model_transfer_accuracy": null
+    },
+    "summary": {
+      "snapshot_id": "sha256:99e2dda9cf5408ed4b489f07782f18a22eeedd3422c822f3f225efcb26d6b97a",
+      "executable_checks_passed": 38,
+      "executable_checks_total": 38,
+      "recorded_abstention_cases_not_model_tested": 8,
+      "model_accuracy": null,
+      "model_abstention_accuracy": null,
+      "interpretation": "compiler_oracle_against_machine_authored_human_review_pending_gold"
+    }
+  },
+  "current_python_tests": [
+    181,
+    201
+  ],
+  "current_python_skips": 0,
+  "rust_tests_passed": 100,
+  "focused_python_tests": 10,
+  "assisted_browser_sessions_per_focused_run": 8,
+  "focused_rust_tests": 17,
+  "visual_review": "390px Norwegian review screen; automated browser and coding-agent visual inspection, no human study",
+  "passing_focused_runs": [
+    "focused-4.log (before restoring pinned adapter)",
+    "focused-5.log (final adapter)",
+    "both current pipeline shards on unchanged final implementation",
+    "visual-check.log (normal browser rerun)"
+  ],
+  "failed_checks": [
+    "focused-1.log: sandbox loopback",
+    "focused-2.log: fixture snapshot/key/keyboard driver",
+    "focused-3.log: Turtle-vs-NTriples assertion and review focus",
+    "native-preservation.log: original adapter edit violated historical source pin; original bytes restored"
+  ],
+  "failure_simulation": "Timeout/failure exceptions injected only at execution boundary; all successful journeys use real Rust.",
+  "tested_files_sha256": {
+    "tools/assisted_ask.py": "467f52dd5aed445a3cd2444fa2cedba6a89b9c1be4dbffce9355bc27ea5f1a19",
+    "tools/assisted_ask_browser.mjs": "e29b6b4077fcea1e90841249bdcaeac274314bc3617f0188f1328143aed79a7e",
+    "tools/test_assisted_ask.py": "f0479c87fde756438b628639fe657faf7d72f5a23aaf6d7cee5333b9793345e7",
+    "tools/assisted_ask_ui_v1/app.js": "eae869d0df07b270dc20e52620b8d5e3741ff2172706f1ffff09602887d65026",
+    "tools/assisted_ask_ui_v1/index.html": "d06dac355d7253bd46341289d78039b0cc3a39c6bc2ce493cab56588b48da49c",
+    "tools/assisted_ask_ui_v1/style.css": "fbc2ea63c8194d31d773b700bc5e9b21b4a541df1c20bb6717fbb7835b9497e1"
+  },
+  "human_comprehension": "unmeasured; zero independent observations",
+  "further_inference": false,
+  "issue75_live_integration": false,
+  "issue83_closed": false
+}
