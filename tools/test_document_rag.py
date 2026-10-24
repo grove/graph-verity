@@ -1,6 +1,7 @@
 """Model-free #119 tests: source authorization, exact UTF-8 citations and BM25."""
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -162,6 +163,39 @@ class DocumentRagTests(unittest.TestCase):
         self.index_path.write_text("{}", encoding="utf-8")
         with self.assertRaises(ValueError):
             rag.load_index(self.manifest, self.index_path, "public")
+
+    def test_index_rebuild_never_overwrites_private_source_or_foreign_scope(self):
+        original = self.secret.read_bytes()
+        public_index = rag.make_index(self.manifest, "public")
+        with self.assertRaisesRegex(ValueError, "Refuse to overwrite"):
+            rag.write_index(self.secret, public_index, self.manifest)
+        self.assertEqual(self.secret.read_bytes(), original)
+        rag.write_index(self.index_path, public_index, self.manifest)
+        # Rebuilding a verified same-scope index remains supported.
+        rag.write_index(self.index_path, public_index, self.manifest)
+        private_index = rag.make_index(self.manifest, "private")
+        with self.assertRaisesRegex(ValueError, "Refuse to overwrite"):
+            rag.write_index(self.index_path, private_index, self.manifest)
+        self.assertEqual(rag.load_index(self.manifest, self.index_path, "public"),
+                         public_index)
+
+    def test_bm25_rank_and_scores_reproducible_across_hash_seeds(self):
+        self.build()
+        argv = [
+            sys.executable, str(Path(rag.__file__).resolve()), "search",
+            "--manifest", str(self.manifest), "--index", str(self.index_path),
+            "--scope", "public", "--query",
+            "Oslo application deadline søknadsfristen Norge", "--limit", "5",
+        ]
+        outputs = []
+        for seed in ("1", "999"):
+            run = subprocess.run(
+                argv, text=True, capture_output=True, timeout=20,
+                env=dict(os.environ, PYTHONHASHSEED=seed),
+            )
+            self.assertEqual(run.returncode, 0, run.stderr)
+            outputs.append(run.stdout)
+        self.assertEqual(outputs[0], outputs[1])
 
     def test_bad_manifest_missing_license_scope_duplicate_and_path_escape(self):
         original = [dict(record) for record in self.records]
