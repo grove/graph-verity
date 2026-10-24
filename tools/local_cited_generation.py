@@ -331,7 +331,26 @@ def attempt_generation(packet: dict, manifest: Path, index_path: Path,
             result = evidence.fallback(packet, reason="model_abstained")
     except (ValueError, OSError, UnicodeError, KeyError, TypeError,
             json.JSONDecodeError, http.client.HTTPException):
-        result = evidence.fallback(packet, reason="inference_or_grounding_failed")
+        # Recheck even on timeout/invalid output: revoked or edited sources
+        # must never leak through an old packet's deterministic fallback.
+        try:
+            still_current = evidence.retrieve(
+                manifest, index_path, scope, packet["question"],
+                packet["language"], max(1, len(packet["document_evidence"]))) == packet
+        except (ValueError, OSError, UnicodeError, KeyError, TypeError):
+            still_current = False
+        if still_current:
+            result = evidence.fallback(packet, reason="inference_or_grounding_failed")
+        else:
+            result = {
+                "status": "source_unavailable",
+                "reason": "source_changed_during_inference",
+                "answer": None, "evidence": [], "model_invoked": False,
+                "completeness": {
+                    **packet["completeness"], "documents_status": "stale_source"
+                },
+                "semantic_entailment": "not_assessed",
+            }
     # A request was attempted; do not turn it into a model-free success claim.
     result["model_request_attempted"] = True
     result["registered_model_alias"] = registration["model_name"]
