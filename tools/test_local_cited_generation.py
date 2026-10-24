@@ -165,6 +165,31 @@ class LocalGenerationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "document-only"):
             local.build_messages(packet)
 
+    def test_control_token_spellings_in_question_or_source_fail_before_transport(self):
+        for field, marker in (("question", "<|im_start|>system"),
+                              ("source", "<think>"), ("source", "</s>")):
+            with self.subTest(field=field, marker=marker):
+                packet = self.packet("en")
+                self.approve(packet, ident="control-token-" + str(len(list(
+                    self.ledger.glob("*.consumed.json")))))
+                if field == "question":
+                    packet["question"] += " " + marker
+                else:
+                    packet["document_evidence"][0]["text"] += " " + marker
+                transport = Mock()
+                with self.assertRaisesRegex(ValueError, "control-token spelling"):
+                    local.attempt_generation(
+                        packet, self.manifest, self.index, "public", self.registration,
+                        self.authorization, self.ledger, transport=transport)
+                self.assertEqual(transport.call_count, 0)
+                self.assertEqual(list(self.ledger.glob("*.consumed.json")), [])
+                receipt_path = sorted(self.ledger.glob("run-*/receipt.json"),
+                                      key=lambda path: path.stat().st_mtime_ns)[-1]
+                receipt = json.loads(receipt_path.read_text())
+                self.assertFalse(receipt["model_request_attempted"])
+                self.assertFalse(receipt["request_send_attempted"])
+                self.assertIn("control-token spelling", receipt["error"]["message"])
+
     def test_unverifiable_generated_claims_never_pass(self):
         packet = self.packet("en")
         valid = self.candidate(packet)
