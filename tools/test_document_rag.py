@@ -164,6 +164,16 @@ class DocumentRagTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             rag.load_index(self.manifest, self.index_path, "public")
 
+    def test_repacked_index_cannot_silently_drop_authorized_passages(self):
+        self.build()
+        indexed = json.loads(self.index_path.read_text(encoding="utf-8"))
+        self.assertGreater(len(indexed["payload"]["chunks"]), 1)
+        indexed["payload"]["chunks"].pop()
+        indexed["index_sha256"] = rag.sha(rag.serialized(indexed["payload"]))
+        self.index_path.write_text(json.dumps(indexed), encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "cannot be verified"):
+            rag.load_index(self.manifest, self.index_path, "public")
+
     def test_index_rebuild_never_overwrites_private_source_or_foreign_scope(self):
         original = self.secret.read_bytes()
         public_index = rag.make_index(self.manifest, "public")
