@@ -1,0 +1,23 @@
+{
+  "checks": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "tools/ask_alpha_trial_observable_r2.py",
+        "verify"
+      ],
+      "returncode": 0
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "tools/ask_alpha_register_observable_r2.py",
+        "verify"
+      ],
+      "returncode": 0
+    }
+  ],
+  "execution_paths_absent": true,
+  "baseline_files": 1688,
+  "clean_source": true
+}
