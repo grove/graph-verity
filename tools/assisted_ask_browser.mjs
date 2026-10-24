@@ -115,7 +115,9 @@ try {
   await send('Network.enable'); await send('Runtime.enable'); await send('Page.enable');
   await send('Emulation.setDeviceMetricsOverride', {width:1280,height:900,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate', {url});
-  await until("!document.getElementById('preview').disabled");
+  // Page.navigate returns before the new document is guaranteed to exist.
+  // Poll safely through about:blank/loading rather than throwing on null.
+  await until("document.getElementById('preview')?.disabled === false");
   assert.equal(await evaluate("document.getElementById('entity').value"), '');
   assert.equal(await evaluate("document.getElementById('predicate').value"), '');
   assert.equal(await evaluate('location.hash'), '');
