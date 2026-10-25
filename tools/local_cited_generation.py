@@ -42,6 +42,13 @@ ABSOLUTE_CLAIM = re.compile(
     r"\b(?:all|only|none|never|always|every|nothing|no one|"
     r"alle|alltid|ingen|aldri|bare|kun|samtlige)\b", re.IGNORECASE
 )
+# llama.cpp reparses prompt text with special-token recognition enabled.
+QWEN_CONTROL_TOKEN = re.compile(
+    r"<\|(?:endoftext|im_start|im_end|object_ref_start|object_ref_end|"
+    r"box_start|box_end|quad_start|quad_end|vision_start|vision_end|"
+    r"vision_pad|image_pad|video_pad|fim_prefix|fim_middle|fim_suffix|"
+    r"fim_pad|repo_name|file_sep)\|>|</s>|</?(?:think|tool_call|tool_response)>"
+)
 STOP_WORDS = {
     "what", "when", "where", "which", "whose", "this", "that", "does", "have",
     "hva", "hvor", "når", "hvilke", "hvilken", "hvem", "skal", "er", "som",
@@ -159,6 +166,9 @@ def build_messages(packet: dict) -> list[dict]:
                             for item in sources.values()), "No valid document evidence")
     require(not any(item["scope"] != packet["document_scope"]
                     for item in sources.values()), "Cross-scope evidence")
+    require(not any(QWEN_CONTROL_TOKEN.search(text) for text in
+                    [packet["question"], *(item["text"] for item in sources.values())]),
+            "Question or document evidence contains a model control-token spelling")
     source_data = [{
         "citation_id": item["citation_id"],
         "language": item["language"],

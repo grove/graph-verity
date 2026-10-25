@@ -27,8 +27,26 @@ the acquired GGUF architecture, quantization, special token IDs and embedded
 metadata with the pinned runtime's GGUF inspection tooling; compare to the pinned
 official config. Retain that private inspection and build log. The explicit
 `--chat-template-file` selects the official extracted template, but **does not
-replace or validate GGUF tokenizer tensors/metadata**. Any discrepancy stops the
-trial; do not silently patch or substitute another quantization.
+replace or validate GGUF tokenizer tensors/metadata**. A non-generative audit of
+the pinned assets and llama.cpp commit `d327bf1f0780f87b8c01b367b61853b0c291d7c4`
+found that the official and embedded templates produce byte-identical prompts
+and token IDs for this adapter's system-plus-user request path (including its
+assistant generation prefix, with no tools or assistant history). The embedded
+template additionally handles assistant reasoning and history after the last
+user message; that branch is not used by this path. The official override is
+accepted by the pinned runtime. This is a narrow exception for the distinct
+template hashes only; retain and verify both identities, and stop on any other
+tokenizer, model, template-rendering or runtime discrepancy.
+
+The same audit found that llama.cpp reparses the rendered prompt with special
+token recognition enabled, so a special-token spelling inside untrusted question
+or document text becomes a control token even when JSON-quoted. The adapter now
+fails closed if question or retrieved passage text contains one of the pinned
+Qwen tokenizer's special-token spellings. Keep that guard for this supported
+path; rerun the non-generative audit if the tokenizer, GGUF, runtime or request
+format changes. This limitation may
+reject source text containing those spellings, but prevents it from changing
+message boundaries or entering thinking/tool control paths.
 
 Memory planning is an estimate, not a measurement: the file is about 2.33 GiB.
 From the [native config](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507/raw/cdbee75f17c01a7cc42f958dc650907174af0554/config.json),
