@@ -160,6 +160,38 @@ class LocalGenerationTests(unittest.TestCase):
             self.assertIn(answer["answer"], passage["text"])
             self.assertEqual(packet["completeness"]["graph_status"], "not_invoked")
 
+    def test_only_missing_language_is_supplied_from_the_request_packet(self):
+        for language in ("en", "nb"):
+            with self.subTest(language=language):
+                packet = self.packet(language)
+                raw_candidate = self.candidate(packet)
+                raw_candidate.pop("language")
+                diagnostics = {}
+                answer = local.check_answer(packet, raw_candidate, diagnostics=diagnostics)
+                self.assertNotIn("language", raw_candidate)
+                self.assertEqual(answer["answer"], self.candidate(packet)["answer"])
+                self.assertEqual(answer["citation_id"], self.candidate(packet)["citation_id"])
+                self.assertEqual(answer["status"], "checked_saved_output_only")
+                self.assertFalse(answer["model_invoked"])
+                self.assertEqual(diagnostics, answer["validation_diagnostics"])
+                self.assertTrue(diagnostics["normalization_applied"])
+                self.assertEqual(diagnostics["supplied_field"], "language")
+                self.assertEqual(diagnostics["supplied_value"], language)
+                self.assertEqual(diagnostics["value_source"],
+                                 "validated_request_packet.language")
+                self.assertEqual(diagnostics["complete_validator"], "passed")
+
+    def test_unsupported_packet_language_does_not_trigger_normalization(self):
+        packet = self.packet("en")
+        packet["language"] = "xx"
+        candidate = self.candidate(self.packet("en"))
+        del candidate["language"]
+        diagnostics = {}
+        with self.assertRaisesRegex(ValueError, "Unexpected generated fields"):
+            local.check_answer(packet, candidate, diagnostics=diagnostics)
+        self.assertFalse(diagnostics["normalization_applied"])
+        self.assertEqual(diagnostics["complete_validator"], "rejected")
+
     def test_prompt_uses_only_real_selected_scope_and_marks_sources_as_data(self):
         packet = self.packet("en")
         messages = local.build_messages(packet)
@@ -215,14 +247,29 @@ class LocalGenerationTests(unittest.TestCase):
         )
         for change in cases:
             candidate = {**valid, **change}
+            diagnostics = {}
             with self.subTest(change=change), self.assertRaises(ValueError):
-                local.check_answer(packet, candidate, actual_model=True)
+                local.check_answer(packet, candidate, actual_model=True,
+                                   diagnostics=diagnostics)
+            self.assertEqual(diagnostics["complete_validator"], "rejected")
+            self.assertFalse(diagnostics["normalization_applied"])
         with self.assertRaises(ValueError):
             local.check_answer(packet, {"version": local.VERSION, "status": "answer"})
+        missing_answer = {key: value for key, value in valid.items() if key != "answer"}
+        diagnostics = {}
+        with self.assertRaisesRegex(ValueError, "Unexpected generated fields"):
+            local.check_answer(packet, missing_answer, diagnostics=diagnostics)
+        self.assertFalse(diagnostics["normalization_applied"])
+        self.assertEqual(diagnostics["complete_validator"], "rejected")
+        self.assertEqual(diagnostics["rejection_reason"], "Unexpected generated fields")
+        with self.assertRaisesRegex(ValueError, "Unexpected generated fields"):
+            local.check_answer(packet, {**valid, "unexpected": True})
         model_abstention = local.check_answer(
             packet, {"version": local.VERSION, "status": "abstain"},
             actual_model=True)
         self.assertEqual(model_abstention["status"], "source_only")
+        self.assertEqual(model_abstention["validation_diagnostics"]["complete_validator"],
+                         "passed")
 
     def test_reject_wrong_relevance_and_missing_document(self):
         packet = self.packet("en")
@@ -237,6 +284,17 @@ class LocalGenerationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "No valid document"):
             local.build_messages(packet)
         self.assertEqual(existing.fallback(packet)["status"], "no_evidence")
+
+    def test_wrong_source_language_is_rejected_even_with_a_valid_document_citation(self):
+        english = self.packet("en")
+        norwegian = self.packet("nb")
+        wrong_language_source = next(item for item in norwegian["document_evidence"]
+                                     if item["language"] == "nb")
+        english["document_evidence"].append(wrong_language_source)
+        candidate = self.candidate(norwegian)
+        candidate["language"] = "en"
+        with self.assertRaisesRegex(ValueError, "source language"):
+            local.check_answer(english, candidate)
 
     def test_registration_requires_current_pinned_assets_and_local_endpoint(self):
         valid = local.load_registration(self.registration)
@@ -337,6 +395,9 @@ class LocalGenerationTests(unittest.TestCase):
         self.assertEqual(result["reason"], "source_changed_during_inference")
         self.assertEqual(result["evidence"], [])
         self.assertIsNone(result["answer"])
+        receipt = json.loads((Path(result["receipt_directory"]) / "receipt.json").read_bytes())
+        self.assertFalse(receipt["sources_still_current"])
+        self.assertIsNone(receipt["final_view"]["answer"])
 
     def test_real_loopback_http_contract_uses_fake_server_only(self):
         packet = self.packet("en")
@@ -403,8 +464,12 @@ class LocalGenerationTests(unittest.TestCase):
         return result, run, json.loads((run / "receipt.json").read_bytes())
 
     def test_native_http_receipts_retain_success_and_rejected_bytes(self):
+        missing_language = self.candidate(self.packet())
+        del missing_language["language"]
         cases = [
             ("good", self.envelope(), 200, {}, None, "generated_checked_extractive"),
+            ("missing-language", self.envelope(missing_language), 200, {}, None,
+             "generated_checked_extractive"),
             ("bad-json", b"not JSON", 200, {}, None, "source_only"),
             ("wrong-alias", self.envelope(alias="other-model"), 200, {}, None, "source_only"),
             ("truncated", self.envelope(finish="length"), 200, {}, None, "source_only"),
@@ -442,6 +507,24 @@ class LocalGenerationTests(unittest.TestCase):
                 if expected == "generated_checked_extractive":
                     self.assertEqual(receipt["finish_reason"], "stop")
                     self.assertEqual(receipt["token_usage"]["completion_tokens"], 40)
+                    self.assertEqual(receipt["candidate_validation"]["complete_validator"],
+                                     "passed")
+                    self.assertEqual(result["validation_diagnostics"],
+                                     receipt["candidate_validation"])
+                    if ident == "missing-language":
+                        original = json.loads(body)["choices"][0]["message"]["content"]
+                        self.assertNotIn("language", json.loads(original))
+                        self.assertEqual(receipt["candidate_validation"]["supplied_field"],
+                                         "language")
+                        self.assertEqual(receipt["candidate_validation"]["value_source"],
+                                         "validated_request_packet.language")
+                        self.assertTrue(receipt["candidate_validation"]["normalization_applied"])
+                    else:
+                        self.assertFalse(receipt["candidate_validation"]["normalization_applied"])
+                elif ident == "bad-json":
+                    self.assertEqual(receipt["candidate_validation"]["complete_validator"],
+                                     "not_run")
+                    self.assertTrue(receipt["candidate_validation"]["rejection_reason"])
                 elif ident != "abstain":
                     self.assertIsNotNone(receipt["error"])
                 if ident == "unauthorized":
@@ -757,13 +840,26 @@ class LocalGenerationTests(unittest.TestCase):
         self.assertEqual(view["status"], "source_only")
         self.assertFalse(view["model_invoked"])
         candidate_path = self.root / "saved.json"
-        candidate_path.write_text(json.dumps(self.candidate(self.packet())))
+        candidate = self.candidate(self.packet())
+        del candidate["language"]
+        candidate_path.write_text(json.dumps(candidate))
         proc = subprocess.run(cmd + ["--saved-completion", str(candidate_path)],
                               capture_output=True, text=True, timeout=20)
         self.assertEqual(proc.returncode, 0, proc.stderr)
         view = json.loads(proc.stdout)["view"]
         self.assertEqual(view["status"], "checked_saved_output_only")
         self.assertFalse(view["model_invoked"])
+        self.assertTrue(view["validation_diagnostics"]["normalization_applied"])
+        self.assertEqual(view["validation_diagnostics"]["complete_validator"], "passed")
+        candidate_path.write_text(candidate_path.read_text()[:-1] + ',"status":"answer"}')
+        proc = subprocess.run(cmd + ["--saved-completion", str(candidate_path)],
+                              capture_output=True, text=True, timeout=20)
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        view = json.loads(proc.stdout)["view"]
+        self.assertEqual(view["status"], "source_only")
+        self.assertFalse(view["model_invoked"])
+        self.assertIn("Duplicate JSON object key",
+                      view["validation_diagnostics"]["rejection_reason"])
         proc = subprocess.run(cmd + ["--execute-authorized-inference"],
                               capture_output=True, text=True, timeout=20)
         self.assertEqual(proc.returncode, 2)

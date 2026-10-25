@@ -81,6 +81,16 @@ def require(condition, message):
         raise ValueError(message)
 
 
+def _parse_candidate(raw: str):
+    def unique_object(pairs):
+        obj = {}
+        for key, value in pairs:
+            require(key not in obj, "Duplicate JSON object key")
+            obj[key] = value
+        return obj
+    return json.loads(raw, object_pairs_hook=unique_object)
+
+
 def fingerprint(obj) -> str:
     return evidence.sha_json(obj)
 
@@ -238,7 +248,54 @@ def build_messages(packet: dict) -> list[dict]:
             {"role": "user", "content": user_message}]
 
 
-def check_answer(packet: dict, candidate, *, actual_model: bool = False) -> dict:
+def _candidate_validation_diagnostic() -> dict:
+    return {
+        "normalization_applied": False,
+        "supplied_field": None,
+        "value_source": None,
+        "supplied_value": None,
+        "complete_validator": "not_run",
+        "rejection_reason": None,
+    }
+
+
+def _normalize_missing_language(packet: dict, candidate):
+    diagnostic = _candidate_validation_diagnostic()
+    if (type(candidate) is dict and
+            set(candidate) == {"version", "status", "answer", "citation_id"} and
+            candidate["version"] == VERSION and candidate["status"] == "answer" and
+            type(packet.get("language")) is str and
+            packet["language"] in evidence.LANGUAGES):
+        candidate = {**candidate, "language": packet["language"]}
+        diagnostic.update(
+            normalization_applied=True,
+            supplied_field="language",
+            value_source="validated_request_packet.language",
+            supplied_value=packet["language"],
+        )
+    return candidate, diagnostic
+
+
+def check_answer(packet: dict, candidate, *, actual_model: bool = False,
+                 diagnostics: dict | None = None) -> dict:
+    candidate, diagnostic = _normalize_missing_language(packet, candidate)
+    if diagnostics is not None:
+        diagnostics.update(diagnostic)
+    try:
+        result = _check_answer(packet, candidate, actual_model=actual_model)
+    except (ValueError, TypeError, KeyError) as exc:
+        diagnostic.update(complete_validator="rejected", rejection_reason=str(exc))
+        if diagnostics is not None:
+            diagnostics.update(diagnostic)
+        raise
+    diagnostic["complete_validator"] = "passed"
+    result["validation_diagnostics"] = diagnostic
+    if diagnostics is not None:
+        diagnostics.update(diagnostic)
+    return result
+
+
+def _check_answer(packet: dict, candidate, *, actual_model: bool = False) -> dict:
     """Only direct source-exact single-claim answers are currently checkable.
 
     Citation correctness is NOT semantic entailment. No unverified paraphrasing,
@@ -607,7 +664,7 @@ def _request_local_completion(reg: dict, messages: list[dict], api_key: str, *,
             "Truncated or malformed model completion")
     answer = choice["message"]["content"]
     require(len(answer.encode("utf-8")) <= evidence.MAX_CANDIDATE, "Unbounded generated text")
-    return json.loads(answer)
+    return _parse_candidate(answer)
 
 
 def attempt_generation(packet: dict, manifest: Path, index_path: Path,
@@ -624,6 +681,7 @@ def attempt_generation(packet: dict, manifest: Path, index_path: Path,
                    model_request_attempted=False, request_send_attempted=False,
                    transport_kind="native_http" if transport is request_local_completion else "synthetic_test",
                    citation_check="not_run", error=None, final_view=None,
+                   candidate_validation=_candidate_validation_diagnostic(),
                    server_inference_execution="unattested_http_request_only")
     memory = None
     result = None
@@ -686,12 +744,16 @@ def attempt_generation(packet: dict, manifest: Path, index_path: Path,
                     "Request memory sampling incomplete or unmeasured")
             require(not memory.exceeded, "Sampled process-tree memory budget exceeded")
             receipt["citation_check"] = "checking"
-            result = check_answer(packet, candidate, actual_model=True)
+            result = check_answer(packet, candidate, actual_model=True,
+                                  diagnostics=receipt["candidate_validation"])
             receipt["citation_check"] = ("exact_quote_and_citation_only" if
                 result["status"] == "generated_checked_extractive" else "model_abstained")
         except (ValueError, OSError, UnicodeError, KeyError, TypeError,
                 http.client.HTTPException) as exc:
             receipt["error"] = dict(type=type(exc).__name__, message=str(exc)[:1024])
+            if (receipt["model_request_attempted"] and
+                    receipt["candidate_validation"]["complete_validator"] == "not_run"):
+                receipt["candidate_validation"]["rejection_reason"] = str(exc)
             receipt["citation_check"] = ("rejected" if receipt["citation_check"] == "checking"
                                           else "not_run")
             result = evidence.fallback(packet, reason="inference_or_grounding_failed")
@@ -762,12 +824,17 @@ def main(argv=None):
             require(not any(guarded),
                     "Inference options require --execute-authorized-inference")
             if args.saved_completion:
-                candidate = json.loads(documents.limited_file(
-                    args.saved_completion, evidence.MAX_CANDIDATE))
+                diagnostics = _candidate_validation_diagnostic()
                 try:
-                    view = check_answer(packet, candidate, actual_model=False)
-                except (ValueError, TypeError, KeyError, UnicodeError):
+                    candidate = _parse_candidate(documents.limited_file(
+                        args.saved_completion, evidence.MAX_CANDIDATE))
+                    view = check_answer(packet, candidate, actual_model=False,
+                                        diagnostics=diagnostics)
+                except (ValueError, TypeError, KeyError, UnicodeError) as exc:
                     view = evidence.fallback(packet, reason="saved_completion_rejected")
+                    if diagnostics.get("complete_validator") == "not_run":
+                        diagnostics["rejection_reason"] = str(exc)
+                    view["validation_diagnostics"] = diagnostics
             else:
                 view = evidence.fallback(packet, reason="inference_not_authorized")
         if view.get("status") == "source_unavailable":
