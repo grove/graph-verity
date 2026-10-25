@@ -1,10 +1,34 @@
 # First native document-RAG trial: proposed CPU baseline
 
-Preparation for #122, parent #71, after merged #123, #124 and #125. This security
+Follow-up for #122, parent #71, after merged #123, #124 and #125. The first
+one-shot native trial has completed and remains historically rejected. This
 change does not start a server, execute inference, create owner authorization,
-or change the existing document adapter. Keep #122 open and
-`INCONCLUSIVE_REVISE`. This is a single trial of the existing document adapter,
-without graph execution.
+or alter its private evidence. Keep #122 open and `INCONCLUSIVE_REVISE`.
+
+## Prospective response normalization
+
+The first authorized English response returned the correct original sentence
+and citation in valid JSON, but omitted the required `language` field. The
+adapter rejected it as `Unexpected generated fields` and served the source-only
+fallback. For future runs, the document-only answer validator may supply that
+one field only when the JSON object has exactly `version`, `status`, `answer`
+and `citation_id`, with the supported version and `status: answer`. It copies
+the request language from the already validated evidence packet, then runs the
+complete existing citation, source-version, verbatim-quote, language and
+relevance checks. Wrong language values, any other missing or unexpected
+fields, malformed JSON, unsupported claims, invalid or stale citations, and
+model abstention continue to produce the source-only fallback.
+
+The receipt records whether normalization was applied, the supplied field and
+its packet source, and whether complete validation passed or why it rejected
+the candidate. The private `response.bin` remains the raw model response; a
+saved-output replay is labeled `checked_saved_output_only` with
+`model_invoked: false` and does not rewrite the historical receipt. The system
+prompt is unchanged. Any future native run still needs a fresh model
+registration, current source packet, exact request hash and host admission, and
+a new unconsumed one-shot authorization with a future expiry.
+
+This is a single document-answer trial, without graph execution.
 
 ## Candidate identity and verified assets
 
