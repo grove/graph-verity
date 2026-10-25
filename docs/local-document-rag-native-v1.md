@@ -1,24 +1,26 @@
 # First native document-RAG trial: proposed CPU baseline
 
-Preparation for #122, parent #71, after merged #123. **No weights acquired, model
-started, inference performed, owner authorization granted, or native quality
-validated by this change.** Keep #122 open and `INCONCLUSIVE_REVISE`. This is a
-single trial of the existing document adapter, without graph execution.
+Preparation for #122, parent #71, after merged #123, #124 and #125. This security
+change does not start a server, execute inference, create owner authorization,
+or change the existing document adapter. Keep #122 open and
+`INCONCLUSIVE_REVISE`. This is a single trial of the existing document adapter,
+without graph execution.
 
-## Candidate identity and unresolved assets
+## Candidate identity and verified assets
 
 [Machine-readable proposal](../configs/local-document-rag-native-v1.proposal.json)
 is deliberately **not** an executable registration or authorization.
-Metadata was inspected on 2026-10-24 without weight downloads:
+Published metadata was inspected on 2026-10-24; retained local asset receipts now
+record byte verification for the pinned model, tokenizer and template:
 
 | Item | Verified published metadata / remaining limitation |
 | --- | --- |
 | Original | [Qwen/Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507/tree/cdbee75f17c01a7cc42f958dc650907174af0554), revision `cdbee75f17c01a7cc42f958dc650907174af0554`; 4B instruction checkpoint, non-thinking only; no `enable_thinking` switch or `<think>` output expected ([model card](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507)). |
 | License | Original [Apache-2.0 license](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507/blob/cdbee75f17c01a7cc42f958dc650907174af0554/LICENSE) permits local use subject to its terms. GGUF publisher also declares Apache-2.0. Retain licenses/notices with acquired assets. |
-| Quantization | [Unsloth file at immutable revision](https://huggingface.co/unsloth/Qwen3-4B-Instruct-2507-GGUF/blob/a06e946bb6b655725eafa393f4a9745d460374c9/Qwen3-4B-Instruct-2507-Q4_K_M.gguf): `a06e946bb6b655725eafa393f4a9745d460374c9`, `Qwen3-4B-Instruct-2507-Q4_K_M.gguf`, 2,497,281,120 bytes; SHA-256 `3605803b982cb64aead44f6c1b2ae36e3acdb41d8e46c8a94c6533bc4c67e597`. This is the published SHA-256, **not** the different Xet hash. Local bytes remain unverified. |
-| Template/tokenizer | Official `tokenizer_config.json` at the original revision: SHA-256 `a62ff0a2472a0fa1b8eaabcb57c59b58afa42a22831dc141400b6e0cf2b65ce3`; its decoded UTF-8 `chat_template` field: `64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326`. Published `tokenizer.json` LFS SHA-256: `aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4`. The config was read; tokenizer bytes were not acquired. |
+| Quantization | [Unsloth file at immutable revision](https://huggingface.co/unsloth/Qwen3-4B-Instruct-2507-GGUF/blob/a06e946bb6b655725eafa393f4a9745d460374c9/Qwen3-4B-Instruct-2507-Q4_K_M.gguf): `a06e946bb6b655725eafa393f4a9745d460374c9`, `Qwen3-4B-Instruct-2507-Q4_K_M.gguf`, 2,497,281,120 bytes; SHA-256 `3605803b982cb64aead44f6c1b2ae36e3acdb41d8e46c8a94c6533bc4c67e597`. The local asset receipt records byte verification against this SHA-256. |
+| Template/tokenizer | Official `tokenizer_config.json` SHA-256 `a62ff0a2472a0fa1b8eaabcb57c59b58afa42a22831dc141400b6e0cf2b65ce3`, `tokenizer.json` SHA-256 `aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4`, and extracted `chat.jinja` SHA-256 `64f85b198065d0fba2a81f37e10ed68161ce2c19a754c7100e67e0ca2ee9c326`; retained asset receipts record local hash matches. |
 | Requirements | [Official tokenizer config](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507/blob/cdbee75f17c01a7cc42f958dc650907174af0554/tokenizer_config.json) uses Qwen2Tokenizer, role delimiters `<\|im_start\|>` / `<\|im_end\|>`, assistant generation prefix, EOS `<\|im_end\|>`, no automatic BOS; apply the official template, without tools. Native Transformers examples require Qwen3 support (>=4.51.0). This is separate from llama.cpp support. |
-| Runtime | [Publisher](https://huggingface.co/unsloth/Qwen3-4B-Instruct-2507-GGUF) and [llama.cpp server documentation](https://github.com/ggml-org/llama.cpp/blob/master/tools/server/README.md) describe GGUF/chat serving. **No exact llama.cpp revision/build is selected or proven operational.** Pin source, build flags and binary, inspect that revision's `--help`, and verify this Qwen3 tokenizer/template handling before registration. |
+| Runtime | llama.cpp source is pinned to `d327bf1f0780f87b8c01b367b61853b0c291d7c4`; the built `llama-server` SHA-256 is `197566eb62ab049eb9625c8e99c676875ee6f2aa1c61e59bc1a57af1b095caf1`. The exact binary help and source were checked for this security change. The code now requires a fresh version-3 registration and secure restart. |
 
 Native BF16 safetensors and lossy quantized GGUF are different bytes and
 representations. A matching publisher filename does not establish the conversion's
@@ -56,6 +58,85 @@ Weights plus KV alone are about 3.45 GiB; allocator, compute buffers, mmap and O
 memory add more. Actual llama.cpp settings and RSS must be measured. An 8 GiB
 sampled **server+client process-tree** ceiling leaves room on 32 GiB; it is not an
 OS memory reservation or a guarantee against a short spike.
+
+## Secure local server boundary
+
+The pinned server's `--help` and source at
+`d327bf1f0780f87b8c01b367b61853b0c291d7c4` confirm `--api-key-file`,
+`--cors-origins`, `--cors-methods`, `--cors-headers`,
+`--no-cors-credentials` and `--no-webui`. The version-3 runtime registration
+binds the credential path and file hash. It accepts one URL-safe key in an
+operator-owned private directory, with a private regular file, restrictive
+mode, no symlink and matching SHA-256. Rotating or changing the key requires a
+new registration and a server restart.
+
+Choose an operator-controlled private directory outside the repository, create
+it with mode 0700, and generate the key there once. This writes the secret
+directly to a mode-0600 file; do not print it or copy it into the registration,
+command line, prompt, evidence packet, request body or logs.
+
+```sh
+umask 077
+set -C
+CREDENTIAL_DIR=/absolute/operator/private/credentials
+mkdir -m 700 "$CREDENTIAL_DIR"
+python3 -c 'import secrets; print(secrets.token_urlsafe(48))' > "$CREDENTIAL_DIR/server-api-key.txt"
+chmod 600 "$CREDENTIAL_DIR/server-api-key.txt"
+export API_KEY_PATH="$CREDENTIAL_DIR/server-api-key.txt"
+```
+
+The generated server command keeps only that file path in argv and adds
+`--api-key-file`, `--cors-origins http://127.0.0.1:8095`,
+`--cors-methods GET,POST,OPTIONS`, `--cors-headers Authorization,Content-Type`,
+`--no-cors-credentials`, `--no-webui`, `--no-agent` and `--log-verbosity 3`.
+This allows one exact same-origin value and no browser credentials. The UI and
+agent/MCP capabilities remain disabled. Verbosity 3 suppresses trace messages;
+the pinned server's trace log includes the key's last four characters. The
+Python adapter reads and validates the file immediately before
+transport, sends `Authorization: Bearer ...` as an HTTP header, and keeps the
+header out of JSON requests and retained receipts. If an endpoint echoes the
+secret, the adapter redacts it from retained response bytes and error messages.
+The registration records the path and SHA-256, never the key itself. Its hash
+also binds the one-shot authorization through the registration digest.
+
+The pinned middleware leaves `GET /health` public and protects `GET /v1/models`
+and all generation routes. `/v1/models` is a non-generative authentication
+probe. `OPTIONS` is handled before API-key validation. Its CORS response always
+uses the configured exact origin; it does not reflect an unlisted Origin.
+Therefore a browser preflight using `https://example.invalid` must receive
+`Access-Control-Allow-Origin: http://127.0.0.1:8095`, never the supplied origin;
+the browser will deny the cross-origin request. CORS does not authenticate
+local processes, so the API key remains required independently.
+
+Before stopping any old process, compare its observed executable, full command,
+start time and owned listener with the retained startup receipt. Compare the
+resource monitor identity and ownership as well. Only when every field matches,
+send `TERM` to those exact PIDs, then confirm the listener is gone. If a PID,
+command, start identity or listener is missing or differs, do not signal it.
+Historical PIDs 64792 and 67725 are observations only and must be rechecked.
+Keep the original startup and shutdown receipts unchanged; write any new
+observations to new private files. For the previously reported PIDs, first run
+read-only checks and compare the output field-by-field with the retained
+startup receipt:
+
+```sh
+OLD_SERVER_PID=64792
+OLD_MONITOR_PID=67725
+ps -ww -p "$OLD_SERVER_PID","$OLD_MONITOR_PID" -o pid=,ppid=,lstart=,command=
+lsof -nP -a -p "$OLD_SERVER_PID" -iTCP:8095 -sTCP:LISTEN -Fn
+```
+
+Only if both process identities and the listener ownership match that receipt,
+gracefully signal the verified PIDs and verify shutdown:
+
+```sh
+kill -TERM "$OLD_SERVER_PID" "$OLD_MONITOR_PID"
+ps -p "$OLD_SERVER_PID","$OLD_MONITOR_PID" -o pid=,lstart=,command=
+lsof -nP -iTCP:8095 -sTCP:LISTEN
+```
+
+The final `ps` and `lsof` output must show no original process and no listener.
+Do not signal a reused PID or a server whose receipt cannot be matched.
 
 ## Safe preparation now: private source-only baseline
 
@@ -105,22 +186,21 @@ retain the raw result, and require source-only treatment; there is no automatic
 semantic/conflict detector in this slice. Do not authorize such a case as a
 supported user-facing answer.
 
-## After separate owner approval: asset preparation and server startup
+## After this security change is reviewed and merged: secure server startup
 
-**The following steps require new approval and must not run during this PR.**
-Approval to acquire/build assets and start the server is separate from each
-one-shot completion approval. Historical Qwen3.5/Gemma runs confer no authority.
+**Do not run these steps during this PR.** After merge, reuse only the already
+verified private assets and pinned runtime below, rechecking their identities.
+Server startup and non-generative verification are separate from inference;
+every completion still requires a fresh one-shot owner authorization.
+Historical Qwen3.5/Gemma runs confer no authority.
 
-1. Acquire only the immutable GGUF above and pinned official tokenizer/config/
-   license assets into a private asset directory. Verify size and `shasum -a 256`
-   against the proposal; never use floating `main`, `-hf` or automatic downloads
-   in a native command. Extract `json.load(...)["chat_template"].encode("utf-8")`
-   to a new mode-0600 `chat.jinja`, with **no added newline**, and verify its hash.
-2. Choose an immutable llama.cpp commit supporting this exact GGUF, template and
-   CLI. Retain source/archive hash, compiler/build log, `--version`, `--help`, and
-   all linked library identities. Prefer the proposal's static CPU build flags:
-   Metal/BLAS/Accelerate/CURL off. No network support or speculative/embedding
-   model, one model, one slot. No preexisting build is approved by this document.
+1. Reverify the existing immutable GGUF, tokenizer/config/license assets and
+   extracted `chat.jinja` against the proposal and retained asset receipts. Do
+   not download from floating `main`, use `-hf` or enable automatic downloads.
+2. Reverify llama.cpp revision `d327bf1f0780f87b8c01b367b61853b0c291d7c4`,
+   server SHA-256 `197566eb62ab049eb9625c8e99c676875ee6f2aa1c61e59bc1a57af1b095caf1`,
+   build receipt and actual `--help` output. The runtime is CPU-only, with
+   Metal/BLAS/Accelerate/CURL off, one model and one inference slot.
 3. Inspect `sysctl -n machdep.cpu.brand_string hw.memsize`, `vm_stat`,
    `sysctl vm.swapusage`, `memory_pressure -Q`, `uptime`, and
    `ps -axo pid,ppid,pcpu,rss,comm`. Check AC power and thermal state with
@@ -130,11 +210,12 @@ one-shot completion approval. Historical Qwen3.5/Gemma runs confer no authority.
    load/CPU <=0.75, measured server RSS <=8 GiB and no recognized competing
    model processes. Missing metrics block. Generic Python processes cannot be
    reliably classified: the owner must explicitly attest quiescence.
-4. Export `ASSET_DIR` for the private directory containing the verified GGUF,
+4. Create the API-key file as described above, then export `ASSET_DIR` for the
+   private directory containing the verified GGUF,
    `tokenizer_config.json`, `tokenizer.json` and extracted `chat.jinja`. Export
-   `RUNTIME_PATH` and `RUNTIME_REVISION` from the independently verified build.
-   The following creates an **unapproved draft** and prints the full command;
-   it downloads/loads no weights and starts no server.
+   `API_KEY_PATH`, `RUNTIME_PATH` and `RUNTIME_REVISION` from the independently
+   verified assets. The following creates an **unapproved draft** and prints the
+   full command; it downloads/loads no weights and starts no server.
 
 ```sh
 PYTHONPATH=tools python3 - "$TRIAL_DIR" <<'PY'
@@ -143,9 +224,10 @@ from pathlib import Path
 import local_cited_generation as g
 p = Path(sys.argv[1]).resolve()
 a = Path(os.environ['ASSET_DIR']).resolve()
+api_key_path = Path(os.environ['API_KEY_PATH'])
 proposal = json.load(open('configs/local-document-rag-native-v1.proposal.json'))
 pid = int(os.environ.get('SERVER_PID', '2'))  # unusable draft placeholder
-r = dict(version=2, backend=g.BACKEND, host='127.0.0.1', port=8095,
+r = dict(version=3, backend=g.BACKEND, host='127.0.0.1', port=8095,
          model_name='verity-qwen3-4b-2507-q4km', cpu_threads=4, gpu_layers=0,
          context_tokens=8192, max_output_tokens=256, timeout_seconds=300,
          temperature=0, seed=7, model_revision=proposal['model']['revision'],
@@ -153,7 +235,12 @@ r = dict(version=2, backend=g.BACKEND, host='127.0.0.1', port=8095,
          runtime_revision=os.environ['RUNTIME_REVISION'], server_pid=pid,
          server_started='PENDING_START' if pid == 2 else
              g._command(['ps', '-p', str(pid), '-o', 'lstart=']),
-         system_prompt_sha256=g.documents.sha(g.SYSTEM_INSTRUCTION.encode()))
+         system_prompt_sha256=g.documents.sha(g.SYSTEM_INSTRUCTION.encode()),
+         api_key_path=str(api_key_path),
+         api_key_sha256=g.documents.sha(api_key_path.read_bytes()),
+         cors_origins=g.CORS_ORIGINS, cors_methods=g.CORS_METHODS,
+         cors_headers=g.CORS_HEADERS, cors_credentials=False, webui_enabled=False,
+         log_verbosity=g.LOG_VERBOSITY)
 assets = {'model': a / proposal['gguf']['file'],
           'runtime': Path(os.environ['RUNTIME_PATH']).resolve(),
           'chat_template': a / 'chat.jinja',
@@ -175,7 +262,8 @@ PY
 
 V1 registrations are intentionally rejected. Runtime commit/binary/build provenance
 must be checked independently; a binary hash does not establish its source commit.
-Keep the draft, build receipt and all assets immutable.
+All earlier version-2 registrations are stale because they omit authentication
+and restrictive CORS. Keep the draft, build receipt and all assets immutable.
 
 Its shape is:
 
@@ -184,19 +272,46 @@ Its shape is:
  --host 127.0.0.1 --port 8095 --alias verity-qwen3-4b-2507-q4km \
  --threads 4 --threads-batch 4 --n-gpu-layers 0 --ctx-size 8192 \
  --parallel 1 --n-predict 256 --no-warmup --jinja \
- --chat-template-file /absolute/chat.jinja
+ --chat-template-file /absolute/chat.jinja \
+ --api-key-file /absolute/private/server-api-key.txt \
+ --cors-origins http://127.0.0.1:8095 \
+ --cors-methods GET,POST,OPTIONS --cors-headers Authorization,Content-Type \
+ --no-cors-credentials --no-webui --no-agent --log-verbosity 3
 ```
 
-Only after launch approval, start that exact command under `/usr/bin/time -l`,
-redirecting stdout/stderr to **new private** files. Set offline environment flags
+Before launch, unset `LLAMA_API_KEY`, `LLAMA_ARG_API_KEY_FILE`,
+`LLAMA_ARG_HOST`, `LLAMA_ARG_PORT`, `LLAMA_ARG_API_PREFIX`,
+`LLAMA_ARG_STATIC_PATH`,
+`LLAMA_ARG_CORS_ORIGINS`, `LLAMA_ARG_CORS_METHODS`, `LLAMA_ARG_CORS_HEADERS`,
+`LLAMA_ARG_CORS_CREDENTIALS`, `LLAMA_ARG_UI`, `LLAMA_ARG_AGENT`,
+`LLAMA_ARG_TOOLS`, `LLAMA_ARG_TOOLS_RUNTIME`, `LLAMA_ARG_MCP_SERVERS_CONFIG`,
+`LLAMA_ARG_MCP_SERVERS_JSON`, `LLAMA_ARG_UI_MCP_PROXY`, `LLAMA_ARG_CONNECT` and
+`LLAMA_ARG_LOG_VERBOSITY`.
+The CLI explicitly selects the key file, allowlist and disabled UI/agent settings;
+clearing these environment overrides prevents extra keys or hidden capabilities.
+
+```sh
+unset LLAMA_API_KEY LLAMA_ARG_API_KEY_FILE LLAMA_ARG_HOST LLAMA_ARG_PORT \
+  LLAMA_ARG_API_PREFIX LLAMA_ARG_STATIC_PATH LLAMA_ARG_CORS_ORIGINS \
+  LLAMA_ARG_CORS_METHODS LLAMA_ARG_CORS_HEADERS LLAMA_ARG_CORS_CREDENTIALS \
+  LLAMA_ARG_UI LLAMA_ARG_AGENT LLAMA_ARG_TOOLS LLAMA_ARG_TOOLS_RUNTIME \
+  LLAMA_ARG_MCP_SERVERS_CONFIG LLAMA_ARG_MCP_SERVERS_JSON \
+  LLAMA_ARG_UI_MCP_PROXY LLAMA_ARG_CONNECT LLAMA_ARG_LOG_VERBOSITY
+export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 OMP_NUM_THREADS=4 \
+  OPENBLAS_NUM_THREADS=4 VECLIB_MAXIMUM_THREADS=4
+```
+
+After merge, start that exact command under `/usr/bin/time -l`, redirecting
+stdout/stderr to **new private** files. Set offline environment flags
 (`HF_HUB_OFFLINE=1`, `TRANSFORMERS_OFFLINE=1`, `OMP_NUM_THREADS=4`,
-`OPENBLAS_NUM_THREADS=4`, `VECLIB_MAXIMUM_THREADS=4`), and ensure no external clients
-can use the endpoint. `--no-warmup` avoids unregistered warmup generation. Allow
-**at most 300 seconds for startup**, watching memory; if `/health` is not ready,
-stop the owned server and record failure without a completion. Five minutes is a
-conservative first inspection window for cold CPU loading, not a speed claim.
-Keep launch/startup `/usr/bin/time` receipts: the adapter samples only its request
-window. No retries or fallback model launches.
+`OPENBLAS_NUM_THREADS=4`, `VECLIB_MAXIMUM_THREADS=4`), and ensure no external
+clients can use the endpoint. `--no-warmup` avoids unregistered warmup
+generation. Allow **at most 300 seconds for startup**, watching memory; if
+`/health` is not ready, gracefully stop the verified owned server and record
+failure without a completion. Five minutes is a conservative first inspection
+window for cold CPU loading, not a speed claim. Keep launch/startup `/usr/bin/time`
+receipts: the adapter samples only its request window. No retries or fallback
+model launches.
 
 Verify `ps -ww -p PID -o command=`, `ps -p PID -o lstart=`,
 `lsof -nP -a -p PID -iTCP:8095 -sTCP:LISTEN -Fn`, and
@@ -206,6 +321,59 @@ The adapter checks the exact process command/start and loopback listener, and
 hashes on-disk files; the owner must still compare the mapped executable/model
 and logs. A model alias, PID or disk hash alone cannot prove the loaded tensors.
 Stop on disagreement. There is a time-of-check race with external process changes.
+
+### Non-generative server verification
+
+After recording the new PID and `ps` start identity, create a fresh version-3
+registration. Do not reuse the old registration, even if the PID appears
+unchanged. Then run only these non-generative probes; they do not create or
+consume an inference authorization:
+
+```sh
+PYTHONPATH=tools python3 - "$TRIAL_DIR" <<'PY'
+import sys
+from pathlib import Path
+from urllib.error import HTTPError
+from urllib.request import Request, urlopen
+import local_cited_generation as g
+
+p = Path(sys.argv[1]).resolve()
+r = g.load_registration(p / 'registration.json')
+key = g._read_api_key(r)
+base = 'http://127.0.0.1:8095'
+
+def probe(path, *, method='GET', headers=None):
+    request = Request(base + path, method=method, headers=headers or {})
+    try:
+        response = urlopen(request, timeout=5)
+    except HTTPError as error:
+        return error.code, error.headers
+    with response:
+        return response.status, response.headers
+
+assert probe('/health')[0] == 200
+assert probe('/v1/models')[0] == 401
+status, _ = probe('/v1/models', headers={'Authorization': 'Bearer ' + key})
+assert status == 200
+status, headers = probe('/v1/models', method='OPTIONS', headers={
+    'Origin': 'https://example.invalid',
+    'Access-Control-Request-Method': 'GET',
+    'Access-Control-Request-Headers': 'authorization',
+})
+assert status == 200
+assert headers.get('Access-Control-Allow-Origin') == g.CORS_ORIGINS
+assert headers.get('Access-Control-Allow-Origin') != 'https://example.invalid'
+print('health=200, unauthenticated_models=401, authenticated_models=200, disallowed_origin_not_reflected')
+PY
+```
+
+The pinned implementation makes `/health` public, requires the key for
+`/v1/models`, and handles `OPTIONS` without auth. The CORS check inspects the
+fixed allowlist value returned for an unlisted origin; browser access is denied
+because the response does not authorize that origin. Never send an unauthenticated
+`POST` to a completion route, even with a malformed body. Confirm the listener
+still belongs only to this PID at `127.0.0.1:8095`, and retain the probe result
+privately without printing or storing the key.
 
 ## Freeze request, obtain fresh owner approval, then run once
 

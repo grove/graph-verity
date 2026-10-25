@@ -1,15 +1,13 @@
 """#122: Model-free tests of real #119 documents and guarded local completion."""
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 from datetime import datetime, timedelta, timezone
 import io
-import http.server
 import json
 import os
 from pathlib import Path
 import subprocess
 import sys
 import tempfile
-import threading
 import unittest
 from unittest.mock import Mock, patch
 
@@ -61,8 +59,12 @@ class LocalGenerationTests(unittest.TestCase):
         self.template.write_text("SYNTHETIC template, not a usable model template")
         self.tokenizer_config.write_text(json.dumps({"chat_template": self.template.read_text()}))
         self.tokenizer.write_text('{"synthetic":true}')
+        self.api_key = "synthetic-api-key-0123456789-abcdefABCDEF"
+        self.api_key_file = self.root / "server-api-key.txt"
+        self.api_key_file.write_text(self.api_key + "\n")
+        self.api_key_file.chmod(0o600)
         self.reg = {
-            "version": 2, "backend": local.BACKEND,
+            "version": 3, "backend": local.BACKEND,
             "host": "127.0.0.1", "port": 8095, "model_name": "graph-verity-test",
             "model_path": str(self.model), "model_sha256": docs.sha(self.model.read_bytes()),
             "runtime_path": str(self.binary),
@@ -80,6 +82,14 @@ class LocalGenerationTests(unittest.TestCase):
             "tokenizer_config_sha256": docs.sha(self.tokenizer_config.read_bytes()),
             "tokenizer_path": str(self.tokenizer),
             "tokenizer_sha256": docs.sha(self.tokenizer.read_bytes()),
+            "api_key_path": str(self.api_key_file),
+            "api_key_sha256": docs.sha(self.api_key_file.read_bytes()),
+            "cors_origins": local.CORS_ORIGINS,
+            "cors_methods": local.CORS_METHODS,
+            "cors_headers": local.CORS_HEADERS,
+            "cors_credentials": False,
+            "webui_enabled": False,
+            "log_verbosity": local.LOG_VERBOSITY,
         }
         self.registration.write_text(json.dumps(self.reg))
         # Synthetic host evidence is isolated from the production admission path.
@@ -331,37 +341,42 @@ class LocalGenerationTests(unittest.TestCase):
     def test_real_loopback_http_contract_uses_fake_server_only(self):
         packet = self.packet("en")
         expected = self.candidate(packet)
-        captured = []
-        class MockHandler(http.server.BaseHTTPRequestHandler):
-            def do_POST(self):
-                length = int(self.headers["Content-Length"])
-                request = json.loads(self.rfile.read(length))
-                captured.append({"path": self.path, "payload": request})
-                payload = json.dumps({
-                    "model": "graph-verity-test",
-                    "choices": [{
-                        "finish_reason": "stop",
-                        "message": {"role": "assistant", "content": json.dumps(expected)},
-                    }],
-                }).encode()
-                self.send_response(200)
-                self.send_header("Content-Type", "application/json")
-                self.send_header("Content-Length", str(len(payload)))
-                self.end_headers()
-                self.wfile.write(payload)
-            def log_message(self, *args):
-                pass
-        server = http.server.HTTPServer(("127.0.0.1", 0), MockHandler)
-        thread = threading.Thread(target=server.serve_forever, daemon=True)
-        thread.start()
-        self.addCleanup(lambda: (server.shutdown(), server.server_close(), thread.join()))
-        reg = {**self.reg, "port": server.server_port}
-        returned = local.request_local_completion(reg, local.build_messages(packet))
+        body = json.dumps({
+            "model": "graph-verity-test",
+            "choices": [{
+                "finish_reason": "stop",
+                "message": {"role": "assistant", "content": json.dumps(expected)},
+            }],
+        }).encode()
+        response = Mock(status=200)
+        response.getheader.side_effect = lambda key, default=None: {
+            "Content-Length": str(len(body)), "Content-Type": "application/json",
+        }.get(key, default)
+        response.read1.side_effect = [body, b""]
+        connection = Mock()
+        connection.sock = Mock()
+        connection.getresponse.return_value = response
+        reg = {**self.reg, "port": 18955}
+        with patch.object(local.http.client, "HTTPConnection", return_value=connection):
+            returned = local.request_local_completion(reg, local.build_messages(packet))
+        method, path, raw_request, headers = connection.request.call_args.args
         self.assertEqual(returned, expected)
-        self.assertEqual(captured[0]["path"], "/v1/chat/completions")
-        self.assertEqual(captured[0]["payload"]["temperature"], 0)
-        self.assertFalse(captured[0]["payload"]["stream"])
-        self.assertEqual(captured[0]["payload"]["model"], "graph-verity-test")
+        self.assertEqual((method, path), ("POST", "/v1/chat/completions"))
+        self.assertEqual(headers["Authorization"], "Bearer " + self.api_key)
+        payload = json.loads(raw_request)
+        self.assertNotIn(self.api_key, json.dumps(payload))
+        self.assertEqual(payload["temperature"], 0)
+        self.assertFalse(payload["stream"])
+        self.assertEqual(payload["model"], "graph-verity-test")
+        command = local.server_command(self.reg)
+        self.assertIn("--api-key-file", command)
+        self.assertIn("--no-cors-credentials", command)
+        self.assertIn("--no-webui", command)
+        self.assertIn("--no-agent", command)
+        self.assertIn("--log-verbosity", command)
+        self.assertEqual(command[command.index("--log-verbosity") + 1], "3")
+        self.assertNotIn(self.api_key, " ".join(command))
+        self.assertNotIn(self.api_key, self.registration.read_text())
 
     def http_reply(self, body, *, status=200, headers=None, error=None):
         response = Mock(status=status)
@@ -395,6 +410,8 @@ class LocalGenerationTests(unittest.TestCase):
             ("truncated", self.envelope(finish="length"), 200, {}, None, "source_only"),
             ("disconnect", b'{"partial":', 200, {"Content-Length": "999"}, None, "source_only"),
             ("timeout", b'{"partial":', 200, {}, TimeoutError("synthetic timeout"), "source_only"),
+            ("unauthorized", b'{"error":"' + self.api_key.encode() + b'"}',
+             401, {"Server": self.api_key}, None, "source_only"),
             ("unavailable", b"server unavailable", 503, {}, None, "source_only"),
             ("oversized", b"x" * (local.MAX_COMPLETION_BYTES + 1), 200, {}, None, "source_only"),
             ("unsupported", self.envelope({**self.candidate(self.packet()), "answer": "Fabricated deadline."}),
@@ -409,7 +426,12 @@ class LocalGenerationTests(unittest.TestCase):
                 conn = self.http_reply(body, status=status, headers=headers, error=error)
                 result, run, receipt = self.run_http_fixture(conn, ident)
                 self.assertEqual(result["status"], expected)
-                self.assertEqual((run / "response.bin").read_bytes(), body[:local.MAX_COMPLETION_BYTES])
+                safe_body = body.replace(self.api_key.encode(), b"*" * len(self.api_key))
+                self.assertEqual((run / "response.bin").read_bytes(),
+                                 safe_body[:local.MAX_COMPLETION_BYTES])
+                for artifact in run.iterdir():
+                    if artifact.is_file():
+                        self.assertNotIn(self.api_key.encode(), artifact.read_bytes())
                 self.assertTrue(receipt["model_request_attempted"])
                 self.assertEqual(receipt["http_status"], status)
                 self.assertEqual(receipt["final_view"], result)
@@ -422,6 +444,11 @@ class LocalGenerationTests(unittest.TestCase):
                     self.assertEqual(receipt["token_usage"]["completion_tokens"], 40)
                 elif ident != "abstain":
                     self.assertIsNotNone(receipt["error"])
+                if ident == "unauthorized":
+                    self.assertEqual(receipt["http_status"], 401)
+                    self.assertTrue(receipt["response_redacted"])
+                    self.assertFalse(result["model_invoked"])
+                    self.assertIsNone(result["answer"])
                 for item in run.iterdir():
                     self.assertEqual(item.stat().st_mode & 0o777, 0o600)
                 self.assertEqual(run.stat().st_mode & 0o777, 0o700)
@@ -438,6 +465,10 @@ class LocalGenerationTests(unittest.TestCase):
             ("chat_template_sha256", "sha256:" + "0" * 64),
             ("tokenizer_sha256", "sha256:" + "0" * 64),
             ("cpu_threads", 8), ("gpu_layers", 1), ("version", 1),
+            ("api_key_sha256", "sha256:" + "0" * 64),
+            ("cors_origins", "*"), ("cors_methods", "GET,POST,DELETE,OPTIONS"),
+            ("cors_headers", "*"), ("cors_credentials", True), ("webui_enabled", True),
+            ("log_verbosity", 4),
         ):
             with self.subTest(field=field):
                 self.registration.write_text(json.dumps({**self.reg, field: wrong}))
@@ -450,6 +481,80 @@ class LocalGenerationTests(unittest.TestCase):
         self.reg["chat_template_sha256"] = docs.sha(self.template.read_bytes())
         self.registration.write_text(json.dumps(self.reg))
         with self.assertRaisesRegex(ValueError, "Template differs"):
+            local.load_registration(self.registration)
+
+    def test_private_api_credential_is_checked_before_transport(self):
+        packet = self.packet()
+        self.approve(packet)
+        transport = Mock(return_value=self.candidate(packet))
+
+        def reject():
+            with self.assertRaises(ValueError):
+                local.attempt_generation(packet, self.manifest, self.index, "public",
+                                         self.registration, self.authorization, self.ledger,
+                                         transport=transport)
+            self.assertEqual(transport.call_count, 0)
+            self.assertEqual(list(self.ledger.glob("*.consumed.json")), [])
+
+        valid = self.api_key_file.read_bytes()
+        self.api_key_file.unlink()
+        reject()
+        self.api_key_file.write_bytes(valid)
+        self.api_key_file.chmod(0o600)
+        self.api_key_file.chmod(0o644)
+        reject()
+        self.api_key_file.chmod(0o600)
+        self.root.chmod(0o755)
+        reject()
+        self.root.chmod(0o700)
+        symlink = self.root / "server-api-key-link.txt"
+        symlink.symlink_to(self.api_key_file)
+        self.reg["api_key_path"] = str(symlink)
+        self.reg["api_key_sha256"] = docs.sha(valid)
+        self.registration.write_text(json.dumps(self.reg))
+        reject()
+        self.reg["api_key_path"] = str(self.api_key_file)
+        self.reg["api_key_sha256"] = docs.sha(valid)
+        self.registration.write_text(json.dumps(self.reg))
+        self.api_key_file.write_text("modified-synthetic-api-key-0123456789-abcdefABCDEF\n")
+        self.api_key_file.chmod(0o600)
+        reject()
+
+    def test_api_credential_is_rejected_from_source_evidence_before_receipts(self):
+        packet = self.packet()
+        packet["question"] = self.api_key
+        with self.assertRaisesRegex(ValueError, "source evidence or prompt"):
+            local.attempt_generation(packet, self.manifest, self.index, "public",
+                                     self.registration, self.authorization, self.ledger,
+                                     transport=Mock())
+        self.assertEqual(list(self.ledger.glob("*.consumed.json")), [])
+        receipt = next(self.ledger.glob("run-*/receipt.json"))
+        self.assertNotIn(self.api_key, receipt.read_text())
+        self.assertEqual(list(receipt.parent.glob("packet.json")), [])
+
+    def test_private_api_credential_never_enters_receipts_or_errors(self):
+        connection = self.http_reply(self.envelope())
+        connection.connect.side_effect = OSError("synthetic connection error: " + self.api_key)
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with redirect_stdout(stdout), redirect_stderr(stderr):
+            result, run, receipt = self.run_http_fixture(connection, "redacted-key-error")
+        self.assertEqual(result["status"], "source_only")
+        self.assertNotIn(self.api_key, json.dumps(receipt))
+        self.assertNotIn(self.api_key, stdout.getvalue() + stderr.getvalue())
+        for artifact in run.iterdir():
+            if artifact.is_file():
+                self.assertNotIn(self.api_key.encode(), artifact.read_bytes())
+
+    def test_missing_authentication_configuration_is_rejected(self):
+        for field, value in (("api_key_path", None), ("api_key_sha256", None),
+                             ("cors_origins", "localhost")):
+            bad = {**self.reg, field: value}
+            self.registration.write_text(json.dumps(bad))
+            with self.subTest(field=field), self.assertRaises(ValueError):
+                local.load_registration(self.registration)
+        missing = {key: value for key, value in self.reg.items() if key != "api_key_path"}
+        self.registration.write_text(json.dumps(missing))
+        with self.assertRaisesRegex(ValueError, "Incorrect local runtime registration"):
             local.load_registration(self.registration)
 
     def test_failed_host_or_missing_authorization_has_private_unattempted_receipt(self):
