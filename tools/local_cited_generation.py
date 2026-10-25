@@ -38,6 +38,11 @@ MAX_MODEL_BYTES = 12 * 1024**3
 MAX_EXECUTABLE_BYTES = 128 * 1024**2
 IDENTIFIER = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{0,100}\Z")
 SHA256 = re.compile(r"sha256:[0-9a-f]{64}\Z")
+API_KEY = re.compile(rb"[A-Za-z0-9_-]{32,256}\n?\Z")
+CORS_ORIGINS = "http://127.0.0.1:8095"
+CORS_METHODS = "GET,POST,OPTIONS"
+CORS_HEADERS = "Authorization,Content-Type"
+LOG_VERBOSITY = 3
 ABSOLUTE_CLAIM = re.compile(
     r"\b(?:all|only|none|never|always|every|nothing|no one|"
     r"alle|alltid|ingen|aldri|bare|kun|samtlige)\b", re.IGNORECASE
@@ -98,6 +103,43 @@ def _sha_file(path: str, max_size: int) -> str:
     return "sha256:" + digest.hexdigest()
 
 
+def _read_api_key(reg: dict) -> str:
+    require(type(reg.get("api_key_path")) is str and
+            type(reg.get("api_key_sha256")) is str and
+            SHA256.fullmatch(reg["api_key_sha256"]) is not None,
+            "API-key authentication configuration is required")
+    path = Path(reg["api_key_path"])
+    require(path.is_absolute(), "Registered API credential path must be absolute")
+    try:
+        require(path.resolve(strict=True) == path,
+                "Registered API credential path must not use symlinks")
+        directory = path.parent.stat()
+        require(stat.S_ISDIR(directory.st_mode) and directory.st_uid == os.geteuid() and
+                stat.S_IMODE(directory.st_mode) & 0o077 == 0,
+                "Registered API credential directory must be private and operator-owned")
+        fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW)
+    except (OSError, RuntimeError):
+        raise ValueError("Registered API credential is unavailable or unsafe") from None
+    try:
+        before = os.fstat(fd)
+        require(stat.S_ISREG(before.st_mode) and before.st_uid == os.geteuid() and
+                before.st_nlink == 1 and stat.S_IMODE(before.st_mode) in (0o400, 0o600),
+                "Registered API credential must be a private regular file")
+        require(0 < before.st_size <= 257, "Registered API credential has an invalid size")
+        raw = os.read(fd, 258)
+        after = os.fstat(fd)
+        current = os.stat(path, follow_symlinks=False)
+        require(all(getattr(before, key) == getattr(after, key) == getattr(current, key)
+                    for key in ("st_dev", "st_ino", "st_size", "st_mtime_ns", "st_ctime_ns")),
+                "Registered API credential changed while reading")
+        require(len(raw) == before.st_size and API_KEY.fullmatch(raw) is not None and
+                documents.sha(raw) == reg["api_key_sha256"],
+                "Registered API credential is malformed or has changed")
+        return raw[:-1].decode("ascii") if raw.endswith(b"\n") else raw.decode("ascii")
+    finally:
+        os.close(fd)
+
+
 def load_registration(path: Path) -> dict:
     reg = json.loads(documents.limited_file(path, MAX_REGISTRATION_BYTES))
     require(type(reg) is dict and set(reg) == {
@@ -109,11 +151,13 @@ def load_registration(path: Path) -> dict:
         "server_started", "chat_template_path", "chat_template_sha256",
         "tokenizer_config_path", "tokenizer_config_sha256",
         "tokenizer_path", "tokenizer_sha256", "cpu_threads", "gpu_layers",
+        "api_key_path", "api_key_sha256", "cors_origins", "cors_methods",
+        "cors_headers", "cors_credentials", "webui_enabled", "log_verbosity",
     }, "Incorrect local runtime registration")
-    require(reg["version"] == 2 and reg["backend"] == BACKEND and
+    require(reg["version"] == 3 and reg["backend"] == BACKEND and
             reg["host"] == "127.0.0.1", "Only explicitly registered local endpoint allowed")
-    require(type(reg["port"]) is int and 1024 <= reg["port"] <= 65535,
-            "Unbounded local port")
+    require(type(reg["port"]) is int and reg["port"] == 8095,
+            "Only the registered loopback port 8095 is allowed")
     require(type(reg["model_name"]) is str and
             IDENTIFIER.fullmatch(reg["model_name"]), "Invalid pinned model alias")
     require(type(reg["context_tokens"]) is int and 512 <= reg["context_tokens"] <= 8192,
@@ -129,6 +173,14 @@ def load_registration(path: Path) -> dict:
     for key in ("model_sha256", "runtime_sha256", "system_prompt_sha256"):
         require(type(reg[key]) is str and SHA256.fullmatch(reg[key]),
                 "Missing pinned model/runtime/prompt digest")
+    require(type(reg["api_key_sha256"]) is str and SHA256.fullmatch(reg["api_key_sha256"]),
+            "Missing pinned API credential digest")
+    require(reg["cors_origins"] == CORS_ORIGINS and
+            reg["cors_methods"] == CORS_METHODS and reg["cors_headers"] == CORS_HEADERS and
+            reg["cors_credentials"] is False and reg["webui_enabled"] is False and
+            type(reg["log_verbosity"]) is int and reg["log_verbosity"] == LOG_VERBOSITY,
+            "Unsafe or missing server authentication/CORS configuration")
+    _read_api_key(reg)
     require(reg["system_prompt_sha256"] == documents.sha(
         SYSTEM_INSTRUCTION.encode("utf-8")), "Unexpected prompt revision")
     require(_sha_file(reg["runtime_path"], MAX_EXECUTABLE_BYTES) ==
@@ -319,7 +371,11 @@ def server_command(reg: dict) -> list[str]:
             "--alias", reg["model_name"], "--threads", "4", "--threads-batch", "4",
             "--n-gpu-layers", "0", "--ctx-size", str(reg["context_tokens"]),
             "--parallel", "1", "--n-predict", str(reg["max_output_tokens"]),
-            "--no-warmup", "--jinja", "--chat-template-file", reg["chat_template_path"]]
+            "--no-warmup", "--jinja", "--chat-template-file", reg["chat_template_path"],
+            "--api-key-file", reg["api_key_path"], "--cors-origins", reg["cors_origins"],
+            "--cors-methods", reg["cors_methods"], "--cors-headers", reg["cors_headers"],
+            "--no-cors-credentials", "--no-webui", "--no-agent",
+            "--log-verbosity", str(reg["log_verbosity"])]
 
 
 def _command(args):
@@ -443,11 +499,32 @@ def request_payload(reg: dict, messages: list[dict]) -> bytes:
 
 
 def request_local_completion(reg: dict, messages: list[dict], *, receipt=None, run=None, memory=None):
+    api_key = _read_api_key(reg)
+    require(reg.get("cors_origins") == CORS_ORIGINS and
+            reg.get("cors_methods") == CORS_METHODS and
+            reg.get("cors_headers") == CORS_HEADERS and
+            reg.get("cors_credentials") is False and reg.get("webui_enabled") is False and
+            reg.get("log_verbosity") == LOG_VERBOSITY,
+            "Unsafe or missing server authentication/CORS configuration")
+    try:
+        return _request_local_completion(reg, messages, api_key,
+                                         receipt=receipt, run=run, memory=memory)
+    except Exception as exc:
+        message = str(exc)
+        if api_key in message:
+            raise ValueError(message.replace(api_key, "[redacted]")) from None
+        raise
+
+
+def _request_local_completion(reg: dict, messages: list[dict], api_key: str, *,
+                              receipt=None, run=None, memory=None):
     """One bounded request, retaining exact received bytes even on rejection."""
     receipt = receipt if receipt is not None else {}
     receipt.update(http_status="unmeasured", finish_reason="unmeasured",
                    token_usage="unmeasured", reported_model_alias="unmeasured")
     raw = request_payload(reg, messages)
+    require(api_key.encode("ascii") not in raw,
+            "API credential unexpectedly appears in the model request")
     conn = http.client.HTTPConnection("127.0.0.1", reg["port"],
                                       timeout=reg["timeout_seconds"])
     payload = bytearray()
@@ -475,12 +552,13 @@ def request_local_completion(reg: dict, messages: list[dict], *, receipt=None, r
             receipt["request_send_attempted"] = True
             conn.request("POST", "/v1/chat/completions", raw, {
                 "Content-Type": "application/json", "Accept": "application/json",
-                "Connection": "close",
+                "Connection": "close", "Authorization": "Bearer " + api_key,
             })
             response = conn.getresponse()
             receipt["http_status"] = response.status
-            receipt["response_headers"] = {key: response.getheader(key, "")[:256]
-                                           for key in ("Content-Type", "Content-Length", "Server")}
+            receipt["response_headers"] = {
+                key: response.getheader(key, "").replace(api_key, "[redacted]")[:256]
+                for key in ("Content-Type", "Content-Length", "Server")}
             while len(payload) <= MAX_COMPLETION_BYTES:
                 try:
                     block = response.read1(min(4096, MAX_COMPLETION_BYTES + 1 - len(payload)))
@@ -504,11 +582,14 @@ def request_local_completion(reg: dict, messages: list[dict], *, receipt=None, r
         receipt["http_ended_utc"] = datetime.now(timezone.utc).isoformat()
         receipt["http_elapsed_ms"] = round((time.monotonic() - exchange_started) * 1000, 2)
         retained = bytes(payload[:MAX_COMPLETION_BYTES])
+        safe_retained = retained.replace(api_key.encode("ascii"), b"*" * len(api_key))
         receipt["retained_response_bytes"] = len(retained)
         receipt["raw_response_sha256"] = documents.sha(retained)
+        receipt["response_redacted"] = safe_retained != retained
         if run is not None:
-            _private_write(run / "response.bin", retained)
-    decoded = json.loads(payload.decode("utf-8"))
+            _private_write(run / "response.bin", safe_retained)
+    decoded = json.loads(bytes(payload).replace(
+        api_key.encode("ascii"), b"*" * len(api_key)).decode("utf-8"))
     require(type(decoded) is dict, "Malformed response envelope")
     receipt["reported_model_alias"] = decoded.get("model")
     receipt["token_usage"] = decoded.get("usage", "unmeasured")
@@ -547,18 +628,25 @@ def attempt_generation(packet: dict, manifest: Path, index_path: Path,
     memory = None
     result = None
     try:
-        _private_write(run / "packet.json", documents.serialized(packet))
         if not packet["document_evidence"]:
+            _private_write(run / "packet.json", documents.serialized(packet))
             result = evidence.fallback(packet, reason="no_document_evidence")
             return result
         messages = build_messages(packet)
+        registration = load_registration(reg_path)
+        api_key = _read_api_key(registration)
+        require(api_key.encode("ascii") not in documents.serialized(packet) and
+                api_key.encode("ascii") not in documents.serialized(messages),
+                "API credential unexpectedly appears in source evidence or prompt")
+        _private_write(run / "packet.json", documents.serialized(packet))
         _private_write(run / "registration-input.json", documents.limited_file(
             reg_path, MAX_REGISTRATION_BYTES))
         _private_write(run / "authorization-input.json", documents.limited_file(
             approval_path, MAX_AUTHORIZATION_BYTES))
-        registration = load_registration(reg_path)
         authorization = _read_authorization(approval_path, packet, registration, ledger)
         raw_request = request_payload(registration, messages)
+        require(api_key.encode("ascii") not in raw_request,
+                "API credential unexpectedly appears in the model request")
         host = host_observation(registration)
         prepared = dict(registration=registration, authorization=authorization,
                         registration_sha256=fingerprint(registration),
