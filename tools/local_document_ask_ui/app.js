@@ -19,6 +19,7 @@ const reasonText = {
   source_changed: "The source changed. Its passages and any saved answer were withheld.",
   source_unavailable: "The selected source could not be verified. No passage was returned."
 };
+const languageNames = {en: "English", nb: "Norwegian Bokmål", no: "Norwegian", nn: "Norwegian Nynorsk"};
 
 async function api(action, body) {
   const response = await fetch(prefix + action, {
@@ -42,7 +43,8 @@ function renderPassages(packet) {
   $("passage-section").hidden = passages.length === 0;
   for (const item of passages) {
     const details = node("details", undefined, "passage");
-    const title = node("summary", `${item.document_id} · ${item.language} · ${item.citation_id}`);
+    const language = languageNames[item.language] || item.language;
+    const title = node("summary", `${item.document_id} · ${language} (${item.language}) · ${item.citation_id}`);
     const text = node("p", item.text);
     const metadata = node("p", `Source: ${item.source}\nVersion: ${item.version_digest}\nOriginal bytes: ${item.span.start_byte}–${item.span.end_byte}\nLicense: ${item.license}\nRetrieval incomplete: ${packet.completeness?.documents_clipped ? "yes" : "no"}`);
     metadata.className = "citation";

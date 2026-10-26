@@ -17,6 +17,10 @@ python3 tools/local_document_ask.py \
   --scope development
 ```
 
+For a new operator-selected collection, follow the
+[real-document evaluation intake](real-document-evaluation.md) before building
+an index.
+
 Open the private session URL printed in the terminal. Keep the terminal open;
 press Ctrl-C to stop the local server. The listener binds to `127.0.0.1` by
 default. The browser session URL contains a local access credential that stays
