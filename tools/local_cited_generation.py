@@ -228,24 +228,36 @@ def build_messages(packet: dict) -> list[dict]:
                             for item in sources.values()), "No valid document evidence")
     require(not any(item["scope"] != packet["document_scope"]
                     for item in sources.values()), "Cross-scope evidence")
-    require(not any(QWEN_CONTROL_TOKEN.search(text) for text in
-                    [packet["question"], *(item["text"] for item in sources.values())]),
-            "Question or document evidence contains a model control-token spelling")
+    _check_prompt_control_tokens(packet)
+    risk = evidence.assess_grounding_risk(packet)
+    require(risk["classification"] == "CLEAR_SUPPORTED_CASE",
+            "Grounding risk: " + risk["reason"])
+    passages = evidence.generation_passages(packet)
     source_data = [{
-        "citation_id": item["citation_id"],
-        "language": item["language"],
+        "citation_id": item["citation_id"], "language": item["language"],
         "text": item["text"],
-    } for item in sources.values()]
+    } for item in passages]
     question_data = {
         "question": packet["question"], "language": packet["language"],
         "scope": packet["document_scope"], "original_document_passages": source_data,
-        "incomplete_retrieval": packet["completeness"]["documents_clipped"],
+        "incomplete_retrieval": (
+            packet["completeness"]["documents_clipped"] or
+            len(passages) < len(sources) or any(
+                item["text"] != sources[item["citation_id"]]["text"]
+                for item in passages)),
     }
     user_message = json.dumps(question_data, sort_keys=True, ensure_ascii=False)
     require(len(user_message.encode("utf-8")) <= MAX_PROMPT_BYTES,
             "Generation context budget exceeded")
     return [{"role": "system", "content": SYSTEM_INSTRUCTION},
             {"role": "user", "content": user_message}]
+
+
+def _check_prompt_control_tokens(packet: dict):
+    sources = evidence.available_citations(packet)
+    require(not any(QWEN_CONTROL_TOKEN.search(text) for text in
+                    [packet["question"], *(item["text"] for item in sources.values())]),
+            "Question or document evidence contains a model control-token spelling")
 
 
 def _candidate_validation_diagnostic() -> dict:
@@ -301,6 +313,9 @@ def _check_answer(packet: dict, candidate, *, actual_model: bool = False) -> dic
     Citation correctness is NOT semantic entailment. No unverified paraphrasing,
     counting, synthesis, exhaustive claims or mismatched-language response.
     """
+    risk = evidence.assess_grounding_risk(packet)
+    require(risk["classification"] == "CLEAR_SUPPORTED_CASE",
+            "Grounding risk: " + risk["reason"])
     require(type(candidate) is dict, "Generation must be a JSON object")
     if set(candidate) == {"version", "status"} and (
             candidate["version"] == VERSION and candidate["status"] == "abstain"):
@@ -325,11 +340,8 @@ def _check_answer(packet: dict, candidate, *, actual_model: bool = False) -> dic
             "Answer source language differs from question language")
     require(text in item["text"], "Answer is not a verbatim original source passage")
     require(not ABSOLUTE_CLAIM.search(text), "Exhaustive or negative claim unsupported")
-    required = {w for w in documents.tokens(packet["question"])
-                if len(w) >= 4 and w not in STOP_WORDS}
-    observed = set(documents.tokens(text))
-    require(required and required.intersection(observed),
-            "No lexical question-answer link in current limited answer family")
+    require(evidence.quote_matches_question(packet, text),
+            "Quoted answer is not one relevant sentence with all lexical question terms")
     return {
         "status": "generated_checked_extractive" if actual_model else
                   "checked_saved_output_only",
@@ -342,6 +354,7 @@ def _check_answer(packet: dict, candidate, *, actual_model: bool = False) -> dic
         },
         "verification": "exact_original_source_quote_and_citation_only",
         "semantic_entailment": "not_independently_proven",
+        "grounding_risk": risk,
         "completeness": packet["completeness"],
         "model_invoked": actual_model,
     }
@@ -682,13 +695,37 @@ def attempt_generation(packet: dict, manifest: Path, index_path: Path,
                    transport_kind="native_http" if transport is request_local_completion else "synthetic_test",
                    citation_check="not_run", error=None, final_view=None,
                    candidate_validation=_candidate_validation_diagnostic(),
+                   grounding_risk=None,
                    server_inference_execution="unattested_http_request_only")
     memory = None
     result = None
+    risk = None
     try:
         if not packet["document_evidence"]:
             _private_write(run / "packet.json", documents.serialized(packet))
             result = evidence.fallback(packet, reason="no_document_evidence")
+            return result
+        _check_prompt_control_tokens(packet)
+        try:
+            current = evidence.retrieve(
+                manifest, index_path, scope, packet["question"], packet["language"],
+                max(1, len(packet["document_evidence"]))) == packet
+        except (ValueError, OSError, UnicodeError, KeyError, TypeError):
+            current = False
+        if not current:
+            result = {
+                "status": "source_unavailable", "reason": "source_changed_before_inference",
+                "answer": None, "evidence": [], "model_invoked": False,
+                "completeness": {**packet["completeness"], "documents_status": "stale_source"},
+                "semantic_entailment": "not_assessed",
+            }
+            return result
+        risk = evidence.assess_grounding_risk(packet)
+        receipt["grounding_risk"] = risk
+        if risk["classification"] != "CLEAR_SUPPORTED_CASE":
+            _private_write(run / "packet.json", documents.serialized(packet))
+            result = evidence.fallback(packet, reason=risk["reason"])
+            result["grounding_risk"] = risk
             return result
         messages = build_messages(packet)
         registration = load_registration(reg_path)
@@ -757,6 +794,7 @@ def attempt_generation(packet: dict, manifest: Path, index_path: Path,
             receipt["citation_check"] = ("rejected" if receipt["citation_check"] == "checking"
                                           else "not_run")
             result = evidence.fallback(packet, reason="inference_or_grounding_failed")
+            result["grounding_risk"] = risk
         # Recheck even after timeout or invalid output; never leak a stale fallback.
         try:
             current = evidence.retrieve(manifest, index_path, scope, packet["question"],
@@ -768,7 +806,8 @@ def attempt_generation(packet: dict, manifest: Path, index_path: Path,
             result = dict(status="source_unavailable", reason="source_changed_during_inference",
                           answer=None, evidence=[], model_invoked=False,
                           completeness={**packet["completeness"], "documents_status": "stale_source"},
-                          semantic_entailment="not_assessed")
+                          semantic_entailment="not_assessed",
+                          grounding_risk=risk)
         result.update(model_request_attempted=True, registered_model_alias=registration["model_name"],
                       run_authorization_id=authorization["authorization_id"],
                       receipt_directory=str(run),

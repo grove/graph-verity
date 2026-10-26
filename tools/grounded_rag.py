@@ -26,6 +26,19 @@ MAX_CLAIMS = 5
 MAX_QUOTE = 384
 LANGUAGES = {"en", "no", "nb", "nn"}
 CITATION = re.compile(r"[dg]:[0-9a-f]{64}\Z")
+GROUNDING_STOP_WORDS = {
+    "what", "which", "where", "when", "who", "does", "did", "is", "are",
+    "has", "have", "the", "a", "an", "to", "of", "for", "in", "and",
+    "hva", "hvilken", "hvilket", "hvor", "når", "er", "har", "alle",
+    "every", "all",
+}
+IDENTIFIER_VALUE = re.compile(r"\b[A-Z][A-Z0-9]*(?:[-._][A-Z0-9]+)+\b")
+INSTRUCTION_ATTACK = re.compile(
+    r"\bignore\s+(?:all\s+)?(?:previous|prior|system)\s+instructions?\b"
+    r"[^.\n]{0,100}\bfabricat\w*\s+(?:a\s+)?citation\b", re.IGNORECASE)
+LATENCY_VALUE = re.compile(
+    r"\b\d+(?:[.,]\d+)?\s*(?:ms|milliseconds?|s|seconds?|sekunder?)\b",
+    re.IGNORECASE)
 
 
 def require(test, description):
@@ -234,9 +247,198 @@ def available_citations(packet: dict) -> dict:
     return items
 
 
+def _question_terms(value: str) -> set[str]:
+    terms = set()
+    for word in documents.tokens(value):
+        if word in GROUNDING_STOP_WORDS:
+            continue
+        if word.endswith("ies") and len(word) > 4:
+            word = word[:-3] + "y"
+        elif word.endswith("s") and len(word) > 4 and not word.endswith("ss"):
+            word = word[:-1]
+        terms.add(word)
+    return terms
+
+
+def _sentences(text: str) -> list[str]:
+    return [part.strip() for part in re.split(
+        r"(?<=[!?])\s+|(?<=\.)\s+(?=[A-ZÆØÅ])|\n", text)
+            if part.strip()]
+
+
+def _matching_passages(packet: dict, text: str | None = None) -> list[dict]:
+    terms = _question_terms(packet["question"])
+    if not terms:
+        return []
+    passages = packet["document_evidence"]
+    if text is not None:
+        passages = [{"text": text}]
+    return [item for item in passages if any(
+        terms <= _question_terms(sentence) for sentence in _sentences(item["text"]))]
+
+
+def _identifier_records(packet: dict) -> list[tuple[str, str]]:
+    records = []
+    for item in packet["document_evidence"]:
+        for sentence in _sentences(item["text"]):
+            english = re.search(
+                r"\b(?P<subject>(?:[A-Za-z0-9][A-Za-z0-9_-]*\s+){1,2}trial)\b"
+                r"[^.!?]{0,80}\b(?:identifier|id)\b[^.!?]{0,32}"
+                r"\b(?P<value>[A-Z][A-Z0-9]*(?:[-._][A-Z0-9]+)+)\b",
+                sentence, re.IGNORECASE)
+            norwegian = re.search(
+                r"\b(?P<subject>[A-Za-z0-9][A-Za-z0-9_-]*-forsøket)\b"
+                r"[^.!?]{0,80}\bidentifikator(?:en)?\b[^.!?]{0,32}"
+                r"\b(?P<value>[A-Z][A-Z0-9]*(?:[-._][A-Z0-9]+)+)\b",
+                sentence, re.IGNORECASE)
+            match = english or norwegian
+            if match:
+                subject = match["subject"].casefold()
+                subject = re.sub(r"^(?:the\s+)", "", subject)
+                if subject.endswith("-forsøket"):
+                    subject = subject[:-len("-forsøket")] + " trial"
+                records.append((subject, match["value"].casefold()))
+    return records
+
+
+# shortcut: finite surface rules do not prove entailment, upgrade only with independent relevance evidence.
+def assess_grounding_risk(packet: dict) -> dict:
+    """Apply narrow source-packet checks; CLEAR is not semantic entailment."""
+    question = packet["question"]
+    text = "\n".join(item["text"] for item in packet["document_evidence"])
+    has_untrusted_instruction = bool(INSTRUCTION_ATTACK.search(text))
+    risk = {
+        "classification": "UNDETERMINED",
+        "reason": "unable_to_establish_relevance",
+        "detail": "question_or_evidence_outside_supported_rules",
+        "untrusted_instruction_present": has_untrusted_instruction,
+    }
+    lower = question.casefold()
+    if re.search(r"\b(?:count|how many|number of|total number)\b", lower) or re.search(
+            r"\b(?:every|all|each)\b[^?]{0,48}"
+            r"\b(?:documents?|files?|sources?|records?|trials?|passages?|claims?)\b|"
+            r"\b(?:documents?|files?|sources?|records?|trials?|passages?|claims?)\b"
+            r"[^?]{0,48}\b(?:every|all|each)\b", lower) or re.search(
+            r"\b(?:oppsummer|tell|hvor mange|alle dokumentene?|alle kildene|"
+            r"samtlige dokumenter|samlet konklusjon)\b", lower):
+        risk.update(classification="UNSUPPORTED_QUESTION",
+                    reason="unsupported_answer_type", detail="count_or_multi_document_synthesis")
+        return risk
+    targeted_instruction = bool(re.search(
+        r"\b(?:note|instruct\w*|instruction\w*|citation|assistant|prompt)\b",
+        lower))
+    terms = _question_terms(question)
+    targeted_instruction |= has_untrusted_instruction and any(
+        INSTRUCTION_ATTACK.search(sentence) and
+        terms <= _question_terms(sentence)
+        for item in packet["document_evidence"]
+        for sentence in _sentences(item["text"]))
+    if has_untrusted_instruction and targeted_instruction:
+        risk.update(classification="UNTRUSTED_INSTRUCTION_RISK",
+                    reason="untrusted_instructions",
+                    detail="question_or_matching_passage_targets_embedded_instruction")
+        return risk
+    if (re.search(r"\b(?:startup|start-up)\b", lower) and
+            re.search(r"\blatency\b", lower)):
+        measured = any(
+            re.search(r"\b(?:startup|start-up)\b", sentence, re.IGNORECASE) and
+            re.search(r"\blatency\b", sentence, re.IGNORECASE) and
+            LATENCY_VALUE.search(sentence)
+            for item in packet["document_evidence"]
+            for sentence in _sentences(item["text"]))
+        if not measured:
+            risk.update(classification="INSUFFICIENT_EVIDENCE",
+                        reason="insufficient_source_support",
+                        detail="no_startup_latency_value_in_retrieved_passages")
+            return risk
+    identifier_question = bool(re.search(
+        r"\b(?:what|which)\b[^?]{0,60}\b(?:identifier|id)\b|"
+        r"\b(?:identifier|id)\b[^?]{0,60}\b(?:does|has|have)\b|"
+        r"\b(?:hva|hvilken)\b[^?]{0,60}\bidentifikator(?:en)?\b",
+        lower))
+    if identifier_question:
+        records = _identifier_records(packet)
+        subject_match = re.search(
+            r"\b((?:[A-Za-z0-9][A-Za-z0-9_-]*\s+){1,2}trial)\b",
+            question, re.IGNORECASE)
+        if subject_match is None:
+            subject_terms = _question_terms(question) - {
+                "identifier", "id", "identifikator", "identifikatoren",
+            }
+            if not subject_terms and IDENTIFIER_VALUE.search(text):
+                risk.update(classification="AMBIGUOUS",
+                            reason="ambiguous_question",
+                            detail="identifier_question_omits_subject")
+                return risk
+            if subject_terms:
+                risk.update(detail="identifier_subject_outside_supported_rule")
+                return risk
+            risk.update(classification="INSUFFICIENT_EVIDENCE",
+                        reason="insufficient_source_support",
+                        detail="no_identifier_value_in_retrieved_passages")
+            return risk
+        subject = re.sub(r"^(?:the\s+)", "", subject_match[1].casefold())
+        values = {value for found_subject, value in records if found_subject == subject}
+        if len(values) > 1:
+            risk.update(classification="CONFLICTING_EVIDENCE",
+                        reason="conflicting_evidence",
+                        detail="same_trial_identifier_values_disagree")
+            return risk
+        if not values:
+            risk.update(classification="INSUFFICIENT_EVIDENCE",
+                        reason="insufficient_source_support",
+                        detail="no_subject_matched_identifier_value_in_retrieved_passages")
+            return risk
+        if packet["completeness"]["documents_clipped"]:
+            risk.update(reason="retrieval_coverage_incomplete",
+                        detail="retrieval_coverage_incomplete")
+            return risk
+        if _matching_passages(packet):
+            risk.update(classification="CLEAR_SUPPORTED_CASE",
+                        reason="source_quote_candidate",
+                        detail="identifier_family_exact_terms_present")
+            return risk
+        return risk
+    if not re.match(r"^(?:what|which|where|when|who|hva|hvor|når|hvilken|hvilket)\b",
+                    lower):
+        return risk
+    if packet["completeness"]["documents_clipped"]:
+        risk.update(reason="retrieval_coverage_incomplete",
+                    detail="retrieval_coverage_incomplete")
+        return risk
+    if _matching_passages(packet):
+        risk.update(classification="CLEAR_SUPPORTED_CASE",
+                    reason="source_quote_candidate",
+                    detail="direct_question_terms_share_one_retrieved_sentence")
+    return risk
+
+
+def quote_matches_question(packet: dict, text: str) -> bool:
+    """Require every meaningful question term in the one quoted answer sentence."""
+    return len(_sentences(text)) == 1 and bool(_matching_passages(packet, text))
+
+
+def generation_passages(packet: dict) -> list[dict]:
+    """Use exact relevant sentences from retrieved spans; keep the full packet for fallback."""
+    terms = _question_terms(packet["question"])
+    selected = []
+    for item in packet["document_evidence"]:
+        sentences = [sentence for sentence in _sentences(item["text"])
+                     if terms and terms <= _question_terms(sentence)]
+        if sentences:
+            selected.append({**item, "text": " ".join(sentences)})
+    return selected
+
+
 def check_extractive(packet: dict, candidate: dict) -> dict:
     """Strict saved-output replay: source quotes/terms only; never entails prose."""
     try:
+        risk = None
+        if packet.get("document_evidence") and packet.get("graph_evidence") == []:
+            risk = assess_grounding_risk(packet)
+            if risk["classification"] != "CLEAR_SUPPORTED_CASE":
+                return {**fallback(packet, reason=risk["reason"]),
+                        "grounding_risk": risk}
         require(type(candidate) is dict and set(candidate) ==
                 {"version", "language", "claims"}, "Unrecognized candidate structure")
         require(candidate["version"] == CANDIDATE_VERSION and
@@ -244,6 +446,9 @@ def check_extractive(packet: dict, candidate: dict) -> dict:
         claims = candidate["claims"]
         require(type(claims) is list and 1 <= len(claims) <= MAX_CLAIMS,
                 "Unsupported claim count")
+        if risk is not None:
+            require(len(claims) == 1,
+                    "Only one direct document quote is supported")
         if len(documents.serialized(candidate)) > MAX_CANDIDATE:
             raise ValueError("Candidate exceeds byte budget")
         sources = available_citations(packet)
@@ -259,6 +464,9 @@ def check_extractive(packet: dict, candidate: dict) -> dict:
             if claim["kind"] == "verbatim_document_quote":
                 require(source["type"] == "document_span" and text in source["text"],
                         "Claim is not an exact source excerpt")
+                if risk is not None:
+                    require(quote_matches_question(packet, text),
+                            "Quote lacks direct lexical question support")
             elif claim["kind"] == "verbatim_rdf_object":
                 require(source["type"] == "original_rdf_triple" and
                         text == source["object"]["value"],
@@ -273,6 +481,7 @@ def check_extractive(packet: dict, candidate: dict) -> dict:
             "claims": approved,
             "entailment": "not_proven; only exact quotations and citation IDs checked",
             "limitations": packet["completeness"],
+            **({"grounding_risk": risk} if risk is not None else {}),
         }
     except (ValueError, TypeError, KeyError, UnicodeError):
         return fallback(packet, reason="candidate_rejected")

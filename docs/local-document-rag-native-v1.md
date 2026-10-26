@@ -3,7 +3,9 @@
 Follow-up for #122, parent #71, after merged #123, #124 and #125. The first
 one-shot native trial has completed and remains historically rejected. This
 change does not start a server, execute inference, create owner authorization,
-or alter its private evidence. Keep #122 open and `INCONCLUSIVE_REVISE`.
+or alter its private evidence. The later accepted native English and Norwegian
+direct answers are separate trials and remain unchanged. Keep #122 open and
+preserve the historical `INCONCLUSIVE_REVISE` conclusion.
 
 ## Prospective response normalization
 
@@ -29,6 +31,54 @@ registration, current source packet, exact request hash and host admission, and
 a new unconsumed one-shot authorization with a future expiry.
 
 This is a single document-answer trial, without graph execution.
+
+## Deterministic grounding-risk gate
+
+A source-exact quote and a resolvable d: citation can still be irrelevant,
+ambiguous or contradicted. The model-free gate runs on the current retrieved
+packet before generation authorization is read or consumed. It recognizes:
+
+- Different identifier values attached to the same named trial and identifier
+  attribute in the selected passages. The current CPU example is
+  RAG-CPU-01 versus RAG-CPU-99; both original citations are retained for
+  source-only review. An identifier question without a subject is withheld when
+  identifier values are present.
+- An incomplete packet for that identifier question. If retrieval is clipped
+  and only one side is visible, the result is UNDETERMINED with a coverage
+  reason; the gate does not claim to have found a conflict.
+- A requested startup latency only when a retrieved sentence contains a
+  startup/latency reference and a numeric value with a time unit. Startup text
+  without a measurement is insufficient support.
+- Explicit count/all-document requests and broad Norwegian summary/conclusion
+  requests. A narrow instruction-risk pattern blocks a question about a note
+  when the retrieved text combines “ignore previous instructions” with a
+  fabricated-citation request; it also blocks that attack when its sentence
+  matches all direct question terms. Ordinary instruction documentation is
+  not rejected by that pattern.
+- A simple direct question only when every meaningful question term appears in
+  one retrieved source sentence. The prompt receives those exact sentence
+  excerpts; the complete packet remains available for source-only fallback.
+
+Other answer forms, clipped retrieval, missing measurements and unclear
+question/evidence links return inspectable original passages with an honest
+reason, or no_evidence when retrieval found no passages. No fallback claims
+that an unreturned fact is false or absent. Existing exact-quote, citation,
+language, scope, version, control-token, authentication, stale-source and
+resource checks remain in force. CLEAR_SUPPORTED_CASE only admits the existing
+quote/citation validator; it does not prove semantic entailment.
+
+The development replay blocks the ambiguous identifier, the visible
+CPU-identifier conflict, the missing startup measurement, the targeted
+instruction question, counting and synthesis. English and Norwegian direct
+development quotes remain saved-output-only passes. Lexical overlap and these
+finite patterns cannot establish general relevance, detect every conflict or
+make prompt injection impossible; independent human relevance review is still
+required. Any native negative-case probe needs separate fresh owner
+authorization after this change is reviewed and merged.
+
+The [per-case model-free replay](issue-122-grounding-risk-review.md) records all
+14 questions, selected original citations, source-only baselines, prior
+validator outcomes, detected risks and expected safe results.
 
 ## Candidate identity and verified assets
 
