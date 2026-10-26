@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Graph Verity · Local document Ask</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<main>
+  <p class="badge">Local document Ask · BM25 · no graph execution</p>
+  <h1>Ask your documents</h1>
+  <p>Questions are checked against the original passages in the selected local document scope.</p>
+  <form id="ask-form">
+    <label for="language">Answer language</label>
+    <select id="language">
+      <option value="en">English</option>
+      <option value="nb">Norwegian Bokmål</option>
+    </select>
+    <label for="question">Question</label>
+    <textarea id="question" maxlength="4096" rows="3" required></textarea>
+    <button id="ask" type="submit">Ask</button>
+    <button id="prepare" type="button">Prepare local generated answer</button>
+  </form>
+  <p id="status" role="status" aria-live="polite">Sources only is the default. Asking does not start a model or consume an authorization.</p>
+  <section id="answer" hidden aria-live="polite"></section>
+  <section id="passage-section" hidden>
+    <h2>Retrieved original passages</h2>
+    <div id="passages"></div>
+  </section>
+  <details id="coverage" hidden>
+    <summary>Completeness and limits</summary>
+    <pre id="coverage-content"></pre>
+  </details>
+  <details id="preparation" hidden>
+    <summary>Prepared request review</summary>
+    <p id="prepare-message"></p>
+    <pre id="prepare-content"></pre>
+    <p>Preparation creates no approval and sends no model request. Use the existing private CLI for the separate owner approval and one-shot execution.</p>
+  </details>
+</main>
+</body>
+</html>
