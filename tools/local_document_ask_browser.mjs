@@ -73,7 +73,7 @@ try {
 
   await send("Network.enable"); await send("Runtime.enable"); await send("Page.enable");
   await send("Page.navigate", { url });
-  await until("document.getElementById('ask') && !document.getElementById('ask').disabled");
+  await until("location.hash === '' && document.getElementById('ask') && !document.getElementById('ask').disabled");
   assert.equal(await evaluate("location.hash"), "");
 
   await ask("What does the default local answer mode display?", "en");
