@@ -606,10 +606,12 @@ class LocalGenerationTests(unittest.TestCase):
     def test_api_credential_is_rejected_from_source_evidence_before_receipts(self):
         packet = self.packet()
         packet["question"] = self.api_key
-        with self.assertRaisesRegex(ValueError, "source evidence or prompt"):
-            local.attempt_generation(packet, self.manifest, self.index, "public",
-                                     self.registration, self.authorization, self.ledger,
-                                     transport=Mock())
+        result = local.attempt_generation(
+            packet, self.manifest, self.index, "public", self.registration,
+            self.authorization, self.ledger, transport=Mock())
+        self.assertEqual(result["status"], "source_unavailable")
+        self.assertEqual(result["reason"], "source_changed_before_inference")
+        self.assertFalse(result["model_invoked"])
         self.assertEqual(list(self.ledger.glob("*.consumed.json")), [])
         receipt = next(self.ledger.glob("run-*/receipt.json"))
         self.assertNotIn(self.api_key, receipt.read_text())
