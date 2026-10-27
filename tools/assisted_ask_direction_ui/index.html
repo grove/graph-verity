@@ -37,6 +37,11 @@
     <h3 data-i18n="propertyCandidatesTitle">Property candidates</h3>
     <p id="suggestion-empty" hidden data-i18n="noSuggestions">No property candidates matched this question in the selected graph.</p>
     <div id="suggestion-list"></div>
+    <h3 data-i18n="metadataCandidatesTitle">Source-backed property metadata</h3>
+    <p data-i18n="metadataCandidatesHelp">These BM25 suggestions use retained CC0 Wikidata property labels and descriptions, mapped only to predicates already present in the selected graph. They are metadata, not data facts or source witnesses.</p>
+    <p id="metadata-suggestion-empty" hidden data-i18n="metadataCandidatesEmpty">No retained property metadata matched this question.</p>
+    <div id="metadata-suggestion-list"></div>
+    <details><summary data-i18n="metadataProvenance">Property metadata source, mapping and index</summary><pre id="property-metadata-provenance"></pre></details>
     <h3 data-i18n="neighborhoodCandidatesTitle">Source-witnessed nearby properties</h3>
     <p data-i18n="neighborhoodHelp">These properties have stored edges to a BM25 entity candidate. Neighborhood rank does not show which property answers the question; inspect the original edge and choose manually.</p>
     <p id="neighborhood-clipped" hidden role="note" data-i18n="neighborhoodClipped">Neighborhood retrieval was clipped. Missing properties or edges are unknown.</p>
