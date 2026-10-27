@@ -111,6 +111,24 @@ class DocumentRagTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             rag.search_index(persisted, "   ")
 
+    def test_english_query_stop_words_reduce_noise_and_other_languages_are_unchanged(self):
+        persisted = self.build()
+        query = "What is the deadline?"
+        raw = rag.search_index(persisted, query, 5)
+        english = rag.search_index(persisted, query, 5, "en")
+        self.assertEqual(english["hits"][0]["document_id"], "policy")
+        self.assertLess(english["hits"][0]["score"], raw["hits"][0]["score"])
+        self.assertEqual(
+            rag.search_index(persisted, "Hva er søknadsfristen?", 5, "nb"),
+            rag.search_index(persisted, "Hva er søknadsfristen?", 5),
+        )
+        self.assertEqual(
+            rag.search_index(persisted, "what is the", 5, "en"),
+            rag.search_index(persisted, "what is the", 5),
+        )
+        with self.assertRaises(ValueError):
+            rag.search_index(persisted, query, 5, [])
+
     def test_long_document_stable_chunks_and_no_cut_utf8(self):
         self.no.write_text("Ålesund kyst " * 850, encoding="utf-8")
         self.records[0]["sha256"] = rag.sha(self.no.read_bytes())
@@ -266,6 +284,11 @@ class DocumentRagTests(unittest.TestCase):
         self.assertEqual(searched.returncode, 0, searched.stderr)
         result = json.loads(searched.stdout)
         self.assertEqual(result["hits"][0]["document_id"], "norge")
+        english = run("search", "--query", "What is the deadline?",
+                      "--language", "en")
+        self.assertEqual(english.returncode, 0, english.stderr)
+        self.assertEqual(json.loads(english.stdout)["hits"][0]["document_id"],
+                         "policy")
         citation_id = result["hits"][0]["citation_id"]
         cited = run("cite", "--citation-id", citation_id)
         self.assertEqual(cited.returncode, 0, cited.stderr)

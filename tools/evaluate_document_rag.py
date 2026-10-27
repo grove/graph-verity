@@ -101,7 +101,8 @@ def evaluate_case(bundle: ask.Bundle, manifest: Path, index_path: Path,
             packet, view = result["packet"], result["view"]
         else:
             packet_ids = {item["citation_id"] for item in packet["document_evidence"]}
-            search = documents.search_index(current, case["question"], 3)
+            search = documents.search_index(current, case["question"], 3,
+                                            case["language"])
             for rank, hit in enumerate(search["hits"], 1):
                 cited = documents.cite(current, hit["citation_id"])["evidence"]
                 verified = all(hit.get(key) == value for key, value in cited.items())

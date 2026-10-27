@@ -31,6 +31,11 @@ WORD = re.compile(r"\S+", re.UNICODE)
 IDENT = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{0,79}\Z")
 DIGEST = re.compile(r"sha256:[0-9a-f]{64}\Z")
 LANGUAGES = {"en", "no", "nb", "nn"}
+ENGLISH_QUERY_STOP_WORDS = frozenset(
+    "a an and are as at be because been before but by can could did do does "
+    "for from had has have how if in into is it its of on or the their these "
+    "this to was were what when where whether which who why with you your".split()
+)
 
 
 def sha(data: bytes) -> str:
@@ -275,12 +280,19 @@ def evidence(chunk: dict) -> dict:
     )}
 
 
-def search_index(index: dict, query: str, limit: int = 5):
+def search_index(index: dict, query: str, limit: int = 5,
+                 language: str | None = None):
     if (not isinstance(query, str) or not query.strip() or
             len(query.encode("utf-8")) > MAX_QUERY or
-            type(limit) is not int or not 1 <= limit <= 20):
+            type(limit) is not int or not 1 <= limit <= 20 or
+            (language is not None and
+             (not isinstance(language, str) or language not in LANGUAGES))):
         raise ValueError("Invalid query or result limit")
-    query_terms = tuple(sorted(set(tokens(query))))
+    original_terms = set(tokens(query))
+    query_terms = original_terms
+    if language == "en":
+        query_terms = original_terms - ENGLISH_QUERY_STOP_WORDS or original_terms
+    query_terms = tuple(sorted(query_terms))
     if not query_terms:
         raise ValueError("Query contains no searchable terms")
     chunks = index["payload"]["chunks"]
@@ -337,6 +349,7 @@ def main(argv=None):
         if command == "search":
             cmd.add_argument("--query", required=True)
             cmd.add_argument("--limit", type=int, default=5)
+            cmd.add_argument("--language", choices=sorted(LANGUAGES))
         if command == "cite":
             cmd.add_argument("--citation-id", required=True)
     args = parser.parse_args(argv)
@@ -356,7 +369,7 @@ def main(argv=None):
                       "chunks": len(indexed["payload"]["chunks"])}
         else:
             indexed = load_index(args.manifest, args.index, args.scope)
-            result = (search_index(indexed, args.query, args.limit)
+            result = (search_index(indexed, args.query, args.limit, args.language)
                       if args.command == "search" else cite(indexed, args.citation_id))
         print(json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2))
     except (ValueError, OSError, UnicodeError, TypeError, KeyError,
