@@ -80,7 +80,7 @@ agent-authored candidate references by rank 10; neighborhood v2 found 20/29 by
 rank 5 and 29/29 by rank 10. This is exact candidate-position coverage, not
 human relevance or answer accuracy. The full paired counts and per-case ranks
 are in
-[`issue-114-paired-retrieval-v1`](../reports/issue-114-paired-retrieval-v1/README.md).
+[`ask-alpha-paired-retrieval-v1`](../benchmarks/ask-alpha-paired-retrieval-v1/README.md).
 
 **Next #114/#115 milestone:** add the already retained licensed property labels
 and descriptions to graph-local BM25 predicate text, then repeat the paired
