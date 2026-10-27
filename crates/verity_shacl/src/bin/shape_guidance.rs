@@ -63,6 +63,8 @@ fn run() -> Result<()> {
         &packet,
         &policy,
     )?;
+    let guidance_value = serde_json::to_value(&guidance)?;
+    let neighborhood = data.neighborhood_packet(&discovery, &request, &policy, &budget)?;
     let entity_candidates = packet
         .candidates("entity")?
         .iter()
@@ -81,16 +83,91 @@ fn run() -> Result<()> {
             }))
         })
         .collect::<Result<Vec<_>>>()?;
+    let bm25_entities = packet.candidates("entity")?;
+    let bm25_predicates = packet.candidates("predicate")?;
+    let neighborhood_entities = neighborhood.candidates("entity")?;
+    let neighborhood_properties = guidance_value["properties"]
+        .as_array()
+        .ok_or_else(|| reject("shape_guidance", "Shape properties are unavailable"))?;
+    let mut neighborhood_candidates = Vec::new();
+    for (rank, candidate) in neighborhood.candidates("predicate")?.iter().enumerate() {
+        if bm25_predicates
+            .iter()
+            .any(|bm25| bm25.iri == candidate.iri && bm25.graph == candidate.graph)
+            || candidate.graph != shape_config.data_graph
+        {
+            continue;
+        }
+        let shape_properties = neighborhood_properties
+            .iter()
+            .filter(|property| property["predicate_iri"] == candidate.iri)
+            .collect::<Vec<_>>();
+        if shape_properties.is_empty() {
+            continue;
+        }
+        let mut witness = None;
+        'seeds: for (entity_rank, seed) in bm25_entities.iter().enumerate() {
+            if seed.graph != candidate.graph {
+                continue;
+            }
+            let Some(neighborhood_seed) = neighborhood_entities
+                .iter()
+                .find(|item| item.iri == seed.iri && item.graph == seed.graph)
+            else {
+                continue;
+            };
+            for direction in ["outgoing", "incoming"] {
+                if let Ok(statement) = neighborhood.direction_witness(
+                    &neighborhood_seed.id,
+                    &candidate.id,
+                    &candidate.graph,
+                    direction,
+                ) {
+                    witness = Some(serde_json::json!({
+                        "entity": {"rank": entity_rank + 1, "iri": seed.iri, "graph": seed.graph},
+                        "direction": direction,
+                        "statement": statement,
+                    }));
+                    break 'seeds;
+                }
+            }
+        }
+        if let Some(witness) = witness {
+            neighborhood_candidates.push(serde_json::json!({
+                "neighborhood_rank": rank + 1,
+                "candidate": {
+                    "id": candidate.id,
+                    "iri": candidate.iri,
+                    "graph": candidate.graph,
+                    "exact": candidate.exact,
+                    "ranking_score": candidate.ranking_score,
+                    "texts": candidate.texts,
+                    "texts_clipped": candidate.texts_clipped,
+                },
+                "witness": witness,
+                "shape_properties": shape_properties,
+            }));
+        }
+    }
     let packet = serde_json::to_value(&packet)?;
-    let guidance = serde_json::to_value(&guidance)?;
+    let neighborhood = serde_json::to_value(&neighborhood)?;
     let result = serde_json::json!({
-        "version": "assisted-ask-shape-suggestions-v1",
+        "version": "assisted-ask-shape-neighborhood-suggestions-v1",
         "packet_id": packet["packet_id"],
         "request": packet["request"],
         "score_semantics": packet["score_semantics"],
         "entity_candidates": entity_candidates,
         "candidates": candidates,
-        "shape_guidance": guidance,
+        "neighborhood": {
+            "version": neighborhood["version"],
+            "packet_id": neighborhood["packet_id"],
+            "rules": neighborhood["rules"],
+            "score_semantics": neighborhood["score_semantics"],
+            "clipped": neighborhood["clipped"],
+            "matches_semantics": neighborhood["matches_semantics"],
+        },
+        "neighborhood_candidates": neighborhood_candidates,
+        "shape_guidance": guidance_value,
     });
     let encoded = serde_json::to_vec(&result)?;
     if encoded.len() > MAX_OUTPUT_BYTES {

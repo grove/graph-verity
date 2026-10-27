@@ -171,7 +171,7 @@ class Server(ask.Server):
             '/style.css': ((ask.ASSETS / 'style.css').read_bytes(), 'text/css'),
         }
         self.bundle.receipt.update(
-            ui_version='assisted-ask-v1-direction-shape-guidance',
+            ui_version='assisted-ask-v1-direction-shape-neighborhood-guidance',
             backend='manual-structured-selection-explicit-direction',
             adapter_sha256=find.file_digest(Path(__file__)),
             shape_guidance_binary_sha256=self.bundle.shape_guidance_binary_sha256,

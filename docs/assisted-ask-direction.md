@@ -33,11 +33,12 @@ document-RAG evidence, so #115 remains open and the release status remains
 `INCONCLUSIVE_REVISE`.
 
 The optional question field can request bounded BM25 entity and predicate
-suggestions. The request uses the exact authorized Wikidata development graph
+suggestions plus separate shape-guided properties witnessed near BM25 entity
+candidates. The request uses the exact authorized Wikidata development graph
 and snapshot; results show graph-qualified candidates, available source text and
-RDF usage evidence alongside any matching shape guidance. Scores are BM25
-ranks, not probabilities. The demo shape set in
-`examples/assisted-ask-direction/demo-shapes/` is
+RDF witnesses alongside any matching shape guidance. BM25 scores are ranks, not
+probabilities; neighborhood rank does not indicate question relevance. The demo
+shape set in `examples/assisted-ask-direction/demo-shapes/` is
 operator-authored and Apache-2.0 licensed, and its source, graph mapping,
 snapshot identifiers and content hash are shown in the interface. It provides
 only `P856` IRI-node and `P1448` language-string hints. These hints are not
@@ -53,18 +54,25 @@ has no matching source label.
 In the retained development snapshot, the natural English question “Which
 official websites does the University of Tromsø list?” and Norwegian question
 “Hvilke offisielle navn har Universitetet i Tromsø?” retrieve entity `Q279724`
-but no predicate candidate. Exact `P856` and `P1448` identifiers retrieve their
+at BM25 entity rank 1 but no BM25 predicate. The existing source-witnessed
+neighborhood path adds `P1448` at neighborhood rank 4 and `P856` at rank 7 for
+both questions, each backed by an original outgoing Wikidata statement from
+`Q279724`. The neighborhood packet is clipped; the UI displays that limit and
+does not treat missing edges as absent facts. These properties appear for both
+phrasings, so this expansion supplies source-backed choices but does not
+determine which one answers the question. Its displayed rank is not a question
+relevance score. Exact `P856` and `P1448` identifiers retrieve their BM25
 predicate candidates, but do not retrieve an entity. These are reproducible
 development observations, not owner-reviewed relevance judgments or evidence
-of real-world usefulness. They show that the existing BM25 path can suggest an
-entity for these two phrasings while property discovery still depends on exact
-identifiers in this small graph. The demo shapes establish metadata handling,
-not general retrieval quality.
+of real-world usefulness. The demo shapes establish metadata handling, not
+general retrieval quality.
 
 **Next #114/#115 milestone:** repeat the same model-free checks on an
 owner-selected graph with a trusted shape set and useful Norwegian/English
 labels, then have the owner review candidate relevance and direction mismatches.
-Measure BM25 misses before proposing a retrieval change.
+Measure the BM25 and source-witnessed baselines against the exposed 60-question
+development set before proposing a retrieval change; its agent-authored
+references are not human gold.
 
 Focused model-free checks:
 
