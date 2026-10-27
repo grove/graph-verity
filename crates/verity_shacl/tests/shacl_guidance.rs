@@ -5,7 +5,9 @@ use verity_core::{
     vocabulary::{VocabularyBudget, VocabularyPacket, VocabularyRequest},
     Result, Snapshot,
 };
-use verity_shacl::{build_shape_guidance, RdfSource, ShapeConfig, ShapeGuidanceIndex, ShapeOrigin};
+use verity_shacl::{
+    build_shape_guidance, PathDirection, RdfSource, ShapeConfig, ShapeGuidanceIndex, ShapeOrigin,
+};
 
 const DATA_GRAPH: &str = "https://example.org/public";
 const SHAPE_GRAPH: &str = "https://example.org/shapes";
@@ -109,7 +111,7 @@ fn fixtures() -> (
 }
 
 #[test]
-fn direct_shape_metadata_joins_only_to_the_exact_bm25_predicate_candidate() {
+fn direct_and_inverse_shape_metadata_join_to_the_exact_bm25_predicate_candidate() {
     let (data, _, policy, discovery, config, request, budget) = fixtures();
     let discovery = data
         .build_discovery(&request.scope, &policy, &discovery)
@@ -142,8 +144,19 @@ fn direct_shape_metadata_joins_only_to_the_exact_bm25_predicate_candidate() {
         ))
     );
 
-    assert_eq!(properties.len(), 1);
+    assert_eq!(properties.len(), 2);
     assert_eq!(properties[0].predicate_iri, candidate.iri);
+    assert_eq!(properties[0].path_direction, PathDirection::Forward);
+    assert_eq!(properties[1].predicate_iri, candidate.iri);
+    assert_eq!(properties[1].path_direction, PathDirection::Inverse);
+    assert_eq!(
+        properties[1].target_classes,
+        ["https://example.org/Company"]
+    );
+    assert_eq!(
+        properties[1].class.as_deref(),
+        Some("https://example.org/Municipality")
+    );
     assert_eq!(
         properties[0].target_classes,
         ["https://example.org/Municipality"]
@@ -158,10 +171,24 @@ fn direct_shape_metadata_joins_only_to_the_exact_bm25_predicate_candidate() {
     );
     assert_eq!(properties[0].min_count, Some(1));
     assert_eq!(properties[0].max_count, Some(1));
-    assert_eq!(guidance.unsupported_property_shapes(), 2);
+    assert_eq!(guidance.unsupported_property_shapes(), 1);
     assert_eq!(guidance.shape_sha256(), source_hash);
     let packet_json = serde_json::to_value(&guidance).unwrap();
     assert_eq!(packet_json["origin"], "operator_authored_demo");
+    assert!(packet_json["properties"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .any(|property| {
+            property["predicate_iri"] == candidate.iri && property["path_direction"] == "forward"
+        }));
+    assert!(packet_json["properties"]
+        .as_array()
+        .unwrap()
+        .iter()
+        .any(|property| {
+            property["predicate_iri"] == candidate.iri && property["path_direction"] == "inverse"
+        }));
     assert_eq!(packet_json["source"]["license"], "Apache-2.0");
 
     let employees_request = VocabularyRequest {
@@ -187,6 +214,46 @@ fn direct_shape_metadata_joins_only_to_the_exact_bm25_predicate_candidate() {
     assert_eq!(
         employees_guidance[0].datatype.as_deref(),
         Some("http://www.w3.org/2001/XMLSchema#integer")
+    );
+}
+
+#[test]
+fn complex_inverse_paths_are_omitted_without_dropping_supported_guidance() {
+    let (data, _, policy, discovery_config, mut config, request, budget) = fixtures();
+    let discovery = data
+        .build_discovery(&request.scope, &policy, &discovery_config)
+        .unwrap();
+    let packet = data
+        .vocabulary_packet(&discovery, &request, &policy, &budget)
+        .unwrap();
+    let mut shapes = SHAPE_BYTES.to_vec();
+    shapes.extend_from_slice(
+        br#"
+ex:shapes {
+          ex:ComplexShape a sh:NodeShape ;
+            sh:targetClass ex:Company ;
+            sh:property [ sh:path [ sh:inversePath ex:owns ; sh:alternativePath (ex:owns) ] ] .
+        }
+"#,
+    );
+    config.shape_snapshot_id = Snapshot::from_bytes(&shapes, "trig").unwrap().id().into();
+    config.source.source_revision = "test-malformed-inverse-extension-v1".into();
+
+    let guidance = build(&shapes, DATA_BYTES, &config, &discovery, &packet, &policy).unwrap();
+    let candidate = packet
+        .candidates("predicate")
+        .unwrap()
+        .iter()
+        .find(|candidate| candidate.iri == "https://example.org/owns")
+        .unwrap();
+
+    assert_eq!(guidance.unsupported_property_shapes(), 2);
+    assert_eq!(
+        guidance
+            .for_candidate(&packet, &candidate.id, DATA_GRAPH)
+            .unwrap()
+            .len(),
+        2
     );
 }
 

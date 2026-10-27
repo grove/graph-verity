@@ -15,11 +15,14 @@ terms or external source identity. The checked-in `shacl-guidance.trig` file is
 an Apache-2.0 operator-authored demo for the synthetic `smoke.trig` fixture.
 
 The supported property metadata is `sh:datatype`, `sh:class`, `sh:nodeKind`,
-`sh:minCount`, and `sh:maxCount`, plus parent `sh:targetClass` labels. Complex
-paths, malformed constraints, and unsupported SHACL property constraints are
-counted and omitted. They do not remove BM25 candidates. A missing guidance
-entry means “no supported shape guidance”; it does not mean “no matching
-property” or “invalid data”.
+`sh:minCount`, and `sh:maxCount`, plus parent `sh:targetClass` labels. Direct
+`sh:path <IRI>` and a simple `sh:path [ sh:inversePath <IRI> ]` are reported
+with the base predicate IRI and `path_direction` (`forward` or `inverse`). An
+inverse path is guidance about traversal orientation; it never creates an inverse
+RDF statement. Complex paths, malformed constraints, and unsupported SHACL
+property constraints are counted and omitted. They do not remove BM25 candidates.
+A missing guidance entry means “no supported shape guidance”; it does not mean
+“no matching property” or “invalid data”.
 
 The Rust API is `verity_shacl::build_shape_guidance` followed by
 `ShapeGuidanceIndex::for_candidate`. It takes the exact shape and data bytes,

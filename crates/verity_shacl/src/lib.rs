@@ -18,6 +18,7 @@ use verity_core::{
 
 pub const VERSION: &str = "shacl-property-guidance-v1";
 const SH: &str = "http://www.w3.org/ns/shacl#";
+const SH_INVERSE_PATH: &str = "http://www.w3.org/ns/shacl#inversePath";
 const RDF_TYPE: &str = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
 const MAX_PROPERTY_SHAPES: usize = 512;
 const MAX_IRI_BYTES: usize = 1024;
@@ -52,12 +53,22 @@ pub struct RdfSource<'a> {
 #[derive(Clone, Debug, Serialize, JsonSchema)]
 pub struct PropertyGuidance {
     pub predicate_iri: String,
+    pub path_direction: PathDirection,
     pub target_classes: Vec<String>,
     pub datatype: Option<String>,
     pub class: Option<String>,
     pub node_kind: Option<String>,
     pub min_count: Option<u64>,
     pub max_count: Option<u64>,
+}
+
+#[derive(
+    Clone, Copy, Debug, Deserialize, PartialEq, Eq, PartialOrd, Ord, Serialize, JsonSchema,
+)]
+#[serde(rename_all = "snake_case")]
+pub enum PathDirection {
+    Forward,
+    Inverse,
 }
 
 /// Rebuilt from selected shape bytes; serialized copies are display data, never trusted input.
@@ -266,7 +277,7 @@ pub fn build_shape_guidance(
             }
             let guidance = subject_term(property)
                 .filter(|_| parent_supported)
-                .and_then(|property| parse_property(triples.get(&property), &targets));
+                .and_then(|property| parse_property(&triples, &property, &targets));
             if let Some(guidance) = guidance {
                 properties.push(guidance);
             } else {
@@ -277,6 +288,7 @@ pub fn build_shape_guidance(
     properties.sort_by(|a, b| {
         (
             &a.predicate_iri,
+            a.path_direction,
             &a.target_classes,
             &a.datatype,
             &a.class,
@@ -286,6 +298,7 @@ pub fn build_shape_guidance(
         )
             .cmp(&(
                 &b.predicate_iri,
+                b.path_direction,
                 &b.target_classes,
                 &b.datatype,
                 &b.class,
@@ -456,10 +469,11 @@ fn subject_term(term: &Term) -> Option<NamedOrBlankNode> {
 }
 
 fn parse_property(
-    predicates: Option<&BTreeMap<String, Vec<Term>>>,
+    triples: &SubjectTriples,
+    property: &NamedOrBlankNode,
     target_classes: &[String],
 ) -> Option<PropertyGuidance> {
-    let predicates = predicates?;
+    let predicates = triples.get(property)?;
     let allowed = [
         RDF_TYPE,
         "http://www.w3.org/ns/shacl#path",
@@ -475,10 +489,10 @@ fn parse_property(
     {
         return None;
     }
-    let [Term::NamedNode(path)] = objects(predicates, &format!("{SH}path")) else {
+    let [path] = objects(predicates, &format!("{SH}path")) else {
         return None;
     };
-    let predicate_iri = path.as_str();
+    let (predicate_iri, path_direction) = parse_path(path, triples)?;
     if predicate_iri.len() > MAX_IRI_BYTES {
         return None;
     }
@@ -506,6 +520,7 @@ fn parse_property(
     }
     Some(PropertyGuidance {
         predicate_iri: predicate_iri.into(),
+        path_direction,
         target_classes: target_classes.to_vec(),
         datatype,
         class,
@@ -513,6 +528,23 @@ fn parse_property(
         min_count,
         max_count,
     })
+}
+
+fn parse_path<'a>(path: &'a Term, triples: &'a SubjectTriples) -> Option<(&'a str, PathDirection)> {
+    match path {
+        Term::NamedNode(iri) => Some((iri.as_str(), PathDirection::Forward)),
+        Term::BlankNode(node) => {
+            let inverse_path = triples.get(&NamedOrBlankNode::BlankNode(node.clone()))?;
+            if inverse_path.len() != 1 {
+                return None;
+            }
+            let [Term::NamedNode(iri)] = objects(inverse_path, SH_INVERSE_PATH) else {
+                return None;
+            };
+            Some((iri.as_str(), PathDirection::Inverse))
+        }
+        _ => None,
+    }
 }
 
 fn optional_iri(values: &[Term]) -> Option<Option<String>> {
