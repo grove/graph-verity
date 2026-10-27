@@ -34,6 +34,10 @@ jobs:
         env:
           CARGO_TARGET_DIR: target
         run: cargo test --manifest-path crates/verity_shacl/Cargo.toml --locked
+      - name: Build the SHACL suggestion helper used by the local browser app
+        env:
+          CARGO_TARGET_DIR: target
+        run: cargo build --manifest-path crates/verity_shacl/Cargo.toml --bin shape_guidance --locked --offline
       - name: Check Chrome cold startup before the bounded browser walkthroughs
         run: |
           mkdir -p artifacts/pre-llm

@@ -68,6 +68,23 @@ try {
   assert.match(await evaluate("document.getElementById('status').textContent"), /Choose the entity, relationship and direction first/);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
 
+  await evaluate("(() => { const question=document.getElementById('question'); question.value='P856'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
+  await until("!document.getElementById('suggestions').hidden");
+  const suggestion = await evaluate("({text:document.getElementById('suggestion-list').textContent, origin:document.getElementById('shape-origin').textContent, provenance:document.getElementById('shape-provenance').textContent, selected:document.getElementById('predicate').value})");
+  assert.match(suggestion.text, /BM25 score \(not probability\)/);
+  assert.match(suggestion.text, /P856/);
+  assert.match(suggestion.origin, /Operator-authored demo SHACL metadata/);
+  assert.match(suggestion.provenance, /Apache-2.0/);
+  assert.match(suggestion.provenance, /shape_sha256/);
+  assert.equal(suggestion.selected, "");
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+  await evaluate("document.querySelector('#suggestion-list button').click()");
+  assert.equal(await evaluate("document.getElementById('predicate').value"), "http://www.wikidata.org/prop/direct/P856");
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+  await evaluate("const language=document.getElementById('language'); language.value='nb'; language.dispatchEvent(new Event('change'))");
+  assert.equal(await evaluate("document.documentElement.lang"), "nb");
+  assert.equal(await evaluate("document.getElementById('suggestions').hidden"), true);
+
   async function select(language, direction) {
     await evaluate(`(() => {
       const language=document.getElementById('language'); language.value=${JSON.stringify(language)};

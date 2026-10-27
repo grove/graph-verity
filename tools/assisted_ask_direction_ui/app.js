@@ -3,7 +3,7 @@ const $ = id => document.getElementById(id);
 const prefix = "/api/assisted-ask-v1-direction/";
 const credential = location.hash.slice(1);
 history.replaceState(null, "", location.pathname);
-let tab, session, approval, epoch = 0, timer;
+let tab, session, approval, suggestions, epoch = 0, timer;
 const json = (id, value) => { $(id).textContent = JSON.stringify(value, null, 2); };
 const words = {
   en: {
@@ -11,7 +11,10 @@ const words = {
     language: "Interface language", entity: "Entity", relationship: "Relationship", direction: "Direction", forward: "Forward", reverse: "Reverse (selected entity is the object)", choose: "Choose…", name: "University of Tromsø", P856: "Official websites", P1448: "Official names", all: "All stored values",
     contract: "Choose forward (entity → relationship → values) or reverse (values ← relationship — entity). No filtering, counting, joins, writes or raw SPARQL.",
     optional: "Optional original question — unverified user intent", question: "Original question (not interpreted)",
-    warning: "This text never selects or changes the operation. Requests such as ‘only English names’, counting or raw SPARQL are unsupported. You may separately select all unfiltered values; that result is not verified as an answer to this question.",
+    warning: "This text can retrieve optional BM25 property suggestions, but never selects an operation. You must choose any suggestion yourself. Requests such as ‘only English names’, counting or raw SPARQL are unsupported; the original question remains unverified.",
+    suggest: "Retrieve BM25 property suggestions", suggestionsTitle: "Optional property suggestions", suggestionsHelp: "BM25 ranks text matches; scores are not probabilities. Suggestions never select or authorize a query.", suggesting: "Retrieving BM25 candidates and shape guidance…", noQuestionForSuggestions: "Enter a question to retrieve property suggestions.",
+    suggestionsReady: "Suggestions loaded. Review their source evidence and shape guidance, then select a property yourself.", noSuggestions: "No predicate candidates matched this question in the selected graph.", useProperty: "Use this property", shapeOrigin: "Operator-authored demo SHACL metadata — guidance only, not source facts or a data validation result.",
+    score: "BM25 score (not probability)", rank: "Rank", pathForward: "Forward SHACL path", pathInverse: "Inverse SHACL path", pathMismatch: "SHACL path direction differs from your selected query direction. The manual query choice remains in force.", noShapeGuidance: "No supported SHACL guidance for this candidate; it remains available as a BM25 suggestion.", candidateEvidence: "Observed text and RDF usage evidence", shapeMetadata: "Shape source, license, snapshots, and SHA-256",
     preview: "Preview selected operation separately", review: "Review before approval", relationForward: "This operation follows the relationship from the selected entity. Approval executes this operation only.", relationReverse: "This operation finds subjects that point to the selected entity. It does not create inverse RDF statements. Approval executes this operation only.",
     unverified: "Original question: unverified and not interpreted. The result answers only the manually selected graph operation.",
     rust: "Authoritative Rust query preview", technical: "Exact plan, authorization, snapshot, source and limits", approve: "Approve this exact operation and run once", cancel: "Cancel",
@@ -29,7 +32,10 @@ const words = {
     language: "Grensesnittspråk", entity: "Entitet", relationship: "Relasjon", direction: "Retning", forward: "Forover", reverse: "Bakover (valgt entitet er objektet)", choose: "Velg…", name: "Universitetet i Tromsø", P856: "Offisielle nettsteder", P1448: "Offisielle navn", all: "Alle lagrede verdier",
     contract: "Velg forover (entitet → relasjon → verdier) eller bakover (verdier ← relasjon — entitet). Ingen filtrering, telling, sammenkoblinger, skriving eller rå SPARQL.",
     optional: "Valgfritt originalspørsmål — ubekreftet brukerintensjon", question: "Originalspørsmål (tolkes ikke)",
-    warning: "Teksten velger eller endrer aldri operasjonen. Ønsker som «bare engelske navn», telling eller rå SPARQL støttes ikke. Du kan velge alle ufiltrerte verdier som en egen handling; resultatet er ikke bekreftet som svar på spørsmålet.",
+    warning: "Teksten kan hente valgfrie BM25-forslag til relasjoner, men velger aldri en operasjon. Du må selv velge et forslag. Ønsker som «bare engelske navn», telling eller rå SPARQL støttes ikke; originalspørsmålet er fortsatt ubekreftet.",
+    suggest: "Hent BM25-forslag til relasjoner", suggestionsTitle: "Valgfrie relasjonsforslag", suggestionsHelp: "BM25 rangerer teksttreff; poengsummer er ikke sannsynligheter. Forslagene velger eller autoriserer aldri en spørring.", suggesting: "Henter BM25-kandidater og formveiledning…", noQuestionForSuggestions: "Skriv inn et spørsmål for å hente relasjonsforslag.",
+    suggestionsReady: "Forslag hentet. Se gjennom kildebevis og formveiledning, og velg deretter en relasjon selv.", noSuggestions: "Ingen predikatkandidater passet spørsmålet i den valgte grafen.", useProperty: "Bruk denne relasjonen", shapeOrigin: "Operatørforfattet SHACL-demodata — kun veiledning, ikke kildefakta eller valideringsresultat.",
+    score: "BM25-poengsum (ikke sannsynlighet)", rank: "Rangering", pathForward: "Forover SHACL-sti", pathInverse: "Invertert SHACL-sti", pathMismatch: "SHACL-stiens retning avviker fra den valgte spørringsretningen. Det manuelle spørringsvalget gjelder fortsatt.", noShapeGuidance: "Ingen støttet SHACL-veiledning for denne kandidaten; den er fortsatt tilgjengelig som BM25-forslag.", candidateEvidence: "Observert tekst- og RDF-bruksbevis", shapeMetadata: "Formkilde, lisens, øyeblikksbilder og SHA-256",
     preview: "Forhåndsvis valgt operasjon separat", review: "Se gjennom før godkjenning", relationForward: "Operasjonen følger relasjonen fra den valgte entiteten. Godkjenning kjører kun denne operasjonen.", relationReverse: "Operasjonen finner subjekter som peker på den valgte entiteten. Den oppretter ingen omvendte RDF-utsagn. Godkjenning kjører kun denne operasjonen.",
     unverified: "Originalspørsmål: ubekreftet og ikke tolket. Resultatet gjelder kun den manuelt valgte grafoperasjonen.",
     rust: "Autoritativ forhåndsvisning fra Rust", technical: "Eksakt plan, autorisasjon, øyeblikksbilde, kilde og grenser", approve: "Godkjenn denne eksakte operasjonen og kjør én gang", cancel: "Avbryt",
@@ -57,6 +63,55 @@ function invalidate(message = "", notify = true) {
   $("status").textContent = message;
   if (notify && tab) api(prefix + "cancel", {}, true).catch(() => {});
 }
+function renderSuggestions(data = suggestions) {
+  if (!data) return;
+  const guidance = data.shape_guidance;
+  const supported = Object.values(session.predicates);
+  $("suggestion-summary").textContent = `${data.candidates.length} ${t("suggestionsTitle").toLowerCase()} · ${t("graph")}: ${guidance.data_graph} · ${guidance.data_snapshot_id}`;
+  $("shape-provenance").textContent = JSON.stringify({
+    origin: guidance.origin, source: guidance.source, license: guidance.source.license,
+    shape_graph: guidance.shape_graph, shape_snapshot_id: guidance.shape_snapshot_id,
+    shape_sha256: guidance.shape_sha256, data_graph: guidance.data_graph,
+    data_snapshot_id: guidance.data_snapshot_id, unsupported_property_shapes: guidance.unsupported_property_shapes,
+    semantics: guidance.semantics
+  }, null, 2);
+  const items = [];
+  for (const item of data.candidates) {
+    const candidate = item.candidate, article = document.createElement("article");
+    const heading = document.createElement("h3"), detail = document.createElement("p"), evidence = document.createElement("details");
+    const labels = candidate.texts.map(value => value.value.text).filter(Boolean);
+    heading.textContent = labels[0] || candidate.iri;
+    detail.textContent = `${t("rank")} ${item.rank} · ${t("score")}: ${candidate.ranking_score} · ${candidate.graph}\n${candidate.iri}`;
+    const evidenceSummary = document.createElement("summary"), evidenceText = document.createElement("pre");
+    evidenceSummary.textContent = t("candidateEvidence"); evidenceText.textContent = JSON.stringify({texts: candidate.texts, usage: candidate.usage}, null, 2);
+    evidence.append(evidenceSummary, evidenceText);
+    article.append(heading, detail, evidence);
+    for (const property of item.shape_properties) {
+      const p = document.createElement("p");
+      const shapeDirection = property.path_direction === "inverse" ? "reverse" : "forward";
+      p.textContent = `${property.path_direction === "inverse" ? t("pathInverse") : t("pathForward")}: ${property.predicate_iri}\n` +
+        JSON.stringify({target_classes: property.target_classes, datatype: property.datatype, class: property.class,
+          node_kind: property.node_kind, min_count: property.min_count, max_count: property.max_count});
+      if ($("direction").value && shapeDirection !== $("direction").value) p.textContent += `\n${t("pathMismatch")}`;
+      article.append(p);
+    }
+    if (!item.shape_properties.length) {
+      const p = document.createElement("p"); p.textContent = t("noShapeGuidance"); article.append(p);
+    }
+    if (supported.includes(candidate.iri)) {
+      const use = document.createElement("button"); use.type = "button"; use.textContent = t("useProperty");
+      use.addEventListener("click", () => {
+        $("predicate").value = candidate.iri;
+        $("predicate").dispatchEvent(new Event("change"));
+      });
+      article.append(use);
+    }
+    items.push(article);
+  }
+  $("suggestion-list").replaceChildren(...items);
+  $("suggestion-empty").hidden = data.candidates.length > 0;
+  $("suggestions").hidden = false;
+}
 function operation(request) {
   const step = request ? request.template.steps[0] : null;
   const predicate = step ? step.predicate : $("predicate").value;
@@ -78,7 +133,20 @@ function translate() {
 }
 function selection() {
   $("selected").textContent = session && $("entity").value && $("predicate").value && $("direction").value ? operation() : t("select");
+  if (suggestions) renderSuggestions();
 }
+$("suggest").addEventListener("click", async () => {
+  invalidate("", false);
+  suggestions = undefined; $("suggestions").hidden = true;
+  if (!$("question").value.trim()) { $("status").textContent = t("noQuestionForSuggestions"); return; }
+  const generation = epoch;
+  $("status").textContent = t("suggesting");
+  try {
+    const data = await api(prefix + "suggestions", {question: $("question").value, language: $("language").value});
+    if (generation !== epoch) return;
+    suggestions = data; renderSuggestions(data); $("suggestion-heading").focus(); $("status").textContent = t("suggestionsReady");
+  } catch { if (generation === epoch) invalidate(t("error")); }
+});
 $("preview").addEventListener("click", async () => {
   invalidate(t("building"), false);
   if (!$("entity").value || !$("predicate").value || !$("direction").value) { $("status").textContent = t("select"); return; }
@@ -132,7 +200,9 @@ $("approve").addEventListener("click", async () => {
   } catch { if (generation === epoch) invalidate(t("error")); }
 });
 for (const id of ["entity", "predicate", "direction", "language", "question"]) $(id).addEventListener(id === "question" ? "input" : "change", () => {
-  invalidate(t("changed")); if (id === "language") translate(); else selection();
+  invalidate(t("changed"));
+  if (id === "language" || id === "question") { suggestions = undefined; $("suggestions").hidden = true; }
+  if (id === "language") translate(); else selection();
 });
 $("cancel").addEventListener("click", () => { invalidate(t("cancelled")); $("preview").focus(); });
 document.addEventListener("keydown", event => { if (event.key === "Escape") invalidate(t("cancelled")); });
@@ -143,7 +213,7 @@ window.addEventListener("popstate", () => invalidate(t("cancelled")));
   try {
     session = await api("/api/session", {}); tab = session.tab;
     json("scope", {scope: session.scope, snapshot_id: session.snapshot_id, receipt: session.receipt});
-    translate(); $("entity").disabled = $("predicate").disabled = $("direction").disabled = $("preview").disabled = false;
+    translate(); $("entity").disabled = $("predicate").disabled = $("direction").disabled = $("suggest").disabled = $("preview").disabled = false;
     setTimeout(() => { invalidate(t("expired")); $("preview").disabled = true; }, session.session_seconds * 1000);
   } catch { invalidate(t("error")); }
 })();

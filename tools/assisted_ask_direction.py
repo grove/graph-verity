@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import secrets
 import subprocess
+import tempfile
 import time
 
 import assisted_ask as ask
@@ -13,9 +14,54 @@ import local_nl_ask as bridge
 
 ASSETS = Path(__file__).with_name('assisted_ask_direction_ui')
 PREFIX = '/api/assisted-ask-v1-direction/'
+SHAPE_GUIDANCE_BINARY = ask.ROOT / 'target/debug/shape_guidance'
+SHAPE_FILE = ask.ROOT / 'studies/assisted-ask-direction/demo-shapes/shapes.trig'
+SHAPE_CONFIG = ask.ROOT / 'studies/assisted-ask-direction/demo-shapes/config.json'
 
 
 class Bundle(ask.Bundle):
+    def __init__(self, *args, shape_guidance_binary=SHAPE_GUIDANCE_BINARY,
+                 shape_file=SHAPE_FILE, shape_config=SHAPE_CONFIG, **kwargs):
+        binary = Path(shape_guidance_binary)
+        self.shape_guidance_binary = binary.resolve(strict=True) if binary.is_file() else None
+        self.shape_guidance_binary_sha256 = (
+            find.file_digest(self.shape_guidance_binary) if self.shape_guidance_binary else None)
+        super().__init__(*args, **kwargs)
+        try:
+            for index, (source, limit) in enumerate(((shape_file, 16 * 1024 * 1024),
+                                                     (shape_config, find.MAX_REQUEST))):
+                source = Path(source).resolve(strict=True)
+                data = find.read(source, limit)
+                self.originals[source] = (find.digest(data), limit)
+                frozen = self.directory / f'shape-{index}.input'
+                frozen.write_bytes(data)
+                frozen.chmod(0o600)
+                if index == 0:
+                    self.shape_file = frozen
+                    self.shape_sha256 = find.digest(data)
+                else:
+                    self.shape_config_file = frozen
+                    self.shape_metadata = json.loads(data)
+            if (self.shape_metadata.get('origin') != 'operator_authored_demo'
+                    or self.shape_metadata.get('data_graph') != ask.GRAPH
+                    or self.shape_metadata.get('data_snapshot_id') != ask.SNAPSHOT):
+                raise ValueError('Shape guidance must be an explicitly mapped demo for this snapshot')
+        except Exception:
+            self.close()
+            raise
+
+    def current(self):
+        super().current()
+        if self.shape_guidance_binary:
+            try:
+                current = find.file_digest(self.shape_guidance_binary)
+            except OSError as error:
+                self.tab = self.pending = None
+                raise ValueError('Stale shape-guidance executable') from error
+            if current != self.shape_guidance_binary_sha256:
+                self.tab = self.pending = None
+                raise ValueError('Stale shape-guidance executable')
+
     def assemble(self, entity, predicate, direction='forward'):
         if direction not in ('forward', 'reverse'):
             raise ValueError('Explicit supported direction required')
@@ -38,6 +84,33 @@ class Bundle(ask.Bundle):
                     answer_claim='selected_graph_operation_only; original_question_not_verified',
                     operator_confirmation=None)
 
+    def shape_suggestions(self, question, language):
+        if not self.shape_guidance_binary:
+            raise ValueError('Build the separate shape-guidance executable first')
+        request_path = self.directory / 'shape-request.json'
+        budget_path = self.directory / 'shape-budget.json'
+        request_path.write_text(json.dumps(dict(question=question, language=language, snapshot_id=self.snapshot,
+                                                index_revision=self.receipt['index_revision'], scope=[ask.GRAPH])))
+        budget_path.write_text(json.dumps(self.budget))
+        request_path.chmod(0o600)
+        budget_path.chmod(0o600)
+        command = [str(self.shape_guidance_binary), *self.common, str(self.shape_file), 'trig',
+                   str(self.shape_config_file), str(request_path), str(budget_path)]
+        try:
+            with tempfile.TemporaryFile(dir=self.directory) as output, tempfile.TemporaryFile(dir=self.directory) as errors:
+                result = subprocess.run(command, stdin=subprocess.DEVNULL, stdout=output, stderr=errors, timeout=45)
+                output.seek(0)
+                errors.seek(0)
+                data = output.read(find.MAX_RESPONSE + 1)
+                error = errors.read(find.MAX_REQUEST + 1)
+            if result.returncode or len(data) > find.MAX_RESPONSE or len(error) > find.MAX_REQUEST:
+                raise ValueError('Shape suggestion failed')
+            response = json.loads(data)
+        except (OSError, subprocess.SubprocessError, json.JSONDecodeError) as error:
+            raise ValueError('Shape suggestion failed') from error
+        self.current()
+        return response
+
     def api(self, route, request, tab=None):
         self.current()
         if route == '/api/session':
@@ -49,6 +122,15 @@ class Bundle(ask.Bundle):
                           runtime='manual_structured_selection',
                           runtime_message='INCONCLUSIVE_REVISE. Structured choices only; no question interpretation.')
             return result
+        if route == PREFIX + 'suggestions':
+            bridge.Bundle.api(self, bridge.PREFIX + 'unreview', {}, tab)
+            self.proposal = None
+            if (not isinstance(request, dict) or set(request) != {'question', 'language'}
+                    or not isinstance(request['question'], str) or not request['question'].strip()
+                    or len(request['question'].encode()) > 4096
+                    or request['language'] not in ('en', 'nb')):
+                raise ValueError('A non-empty question and supported language are required')
+            return self.shape_suggestions(request['question'], request['language'])
         if route == PREFIX + 'preview':
             bridge.Bundle.api(self, bridge.PREFIX + 'unreview', {}, tab)
             self.proposal = None
@@ -89,21 +171,32 @@ class Server(ask.Server):
             '/style.css': ((ask.ASSETS / 'style.css').read_bytes(), 'text/css'),
         }
         self.bundle.receipt.update(
-            ui_version='assisted-ask-v1-direction',
+            ui_version='assisted-ask-v1-direction-shape-guidance',
             backend='manual-structured-selection-explicit-direction',
             adapter_sha256=find.file_digest(Path(__file__)),
+            shape_guidance_binary_sha256=self.bundle.shape_guidance_binary_sha256,
+            shape_guidance=dict(origin=self.bundle.shape_metadata['origin'],
+                                source=self.bundle.shape_metadata['source']['source'],
+                                license=self.bundle.shape_metadata['source']['license'],
+                                shape_snapshot_id=self.bundle.shape_metadata['shape_snapshot_id'],
+                                shape_sha256=self.bundle.shape_sha256,
+                                data_graph=self.bundle.shape_metadata['data_graph']),
             assets={route: find.digest(body) for route, (body, _) in self.assets.items()})
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--binary', type=Path, default=ask.ROOT / 'target/debug/verity')
+    parser.add_argument('--shape-guidance-binary', type=Path, default=SHAPE_GUIDANCE_BINARY)
     parser.add_argument('--port', type=int, default=0)
     args = parser.parse_args()
     bundle = None
     try:
         bundle = Bundle(args.binary, ask.DATA / 'snapshot.nq', 'nquads', ask.DATA / 'policy.json',
-                        ask.DATA / 'scope.json', ask.DATA / 'discovery.json')
+                        ask.DATA / 'scope.json', ask.DATA / 'discovery.json',
+                        shape_guidance_binary=args.shape_guidance_binary)
+        if not bundle.shape_guidance_binary:
+            raise ValueError('Build shape_guidance before launch')
         for predicate in ask.PREDICATES.values():
             for direction in ('forward', 'reverse'):
                 bundle.assemble(ask.ENTITY, predicate, direction)
