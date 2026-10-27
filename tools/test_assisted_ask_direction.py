@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import tempfile
 import threading
 import unittest
 from unittest.mock import patch
@@ -53,6 +54,26 @@ class ExplicitDirection(unittest.TestCase):
                        question='', language='en')
         request.update(changes)
         return request
+
+    def test_cli_passes_operator_selected_shape_files(self):
+        shape_file = Path('/operator-selected/shapes.trig')
+        shape_config = Path('/operator-selected/shape-config.json')
+        with patch.object(ask, 'Bundle') as bundle, patch.object(ask, 'Server') as server:
+            server.return_value.__enter__.return_value.url = 'http://127.0.0.1/'
+            self.assertEqual(ask.main(['--shape-file', str(shape_file), '--shape-config', str(shape_config)]), 0)
+        self.assertEqual(bundle.call_args.kwargs['shape_file'], shape_file)
+        self.assertEqual(bundle.call_args.kwargs['shape_config'], shape_config)
+
+    def test_selected_shape_manifest_cannot_change_data_scope(self):
+        with tempfile.TemporaryDirectory() as directory:
+            config = json.loads(ask.SHAPE_CONFIG.read_text())
+            config['data_graph'] = 'urn:unapproved:graph'
+            selected_config = Path(directory) / 'shape-config.json'
+            selected_config.write_text(json.dumps(config))
+            with self.assertRaisesRegex(ValueError, 'authorized data snapshot'):
+                ask.Bundle(v1.ROOT / 'target/debug/verity', v1.DATA / 'snapshot.nq', 'nquads',
+                           v1.DATA / 'policy.json', v1.DATA / 'scope.json', v1.DATA / 'discovery.json',
+                           shape_file=ask.SHAPE_FILE, shape_config=selected_config)
 
     def test_session_and_api_require_a_direction(self):
         session = self.result('/api/session', {})

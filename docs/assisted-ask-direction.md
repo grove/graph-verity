@@ -19,6 +19,22 @@ preview. Approval remains a separate, single-use action. Changing any choice
 invalidates the pending review. Stop with Ctrl-C and keep the URL and receipts
 local.
 
+By default, the app uses the checked-in operator-authored demo shapes. To select
+a local SHACL bundle for this same authorized data graph and snapshot, add
+`--shape-file /path/to/shapes.trig --shape-config /path/to/shape-config.json`.
+The TriG file must contain one named shape graph. The JSON manifest must identify
+that graph and the exact shape and data snapshot IDs, map to the current authorized
+data graph, and provide origin, source, license, source revision, and importer
+revision. `origin` may be `operator_authored_demo` or `source_published`.
+
+Shape files are read only from the paths the operator supplies, copied into the
+private session directory, hash-pinned, and checked for changes. The app does not
+download or convert shape sources. Provenance and license values in the manifest
+are operator declarations; the app does not verify source identity or license
+terms. No source-published SHACL file is currently retained in this repository,
+so selecting one requires the owner to supply and verify it first. The current
+Ask data graph and its scope remain fixed.
+
 Forward follows `entity —predicate→ value`. Reverse finds original triples of
 the form `subject —predicate→ entity`, displayed as `value ← predicate — entity`.
 Reverse does not create inverse RDF statements. Both choices query the same
