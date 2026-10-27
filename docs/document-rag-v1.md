@@ -63,6 +63,10 @@ decoded as UTF-8, with an exclusive end offset.
 Chunking uses whole words, up to 1024 UTF-8 bytes per chunk and up to
 128 bytes of whole-word overlap. Query ranking uses conventional BM25
 (k1=1.2, b=0.75), with deterministic score and ID/offset tie-breaking.
+Local Ask removes a small set of English function words before BM25 scoring;
+Norwegian questions keep their original terms. The CLI `search` command accepts
+optional `--language en` to use the same English filtering. If a query contains
+only filtered words, it keeps the original terms.
 A no-match is only **no lexical match**, never proof of real-world absence.
 
 ## Authorization and boundaries
