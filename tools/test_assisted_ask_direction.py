@@ -99,6 +99,8 @@ class ExplicitDirection(unittest.TestCase):
         for result in results:
             self.assertEqual(result['request']['scope'], [v1.GRAPH])
             self.assertIn('BM25', result['score_semantics'])
+            self.assertEqual(result['version'], 'assisted-ask-shape-neighborhood-suggestions-v1')
+            self.assertEqual(result['neighborhood']['version'], 'question-vocabulary-packet-v2-neighborhood')
             guidance = result['shape_guidance']
             self.assertEqual(guidance['origin'], 'operator_authored_demo')
             self.assertEqual(guidance['source']['license'], 'Apache-2.0')
@@ -108,6 +110,7 @@ class ExplicitDirection(unittest.TestCase):
         for result in results[:2]:
             self.assertEqual(result['candidates'], [])
             self.assertTrue(result['entity_candidates'])
+            self.assertTrue(result['neighborhood']['clipped'])
             candidate = result['entity_candidates'][0]['candidate']
             self.assertEqual(candidate['iri'], v1.ENTITY)
             self.assertEqual(candidate['graph'], v1.GRAPH)
@@ -116,9 +119,24 @@ class ExplicitDirection(unittest.TestCase):
             self.assertIn('en', {label['language'] for label in labels})
             self.assertIn('nb', {label['language'] for label in labels})
             self.assertTrue(any('</script><script>' in label['text'] for label in labels))
+            self.assertEqual([item['candidate']['iri'] for item in result['neighborhood_candidates']],
+                             [v1.PREDICATES['P1448'], v1.PREDICATES['P856']])
+            self.assertEqual([item['neighborhood_rank'] for item in result['neighborhood_candidates']], [4, 7])
+            for item in result['neighborhood_candidates']:
+                candidate = item['candidate']
+                self.assertEqual(candidate['graph'], v1.GRAPH)
+                self.assertEqual(candidate['ranking_score'], 0)
+                self.assertEqual(item['witness']['entity']['iri'], v1.ENTITY)
+                self.assertEqual(item['witness']['direction'], 'outgoing')
+                statement = item['witness']['statement']
+                self.assertEqual(statement['source_graph']['value'], v1.GRAPH)
+                self.assertEqual(statement['subject']['value'], v1.ENTITY)
+                self.assertEqual(statement['predicate']['value'], candidate['iri'])
+                self.assertEqual(item['shape_properties'][0]['predicate_iri'], candidate['iri'])
 
         for result, code in zip(results[2:], ('P856', 'P1448')):
             self.assertEqual(result['entity_candidates'], [])
+            self.assertEqual(result['neighborhood_candidates'], [])
             self.assertEqual(len(result['candidates']), 1)
             candidate = result['candidates'][0]
             self.assertEqual(candidate['candidate']['iri'], v1.PREDICATES[code])

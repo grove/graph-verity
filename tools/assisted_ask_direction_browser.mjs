@@ -81,12 +81,28 @@ try {
   assert.equal(entitySuggestion.direction, "");
   assert.equal(requests.some(request => request.url.endsWith("/private")), false);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+  const neighborhoodSuggestion = await evaluate("({text:document.getElementById('neighborhood-suggestion-list').textContent, count:document.querySelectorAll('#neighborhood-suggestion-list article').length, help:document.querySelector('[data-i18n=neighborhoodHelp]').textContent, clipped:!document.getElementById('neighborhood-clipped').hidden, statement:document.querySelector('#neighborhood-suggestion-list details summary').textContent, provenance:document.getElementById('neighborhood-provenance').textContent})");
+  assert.equal(neighborhoodSuggestion.count, 2);
+  assert.match(neighborhoodSuggestion.text, /P1448/);
+  assert.match(neighborhoodSuggestion.text, /P856/);
+  assert.match(neighborhoodSuggestion.text, /Neighborhood rank \(not BM25\)/);
+  assert.match(neighborhoodSuggestion.help, /does not show which property answers the question/);
+  assert.equal(neighborhoodSuggestion.clipped, true);
+  assert.match(neighborhoodSuggestion.statement, /Stored outgoing source edge from the BM25 entity/);
+  assert.match(neighborhoodSuggestion.provenance, /question-vocabulary-packet-v2-neighborhood/);
+  assert.match(neighborhoodSuggestion.provenance, /packet_id/);
   await evaluate("document.querySelector('#entity-suggestion-list button').click()");
   assert.equal(await evaluate("document.getElementById('entity').value"), "http://www.wikidata.org/entity/Q279724");
   assert.equal(await evaluate("document.getElementById('predicate').value"), "");
   assert.equal(await evaluate("document.getElementById('direction').value"), "");
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+  await evaluate("[...document.querySelectorAll('#neighborhood-suggestion-list article')].find(article => article.textContent.includes('/P856')).querySelector('button').click()");
+  assert.equal(await evaluate("document.getElementById('entity').value"), "http://www.wikidata.org/entity/Q279724");
+  assert.equal(await evaluate("document.getElementById('predicate').value"), "http://www.wikidata.org/prop/direct/P856");
+  assert.equal(await evaluate("document.getElementById('direction').value"), "");
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
 
+  await evaluate("const predicate=document.getElementById('predicate'); predicate.value=''; predicate.dispatchEvent(new Event('change'))");
   await evaluate("(() => { const question=document.getElementById('question'); question.value='P856'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
   await until("!document.getElementById('suggestions').hidden");
   const suggestion = await evaluate("({text:document.getElementById('suggestion-list').textContent, heading:document.querySelector('#suggestion-list h3').textContent, labelOrigin:document.querySelector('#suggestion-list article p').textContent, origin:document.getElementById('shape-origin').textContent, provenance:document.getElementById('shape-provenance').textContent, selected:document.getElementById('predicate').value})");

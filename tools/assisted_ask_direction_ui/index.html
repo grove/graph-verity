@@ -32,6 +32,12 @@
     <h3 data-i18n="propertyCandidatesTitle">Property candidates</h3>
     <p id="suggestion-empty" hidden data-i18n="noSuggestions">No property candidates matched this question in the selected graph.</p>
     <div id="suggestion-list"></div>
+    <h3 data-i18n="neighborhoodCandidatesTitle">Source-witnessed nearby properties</h3>
+    <p data-i18n="neighborhoodHelp">These properties have stored edges to a BM25 entity candidate. Neighborhood rank does not show which property answers the question; inspect the original edge and choose manually.</p>
+    <p id="neighborhood-clipped" hidden role="note" data-i18n="neighborhoodClipped">Neighborhood retrieval was clipped. Missing properties or edges are unknown.</p>
+    <p id="neighborhood-empty" hidden data-i18n="neighborhoodEmpty">No supported SHACL property was witnessed next to the retrieved entities.</p>
+    <div id="neighborhood-suggestion-list"></div>
+    <details><summary data-i18n="neighborhoodProvenance">Neighborhood retrieval version, rules, and packet ID</summary><pre id="neighborhood-provenance"></pre></details>
     <p id="shape-origin" data-i18n="shapeOrigin">Operator-authored demo SHACL metadata — guidance only, not source facts or a data validation result.</p>
     <details><summary data-i18n="shapeMetadata">Shape source, license, snapshots, and SHA-256</summary><pre id="shape-provenance"></pre></details>
   </section>
