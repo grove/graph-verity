@@ -173,9 +173,6 @@ fn run() -> Result<()> {
             .iter()
             .filter(|property| property["predicate_iri"] == candidate.iri)
             .collect::<Vec<_>>();
-        if shape_properties.is_empty() {
-            continue;
-        }
         let mut witness = None;
         'seeds: for (entity_rank, seed) in bm25_entities.iter().enumerate() {
             if seed.graph != candidate.graph {
