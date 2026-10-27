@@ -68,13 +68,32 @@ try {
   assert.match(await evaluate("document.getElementById('status').textContent"), /Choose the entity, relationship and direction first/);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
 
+  await evaluate("(() => { const question=document.getElementById('question'); question.value='Which official websites does the University of Tromsø list?'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
+  await until("!document.getElementById('suggestions').hidden");
+  const entitySuggestion = await evaluate("({heading:document.querySelector('#entity-suggestion-list h3').textContent, labelOrigin:document.querySelector('#entity-suggestion-list article p').textContent, text:document.getElementById('entity-suggestion-list').textContent, emptyProperties:!document.getElementById('suggestion-empty').hidden, rawLabel:document.getElementById('entity-suggestion-list').textContent.includes('</script><script>'), scripts:document.querySelectorAll('#entity-suggestion-list script').length, entity:document.getElementById('entity').value, predicate:document.getElementById('predicate').value, direction:document.getElementById('direction').value})");
+  assert.equal(entitySuggestion.heading, "University of Tromsø – The Arctic University of Norway");
+  assert.match(entitySuggestion.labelOrigin, /Untrusted label text from the selected graph/);
+  assert.equal(entitySuggestion.emptyProperties, true);
+  assert.equal(entitySuggestion.rawLabel, true);
+  assert.equal(entitySuggestion.scripts, 0);
+  assert.equal(entitySuggestion.entity, "");
+  assert.equal(entitySuggestion.predicate, "");
+  assert.equal(entitySuggestion.direction, "");
+  assert.equal(requests.some(request => request.url.endsWith("/private")), false);
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+  await evaluate("document.querySelector('#entity-suggestion-list button').click()");
+  assert.equal(await evaluate("document.getElementById('entity').value"), "http://www.wikidata.org/entity/Q279724");
+  assert.equal(await evaluate("document.getElementById('predicate').value"), "");
+  assert.equal(await evaluate("document.getElementById('direction').value"), "");
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+
   await evaluate("(() => { const question=document.getElementById('question'); question.value='P856'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
   await until("!document.getElementById('suggestions').hidden");
   const suggestion = await evaluate("({text:document.getElementById('suggestion-list').textContent, heading:document.querySelector('#suggestion-list h3').textContent, labelOrigin:document.querySelector('#suggestion-list article p').textContent, origin:document.getElementById('shape-origin').textContent, provenance:document.getElementById('shape-provenance').textContent, selected:document.getElementById('predicate').value})");
   assert.match(suggestion.text, /BM25 score \(not probability\)/);
   assert.match(suggestion.text, /P856/);
   assert.equal(suggestion.heading, "Official websites");
-  assert.match(suggestion.labelOrigin, /Interface label only; this graph has no source label/);
+  assert.match(suggestion.labelOrigin, /Interface label only; no label exists in the selected language/);
   assert.match(suggestion.origin, /Operator-authored demo SHACL metadata/);
   assert.match(suggestion.provenance, /Apache-2.0/);
   assert.match(suggestion.provenance, /shape_sha256/);
@@ -86,6 +105,12 @@ try {
   await evaluate("const language=document.getElementById('language'); language.value='nb'; language.dispatchEvent(new Event('change'))");
   assert.equal(await evaluate("document.documentElement.lang"), "nb");
   assert.equal(await evaluate("document.getElementById('suggestions').hidden"), true);
+  await evaluate("(() => { const question=document.getElementById('question'); question.value='Hvilke offisielle navn har Universitetet i Tromsø?'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
+  await until("!document.getElementById('suggestions').hidden");
+  const norwegianEntitySuggestion = await evaluate("({heading:document.querySelector('#entity-suggestion-list h3').textContent, labelOrigin:document.querySelector('#entity-suggestion-list article p').textContent})");
+  assert.equal(norwegianEntitySuggestion.heading, "Universitetet i Tromsø");
+  assert.match(norwegianEntitySuggestion.labelOrigin, /Ubetrodd etikett fra den valgte grafen/);
+
   await evaluate("(() => { const question=document.getElementById('question'); question.value='P1448'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
   await until("!document.getElementById('suggestions').hidden");
   const norwegianSuggestion = await evaluate("({heading:document.querySelector('#suggestion-list h3').textContent, labelOrigin:document.querySelector('#suggestion-list article p').textContent, selected:document.getElementById('predicate').value})");

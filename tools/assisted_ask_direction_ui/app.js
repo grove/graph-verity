@@ -11,11 +11,11 @@ const words = {
     language: "Interface language", entity: "Entity", relationship: "Relationship", direction: "Direction", forward: "Forward", reverse: "Reverse (selected entity is the object)", choose: "Choose…", name: "University of Tromsø", P856: "Official websites", P1448: "Official names", all: "All stored values",
     contract: "Choose forward (entity → relationship → values) or reverse (values ← relationship — entity). No filtering, counting, joins, writes or raw SPARQL.",
     optional: "Optional original question — unverified user intent", question: "Original question (not interpreted)",
-    warning: "This text can retrieve optional BM25 property suggestions, but never selects an operation. You must choose any suggestion yourself. Requests such as ‘only English names’, counting or raw SPARQL are unsupported; the original question remains unverified.",
-    suggest: "Retrieve BM25 property suggestions", suggestionsTitle: "Optional property suggestions", suggestionsHelp: "BM25 ranks text matches; scores are not probabilities. Suggestions never select or authorize a query.", suggesting: "Retrieving BM25 candidates and shape guidance…", noQuestionForSuggestions: "Enter a question to retrieve property suggestions.",
-    suggestionsReady: "Suggestions loaded. Review their source evidence and shape guidance, then select a property yourself.", noSuggestions: "No predicate candidates matched this question in the selected graph.", useProperty: "Use this property", shapeOrigin: "Operator-authored demo SHACL metadata — guidance only, not source facts or a data validation result.",
-    sourceLabel: "Label from the selected graph", interfaceLabelOnly: "Interface label only; this graph has no source label.", noSourceLabel: "No source label; showing the property IRI.",
-    score: "BM25 score (not probability)", rank: "Rank", pathForward: "Forward SHACL path", pathInverse: "Inverse SHACL path", pathMismatch: "SHACL path direction differs from your selected query direction. The manual query choice remains in force.", noShapeGuidance: "No supported SHACL guidance for this candidate; it remains available as a BM25 suggestion.", candidateEvidence: "Observed text and RDF usage evidence", shapeMetadata: "Shape source, license, snapshots, and SHA-256",
+    warning: "This text can retrieve optional BM25 entity and property suggestions, but never selects an operation. You must choose any suggestion yourself. Requests such as ‘only English names’, counting or raw SPARQL are unsupported; the original question remains unverified.",
+    suggest: "Retrieve BM25 entity and property suggestions", suggestionsTitle: "Optional graph suggestions", suggestionsHelp: "BM25 ranks text matches; scores are not probabilities. Suggestions never select or authorize a query.", suggesting: "Retrieving BM25 candidates and shape guidance…", noQuestionForSuggestions: "Enter a question to retrieve graph suggestions.",
+    suggestionsReady: "Suggestions loaded. Review the source evidence and shape guidance, then choose any supported entity and property yourself.", entityCandidatesTitle: "Entity candidates", propertyCandidatesTitle: "Property candidates", noEntityCandidates: "No entity candidates matched this question in the selected graph.", noSuggestions: "No property candidates matched this question in the selected graph.", useEntity: "Use this entity", unsupportedEntity: "This entity is outside the currently supported operation.", useProperty: "Use this property", shapeOrigin: "Operator-authored demo SHACL metadata — guidance only, not source facts or a data validation result.",
+    sourceLabel: "Untrusted label text from the selected graph", interfaceLabelOnly: "Interface label only; no label exists in the selected language.", noSourceLabel: "No label in the selected language; showing the IRI.",
+    score: "BM25 score (not probability)", rank: "Rank", pathForward: "Forward SHACL path", pathInverse: "Inverse SHACL path", pathMismatch: "SHACL path direction differs from your selected query direction. The manual query choice remains in force.", noShapeGuidance: "No supported SHACL guidance for this candidate; it remains available as a BM25 suggestion.", candidateEvidence: "Untrusted graph text and observed RDF usage evidence", shapeMetadata: "Shape source, license, snapshots, and SHA-256",
     preview: "Preview selected operation separately", review: "Review before approval", relationForward: "This operation follows the relationship from the selected entity. Approval executes this operation only.", relationReverse: "This operation finds subjects that point to the selected entity. It does not create inverse RDF statements. Approval executes this operation only.",
     unverified: "Original question: unverified and not interpreted. The result answers only the manually selected graph operation.",
     rust: "Authoritative Rust query preview", technical: "Exact plan, authorization, snapshot, source and limits", approve: "Approve this exact operation and run once", cancel: "Cancel",
@@ -33,11 +33,11 @@ const words = {
     language: "Grensesnittspråk", entity: "Entitet", relationship: "Relasjon", direction: "Retning", forward: "Forover", reverse: "Bakover (valgt entitet er objektet)", choose: "Velg…", name: "Universitetet i Tromsø", P856: "Offisielle nettsteder", P1448: "Offisielle navn", all: "Alle lagrede verdier",
     contract: "Velg forover (entitet → relasjon → verdier) eller bakover (verdier ← relasjon — entitet). Ingen filtrering, telling, sammenkoblinger, skriving eller rå SPARQL.",
     optional: "Valgfritt originalspørsmål — ubekreftet brukerintensjon", question: "Originalspørsmål (tolkes ikke)",
-    warning: "Teksten kan hente valgfrie BM25-forslag til relasjoner, men velger aldri en operasjon. Du må selv velge et forslag. Ønsker som «bare engelske navn», telling eller rå SPARQL støttes ikke; originalspørsmålet er fortsatt ubekreftet.",
-    suggest: "Hent BM25-forslag til relasjoner", suggestionsTitle: "Valgfrie relasjonsforslag", suggestionsHelp: "BM25 rangerer teksttreff; poengsummer er ikke sannsynligheter. Forslagene velger eller autoriserer aldri en spørring.", suggesting: "Henter BM25-kandidater og formveiledning…", noQuestionForSuggestions: "Skriv inn et spørsmål for å hente relasjonsforslag.",
-    suggestionsReady: "Forslag hentet. Se gjennom kildebevis og formveiledning, og velg deretter en relasjon selv.", noSuggestions: "Ingen predikatkandidater passet spørsmålet i den valgte grafen.", useProperty: "Bruk denne relasjonen", shapeOrigin: "Operatørforfattet SHACL-demodata — kun veiledning, ikke kildefakta eller valideringsresultat.",
-    sourceLabel: "Etikett fra den valgte grafen", interfaceLabelOnly: "Kun grensesnittnavn; grafen har ingen kildelabel.", noSourceLabel: "Ingen kildelabel; viser egenskapens IRI.",
-    score: "BM25-poengsum (ikke sannsynlighet)", rank: "Rangering", pathForward: "Forover SHACL-sti", pathInverse: "Invertert SHACL-sti", pathMismatch: "SHACL-stiens retning avviker fra den valgte spørringsretningen. Det manuelle spørringsvalget gjelder fortsatt.", noShapeGuidance: "Ingen støttet SHACL-veiledning for denne kandidaten; den er fortsatt tilgjengelig som BM25-forslag.", candidateEvidence: "Observert tekst- og RDF-bruksbevis", shapeMetadata: "Formkilde, lisens, øyeblikksbilder og SHA-256",
+    warning: "Teksten kan hente valgfrie BM25-forslag til entiteter og egenskaper, men velger aldri en operasjon. Du må selv velge et forslag. Ønsker som «bare engelske navn», telling eller rå SPARQL støttes ikke; originalspørsmålet er fortsatt ubekreftet.",
+    suggest: "Hent BM25-forslag til entiteter og egenskaper", suggestionsTitle: "Valgfrie grafkandidater", suggestionsHelp: "BM25 rangerer teksttreff; poengsummer er ikke sannsynligheter. Forslagene velger eller autoriserer aldri en spørring.", suggesting: "Henter BM25-kandidater og formveiledning…", noQuestionForSuggestions: "Skriv inn et spørsmål for å hente grafkandidater.",
+    suggestionsReady: "Forslag hentet. Se gjennom kildebevis og formveiledning, og velg deretter en støttet entitet og egenskap selv.", entityCandidatesTitle: "Entitetskandidater", propertyCandidatesTitle: "Egenskapskandidater", noEntityCandidates: "Ingen entitetskandidater passet spørsmålet i den valgte grafen.", noSuggestions: "Ingen egenskapskandidater passet spørsmålet i den valgte grafen.", useEntity: "Bruk denne entiteten", unsupportedEntity: "Denne entiteten støttes ikke i den gjeldende operasjonen.", useProperty: "Bruk denne egenskapen", shapeOrigin: "Operatørforfattet SHACL-demodata — kun veiledning, ikke kildefakta eller valideringsresultat.",
+    sourceLabel: "Ubetrodd etikett fra den valgte grafen", interfaceLabelOnly: "Kun grensesnittnavn; ingen etikett finnes på valgt språk.", noSourceLabel: "Ingen etikett på valgt språk; viser IRI-en.",
+    score: "BM25-poengsum (ikke sannsynlighet)", rank: "Rangering", pathForward: "Forover SHACL-sti", pathInverse: "Invertert SHACL-sti", pathMismatch: "SHACL-stiens retning avviker fra den valgte spørringsretningen. Det manuelle spørringsvalget gjelder fortsatt.", noShapeGuidance: "Ingen støttet SHACL-veiledning for denne kandidaten; den er fortsatt tilgjengelig som BM25-forslag.", candidateEvidence: "Ubetrodd graftekst og observert RDF-bruksbevis", shapeMetadata: "Formkilde, lisens, øyeblikksbilder og SHA-256",
     preview: "Forhåndsvis valgt operasjon separat", review: "Se gjennom før godkjenning", relationForward: "Operasjonen følger relasjonen fra den valgte entiteten. Godkjenning kjører kun denne operasjonen.", relationReverse: "Operasjonen finner subjekter som peker på den valgte entiteten. Den oppretter ingen omvendte RDF-utsagn. Godkjenning kjører kun denne operasjonen.",
     unverified: "Originalspørsmål: ubekreftet og ikke tolket. Resultatet gjelder kun den manuelt valgte grafoperasjonen.",
     rust: "Autoritativ forhåndsvisning fra Rust", technical: "Eksakt plan, autorisasjon, øyeblikksbilde, kilde og grenser", approve: "Godkjenn denne eksakte operasjonen og kjør én gang", cancel: "Avbryt",
@@ -68,8 +68,8 @@ function invalidate(message = "", notify = true) {
 function renderSuggestions(data = suggestions) {
   if (!data) return;
   const guidance = data.shape_guidance;
-  const supported = Object.values(session.predicates);
-  $("suggestion-summary").textContent = `${data.candidates.length} ${t("suggestionsTitle").toLowerCase()} · ${t("graph")}: ${guidance.data_graph} · ${guidance.data_snapshot_id}`;
+  const entities = data.entity_candidates, predicates = data.candidates;
+  $("suggestion-summary").textContent = `${entities.length} ${t("entityCandidatesTitle").toLowerCase()} · ${predicates.length} ${t("propertyCandidatesTitle").toLowerCase()} · ${t("graph")}: ${guidance.data_graph} · ${guidance.data_snapshot_id}`;
   $("shape-provenance").textContent = JSON.stringify({
     origin: guidance.origin, source: guidance.source, license: guidance.source.license,
     shape_graph: guidance.shape_graph, shape_snapshot_id: guidance.shape_snapshot_id,
@@ -77,43 +77,51 @@ function renderSuggestions(data = suggestions) {
     data_snapshot_id: guidance.data_snapshot_id, unsupported_property_shapes: guidance.unsupported_property_shapes,
     semantics: guidance.semantics
   }, null, 2);
-  const items = [];
-  for (const item of data.candidates) {
+  function renderCandidate(item, role) {
     const candidate = item.candidate, article = document.createElement("article");
     const heading = document.createElement("h3"), labelOrigin = document.createElement("p"), detail = document.createElement("p");
-    const evidence = document.createElement("details"), sourceLabel = candidate.texts.find(text => text.field === "label");
-    const interfaceLabel = Object.entries(session.predicates).find(([, iri]) => iri === candidate.iri);
-    heading.textContent = sourceLabel?.value.text || (interfaceLabel ? t(interfaceLabel[0]) : candidate.iri);
+    const evidence = document.createElement("details"), code = Object.keys(session.predicates).find(key => session.predicates[key] === candidate.iri);
+    const sourceLabel = candidate.texts.find(text => text.field === "label" && text.value.language === data.request.language && text.value.text);
+    const interfaceLabel = role === "entity" ? (candidate.iri === session.entity ? t("name") : null) : (code ? t(code) : null);
+    heading.textContent = sourceLabel?.value.text || interfaceLabel || candidate.iri;
     labelOrigin.textContent = sourceLabel ? t("sourceLabel") : interfaceLabel ? t("interfaceLabelOnly") : t("noSourceLabel");
     detail.textContent = `${t("rank")} ${item.rank} · ${t("score")}: ${candidate.ranking_score} · ${candidate.graph}\n${candidate.iri}`;
     const evidenceSummary = document.createElement("summary"), evidenceText = document.createElement("pre");
     evidenceSummary.textContent = t("candidateEvidence"); evidenceText.textContent = JSON.stringify({texts: candidate.texts, usage: candidate.usage}, null, 2);
     evidence.append(evidenceSummary, evidenceText);
     article.append(heading, labelOrigin, detail, evidence);
-    for (const property of item.shape_properties) {
-      const p = document.createElement("p");
-      const shapeDirection = property.path_direction === "inverse" ? "reverse" : "forward";
-      p.textContent = `${property.path_direction === "inverse" ? t("pathInverse") : t("pathForward")}: ${property.predicate_iri}\n` +
-        JSON.stringify({target_classes: property.target_classes, datatype: property.datatype, class: property.class,
-          node_kind: property.node_kind, min_count: property.min_count, max_count: property.max_count});
-      if ($("direction").value && shapeDirection !== $("direction").value) p.textContent += `\n${t("pathMismatch")}`;
-      article.append(p);
+    if (role === "property") {
+      for (const property of item.shape_properties) {
+        const p = document.createElement("p");
+        const shapeDirection = property.path_direction === "inverse" ? "reverse" : "forward";
+        p.textContent = `${property.path_direction === "inverse" ? t("pathInverse") : t("pathForward")}: ${property.predicate_iri}\n` +
+          JSON.stringify({target_classes: property.target_classes, datatype: property.datatype, class: property.class,
+            node_kind: property.node_kind, min_count: property.min_count, max_count: property.max_count});
+        if ($("direction").value && shapeDirection !== $("direction").value) p.textContent += `\n${t("pathMismatch")}`;
+        article.append(p);
+      }
+      if (!item.shape_properties.length) {
+        const p = document.createElement("p"); p.textContent = t("noShapeGuidance"); article.append(p);
+      }
     }
-    if (!item.shape_properties.length) {
-      const p = document.createElement("p"); p.textContent = t("noShapeGuidance"); article.append(p);
-    }
-    if (supported.includes(candidate.iri)) {
-      const use = document.createElement("button"); use.type = "button"; use.textContent = t("useProperty");
+    const supported = role === "entity" ? candidate.iri === session.entity : Object.values(session.predicates).includes(candidate.iri);
+    if (supported) {
+      const use = document.createElement("button"); use.type = "button"; use.textContent = t(role === "entity" ? "useEntity" : "useProperty");
       use.addEventListener("click", () => {
-        $("predicate").value = candidate.iri;
-        $("predicate").dispatchEvent(new Event("change"));
+        const select = $(role === "entity" ? "entity" : "predicate");
+        select.value = candidate.iri;
+        select.dispatchEvent(new Event("change"));
       });
       article.append(use);
+    } else if (role === "entity") {
+      const p = document.createElement("p"); p.textContent = t("unsupportedEntity"); article.append(p);
     }
-    items.push(article);
+    return article;
   }
-  $("suggestion-list").replaceChildren(...items);
-  $("suggestion-empty").hidden = data.candidates.length > 0;
+  $("entity-suggestion-list").replaceChildren(...entities.map(item => renderCandidate(item, "entity")));
+  $("suggestion-list").replaceChildren(...predicates.map(item => renderCandidate(item, "property")));
+  $("entity-suggestion-empty").hidden = entities.length > 0;
+  $("suggestion-empty").hidden = predicates.length > 0;
   $("suggestions").hidden = false;
 }
 function operation(request) {

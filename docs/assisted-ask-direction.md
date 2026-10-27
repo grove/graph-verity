@@ -32,28 +32,39 @@ approval bridge. No model is loaded or called. This slice does not yet add
 document-RAG evidence, so #115 remains open and the release status remains
 `INCONCLUSIVE_REVISE`.
 
-The optional question field can request bounded BM25 property suggestions. The
-suggestion request uses the exact authorized Wikidata development graph and
-snapshot; results show available source text and RDF usage evidence alongside any matching
-shape guidance. Scores are BM25 ranks, not probabilities. The demo shape set in
+The optional question field can request bounded BM25 entity and predicate
+suggestions. The request uses the exact authorized Wikidata development graph
+and snapshot; results show graph-qualified candidates, available source text and
+RDF usage evidence alongside any matching shape guidance. Scores are BM25
+ranks, not probabilities. The demo shape set in
 `examples/assisted-ask-direction/demo-shapes/` is
 operator-authored and Apache-2.0 licensed, and its source, graph mapping,
 snapshot identifiers and content hash are shown in the interface. It provides
 only `P856` IRI-node and `P1448` language-string hints. These hints are not
 Wikidata statements, validation results or factual claims. A suggestion never
-selects a property or changes direction; the user must make the supported
-structured choice and request a separate preview. This small development graph
-may return no suggestions for ordinary natural-language phrasing.
-When a candidate has no source label, the supported localized interface term is
-marked as interface-only; it is not represented as a label from the graph.
+selects anything. A supported entity or predicate can be added to its selector
+only with an explicit button click; direction remains manual, and suggestion
+selection does not request a preview. Candidates outside the current operation
+are shown without a selection button. Source labels and graph text are untrusted
+and rendered as text. Labels are shown only when they match the selected
+language; a localized interface term is marked as interface-only when the graph
+has no matching source label.
 
-**Next #115 milestone:** evaluate the same path on an owner-selected graph and
-trusted shape set with useful Norwegian/English labels, then have the owner
-review candidate relevance and direction mismatches. In the retained development
-graph, exact `P856` and `P1448` identifiers retrieve candidates, but
-`official website for university` does not; the demo shapes therefore prove
-the metadata contract, not practical retrieval usefulness. Record BM25 misses
-before proposing embeddings or graph-neural ranking.
+In the retained development snapshot, the natural English question “Which
+official websites does the University of Tromsø list?” and Norwegian question
+“Hvilke offisielle navn har Universitetet i Tromsø?” retrieve entity `Q279724`
+but no predicate candidate. Exact `P856` and `P1448` identifiers retrieve their
+predicate candidates, but do not retrieve an entity. These are reproducible
+development observations, not owner-reviewed relevance judgments or evidence
+of real-world usefulness. They show that the existing BM25 path can suggest an
+entity for these two phrasings while property discovery still depends on exact
+identifiers in this small graph. The demo shapes establish metadata handling,
+not general retrieval quality.
+
+**Next #114/#115 milestone:** repeat the same model-free checks on an
+owner-selected graph with a trusted shape set and useful Norwegian/English
+labels, then have the owner review candidate relevance and direction mismatches.
+Measure BM25 misses before proposing a retrieval change.
 
 Focused model-free checks:
 

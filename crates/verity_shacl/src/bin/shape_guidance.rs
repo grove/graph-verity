@@ -63,6 +63,12 @@ fn run() -> Result<()> {
         &packet,
         &policy,
     )?;
+    let entity_candidates = packet
+        .candidates("entity")?
+        .iter()
+        .enumerate()
+        .map(|(index, candidate)| serde_json::json!({"rank": index + 1, "candidate": candidate}))
+        .collect::<Vec<_>>();
     let candidates = packet
         .candidates("predicate")?
         .iter()
@@ -82,6 +88,7 @@ fn run() -> Result<()> {
         "packet_id": packet["packet_id"],
         "request": packet["request"],
         "score_semantics": packet["score_semantics"],
+        "entity_candidates": entity_candidates,
         "candidates": candidates,
         "shape_guidance": guidance,
     });
