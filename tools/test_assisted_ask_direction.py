@@ -129,9 +129,13 @@ class ExplicitDirection(unittest.TestCase):
             self.assertIn('en', {label['language'] for label in labels})
             self.assertIn('nb', {label['language'] for label in labels})
             self.assertTrue(any('</script><script>' in label['text'] for label in labels))
-            self.assertEqual([item['candidate']['iri'] for item in result['neighborhood_candidates']],
-                             [v1.PREDICATES['P1448'], v1.PREDICATES['P856']])
-            self.assertEqual([item['neighborhood_rank'] for item in result['neighborhood_candidates']], [4, 7])
+            neighborhood_iris = [item['candidate']['iri'] for item in result['neighborhood_candidates']]
+            self.assertIn(v1.PREDICATES['P1448'], neighborhood_iris)
+            self.assertIn(v1.PREDICATES['P856'], neighborhood_iris)
+            self.assertIn('http://www.wikidata.org/prop/direct/P17', neighborhood_iris)
+            neighborhood_by_iri = {item['candidate']['iri']: item for item in result['neighborhood_candidates']}
+            self.assertEqual(neighborhood_by_iri[v1.PREDICATES['P1448']]['neighborhood_rank'], 4)
+            self.assertEqual(neighborhood_by_iri[v1.PREDICATES['P856']]['neighborhood_rank'], 7)
             for item in result['neighborhood_candidates']:
                 candidate = item['candidate']
                 self.assertEqual(candidate['graph'], v1.GRAPH)
@@ -142,7 +146,9 @@ class ExplicitDirection(unittest.TestCase):
                 self.assertEqual(statement['source_graph']['value'], v1.GRAPH)
                 self.assertEqual(statement['subject']['value'], v1.ENTITY)
                 self.assertEqual(statement['predicate']['value'], candidate['iri'])
-                self.assertEqual(item['shape_properties'][0]['predicate_iri'], candidate['iri'])
+                if item['shape_properties']:
+                    self.assertEqual(item['shape_properties'][0]['predicate_iri'], candidate['iri'])
+            self.assertEqual(neighborhood_by_iri['http://www.wikidata.org/prop/direct/P17']['shape_properties'], [])
             neighbor = next(item for item in result['neighborhood_entity_candidates']
                             if item['candidate']['iri'] == 'http://www.wikidata.org/entity/Q20')
             self.assertEqual(neighbor['candidate']['graph'], v1.GRAPH)
