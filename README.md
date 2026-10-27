@@ -78,6 +78,8 @@ Use `index-build` and `index-inspect` for the [versioned discovery catalog and m
 
 The opt-in [Assisted Ask v1](docs/assisted-ask-v1.md) lets a local user select University of Tromsø and official websites or official names, review the Rust plan, then approve one source-backed operation. English and Norwegian interfaces are available. Optional question text is explicitly unverified and never interpreted. **INCONCLUSIVE_REVISE; no live model integration or human-comprehension claim.**
 
+The additive [explicit-direction extension](docs/assisted-ask-direction.md) keeps the v1 app and historical receipts unchanged while offering forward/reverse operation selection through the same Rust preview and approval boundary.
+
 The opt-in [experimental Confirmed Ask prototype](docs/confirmed-ask.md) adds `ask-preview` and `ask`: deliberately select an exact one/two-step directed path, optional typed filter and values/distinct count, then approve the complete plan bound to its graph scope, immutable snapshot and policy. Cancellation, missing/stale approval and invalid scope never execute. No model is connected. [Automated regression evidence and the pending human usability evaluation](reports/issue-40-confirmed-ask/README.md) do not establish user demand, reliable question interpretation or production/release readiness.
 
 The model-free [NL Ask draft v1 boundary](docs/nl-ask-draft-v1.md) adds strict one-hop candidate-ID expansion to a Confirmed Ask preview, with a [60-case bilingual preregistration](studies/nl-ask-v1/README.md). No model is run or automatically approved; AI-authored references have zero independent human reviews.

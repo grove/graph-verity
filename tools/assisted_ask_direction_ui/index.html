@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Assisted Ask v1 direction extension · Graph Verity</title><link rel="stylesheet" href="/style.css">
+  <script src="/assisted-ask-v1-direction.js" defer></script>
+</head>
+<body><main>
+  <p class="badge">Assisted Ask v1 · explicit direction · local · INCONCLUSIVE_REVISE</p>
+  <h1 data-i18n="title">Select a graph operation</h1>
+  <p data-i18n="intro">Choose an entity, relationship and direction. These choices define the query. No language model or question interpretation is used.</p>
+  <label for="language" data-i18n="language">Interface language</label>
+  <select id="language"><option value="en">English</option><option value="nb">Norsk (bokmål)</option></select>
+  <label for="entity" data-i18n="entity">Entity</label><select id="entity" disabled></select>
+  <label for="predicate" data-i18n="relationship">Relationship</label><select id="predicate" disabled></select>
+  <label for="direction" data-i18n="direction">Direction</label><select id="direction" disabled></select>
+  <p id="selected" class="operation"></p>
+  <p data-i18n="contract">Choose forward or reverse direction. No filtering, counting, joins, writes or raw SPARQL.</p>
+  <details><summary data-i18n="optional">Optional original question — unverified user intent</summary>
+    <label for="question" data-i18n="question">Original question (not interpreted)</label>
+    <textarea id="question" rows="3" maxlength="4096" aria-describedby="intent-warning"></textarea>
+    <p id="intent-warning" data-i18n="warning">This text never selects or changes the operation. Requests such as “only English names”, counting or raw SPARQL are unsupported. You may separately select all unfiltered values; that result is not verified as an answer to this question.</p>
+  </details>
+  <button id="preview" type="button" disabled data-i18n="preview">Preview selected operation separately</button>
+  <p id="status" role="status" aria-live="polite"></p>
+  <section id="review" hidden aria-labelledby="review-heading">
+    <h2 id="review-heading" tabindex="-1" data-i18n="review">Review before approval</h2>
+    <h3 id="operation" class="operation"></h3>
+    <p id="relation">The displayed relationship and direction are exactly what will be queried. Approval executes this operation only.</p>
+    <p id="original"></p><p class="badge" data-i18n="unverified">Original question: unverified and not interpreted. The result answers only the manually selected graph operation.</p>
+    <p id="graph"></p>
+    <h3 data-i18n="rust">Authoritative Rust query preview</h3><ul id="rust-summary"></ul>
+    <details><summary data-i18n="technical">Exact plan, authorization, snapshot, source and limits</summary>
+      <pre id="rust-preview"></pre><pre id="sources"></pre>
+    </details>
+    <p id="expiry"></p>
+    <button id="approve" type="button" disabled data-i18n="approve">Approve this exact operation and run once</button>
+    <button id="cancel" type="button" data-i18n="cancel">Cancel</button>
+  </section>
+  <section id="results" hidden aria-labelledby="result-heading">
+    <h2 id="result-heading" data-i18n="results">Results of the selected operation</h2>
+    <h3 id="result-operation" class="operation"></h3>
+    <p id="result-question"></p><p class="badge" data-i18n="unverified">Original question: unverified and not interpreted. The result answers only the manually selected graph operation.</p>
+    <p id="result-status"></p><div id="answers"></div>
+    <details><summary data-i18n="evidence">Original source triples, graph, snapshot, provenance, licenses and receipt</summary>
+      <pre id="evidence"></pre><pre id="receipt"></pre>
+    </details>
+  </section>
+  <details><summary data-i18n="scope">Authorized local scope and limitations</summary>
+    <p data-i18n="limits">Only University of Tromsø (Q279724), official websites (P856) and official names (P1448), in the retained Wikidata development graph. Missing facts do not establish real-world absence. Source labels are untrusted. Human comprehension is unmeasured. This is not general natural-language understanding.</p>
+    <pre id="scope"></pre>
+  </details>
+</main></body></html>
