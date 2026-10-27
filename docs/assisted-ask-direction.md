@@ -75,10 +75,18 @@ allowlist have no selection button. See
 [`ask-alpha-candidate-baseline.md`](ask-alpha-candidate-baseline.md) for the
 60-case descriptive counts and their limits.
 
-**Next #114/#115 milestone:** compare separately retained pure BM25 predicate
-ranks and v2 source-witnessed candidates on the same exposed cases, then have
-the owner review candidate relevance and direction mismatches. The saved v2
-predicate ranks alone cannot establish lexical recall or semantic usefulness.
+The paired retrieval baseline found no pure BM25 predicate target among the 29
+agent-authored candidate references by rank 10; neighborhood v2 found 20/29 by
+rank 5 and 29/29 by rank 10. This is exact candidate-position coverage, not
+human relevance or answer accuracy. The full paired counts and per-case ranks
+are in
+[`issue-114-paired-retrieval-v1`](../reports/issue-114-paired-retrieval-v1/README.md).
+
+**Next #114/#115 milestone:** add the already retained licensed property labels
+and descriptions to graph-local BM25 predicate text, then repeat the paired
+measurement before considering dense retrieval. The current data has no
+independent human relevance labels, so owner review remains necessary before
+any relevance or usefulness claim.
 
 Focused model-free checks:
 
