@@ -68,7 +68,7 @@ try {
       document.getElementById('language').value=${JSON.stringify(language)};
       document.getElementById('ask-form').requestSubmit();
     })()`);
-    await until("document.getElementById('status').textContent.includes('model not invoked') || document.getElementById('status').textContent.includes('Generated') || document.getElementById('status').textContent.includes('Synthetic')");
+    await until("document.getElementById('status').textContent.includes('model not invoked') || document.getElementById('status').textContent.includes('Generated') || document.getElementById('status').textContent.includes('Synthetic') || document.getElementById('status').textContent.includes('Source changed') || document.getElementById('status').textContent.includes('Source unavailable')");
   }
 
   await send("Network.enable"); await send("Runtime.enable"); await send("Page.enable");
@@ -81,10 +81,21 @@ try {
   assert.ok(await evaluate("document.getElementById('passages').textContent.includes('The default local answer mode displays source passages.')"));
   assert.ok(await evaluate("document.getElementById('passages').textContent.includes('d:')"));
   assert.ok(await evaluate("document.getElementById('coverage-content').textContent.includes('not invoked')"));
+  assert.ok(await evaluate("document.querySelector('#passages .passage summary').textContent.includes('English (en)')"));
+  await evaluate("document.querySelector('#passages .passage summary').click()");
+  assert.equal(await evaluate("document.querySelector('#passages .passage').open"), true);
+  assert.ok(await evaluate("document.querySelector('#passages .passage').textContent.includes('Original bytes:')"));
 
   await ask("Hva viser kildevisningen?", "nb");
   assert.ok(await evaluate("document.getElementById('passages').textContent.includes('Kildevisningen viser originale dokumentutdrag.')"));
   assert.ok(await evaluate("document.getElementById('passages').textContent.includes('operator-no')"));
+  assert.ok(await evaluate("document.getElementById('passages').textContent.includes('Norwegian Bokmål (nb)')"));
+  assert.match(await evaluate("document.getElementById('status').textContent"), /Generation was not authorized/);
+
+  await ask("xylophoniczebra?", "en");
+  assert.match(await evaluate("document.getElementById('status').textContent"), /No matching source passages — model not invoked/);
+  assert.match(await evaluate("document.getElementById('status').textContent"), /does not prove the fact is absent/);
+  assert.equal(await evaluate("document.getElementById('passage-section').hidden"), true);
 
   await ask("What identifier does the CPU trial have?", "en");
   const conflictText = await evaluate("document.getElementById('passages').textContent");
@@ -92,23 +103,51 @@ try {
   assert.ok(conflictText.includes("RAG-CPU-01") && conflictText.includes("RAG-CPU-99"));
 
   const syntheticJSON = Buffer.from(syntheticResult, "base64").toString("utf8");
+  const clipped = JSON.parse(syntheticJSON);
+  clipped.execution = "none";
+  clipped.packet.completeness.documents_clipped = true;
+  clipped.view = {
+    status: "source_only", reason: "retrieval_coverage_incomplete", answer: null,
+    model_invoked: false, evidence: [],
+    grounding_risk: {classification: "INSUFFICIENT_EVIDENCE", reason: "retrieval_coverage_incomplete"}
+  };
   await evaluate(`(() => {
-    const original = window.fetch.bind(window);
-    const result = JSON.parse(${JSON.stringify(syntheticJSON)});
-    window.fetch = (url, options) => String(url).endsWith('/api/document-ask/ask') ? Promise.resolve(new Response(JSON.stringify(result), {status:200,headers:{'Content-Type':'application/json'}})) : original(url, options);
+    window.__realFetch = window.fetch.bind(window);
+    const result = ${JSON.stringify(JSON.stringify(clipped))};
+    window.fetch = (url, options) => String(url).endsWith('/api/document-ask/ask') ? Promise.resolve(new Response(result, {status:200,headers:{'Content-Type':'application/json'}})) : window.__realFetch(url, options);
+  })()`);
+  await ask("Clipped coverage display", "en");
+  assert.match(await evaluate("document.getElementById('status').textContent"), /Retrieval was clipped/);
+  assert.ok(await evaluate("document.getElementById('coverage-content').textContent.includes('\\\"documents_clipped\\\": true')"));
+  assert.ok(await evaluate("document.getElementById('passages').textContent.includes('Retrieval incomplete: yes')"));
+
+  const syntheticResponse = JSON.stringify(JSON.parse(syntheticJSON));
+  await evaluate(`(() => {
+    const result = ${JSON.stringify(syntheticResponse)};
+    window.fetch = (url, options) => String(url).endsWith('/api/document-ask/ask') ? Promise.resolve(new Response(result, {status:200,headers:{'Content-Type':'application/json'}})) : window.__realFetch(url, options);
   })()`);
   await ask("Synthetic display check", "en");
   assert.match(await evaluate("document.getElementById('status').textContent"), /Synthetic generated-answer fixture — no native model run/);
   assert.ok(await evaluate("document.getElementById('answer').textContent.includes('The default local answer mode displays source passages.')"));
   assert.ok(await evaluate("document.getElementById('answer').textContent.includes('Citation: d:')"));
 
+  const changed = JSON.stringify({execution:"none",packet:null,view:{status:"source_unavailable",reason:"source_changed",answer:null,model_invoked:false,evidence:[]}});
+  await evaluate(`(() => {
+    const result = ${JSON.stringify(changed)};
+    window.fetch = (url, options) => String(url).endsWith('/api/document-ask/ask') ? Promise.resolve(new Response(result, {status:200,headers:{'Content-Type':'application/json'}})) : window.__realFetch(url, options);
+  })()`);
+  await ask("Changed source display", "en");
+  assert.match(await evaluate("document.getElementById('status').textContent"), /passages and any saved answer were withheld/);
+  assert.equal(await evaluate("document.getElementById('passage-section').hidden"), true);
+
+  await evaluate("window.fetch = window.__realFetch");
   await evaluate(`document.getElementById('question').value=${JSON.stringify("What does the default local answer mode display?")}; document.getElementById('language').value='en'; document.getElementById('prepare').click()`);
   await until("!document.getElementById('preparation').hidden");
   assert.ok(await evaluate("document.getElementById('prepare-content').textContent.includes('model_registration_unavailable')"));
   assert.equal(await evaluate("document.querySelectorAll('img,iframe,object').length"), 0);
   assert.ok(requests.every(request => new URL(request).origin === new URL(url).origin));
   assert.deepEqual(exceptions, []);
-  console.log("Local document Ask: bilingual source-only, conflicts, citation inspection, synthetic answer display and request preparation passed");
+  console.log("Local document Ask: bilingual source-only, readable source languages, expandable citations, clipping, conflicts, changed-source withholding, synthetic answer display and request preparation passed");
 } finally {
   if (websocket) websocket.close();
   browser.kill("SIGTERM");
