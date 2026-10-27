@@ -88,6 +88,15 @@ try {
   assert.match(nearbyEntity.text, /Q279724/);
   assert.equal(nearbyEntity.buttons, 0);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+  const metadataSuggestion = await evaluate("(() => { const article=[...document.querySelectorAll('#metadata-suggestion-list article')].find(item => item.textContent.includes('/P856')); return {count:document.querySelectorAll('#metadata-suggestion-list article').length, help:document.querySelector('[data-i18n=metadataCandidatesHelp]').textContent, text:article?.textContent, provenance:document.getElementById('property-metadata-provenance').textContent, buttons:article?.querySelectorAll('button').length ?? 0}; })()");
+  assert.ok(metadataSuggestion.count > 0);
+  assert.match(metadataSuggestion.help, /not data facts or source witnesses/);
+  assert.match(metadataSuggestion.text, /BM25 score \(not probability\)/);
+  assert.match(metadataSuggestion.text, /official website/);
+  assert.match(metadataSuggestion.text, /directClaim/);
+  assert.match(metadataSuggestion.provenance, /CC0-1.0/);
+  assert.equal(metadataSuggestion.buttons, 1);
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
   const neighborhoodSuggestion = await evaluate("({text:document.getElementById('neighborhood-suggestion-list').textContent, count:document.querySelectorAll('#neighborhood-suggestion-list article').length, help:document.querySelector('[data-i18n=neighborhoodHelp]').textContent, clipped:!document.getElementById('neighborhood-clipped').hidden, statement:document.querySelector('#neighborhood-suggestion-list details summary').textContent, provenance:document.getElementById('neighborhood-provenance').textContent})");
   assert.ok(neighborhoodSuggestion.count > 2);
   assert.match(neighborhoodSuggestion.text, /P1448/);
@@ -110,6 +119,9 @@ try {
   assert.equal(await evaluate("document.getElementById('entity').value"), "http://www.wikidata.org/entity/Q279724");
   assert.equal(await evaluate("document.getElementById('predicate').value"), "http://www.wikidata.org/prop/direct/P856");
   assert.equal(await evaluate("document.getElementById('direction').value"), "");
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+  await evaluate("[...document.querySelectorAll('#metadata-suggestion-list article')].find(article => article.textContent.includes('/P856')).querySelector('button').click()");
+  assert.equal(await evaluate("document.getElementById('predicate').value"), "http://www.wikidata.org/prop/direct/P856");
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
 
   await evaluate("const predicate=document.getElementById('predicate'); predicate.value=''; predicate.dispatchEvent(new Event('change'))");

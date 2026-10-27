@@ -17,11 +17,13 @@ PREFIX = '/api/assisted-ask-v1-direction/'
 SHAPE_GUIDANCE_BINARY = ask.ROOT / 'target/debug/shape_guidance'
 SHAPE_FILE = ask.ROOT / 'examples/assisted-ask-direction/demo-shapes/shapes.trig'
 SHAPE_CONFIG = ask.ROOT / 'examples/assisted-ask-direction/demo-shapes/config.json'
+PROPERTY_METADATA = ask.ROOT / 'studies/nl-ask-v1/sources/Q279724.ttl'
 
 
 class Bundle(ask.Bundle):
     def __init__(self, *args, shape_guidance_binary=SHAPE_GUIDANCE_BINARY,
-                 shape_file=SHAPE_FILE, shape_config=SHAPE_CONFIG, **kwargs):
+                 shape_file=SHAPE_FILE, shape_config=SHAPE_CONFIG,
+                 property_metadata=PROPERTY_METADATA, **kwargs):
         binary = Path(shape_guidance_binary)
         self.shape_guidance_binary = binary.resolve(strict=True) if binary.is_file() else None
         self.shape_guidance_binary_sha256 = (
@@ -29,7 +31,8 @@ class Bundle(ask.Bundle):
         super().__init__(*args, **kwargs)
         try:
             for index, (source, limit) in enumerate(((shape_file, 16 * 1024 * 1024),
-                                                     (shape_config, find.MAX_REQUEST))):
+                                                     (shape_config, find.MAX_REQUEST),
+                                                     (property_metadata, 16 * 1024 * 1024))):
                 source = Path(source).resolve(strict=True)
                 data = find.read(source, limit)
                 self.originals[source] = (find.digest(data), limit)
@@ -40,8 +43,12 @@ class Bundle(ask.Bundle):
                     self.shape_file = frozen
                     self.shape_sha256 = find.digest(data)
                 else:
-                    self.shape_config_file = frozen
-                    self.shape_metadata = json.loads(data)
+                    if index == 1:
+                        self.shape_config_file = frozen
+                        self.shape_metadata = json.loads(data)
+                    else:
+                        self.property_metadata_file = frozen
+                        self.property_metadata_sha256 = find.digest(data)
             if (not isinstance(self.shape_metadata, dict)
                     or self.shape_metadata.get('version') != 1
                     or self.shape_metadata.get('origin') not in ('operator_authored_demo', 'source_published')
@@ -97,7 +104,8 @@ class Bundle(ask.Bundle):
         request_path.chmod(0o600)
         budget_path.chmod(0o600)
         command = [str(self.shape_guidance_binary), *self.common, str(self.shape_file), 'trig',
-                   str(self.shape_config_file), str(request_path), str(budget_path)]
+                   str(self.shape_config_file), str(self.property_metadata_file),
+                   str(request_path), str(budget_path)]
         try:
             with tempfile.TemporaryFile(dir=self.directory) as output, tempfile.TemporaryFile(dir=self.directory) as errors:
                 result = subprocess.run(command, stdin=subprocess.DEVNULL, stdout=output, stderr=errors, timeout=45)
@@ -173,10 +181,12 @@ class Server(ask.Server):
             '/style.css': ((ask.ASSETS / 'style.css').read_bytes(), 'text/css'),
         }
         self.bundle.receipt.update(
-            ui_version='assisted-ask-v1-direction-shape-neighborhood-entities',
+            ui_version='assisted-ask-v1-direction-shape-neighborhood-property-metadata',
             backend='manual-structured-selection-explicit-direction',
             adapter_sha256=find.file_digest(Path(__file__)),
             shape_guidance_binary_sha256=self.bundle.shape_guidance_binary_sha256,
+            property_metadata=dict(source='studies/nl-ask-v1/sources/Q279724.ttl', license='CC0-1.0',
+                                   source_sha256=self.bundle.property_metadata_sha256),
             shape_guidance=dict(origin=self.bundle.shape_metadata['origin'],
                                 source=self.bundle.shape_metadata['source']['source'],
                                 license=self.bundle.shape_metadata['source']['license'],
