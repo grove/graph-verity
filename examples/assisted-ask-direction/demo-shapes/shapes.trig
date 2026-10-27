@@ -1,0 +1,18 @@
+# Graph Verity operator-authored demo guidance for the retained Wikidata development graph.
+# These shapes are not upstream Wikidata statements or a SHACL conformance claim.
+@prefix gv: <urn:graph-verity:shacl-demo:assisted-ask-direction-v1#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<urn:graph-verity:shacl-demo:assisted-ask-direction-v1> {
+  gv:OfficialEntityProperties a sh:NodeShape ;
+    sh:property [
+      sh:path wdt:P856 ;
+      sh:nodeKind sh:IRI
+    ] ;
+    sh:property [
+      sh:path wdt:P1448 ;
+      sh:datatype rdf:langString
+    ] .
+}

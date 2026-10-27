@@ -21,6 +21,15 @@
     <textarea id="question" rows="3" maxlength="4096" aria-describedby="intent-warning"></textarea>
     <p id="intent-warning" data-i18n="warning">This text never selects or changes the operation. Requests such as “only English names”, counting or raw SPARQL are unsupported. You may separately select all unfiltered values; that result is not verified as an answer to this question.</p>
   </details>
+  <button id="suggest" type="button" disabled data-i18n="suggest">Retrieve BM25 property suggestions</button>
+  <p data-i18n="suggestionsHelp">BM25 ranks text matches; scores are not probabilities. Suggestions never select or authorize a query.</p>
+  <section id="suggestions" hidden aria-labelledby="suggestion-heading">
+    <h2 id="suggestion-heading" tabindex="-1" data-i18n="suggestionsTitle">Optional property suggestions</h2>
+    <p id="suggestion-summary"></p><p id="suggestion-empty" hidden data-i18n="noSuggestions">No predicate candidates matched this question in the selected graph.</p>
+    <div id="suggestion-list"></div>
+    <p id="shape-origin" data-i18n="shapeOrigin">Operator-authored demo SHACL metadata — guidance only, not source facts or a data validation result.</p>
+    <details><summary data-i18n="shapeMetadata">Shape source, license, snapshots, and SHA-256</summary><pre id="shape-provenance"></pre></details>
+  </section>
   <button id="preview" type="button" disabled data-i18n="preview">Preview selected operation separately</button>
   <p id="status" role="status" aria-live="polite"></p>
   <section id="review" hidden aria-labelledby="review-heading">

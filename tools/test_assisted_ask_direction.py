@@ -1,5 +1,6 @@
 """Assisted Ask v1 explicit-direction API and browser checks; no inference."""
 import http.client
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -81,6 +82,38 @@ class ExplicitDirection(unittest.TestCase):
             status, _ = self.call(ask.PREFIX + 'confirm', {'token': preview['token'], 'decision': 'approve'})
         self.assertEqual(status, 400)
         self.assertTrue(all(not entry.args[1:] for entry in call.call_args_list))
+
+    def test_shape_suggestions_are_scoped_and_do_not_execute_or_select(self):
+        with patch.object(self.bundle, 'shape_suggestions', wraps=self.bundle.shape_suggestions) as suggest, \
+                patch.object(self.bundle, 'ask') as run:
+            for request in ({'question': ' ', 'language': 'en'},
+                            {'question': 'P856', 'language': 'fr'}):
+                self.assertEqual(self.call(ask.PREFIX + 'suggestions', request)[0], 400)
+            results = [self.result(ask.PREFIX + 'suggestions', request) for request in (
+                {'question': 'P856', 'language': 'en'}, {'question': 'P1448', 'language': 'nb'})]
+        self.assertEqual(suggest.call_count, 2)
+        run.assert_not_called()
+        shape_hash = hashlib.sha256(Path(self.bundle.shape_file).read_bytes()).hexdigest()
+        for result, code in zip(results, ('P856', 'P1448')):
+            self.assertEqual(result['request']['scope'], [v1.GRAPH])
+            self.assertIn('BM25', result['score_semantics'])
+            guidance = result['shape_guidance']
+            self.assertEqual(guidance['origin'], 'operator_authored_demo')
+            self.assertEqual(guidance['source']['license'], 'Apache-2.0')
+            self.assertEqual(guidance['data_snapshot_id'], v1.SNAPSHOT)
+            self.assertEqual(guidance['shape_sha256'], shape_hash)
+            self.assertEqual(len(result['candidates']), 1)
+            candidate = result['candidates'][0]
+            self.assertEqual(candidate['candidate']['iri'], v1.PREDICATES[code])
+            self.assertEqual(candidate['candidate']['graph'], v1.GRAPH)
+            self.assertGreater(candidate['candidate']['ranking_score'], 0)
+            self.assertTrue(candidate['candidate']['usage'])
+            self.assertEqual(candidate['shape_properties'][0]['predicate_iri'], v1.PREDICATES[code])
+        self.assertEqual(results[0]['candidates'][0]['shape_properties'][0]['node_kind'],
+                         'http://www.w3.org/ns/shacl#IRI')
+        self.assertEqual(results[1]['candidates'][0]['shape_properties'][0]['datatype'],
+                         'http://www.w3.org/1999/02/22-rdf-syntax-ns#langString')
+        self.assertIsNone(self.bundle.pending)
 
     def browser(self):
         chrome = os.environ.get('CHROME_BINARY') or next(
