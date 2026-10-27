@@ -34,7 +34,7 @@ document-RAG evidence, so #115 remains open and the release status remains
 
 The optional question field can request bounded BM25 property suggestions. The
 suggestion request uses the exact authorized Wikidata development graph and
-snapshot; results show original labels and usage evidence alongside any matching
+snapshot; results show available source text and RDF usage evidence alongside any matching
 shape guidance. Scores are BM25 ranks, not probabilities. The demo shape set in
 `examples/assisted-ask-direction/demo-shapes/` is
 operator-authored and Apache-2.0 licensed, and its source, graph mapping,
@@ -44,6 +44,8 @@ Wikidata statements, validation results or factual claims. A suggestion never
 selects a property or changes direction; the user must make the supported
 structured choice and request a separate preview. This small development graph
 may return no suggestions for ordinary natural-language phrasing.
+When a candidate has no source label, the supported localized interface term is
+marked as interface-only; it is not represented as a label from the graph.
 
 **Next #115 milestone:** evaluate the same path on an owner-selected graph and
 trusted shape set with useful Norwegian/English labels, then have the owner

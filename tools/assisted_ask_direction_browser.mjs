@@ -70,9 +70,11 @@ try {
 
   await evaluate("(() => { const question=document.getElementById('question'); question.value='P856'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
   await until("!document.getElementById('suggestions').hidden");
-  const suggestion = await evaluate("({text:document.getElementById('suggestion-list').textContent, origin:document.getElementById('shape-origin').textContent, provenance:document.getElementById('shape-provenance').textContent, selected:document.getElementById('predicate').value})");
+  const suggestion = await evaluate("({text:document.getElementById('suggestion-list').textContent, heading:document.querySelector('#suggestion-list h3').textContent, labelOrigin:document.querySelector('#suggestion-list article p').textContent, origin:document.getElementById('shape-origin').textContent, provenance:document.getElementById('shape-provenance').textContent, selected:document.getElementById('predicate').value})");
   assert.match(suggestion.text, /BM25 score \(not probability\)/);
   assert.match(suggestion.text, /P856/);
+  assert.equal(suggestion.heading, "Official websites");
+  assert.match(suggestion.labelOrigin, /Interface label only; this graph has no source label/);
   assert.match(suggestion.origin, /Operator-authored demo SHACL metadata/);
   assert.match(suggestion.provenance, /Apache-2.0/);
   assert.match(suggestion.provenance, /shape_sha256/);
@@ -84,6 +86,13 @@ try {
   await evaluate("const language=document.getElementById('language'); language.value='nb'; language.dispatchEvent(new Event('change'))");
   assert.equal(await evaluate("document.documentElement.lang"), "nb");
   assert.equal(await evaluate("document.getElementById('suggestions').hidden"), true);
+  await evaluate("(() => { const question=document.getElementById('question'); question.value='P1448'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
+  await until("!document.getElementById('suggestions').hidden");
+  const norwegianSuggestion = await evaluate("({heading:document.querySelector('#suggestion-list h3').textContent, labelOrigin:document.querySelector('#suggestion-list article p').textContent, selected:document.getElementById('predicate').value})");
+  assert.equal(norwegianSuggestion.heading, "Offisielle navn");
+  assert.match(norwegianSuggestion.labelOrigin, /Kun grensesnittnavn/);
+  assert.equal(norwegianSuggestion.selected, "http://www.wikidata.org/prop/direct/P856");
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
 
   async function select(language, direction) {
     await evaluate(`(() => {
