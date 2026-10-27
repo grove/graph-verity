@@ -29,6 +29,11 @@
     <h3 data-i18n="entityCandidatesTitle">Entity candidates</h3>
     <p id="entity-suggestion-empty" hidden data-i18n="noEntityCandidates">No entity candidates matched this question in the selected graph.</p>
     <div id="entity-suggestion-list"></div>
+    <h3 data-i18n="neighborhoodEntitiesTitle">Source-witnessed nearby entities</h3>
+    <p data-i18n="neighborhoodEntitiesHelp">These entities are endpoints of stored edges connected to BM25 entity candidates. They have no question-relevance rank and may be outside this demo's operation scope.</p>
+    <p id="neighborhood-entities-clipped" hidden role="note" data-i18n="neighborhoodEntitiesClipped">The nearby-entity list was capped. Missing entities are unknown.</p>
+    <p id="neighborhood-entities-empty" hidden data-i18n="neighborhoodEntitiesEmpty">No additional entity endpoints with a selected-graph entity role were found.</p>
+    <div id="neighborhood-entity-suggestion-list"></div>
     <h3 data-i18n="propertyCandidatesTitle">Property candidates</h3>
     <p id="suggestion-empty" hidden data-i18n="noSuggestions">No property candidates matched this question in the selected graph.</p>
     <div id="suggestion-list"></div>

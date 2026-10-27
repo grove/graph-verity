@@ -81,6 +81,13 @@ try {
   assert.equal(entitySuggestion.direction, "");
   assert.equal(requests.some(request => request.url.endsWith("/private")), false);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+  const nearbyEntity = await evaluate("(() => { const article=[...document.querySelectorAll('#neighborhood-entity-suggestion-list article')].find(item => item.textContent.includes('/entity/Q20')); return {count:document.querySelectorAll('#neighborhood-entity-suggestion-list article').length, help:document.querySelector('[data-i18n=neighborhoodEntitiesHelp]').textContent, text:article?.textContent, buttons:article?.querySelectorAll('button').length ?? 0, clipped:!document.getElementById('neighborhood-entities-clipped').hidden}; })()");
+  assert.ok(nearbyEntity.count > 0);
+  assert.match(nearbyEntity.help, /does not indicate question relevance/);
+  assert.match(nearbyEntity.text, /P17/);
+  assert.match(nearbyEntity.text, /Q279724/);
+  assert.equal(nearbyEntity.buttons, 0);
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
   const neighborhoodSuggestion = await evaluate("({text:document.getElementById('neighborhood-suggestion-list').textContent, count:document.querySelectorAll('#neighborhood-suggestion-list article').length, help:document.querySelector('[data-i18n=neighborhoodHelp]').textContent, clipped:!document.getElementById('neighborhood-clipped').hidden, statement:document.querySelector('#neighborhood-suggestion-list details summary').textContent, provenance:document.getElementById('neighborhood-provenance').textContent})");
   assert.equal(neighborhoodSuggestion.count, 2);
   assert.match(neighborhoodSuggestion.text, /P1448/);
