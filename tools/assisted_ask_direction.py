@@ -49,10 +49,12 @@ class Bundle(ask.Bundle):
                     else:
                         self.property_metadata_file = frozen
                         self.property_metadata_sha256 = find.digest(data)
-            if (self.shape_metadata.get('origin') != 'operator_authored_demo'
+            if (not isinstance(self.shape_metadata, dict)
+                    or self.shape_metadata.get('version') != 1
+                    or self.shape_metadata.get('origin') not in ('operator_authored_demo', 'source_published')
                     or self.shape_metadata.get('data_graph') != ask.GRAPH
                     or self.shape_metadata.get('data_snapshot_id') != ask.SNAPSHOT):
-                raise ValueError('Shape guidance must be an explicitly mapped demo for this snapshot')
+                raise ValueError('Shape guidance must map a supported origin to this authorized data snapshot')
         except Exception:
             self.close()
             raise
@@ -194,17 +196,22 @@ class Server(ask.Server):
             assets={route: find.digest(body) for route, (body, _) in self.assets.items()})
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--binary', type=Path, default=ask.ROOT / 'target/debug/verity')
     parser.add_argument('--shape-guidance-binary', type=Path, default=SHAPE_GUIDANCE_BINARY)
+    parser.add_argument('--shape-file', type=Path, default=SHAPE_FILE,
+                        help='operator-selected local TriG shape source')
+    parser.add_argument('--shape-config', type=Path, default=SHAPE_CONFIG,
+                        help='operator-supplied shape source, license, and graph mapping manifest')
     parser.add_argument('--port', type=int, default=0)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     bundle = None
     try:
         bundle = Bundle(args.binary, ask.DATA / 'snapshot.nq', 'nquads', ask.DATA / 'policy.json',
                         ask.DATA / 'scope.json', ask.DATA / 'discovery.json',
-                        shape_guidance_binary=args.shape_guidance_binary)
+                        shape_guidance_binary=args.shape_guidance_binary,
+                        shape_file=args.shape_file, shape_config=args.shape_config)
         if not bundle.shape_guidance_binary:
             raise ValueError('Build shape_guidance before launch')
         for predicate in ask.PREDICATES.values():

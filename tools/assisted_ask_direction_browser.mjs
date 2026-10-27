@@ -133,6 +133,7 @@ try {
   assert.equal(suggestion.heading, "Official websites");
   assert.match(suggestion.labelOrigin, /Interface label only; no label exists in the selected language/);
   assert.match(suggestion.origin, /Operator-authored demo SHACL metadata/);
+  assert.match(suggestion.origin, /not independently verified/);
   assert.match(suggestion.provenance, /Apache-2.0/);
   assert.match(suggestion.provenance, /shape_sha256/);
   assert.equal(suggestion.selected, "");
@@ -155,6 +156,7 @@ try {
   assert.equal(norwegianSuggestion.heading, "Offisielle navn");
   assert.match(norwegianSuggestion.labelOrigin, /Kun grensesnittnavn/);
   assert.equal(norwegianSuggestion.selected, "http://www.wikidata.org/prop/direct/P856");
+  assert.match(await evaluate("document.getElementById('shape-origin').textContent"), /Operatørforfattede SHACL-demodata.*ikke verifisert/);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
 
   async function select(language, direction) {
