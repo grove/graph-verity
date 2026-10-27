@@ -35,7 +35,8 @@ document-RAG evidence, so #115 remains open and the release status remains
 The optional question field can request bounded BM25 property suggestions. The
 suggestion request uses the exact authorized Wikidata development graph and
 snapshot; results show original labels and usage evidence alongside any matching
-shape guidance. Scores are BM25 ranks, not probabilities. The demo shape set is
+shape guidance. Scores are BM25 ranks, not probabilities. The demo shape set in
+`examples/assisted-ask-direction/demo-shapes/` is
 operator-authored and Apache-2.0 licensed, and its source, graph mapping,
 snapshot identifiers and content hash are shown in the interface. It provides
 only `P856` IRI-node and `P1448` language-string hints. These hints are not

@@ -15,8 +15,8 @@ import local_nl_ask as bridge
 ASSETS = Path(__file__).with_name('assisted_ask_direction_ui')
 PREFIX = '/api/assisted-ask-v1-direction/'
 SHAPE_GUIDANCE_BINARY = ask.ROOT / 'target/debug/shape_guidance'
-SHAPE_FILE = ask.ROOT / 'studies/assisted-ask-direction/demo-shapes/shapes.trig'
-SHAPE_CONFIG = ask.ROOT / 'studies/assisted-ask-direction/demo-shapes/config.json'
+SHAPE_FILE = ask.ROOT / 'examples/assisted-ask-direction/demo-shapes/shapes.trig'
+SHAPE_CONFIG = ask.ROOT / 'examples/assisted-ask-direction/demo-shapes/config.json'
 
 
 class Bundle(ask.Bundle):
