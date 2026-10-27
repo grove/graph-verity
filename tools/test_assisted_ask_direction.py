@@ -106,6 +106,7 @@ class ExplicitDirection(unittest.TestCase):
             candidate = result['candidates'][0]
             self.assertEqual(candidate['candidate']['iri'], v1.PREDICATES[code])
             self.assertEqual(candidate['candidate']['graph'], v1.GRAPH)
+            self.assertEqual(candidate['candidate']['texts'], [])
             self.assertGreater(candidate['candidate']['ranking_score'], 0)
             self.assertTrue(candidate['candidate']['usage'])
             self.assertEqual(candidate['shape_properties'][0]['predicate_iri'], v1.PREDICATES[code])
