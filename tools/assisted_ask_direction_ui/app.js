@@ -202,7 +202,8 @@ $("preview").addEventListener("click", async () => {
     $("rust-summary").replaceChildren(...data.resolved.preview.summary.map(line => {
       const li = document.createElement("li"); li.textContent = line; return li;
     }));
-    json("rust-preview", data.resolved.preview); json("sources", data.sources);
+    json("rust-preview", data.resolved.preview);
+    json("sources", {graphs: data.sources, shape_guidance: data.provenance.shape_guidance_context});
     $("expiry").textContent = `${t("lease")} ${Math.floor(data.review_seconds)} ${t("seconds")}`;
     $("review").hidden = false; $("review-heading").focus(); $("approve").disabled = false; $("status").textContent = t("ready");
     timer = setTimeout(() => invalidate(t("expired")), data.review_seconds * 1000);
@@ -233,7 +234,8 @@ $("approve").addEventListener("click", async () => {
       if (!answer.evidence_complete) { const p = document.createElement("p"); p.textContent = t("missing"); article.append(p); }
       $("answers").append(article);
     }
-    json("evidence", {snapshot_id: result.snapshot_id, graph: result.scope, triples: result.evidence, sources: data.sources});
+    json("evidence", {snapshot_id: result.snapshot_id, graph: result.scope, triples: result.evidence,
+      sources: data.sources, shape_guidance: data.provenance.shape_guidance_context});
     json("receipt", data); $("results").hidden = false; $("status").textContent = t("done");
   } catch { if (generation === epoch) invalidate(t("error")); }
 });

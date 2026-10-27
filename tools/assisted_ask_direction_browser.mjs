@@ -176,6 +176,11 @@ try {
     assert.equal(review.lang, language);
     assert.match(review.operation, direction === "reverse" ? /←/ : /→/);
     assert.match(review.relation, direction === "reverse" ? /does not create inverse RDF statements|oppretter ingen omvendte RDF-utsagn/ : /follows the relationship|følger relasjonen/);
+    const sources = await evaluate("document.getElementById('sources').textContent");
+    assert.match(sources, /optional_guidance_only_not_query_evidence/);
+    assert.match(sources, /operator_declared_not_independently_verified/);
+    assert.match(sources, /Apache-2.0/);
+    assert.match(sources, /shape_sha256/);
     const request = requests.findLast(r => r.url.endsWith("/api/assisted-ask-v1-direction/preview"));
     assert.ok(request?.postData);
     assert.equal(JSON.parse(request.postData).direction, direction);

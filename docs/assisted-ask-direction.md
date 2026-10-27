@@ -61,7 +61,9 @@ only `P856` IRI-node and `P1448` language-string hints. These hints are not
 Wikidata statements, validation results or factual claims. A suggestion never
 selects anything. A supported entity or predicate can be added to its selector
 only with an explicit button click; direction remains manual, and suggestion
-selection does not request a preview. Candidates outside the current operation
+selection does not request a preview. The selected shape origin, source/license,
+shape snapshot and hash also travel with the review and result receipt as optional
+guidance context, never as query evidence. Candidates outside the current operation
 are shown without a selection button. Source labels and graph text are untrusted
 and rendered as text. Labels are shown only when they match the selected
 language; a localized interface term is marked as interface-only when the graph
