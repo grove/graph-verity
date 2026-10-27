@@ -90,11 +90,13 @@ class ExplicitDirection(unittest.TestCase):
                             {'question': 'P856', 'language': 'fr'}):
                 self.assertEqual(self.call(ask.PREFIX + 'suggestions', request)[0], 400)
             results = [self.result(ask.PREFIX + 'suggestions', request) for request in (
+                {'question': 'Which official websites does the University of Tromsø list?', 'language': 'en'},
+                {'question': 'Hvilke offisielle navn har Universitetet i Tromsø?', 'language': 'nb'},
                 {'question': 'P856', 'language': 'en'}, {'question': 'P1448', 'language': 'nb'})]
-        self.assertEqual(suggest.call_count, 2)
+        self.assertEqual(suggest.call_count, 4)
         run.assert_not_called()
         shape_hash = hashlib.sha256(Path(self.bundle.shape_file).read_bytes()).hexdigest()
-        for result, code in zip(results, ('P856', 'P1448')):
+        for result in results:
             self.assertEqual(result['request']['scope'], [v1.GRAPH])
             self.assertIn('BM25', result['score_semantics'])
             guidance = result['shape_guidance']
@@ -102,6 +104,21 @@ class ExplicitDirection(unittest.TestCase):
             self.assertEqual(guidance['source']['license'], 'Apache-2.0')
             self.assertEqual(guidance['data_snapshot_id'], v1.SNAPSHOT)
             self.assertEqual(guidance['shape_sha256'], shape_hash)
+
+        for result in results[:2]:
+            self.assertEqual(result['candidates'], [])
+            self.assertTrue(result['entity_candidates'])
+            candidate = result['entity_candidates'][0]['candidate']
+            self.assertEqual(candidate['iri'], v1.ENTITY)
+            self.assertEqual(candidate['graph'], v1.GRAPH)
+            self.assertGreater(candidate['ranking_score'], 0)
+            labels = [text['value'] for text in candidate['texts'] if text['field'] == 'label']
+            self.assertIn('en', {label['language'] for label in labels})
+            self.assertIn('nb', {label['language'] for label in labels})
+            self.assertTrue(any('</script><script>' in label['text'] for label in labels))
+
+        for result, code in zip(results[2:], ('P856', 'P1448')):
+            self.assertEqual(result['entity_candidates'], [])
             self.assertEqual(len(result['candidates']), 1)
             candidate = result['candidates'][0]
             self.assertEqual(candidate['candidate']['iri'], v1.PREDICATES[code])
@@ -110,9 +127,9 @@ class ExplicitDirection(unittest.TestCase):
             self.assertGreater(candidate['candidate']['ranking_score'], 0)
             self.assertTrue(candidate['candidate']['usage'])
             self.assertEqual(candidate['shape_properties'][0]['predicate_iri'], v1.PREDICATES[code])
-        self.assertEqual(results[0]['candidates'][0]['shape_properties'][0]['node_kind'],
+        self.assertEqual(results[2]['candidates'][0]['shape_properties'][0]['node_kind'],
                          'http://www.w3.org/ns/shacl#IRI')
-        self.assertEqual(results[1]['candidates'][0]['shape_properties'][0]['datatype'],
+        self.assertEqual(results[3]['candidates'][0]['shape_properties'][0]['datatype'],
                          'http://www.w3.org/1999/02/22-rdf-syntax-ns#langString')
         self.assertIsNone(self.bundle.pending)
 
