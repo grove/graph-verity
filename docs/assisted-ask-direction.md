@@ -67,12 +67,18 @@ development observations, not owner-reviewed relevance judgments or evidence
 of real-world usefulness. The demo shapes establish metadata handling, not
 general retrieval quality.
 
-**Next #114/#115 milestone:** repeat the same model-free checks on an
-owner-selected graph with a trusted shape set and useful Norwegian/English
-labels, then have the owner review candidate relevance and direction mismatches.
-Measure the BM25 and source-witnessed baselines against the exposed 60-question
-development set before proposing a retrieval change; its agent-authored
-references are not human gold.
+The exposed `ask-alpha-v1` packet review found one missing reference entity
+that is present as an endpoint of a stored edge from a BM25 entity seed. The UI
+shows that linked entity and its exact edge in a separate list, without a
+question-relevance rank. Entities outside this demo's Q279724/P856/P1448
+allowlist have no selection button. See
+[`ask-alpha-candidate-baseline.md`](ask-alpha-candidate-baseline.md) for the
+60-case descriptive counts and their limits.
+
+**Next #114/#115 milestone:** compare separately retained pure BM25 predicate
+ranks and v2 source-witnessed candidates on the same exposed cases, then have
+the owner review candidate relevance and direction mismatches. The saved v2
+predicate ranks alone cannot establish lexical recall or semantic usefulness.
 
 Focused model-free checks:
 

@@ -99,7 +99,7 @@ class ExplicitDirection(unittest.TestCase):
         for result in results:
             self.assertEqual(result['request']['scope'], [v1.GRAPH])
             self.assertIn('BM25', result['score_semantics'])
-            self.assertEqual(result['version'], 'assisted-ask-shape-neighborhood-suggestions-v1')
+            self.assertEqual(result['version'], 'assisted-ask-shape-neighborhood-suggestions-v2')
             self.assertEqual(result['neighborhood']['version'], 'question-vocabulary-packet-v2-neighborhood')
             guidance = result['shape_guidance']
             self.assertEqual(guidance['origin'], 'operator_authored_demo')
@@ -133,9 +133,22 @@ class ExplicitDirection(unittest.TestCase):
                 self.assertEqual(statement['subject']['value'], v1.ENTITY)
                 self.assertEqual(statement['predicate']['value'], candidate['iri'])
                 self.assertEqual(item['shape_properties'][0]['predicate_iri'], candidate['iri'])
+            neighbor = next(item for item in result['neighborhood_entity_candidates']
+                            if item['candidate']['iri'] == 'http://www.wikidata.org/entity/Q20')
+            self.assertEqual(neighbor['candidate']['graph'], v1.GRAPH)
+            self.assertEqual(neighbor['witness']['entity']['iri'], v1.ENTITY)
+            self.assertEqual(neighbor['witness']['entity']['rank'], 1)
+            self.assertEqual(neighbor['witness']['direction'], 'outgoing')
+            witness = neighbor['witness']['statement']
+            self.assertEqual(witness['source_graph']['value'], v1.GRAPH)
+            self.assertEqual(witness['subject']['value'], v1.ENTITY)
+            self.assertEqual(witness['predicate']['value'], 'http://www.wikidata.org/prop/direct/P17')
+            self.assertEqual(witness['object']['value'], 'http://www.wikidata.org/entity/Q20')
+            self.assertLessEqual(len(result['neighborhood_entity_candidates']), 20)
 
         for result, code in zip(results[2:], ('P856', 'P1448')):
             self.assertEqual(result['entity_candidates'], [])
+            self.assertEqual(result['neighborhood_entity_candidates'], [])
             self.assertEqual(result['neighborhood_candidates'], [])
             self.assertEqual(len(result['candidates']), 1)
             candidate = result['candidates'][0]

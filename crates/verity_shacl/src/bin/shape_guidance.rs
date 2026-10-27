@@ -1,5 +1,5 @@
 #![forbid(unsafe_code)]
-use std::{env, io::Write, process::ExitCode};
+use std::{collections::BTreeSet, env, io::Write, process::ExitCode};
 use verity_core::{
     catalog::Policy,
     discovery::DiscoveryConfig,
@@ -86,6 +86,77 @@ fn run() -> Result<()> {
     let bm25_entities = packet.candidates("entity")?;
     let bm25_predicates = packet.candidates("predicate")?;
     let neighborhood_entities = neighborhood.candidates("entity")?;
+    let mut neighboring_entity_candidates = Vec::new();
+    let mut neighboring_entity_keys = BTreeSet::new();
+    let mut neighboring_entities_clipped = false;
+    'seeds: for (rank, seed) in bm25_entities.iter().enumerate() {
+        let Some(neighborhood_seed) = neighborhood_entities
+            .iter()
+            .find(|item| item.iri == seed.iri && item.graph == seed.graph)
+        else {
+            continue;
+        };
+        for page in &neighborhood_seed.usage {
+            for statement in &page.evidence {
+                let seed_term = verity_core::execution::RdfTerm::Iri {
+                    value: seed.iri.clone(),
+                };
+                if statement.source_graph
+                    != (verity_core::execution::RdfTerm::Iri {
+                        value: seed.graph.clone(),
+                    })
+                {
+                    continue;
+                }
+                let (direction, neighbor) = match page.direction.as_str() {
+                    "outgoing" if statement.subject == seed_term => ("outgoing", &statement.object),
+                    "incoming" if statement.object == seed_term => ("incoming", &statement.subject),
+                    _ => continue,
+                };
+                let verity_core::execution::RdfTerm::Iri { value } = neighbor else {
+                    continue;
+                };
+                if bm25_entities
+                    .iter()
+                    .any(|bm25| bm25.iri == *value && bm25.graph == seed.graph)
+                    || !neighboring_entity_keys.insert((seed.graph.clone(), value.clone()))
+                {
+                    continue;
+                }
+                let Some(document) = discovery
+                    .graphs()
+                    .get(&seed.graph)
+                    .and_then(|graph| graph.documents.get(value))
+                    .filter(|document| document.roles.contains("entity"))
+                else {
+                    continue;
+                };
+                if neighboring_entity_candidates.len() >= budget.per_role_top_k {
+                    neighboring_entities_clipped = true;
+                    break 'seeds;
+                }
+                let texts = document
+                    .texts
+                    .iter()
+                    .filter(|text| text.value.text.len() <= budget.max_text_bytes)
+                    .take(budget.texts_per_candidate)
+                    .collect::<Vec<_>>();
+                neighboring_entity_candidates.push(serde_json::json!({
+                    "candidate": {
+                        "iri": value,
+                        "graph": seed.graph,
+                        "texts": texts,
+                        "texts_clipped": texts.len() < document.texts.len() || texts.iter().any(|text| text.truncated),
+                    },
+                    "witness": {
+                        "entity": {"rank": rank + 1, "iri": seed.iri, "graph": seed.graph},
+                        "direction": direction,
+                        "statement": statement,
+                    },
+                }));
+            }
+        }
+    }
     let neighborhood_properties = guidance_value["properties"]
         .as_array()
         .ok_or_else(|| reject("shape_guidance", "Shape properties are unavailable"))?;
@@ -152,7 +223,7 @@ fn run() -> Result<()> {
     let packet = serde_json::to_value(&packet)?;
     let neighborhood = serde_json::to_value(&neighborhood)?;
     let result = serde_json::json!({
-        "version": "assisted-ask-shape-neighborhood-suggestions-v1",
+        "version": "assisted-ask-shape-neighborhood-suggestions-v2",
         "packet_id": packet["packet_id"],
         "request": packet["request"],
         "score_semantics": packet["score_semantics"],
@@ -166,6 +237,8 @@ fn run() -> Result<()> {
             "clipped": neighborhood["clipped"],
             "matches_semantics": neighborhood["matches_semantics"],
         },
+        "neighborhood_entity_candidates": neighboring_entity_candidates,
+        "neighborhood_entities_clipped": neighboring_entities_clipped,
         "neighborhood_candidates": neighborhood_candidates,
         "shape_guidance": guidance_value,
     });
