@@ -1,14 +1,40 @@
 use sha2::{Digest, Sha256};
 use verity_core::{
     catalog::Policy,
-    discovery::{DiscoveryConfig, Source},
-    shacl::{ShapeConfig, ShapeOrigin},
-    vocabulary::{VocabularyBudget, VocabularyRequest},
-    Snapshot,
+    discovery::{DiscoveryConfig, DiscoveryIndex, Source},
+    vocabulary::{VocabularyBudget, VocabularyPacket, VocabularyRequest},
+    Result, Snapshot,
 };
+use verity_shacl::{build_shape_guidance, RdfSource, ShapeConfig, ShapeGuidanceIndex, ShapeOrigin};
 
 const DATA_GRAPH: &str = "https://example.org/public";
 const SHAPE_GRAPH: &str = "https://example.org/shapes";
+const DATA_BYTES: &[u8] = include_bytes!("../../../tests/fixtures/smoke.trig");
+const SHAPE_BYTES: &[u8] = include_bytes!("../../../tests/fixtures/shacl-guidance.trig");
+
+fn build(
+    shape_bytes: &[u8],
+    data_bytes: &[u8],
+    config: &ShapeConfig,
+    discovery: &DiscoveryIndex,
+    packet: &VocabularyPacket,
+    policy: &Policy,
+) -> Result<ShapeGuidanceIndex> {
+    build_shape_guidance(
+        RdfSource {
+            bytes: shape_bytes,
+            format: "trig",
+        },
+        RdfSource {
+            bytes: data_bytes,
+            format: "trig",
+        },
+        config,
+        discovery,
+        packet,
+        policy,
+    )
+}
 
 fn fixtures() -> (
     Snapshot,
@@ -19,13 +45,8 @@ fn fixtures() -> (
     VocabularyRequest,
     VocabularyBudget,
 ) {
-    let data =
-        Snapshot::from_bytes(include_bytes!("../../../tests/fixtures/smoke.trig"), "trig").unwrap();
-    let shapes = Snapshot::from_bytes(
-        include_bytes!("../../../tests/fixtures/shacl-guidance.trig"),
-        "trig",
-    )
-    .unwrap();
+    let data = Snapshot::from_bytes(DATA_BYTES, "trig").unwrap();
+    let shapes = Snapshot::from_bytes(SHAPE_BYTES, "trig").unwrap();
     let policy = Policy {
         version: 1,
         graphs: vec![DATA_GRAPH.into()],
@@ -89,7 +110,7 @@ fn fixtures() -> (
 
 #[test]
 fn direct_shape_metadata_joins_only_to_the_exact_bm25_predicate_candidate() {
-    let (data, shapes, policy, discovery, config, request, budget) = fixtures();
+    let (data, _, policy, discovery, config, request, budget) = fixtures();
     let discovery = data
         .build_discovery(&request.scope, &policy, &discovery)
         .unwrap();
@@ -102,9 +123,15 @@ fn direct_shape_metadata_joins_only_to_the_exact_bm25_predicate_candidate() {
         .iter()
         .find(|candidate| candidate.iri == "https://example.org/owns")
         .unwrap();
-    let guidance = shapes
-        .build_shape_guidance(&data, &config, &policy)
-        .unwrap();
+    let guidance = build(
+        SHAPE_BYTES,
+        DATA_BYTES,
+        &config,
+        &discovery,
+        &packet,
+        &policy,
+    )
+    .unwrap();
     let properties = guidance
         .for_candidate(&packet, &candidate.id, DATA_GRAPH)
         .unwrap();
@@ -165,21 +192,82 @@ fn direct_shape_metadata_joins_only_to_the_exact_bm25_predicate_candidate() {
 
 #[test]
 fn stale_or_unauthorized_mappings_fail_closed_and_unknown_ids_do_not_join() {
-    let (data, shapes, policy, discovery, mut config, request, budget) = fixtures();
+    let (data, _, policy, discovery_config, mut config, request, budget) = fixtures();
+    let discovery = data
+        .build_discovery(&request.scope, &policy, &discovery_config)
+        .unwrap();
+    let packet = data
+        .vocabulary_packet(&discovery, &request, &policy, &budget)
+        .unwrap();
+    let changed_source = Source {
+        source: "Graph Verity synthetic fixture".into(),
+        license: "Apache-2.0".into(),
+        source_revision: "changed-source-revision".into(),
+        importer_revision: "test-fixture-v1".into(),
+    };
+    let changed_config = DiscoveryConfig {
+        version: 1,
+        snapshot_id: data.id().into(),
+        graphs: [(DATA_GRAPH.into(), changed_source)].into(),
+    };
+    let changed_index = data
+        .build_discovery(&request.scope, &policy, &changed_config)
+        .unwrap();
+    let changed_packet = data
+        .vocabulary_packet(&changed_index, &request, &policy, &budget)
+        .unwrap();
+    let guidance = build(
+        SHAPE_BYTES,
+        DATA_BYTES,
+        &config,
+        &discovery,
+        &packet,
+        &policy,
+    )
+    .unwrap();
+    let changed_candidate = changed_packet
+        .candidates("predicate")
+        .unwrap()
+        .iter()
+        .find(|candidate| candidate.iri == "https://example.org/owns")
+        .unwrap();
+    assert!(guidance
+        .for_candidate(&changed_packet, &changed_candidate.id, DATA_GRAPH)
+        .is_err());
     let mut stale = config.clone();
     stale.data_snapshot_id = "sha256:stale".into();
-    assert!(shapes.build_shape_guidance(&data, &stale, &policy).is_err());
+    assert!(build(
+        SHAPE_BYTES,
+        DATA_BYTES,
+        &stale,
+        &discovery,
+        &packet,
+        &policy
+    )
+    .is_err());
 
     let mut unauthorized = policy.clone();
     unauthorized.graphs = vec!["https://example.org/private".into()];
-    assert!(shapes
-        .build_shape_guidance(&data, &config, &unauthorized)
-        .is_err());
+    assert!(build(
+        SHAPE_BYTES,
+        DATA_BYTES,
+        &config,
+        &discovery,
+        &packet,
+        &unauthorized
+    )
+    .is_err());
 
     config.shape_graph = "https://example.org/missing".into();
-    assert!(shapes
-        .build_shape_guidance(&data, &config, &policy)
-        .is_err());
+    assert!(build(
+        SHAPE_BYTES,
+        DATA_BYTES,
+        &config,
+        &discovery,
+        &packet,
+        &policy
+    )
+    .is_err());
 
     let mut extra_graph = include_bytes!("../../../tests/fixtures/shacl-guidance.trig").to_vec();
     extra_graph.extend_from_slice(
@@ -188,20 +276,26 @@ fn stale_or_unauthorized_mappings_fail_closed_and_unknown_ids_do_not_join() {
     let extra_shapes = Snapshot::from_bytes(&extra_graph, "trig").unwrap();
     let mut incomplete_mapping = fixtures().4;
     incomplete_mapping.shape_snapshot_id = extra_shapes.id().into();
-    assert!(extra_shapes
-        .build_shape_guidance(&data, &incomplete_mapping, &policy)
-        .is_err());
+    assert!(build(
+        &extra_graph,
+        DATA_BYTES,
+        &incomplete_mapping,
+        &discovery,
+        &packet,
+        &policy
+    )
+    .is_err());
 
-    let discovery = data
-        .build_discovery(&request.scope, &policy, &discovery)
-        .unwrap();
-    let packet = data
-        .vocabulary_packet(&discovery, &request, &policy, &budget)
-        .unwrap();
-    let (data, shapes, policy, _, config, _, _) = fixtures();
-    let guidance = shapes
-        .build_shape_guidance(&data, &config, &policy)
-        .unwrap();
+    config.shape_graph = SHAPE_GRAPH.into();
+    let guidance = build(
+        SHAPE_BYTES,
+        DATA_BYTES,
+        &config,
+        &discovery,
+        &packet,
+        &policy,
+    )
+    .unwrap();
     assert!(guidance
         .for_candidate(&packet, "unknown-id", DATA_GRAPH)
         .is_err());

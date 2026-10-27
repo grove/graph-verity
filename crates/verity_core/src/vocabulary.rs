@@ -93,14 +93,6 @@ pub struct VocabularyPacket {
 }
 
 impl VocabularyPacket {
-    pub fn request(&self) -> &VocabularyRequest {
-        &self.request
-    }
-
-    pub fn policy_hash(&self) -> &str {
-        &self.policy_hash
-    }
-
     pub fn candidates(&self, role: &str) -> Result<&[VocabularyCandidate]> {
         Ok(&match role {
             "entity" => &self.entities,

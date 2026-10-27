@@ -13,7 +13,6 @@ pub mod ir;
 pub mod navigation;
 pub mod nl_ask;
 pub mod parser;
-pub mod shacl;
 pub mod vocabulary;
 
 use oxigraph::io::RdfFormat;
@@ -70,7 +69,6 @@ pub fn snapshot_id(bytes: &[u8], format: &str) -> String {
 pub struct Snapshot {
     pub(crate) store: Store,
     id: String,
-    source_sha256: String,
 }
 
 #[derive(Debug, Serialize)]
@@ -84,11 +82,6 @@ pub struct SnapshotInfo {
 impl Snapshot {
     pub fn id(&self) -> &str {
         &self.id
-    }
-
-    /// SHA-256 of the exact source bytes, separate from the format-bound snapshot ID.
-    pub(crate) fn source_sha256(&self) -> &str {
-        &self.source_sha256
     }
 
     pub fn from_bytes(bytes: &[u8], format: &str) -> Result<Self> {
@@ -112,7 +105,6 @@ impl Snapshot {
         Ok(Self {
             store,
             id: snapshot_id(bytes, format),
-            source_sha256: format!("{:x}", Sha256::digest(bytes)),
         })
     }
 
