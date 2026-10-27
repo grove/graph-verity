@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+import tempfile
 import threading
 import unittest
 from unittest.mock import patch
@@ -54,6 +55,39 @@ class ExplicitDirection(unittest.TestCase):
         request.update(changes)
         return request
 
+    def test_cli_passes_operator_selected_shape_files(self):
+        with tempfile.TemporaryDirectory() as directory:
+            shape_file = Path(directory) / 'selected-shapes.trig'
+            shape_config = Path(directory) / 'selected-config.json'
+            shutil.copyfile(ask.SHAPE_FILE, shape_file)
+            shutil.copyfile(ask.SHAPE_CONFIG, shape_config)
+            created = []
+            real_bundle = ask.Bundle
+
+            def create_bundle(*args, **kwargs):
+                bundle = real_bundle(*args, **kwargs)
+                created.append(bundle)
+                return bundle
+
+            with patch.object(ask, 'Bundle', side_effect=create_bundle) as bundle, \
+                    patch.object(ask, 'Server') as server:
+                server.return_value.__enter__.return_value.url = 'http://127.0.0.1/'
+                self.assertEqual(ask.main(['--shape-file', str(shape_file), '--shape-config', str(shape_config)]), 0)
+            self.assertEqual(bundle.call_args.kwargs['shape_file'], shape_file)
+            self.assertEqual(bundle.call_args.kwargs['shape_config'], shape_config)
+            self.assertTrue(created[0].shape_sha256.endswith(hashlib.sha256(shape_file.read_bytes()).hexdigest()))
+
+    def test_selected_shape_manifest_cannot_change_data_scope(self):
+        with tempfile.TemporaryDirectory() as directory:
+            config = json.loads(ask.SHAPE_CONFIG.read_text())
+            config['data_graph'] = 'urn:unapproved:graph'
+            selected_config = Path(directory) / 'shape-config.json'
+            selected_config.write_text(json.dumps(config))
+            with self.assertRaisesRegex(ValueError, 'authorized data snapshot'):
+                ask.Bundle(v1.ROOT / 'target/debug/verity', v1.DATA / 'snapshot.nq', 'nquads',
+                           v1.DATA / 'policy.json', v1.DATA / 'scope.json', v1.DATA / 'discovery.json',
+                           shape_file=ask.SHAPE_FILE, shape_config=selected_config)
+
     def test_session_and_api_require_a_direction(self):
         session = self.result('/api/session', {})
         self.assertEqual(session['version'], 'assisted-ask-v1-direction')
@@ -72,6 +106,13 @@ class ExplicitDirection(unittest.TestCase):
             self.assertEqual(step['direction'], direction)
             self.assertEqual(result['provenance']['selected_operation']['template']['steps'][0]['direction'], direction)
             self.assertEqual(result['provenance']['proposal_origin'], 'manual_structured_selection_v1_explicit_direction')
+            shape = result['provenance']['shape_guidance_context']
+            self.assertEqual(shape['availability'], 'optional_guidance_only_not_query_evidence')
+            self.assertEqual(shape['provenance_status'], 'operator_declared_not_independently_verified')
+            self.assertEqual(shape['origin'], 'operator_authored_demo')
+            self.assertEqual(shape['source']['license'], 'Apache-2.0')
+            self.assertEqual(shape['shape_sha256'], self.bundle.shape_sha256)
+            self.assertEqual(shape['data_snapshot_id'], v1.SNAPSHOT)
             self.assertTrue(all(not call.args[1:] for call in preview.call_args_list))
             self.result(ask.PREFIX + 'cancel', {})
 
@@ -99,8 +140,18 @@ class ExplicitDirection(unittest.TestCase):
         for result in results:
             self.assertEqual(result['request']['scope'], [v1.GRAPH])
             self.assertIn('BM25', result['score_semantics'])
-            self.assertEqual(result['version'], 'assisted-ask-shape-neighborhood-suggestions-v2')
+            self.assertEqual(result['version'], 'assisted-ask-shape-neighborhood-metadata-suggestions-v3')
             self.assertEqual(result['neighborhood']['version'], 'question-vocabulary-packet-v2-neighborhood')
+            metadata = result['property_metadata']
+            self.assertEqual(metadata['source_file'], 'studies/nl-ask-v1/sources/Q279724.ttl')
+            self.assertEqual(metadata['license'], 'CC0-1.0')
+            self.assertEqual(metadata['data_graph'], v1.GRAPH)
+            self.assertRegex(metadata['source_sha256'], r'^sha256:[0-9a-f]{64}$')
+            for item in metadata['candidates']:
+                self.assertEqual(item['candidate']['graph'], v1.GRAPH)
+                self.assertIn(item['candidate']['iri'], item['metadata']['direct_claim_statement'])
+                self.assertTrue(item['metadata']['source_statements'])
+                self.assertNotIn('usage', item['candidate'])
             guidance = result['shape_guidance']
             self.assertEqual(guidance['origin'], 'operator_authored_demo')
             self.assertEqual(guidance['source']['license'], 'Apache-2.0')
@@ -168,6 +219,11 @@ class ExplicitDirection(unittest.TestCase):
                          'http://www.w3.org/ns/shacl#IRI')
         self.assertEqual(results[3]['candidates'][0]['shape_properties'][0]['datatype'],
                          'http://www.w3.org/1999/02/22-rdf-syntax-ns#langString')
+        self.assertEqual(results[2]['property_metadata']['candidates'][0]['candidate']['iri'],
+                         v1.PREDICATES['P856'])
+        self.assertIn('description', {text['field'] for text in results[2]['property_metadata']['candidates'][0]['candidate']['texts']})
+        self.assertEqual(results[3]['property_metadata']['candidates'][0]['candidate']['iri'],
+                         v1.PREDICATES['P1448'])
         self.assertIsNone(self.bundle.pending)
 
     def browser(self):
