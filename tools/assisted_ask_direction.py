@@ -84,12 +84,22 @@ class Bundle(ask.Bundle):
         request = self.assemble(proposal['entity'], proposal['predicate'], proposal['direction'])
         return dict(status='candidate', request=request, preview=self.ask(request))
 
+    def shape_context(self):
+        return dict(availability='optional_guidance_only_not_query_evidence',
+                    provenance_status='operator_declared_not_independently_verified',
+                    origin=self.shape_metadata['origin'], source=self.shape_metadata['source'],
+                    shape_graph=self.shape_metadata['shape_graph'],
+                    shape_snapshot_id=self.shape_metadata['shape_snapshot_id'],
+                    shape_sha256=self.shape_sha256, data_graph=self.shape_metadata['data_graph'],
+                    data_snapshot_id=self.shape_metadata['data_snapshot_id'])
+
     def provenance(self, proposal):
         return dict(proposal_origin='manual_structured_selection_v1_explicit_direction', inference_performed=False,
                     original_question=proposal['packet']['request']['question'],
                     original_question_status='unverified_user_intent_not_interpreted',
                     language=proposal['packet']['request']['language'],
                     selected_operation=self.assemble(proposal['entity'], proposal['predicate'], proposal['direction']),
+                    shape_guidance_context=self.shape_context(),
                     answer_claim='selected_graph_operation_only; original_question_not_verified',
                     operator_confirmation=None)
 
@@ -187,12 +197,7 @@ class Server(ask.Server):
             shape_guidance_binary_sha256=self.bundle.shape_guidance_binary_sha256,
             property_metadata=dict(source='studies/nl-ask-v1/sources/Q279724.ttl', license='CC0-1.0',
                                    source_sha256=self.bundle.property_metadata_sha256),
-            shape_guidance=dict(origin=self.bundle.shape_metadata['origin'],
-                                source=self.bundle.shape_metadata['source']['source'],
-                                license=self.bundle.shape_metadata['source']['license'],
-                                shape_snapshot_id=self.bundle.shape_metadata['shape_snapshot_id'],
-                                shape_sha256=self.bundle.shape_sha256,
-                                data_graph=self.bundle.shape_metadata['data_graph']),
+            shape_guidance=self.bundle.shape_context(),
             assets={route: find.digest(body) for route, (body, _) in self.assets.items()})
 
 

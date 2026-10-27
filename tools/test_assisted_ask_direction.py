@@ -106,6 +106,13 @@ class ExplicitDirection(unittest.TestCase):
             self.assertEqual(step['direction'], direction)
             self.assertEqual(result['provenance']['selected_operation']['template']['steps'][0]['direction'], direction)
             self.assertEqual(result['provenance']['proposal_origin'], 'manual_structured_selection_v1_explicit_direction')
+            shape = result['provenance']['shape_guidance_context']
+            self.assertEqual(shape['availability'], 'optional_guidance_only_not_query_evidence')
+            self.assertEqual(shape['provenance_status'], 'operator_declared_not_independently_verified')
+            self.assertEqual(shape['origin'], 'operator_authored_demo')
+            self.assertEqual(shape['source']['license'], 'Apache-2.0')
+            self.assertEqual(shape['shape_sha256'], self.bundle.shape_sha256)
+            self.assertEqual(shape['data_snapshot_id'], v1.SNAPSHOT)
             self.assertTrue(all(not call.args[1:] for call in preview.call_args_list))
             self.result(ask.PREFIX + 'cancel', {})
 
