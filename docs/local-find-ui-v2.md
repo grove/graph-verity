@@ -15,11 +15,15 @@ open; hybrid retrieval is not promoted. BM25 remains the only runtime backend.
 
 The v2 launcher composes the unchanged `local_find.Bundle`, `Server` and HTTP
 handler. It replaces `/` and adds `/v2.js`; the v1 script and stylesheet are served
-unchanged. The additional script replaces only text/rendering and records the
-submitted query for display. The original session, request, graph navigation,
-Rust preview and separate approval handlers remain in use. No schema, index,
-ranking, score, scope, role, plan or source fact changes. There is no reranking,
-suppression, semantic cutoff, automatic selection or model execution.
+unchanged. Alongside clearer result cards, v2 offers an explicit two-hop path
+explorer for an entity selected from Find. It calls the existing graph-scoped
+`/api/entity` pages, joins only original statements whose endpoint and direction
+match, and shows both statements with their source graph. It inspects at most
+five intermediate IRIs and twenty paths; existing page clipping and these caps
+are reported. Traversal order is not relevance, no path is selected, and no Ask
+operation is previewed or executed. No schema, index, ranking, score, scope, role,
+plan or source fact changes. There is no reranking, suppression, semantic cutoff,
+automatic selection or model execution.
 
 The receipt identifies `local-find-v2-prototype`, hashes its launcher and **all
 served assets**, and retains the v1 adapter and executable hashes. It is a runtime
@@ -64,8 +68,11 @@ Rust preview, review and a separate expiring, single-use approval action.
    statements. Neither phrase has been interpreted into an answer.
 3. Select Q20 deliberately; inspect the outgoing Q20 → P36 → Q585 statement.
    Open Q585, retaining its graph, and inspect incoming evidence. Compare the
-   direction labels and original triple order. Choose a small edge limit and
-   inspect next/previous pages and the separate evidence-clipping message.
+   direction labels and original triple order. On the retained Wikidata graph,
+   select Oslo/Q585 and use **Explore two-hop source paths**. Inspect a path via
+   Norway/Q20, confirm each original triple and direction, and note that the
+   other city IRIs are candidates rather than answer claims. Choose a small edge
+   limit and inspect next/previous pages and the separate clipping messages.
 4. Switch English/Norsk bokmål. Check exact, partial, ambiguous, low-confidence,
    no-match, clipping and catalog-limit text. Search `zzznomatchzzz`: no authorized
    lexical match does not imply real-world absence. Fictional phrases may still
@@ -97,7 +104,8 @@ REQUIRE_FIND_BROWSER=1 .venv/bin/python tools/verify_pre_llm.py
 V2 inherits the existing HTTP/approval/security tests against its composed server,
 adds independent v1/v2 Find payload equality checks, and runs a separately named
 Node/headless-Chrome harness on synthetic and retained public Wikidata fixtures,
-including delayed v2 asset loading after the v1 session has initialized.
+including delayed v2 asset loading after the v1 session has initialized and the
+Oslo → Norway → other-city path with original directions.
 No npm dependencies or models are needed. Existing CI discovers the new Python
 test module automatically and requires Chrome/Node.
 
