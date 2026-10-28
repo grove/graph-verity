@@ -173,7 +173,7 @@ try {
   const englishPropertyOption = await evaluate("document.getElementById('predicate').selectedOptions[0].textContent");
   assert.match(englishPropertyOption, /located in the administrative territorial entity/);
   await evaluate("(() => { const language=document.getElementById('language'); language.value='nb'; language.dispatchEvent(new Event('change')); })()");
-  assert.equal(await evaluate("document.getElementById('predicate').selectedOptions[0].textContent"), "http://www.wikidata.org/prop/direct/P131");
+  assert.match(await evaluate("document.getElementById('predicate').selectedOptions[0].textContent"), /located in the administrative territorial entity \(en\) — http:\/\/www\.wikidata\.org\/prop\/direct\/P131/);
   assert.equal(await evaluate("document.getElementById('suggestions').hidden"), true);
   await evaluate("(() => { const language=document.getElementById('language'); language.value='en'; language.dispatchEvent(new Event('change')); })()");
   assert.match(await evaluate("document.getElementById('predicate').selectedOptions[0].textContent"), /located in the administrative territorial entity/);
@@ -240,6 +240,12 @@ try {
   assert.equal(await evaluate("document.querySelector('#entity-suggestion-list article [data-selection-state=entity]').textContent"), "Valgt entitet");
   assert.equal(await evaluate("!document.getElementById('metadata-language-note').hidden"), true);
   assert.match(await evaluate("document.getElementById('metadata-language-note').textContent"), /ingen norsk tekst/);
+
+  await evaluate("(() => { const question=document.getElementById('question'); question.value='P856'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
+  await until("!document.getElementById('suggestions').hidden");
+  const norwegianFallbackLabel = await evaluate("[...document.querySelectorAll('#metadata-suggestion-list article')].find(article => article.textContent.includes('/P856'))?.textContent");
+  assert.match(norwegianFallbackLabel, /Kildeetikett \(en\):/);
+  assert.match(norwegianFallbackLabel, /official website/i);
 
   await evaluate("(() => { const question=document.getElementById('question'); question.value='P1448'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
   await until("!document.getElementById('suggestions').hidden");
