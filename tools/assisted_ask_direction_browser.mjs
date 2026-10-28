@@ -70,6 +70,28 @@ try {
 
   await evaluate("(() => { const question=document.getElementById('question'); question.value='Which official websites does the University of Tromsø list?'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
   await until("!document.getElementById('suggestions').hidden");
+  const clippingNotices = await evaluate(`(() => {
+    const original = suggestions;
+    suggestions = {...suggestions, entity_candidates_clipped:true, predicate_candidates_clipped:true,
+      property_metadata:{...suggestions.property_metadata, clipped:true}};
+    renderSuggestions();
+    const en = ['entity-candidates-clipped','predicate-candidates-clipped','metadata-candidates-clipped']
+      .map(id => document.getElementById(id).textContent);
+    const visible = ['entity-candidates-clipped','predicate-candidates-clipped','metadata-candidates-clipped']
+      .map(id => !document.getElementById(id).hidden);
+    document.getElementById('language').value = 'nb'; translate();
+    const nb = ['entity-candidates-clipped','predicate-candidates-clipped','metadata-candidates-clipped']
+      .map(id => document.getElementById(id).textContent);
+    suggestions = original; document.getElementById('language').value = 'en'; translate(); renderSuggestions();
+    return {visible, en, nb};
+  })()`);
+  assert.deepEqual(clippingNotices.visible, [true, true, true]);
+  assert.match(clippingNotices.en[0], /additional candidates are unknown/);
+  assert.match(clippingNotices.en[1], /additional candidates are unknown/);
+  assert.match(clippingNotices.en[2], /additional property candidates are unknown/);
+  assert.match(clippingNotices.nb[0], /flere kandidater er ukjente/);
+  assert.match(clippingNotices.nb[1], /flere kandidater er ukjente/);
+  assert.match(clippingNotices.nb[2], /flere egenskapskandidater er ukjente/);
   const entitySuggestion = await evaluate("({heading:document.querySelector('#entity-suggestion-list h3').textContent, labelOrigin:document.querySelector('#entity-suggestion-list article p').textContent, text:document.getElementById('entity-suggestion-list').textContent, emptyProperties:!document.getElementById('suggestion-empty').hidden, rawLabel:document.getElementById('entity-suggestion-list').textContent.includes('</script><script>'), scripts:document.querySelectorAll('#entity-suggestion-list script').length, entity:document.getElementById('entity').value, predicate:document.getElementById('predicate').value, direction:document.getElementById('direction').value})");
   assert.equal(entitySuggestion.heading, "University of Tromsø – The Arctic University of Norway");
   assert.match(entitySuggestion.labelOrigin, /Untrusted label text from the selected graph/);

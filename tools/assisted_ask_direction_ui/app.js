@@ -8,6 +8,7 @@ const candidateOptions = {entity: new Map(), predicate: new Map()};
 const json = (id, value) => { $(id).textContent = JSON.stringify(value, null, 2); };
 const words = {
   en: {
+    entityCandidatesClipped: "Entity candidates were capped by the retrieval limit; additional candidates are unknown.", predicateCandidatesClipped: "Property candidates were capped by the retrieval limit; additional candidates are unknown.", metadataCandidatesClipped: "Source metadata retrieval was capped; additional property candidates are unknown.",
     twoHopCandidatesTitle: "Source-witnessed two-hop IRI paths", twoHopCandidatesHelp: "Each IRI endpoint is reached through two original directed statements in the selected graph. Traversal order does not indicate question relevance; inspect both statements and their directions.", twoHopCandidatesEmpty: "No additional IRI endpoints were found through two-hop paths.", twoHopCandidatesClipped: "Two-hop path retrieval was incomplete or capped. Missing paths are unknown.", twoHopEvidence: "Two original directed RDF statements and the BM25 seed",
     title: "Select a graph operation", intro: "Choose an entity, relationship and direction. These choices define the query. No language model or question interpretation is used.",
     language: "Interface language", entity: "Entity", relationship: "Relationship", direction: "Direction", forward: "Forward", reverse: "Reverse (selected entity is the object)", choose: "Choose…", name: "University of Tromsø", P856: "Official websites", P1448: "Official names", all: "All stored values",
@@ -31,6 +32,7 @@ const words = {
     languageTag: "Language", datatype: "Datatype", iri: "Original IRI", literal: "Original RDF literal", missing: "Original source evidence clipped; inspect the receipt."
   },
   nb: {
+    entityCandidatesClipped: "Entitetskandidatene ble begrenset av hentingsgrensen; flere kandidater er ukjente.", predicateCandidatesClipped: "Egenskapskandidatene ble begrenset av hentingsgrensen; flere kandidater er ukjente.", metadataCandidatesClipped: "Hentingen av kildemetadata ble begrenset; flere egenskapskandidater er ukjente.",
     twoHopCandidatesTitle: "Kildebevitnede IRI-stier med to kanter", twoHopCandidatesHelp: "Hvert IRI-endepunkt nås gjennom to opprinnelige, rettede utsagn i den valgte grafen. Traverseringsrekkefølgen viser ikke spørsmålsrelevans; se på begge utsagnene og retningene.", twoHopCandidatesEmpty: "Ingen ekstra IRI-endepunkter ble funnet gjennom stier med to kanter.", twoHopCandidatesClipped: "Hentingen av stier med to kanter var ufullstendig eller begrenset. Manglende stier er ukjent.", twoHopEvidence: "To opprinnelige, rettede RDF-utsagn og BM25-frøet",
     title: "Velg en grafoperasjon", intro: "Velg entitet, relasjon og retning. Valgene bestemmer spørringen. Ingen språkmodell eller tolkning av spørsmål brukes.",
     language: "Grensesnittspråk", entity: "Entitet", relationship: "Relasjon", direction: "Retning", forward: "Forover", reverse: "Bakover (valgt entitet er objektet)", choose: "Velg…", name: "Universitetet i Tromsø", P856: "Offisielle nettsteder", P1448: "Offisielle navn", all: "Alle lagrede verdier",
@@ -156,6 +158,9 @@ function renderSuggestions(data = suggestions) {
   $("neighborhood-entities-clipped").hidden = !data.neighborhood_entities_clipped;
   $("two-hop-empty").hidden = twoHop.length > 0;
   $("two-hop-clipped").hidden = !data.two_hop_candidates_clipped;
+  $("entity-candidates-clipped").hidden = !data.entity_candidates_clipped;
+  $("predicate-candidates-clipped").hidden = !data.predicate_candidates_clipped;
+  $("metadata-candidates-clipped").hidden = !data.property_metadata.clipped;
   $("suggestion-empty").hidden = predicates.length > 0;
   $("metadata-suggestion-empty").hidden = metadataPredicates.length > 0;
   $("neighborhood-empty").hidden = neighbors.length > 0;

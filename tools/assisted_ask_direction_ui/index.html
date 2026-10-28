@@ -27,6 +27,7 @@
     <h2 id="suggestion-heading" tabindex="-1" data-i18n="suggestionsTitle">Optional graph suggestions</h2>
     <p id="suggestion-summary"></p>
     <h3 data-i18n="entityCandidatesTitle">Entity candidates</h3>
+    <p id="entity-candidates-clipped" hidden role="note" data-i18n="entityCandidatesClipped">Entity candidates were capped by the retrieval limit; additional candidates are unknown.</p>
     <p id="entity-suggestion-empty" hidden data-i18n="noEntityCandidates">No entity candidates matched this question in the selected graph.</p>
     <div id="entity-suggestion-list"></div>
     <h3 data-i18n="neighborhoodEntitiesTitle">Source-witnessed nearby entities</h3>
@@ -40,10 +41,12 @@
     <p id="two-hop-empty" hidden data-i18n="twoHopCandidatesEmpty">No additional IRI endpoints were found through two-hop paths.</p>
     <div id="two-hop-suggestion-list"></div>
     <h3 data-i18n="propertyCandidatesTitle">Property candidates</h3>
+    <p id="predicate-candidates-clipped" hidden role="note" data-i18n="predicateCandidatesClipped">Property candidates were capped by the retrieval limit; additional candidates are unknown.</p>
     <p id="suggestion-empty" hidden data-i18n="noSuggestions">No property candidates matched this question in the selected graph.</p>
     <div id="suggestion-list"></div>
     <h3 data-i18n="metadataCandidatesTitle">Source-backed property metadata</h3>
     <p data-i18n="metadataCandidatesHelp">These BM25 suggestions use retained CC0 Wikidata property labels and descriptions, mapped only to predicates already present in the selected graph. They are metadata, not data facts or source witnesses.</p>
+    <p id="metadata-candidates-clipped" hidden role="note" data-i18n="metadataCandidatesClipped">Source metadata retrieval was capped; additional property candidates are unknown.</p>
     <p id="metadata-language-note" hidden role="note" data-i18n="metadataLanguageUnavailable">No Norwegian text is available in the retained property metadata for this graph. Inspect each candidate’s source language.</p>
     <p id="metadata-suggestion-empty" hidden data-i18n="metadataCandidatesEmpty">No retained property metadata matched this question.</p>
     <div id="metadata-suggestion-list"></div>
