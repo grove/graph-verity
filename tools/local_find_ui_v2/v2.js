@@ -29,7 +29,13 @@ Object.assign(words.en, {
   narrower: "skos:narrower: subject → narrower concept (object).",
   restrictions: "Catalog limits: only the operator-authorized roles/graphs and indexed languages are searched; text may be missing or bounded. No claim about identifiers outside this catalog.",
   examples: "Examples: Entity → Norway / Norge; Predicate → capital / hovedstad. A phrase such as ‘capital of Norway’ / ‘hovedstaden i Norge’ needs explicit entity and directed-path choices, not a search answer.",
-  context: "Submitted query / role / scope", sourceGraph: "Source graph", language: "Language", datatype: "Datatype"
+  context: "Submitted query / role / scope", sourceGraph: "Source graph", language: "Language", datatype: "Datatype",
+  twoHopAction: "Explore two-hop source paths", twoHopTitle: "Source-witnessed two-hop paths",
+  twoHopHelp: "Each path joins two original directed statements in this graph. Traversal order is not question relevance. Paths never select or execute an Ask operation.",
+  twoHopLoading: "Reading bounded graph pages…", twoHopEmpty: "No additional two-hop IRI paths were found for this entity.",
+  twoHopClipped: "Path exploration was capped or a source page had more evidence. Missing paths are unknown.",
+  twoHopCount: "Source-witnessed paths", twoHopVia: "Intermediate IRI", twoHopFirst: "First traversal direction",
+  twoHopSecond: "Second traversal direction", twoHopOpen: "Open this IRI in Find"
 });
 Object.assign(words.nb, {
   ready: "Lokal Find v2-prototype · kun BM25 · fryst v1-studie uendret",
@@ -60,7 +66,13 @@ Object.assign(words.nb, {
   narrower: "skos:narrower: subjekt → smalere begrep (objekt).",
   restrictions: "Kataloggrenser: bare operatørautoriserte roller/grafer og indekserte språk gjennomsøkes; tekst kan mangle eller være avgrenset. Ingen påstand om identifikatorer utenfor katalogen.",
   examples: "Eksempler: Entitet → Norge / Norway; Predikat → hovedstad / capital. Et uttrykk som «hovedstaden i Norge» / «capital of Norway» krever eksplisitte valg av entitet og rettet sti, ikke et søkesvar.",
-  context: "Innsendt søk / rolle / omfang", sourceGraph: "Kildegraf", language: "Språk", datatype: "Datatype"
+  context: "Innsendt søk / rolle / omfang", sourceGraph: "Kildegraf", language: "Språk", datatype: "Datatype",
+  twoHopAction: "Utforsk kildebevitnede stier med to kanter", twoHopTitle: "Kildebevitnede stier med to kanter",
+  twoHopHelp: "Hver sti kobler sammen to opprinnelige, rettede utsagn i denne grafen. Traverseringsrekkefølgen viser ikke spørsmålsrelevans. Stiene velger eller kjører aldri en Ask-operasjon.",
+  twoHopLoading: "Leser avgrensede grafsider…", twoHopEmpty: "Ingen ekstra to-kantede IRI-stier ble funnet for denne entiteten.",
+  twoHopClipped: "Stiutforskingen var begrenset, eller en kildeside hadde flere belegg. Manglende stier er ukjent.",
+  twoHopCount: "Kildebevitnede stier", twoHopVia: "Mellomliggende IRI", twoHopFirst: "Første traverseringsretning",
+  twoHopSecond: "Andre traverseringsretning", twoHopOpen: "Åpne denne IRI-en i Find"
 });
 
 let submittedQuery = "";
@@ -85,6 +97,124 @@ function statement(subject, predicate, object, graph, parent) {
   node("p", `${t("sourceGraph")}: ${graph}`, witness);
 }
 const iriTerm = value => ({ kind: "iri", value });
+const TWO_HOP_SEED_LIMIT = 5, TWO_HOP_PATH_LIMIT = 20;
+let twoHopResult = null;
+function clearTwoHop() {
+  twoHopResult = null;
+  $("two-hop-panel").hidden = true;
+  $("two-hop-results").replaceChildren();
+}
+function renderTwoHop() {
+  if (!twoHopResult || selected.iri !== twoHopResult.seed || selected.graph !== twoHopResult.graph) return;
+  const result = twoHopResult, panel = $("two-hop-panel"), paths = $("two-hop-results");
+  panel.hidden = false;
+  $("two-hop-heading").textContent = t("twoHopTitle");
+  $("two-hop-help").textContent = t("twoHopHelp");
+  $("two-hop-clipped").hidden = !result.clipped;
+  $("two-hop-clipped").textContent = t("twoHopClipped");
+  paths.replaceChildren();
+  if (result.loading) {
+    $("two-hop-status").textContent = t("twoHopLoading");
+    return;
+  }
+  $("two-hop-status").textContent = `${t("twoHopCount")}: ${result.paths.length} · ${result.graph} · ${result.snapshot_id}`;
+  if (result.error) {
+    $("two-hop-status").textContent = t("failed");
+    return;
+  }
+  if (!result.paths.length) {
+    node("p", t("twoHopEmpty"), paths);
+    return;
+  }
+  for (const path of result.paths) {
+    const card = node("article", undefined, paths);
+    node("h4", path.endpoint, card);
+    node("p", `${t("twoHopVia")}: ${path.intermediate}`, card);
+    node("p", `${t("twoHopFirst")}: ${t(path.first_direction)}`, card);
+    statement(path.first_statement.subject, path.first_statement.predicate.value,
+      path.first_statement.object, path.graph, card);
+    node("p", `${t("twoHopSecond")}: ${t(path.second_direction)}`, card);
+    statement(path.second_statement.subject, path.second_statement.predicate.value,
+      path.second_statement.object, path.graph, card);
+    button(t("twoHopOpen"), card, () => open(path.endpoint, path.graph, "outgoing", true));
+  }
+}
+async function exploreTwoHop(seed, graph) {
+  const ticket = ++generation, snapshotId = session.snapshot_id;
+  const limit = Math.min(selected.limit, session.page_limit);
+  twoHopResult = { seed, graph, snapshot_id: snapshotId, paths: [], clipped: false, loading: true };
+  renderTwoHop();
+  const read = (iri, direction) => api("/api/entity", {
+    snapshot_id: snapshotId, scope: [graph], iri, direction, offset: 0, limit
+  });
+  try {
+    const firstDirections = ["outgoing", "incoming"];
+    const firstPages = await Promise.all(firstDirections.map(direction => read(seed, direction)));
+    if (ticket !== generation || selected.iri !== seed || selected.graph !== graph) return;
+    if (firstPages.some(page => page.iri !== seed)) throw new Error(t("failed"));
+    let clipped = firstPages.some(page => page.truncated);
+    const direct = new Set(), intermediates = new Map();
+    for (let index = 0; index < firstPages.length; index++) {
+      const direction = firstDirections[index];
+      for (const edge of firstPages[index].evidence) {
+        if (edge.source_graph.kind !== "iri" || edge.source_graph.value !== graph) continue;
+        const start = direction === "outgoing" ? edge.subject : edge.object;
+        const endpoint = direction === "outgoing" ? edge.object : edge.subject;
+        if (start.kind !== "iri" || start.value !== seed || endpoint.kind !== "iri" || endpoint.value === seed) continue;
+        direct.add(endpoint.value);
+        if (!intermediates.has(endpoint.value)) {
+          intermediates.set(endpoint.value, { iri: endpoint.value, first_direction: direction, first_statement: edge });
+        }
+      }
+    }
+    const seeds = [...intermediates.values()];
+    if (seeds.length > TWO_HOP_SEED_LIMIT) clipped = true;
+    const paths = [], seen = new Set();
+    outer: for (const intermediate of seeds.slice(0, TWO_HOP_SEED_LIMIT)) {
+      const secondDirections = ["outgoing", "incoming"];
+      const secondPages = await Promise.all(secondDirections.map(direction => read(intermediate.iri, direction)));
+      if (ticket !== generation || selected.iri !== seed || selected.graph !== graph) return;
+      clipped ||= secondPages.some(page => page.truncated);
+      for (let index = 0; index < secondPages.length; index++) {
+        const direction = secondDirections[index], page = secondPages[index];
+        if (page.iri !== intermediate.iri) continue;
+        for (const edge of page.evidence) {
+          if (edge.source_graph.kind !== "iri" || edge.source_graph.value !== graph) continue;
+          const start = direction === "outgoing" ? edge.subject : edge.object;
+          const endpoint = direction === "outgoing" ? edge.object : edge.subject;
+          if (start.kind !== "iri" || start.value !== intermediate.iri || endpoint.kind !== "iri"
+              || endpoint.value === seed || endpoint.value === intermediate.iri || direct.has(endpoint.value)) continue;
+          const key = JSON.stringify([intermediate.first_statement, edge]);
+          if (seen.has(key)) continue;
+          seen.add(key);
+          if (paths.length >= TWO_HOP_PATH_LIMIT) { clipped = true; break outer; }
+          paths.push({ seed, graph, intermediate: intermediate.iri, endpoint: endpoint.value,
+            first_direction: intermediate.first_direction, first_statement: intermediate.first_statement,
+            second_direction: direction, second_statement: edge });
+        }
+      }
+    }
+    if (ticket !== generation || selected.iri !== seed || selected.graph !== graph) return;
+    twoHopResult = { seed, graph, snapshot_id: snapshotId, paths, clipped, loading: false };
+    renderTwoHop();
+  } catch {
+    if (ticket !== generation || selected.iri !== seed || selected.graph !== graph) return;
+    twoHopResult = { seed, graph, snapshot_id: snapshotId, paths: [], clipped: false, error: true };
+    renderTwoHop();
+    $("two-hop-status").textContent = t("failed");
+  }
+}
+const findOpen = open;
+open = function (iri, graph, direction, fromFind = false) {
+  clearTwoHop();
+  findOpen(iri, graph, direction, fromFind);
+};
+const findPage = page;
+page = function (offset, focus = false) {
+  clearTwoHop();
+  return findPage(offset, focus);
+};
+$("search-form").addEventListener("submit", clearTwoHop, true);
 documentText = function (doc, graph, parent, iri) {
   if (!doc.texts.some(text => text.field === "label" && !text.via)) node("p", t("noLabel"), parent);
   if (!doc.texts.length) node("p", t("emptyText"), parent);
@@ -134,6 +264,9 @@ renderEntity = function (result) {
   if (result.iri && selected.fromFind && session.roles.includes("predicate")) {
     button("Build exact follow_path plan from this selected Find entity", $("details"), beginAsk);
   }
+  if (result.iri && selected.fromFind && session.roles.includes("entity")) {
+    button(t("twoHopAction"), $("details"), () => exploreTwoHop(result.iri, selected.graph));
+  }
   provenance(result, $("details"));
   for (const edge of result.evidence) {
     const row = node("article", undefined, $("edges"), "edge");
@@ -148,6 +281,7 @@ renderEntity = function (result) {
   }
   $("previous").disabled = result.offset === 0;
   $("next").disabled = result.next_offset === null || result.next_offset > 100000;
+  if (twoHopResult?.seed === result.iri && twoHopResult.graph === selected.graph) renderTwoHop();
 };
 // The v1 session may already be ready when this deferred asset finishes loading.
 if (session) translate();
