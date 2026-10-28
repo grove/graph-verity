@@ -274,6 +274,44 @@ class GroundingRiskTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             local.check_answer(packet, candidate)
 
+    def test_where_when_and_who_questions_do_not_pass_a_what_quote(self):
+        cases = (
+            ("Where does the default local answer mode display source passages?",
+             "en", "The default local answer mode displays source passages."),
+            ("When does the default local answer mode display source passages?",
+             "en", "The default local answer mode displays source passages."),
+            ("Who does the default local answer mode display source passages to?",
+             "en", "The default local answer mode displays source passages."),
+            ("Hvor viser kildevisningen originale dokumentutdrag?",
+             "nb", "Kildevisningen viser originale dokumentutdrag."),
+            ("Når viser kildevisningen originale dokumentutdrag?",
+             "nb", "Kildevisningen viser originale dokumentutdrag."),
+        )
+        for question, language, text in cases:
+            with self.subTest(question=question):
+                packet = grounding.build_packet(self.index, question, language)
+                source = next(item for item in packet["document_evidence"]
+                              if text in item["text"])
+                answer = {"version": local.VERSION, "status": "answer",
+                          "language": language, "answer": text,
+                          "citation_id": source["citation_id"]}
+                risk = grounding.assess_grounding_risk(packet)
+                self.assertEqual(risk["classification"], "UNDETERMINED")
+                self.assertEqual(risk["reason"], "unable_to_establish_relevance")
+                with self.assertRaisesRegex(ValueError, "Grounding risk"):
+                    local.check_answer(packet, answer)
+                replay = grounding.check_extractive(packet, {
+                    "version": grounding.CANDIDATE_VERSION,
+                    "language": language,
+                    "claims": [{"kind": "verbatim_document_quote", "text": text,
+                                "citation_id": source["citation_id"]}],
+                })
+                self.assertEqual(replay["status"], "source_only")
+                result, transport = self.attempt(packet)
+                self.assertEqual(result["status"], "source_only")
+                self.assertEqual(transport.call_count, 0)
+                self.assertEqual(list(self.ledger.glob("*.consumed.json")), [])
+
     def test_duplicate_json_fields_and_missing_language_normalization_remain_narrow(self):
         with self.assertRaisesRegex(ValueError, "Duplicate JSON object key"):
             local._parse_candidate(

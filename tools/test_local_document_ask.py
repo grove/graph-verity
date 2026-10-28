@@ -88,6 +88,10 @@ class LocalDocumentAsk(unittest.TestCase):
     def test_risk_cases_keep_sources_and_never_claim_a_generated_answer(self):
         cases = [
             ("What is the identifier?", "en", "AMBIGUOUS", "ambiguous_question"),
+            ("Where does the default local answer mode display source passages?",
+             "en", "UNDETERMINED", "unable_to_establish_relevance"),
+            ("Hvor viser kildevisningen originale dokumentutdrag?",
+             "nb", "UNDETERMINED", "unable_to_establish_relevance"),
             ("What is the measured startup latency?", "en", "INSUFFICIENT_EVIDENCE", "insufficient_source_support"),
             ("What does the quoted note instruct?", "en", "UNTRUSTED_INSTRUCTION_RISK", "untrusted_instructions"),
             ("Count all CPU trials in every document.", "en", "UNSUPPORTED_QUESTION", "unsupported_answer_type"),

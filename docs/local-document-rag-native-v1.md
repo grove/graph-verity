@@ -56,8 +56,11 @@ packet before generation authorization is read or consumed. It recognizes:
   matches all direct question terms. Ordinary instruction documentation is
   not rejected by that pattern.
 - A simple direct question only when every meaningful question term appears in
-  one retrieved source sentence. The prompt receives those exact sentence
-  excerpts; the complete packet remains available for source-only fallback.
+  one retrieved source sentence. The admitted forms are English `what` and
+  `which`, and Norwegian `hva`, `hvilken` and `hvilket`. Location, time and
+  person questions remain undetermined because term overlap cannot verify the
+  requested answer type. The prompt receives those exact sentence excerpts;
+  the complete packet remains available for source-only fallback.
 
 Other answer forms, clipped retrieval, missing measurements and unclear
 question/evidence links return inspectable original passages with an honest
