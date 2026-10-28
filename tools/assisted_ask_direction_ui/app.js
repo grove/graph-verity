@@ -7,6 +7,7 @@ let tab, session, approval, suggestions, epoch = 0, timer;
 const json = (id, value) => { $(id).textContent = JSON.stringify(value, null, 2); };
 const words = {
   en: {
+    twoHopCandidatesTitle: "Source-witnessed two-hop IRI paths", twoHopCandidatesHelp: "Each IRI endpoint is reached through two original directed statements in the selected graph. Traversal order does not indicate question relevance; inspect both statements and their directions.", twoHopCandidatesEmpty: "No additional IRI endpoints were found through two-hop paths.", twoHopCandidatesClipped: "Two-hop path retrieval was incomplete or capped. Missing paths are unknown.", twoHopEvidence: "Two original directed RDF statements and the BM25 seed",
     title: "Select a graph operation", intro: "Choose an entity, relationship and direction. These choices define the query. No language model or question interpretation is used.",
     language: "Interface language", entity: "Entity", relationship: "Relationship", direction: "Direction", forward: "Forward", reverse: "Reverse (selected entity is the object)", choose: "Choose…", name: "University of Tromsø", P856: "Official websites", P1448: "Official names", all: "All stored values",
     contract: "Choose forward (entity → relationship → values) or reverse (values ← relationship — entity). No filtering, counting, joins, writes or raw SPARQL.",
@@ -29,6 +30,7 @@ const words = {
     languageTag: "Language", datatype: "Datatype", iri: "Original IRI", literal: "Original RDF literal", missing: "Original source evidence clipped; inspect the receipt."
   },
   nb: {
+    twoHopCandidatesTitle: "Kildebevitnede IRI-stier med to kanter", twoHopCandidatesHelp: "Hvert IRI-endepunkt nås gjennom to opprinnelige, rettede utsagn i den valgte grafen. Traverseringsrekkefølgen viser ikke spørsmålsrelevans; se på begge utsagnene og retningene.", twoHopCandidatesEmpty: "Ingen ekstra IRI-endepunkter ble funnet gjennom stier med to kanter.", twoHopCandidatesClipped: "Hentingen av stier med to kanter var ufullstendig eller begrenset. Manglende stier er ukjent.", twoHopEvidence: "To opprinnelige, rettede RDF-utsagn og BM25-frøet",
     title: "Velg en grafoperasjon", intro: "Velg entitet, relasjon og retning. Valgene bestemmer spørringen. Ingen språkmodell eller tolkning av spørsmål brukes.",
     language: "Grensesnittspråk", entity: "Entitet", relationship: "Relasjon", direction: "Retning", forward: "Forover", reverse: "Bakover (valgt entitet er objektet)", choose: "Velg…", name: "Universitetet i Tromsø", P856: "Offisielle nettsteder", P1448: "Offisielle navn", all: "Alle lagrede verdier",
     contract: "Velg forover (entitet → relasjon → verdier) eller bakover (verdier ← relasjon — entitet). Ingen filtrering, telling, sammenkoblinger, skriving eller rå SPARQL.",
@@ -73,10 +75,10 @@ function renderSuggestions(data = suggestions) {
   $("shape-origin").textContent = `${t("shapeOrigin")}: ${shapeOrigin}. ${t("shapeProvenanceUnverified")}`;
   const entities = data.entity_candidates, nearbyEntities = data.neighborhood_entity_candidates,
     predicates = data.candidates, metadataPredicates = data.property_metadata.candidates,
-    neighbors = data.neighborhood_candidates;
+    neighbors = data.neighborhood_candidates, twoHop = data.two_hop_candidates || [];
   const norwegianText = data.property_metadata.text_languages.some(language => ["no", "nb", "nn"].includes(language));
   $("metadata-language-note").hidden = !["no", "nb", "nn"].includes(data.request.language) || norwegianText;
-  $("suggestion-summary").textContent = `${entities.length} ${t("entityCandidatesTitle").toLowerCase()} · ${nearbyEntities.length} ${t("neighborhoodEntitiesTitle").toLowerCase()} · ${predicates.length} ${t("propertyCandidatesTitle").toLowerCase()} · ${metadataPredicates.length} ${t("metadataCandidatesTitle").toLowerCase()} · ${neighbors.length} ${t("neighborhoodCandidatesTitle").toLowerCase()} · ${t("graph")}: ${guidance.data_graph} · ${guidance.data_snapshot_id}`;
+  $("suggestion-summary").textContent = `${entities.length} ${t("entityCandidatesTitle").toLowerCase()} · ${nearbyEntities.length} ${t("neighborhoodEntitiesTitle").toLowerCase()} · ${twoHop.length} ${t("twoHopCandidatesTitle").toLowerCase()} · ${predicates.length} ${t("propertyCandidatesTitle").toLowerCase()} · ${metadataPredicates.length} ${t("metadataCandidatesTitle").toLowerCase()} · ${neighbors.length} ${t("neighborhoodCandidatesTitle").toLowerCase()} · ${t("graph")}: ${guidance.data_graph} · ${guidance.data_snapshot_id}`;
   $("shape-provenance").textContent = JSON.stringify({
     origin: guidance.origin, source: guidance.source, license: guidance.source.license,
     shape_graph: guidance.shape_graph, shape_snapshot_id: guidance.shape_snapshot_id,
@@ -96,15 +98,18 @@ function renderSuggestions(data = suggestions) {
     labelOrigin.textContent = source === "property_metadata" ?
       `${t("metadataLabelOrigin")}: ${sourceLabel?.value.language || candidate.texts.find(text => text.field === "label")?.value.language || "—"}` :
       sourceLabel ? t("sourceLabel") : interfaceLabel ? t("interfaceLabelOnly") : t("noSourceLabel");
-    detail.textContent = source === "neighborhood_entity" ?
+    detail.textContent = source === "two_hop" ?
+      `${candidate.graph}\n${candidate.iri}` : source === "neighborhood_entity" ?
       `${t("bm25SeedRank")}: ${item.witness.entity.rank} · ${candidate.graph}\n${candidate.iri}` :
       source === "neighborhood" ?
         `${t("neighborhoodRank")}: ${item.neighborhood_rank} · ${candidate.graph}\n${candidate.iri}` :
         `${t("rank")} ${item.rank} · ${t("score")}: ${candidate.ranking_score} · ${candidate.graph}\n${candidate.iri}`;
     const evidenceSummary = document.createElement("summary"), evidenceText = document.createElement("pre");
-    evidenceSummary.textContent = source === "property_metadata" ? t("metadataEvidence") :
+    evidenceSummary.textContent = source === "two_hop" ? t("twoHopEvidence") :
+      source === "property_metadata" ? t("metadataEvidence") :
       source !== "bm25" ? t(item.witness.direction === "outgoing" ? "outgoingWitness" : "incomingWitness") : t("candidateEvidence");
-    evidenceText.textContent = JSON.stringify(source === "property_metadata" ?
+    evidenceText.textContent = JSON.stringify(source === "two_hop" ?
+      {path: item.witness, texts: candidate.texts} : source === "property_metadata" ?
       {metadata: item.metadata, texts: candidate.texts} : source !== "bm25" ?
         {entity: item.witness.entity, statement: item.witness.statement, texts: candidate.texts} :
         {texts: candidate.texts, usage: candidate.usage}, null, 2);
@@ -133,19 +138,22 @@ function renderSuggestions(data = suggestions) {
         select.dispatchEvent(new Event("change"));
       });
       article.append(use);
-    } else if (role === "entity") {
+    } else if (role === "entity" && source !== "two_hop") {
       const p = document.createElement("p"); p.textContent = t("unsupportedEntity"); article.append(p);
     }
     return article;
   }
   $("entity-suggestion-list").replaceChildren(...entities.map(item => renderCandidate(item, "entity")));
   $("neighborhood-entity-suggestion-list").replaceChildren(...nearbyEntities.map(item => renderCandidate(item, "entity", "neighborhood_entity")));
+  $("two-hop-suggestion-list").replaceChildren(...twoHop.map(item => renderCandidate(item, "entity", "two_hop")));
   $("suggestion-list").replaceChildren(...predicates.map(item => renderCandidate(item, "property")));
   $("metadata-suggestion-list").replaceChildren(...metadataPredicates.map(item => renderCandidate(item, "property", "property_metadata")));
   $("neighborhood-suggestion-list").replaceChildren(...neighbors.map(item => renderCandidate(item, "property", "neighborhood")));
   $("entity-suggestion-empty").hidden = entities.length > 0;
   $("neighborhood-entities-empty").hidden = nearbyEntities.length > 0;
   $("neighborhood-entities-clipped").hidden = !data.neighborhood_entities_clipped;
+  $("two-hop-empty").hidden = twoHop.length > 0;
+  $("two-hop-clipped").hidden = !data.two_hop_candidates_clipped;
   $("suggestion-empty").hidden = predicates.length > 0;
   $("metadata-suggestion-empty").hidden = metadataPredicates.length > 0;
   $("neighborhood-empty").hidden = neighbors.length > 0;

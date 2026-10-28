@@ -81,6 +81,12 @@ try {
   assert.equal(entitySuggestion.direction, "");
   assert.equal(requests.some(request => request.url.endsWith("/private")), false);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+  const twoHop = await evaluate("({count:document.querySelectorAll('#two-hop-suggestion-list article').length, help:document.querySelector('[data-i18n=twoHopCandidatesHelp]').textContent, empty:!document.getElementById('two-hop-empty').hidden, clipped:!document.getElementById('two-hop-clipped').hidden})");
+  assert.equal(twoHop.count, 0);
+  assert.match(twoHop.help, /does not indicate question relevance/);
+  assert.equal(twoHop.empty, true);
+  assert.equal(twoHop.clipped, false);
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
   const nearbyEntity = await evaluate("(() => { const article=[...document.querySelectorAll('#neighborhood-entity-suggestion-list article')].find(item => item.textContent.includes('/entity/Q20')); return {count:document.querySelectorAll('#neighborhood-entity-suggestion-list article').length, help:document.querySelector('[data-i18n=neighborhoodEntitiesHelp]').textContent, text:article?.textContent, buttons:article?.querySelectorAll('button').length ?? 0, clipped:!document.getElementById('neighborhood-entities-clipped').hidden}; })()");
   assert.ok(nearbyEntity.count > 0);
   assert.match(nearbyEntity.help, /does not indicate question relevance/);

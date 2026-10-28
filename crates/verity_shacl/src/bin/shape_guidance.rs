@@ -15,6 +15,7 @@ use verity_core::{
     catalog::Policy,
     discovery::{DiscoveryConfig, DiscoveryIndex, Source},
     find::FindRequest,
+    navigation::{EdgeDirection, EntityRequest},
     read_limited, reject,
     vocabulary::{VocabularyBudget, VocabularyRequest},
     Result, Snapshot,
@@ -328,7 +329,10 @@ fn run() -> Result<()> {
     let neighborhood_entities = neighborhood.candidates("entity")?;
     let mut neighboring_entity_candidates = Vec::new();
     let mut neighboring_entity_keys = BTreeSet::new();
+    let mut direct_neighbor_iris = BTreeSet::new();
+    let mut two_hop_seeds = Vec::new();
     let mut neighboring_entities_clipped = false;
+    let mut first_hop_adjacency_clipped = false;
     'seeds: for (rank, seed) in bm25_entities.iter().enumerate() {
         let Some(neighborhood_seed) = neighborhood_entities
             .iter()
@@ -337,6 +341,7 @@ fn run() -> Result<()> {
             continue;
         };
         for page in &neighborhood_seed.usage {
+            first_hop_adjacency_clipped |= page.clipped;
             for statement in &page.evidence {
                 let seed_term = verity_core::execution::RdfTerm::Iri {
                     value: seed.iri.clone(),
@@ -356,10 +361,12 @@ fn run() -> Result<()> {
                 let verity_core::execution::RdfTerm::Iri { value } = neighbor else {
                     continue;
                 };
+                let key = (seed.graph.clone(), value.clone());
+                direct_neighbor_iris.insert(key.clone());
                 if bm25_entities
                     .iter()
                     .any(|bm25| bm25.iri == *value && bm25.graph == seed.graph)
-                    || !neighboring_entity_keys.insert((seed.graph.clone(), value.clone()))
+                    || !neighboring_entity_keys.insert(key)
                 {
                     continue;
                 }
@@ -392,6 +399,106 @@ fn run() -> Result<()> {
                         "entity": {"rank": rank + 1, "iri": seed.iri, "graph": seed.graph},
                         "direction": direction,
                         "statement": statement,
+                    },
+                }));
+                two_hop_seeds.push((
+                    rank + 1,
+                    seed.iri.as_str(),
+                    seed.graph.as_str(),
+                    direction,
+                    value.as_str(),
+                    statement,
+                ));
+            }
+        }
+    }
+    let mut two_hop_candidates = Vec::new();
+    let mut two_hop_keys = BTreeSet::new();
+    let mut two_hop_candidates_clipped =
+        neighboring_entities_clipped || first_hop_adjacency_clipped;
+    // shortcut: one navigation page per direction, upgrade to cursor walking only if path recall needs it.
+    'paths: for (seed_rank, seed_iri, graph, first_direction, intermediate, first_statement) in
+        two_hop_seeds
+    {
+        for (second_direction, direction) in [
+            ("outgoing", EdgeDirection::Outgoing),
+            ("incoming", EdgeDirection::Incoming),
+        ] {
+            let page = data.entity(
+                &discovery,
+                &EntityRequest {
+                    snapshot_id: request.snapshot_id.clone(),
+                    scope: vec![graph.to_owned()],
+                    iri: intermediate.to_owned(),
+                    direction,
+                    offset: 0,
+                    limit: 50
+                        .min(policy.max_rows as usize)
+                        .min(policy.max_evidence as usize),
+                },
+                &policy,
+            )?;
+            two_hop_candidates_clipped |= page.truncated;
+            let intermediate_term = verity_core::execution::RdfTerm::Iri {
+                value: intermediate.to_owned(),
+            };
+            let graph_term = verity_core::execution::RdfTerm::Iri {
+                value: graph.to_owned(),
+            };
+            for statement in &page.evidence {
+                if statement.source_graph != graph_term {
+                    continue;
+                }
+                let endpoint = match second_direction {
+                    "outgoing" if statement.subject == intermediate_term => &statement.object,
+                    "incoming" if statement.object == intermediate_term => &statement.subject,
+                    _ => continue,
+                };
+                let verity_core::execution::RdfTerm::Iri { value } = endpoint else {
+                    continue;
+                };
+                if value.as_str() == seed_iri
+                    || value.as_str() == intermediate
+                    || bm25_entities
+                        .iter()
+                        .any(|seed| seed.iri == *value && seed.graph == graph)
+                    || direct_neighbor_iris.contains(&(graph.to_owned(), value.clone()))
+                {
+                    continue;
+                }
+                let document = discovery
+                    .graphs()
+                    .get(graph)
+                    .and_then(|data| data.documents.get(value));
+                if !two_hop_keys.insert((graph.to_owned(), value.clone())) {
+                    continue;
+                }
+                if two_hop_candidates.len() >= budget.per_role_top_k {
+                    two_hop_candidates_clipped = true;
+                    break 'paths;
+                }
+                let texts = document
+                    .map(|document| {
+                        document
+                            .texts
+                            .iter()
+                            .filter(|text| text.value.text.len() <= budget.max_text_bytes)
+                            .take(budget.texts_per_candidate)
+                            .collect::<Vec<_>>()
+                    })
+                    .unwrap_or_default();
+                two_hop_candidates.push(serde_json::json!({
+                    "candidate": {
+                        "iri": value,
+                        "graph": graph,
+                        "texts": texts,
+                        "texts_clipped": document.is_some_and(|document| texts.len() < document.texts.len() || texts.iter().any(|text| text.truncated)),
+                    },
+                    "witness": {
+                        "seed": {"rank": seed_rank, "iri": seed_iri, "graph": graph},
+                        "first_hop": {"direction": first_direction, "statement": first_statement},
+                        "intermediate": {"iri": intermediate, "graph": graph},
+                        "second_hop": {"direction": second_direction, "statement": statement},
                     },
                 }));
             }
@@ -457,8 +564,8 @@ fn run() -> Result<()> {
             }));
         }
     }
+    let neighborhood_value = serde_json::to_value(&neighborhood)?;
     let packet = serde_json::to_value(&packet)?;
-    let neighborhood = serde_json::to_value(&neighborhood)?;
     let result = serde_json::json!({
         "version": "assisted-ask-shape-neighborhood-metadata-suggestions-v3",
         "packet_id": packet["packet_id"],
@@ -467,15 +574,17 @@ fn run() -> Result<()> {
         "entity_candidates": entity_candidates,
         "candidates": candidates,
         "neighborhood": {
-            "version": neighborhood["version"],
-            "packet_id": neighborhood["packet_id"],
-            "rules": neighborhood["rules"],
-            "score_semantics": neighborhood["score_semantics"],
-            "clipped": neighborhood["clipped"],
-            "matches_semantics": neighborhood["matches_semantics"],
+            "version": neighborhood_value["version"],
+            "packet_id": neighborhood_value["packet_id"],
+            "rules": neighborhood_value["rules"],
+            "score_semantics": neighborhood_value["score_semantics"],
+            "clipped": neighborhood_value["clipped"],
+            "matches_semantics": neighborhood_value["matches_semantics"],
         },
         "neighborhood_entity_candidates": neighboring_entity_candidates,
         "neighborhood_entities_clipped": neighboring_entities_clipped,
+        "two_hop_candidates": two_hop_candidates,
+        "two_hop_candidates_clipped": two_hop_candidates_clipped,
         "neighborhood_candidates": neighborhood_candidates,
         "property_metadata": property_metadata,
         "shape_guidance": guidance_value,
