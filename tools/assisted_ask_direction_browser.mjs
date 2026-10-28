@@ -173,7 +173,7 @@ try {
   const englishPropertyOption = await evaluate("document.getElementById('predicate').selectedOptions[0].textContent");
   assert.match(englishPropertyOption, /located in the administrative territorial entity/);
   await evaluate("(() => { const language=document.getElementById('language'); language.value='nb'; language.dispatchEvent(new Event('change')); })()");
-  assert.equal(await evaluate("document.getElementById('predicate').selectedOptions[0].textContent"), "http://www.wikidata.org/prop/direct/P131");
+  assert.match(await evaluate("document.getElementById('predicate').selectedOptions[0].textContent"), /located in the administrative territorial entity \(en\) — http:\/\/www\.wikidata\.org\/prop\/direct\/P131/);
   assert.equal(await evaluate("document.getElementById('suggestions').hidden"), true);
   await evaluate("(() => { const language=document.getElementById('language'); language.value='en'; language.dispatchEvent(new Event('change')); })()");
   assert.match(await evaluate("document.getElementById('predicate').selectedOptions[0].textContent"), /located in the administrative territorial entity/);

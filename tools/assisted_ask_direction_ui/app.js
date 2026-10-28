@@ -75,10 +75,12 @@ function sectionSummary(id, key, count, clipped) {
   $(id).textContent = `${t(key)} (${count})${clipped ? ` · ${t("retrievalIncomplete")}` : ""}`;
 }
 const selectedSourceLabel = texts => texts.find(text => text.field === "label" &&
-  text.value.language === $("language").value && text.value.text);
+  text.value.language === $("language").value && text.value.text) ||
+  texts.find(text => text.field === "label" && text.value.language && text.value.text);
 const candidateOption = (iri, texts) => {
-  const label = selectedSourceLabel(texts)?.value.text;
-  return [label ? `${label} — ${iri}` : iri, iri];
+  const label = selectedSourceLabel(texts);
+  const language = label && label.value.language !== $("language").value ? ` (${label.value.language})` : "";
+  return [label ? `${label.value.text}${language} — ${iri}` : iri, iri];
 };
 async function api(route, body, keepalive = false) {
   const response = await fetch(route, {method: "POST", headers: {"Content-Type": "application/json",
