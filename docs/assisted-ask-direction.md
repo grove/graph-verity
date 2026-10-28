@@ -98,6 +98,18 @@ allowlist have no selection button. See
 [`ask-alpha-candidate-baseline.md`](ask-alpha-candidate-baseline.md) for the
 60-case descriptive counts and their limits.
 
+The optional two-hop list follows each returned nearby entity through at most
+one additional incoming or outgoing page in the same selected graph. A result
+shows both original RDF statements and each traversal direction; paths never
+create inverse triples or execute an Ask operation. Candidate order is traversal
+order, not a relevance score. The list is marked incomplete when an upstream
+neighborhood was clipped, a second-hop page has more evidence, or the candidate
+budget is reached. Only IRI endpoints observed in the selected graph are shown;
+an endpoint without retained text appears as its IRI.
+In the current University of Tromsø demonstration snapshot, nearby `Q20` and
+`Q26087` have no other incident statements, so this two-hop list is empty. That
+scope cannot measure whether two-hop suggestions improve retrieval.
+
 The paired retrieval baseline found no pure BM25 predicate target among the 29
 agent-authored candidate references by rank 10; neighborhood v2 found 20/29 by
 rank 5 and 29/29 by rank 10. This is exact candidate-position coverage, not
@@ -105,11 +117,11 @@ human relevance or answer accuracy. The full paired counts and per-case ranks
 are in
 [`ask-alpha-paired-retrieval-v1`](../benchmarks/ask-alpha-paired-retrieval-v1/README.md).
 
-**Next #114/#115 milestone:** add the already retained licensed property labels
-and descriptions to graph-local BM25 predicate text, then repeat the paired
-measurement before considering dense retrieval. The current data has no
-independent human relevance labels, so owner review remains necessary before
-any relevance or usefulness claim.
+**Next #117 milestone:** measure the fixed-scope BM25, one-hop and two-hop
+retrieval baselines on the retained development graph, then assess whether its
+relation and edge diversity can support the proposed structural study. These
+suggestions have no human relevance labels; no model training or inference is
+authorized by this retrieval feature.
 
 Focused model-free checks:
 

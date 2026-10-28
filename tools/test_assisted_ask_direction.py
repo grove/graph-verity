@@ -204,10 +204,13 @@ class ExplicitDirection(unittest.TestCase):
             self.assertEqual(witness['predicate']['value'], 'http://www.wikidata.org/prop/direct/P17')
             self.assertEqual(witness['object']['value'], 'http://www.wikidata.org/entity/Q20')
             self.assertLessEqual(len(result['neighborhood_entity_candidates']), 20)
+            self.assertEqual(result['two_hop_candidates'], [])
+            self.assertFalse(result['two_hop_candidates_clipped'])
 
         for result, code in zip(results[2:], ('P856', 'P1448')):
             self.assertEqual(result['entity_candidates'], [])
             self.assertEqual(result['neighborhood_entity_candidates'], [])
+            self.assertEqual(result['two_hop_candidates'], [])
             self.assertEqual(result['neighborhood_candidates'], [])
             self.assertEqual(len(result['candidates']), 1)
             candidate = result['candidates'][0]
