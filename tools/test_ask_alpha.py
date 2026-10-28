@@ -185,8 +185,10 @@ class Scoring(unittest.TestCase):
         self.assertEqual({n: hashlib.sha256(raw).hexdigest() for n, raw in files.items() if n != 'checksums.json'},
                          json.loads(files['checksums.json']))
         frozen = json.loads(files['freeze.json'])
+        self.assertEqual(frozen['source_commit'], reg['source_commit'])
         for name, digest in frozen['inputs'].items():
-            self.assertEqual(e.b.sha(e.ROOT/name), digest, name)
+            original = subprocess.check_output(['git', 'show', frozen['source_commit'] + ':' + name], cwd=e.ROOT)
+            self.assertEqual(hashlib.sha256(original).hexdigest(), digest, name)
         schedule = json.loads(files['schedule.json'])
         self.assertEqual(len(schedule), 64)
         self.assertEqual(len({r['id'] for r in schedule}), 64)
