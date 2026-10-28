@@ -1,0 +1,34 @@
+# Operator-authored demo shapes for smoke.trig, Apache-2.0; not upstream metadata.
+@prefix ex: <https://example.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:shapes {
+  ex:MunicipalityShape a sh:NodeShape ;
+    sh:targetClass ex:Municipality ;
+    sh:property [
+      sh:path ex:owns ;
+      sh:class ex:Company ;
+      sh:nodeKind sh:IRI ;
+      sh:minCount 1 ;
+      sh:maxCount 1
+    ] .
+
+  ex:CompanyShape a sh:NodeShape ;
+    sh:targetClass ex:Company ;
+    sh:property [
+      sh:path [ sh:inversePath ex:owns ] ;
+      sh:class ex:Municipality
+    ] .
+
+  ex:EmployeesShape a sh:NodeShape ;
+    sh:targetClass ex:Company ;
+    sh:property [
+      sh:path ex:employees ;
+      sh:datatype xsd:integer
+    ] .
+
+  ex:ClosedShape a sh:NodeShape ;
+    sh:closed true ;
+    sh:property [ sh:path ex:secret ] .
+}
