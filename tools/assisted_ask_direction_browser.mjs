@@ -241,6 +241,12 @@ try {
   assert.equal(await evaluate("!document.getElementById('metadata-language-note').hidden"), true);
   assert.match(await evaluate("document.getElementById('metadata-language-note').textContent"), /ingen norsk tekst/);
 
+  await evaluate("(() => { const question=document.getElementById('question'); question.value='P856'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
+  await until("!document.getElementById('suggestions').hidden");
+  const norwegianFallbackLabel = await evaluate("[...document.querySelectorAll('#metadata-suggestion-list article')].find(article => article.textContent.includes('/P856'))?.textContent");
+  assert.match(norwegianFallbackLabel, /Kildeetikett \(en\):/);
+  assert.match(norwegianFallbackLabel, /official website/i);
+
   await evaluate("(() => { const question=document.getElementById('question'); question.value='P1448'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
   await until("!document.getElementById('suggestions').hidden");
   const norwegianSuggestion = await evaluate("({heading:document.querySelector('#suggestion-list h3').textContent, labelOrigin:document.querySelector('#suggestion-list article p').textContent, selected:document.getElementById('predicate').value})");
