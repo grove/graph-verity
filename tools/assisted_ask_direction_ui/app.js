@@ -308,7 +308,10 @@ function selection() {
 $("suggest").addEventListener("click", async () => {
   invalidate("", false);
   suggestions = undefined; $("suggestions").hidden = true;
-  if (!$("question").value.trim()) { $("status").textContent = t("noQuestionForSuggestions"); return; }
+  if (!$("question").value.trim()) {
+    $("question-details").open = true; $("question").focus();
+    $("status").textContent = t("noQuestionForSuggestions"); return;
+  }
   const generation = epoch;
   $("status").textContent = t("suggesting");
   try {

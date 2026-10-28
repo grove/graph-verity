@@ -67,6 +67,12 @@ try {
   await evaluate("document.getElementById('preview').click()");
   assert.match(await evaluate("document.getElementById('status').textContent"), /Choose the entity, relationship and direction first/);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+  assert.equal(await evaluate("document.getElementById('question-details').open"), false);
+  await evaluate("document.getElementById('suggest').click()");
+  assert.equal(await evaluate("document.getElementById('question-details').open"), true);
+  assert.equal(await evaluate("document.activeElement.id"), "question");
+  assert.match(await evaluate("document.getElementById('status').textContent"), /Enter a question to retrieve graph suggestions/);
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/suggestions")), false);
 
   await evaluate("(() => { const question=document.getElementById('question'); question.value='Which official websites does the University of Tromsø list?'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
   await until("!document.getElementById('suggestions').hidden");
