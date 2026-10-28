@@ -91,14 +91,18 @@ try {
     const text = ['entity-suggestion-list','neighborhood-suggestion-list','metadata-suggestion-list']
       .map(id => [...document.querySelectorAll('#' + id + ' article [role=note]')].map(note => note.textContent).join(' '));
     const usage = document.querySelector('#entity-suggestion-list article').textContent;
+    const operationEn = [...document.querySelectorAll('#neighborhood-entity-suggestion-list article button')]
+      .find(button => button.textContent.includes('/prop/direct/P17'))?.textContent;
     document.getElementById('language').value = 'nb'; translate();
     const nb = ['entity-candidates-clipped','predicate-candidates-clipped','metadata-candidates-clipped']
       .map(id => document.getElementById(id).textContent);
     const textNb = ['entity-suggestion-list','neighborhood-suggestion-list','metadata-suggestion-list']
       .map(id => [...document.querySelectorAll('#' + id + ' article [role=note]')].map(note => note.textContent).join(' '));
     const usageNb = document.querySelector('#entity-suggestion-list article').textContent;
+    const operationNb = [...document.querySelectorAll('#neighborhood-entity-suggestion-list article button')]
+      .find(button => button.textContent.includes('/prop/direct/P17'))?.textContent;
     suggestions = original; document.getElementById('language').value = 'en'; translate(); renderSuggestions();
-    return {visible, en, nb, text, textNb, usage, usageNb};
+    return {visible, en, nb, text, textNb, usage, usageNb, operationEn, operationNb};
   })()`);
   assert.deepEqual(clippingNotices.visible, [true, true, true]);
   assert.match(clippingNotices.en[0], /additional candidates are unknown/);
@@ -116,6 +120,8 @@ try {
   assert.match(clippingNotices.usageNb, /Eksempler på utgående kildeutsagn i denne pakken: 1/);
   assert.match(clippingNotices.usageNb, /Ingen eksempler ble returnert; fravær er ukjent/);
   assert.match(clippingNotices.usageNb, /Denne bevislisten er begrenset/);
+  assert.match(clippingNotices.operationEn, /Select source-witnessed operation.*Reverse/);
+  assert.match(clippingNotices.operationNb, /Velg kildebevitnet operasjon.*Bakover/);
   const entitySuggestion = await evaluate("({heading:document.querySelector('#entity-suggestion-list h3').textContent, labelOrigin:document.querySelector('#entity-suggestion-list article p').textContent, text:document.getElementById('entity-suggestion-list').textContent, emptyProperties:!document.getElementById('suggestion-empty').hidden, rawLabel:document.getElementById('entity-suggestion-list').textContent.includes('</script><script>'), scripts:document.querySelectorAll('#entity-suggestion-list script').length, entity:document.getElementById('entity').value, predicate:document.getElementById('predicate').value, direction:document.getElementById('direction').value})");
   assert.equal(entitySuggestion.heading, "University of Tromsø – The Arctic University of Norway");
   assert.match(entitySuggestion.labelOrigin, /Untrusted label text from the selected graph/);
@@ -138,7 +144,7 @@ try {
   assert.match(nearbyEntity.help, /does not indicate question relevance/);
   assert.match(nearbyEntity.text, /P17/);
   assert.match(nearbyEntity.text, /Q279724/);
-  assert.equal(nearbyEntity.buttons, 1);
+  assert.equal(nearbyEntity.buttons, 2);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
   const metadataSuggestion = await evaluate("(() => { const article=[...document.querySelectorAll('#metadata-suggestion-list article')].find(item => item.textContent.includes('/P856')); return {count:document.querySelectorAll('#metadata-suggestion-list article').length, help:document.querySelector('[data-i18n=metadataCandidatesHelp]').textContent, text:article?.textContent, provenance:document.getElementById('property-metadata-provenance').textContent, buttons:article?.querySelectorAll('button').length ?? 0}; })()");
   assert.ok(metadataSuggestion.count > 0);
@@ -284,6 +290,31 @@ try {
   }
   await preview("nb", "reverse");
   await preview("en", "forward");
+  await evaluate("(() => { for (const id of ['entity','predicate','direction']) { const select=document.getElementById(id); select.value=''; select.dispatchEvent(new Event('change')); } document.getElementById('suggest').click(); })()");
+  await until("!document.getElementById('suggestions').hidden");
+  const previewCount = requests.filter(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")).length;
+  const witnessedButton = await evaluate("[...document.querySelectorAll('#neighborhood-entity-suggestion-list article')].find(article => article.textContent.includes('/entity/Q20'))?.querySelector('button:nth-of-type(2)')?.textContent");
+  assert.match(witnessedButton, /source-witnessed operation/i);
+  assert.match(witnessedButton, /\/prop\/direct\/P17.*Reverse/);
+  await evaluate("[...document.querySelectorAll('#neighborhood-entity-suggestion-list article')].find(article => article.textContent.includes('/entity/Q20')).querySelector('button:nth-of-type(2)').click()");
+  assert.equal(await evaluate("document.getElementById('entity').value"), "http://www.wikidata.org/entity/Q20");
+  assert.equal(await evaluate("document.getElementById('predicate').value"), "http://www.wikidata.org/prop/direct/P17");
+  assert.equal(await evaluate("document.getElementById('direction').value"), "reverse");
+  assert.match(await evaluate("document.getElementById('status').textContent"), /Source-witnessed choices filled/);
+  assert.equal(requests.filter(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")).length, previewCount);
+  await evaluate("document.getElementById('preview').click()");
+  await until("!document.getElementById('review').hidden");
+  const witnessedPreview = requests.findLast(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview"));
+  assert.deepEqual(JSON.parse(witnessedPreview.postData), {
+    entity: "http://www.wikidata.org/entity/Q20",
+    predicate: "http://www.wikidata.org/prop/direct/P17",
+    direction: "reverse",
+    question: "Which official websites does the University of Tromsø list?",
+    language: "en"
+  });
+  await evaluate("document.getElementById('cancel').click()");
+  await until("document.getElementById('review').hidden");
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/confirm")), false);
   await select("en", "reverse");
   await evaluate("document.getElementById('preview').click()");
   await until("!document.getElementById('review').hidden");

@@ -91,6 +91,44 @@ class Bundle(ask.Bundle):
                 and iri in self.catalogs.get(ask.GRAPH, {}).get('profiles', {}).get(ask.GRAPH, {}))
 
     def mark_selectable(self, response):
+        def witnessed_operations(candidate, neighborhood_witness=None):
+            iri = candidate.get('iri')
+            if candidate.get('graph') != ask.GRAPH or not self.supports_entity(iri):
+                return []
+            operations = []
+            seen = set()
+
+            def add(witness, direction):
+                if not isinstance(witness, dict):
+                    return
+
+                def iri_term(field):
+                    term = witness.get(field, {})
+                    return term.get('value') if term.get('kind') == 'iri' else None
+
+                predicate = iri_term('predicate')
+                if (iri_term('source_graph') != ask.GRAPH or not predicate
+                        or not self.supports_predicate(predicate)
+                        or iri_term('subject' if direction == 'forward' else 'object') != iri):
+                    return
+                key = (predicate, direction)
+                if key not in seen:
+                    seen.add(key)
+                    operations.append(dict(predicate=predicate, direction=direction))
+
+            for page in candidate.get('usage', []):
+                direction = {'outgoing': 'forward', 'incoming': 'reverse'}.get(page.get('direction'))
+                if not direction:
+                    continue
+                for witness in page.get('evidence', []):
+                    add(witness, direction)
+            if isinstance(neighborhood_witness, dict):
+                direction = {'outgoing': 'reverse', 'incoming': 'forward'}.get(
+                    neighborhood_witness.get('direction'))
+                if direction:
+                    add(neighborhood_witness.get('statement'), direction)
+            return operations
+
         def mark(items, role):
             for item in items:
                 candidate = item.get('candidate', {})
@@ -98,13 +136,15 @@ class Bundle(ask.Bundle):
                 item['selectable'] = (candidate.get('graph') == ask.GRAPH and
                                       (self.supports_entity(iri) if role == 'entity'
                                        else self.supports_predicate(iri)))
+                if role == 'entity':
+                    item['witnessed_operations'] = witnessed_operations(candidate, item.get('witness'))
 
         for field in ('entity_candidates', 'neighborhood_entity_candidates', 'two_hop_candidates'):
             mark(response.get(field, []), 'entity')
         for field in ('candidates', 'neighborhood_candidates'):
             mark(response.get(field, []), 'predicate')
         mark(response.get('property_metadata', {}).get('candidates', []), 'predicate')
-        response['candidate_selection_version'] = 'authorized-graph-role-v1'
+        response['candidate_selection_version'] = 'authorized-graph-role-witnessed-operations-v2'
         return response
 
     def resolve(self, proposal, start):

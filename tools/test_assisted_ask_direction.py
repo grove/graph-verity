@@ -162,7 +162,8 @@ class ExplicitDirection(unittest.TestCase):
             self.assertIs(type(result['entity_candidates_clipped']), bool)
             self.assertIs(type(result['predicate_candidates_clipped']), bool)
             self.assertIs(type(result['property_metadata']['clipped']), bool)
-            self.assertEqual(result['candidate_selection_version'], 'authorized-graph-role-v1')
+            self.assertEqual(result['candidate_selection_version'],
+                             'authorized-graph-role-witnessed-operations-v2')
             self.assertEqual(result['neighborhood']['version'], 'question-vocabulary-packet-v2-neighborhood')
             metadata = result['property_metadata']
             self.assertEqual(metadata['source_file'], 'studies/nl-ask-v1/sources/Q279724.ttl')
@@ -194,6 +195,17 @@ class ExplicitDirection(unittest.TestCase):
             self.assertIn('en', {label['language'] for label in labels})
             self.assertIn('nb', {label['language'] for label in labels})
             self.assertTrue(any('</script><script>' in label['text'] for label in labels))
+            operations = result['entity_candidates'][0]['witnessed_operations']
+            self.assertTrue(operations)
+            for operation in operations:
+                source_direction = 'outgoing' if operation['direction'] == 'forward' else 'incoming'
+                endpoint = 'subject' if operation['direction'] == 'forward' else 'object'
+                self.assertTrue(self.bundle.supports_predicate(operation['predicate']))
+                page = next(page for page in candidate['usage'] if page['direction'] == source_direction)
+                self.assertTrue(any(witness['source_graph']['value'] == v1.GRAPH
+                                    and witness[endpoint]['value'] == v1.ENTITY
+                                    and witness['predicate']['value'] == operation['predicate']
+                                    for witness in page['evidence']))
             neighborhood_iris = [item['candidate']['iri'] for item in result['neighborhood_candidates']]
             self.assertIn(v1.PREDICATES['P1448'], neighborhood_iris)
             self.assertIn(v1.PREDICATES['P856'], neighborhood_iris)
@@ -227,6 +239,9 @@ class ExplicitDirection(unittest.TestCase):
             self.assertEqual(witness['subject']['value'], v1.ENTITY)
             self.assertEqual(witness['predicate']['value'], 'http://www.wikidata.org/prop/direct/P17')
             self.assertEqual(witness['object']['value'], 'http://www.wikidata.org/entity/Q20')
+            operation = next(operation for operation in neighbor['witnessed_operations']
+                             if operation['predicate'] == 'http://www.wikidata.org/prop/direct/P17')
+            self.assertEqual(operation['direction'], 'reverse')
             self.assertLessEqual(len(result['neighborhood_entity_candidates']), 20)
             self.assertEqual(result['two_hop_candidates'], [])
             self.assertFalse(result['two_hop_candidates_clipped'])
