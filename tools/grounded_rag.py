@@ -399,7 +399,7 @@ def assess_grounding_risk(packet: dict) -> dict:
                         detail="identifier_family_exact_terms_present")
             return risk
         return risk
-    if not re.match(r"^(?:what|which|where|when|who|hva|hvor|når|hvilken|hvilket)\b",
+    if not re.match(r"^(?:what|which|hva|hvilken|hvilket)\b",
                     lower):
         return risk
     if packet["completeness"]["documents_clipped"]:

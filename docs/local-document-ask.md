@@ -110,3 +110,8 @@ recorded source span, not that the passage is true or that an answer is
 semantically correct. This first page is document-only; graph execution,
 paraphrase retrieval and browser-triggered inference are not part of this
 workflow.
+
+The narrow generated-answer path currently checks direct English `what` and
+`which` questions and Norwegian `hva`, `hvilken` and `hvilket` questions.
+Location, time and person questions remain source-only because term overlap
+cannot show that a quoted sentence answers those question types.
