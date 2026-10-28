@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Find v2 adds source-witnessed path exploration; the frozen v1 API is unchanged."""
+"""Separately versioned Find UI v2; the frozen v1 adapter and Rust API are unchanged."""
 from pathlib import Path
 from unittest.mock import patch
 
