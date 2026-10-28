@@ -72,18 +72,27 @@ try {
   await until("!document.getElementById('suggestions').hidden");
   const clippingNotices = await evaluate(`(() => {
     const original = suggestions;
+    const clippedFirst = items => items.map((item, index) => index ? item :
+      {...item, candidate:{...item.candidate, texts_clipped:true}});
     suggestions = {...suggestions, entity_candidates_clipped:true, predicate_candidates_clipped:true,
-      property_metadata:{...suggestions.property_metadata, clipped:true}};
+      entity_candidates:clippedFirst(suggestions.entity_candidates),
+      neighborhood_candidates:clippedFirst(suggestions.neighborhood_candidates),
+      property_metadata:{...suggestions.property_metadata, clipped:true,
+        candidates:clippedFirst(suggestions.property_metadata.candidates)}};
     renderSuggestions();
     const en = ['entity-candidates-clipped','predicate-candidates-clipped','metadata-candidates-clipped']
       .map(id => document.getElementById(id).textContent);
     const visible = ['entity-candidates-clipped','predicate-candidates-clipped','metadata-candidates-clipped']
       .map(id => !document.getElementById(id).hidden);
+    const text = ['entity-suggestion-list','neighborhood-suggestion-list','metadata-suggestion-list']
+      .map(id => document.querySelector('#' + id + ' article [role=note]')?.textContent);
     document.getElementById('language').value = 'nb'; translate();
     const nb = ['entity-candidates-clipped','predicate-candidates-clipped','metadata-candidates-clipped']
       .map(id => document.getElementById(id).textContent);
+    const textNb = ['entity-suggestion-list','neighborhood-suggestion-list','metadata-suggestion-list']
+      .map(id => document.querySelector('#' + id + ' article [role=note]')?.textContent);
     suggestions = original; document.getElementById('language').value = 'en'; translate(); renderSuggestions();
-    return {visible, en, nb};
+    return {visible, en, nb, text, textNb};
   })()`);
   assert.deepEqual(clippingNotices.visible, [true, true, true]);
   assert.match(clippingNotices.en[0], /additional candidates are unknown/);
@@ -92,6 +101,9 @@ try {
   assert.match(clippingNotices.nb[0], /flere kandidater er ukjente/);
   assert.match(clippingNotices.nb[1], /flere kandidater er ukjente/);
   assert.match(clippingNotices.nb[2], /flere egenskapskandidater er ukjente/);
+  assert.equal(clippingNotices.text.length, 3);
+  assert.ok(clippingNotices.text.every(text => /source text was clipped or omitted/.test(text)));
+  assert.ok(clippingNotices.textNb.every(text => /kildetekst er avkortet eller utelatt/.test(text)));
   const entitySuggestion = await evaluate("({heading:document.querySelector('#entity-suggestion-list h3').textContent, labelOrigin:document.querySelector('#entity-suggestion-list article p').textContent, text:document.getElementById('entity-suggestion-list').textContent, emptyProperties:!document.getElementById('suggestion-empty').hidden, rawLabel:document.getElementById('entity-suggestion-list').textContent.includes('</script><script>'), scripts:document.querySelectorAll('#entity-suggestion-list script').length, entity:document.getElementById('entity').value, predicate:document.getElementById('predicate').value, direction:document.getElementById('direction').value})");
   assert.equal(entitySuggestion.heading, "University of Tromsø – The Arctic University of Norway");
   assert.match(entitySuggestion.labelOrigin, /Untrusted label text from the selected graph/);

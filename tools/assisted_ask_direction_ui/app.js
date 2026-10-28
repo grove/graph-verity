@@ -8,6 +8,7 @@ const candidateOptions = {entity: new Map(), predicate: new Map()};
 const json = (id, value) => { $(id).textContent = JSON.stringify(value, null, 2); };
 const words = {
   en: {
+    candidateTextsClipped: "Some source text was clipped or omitted; more labels or descriptions may exist.",
     entityCandidatesClipped: "Entity candidates were capped by the retrieval limit; additional candidates are unknown.", predicateCandidatesClipped: "Property candidates were capped by the retrieval limit; additional candidates are unknown.", metadataCandidatesClipped: "Source metadata retrieval was capped; additional property candidates are unknown.",
     twoHopCandidatesTitle: "Source-witnessed two-hop IRI paths", twoHopCandidatesHelp: "Each IRI endpoint is reached through two original directed statements in the selected graph. Traversal order does not indicate question relevance; inspect both statements and their directions.", twoHopCandidatesEmpty: "No additional IRI endpoints were found through two-hop paths.", twoHopCandidatesClipped: "Two-hop path retrieval was incomplete or capped. Missing paths are unknown.", twoHopEvidence: "Two original directed RDF statements and the BM25 seed",
     title: "Select a graph operation", intro: "Choose an entity, relationship and direction. These choices define the query. No language model or question interpretation is used.",
@@ -32,6 +33,7 @@ const words = {
     languageTag: "Language", datatype: "Datatype", iri: "Original IRI", literal: "Original RDF literal", missing: "Original source evidence clipped; inspect the receipt."
   },
   nb: {
+    candidateTextsClipped: "Noe kildetekst er avkortet eller utelatt; det kan finnes flere etiketter eller beskrivelser.",
     entityCandidatesClipped: "Entitetskandidatene ble begrenset av hentingsgrensen; flere kandidater er ukjente.", predicateCandidatesClipped: "Egenskapskandidatene ble begrenset av hentingsgrensen; flere kandidater er ukjente.", metadataCandidatesClipped: "Hentingen av kildemetadata ble begrenset; flere egenskapskandidater er ukjente.",
     twoHopCandidatesTitle: "Kildebevitnede IRI-stier med to kanter", twoHopCandidatesHelp: "Hvert IRI-endepunkt nås gjennom to opprinnelige, rettede utsagn i den valgte grafen. Traverseringsrekkefølgen viser ikke spørsmålsrelevans; se på begge utsagnene og retningene.", twoHopCandidatesEmpty: "Ingen ekstra IRI-endepunkter ble funnet gjennom stier med to kanter.", twoHopCandidatesClipped: "Hentingen av stier med to kanter var ufullstendig eller begrenset. Manglende stier er ukjent.", twoHopEvidence: "To opprinnelige, rettede RDF-utsagn og BM25-frøet",
     title: "Velg en grafoperasjon", intro: "Velg entitet, relasjon og retning. Valgene bestemmer spørringen. Ingen språkmodell eller tolkning av spørsmål brukes.",
@@ -123,7 +125,12 @@ function renderSuggestions(data = suggestions) {
         {entity: item.witness.entity, statement: item.witness.statement, texts: candidate.texts} :
         {texts: candidate.texts, usage: candidate.usage}, null, 2);
     evidence.append(evidenceSummary, evidenceText);
-    article.append(heading, labelOrigin, detail, evidence);
+    article.append(heading, labelOrigin);
+    if (candidate.texts_clipped) {
+      const note = document.createElement("p");
+      note.setAttribute("role", "note"); note.textContent = t("candidateTextsClipped"); article.append(note);
+    }
+    article.append(detail, evidence);
     if (role === "property" && source !== "property_metadata") {
       for (const property of item.shape_properties) {
         const p = document.createElement("p");
