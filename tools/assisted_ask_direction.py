@@ -18,21 +18,44 @@ SHAPE_GUIDANCE_BINARY = ask.ROOT / 'target/debug/shape_guidance'
 SHAPE_FILE = ask.ROOT / 'examples/assisted-ask-direction/demo-shapes/shapes.trig'
 SHAPE_CONFIG = ask.ROOT / 'examples/assisted-ask-direction/demo-shapes/config.json'
 PROPERTY_METADATA = ask.ROOT / 'studies/nl-ask-v1/sources/Q279724.ttl'
+WIKIDATA_METADATA_SNAPSHOT = ask.ROOT / 'data/wikidata/snapshot.nq'
+WIKIDATA_METADATA_MANIFEST = ask.ROOT / 'data/wikidata/manifest.json'
+WIKIDATA_METADATA_GRAPH = 'urn:graph-verity:wikidata:development'
 
 
 class Bundle(ask.Bundle):
     def __init__(self, *args, shape_guidance_binary=SHAPE_GUIDANCE_BINARY,
                  shape_file=SHAPE_FILE, shape_config=SHAPE_CONFIG,
-                 property_metadata=PROPERTY_METADATA, **kwargs):
+                 property_metadata=PROPERTY_METADATA,
+                 wikidata_metadata_snapshot=WIKIDATA_METADATA_SNAPSHOT,
+                 wikidata_metadata_manifest=WIKIDATA_METADATA_MANIFEST, **kwargs):
         binary = Path(shape_guidance_binary)
         self.shape_guidance_binary = binary.resolve(strict=True) if binary.is_file() else None
         self.shape_guidance_binary_sha256 = (
             find.file_digest(self.shape_guidance_binary) if self.shape_guidance_binary else None)
         super().__init__(*args, **kwargs)
         try:
+            manifest_path = Path(wikidata_metadata_manifest).resolve(strict=True)
+            manifest_data = find.read(manifest_path, find.MAX_REQUEST)
+            manifest = json.loads(manifest_data)
+            snapshot_path = Path(wikidata_metadata_snapshot).resolve(strict=True)
+            snapshot_data = find.read(snapshot_path, 16 * 1024 * 1024)
+            snapshot = manifest.get('snapshot', {})
+            if (manifest.get('license') != 'CC0-1.0'
+                    or snapshot.get('file') != snapshot_path.relative_to(ask.ROOT).as_posix()
+                    or snapshot.get('format') != 'nquads'
+                    or snapshot.get('sha256') != find.digest(snapshot_data).removeprefix('sha256:')
+                    or WIKIDATA_METADATA_GRAPH not in manifest.get('graphs', {})):
+                raise ValueError('Wikidata property metadata must match the retained CC0 source manifest')
+            self.originals[manifest_path] = (find.digest(manifest_data), find.MAX_REQUEST)
+            self.wikidata_metadata = dict(
+                source=snapshot['file'], license=manifest['license'],
+                source_graph=WIKIDATA_METADATA_GRAPH,
+                source_sha256=find.digest(snapshot_data), snapshot_id=snapshot['snapshot_id'])
             for index, (source, limit) in enumerate(((shape_file, 16 * 1024 * 1024),
                                                      (shape_config, find.MAX_REQUEST),
-                                                     (property_metadata, 16 * 1024 * 1024))):
+                                                     (property_metadata, 16 * 1024 * 1024),
+                                                     (snapshot_path, 16 * 1024 * 1024))):
                 source = Path(source).resolve(strict=True)
                 data = find.read(source, limit)
                 self.originals[source] = (find.digest(data), limit)
@@ -47,8 +70,11 @@ class Bundle(ask.Bundle):
                         self.shape_config_file = frozen
                         self.shape_metadata = json.loads(data)
                     else:
-                        self.property_metadata_file = frozen
-                        self.property_metadata_sha256 = find.digest(data)
+                        if index == 2:
+                            self.property_metadata_file = frozen
+                            self.property_metadata_sha256 = find.digest(data)
+                        else:
+                            self.property_metadata_snapshot_file = frozen
             if (not isinstance(self.shape_metadata, dict)
                     or self.shape_metadata.get('version') != 1
                     or self.shape_metadata.get('origin') not in ('operator_authored_demo', 'source_published')
@@ -184,7 +210,7 @@ class Bundle(ask.Bundle):
         budget_path.chmod(0o600)
         command = [str(self.shape_guidance_binary), *self.common, str(self.shape_file), 'trig',
                    str(self.shape_config_file), str(self.property_metadata_file),
-                   str(request_path), str(budget_path)]
+                   str(self.property_metadata_snapshot_file), str(request_path), str(budget_path)]
         try:
             with tempfile.TemporaryFile(dir=self.directory) as output, tempfile.TemporaryFile(dir=self.directory) as errors:
                 result = subprocess.run(command, stdin=subprocess.DEVNULL, stdout=output, stderr=errors, timeout=45)
@@ -266,7 +292,8 @@ class Server(ask.Server):
             adapter_sha256=find.file_digest(Path(__file__)),
             shape_guidance_binary_sha256=self.bundle.shape_guidance_binary_sha256,
             property_metadata=dict(source='studies/nl-ask-v1/sources/Q279724.ttl', license='CC0-1.0',
-                                   source_sha256=self.bundle.property_metadata_sha256),
+                                   source_sha256=self.bundle.property_metadata_sha256,
+                                   additional_sources=[self.bundle.wikidata_metadata]),
             shape_guidance=self.bundle.shape_context(),
             assets={route: find.digest(body) for route, (body, _) in self.assets.items()})
 

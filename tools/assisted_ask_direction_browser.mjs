@@ -244,14 +244,20 @@ try {
   assert.equal(norwegianEntitySuggestion.heading, "Universitetet i Tromsø");
   assert.match(norwegianEntitySuggestion.labelOrigin, /Ubetrodd etikett fra den valgte grafen/);
   assert.equal(await evaluate("document.querySelector('#entity-suggestion-list article [data-selection-state=entity]').textContent"), "Valgt entitet");
-  assert.equal(await evaluate("!document.getElementById('metadata-language-note').hidden"), true);
-  assert.match(await evaluate("document.getElementById('metadata-language-note').textContent"), /ingen norsk tekst/);
+  assert.equal(await evaluate("document.getElementById('metadata-language-note').hidden"), true);
 
   await evaluate("(() => { const question=document.getElementById('question'); question.value='P856'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
   await until("!document.getElementById('suggestions').hidden");
   const norwegianFallbackLabel = await evaluate("[...document.querySelectorAll('#metadata-suggestion-list article')].find(article => article.textContent.includes('/P856'))?.textContent");
   assert.match(norwegianFallbackLabel, /Kildeetikett \(en\):/);
   assert.match(norwegianFallbackLabel, /official website/i);
+
+  await evaluate("(() => { const question=document.getElementById('question'); question.value='Hvilket administrativt område er Universitetet i Tromsø knyttet til?'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
+  await until("!document.getElementById('suggestions').hidden");
+  const norwegianPropertyAlias = await evaluate("(() => { const item=[...suggestions.property_metadata.candidates].find(item => item.candidate.iri.endsWith('/P131')); const article=[...document.querySelectorAll('#metadata-suggestion-list article')].find(item => item.textContent.includes('/P131')); return {heading:article?.querySelector('h3').textContent, origin:article?.querySelector('p').textContent, sourceTexts:item?.candidate.texts.filter(text => ['label','alias'].includes(text.field) && text.value.language === 'nb').map(text => text.value.text), provenance:JSON.parse(document.getElementById('property-metadata-provenance').textContent).sources}; })()");
+  assert.ok(norwegianPropertyAlias.sourceTexts.includes(norwegianPropertyAlias.heading), JSON.stringify(norwegianPropertyAlias));
+  assert.match(norwegianPropertyAlias.origin, /Egenskap(?:setikett|salias) fra bevarte kildemetadata; språk: nb/);
+  assert.ok(norwegianPropertyAlias.provenance.some(source => source.source_file === 'data/wikidata/snapshot.nq' && source.source_graph === 'urn:graph-verity:wikidata:development'));
 
   await evaluate("(() => { const question=document.getElementById('question'); question.value='P1448'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
   await until("!document.getElementById('suggestions').hidden");

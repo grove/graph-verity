@@ -88,6 +88,17 @@ class ExplicitDirection(unittest.TestCase):
                            v1.DATA / 'policy.json', v1.DATA / 'scope.json', v1.DATA / 'discovery.json',
                            shape_file=ask.SHAPE_FILE, shape_config=selected_config)
 
+    def test_property_metadata_snapshot_must_match_its_cc0_manifest(self):
+        with tempfile.TemporaryDirectory() as directory:
+            manifest = json.loads(ask.WIKIDATA_METADATA_MANIFEST.read_text())
+            manifest['snapshot']['sha256'] = '0' * 64
+            selected_manifest = Path(directory) / 'manifest.json'
+            selected_manifest.write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(ValueError, 'retained CC0 source manifest'):
+                ask.Bundle(v1.ROOT / 'target/debug/verity', v1.DATA / 'snapshot.nq', 'nquads',
+                           v1.DATA / 'policy.json', v1.DATA / 'scope.json', v1.DATA / 'discovery.json',
+                           wikidata_metadata_manifest=selected_manifest)
+
     def test_session_and_api_require_a_direction(self):
         session = self.result('/api/session', {})
         self.assertEqual(session['version'], 'assisted-ask-v1-direction-catalog')
@@ -151,14 +162,17 @@ class ExplicitDirection(unittest.TestCase):
             results = [self.result(ask.PREFIX + 'suggestions', request) for request in (
                 {'question': 'Which official websites does the University of Tromsø list?', 'language': 'en'},
                 {'question': 'Hvilke offisielle navn har Universitetet i Tromsø?', 'language': 'nb'},
-                {'question': 'P856', 'language': 'en'}, {'question': 'P1448', 'language': 'nb'})]
-        self.assertEqual(suggest.call_count, 4)
+                {'question': 'P856', 'language': 'en'}, {'question': 'P1448', 'language': 'nb'},
+                {'question': 'Hvilket administrativt område er Universitetet i Tromsø knyttet til?',
+                 'language': 'nb'})]
+        self.assertEqual(suggest.call_count, 5)
         run.assert_not_called()
         shape_hash = hashlib.sha256(Path(self.bundle.shape_file).read_bytes()).hexdigest()
+        metadata_manifest = json.loads(ask.WIKIDATA_METADATA_MANIFEST.read_text())
         for result in results:
             self.assertEqual(result['request']['scope'], [v1.GRAPH])
             self.assertIn('BM25', result['score_semantics'])
-            self.assertEqual(result['version'], 'assisted-ask-shape-neighborhood-metadata-suggestions-v4')
+            self.assertEqual(result['version'], 'assisted-ask-shape-neighborhood-metadata-suggestions-v5')
             self.assertIs(type(result['entity_candidates_clipped']), bool)
             self.assertIs(type(result['predicate_candidates_clipped']), bool)
             self.assertIs(type(result['property_metadata']['clipped']), bool)
@@ -171,7 +185,13 @@ class ExplicitDirection(unittest.TestCase):
             self.assertEqual(metadata['data_graph'], v1.GRAPH)
             self.assertRegex(metadata['source_sha256'], r'^sha256:[0-9a-f]{64}$')
             self.assertIn('en', metadata['text_languages'])
-            self.assertFalse({'no', 'nb', 'nn'} & set(metadata['text_languages']))
+            self.assertTrue({'nb', 'nn'} <= set(metadata['text_languages']))
+            source = metadata['sources'][1]
+            self.assertEqual(source['source_file'], 'data/wikidata/snapshot.nq')
+            self.assertEqual(source['license'], 'CC0-1.0')
+            self.assertEqual(source['source_graph'], ask.WIKIDATA_METADATA_GRAPH)
+            self.assertEqual(source['source_sha256'], 'sha256:' + metadata_manifest['snapshot']['sha256'])
+            self.assertEqual(source['snapshot_id'], metadata_manifest['snapshot']['snapshot_id'])
             for item in metadata['candidates']:
                 self.assertEqual(item['candidate']['graph'], v1.GRAPH)
                 self.assertIn(item['candidate']['iri'], item['metadata']['direct_claim_statement'])
@@ -268,6 +288,15 @@ class ExplicitDirection(unittest.TestCase):
         self.assertIn('description', {text['field'] for text in results[2]['property_metadata']['candidates'][0]['candidate']['texts']})
         self.assertEqual(results[3]['property_metadata']['candidates'][0]['candidate']['iri'],
                          v1.PREDICATES['P1448'])
+        norwegian = results[4]['property_metadata']['candidates'][0]
+        self.assertEqual(norwegian['candidate']['iri'], 'http://www.wikidata.org/prop/direct/P131')
+        self.assertEqual(norwegian['candidate']['texts'][0]['value']['language'], 'nb')
+        self.assertTrue(any(text['field'] == 'alias' and text['value']['language'] == 'nb'
+                            for text in norwegian['candidate']['texts']))
+        self.assertTrue(any(ask.WIKIDATA_METADATA_GRAPH in statement
+                            for statement in norwegian['metadata']['source_statements']))
+        self.assertFalse(any('urn:graph-verity:wikidata:transfer' in statement
+                             for statement in norwegian['metadata']['source_statements']))
         self.assertIsNone(self.bundle.pending)
 
     def browser(self):
