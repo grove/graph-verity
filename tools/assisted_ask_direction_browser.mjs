@@ -91,6 +91,8 @@ try {
     const text = ['entity-suggestion-list','neighborhood-suggestion-list','metadata-suggestion-list']
       .map(id => [...document.querySelectorAll('#' + id + ' article [role=note]')].map(note => note.textContent).join(' '));
     const usage = document.querySelector('#entity-suggestion-list article').textContent;
+    const summaryEn = ['two-hop-summary','metadata-summary','neighborhood-summary']
+      .map(id => document.getElementById(id).textContent);
     const operationEn = [...document.querySelectorAll('#neighborhood-entity-suggestion-list article button')]
       .find(button => button.textContent.includes('/prop/direct/P17'))?.textContent;
     document.getElementById('language').value = 'nb'; translate();
@@ -99,10 +101,12 @@ try {
     const textNb = ['entity-suggestion-list','neighborhood-suggestion-list','metadata-suggestion-list']
       .map(id => [...document.querySelectorAll('#' + id + ' article [role=note]')].map(note => note.textContent).join(' '));
     const usageNb = document.querySelector('#entity-suggestion-list article').textContent;
+    const summaryNb = ['two-hop-summary','metadata-summary','neighborhood-summary']
+      .map(id => document.getElementById(id).textContent);
     const operationNb = [...document.querySelectorAll('#neighborhood-entity-suggestion-list article button')]
       .find(button => button.textContent.includes('/prop/direct/P17'))?.textContent;
     suggestions = original; document.getElementById('language').value = 'en'; translate(); renderSuggestions();
-    return {visible, en, nb, text, textNb, usage, usageNb, operationEn, operationNb};
+    return {visible, en, nb, text, textNb, usage, usageNb, summaryEn, summaryNb, operationEn, operationNb};
   })()`);
   assert.deepEqual(clippingNotices.visible, [true, true, true]);
   assert.match(clippingNotices.en[0], /additional candidates are unknown/);
@@ -111,6 +115,8 @@ try {
   assert.match(clippingNotices.nb[0], /flere kandidater er ukjente/);
   assert.match(clippingNotices.nb[1], /flere kandidater er ukjente/);
   assert.match(clippingNotices.nb[2], /flere egenskapskandidater er ukjente/);
+  assert.match(clippingNotices.summaryEn[1], /retrieval clipped; additional results unknown/);
+  assert.match(clippingNotices.summaryNb[1], /hentingen er avkortet; flere treff er ukjente/);
   assert.equal(clippingNotices.text.length, 3);
   assert.ok(clippingNotices.text.every(text => /source text was clipped or omitted/.test(text)));
   assert.ok(clippingNotices.textNb.every(text => /kildetekst er avkortet eller utelatt/.test(text)));
@@ -122,6 +128,15 @@ try {
   assert.match(clippingNotices.usageNb, /Denne bevislisten er begrenset/);
   assert.match(clippingNotices.operationEn, /Select source-witnessed operation.*Reverse/);
   assert.match(clippingNotices.operationNb, /Velg kildebevitnet operasjon.*Bakover/);
+  const secondarySections = await evaluate(`(() => {
+    const ids = ['neighborhood-entities-section','two-hop-section','metadata-section','neighborhood-section'];
+    return ids.map(id => ({open:document.getElementById(id).open, summary:document.querySelector('#' + id + ' > summary').textContent}));
+  })()`);
+  assert.ok(secondarySections.every(section => !section.open));
+  assert.match(secondarySections[0].summary, /\(\d+\)/);
+  assert.match(secondarySections[1].summary, /\(0\)/);
+  await evaluate("['neighborhood-entities-section','two-hop-section','metadata-section','neighborhood-section'].forEach(id => document.querySelector('#' + id + ' > summary').click())");
+  assert.equal(await evaluate("['neighborhood-entities-section','two-hop-section','metadata-section','neighborhood-section'].every(id => document.getElementById(id).open)"), true);
   const entitySuggestion = await evaluate("({heading:document.querySelector('#entity-suggestion-list h3').textContent, labelOrigin:document.querySelector('#entity-suggestion-list article p').textContent, text:document.getElementById('entity-suggestion-list').textContent, emptyProperties:!document.getElementById('suggestion-empty').hidden, rawLabel:document.getElementById('entity-suggestion-list').textContent.includes('</script><script>'), scripts:document.querySelectorAll('#entity-suggestion-list script').length, entity:document.getElementById('entity').value, predicate:document.getElementById('predicate').value, direction:document.getElementById('direction').value})");
   assert.equal(entitySuggestion.heading, "University of Tromsø – The Arctic University of Norway");
   assert.match(entitySuggestion.labelOrigin, /Untrusted label text from the selected graph/);
