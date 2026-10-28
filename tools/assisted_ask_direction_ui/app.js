@@ -9,6 +9,9 @@ const json = (id, value) => { $(id).textContent = JSON.stringify(value, null, 2)
 const words = {
   en: {
     candidateTextsClipped: "Some source text was clipped or omitted; more labels or descriptions may exist.",
+    currentEntityChoice: "Current entity choice",
+    currentPropertyChoice: "Current property choice",
+    currentWitnessedOperation: "The entity, property, and direction match this source-witnessed choice.",
     retrievalIncomplete: "retrieval clipped; additional results unknown",
     outgoingUsageExamples: "Outgoing source statement examples in this packet", incomingUsageExamples: "Incoming source statement examples in this packet", predicateUsageExamples: "Source statement examples using this property in this packet", noUsageExamples: "No examples were returned; absence is unknown.", usageExamplesClipped: "This evidence page is capped; additional source statements may exist.",
     entityCandidatesClipped: "Entity candidates were capped by the retrieval limit; additional candidates are unknown.", predicateCandidatesClipped: "Property candidates were capped by the retrieval limit; additional candidates are unknown.", metadataCandidatesClipped: "Source metadata retrieval was capped; additional property candidates are unknown.",
@@ -37,6 +40,9 @@ const words = {
   },
   nb: {
     candidateTextsClipped: "Noe kildetekst er avkortet eller utelatt; det kan finnes flere etiketter eller beskrivelser.",
+    currentEntityChoice: "Valgt entitet",
+    currentPropertyChoice: "Valgt egenskap",
+    currentWitnessedOperation: "Entitet, egenskap og retning samsvarer med dette kildebevitnede valget.",
     retrievalIncomplete: "hentingen er avkortet; flere treff er ukjente",
     outgoingUsageExamples: "Eksempler på utgående kildeutsagn i denne pakken", incomingUsageExamples: "Eksempler på innkommende kildeutsagn i denne pakken", predicateUsageExamples: "Eksempler på kildeutsagn som bruker denne egenskapen i pakken", noUsageExamples: "Ingen eksempler ble returnert; fravær er ukjent.", usageExamplesClipped: "Denne bevislisten er begrenset; det kan finnes flere kildeutsagn.",
     entityCandidatesClipped: "Entitetskandidatene ble begrenset av hentingsgrensen; flere kandidater er ukjente.", predicateCandidatesClipped: "Egenskapskandidatene ble begrenset av hentingsgrensen; flere kandidater er ukjente.", metadataCandidatesClipped: "Hentingen av kildemetadata ble begrenset; flere egenskapskandidater er ukjente.",
@@ -123,6 +129,12 @@ function renderSuggestions(data = suggestions) {
       `${t("metadataLabelOrigin")}: ${sourceLabel?.value.language || candidate.texts.find(text => text.field === "label")?.value.language || "—"}` :
       sourceLabel ? t("sourceLabel") : interfaceLabel ? t("interfaceLabelOnly") : t("noSourceLabel");
     article.append(heading, labelOrigin);
+    if ($(role === "entity" ? "entity" : "predicate").value === candidate.iri) {
+      const selected = document.createElement("p");
+      selected.dataset.selectionState = role;
+      selected.textContent = t(role === "entity" ? "currentEntityChoice" : "currentPropertyChoice");
+      article.append(selected);
+    }
     detail.textContent = source === "two_hop" ?
       `${candidate.graph}\n${candidate.iri}` : source === "neighborhood_entity" ?
       `${t("bm25SeedRank")}: ${item.witness.entity.rank} · ${candidate.graph}\n${candidate.iri}` :
@@ -180,6 +192,13 @@ function renderSuggestions(data = suggestions) {
     if (role === "entity") for (const operation of item.witnessed_operations || []) {
       const use = document.createElement("button"); use.type = "button";
       use.textContent = `${t("useWitnessedOperation")}: ${operation.predicate} · ${t(operation.direction)}`;
+      if ($("entity").value === candidate.iri && $("predicate").value === operation.predicate &&
+          $("direction").value === operation.direction) {
+        const selected = document.createElement("p");
+        selected.dataset.selectionState = "witnessed-operation";
+        selected.textContent = t("currentWitnessedOperation");
+        article.append(selected);
+      }
       use.addEventListener("click", () => selectWitnessedOperation(item, operation));
       article.append(use);
     }

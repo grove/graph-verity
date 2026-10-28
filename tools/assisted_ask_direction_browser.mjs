@@ -181,6 +181,8 @@ try {
   await evaluate("(() => { const predicate=document.getElementById('predicate'); predicate.value=''; predicate.dispatchEvent(new Event('change')); })()");
   assert.equal(await evaluate("document.getElementById('metadata-language-note').hidden"), true);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+  await evaluate("document.getElementById('suggest').click()");
+  await until("!document.getElementById('suggestions').hidden");
   const neighborhoodSuggestion = await evaluate("({text:document.getElementById('neighborhood-suggestion-list').textContent, count:document.querySelectorAll('#neighborhood-suggestion-list article').length, help:document.querySelector('[data-i18n=neighborhoodHelp]').textContent, clipped:!document.getElementById('neighborhood-clipped').hidden, statement:document.querySelector('#neighborhood-suggestion-list details summary').textContent, provenance:document.getElementById('neighborhood-provenance').textContent})");
   assert.ok(neighborhoodSuggestion.count > 2);
   assert.match(neighborhoodSuggestion.text, /P1448/);
@@ -196,12 +198,14 @@ try {
   assert.match(unshapedProperty, /No supported SHACL guidance for this candidate/);
   await evaluate("document.querySelector('#entity-suggestion-list button').click()");
   assert.equal(await evaluate("document.getElementById('entity').value"), "http://www.wikidata.org/entity/Q279724");
+  assert.equal(await evaluate("document.querySelector('#entity-suggestion-list article [data-selection-state=entity]')?.textContent"), "Current entity choice");
   assert.equal(await evaluate("document.getElementById('predicate').value"), "");
   assert.equal(await evaluate("document.getElementById('direction').value"), "");
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
   await evaluate("[...document.querySelectorAll('#neighborhood-suggestion-list article')].find(article => article.textContent.includes('/P856')).querySelector('button').click()");
   assert.equal(await evaluate("document.getElementById('entity').value"), "http://www.wikidata.org/entity/Q279724");
   assert.equal(await evaluate("document.getElementById('predicate').value"), "http://www.wikidata.org/prop/direct/P856");
+  assert.equal(await evaluate("[...document.querySelectorAll('#neighborhood-suggestion-list article')].find(article => article.textContent.includes('/P856')).querySelector('[data-selection-state=property]').textContent"), "Current property choice");
   assert.equal(await evaluate("document.getElementById('direction').value"), "");
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
   await evaluate("[...document.querySelectorAll('#metadata-suggestion-list article')].find(article => article.textContent.includes('/P856')).querySelector('button').click()");
@@ -233,6 +237,7 @@ try {
   const norwegianEntitySuggestion = await evaluate("({heading:document.querySelector('#entity-suggestion-list h3').textContent, labelOrigin:document.querySelector('#entity-suggestion-list article p').textContent})");
   assert.equal(norwegianEntitySuggestion.heading, "Universitetet i Tromsø");
   assert.match(norwegianEntitySuggestion.labelOrigin, /Ubetrodd etikett fra den valgte grafen/);
+  assert.equal(await evaluate("document.querySelector('#entity-suggestion-list article [data-selection-state=entity]').textContent"), "Valgt entitet");
   assert.equal(await evaluate("!document.getElementById('metadata-language-note').hidden"), true);
   assert.match(await evaluate("document.getElementById('metadata-language-note').textContent"), /ingen norsk tekst/);
 
@@ -315,6 +320,7 @@ try {
   assert.equal(await evaluate("document.getElementById('entity').value"), "http://www.wikidata.org/entity/Q20");
   assert.equal(await evaluate("document.getElementById('predicate').value"), "http://www.wikidata.org/prop/direct/P17");
   assert.equal(await evaluate("document.getElementById('direction').value"), "reverse");
+  assert.equal(await evaluate("document.querySelector('#neighborhood-entity-suggestion-list article [data-selection-state=witnessed-operation]').textContent"), "The entity, property, and direction match this source-witnessed choice.");
   assert.match(await evaluate("document.getElementById('status').textContent"), /Source-witnessed choices filled/);
   assert.equal(requests.filter(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")).length, previewCount);
   await evaluate("document.getElementById('preview').click()");
