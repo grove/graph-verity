@@ -257,7 +257,14 @@ class SupervisedAsk(unittest.TestCase):
             if os.environ.get('REQUIRE_FIND_BROWSER') == '1':
                 self.fail('Headless Chrome and Node required')
             self.skipTest('Headless Chrome / Node unavailable')
-        subprocess.run(['node', str(ask.ROOT / 'tools/supervised_ask_browser.mjs'), chrome, self.server.url], check=True, timeout=120)
+        source = (ask.ROOT / 'tools/supervised_ask_browser.mjs').read_text()
+        readiness = 'await until("!document.getElementById(\'ask\').disabled");'
+        self.assertIn(readiness, source)
+        # The original driver is sealed into Ask Alpha; adapt only this current test copy.
+        script = self.directory / 'supervised_ask_browser.mjs'
+        script.write_text(source.replace(readiness,
+            'await until("document.getElementById(\'ask\') && !document.getElementById(\'ask\').disabled");', 1))
+        subprocess.run(['node', str(script), chrome, self.server.url], check=True, timeout=120)
 
 
 class ReviewMaterials(unittest.TestCase):
