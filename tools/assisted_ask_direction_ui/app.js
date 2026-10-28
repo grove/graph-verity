@@ -28,6 +28,7 @@ const words = {
     useWitnessedOperation: "Select source-witnessed operation", witnessedOperationSelected: "Source-witnessed choices filled. Review them, then preview separately.",
     score: "BM25 score (not probability)", rank: "Rank", pathForward: "Forward SHACL path", pathInverse: "Inverse SHACL path", pathMismatch: "SHACL path direction differs from your selected query direction. The manual query choice remains in force.", noShapeGuidance: "No supported SHACL guidance for this candidate; its retrieval source is shown above.", candidateEvidence: "Untrusted graph text and observed RDF usage evidence", shapeMetadata: "Shape source, license, snapshots, and SHA-256",
     preview: "Preview selected operation separately", review: "Review before approval", staleSuggestionWarning: "These selections came from suggestions retrieved for an earlier question or a different interface language. Re-check the choices and source evidence before approval.", selectionOriginTitle: "Suggestion source and retrieved evidence", selectionOriginHelp: "This records which retrieval path surfaced each explicit choice. Source text is untrusted; this does not prove interpretation or add facts to the operation.", relationForward: "This operation follows the relationship from the selected entity. Approval executes this operation only.", relationReverse: "This operation finds subjects that point to the selected entity. It does not create inverse RDF statements. Approval executes this operation only.",
+    witnessedOperationMismatch: "No displayed source-witnessed choice matches the selected direction. Review the original edge; the preview will run only the direction now selected.",
     unverified: "Original question: unverified and not interpreted. The result answers only the manually selected graph operation.",
     rust: "Authoritative Rust query preview", technical: "Exact plan, authorization, snapshot, source and limits", approve: "Approve this exact operation and run once", cancel: "Cancel",
     results: "Results of the selected operation", evidence: "Original source triples, graph, snapshot, provenance, licenses and receipt", scope: "Authorized local scope and limitations",
@@ -59,6 +60,7 @@ const words = {
     useWitnessedOperation: "Velg kildebevitnet operasjon", witnessedOperationSelected: "Kildebevitnede valg er fylt inn. Se gjennom dem, og forhåndsvis separat.",
     score: "BM25-poengsum (ikke sannsynlighet)", rank: "Rangering", pathForward: "Forover SHACL-sti", pathInverse: "Invertert SHACL-sti", pathMismatch: "SHACL-stiens retning avviker fra den valgte spørringsretningen. Det manuelle spørringsvalget gjelder fortsatt.", noShapeGuidance: "Ingen støttet SHACL-veiledning for denne kandidaten; hentekilden vises ovenfor.", candidateEvidence: "Ubetrodd graftekst og observert RDF-bruksbevis", shapeMetadata: "Formkilde, lisens, øyeblikksbilder og SHA-256",
     preview: "Forhåndsvis valgt operasjon separat", review: "Se gjennom før godkjenning", staleSuggestionWarning: "Disse valgene kom fra forslag hentet for et tidligere spørsmål eller et annet grensesnittspråk. Kontroller valgene og kildebeviset før godkjenning.", selectionOriginTitle: "Forslagskilde og hentet bevis", selectionOriginHelp: "Dette viser hvordan hvert uttrykkelige valg ble hentet. Kildetekst er ubetrodd; dette beviser ikke tolkning eller legger fakta til operasjonen.", relationForward: "Operasjonen følger relasjonen fra den valgte entiteten. Godkjenning kjører kun denne operasjonen.", relationReverse: "Operasjonen finner subjekter som peker på den valgte entiteten. Den oppretter ingen omvendte RDF-utsagn. Godkjenning kjører kun denne operasjonen.",
+    witnessedOperationMismatch: "Ingen viste kildebevitnede valg samsvarer med valgt retning. Se gjennom originalkanten; forhåndsvisningen kjører bare retningen som er valgt nå.",
     unverified: "Originalspørsmål: ubekreftet og ikke tolket. Resultatet gjelder kun den manuelt valgte grafoperasjonen.",
     rust: "Autoritativ forhåndsvisning fra Rust", technical: "Eksakt plan, autorisasjon, øyeblikksbilde, kilde og grenser", approve: "Godkjenn denne eksakte operasjonen og kjør én gang", cancel: "Avbryt",
     results: "Resultater fra valgt operasjon", evidence: "Opprinnelige kildetripler, graf, øyeblikksbilde, proveniens, lisenser og kvittering", scope: "Autorisert lokalt omfang og begrensninger",
@@ -332,6 +334,10 @@ $("preview").addEventListener("click", async () => {
     const request = data.resolved.request;
     $("selection-origin-warning").hidden = !Object.values(selectionOrigins).some(origin => origin?.retrieval_question !== undefined &&
       (origin.retrieval_question !== $("question").value || origin.suggestion_language !== $("language").value));
+    const step = request.template.steps[0];
+    $("selection-origin-witness-warning").hidden = !(
+      selectionOrigins.entity?.source === "source_witnessed_operation" &&
+      !selectionOrigins.entity.witnessed_operations?.some(operation => operation.predicate === step.predicate && operation.direction === step.direction));
     $("operation").textContent = operation(request);
     $("relation").textContent = t(request.template.steps[0].direction === "reverse" ? "relationReverse" : "relationForward");
     $("original").textContent = data.provenance.original_question || t("noQuestion");

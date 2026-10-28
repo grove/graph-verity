@@ -365,6 +365,23 @@ try {
     question: "Which official websites does the University of Tromsø list?",
     language: "en"
   });
+  await evaluate("document.getElementById('cancel').click()");
+  await until("document.getElementById('review').hidden");
+  await evaluate("(() => { const direction=document.getElementById('direction'); direction.value='forward'; direction.dispatchEvent(new Event('change')); document.getElementById('preview').click(); })()");
+  await until("!document.getElementById('review').hidden");
+  assert.equal(await evaluate("document.getElementById('selection-origin-witness-warning').hidden"), false);
+  assert.match(await evaluate("document.getElementById('selection-origin-witness-warning').textContent"), /No displayed source-witnessed choice matches the selected direction/);
+  assert.equal(JSON.parse(await evaluate("document.getElementById('selection-origin-evidence').textContent")).direction.source, "explicit_operator_selection");
+  assert.equal(JSON.parse(requests.findLast(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")).postData).direction, "forward");
+  await evaluate("document.getElementById('cancel').click()");
+  await until("document.getElementById('review').hidden");
+  await evaluate("(() => { const language=document.getElementById('language'); language.value='nb'; language.dispatchEvent(new Event('change')); })()");
+  await evaluate("document.getElementById('preview').click()");
+  await until("!document.getElementById('review').hidden");
+  assert.match(await evaluate("document.getElementById('selection-origin-witness-warning').textContent"), /Ingen viste kildebevitnede valg samsvarer med valgt retning/);
+  await evaluate("document.getElementById('cancel').click()");
+  await until("document.getElementById('review').hidden");
+  await evaluate("(() => { const language=document.getElementById('language'); language.value='en'; language.dispatchEvent(new Event('change')); })()");
   await evaluate("(() => { const question=document.getElementById('question'); question.value='Which cities have sources about the university?'; question.dispatchEvent(new Event('input')); document.getElementById('preview').click(); })()");
   await until("!document.getElementById('review').hidden");
   assert.equal(await evaluate("!document.getElementById('selection-origin-warning').hidden"), true);
