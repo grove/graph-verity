@@ -9,6 +9,7 @@ const json = (id, value) => { $(id).textContent = JSON.stringify(value, null, 2)
 const words = {
   en: {
     candidateTextsClipped: "Some source text was clipped or omitted; more labels or descriptions may exist.",
+    outgoingUsageExamples: "Outgoing source statement examples in this packet", incomingUsageExamples: "Incoming source statement examples in this packet", predicateUsageExamples: "Source statement examples using this property in this packet", noUsageExamples: "No examples were returned; absence is unknown.", usageExamplesClipped: "This evidence page is capped; additional source statements may exist.",
     entityCandidatesClipped: "Entity candidates were capped by the retrieval limit; additional candidates are unknown.", predicateCandidatesClipped: "Property candidates were capped by the retrieval limit; additional candidates are unknown.", metadataCandidatesClipped: "Source metadata retrieval was capped; additional property candidates are unknown.",
     twoHopCandidatesTitle: "Source-witnessed two-hop IRI paths", twoHopCandidatesHelp: "Each IRI endpoint is reached through two original directed statements in the selected graph. Traversal order does not indicate question relevance; inspect both statements and their directions.", twoHopCandidatesEmpty: "No additional IRI endpoints were found through two-hop paths.", twoHopCandidatesClipped: "Two-hop path retrieval was incomplete or capped. Missing paths are unknown.", twoHopEvidence: "Two original directed RDF statements and the BM25 seed",
     title: "Select a graph operation", intro: "Choose an entity, relationship and direction. These choices define the query. No language model or question interpretation is used.",
@@ -34,6 +35,7 @@ const words = {
   },
   nb: {
     candidateTextsClipped: "Noe kildetekst er avkortet eller utelatt; det kan finnes flere etiketter eller beskrivelser.",
+    outgoingUsageExamples: "Eksempler på utgående kildeutsagn i denne pakken", incomingUsageExamples: "Eksempler på innkommende kildeutsagn i denne pakken", predicateUsageExamples: "Eksempler på kildeutsagn som bruker denne egenskapen i pakken", noUsageExamples: "Ingen eksempler ble returnert; fravær er ukjent.", usageExamplesClipped: "Denne bevislisten er begrenset; det kan finnes flere kildeutsagn.",
     entityCandidatesClipped: "Entitetskandidatene ble begrenset av hentingsgrensen; flere kandidater er ukjente.", predicateCandidatesClipped: "Egenskapskandidatene ble begrenset av hentingsgrensen; flere kandidater er ukjente.", metadataCandidatesClipped: "Hentingen av kildemetadata ble begrenset; flere egenskapskandidater er ukjente.",
     twoHopCandidatesTitle: "Kildebevitnede IRI-stier med to kanter", twoHopCandidatesHelp: "Hvert IRI-endepunkt nås gjennom to opprinnelige, rettede utsagn i den valgte grafen. Traverseringsrekkefølgen viser ikke spørsmålsrelevans; se på begge utsagnene og retningene.", twoHopCandidatesEmpty: "Ingen ekstra IRI-endepunkter ble funnet gjennom stier med to kanter.", twoHopCandidatesClipped: "Hentingen av stier med to kanter var ufullstendig eller begrenset. Manglende stier er ukjent.", twoHopEvidence: "To opprinnelige, rettede RDF-utsagn og BM25-frøet",
     title: "Velg en grafoperasjon", intro: "Velg entitet, relasjon og retning. Valgene bestemmer spørringen. Ingen språkmodell eller tolkning av spørsmål brukes.",
@@ -109,12 +111,25 @@ function renderSuggestions(data = suggestions) {
     labelOrigin.textContent = source === "property_metadata" ?
       `${t("metadataLabelOrigin")}: ${sourceLabel?.value.language || candidate.texts.find(text => text.field === "label")?.value.language || "—"}` :
       sourceLabel ? t("sourceLabel") : interfaceLabel ? t("interfaceLabelOnly") : t("noSourceLabel");
+    article.append(heading, labelOrigin);
     detail.textContent = source === "two_hop" ?
       `${candidate.graph}\n${candidate.iri}` : source === "neighborhood_entity" ?
       `${t("bm25SeedRank")}: ${item.witness.entity.rank} · ${candidate.graph}\n${candidate.iri}` :
       source === "neighborhood" ?
         `${t("neighborhoodRank")}: ${item.neighborhood_rank} · ${candidate.graph}\n${candidate.iri}` :
         `${t("rank")} ${item.rank} · ${t("score")}: ${candidate.ranking_score} · ${candidate.graph}\n${candidate.iri}`;
+    if (source === "bm25") for (const page of candidate.usage || []) {
+      const label = ({outgoing: t("outgoingUsageExamples"), incoming: t("incomingUsageExamples"),
+        predicate: t("predicateUsageExamples")})[page.direction];
+      if (!label) continue;
+      const usage = document.createElement("p");
+      usage.textContent = page.evidence.length ? `${label}: ${page.evidence.length}` : `${label}. ${t("noUsageExamples")}`;
+      article.append(usage);
+      if (page.clipped) {
+        const note = document.createElement("p");
+        note.setAttribute("role", "note"); note.textContent = t("usageExamplesClipped"); article.append(note);
+      }
+    }
     const evidenceSummary = document.createElement("summary"), evidenceText = document.createElement("pre");
     evidenceSummary.textContent = source === "two_hop" ? t("twoHopEvidence") :
       source === "property_metadata" ? t("metadataEvidence") :
@@ -125,7 +140,6 @@ function renderSuggestions(data = suggestions) {
         {entity: item.witness.entity, statement: item.witness.statement, texts: candidate.texts} :
         {texts: candidate.texts, usage: candidate.usage}, null, 2);
     evidence.append(evidenceSummary, evidenceText);
-    article.append(heading, labelOrigin);
     if (candidate.texts_clipped) {
       const note = document.createElement("p");
       note.setAttribute("role", "note"); note.textContent = t("candidateTextsClipped"); article.append(note);

@@ -74,8 +74,12 @@ try {
     const original = suggestions;
     const clippedFirst = items => items.map((item, index) => index ? item :
       {...item, candidate:{...item.candidate, texts_clipped:true}});
+    const withUsage = items => items.map((item, index) => index ? item :
+      {...item, candidate:{...item.candidate, usage:[
+        {direction:'outgoing',evidence:[{}],clipped:true}, {direction:'incoming',evidence:[],clipped:false}
+      ]}});
     suggestions = {...suggestions, entity_candidates_clipped:true, predicate_candidates_clipped:true,
-      entity_candidates:clippedFirst(suggestions.entity_candidates),
+      entity_candidates:withUsage(clippedFirst(suggestions.entity_candidates)),
       neighborhood_candidates:clippedFirst(suggestions.neighborhood_candidates),
       property_metadata:{...suggestions.property_metadata, clipped:true,
         candidates:clippedFirst(suggestions.property_metadata.candidates)}};
@@ -85,14 +89,16 @@ try {
     const visible = ['entity-candidates-clipped','predicate-candidates-clipped','metadata-candidates-clipped']
       .map(id => !document.getElementById(id).hidden);
     const text = ['entity-suggestion-list','neighborhood-suggestion-list','metadata-suggestion-list']
-      .map(id => document.querySelector('#' + id + ' article [role=note]')?.textContent);
+      .map(id => [...document.querySelectorAll('#' + id + ' article [role=note]')].map(note => note.textContent).join(' '));
+    const usage = document.querySelector('#entity-suggestion-list article').textContent;
     document.getElementById('language').value = 'nb'; translate();
     const nb = ['entity-candidates-clipped','predicate-candidates-clipped','metadata-candidates-clipped']
       .map(id => document.getElementById(id).textContent);
     const textNb = ['entity-suggestion-list','neighborhood-suggestion-list','metadata-suggestion-list']
-      .map(id => document.querySelector('#' + id + ' article [role=note]')?.textContent);
+      .map(id => [...document.querySelectorAll('#' + id + ' article [role=note]')].map(note => note.textContent).join(' '));
+    const usageNb = document.querySelector('#entity-suggestion-list article').textContent;
     suggestions = original; document.getElementById('language').value = 'en'; translate(); renderSuggestions();
-    return {visible, en, nb, text, textNb};
+    return {visible, en, nb, text, textNb, usage, usageNb};
   })()`);
   assert.deepEqual(clippingNotices.visible, [true, true, true]);
   assert.match(clippingNotices.en[0], /additional candidates are unknown/);
@@ -104,6 +110,12 @@ try {
   assert.equal(clippingNotices.text.length, 3);
   assert.ok(clippingNotices.text.every(text => /source text was clipped or omitted/.test(text)));
   assert.ok(clippingNotices.textNb.every(text => /kildetekst er avkortet eller utelatt/.test(text)));
+  assert.match(clippingNotices.usage, /Outgoing source statement examples in this packet: 1/);
+  assert.match(clippingNotices.usage, /No examples were returned; absence is unknown/);
+  assert.match(clippingNotices.usage, /This evidence page is capped; additional source statements may exist/);
+  assert.match(clippingNotices.usageNb, /Eksempler på utgående kildeutsagn i denne pakken: 1/);
+  assert.match(clippingNotices.usageNb, /Ingen eksempler ble returnert; fravær er ukjent/);
+  assert.match(clippingNotices.usageNb, /Denne bevislisten er begrenset/);
   const entitySuggestion = await evaluate("({heading:document.querySelector('#entity-suggestion-list h3').textContent, labelOrigin:document.querySelector('#entity-suggestion-list article p').textContent, text:document.getElementById('entity-suggestion-list').textContent, emptyProperties:!document.getElementById('suggestion-empty').hidden, rawLabel:document.getElementById('entity-suggestion-list').textContent.includes('</script><script>'), scripts:document.querySelectorAll('#entity-suggestion-list script').length, entity:document.getElementById('entity').value, predicate:document.getElementById('predicate').value, direction:document.getElementById('direction').value})");
   assert.equal(entitySuggestion.heading, "University of Tromsø – The Arctic University of Norway");
   assert.match(entitySuggestion.labelOrigin, /Untrusted label text from the selected graph/);
