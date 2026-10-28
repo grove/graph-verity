@@ -76,6 +76,10 @@
     <p id="relation">The displayed relationship and direction are exactly what will be queried. Approval executes this operation only.</p>
     <p id="original"></p><p class="badge" data-i18n="unverified">Original question: unverified and not interpreted. The result answers only the manually selected graph operation.</p>
     <p id="graph"></p>
+    <details><summary data-i18n="selectionOriginTitle">Suggestion source and retrieved evidence</summary>
+      <p data-i18n="selectionOriginHelp">This records which retrieval path surfaced each explicit choice. It does not prove the question was interpreted or add facts to the operation.</p>
+      <pre id="selection-origin-evidence"></pre>
+    </details>
     <h3 data-i18n="rust">Authoritative Rust query preview</h3><ul id="rust-summary"></ul>
     <details><summary data-i18n="technical">Exact plan, authorization, snapshot, source and limits</summary>
       <pre id="rust-preview"></pre><pre id="sources"></pre>
