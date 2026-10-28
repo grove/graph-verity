@@ -274,6 +274,15 @@ try {
   await until("!document.getElementById('suggestions').hidden");
   await evaluate("(() => { const direction=document.getElementById('direction'); direction.value='reverse'; direction.dispatchEvent(new Event('change')); document.getElementById('preview').click(); })()");
   await until("!document.getElementById('review').hidden");
+  await evaluate("document.querySelector('#review details summary[data-i18n=selectionOriginTitle]').click()");
+  const selectionOrigins = JSON.parse(await evaluate("document.getElementById('selection-origin-evidence').textContent"));
+  assert.equal(selectionOrigins.entity.source, "neighborhood_entity");
+  assert.equal(selectionOrigins.entity.suggestion_language, "nb");
+  assert.equal(selectionOrigins.entity.retrieval_question, "Which official websites does the University of Tromsø list?");
+  assert.ok(selectionOrigins.entity.witness);
+  assert.equal(selectionOrigins.predicate.source, "neighborhood");
+  assert.ok(selectionOrigins.predicate.witness);
+  assert.equal(selectionOrigins.direction.source, "explicit_operator_selection");
   const catalogPreview = requests.findLast(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview"));
   assert.ok(catalogPreview?.postData);
   assert.deepEqual(JSON.parse(catalogPreview.postData), {
@@ -316,6 +325,10 @@ try {
   }
   await preview("nb", "reverse");
   await preview("en", "forward");
+  const manualOrigins = JSON.parse(await evaluate("document.getElementById('selection-origin-evidence').textContent"));
+  assert.equal(manualOrigins.entity.source, "manual_authorized_catalog_selection");
+  assert.equal(manualOrigins.predicate.source, "manual_authorized_catalog_selection");
+  assert.equal(manualOrigins.direction.source, "explicit_operator_selection");
   await evaluate("(() => { for (const id of ['entity','predicate','direction']) { const select=document.getElementById(id); select.value=''; select.dispatchEvent(new Event('change')); } document.getElementById('suggest').click(); })()");
   await until("!document.getElementById('suggestions').hidden");
   const previewCount = requests.filter(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")).length;
@@ -331,6 +344,11 @@ try {
   assert.equal(requests.filter(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")).length, previewCount);
   await evaluate("document.getElementById('preview').click()");
   await until("!document.getElementById('review').hidden");
+  const witnessedOrigins = JSON.parse(await evaluate("document.getElementById('selection-origin-evidence').textContent"));
+  assert.equal(witnessedOrigins.entity.source, "source_witnessed_operation");
+  assert.equal(witnessedOrigins.predicate.source, "source_witnessed_operation");
+  assert.equal(witnessedOrigins.direction.source, "source_witnessed_operation");
+  assert.equal(witnessedOrigins.direction.direction, "reverse");
   const witnessedPreview = requests.findLast(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview"));
   assert.deepEqual(JSON.parse(witnessedPreview.postData), {
     entity: "http://www.wikidata.org/entity/Q20",

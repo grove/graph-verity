@@ -5,6 +5,7 @@ const credential = location.hash.slice(1);
 history.replaceState(null, "", location.pathname);
 let tab, session, approval, suggestions, epoch = 0, timer;
 const candidateOptions = {entity: new Map(), predicate: new Map()};
+const selectionOrigins = {entity: null, predicate: null, direction: null};
 const json = (id, value) => { $(id).textContent = JSON.stringify(value, null, 2); };
 const words = {
   en: {
@@ -26,7 +27,7 @@ const words = {
     sourceLabel: "Untrusted label text from the selected graph", availableSourceLabel: "Source label", selectedLanguageMissing: "No label in the requested language; showing a source label in", interfaceLabelOnly: "Interface label only; no label exists in the selected language.", noSourceLabel: "No label in the selected language; showing the IRI.",
     useWitnessedOperation: "Select source-witnessed operation", witnessedOperationSelected: "Source-witnessed choices filled. Review them, then preview separately.",
     score: "BM25 score (not probability)", rank: "Rank", pathForward: "Forward SHACL path", pathInverse: "Inverse SHACL path", pathMismatch: "SHACL path direction differs from your selected query direction. The manual query choice remains in force.", noShapeGuidance: "No supported SHACL guidance for this candidate; its retrieval source is shown above.", candidateEvidence: "Untrusted graph text and observed RDF usage evidence", shapeMetadata: "Shape source, license, snapshots, and SHA-256",
-    preview: "Preview selected operation separately", review: "Review before approval", relationForward: "This operation follows the relationship from the selected entity. Approval executes this operation only.", relationReverse: "This operation finds subjects that point to the selected entity. It does not create inverse RDF statements. Approval executes this operation only.",
+    preview: "Preview selected operation separately", review: "Review before approval", selectionOriginTitle: "Suggestion source and retrieved evidence", selectionOriginHelp: "This records which retrieval path surfaced each explicit choice. Source text is untrusted; this does not prove interpretation or add facts to the operation.", relationForward: "This operation follows the relationship from the selected entity. Approval executes this operation only.", relationReverse: "This operation finds subjects that point to the selected entity. It does not create inverse RDF statements. Approval executes this operation only.",
     unverified: "Original question: unverified and not interpreted. The result answers only the manually selected graph operation.",
     rust: "Authoritative Rust query preview", technical: "Exact plan, authorization, snapshot, source and limits", approve: "Approve this exact operation and run once", cancel: "Cancel",
     results: "Results of the selected operation", evidence: "Original source triples, graph, snapshot, provenance, licenses and receipt", scope: "Authorized local scope and limitations",
@@ -57,7 +58,7 @@ const words = {
     sourceLabel: "Ubetrodd etikett fra den valgte grafen", availableSourceLabel: "Kildeetikett", selectedLanguageMissing: "Ingen etikett på ønsket språk; viser en kildeetikett på", interfaceLabelOnly: "Kun grensesnittnavn; ingen etikett finnes på valgt språk.", noSourceLabel: "Ingen etikett på valgt språk; viser IRI-en.",
     useWitnessedOperation: "Velg kildebevitnet operasjon", witnessedOperationSelected: "Kildebevitnede valg er fylt inn. Se gjennom dem, og forhåndsvis separat.",
     score: "BM25-poengsum (ikke sannsynlighet)", rank: "Rangering", pathForward: "Forover SHACL-sti", pathInverse: "Invertert SHACL-sti", pathMismatch: "SHACL-stiens retning avviker fra den valgte spørringsretningen. Det manuelle spørringsvalget gjelder fortsatt.", noShapeGuidance: "Ingen støttet SHACL-veiledning for denne kandidaten; hentekilden vises ovenfor.", candidateEvidence: "Ubetrodd graftekst og observert RDF-bruksbevis", shapeMetadata: "Formkilde, lisens, øyeblikksbilder og SHA-256",
-    preview: "Forhåndsvis valgt operasjon separat", review: "Se gjennom før godkjenning", relationForward: "Operasjonen følger relasjonen fra den valgte entiteten. Godkjenning kjører kun denne operasjonen.", relationReverse: "Operasjonen finner subjekter som peker på den valgte entiteten. Den oppretter ingen omvendte RDF-utsagn. Godkjenning kjører kun denne operasjonen.",
+    preview: "Forhåndsvis valgt operasjon separat", review: "Se gjennom før godkjenning", selectionOriginTitle: "Forslagskilde og hentet bevis", selectionOriginHelp: "Dette viser hvordan hvert uttrykkelige valg ble hentet. Kildetekst er ubetrodd; dette beviser ikke tolkning eller legger fakta til operasjonen.", relationForward: "Operasjonen følger relasjonen fra den valgte entiteten. Godkjenning kjører kun denne operasjonen.", relationReverse: "Operasjonen finner subjekter som peker på den valgte entiteten. Den oppretter ingen omvendte RDF-utsagn. Godkjenning kjører kun denne operasjonen.",
     unverified: "Originalspørsmål: ubekreftet og ikke tolket. Resultatet gjelder kun den manuelt valgte grafoperasjonen.",
     rust: "Autoritativ forhåndsvisning fra Rust", technical: "Eksakt plan, autorisasjon, øyeblikksbilde, kilde og grenser", approve: "Godkjenn denne eksakte operasjonen og kjør én gang", cancel: "Avbryt",
     results: "Resultater fra valgt operasjon", evidence: "Opprinnelige kildetripler, graf, øyeblikksbilde, proveniens, lisenser og kvittering", scope: "Autorisert lokalt omfang og begrensninger",
@@ -192,7 +193,7 @@ function renderSuggestions(data = suggestions) {
     }
     if (item.selectable === true) {
       const use = document.createElement("button"); use.type = "button"; use.textContent = t(role === "entity" ? "useEntity" : "useProperty");
-      use.addEventListener("click", () => selectCandidate(role, item));
+      use.addEventListener("click", () => selectCandidate(role, item, source));
       article.append(use);
     } else {
       const p = document.createElement("p"); p.textContent = t("notSelectable"); article.append(p);
@@ -232,9 +233,29 @@ function renderSuggestions(data = suggestions) {
   $("neighborhood-clipped").hidden = !data.neighborhood.clipped;
   $("suggestions").hidden = false;
 }
-function selectCandidate(role, item) {
+function candidateOrigin(item, source) {
+  const origin = {source, candidate_iri: item.candidate.iri, graph: item.candidate.graph,
+    suggestion_language: suggestions?.request.language, retrieval_question: suggestions?.request.question};
+  for (const key of ["rank", "neighborhood_rank", "witness", "metadata"]) {
+    if (item[key] !== undefined) origin[key] = item[key];
+  }
+  if (item.candidate.ranking_score !== undefined) origin.bm25_score = item.candidate.ranking_score;
+  if (item.candidate.texts?.length) origin.source_texts = item.candidate.texts;
+  if (item.candidate.usage?.length) origin.usage = item.candidate.usage;
+  if (item.witnessed_operations?.length) origin.witnessed_operations = item.witnessed_operations;
+  return origin;
+}
+function clearWitnessedOrigin() {
+  if (Object.values(selectionOrigins).some(origin => origin?.source === "source_witnessed_operation")) {
+    selectionOrigins.entity = selectionOrigins.predicate = selectionOrigins.direction = null;
+  }
+}
+function selectCandidate(role, item, source) {
   const candidate = item.candidate;
   const key = role === "entity" ? "entity" : "predicate";
+  clearWitnessedOrigin();
+  selectionOrigins[key] = candidateOrigin(item, source);
+  selectionOrigins.direction = null;
   candidateOptions[key].set(candidate.iri, candidate.texts);
   translate();
   const select = $(role === "entity" ? "entity" : "predicate");
@@ -243,6 +264,11 @@ function selectCandidate(role, item) {
 }
 function selectWitnessedOperation(item, operation) {
   const candidate = item.candidate;
+  const origin = candidateOrigin(item, "source_witnessed_operation");
+  selectionOrigins.entity = origin;
+  selectionOrigins.predicate = {...origin, candidate_iri: operation.predicate, operation};
+  selectionOrigins.direction = {source: "source_witnessed_operation", graph: candidate.graph,
+    predicate_iri: operation.predicate, direction: operation.direction, witness: item.witness};
   candidateOptions.entity.set(candidate.iri, candidate.texts);
   candidateOptions.predicate.set(operation.predicate, candidateOptions.predicate.get(operation.predicate) || []);
   translate();
@@ -310,6 +336,11 @@ $("preview").addEventListener("click", async () => {
     }));
     json("rust-preview", data.resolved.preview);
     json("sources", {graphs: data.sources, shape_guidance: data.provenance.shape_guidance_context});
+    json("selection-origin-evidence", {
+      entity: selectionOrigins.entity || {source: "manual_authorized_catalog_selection", candidate_iri: request.entity},
+      predicate: selectionOrigins.predicate || {source: "manual_authorized_catalog_selection", candidate_iri: request.predicate},
+      direction: selectionOrigins.direction || {source: "explicit_operator_selection", direction: request.template.steps[0].direction}
+    });
     $("expiry").textContent = `${t("lease")} ${Math.floor(data.review_seconds)} ${t("seconds")}`;
     $("review").hidden = false; $("review-heading").focus(); $("approve").disabled = false; $("status").textContent = t("ready");
     timer = setTimeout(() => invalidate(t("expired")), data.review_seconds * 1000);
@@ -347,6 +378,12 @@ $("approve").addEventListener("click", async () => {
 });
 for (const id of ["entity", "predicate", "direction", "language", "question"]) $(id).addEventListener(id === "question" ? "input" : "change", () => {
   invalidate(t("changed"));
+  if ((id === "entity" || id === "predicate") && selectionOrigins[id]?.candidate_iri !== $(id).value) {
+    clearWitnessedOrigin();
+    selectionOrigins[id] = null;
+    selectionOrigins.direction = null;
+  }
+  if (id === "direction" && selectionOrigins.direction?.direction !== $(id).value) selectionOrigins.direction = null;
   if (id === "language" || id === "question") { suggestions = undefined; $("suggestions").hidden = true; }
   if (id === "language") translate(); else selection();
 });
