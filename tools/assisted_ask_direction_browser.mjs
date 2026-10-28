@@ -102,6 +102,16 @@ try {
   assert.match(metadataSuggestion.text, /directClaim/);
   assert.match(metadataSuggestion.provenance, /CC0-1.0/);
   assert.equal(metadataSuggestion.buttons, 1);
+  await evaluate("[...document.querySelectorAll('#metadata-suggestion-list article')].find(article => article.textContent.includes('/P131')).querySelector('button').click()");
+  const englishPropertyOption = await evaluate("document.getElementById('predicate').selectedOptions[0].textContent");
+  assert.match(englishPropertyOption, /located in the administrative territorial entity/);
+  await evaluate("(() => { const language=document.getElementById('language'); language.value='nb'; language.dispatchEvent(new Event('change')); })()");
+  assert.equal(await evaluate("document.getElementById('predicate').selectedOptions[0].textContent"), "http://www.wikidata.org/prop/direct/P131");
+  assert.equal(await evaluate("document.getElementById('suggestions').hidden"), true);
+  await evaluate("(() => { const language=document.getElementById('language'); language.value='en'; language.dispatchEvent(new Event('change')); })()");
+  assert.match(await evaluate("document.getElementById('predicate').selectedOptions[0].textContent"), /located in the administrative territorial entity/);
+  assert.equal(await evaluate("document.getElementById('metadata-language-note').hidden"), true);
+  await evaluate("(() => { const predicate=document.getElementById('predicate'); predicate.value=''; predicate.dispatchEvent(new Event('change')); })()");
   assert.equal(await evaluate("document.getElementById('metadata-language-note').hidden"), true);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
   const neighborhoodSuggestion = await evaluate("({text:document.getElementById('neighborhood-suggestion-list').textContent, count:document.querySelectorAll('#neighborhood-suggestion-list article').length, help:document.querySelector('[data-i18n=neighborhoodHelp]').textContent, clipped:!document.getElementById('neighborhood-clipped').hidden, statement:document.querySelector('#neighborhood-suggestion-list details summary').textContent, provenance:document.getElementById('neighborhood-provenance').textContent})");
@@ -179,7 +189,9 @@ try {
   await evaluate("(() => { const language=document.getElementById('language'); language.value='nb'; language.dispatchEvent(new Event('change')); })()");
   assert.equal(await evaluate("document.getElementById('entity').value"), "http://www.wikidata.org/entity/Q20");
   assert.equal(await evaluate("document.getElementById('predicate').value"), "http://www.wikidata.org/prop/direct/P17");
+  assert.equal(await evaluate("document.getElementById('entity').selectedOptions[0].textContent"), "http://www.wikidata.org/entity/Q20");
   await evaluate("(() => { const language=document.getElementById('language'); language.value='en'; language.dispatchEvent(new Event('change')); })()");
+  assert.equal(await evaluate("document.getElementById('entity').selectedOptions[0].textContent"), "http://www.wikidata.org/entity/Q20");
   await evaluate("document.getElementById('suggest').click()");
   await until("!document.getElementById('suggestions').hidden");
   await evaluate("(() => { const direction=document.getElementById('direction'); direction.value='reverse'; direction.dispatchEvent(new Event('change')); document.getElementById('preview').click(); })()");
