@@ -122,6 +122,7 @@ fn property_metadata_suggestions(
 
     // This isolated index ranks only source metadata already mapped to predicates in the data graph.
     let mut index_bytes = String::new();
+    let mut text_languages = BTreeSet::new();
     for quad in source.iter() {
         let quad =
             quad.map_err(|_| reject("property_metadata", "Unable to read property metadata"))?;
@@ -137,6 +138,9 @@ fn property_metadata_suggestions(
             || !supported_language(literal.language())
         {
             continue;
+        }
+        if let Some(language) = literal.language() {
+            text_languages.insert(language.to_owned());
         }
         let statement = format!("{} {} {} .", quad.subject, quad.predicate, quad.object);
         mapping.source_statements.push(statement);
@@ -155,6 +159,7 @@ fn property_metadata_suggestions(
             "source_sha256": source_hash,
             "source_graph": "Turtle default graph",
             "data_graph": data_graph,
+            "text_languages": [],
             "status": "no_scoped_property_metadata",
             "score_semantics": "BM25 ranking scores are not probabilities or relevance judgments",
             "matches": 0,
@@ -233,6 +238,7 @@ fn property_metadata_suggestions(
         "retrieval_snapshot_id": snapshot.id(),
         "index_revision": index.manifest().index_revision,
         "data_graph": data_graph,
+        "text_languages": text_languages,
         "status": if candidates.is_empty() { "no_match" } else { "ranked" },
         "rules": found.rules,
         "ranking_revision": found.ranking_revision,

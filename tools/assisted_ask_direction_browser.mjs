@@ -96,6 +96,7 @@ try {
   assert.match(metadataSuggestion.text, /directClaim/);
   assert.match(metadataSuggestion.provenance, /CC0-1.0/);
   assert.equal(metadataSuggestion.buttons, 1);
+  assert.equal(await evaluate("document.getElementById('metadata-language-note').hidden"), true);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
   const neighborhoodSuggestion = await evaluate("({text:document.getElementById('neighborhood-suggestion-list').textContent, count:document.querySelectorAll('#neighborhood-suggestion-list article').length, help:document.querySelector('[data-i18n=neighborhoodHelp]').textContent, clipped:!document.getElementById('neighborhood-clipped').hidden, statement:document.querySelector('#neighborhood-suggestion-list details summary').textContent, provenance:document.getElementById('neighborhood-provenance').textContent})");
   assert.ok(neighborhoodSuggestion.count > 2);
@@ -149,6 +150,8 @@ try {
   const norwegianEntitySuggestion = await evaluate("({heading:document.querySelector('#entity-suggestion-list h3').textContent, labelOrigin:document.querySelector('#entity-suggestion-list article p').textContent})");
   assert.equal(norwegianEntitySuggestion.heading, "Universitetet i Tromsø");
   assert.match(norwegianEntitySuggestion.labelOrigin, /Ubetrodd etikett fra den valgte grafen/);
+  assert.equal(await evaluate("!document.getElementById('metadata-language-note').hidden"), true);
+  assert.match(await evaluate("document.getElementById('metadata-language-note').textContent"), /ingen norsk tekst/);
 
   await evaluate("(() => { const question=document.getElementById('question'); question.value='P1448'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
   await until("!document.getElementById('suggestions').hidden");

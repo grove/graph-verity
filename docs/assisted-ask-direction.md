@@ -69,6 +69,11 @@ and rendered as text. Labels are shown only when they match the selected
 language; a localized interface term is marked as interface-only when the graph
 has no matching source label.
 
+Property metadata suggestions also report available text languages. When a
+Norwegian question uses a graph whose retained property metadata has no
+Norwegian text, the interface says so before the candidate list; it does not
+translate labels or imply Norwegian retrieval coverage.
+
 In the retained development snapshot, the natural English question “Which
 official websites does the University of Tromsø list?” and Norwegian question
 “Hvilke offisielle navn har Universitetet i Tromsø?” retrieve entity `Q279724`

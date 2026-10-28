@@ -147,6 +147,8 @@ class ExplicitDirection(unittest.TestCase):
             self.assertEqual(metadata['license'], 'CC0-1.0')
             self.assertEqual(metadata['data_graph'], v1.GRAPH)
             self.assertRegex(metadata['source_sha256'], r'^sha256:[0-9a-f]{64}$')
+            self.assertIn('en', metadata['text_languages'])
+            self.assertFalse({'no', 'nb', 'nn'} & set(metadata['text_languages']))
             for item in metadata['candidates']:
                 self.assertEqual(item['candidate']['graph'], v1.GRAPH)
                 self.assertIn(item['candidate']['iri'], item['metadata']['direct_claim_statement'])
