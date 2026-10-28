@@ -59,15 +59,18 @@ operator-authored and Apache-2.0 licensed, and its source, graph mapping,
 snapshot identifiers and content hash are shown in the interface. It provides
 only `P856` IRI-node and `P1448` language-string hints. These hints are not
 Wikidata statements, validation results or factual claims. A suggestion never
-selects anything. A supported entity or predicate can be added to its selector
-only with an explicit button click; direction remains manual, and suggestion
-selection does not request a preview. The selected shape origin, source/license,
-shape snapshot and hash also travel with the review and result receipt as optional
-guidance context, never as query evidence. Candidates outside the current operation
-are shown without a selection button. Source labels and graph text are untrusted
-and rendered as text. Labels are shown only when they match the selected
-language; a localized interface term is marked as interface-only when the graph
-has no matching source label.
+selects anything. A candidate can be added to its selector only with an explicit
+button click; direction remains manual, and selection does not request a preview.
+The selected shape origin, source/license, shape snapshot and hash also travel
+with the review and result receipt as optional guidance context, never as query
+evidence. A Use button is available only when the exact IRI has the required
+entity or predicate role in the authorized graph; the backend checks that role
+again and Rust independently previews the operation. This admits witnessed
+candidates such as `Q20` and `P17` without expanding the fixed one-graph, one-hop
+operation. Source labels and graph text are untrusted and rendered as text.
+Labels are shown only when they match the selected language; a localized
+interface term is marked as interface-only when the graph has no matching
+source label.
 
 Property metadata suggestions also report available text languages. When a
 Norwegian question uses a graph whose retained property metadata has no
@@ -93,8 +96,10 @@ general retrieval quality.
 The exposed `ask-alpha-v1` packet review found one missing reference entity
 that is present as an endpoint of a stored edge from a BM25 entity seed. The UI
 shows that linked entity and its exact edge in a separate list, without a
-question-relevance rank. Entities outside this demo's Q279724/P856/P1448
-allowlist have no selection button. See
+question-relevance rank. `Q20` and `P17` can be explicitly selected from that
+witnessed edge; a reverse preview from `Q20` with `P17` returns to `Q279724`.
+This is a graph-catalog operation, not a question answer or a change to the
+historical Ask Alpha evaluation. See
 [`ask-alpha-candidate-baseline.md`](ask-alpha-candidate-baseline.md) for the
 60-case descriptive counts and their limits.
 

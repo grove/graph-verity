@@ -92,7 +92,7 @@ try {
   assert.match(nearbyEntity.help, /does not indicate question relevance/);
   assert.match(nearbyEntity.text, /P17/);
   assert.match(nearbyEntity.text, /Q279724/);
-  assert.equal(nearbyEntity.buttons, 0);
+  assert.equal(nearbyEntity.buttons, 1);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
   const metadataSuggestion = await evaluate("(() => { const article=[...document.querySelectorAll('#metadata-suggestion-list article')].find(item => item.textContent.includes('/P856')); return {count:document.querySelectorAll('#metadata-suggestion-list article').length, help:document.querySelector('[data-i18n=metadataCandidatesHelp]').textContent, text:article?.textContent, provenance:document.getElementById('property-metadata-provenance').textContent, buttons:article?.querySelectorAll('button').length ?? 0}; })()");
   assert.ok(metadataSuggestion.count > 0);
@@ -167,6 +167,34 @@ try {
   assert.equal(norwegianSuggestion.selected, "http://www.wikidata.org/prop/direct/P856");
   assert.match(await evaluate("document.getElementById('shape-origin').textContent"), /Operatørforfattede SHACL-demodata.*ikke verifisert/);
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+
+  await evaluate("(() => { const question=document.getElementById('question'); question.value='Which official websites does the University of Tromsø list?'; question.dispatchEvent(new Event('input')); document.getElementById('suggest').click(); })()");
+  await until("!document.getElementById('suggestions').hidden");
+  await evaluate("[...document.querySelectorAll('#neighborhood-entity-suggestion-list article')].find(article => article.textContent.includes('/entity/Q20')).querySelector('button').click()");
+  await evaluate("[...document.querySelectorAll('#neighborhood-suggestion-list article')].find(article => article.textContent.includes('/P17')).querySelector('button').click()");
+  assert.equal(await evaluate("document.getElementById('entity').value"), "http://www.wikidata.org/entity/Q20");
+  assert.equal(await evaluate("document.getElementById('predicate').value"), "http://www.wikidata.org/prop/direct/P17");
+  assert.equal(await evaluate("document.getElementById('direction').value"), "");
+  assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview")), false);
+  await evaluate("(() => { const language=document.getElementById('language'); language.value='nb'; language.dispatchEvent(new Event('change')); })()");
+  assert.equal(await evaluate("document.getElementById('entity').value"), "http://www.wikidata.org/entity/Q20");
+  assert.equal(await evaluate("document.getElementById('predicate').value"), "http://www.wikidata.org/prop/direct/P17");
+  await evaluate("(() => { const language=document.getElementById('language'); language.value='en'; language.dispatchEvent(new Event('change')); })()");
+  await evaluate("document.getElementById('suggest').click()");
+  await until("!document.getElementById('suggestions').hidden");
+  await evaluate("(() => { const direction=document.getElementById('direction'); direction.value='reverse'; direction.dispatchEvent(new Event('change')); document.getElementById('preview').click(); })()");
+  await until("!document.getElementById('review').hidden");
+  const catalogPreview = requests.findLast(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview"));
+  assert.ok(catalogPreview?.postData);
+  assert.deepEqual(JSON.parse(catalogPreview.postData), {
+    entity: "http://www.wikidata.org/entity/Q20",
+    predicate: "http://www.wikidata.org/prop/direct/P17",
+    direction: "reverse",
+    question: "Which official websites does the University of Tromsø list?",
+    language: "en"
+  });
+  await evaluate("document.getElementById('cancel').click()");
+  await until("document.getElementById('review').hidden");
 
   async function select(language, direction) {
     await evaluate(`(() => {
