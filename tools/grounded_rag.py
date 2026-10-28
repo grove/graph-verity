@@ -54,7 +54,7 @@ def build_packet(index: dict, question: str, language: str, limit: int = 3) -> d
     """Construct from the canonical source-verified #119 index, not loose hit JSON."""
     require(language in LANGUAGES, "Unsupported question language")
     require(type(limit) is int and 1 <= limit <= MAX_EVIDENCE, "Invalid evidence limit")
-    result = documents.search_index(index, question, limit)
+    result = documents.search_index(index, question, limit, language)
     require(result["index_sha256"] == index["index_sha256"] and
             result["scope"] == index["payload"]["scope"], "Index mismatch")
     evidence, bytes_used = [], 0
