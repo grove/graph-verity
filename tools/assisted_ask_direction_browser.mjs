@@ -279,6 +279,7 @@ try {
   assert.equal(selectionOrigins.entity.source, "neighborhood_entity");
   assert.equal(selectionOrigins.entity.suggestion_language, "nb");
   assert.equal(selectionOrigins.entity.retrieval_question, "Which official websites does the University of Tromsø list?");
+  assert.equal(await evaluate("!document.getElementById('selection-origin-warning').hidden"), true);
   assert.ok(selectionOrigins.entity.witness);
   assert.equal(selectionOrigins.predicate.source, "neighborhood");
   assert.ok(selectionOrigins.predicate.witness);
@@ -349,6 +350,7 @@ try {
   assert.equal(witnessedOrigins.predicate.source, "source_witnessed_operation");
   assert.equal(witnessedOrigins.direction.source, "source_witnessed_operation");
   assert.equal(witnessedOrigins.direction.direction, "reverse");
+  assert.equal(await evaluate("document.getElementById('selection-origin-warning').hidden"), true);
   const witnessedPreview = requests.findLast(request => request.url.endsWith("/api/assisted-ask-v1-direction/preview"));
   assert.deepEqual(JSON.parse(witnessedPreview.postData), {
     entity: "http://www.wikidata.org/entity/Q20",
@@ -357,9 +359,17 @@ try {
     question: "Which official websites does the University of Tromsø list?",
     language: "en"
   });
+  await evaluate("(() => { const question=document.getElementById('question'); question.value='Which cities have sources about the university?'; question.dispatchEvent(new Event('input')); document.getElementById('preview').click(); })()");
+  await until("!document.getElementById('review').hidden");
+  assert.equal(await evaluate("!document.getElementById('selection-origin-warning').hidden"), true);
+  assert.match(await evaluate("document.getElementById('selection-origin-warning').textContent"), /earlier question or a different interface language/);
+  await evaluate("(() => { const language=document.getElementById('language'); language.value='nb'; language.dispatchEvent(new Event('change')); document.getElementById('preview').click(); })()");
+  await until("!document.getElementById('review').hidden");
+  assert.match(await evaluate("document.getElementById('selection-origin-warning').textContent"), /tidligere spørsmål eller et annet grensesnittspråk/);
   await evaluate("document.getElementById('cancel').click()");
   await until("document.getElementById('review').hidden");
   assert.equal(requests.some(request => request.url.endsWith("/api/assisted-ask-v1-direction/confirm")), false);
+  await evaluate("(() => { const question=document.getElementById('question'); question.value='Which official websites does the University of Tromsø list?'; question.dispatchEvent(new Event('input')); const language=document.getElementById('language'); language.value='en'; language.dispatchEvent(new Event('change')); })()");
   await select("en", "reverse");
   await evaluate("document.getElementById('preview').click()");
   await until("!document.getElementById('review').hidden");
