@@ -55,6 +55,12 @@ const words = {
   }
 };
 const t = key => words[$("language").value][key];
+const selectedSourceLabel = texts => texts.find(text => text.field === "label" &&
+  text.value.language === $("language").value && text.value.text);
+const candidateOption = (iri, texts) => {
+  const label = selectedSourceLabel(texts)?.value.text;
+  return [label ? `${label} — ${iri}` : iri, iri];
+};
 async function api(route, body, keepalive = false) {
   const response = await fetch(route, {method: "POST", headers: {"Content-Type": "application/json",
     Authorization: "Bearer " + credential, "X-Verity-Tab": tab || ""}, body: JSON.stringify(body),
@@ -157,11 +163,9 @@ function renderSuggestions(data = suggestions) {
   $("suggestions").hidden = false;
 }
 function selectCandidate(role, item) {
-  const candidate = item.candidate, sourceLabel = candidate.texts.find(text =>
-    text.field === "label" && text.value.language === suggestions.request.language && text.value.text);
-  const label = sourceLabel?.value.text || candidate.iri;
+  const candidate = item.candidate;
   const key = role === "entity" ? "entity" : "predicate";
-  candidateOptions[key].set(candidate.iri, `${label} — ${candidate.iri}`);
+  candidateOptions[key].set(candidate.iri, candidate.texts);
   translate();
   const select = $(role === "entity" ? "entity" : "predicate");
   select.value = candidate.iri;
@@ -180,9 +184,9 @@ function translate() {
   if (session) {
     const entity = $("entity").value, predicate = $("predicate").value, direction = $("direction").value;
     const entities = [[t("name") + " — Q279724", session.entity], ...[...candidateOptions.entity]
-      .filter(([iri]) => iri !== session.entity).map(([iri, label]) => [label, iri])];
+      .filter(([iri]) => iri !== session.entity).map(([iri, texts]) => candidateOption(iri, texts))];
     const predicates = [...Object.entries(session.predicates).map(([code, iri]) => [t(code), iri]), ...[...candidateOptions.predicate]
-      .filter(([iri]) => !Object.values(session.predicates).includes(iri)).map(([iri, label]) => [label, iri])];
+      .filter(([iri]) => !Object.values(session.predicates).includes(iri)).map(([iri, texts]) => candidateOption(iri, texts))];
     $("entity").replaceChildren(new Option(t("choose"), ""), ...entities.map(([label, iri]) => new Option(label, iri)));
     $("predicate").replaceChildren(new Option(t("choose"), ""), ...predicates.map(([label, iri]) => new Option(label, iri)));
     $("direction").replaceChildren(new Option(t("choose"), ""), ...session.directions.map(value => new Option(t(value), value)));
