@@ -90,8 +90,9 @@ class ExplicitDirection(unittest.TestCase):
 
     def test_session_and_api_require_a_direction(self):
         session = self.result('/api/session', {})
-        self.assertEqual(session['version'], 'assisted-ask-v1-direction')
+        self.assertEqual(session['version'], 'assisted-ask-v1-direction-catalog')
         self.assertEqual(session['directions'], ['forward', 'reverse'])
+        self.assertEqual(session['candidate_selection'], 'explicit_authorized_graph_roles')
         with patch.object(self.bundle, 'ask') as preview:
             for request in [self.choices(direction=None), self.choices(direction='sideways'),
                             {k: v for k, v in self.choices().items() if k != 'direction'}]:
@@ -105,7 +106,7 @@ class ExplicitDirection(unittest.TestCase):
             step = result['resolved']['request']['template']['steps'][0]
             self.assertEqual(step['direction'], direction)
             self.assertEqual(result['provenance']['selected_operation']['template']['steps'][0]['direction'], direction)
-            self.assertEqual(result['provenance']['proposal_origin'], 'manual_structured_selection_v1_explicit_direction')
+            self.assertEqual(result['provenance']['proposal_origin'], 'manual_graph_catalog_selection_v1_explicit_direction')
             shape = result['provenance']['shape_guidance_context']
             self.assertEqual(shape['availability'], 'optional_guidance_only_not_query_evidence')
             self.assertEqual(shape['provenance_status'], 'operator_declared_not_independently_verified')
@@ -124,6 +125,23 @@ class ExplicitDirection(unittest.TestCase):
         self.assertEqual(status, 400)
         self.assertTrue(all(not entry.args[1:] for entry in call.call_args_list))
 
+    def test_catalog_candidates_can_be_previewed_but_unobserved_iris_cannot(self):
+        country = 'http://www.wikidata.org/entity/Q20'
+        country_property = 'http://www.wikidata.org/prop/direct/P17'
+        with patch.object(self.bundle, 'ask', wraps=self.bundle.ask) as preview:
+            result = self.result(ask.PREFIX + 'preview', self.choices(
+                entity=country, predicate=country_property, direction='reverse'))
+            request = result['resolved']['request']
+            self.assertEqual(request['template']['start'], country)
+            self.assertEqual(request['template']['steps'][0]['predicate'], country_property)
+            self.assertEqual(request['template']['steps'][0]['direction'], 'reverse')
+            self.assertEqual(preview.call_count, 1)
+            self.result(ask.PREFIX + 'cancel', {})
+            for invalid in (self.choices(entity='urn:unobserved:entity'),
+                            self.choices(predicate='urn:unobserved:predicate')):
+                self.assertEqual(self.call(ask.PREFIX + 'preview', invalid)[0], 400)
+            self.assertEqual(preview.call_count, 1)
+
     def test_shape_suggestions_are_scoped_and_do_not_execute_or_select(self):
         with patch.object(self.bundle, 'shape_suggestions', wraps=self.bundle.shape_suggestions) as suggest, \
                 patch.object(self.bundle, 'ask') as run:
@@ -141,6 +159,7 @@ class ExplicitDirection(unittest.TestCase):
             self.assertEqual(result['request']['scope'], [v1.GRAPH])
             self.assertIn('BM25', result['score_semantics'])
             self.assertEqual(result['version'], 'assisted-ask-shape-neighborhood-metadata-suggestions-v3')
+            self.assertEqual(result['candidate_selection_version'], 'authorized-graph-role-v1')
             self.assertEqual(result['neighborhood']['version'], 'question-vocabulary-packet-v2-neighborhood')
             metadata = result['property_metadata']
             self.assertEqual(metadata['source_file'], 'studies/nl-ask-v1/sources/Q279724.ttl')
@@ -177,6 +196,7 @@ class ExplicitDirection(unittest.TestCase):
             self.assertIn(v1.PREDICATES['P856'], neighborhood_iris)
             self.assertIn('http://www.wikidata.org/prop/direct/P17', neighborhood_iris)
             neighborhood_by_iri = {item['candidate']['iri']: item for item in result['neighborhood_candidates']}
+            self.assertTrue(neighborhood_by_iri['http://www.wikidata.org/prop/direct/P17']['selectable'])
             self.assertEqual(neighborhood_by_iri[v1.PREDICATES['P1448']]['neighborhood_rank'], 4)
             self.assertEqual(neighborhood_by_iri[v1.PREDICATES['P856']]['neighborhood_rank'], 7)
             for item in result['neighborhood_candidates']:
@@ -194,6 +214,7 @@ class ExplicitDirection(unittest.TestCase):
             self.assertEqual(neighborhood_by_iri['http://www.wikidata.org/prop/direct/P17']['shape_properties'], [])
             neighbor = next(item for item in result['neighborhood_entity_candidates']
                             if item['candidate']['iri'] == 'http://www.wikidata.org/entity/Q20')
+            self.assertTrue(neighbor['selectable'])
             self.assertEqual(neighbor['candidate']['graph'], v1.GRAPH)
             self.assertEqual(neighbor['witness']['entity']['iri'], v1.ENTITY)
             self.assertEqual(neighbor['witness']['entity']['rank'], 1)

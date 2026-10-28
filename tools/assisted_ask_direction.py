@@ -74,9 +74,38 @@ class Bundle(ask.Bundle):
     def assemble(self, entity, predicate, direction='forward'):
         if direction not in ('forward', 'reverse'):
             raise ValueError('Explicit supported direction required')
-        request = super().assemble(entity, predicate)
-        request['template']['steps'][0]['direction'] = direction
-        return request
+        if (self.snapshot != ask.SNAPSHOT or ask.GRAPH not in self.scope
+                or not self.supports_entity(entity) or not self.supports_predicate(predicate)):
+            raise ValueError('Unsupported selection or stale authorized catalog')
+        return dict(version=1, snapshot_id=self.snapshot, scope=[ask.GRAPH],
+                    limit=min(100, self.policy['max_rows']),
+                    template=dict(kind='follow_path', start=entity, steps=[dict(
+                        graph=ask.GRAPH, predicate=predicate, direction=direction)],
+                        filter=None, output='values'))
+
+    def supports_entity(self, iri):
+        return type(iri) is str and 'entity' in self.resource_roles.get(ask.GRAPH, {}).get(iri, [])
+
+    def supports_predicate(self, iri):
+        return (type(iri) is str and 'predicate' in self.resource_roles.get(ask.GRAPH, {}).get(iri, [])
+                and iri in self.catalogs.get(ask.GRAPH, {}).get('profiles', {}).get(ask.GRAPH, {}))
+
+    def mark_selectable(self, response):
+        def mark(items, role):
+            for item in items:
+                candidate = item.get('candidate', {})
+                iri = candidate.get('iri')
+                item['selectable'] = (candidate.get('graph') == ask.GRAPH and
+                                      (self.supports_entity(iri) if role == 'entity'
+                                       else self.supports_predicate(iri)))
+
+        for field in ('entity_candidates', 'neighborhood_entity_candidates', 'two_hop_candidates'):
+            mark(response.get(field, []), 'entity')
+        for field in ('candidates', 'neighborhood_candidates'):
+            mark(response.get(field, []), 'predicate')
+        mark(response.get('property_metadata', {}).get('candidates', []), 'predicate')
+        response['candidate_selection_version'] = 'authorized-graph-role-v1'
+        return response
 
     def resolve(self, proposal, start):
         if type(start) is not int or start != 1:
@@ -94,7 +123,7 @@ class Bundle(ask.Bundle):
                     data_snapshot_id=self.shape_metadata['data_snapshot_id'])
 
     def provenance(self, proposal):
-        return dict(proposal_origin='manual_structured_selection_v1_explicit_direction', inference_performed=False,
+        return dict(proposal_origin='manual_graph_catalog_selection_v1_explicit_direction', inference_performed=False,
                     original_question=proposal['packet']['request']['question'],
                     original_question_status='unverified_user_intent_not_interpreted',
                     language=proposal['packet']['request']['language'],
@@ -138,8 +167,9 @@ class Bundle(ask.Bundle):
             for predicate in ask.PREDICATES.values():
                 for direction in ('forward', 'reverse'):
                     self.assemble(ask.ENTITY, predicate, direction)
-            result.update(version='assisted-ask-v1-direction', directions=['forward', 'reverse'],
-                          runtime='manual_structured_selection',
+            result.update(version='assisted-ask-v1-direction-catalog', directions=['forward', 'reverse'],
+                          candidate_selection='explicit_authorized_graph_roles',
+                          runtime='manual_graph_catalog_selection',
                           runtime_message='INCONCLUSIVE_REVISE. Structured choices only; no question interpretation.')
             return result
         if route == PREFIX + 'suggestions':
@@ -150,7 +180,7 @@ class Bundle(ask.Bundle):
                     or len(request['question'].encode()) > 4096
                     or request['language'] not in ('en', 'nb')):
                 raise ValueError('A non-empty question and supported language are required')
-            return self.shape_suggestions(request['question'], request['language'])
+            return self.mark_selectable(self.shape_suggestions(request['question'], request['language']))
         if route == PREFIX + 'preview':
             bridge.Bundle.api(self, bridge.PREFIX + 'unreview', {}, tab)
             self.proposal = None
@@ -191,8 +221,8 @@ class Server(ask.Server):
             '/style.css': ((ask.ASSETS / 'style.css').read_bytes(), 'text/css'),
         }
         self.bundle.receipt.update(
-            ui_version='assisted-ask-v1-direction-shape-neighborhood-property-metadata',
-            backend='manual-structured-selection-explicit-direction',
+            ui_version='assisted-ask-v1-direction-authorized-catalog-selection',
+            backend='manual-graph-catalog-selection-explicit-direction',
             adapter_sha256=find.file_digest(Path(__file__)),
             shape_guidance_binary_sha256=self.bundle.shape_guidance_binary_sha256,
             property_metadata=dict(source='studies/nl-ask-v1/sources/Q279724.ttl', license='CC0-1.0',
