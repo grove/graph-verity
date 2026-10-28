@@ -567,10 +567,12 @@ fn run() -> Result<()> {
     let neighborhood_value = serde_json::to_value(&neighborhood)?;
     let packet = serde_json::to_value(&packet)?;
     let result = serde_json::json!({
-        "version": "assisted-ask-shape-neighborhood-metadata-suggestions-v3",
+        "version": "assisted-ask-shape-neighborhood-metadata-suggestions-v4",
         "packet_id": packet["packet_id"],
         "request": packet["request"],
         "score_semantics": packet["score_semantics"],
+        "entity_candidates_clipped": packet["entities"]["candidates_clipped"],
+        "predicate_candidates_clipped": packet["predicates"]["candidates_clipped"],
         "entity_candidates": entity_candidates,
         "candidates": candidates,
         "neighborhood": {

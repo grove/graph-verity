@@ -158,7 +158,10 @@ class ExplicitDirection(unittest.TestCase):
         for result in results:
             self.assertEqual(result['request']['scope'], [v1.GRAPH])
             self.assertIn('BM25', result['score_semantics'])
-            self.assertEqual(result['version'], 'assisted-ask-shape-neighborhood-metadata-suggestions-v3')
+            self.assertEqual(result['version'], 'assisted-ask-shape-neighborhood-metadata-suggestions-v4')
+            self.assertIs(type(result['entity_candidates_clipped']), bool)
+            self.assertIs(type(result['predicate_candidates_clipped']), bool)
+            self.assertIs(type(result['property_metadata']['clipped']), bool)
             self.assertEqual(result['candidate_selection_version'], 'authorized-graph-role-v1')
             self.assertEqual(result['neighborhood']['version'], 'question-vocabulary-packet-v2-neighborhood')
             metadata = result['property_metadata']
