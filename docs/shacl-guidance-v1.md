@@ -36,13 +36,17 @@ interpret a question, build a plan, or grant execution authority. #115 still
 needs the user-facing choice/preview flow, real authorized shape selection, and
 separate human review.
 
-The Assisted Ask adapter also keeps BM25 suggestions from the retained
-CC0-1.0 Wikidata property metadata in a separate list. It indexes only labels
-and descriptions whose `wikibase:directClaim` target is already a predicate in
-the selected data graph. The metadata index is retrieval-only: its text and
-mapping are shown with the source file hash, never added to the data snapshot
-or displayed as an observed edge. Norwegian questions can still rank English
-source terms; the adapter does not translate property metadata.
+The Assisted Ask adapter also keeps BM25 suggestions from retained CC0
+Wikidata property metadata in a separate list. It combines the `Q279724.ttl`
+source with `data/wikidata/snapshot.nq`, restricted to the manifest's
+`urn:graph-verity:wikidata:development` graph. The snapshot hash, ID, graph,
+license and source statements remain visible. Only property labels and aliases
+whose `wikibase:directClaim` targets are predicates in the selected data graph
+enter the retrieval index. The index is retrieval-only: its text and mapping
+are never added to the data snapshot or displayed as observed edges. Available
+question-language labels and aliases are prioritized in the bounded candidate
+text; no translations are created, and candidates without matching text retain
+their source-language indication.
 
 This is a standalone crate with its own lockfile. It leaves the frozen core
 source files and root `Cargo.lock` unchanged, preserving historical source

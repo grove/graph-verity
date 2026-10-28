@@ -1,7 +1,7 @@
 #![forbid(unsafe_code)]
 use oxigraph::{
     io::RdfFormat,
-    model::{NamedOrBlankNode, Term},
+    model::{GraphName, NamedOrBlankNode, Term},
     store::Store,
 };
 use sha2::{Digest, Sha256};
@@ -26,9 +26,12 @@ const MAX_RDF_BYTES: usize = 16 * 1024 * 1024;
 const MAX_JSON_BYTES: usize = 2 * 1024 * 1024;
 const MAX_OUTPUT_BYTES: usize = 4 * 1024 * 1024;
 const DIRECT_CLAIM: &str = "http://wikiba.se/ontology#directClaim";
-const PROPERTY_METADATA_GRAPH: &str = "urn:graph-verity:assisted-ask:property-metadata:q279724";
+const PROPERTY_METADATA_GRAPH: &str =
+    "urn:graph-verity:assisted-ask:property-metadata:retained-wikidata";
 const PROPERTY_METADATA_SOURCE: &str = "studies/nl-ask-v1/sources/Q279724.ttl";
-const USAGE: &str = "shape_guidance DATA FORMAT POLICY SCOPE DISCOVERY SHAPES SHAPE_FORMAT SHAPE_CONFIG PROPERTY_METADATA REQUEST BUDGET";
+const PROPERTY_METADATA_SNAPSHOT_GRAPH: &str = "urn:graph-verity:wikidata:development";
+const PROPERTY_METADATA_SNAPSHOT_SOURCE: &str = "data/wikidata/snapshot.nq";
+const USAGE: &str = "shape_guidance DATA FORMAT POLICY SCOPE DISCOVERY SHAPES SHAPE_FORMAT SHAPE_CONFIG PROPERTY_METADATA PROPERTY_METADATA_SNAPSHOT REQUEST BUDGET";
 
 fn json<T: serde::de::DeserializeOwned>(path: &str, limit: usize) -> Result<T> {
     Ok(serde_json::from_slice(&read_limited(path, limit)?)?)
@@ -37,7 +40,16 @@ fn json<T: serde::de::DeserializeOwned>(path: &str, limit: usize) -> Result<T> {
 struct PropertyMapping {
     predicate: String,
     statement: String,
-    source_statements: Vec<String>,
+    direct_claim_statements: BTreeSet<String>,
+    source_statements: BTreeSet<String>,
+}
+
+fn property_metadata_graph_is_allowed(graph: &GraphName) -> bool {
+    match graph {
+        GraphName::DefaultGraph => true,
+        GraphName::NamedNode(graph) => graph.as_str() == PROPERTY_METADATA_SNAPSHOT_GRAPH,
+        GraphName::BlankNode(_) => false,
+    }
 }
 
 fn metadata_text_predicate(predicate: &str) -> bool {
@@ -70,13 +82,39 @@ fn sha256(bytes: &[u8]) -> String {
 
 fn property_metadata_suggestions(
     source_bytes: &[u8],
+    snapshot_bytes: &[u8],
     data_discovery: &DiscoveryIndex,
     data_graph: &str,
     policy: &Policy,
-    question: &str,
+    request: &VocabularyRequest,
     budget: &VocabularyBudget,
 ) -> Result<serde_json::Value> {
     let source_hash = sha256(source_bytes);
+    let snapshot_hash = sha256(snapshot_bytes);
+    let property_snapshot = Snapshot::from_bytes(snapshot_bytes, "nquads")?;
+    let mut revision = Sha256::new();
+    revision.update(b"assisted-ask-property-metadata-v2\0");
+    revision.update(source_hash.as_bytes());
+    revision.update(b"\0");
+    revision.update(snapshot_hash.as_bytes());
+    revision.update(b"\0");
+    revision.update(PROPERTY_METADATA_SNAPSHOT_GRAPH.as_bytes());
+    let index_source_revision = format!("sha256:{:x}", revision.finalize());
+    let sources = serde_json::json!([
+        {
+            "source_file": PROPERTY_METADATA_SOURCE,
+            "license": "CC0-1.0",
+            "source_graph": "Turtle default graph",
+            "source_sha256": source_hash,
+        },
+        {
+            "source_file": PROPERTY_METADATA_SNAPSHOT_SOURCE,
+            "license": "CC0-1.0",
+            "source_graph": PROPERTY_METADATA_SNAPSHOT_GRAPH,
+            "source_sha256": snapshot_hash,
+            "snapshot_id": property_snapshot.id(),
+        }
+    ]);
     let predicates = &data_discovery
         .graphs()
         .get(data_graph)
@@ -92,12 +130,22 @@ fn property_metadata_suggestions(
     source
         .load_from_reader(RdfFormat::Turtle, source_bytes)
         .map_err(|_| reject("property_metadata", "Unable to parse property metadata"))?;
+    source
+        .load_from_reader(RdfFormat::NQuads, snapshot_bytes)
+        .map_err(|_| {
+            reject(
+                "property_metadata",
+                "Unable to parse property metadata snapshot",
+            )
+        })?;
 
     let mut mappings = BTreeMap::new();
     for quad in source.iter() {
         let quad =
             quad.map_err(|_| reject("property_metadata", "Unable to read property metadata"))?;
-        if quad.predicate.as_str() != DIRECT_CLAIM {
+        if !property_metadata_graph_is_allowed(&quad.graph_name)
+            || quad.predicate.as_str() != DIRECT_CLAIM
+        {
             continue;
         }
         let (NamedOrBlankNode::NamedNode(property), Term::NamedNode(predicate)) =
@@ -111,14 +159,22 @@ fn property_metadata_suggestions(
         {
             continue;
         }
-        mappings.insert(
-            property.as_str().to_owned(),
-            PropertyMapping {
+        let statement = quad.to_string();
+        let mapping = mappings
+            .entry(property.as_str().to_owned())
+            .or_insert_with(|| PropertyMapping {
                 predicate: predicate.as_str().to_owned(),
                 statement: format!("{} {} {} .", quad.subject, quad.predicate, quad.object),
-                source_statements: Vec::new(),
-            },
-        );
+                direct_claim_statements: BTreeSet::new(),
+                source_statements: BTreeSet::new(),
+            });
+        if mapping.predicate != predicate.as_str() {
+            return Err(reject(
+                "property_metadata",
+                "Property metadata has conflicting directClaim mappings",
+            ));
+        }
+        mapping.direct_claim_statements.insert(statement);
     }
 
     // This isolated index ranks only source metadata already mapped to predicates in the data graph.
@@ -127,6 +183,9 @@ fn property_metadata_suggestions(
     for quad in source.iter() {
         let quad =
             quad.map_err(|_| reject("property_metadata", "Unable to read property metadata"))?;
+        if !property_metadata_graph_is_allowed(&quad.graph_name) {
+            continue;
+        }
         let (NamedOrBlankNode::NamedNode(property), Term::Literal(literal)) =
             (&quad.subject, &quad.object)
         else {
@@ -143,21 +202,18 @@ fn property_metadata_suggestions(
         if let Some(language) = literal.language() {
             text_languages.insert(language.to_owned());
         }
-        let statement = format!("{} {} {} .", quad.subject, quad.predicate, quad.object);
-        mapping.source_statements.push(statement);
+        mapping.source_statements.insert(quad.to_string());
         index_bytes.push_str(&format!(
             "{} {} {} <{}> .\n",
             quad.subject, quad.predicate, quad.object, PROPERTY_METADATA_GRAPH
         ));
-    }
-    for mapping in mappings.values_mut() {
-        mapping.source_statements.sort();
     }
     if index_bytes.is_empty() {
         return Ok(serde_json::json!({
             "source_file": PROPERTY_METADATA_SOURCE,
             "license": "CC0-1.0",
             "source_sha256": source_hash,
+            "sources": sources,
             "source_graph": "Turtle default graph",
             "data_graph": data_graph,
             "text_languages": [],
@@ -179,17 +235,17 @@ fn property_metadata_suggestions(
         graphs: BTreeMap::from([(
             PROPERTY_METADATA_GRAPH.to_owned(),
             Source {
-                source: PROPERTY_METADATA_SOURCE.to_owned(),
+                source: "retained Wikidata property metadata".to_owned(),
                 license: "CC0-1.0".to_owned(),
-                source_revision: source_hash.clone(),
-                importer_revision: "assisted-ask-property-metadata-index-v1".to_owned(),
+                source_revision: index_source_revision,
+                importer_revision: "assisted-ask-property-metadata-index-v2".to_owned(),
             },
         )]),
     };
     let index = snapshot.build_discovery(&scope, &metadata_policy, &config)?;
     let found = index.find(
         &FindRequest {
-            query: question.to_owned(),
+            query: request.question.clone(),
             scope: scope.clone(),
             role: Some("entity".to_owned()),
             limit: budget.per_role_top_k,
@@ -205,11 +261,17 @@ fn property_metadata_suggestions(
             if !seen.insert(mapping.predicate.clone()) {
                 return None;
             }
-            let texts = hit
+            let mut eligible_texts = hit
                 .document
                 .texts
                 .iter()
                 .filter(|text| text.value.text.len() <= budget.max_text_bytes)
+                .collect::<Vec<_>>();
+            eligible_texts.sort_by_key(|text| {
+                text.value.language.as_deref() != Some(request.language.as_str())
+            });
+            let texts = eligible_texts
+                .into_iter()
                 .take(budget.texts_per_candidate)
                 .collect::<Vec<_>>();
             Some(serde_json::json!({
@@ -225,6 +287,7 @@ fn property_metadata_suggestions(
                 "metadata": {
                     "property_entity": hit.iri,
                     "direct_claim_statement": mapping.statement,
+                    "direct_claim_statements": mapping.direct_claim_statements,
                     "source_statements": mapping.source_statements,
                 }
             }))
@@ -234,6 +297,7 @@ fn property_metadata_suggestions(
         "source_file": PROPERTY_METADATA_SOURCE,
         "license": "CC0-1.0",
         "source_sha256": source_hash,
+        "sources": sources,
         "source_graph": "Turtle default graph",
         "retrieval_graph": PROPERTY_METADATA_GRAPH,
         "retrieval_snapshot_id": snapshot.id(),
@@ -243,7 +307,7 @@ fn property_metadata_suggestions(
         "status": if candidates.is_empty() { "no_match" } else { "ranked" },
         "rules": found.rules,
         "ranking_revision": found.ranking_revision,
-        "score_semantics": "BM25 over CC0 property labels and descriptions; scores are not probabilities or relevance judgments",
+        "score_semantics": "BM25 over retained CC0 property labels, aliases, and descriptions; scores are not probabilities or relevance judgments",
         "matches": candidates.len(),
         "clipped": found.truncated,
         "candidates": candidates
@@ -252,7 +316,7 @@ fn property_metadata_suggestions(
 
 fn run() -> Result<()> {
     let args = env::args().skip(1).collect::<Vec<_>>();
-    if args.len() != 11 {
+    if args.len() != 12 {
         return Err(reject("usage", USAGE));
     }
     let data_bytes = read_limited(&args[0], MAX_RDF_BYTES)?;
@@ -263,8 +327,9 @@ fn run() -> Result<()> {
     let shape_bytes = read_limited(&args[5], MAX_RDF_BYTES)?;
     let shape_config: ShapeConfig = json(&args[7], MAX_JSON_BYTES)?;
     let property_metadata_bytes = read_limited(&args[8], MAX_RDF_BYTES)?;
-    let request: VocabularyRequest = json(&args[9], MAX_JSON_BYTES)?;
-    let budget: VocabularyBudget = json(&args[10], MAX_JSON_BYTES)?;
+    let property_metadata_snapshot_bytes = read_limited(&args[9], MAX_RDF_BYTES)?;
+    let request: VocabularyRequest = json(&args[10], MAX_JSON_BYTES)?;
+    let budget: VocabularyBudget = json(&args[11], MAX_JSON_BYTES)?;
     let mut operator_scope = scope.clone();
     let mut request_scope = request.scope.clone();
     operator_scope.sort();
@@ -284,10 +349,11 @@ fn run() -> Result<()> {
     let packet = data.vocabulary_packet(&discovery, &request, &policy, &budget)?;
     let property_metadata = property_metadata_suggestions(
         &property_metadata_bytes,
+        &property_metadata_snapshot_bytes,
         &discovery,
         &shape_config.data_graph,
         &policy,
-        &request.question,
+        &request,
         &budget,
     )?;
     let guidance = build_shape_guidance(
@@ -567,7 +633,7 @@ fn run() -> Result<()> {
     let neighborhood_value = serde_json::to_value(&neighborhood)?;
     let packet = serde_json::to_value(&packet)?;
     let result = serde_json::json!({
-        "version": "assisted-ask-shape-neighborhood-metadata-suggestions-v4",
+        "version": "assisted-ask-shape-neighborhood-metadata-suggestions-v5",
         "packet_id": packet["packet_id"],
         "request": packet["request"],
         "score_semantics": packet["score_semantics"],

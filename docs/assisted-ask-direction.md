@@ -72,10 +72,30 @@ Labels are shown only when they match the selected language; a localized
 interface term is marked as interface-only when the graph has no matching
 source label.
 
-Property metadata suggestions also report available text languages. When a
-Norwegian question uses a graph whose retained property metadata has no
-Norwegian text, the interface says so before the candidate list; it does not
-translate labels or imply Norwegian retrieval coverage.
+Property metadata suggestions combine the retained `Q279724.ttl` source with
+the existing CC0 Wikidata snapshot, using only its `development` graph. Its
+manifest hash, snapshot ID, source graph and license are shown with the results;
+only property text whose `wikibase:directClaim` target already occurs in the
+selected Ask graph is indexed. Source labels and aliases in the question
+language are prioritized within the bounded candidate text. No terms are
+translated, and each candidate still shows its own source language. The
+supplement supplies Norwegian labels and aliases for `P17`, `P131` and `P571`;
+`P856` and `P1448` remain English-only in the retained property metadata.
+
+A model-free replay captured the same 60 exposed Ask-alpha questions before
+scoring the 29 agent-authored, determinate Wikidata predicate references. With
+the `Q279724.ttl` source alone, reference targets appeared at ranks 1/5/10 as
+follows; adding the already-retained multilingual snapshot changed the counts:
+
+| Language | References | Primary source only, @1 / @5 / @10 | Both sources, @1 / @5 / @10 |
+|---|---:|---:|---:|
+| English | 14 | 11 / 14 / 14 | 10 / 14 / 14 |
+| Norwegian | 15 | 3 / 7 / 7 | 8 / 12 / 12 |
+
+No English target left the top five; two moved down one place, while five
+Norwegian misses entered the top five. These are development-reference
+candidate positions, not human relevance, question understanding or answer
+accuracy. Scores are not probabilities.
 
 In the retained development snapshot, the natural English question “Which
 official websites does the University of Tromsø list?” and Norwegian question
