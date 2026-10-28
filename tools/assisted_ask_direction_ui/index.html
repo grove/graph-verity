@@ -16,7 +16,7 @@
   <label for="direction" data-i18n="direction">Direction</label><select id="direction" disabled></select>
   <p id="selected" class="operation"></p>
   <p data-i18n="contract">Choose forward or reverse direction. No filtering, counting, joins, writes or raw SPARQL.</p>
-  <details><summary data-i18n="optional">Optional original question — unverified user intent</summary>
+  <details id="question-details"><summary data-i18n="optional">Optional original question — unverified user intent</summary>
     <label for="question" data-i18n="question">Original question (not interpreted)</label>
     <textarea id="question" rows="3" maxlength="4096" aria-describedby="intent-warning"></textarea>
     <p id="intent-warning" data-i18n="warning">This text never selects or changes the operation. Requests such as “only English names”, counting or raw SPARQL are unsupported. You may separately select all unfiltered values; that result is not verified as an answer to this question.</p>
