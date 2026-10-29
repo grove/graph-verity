@@ -1,0 +1,4264 @@
+[
+  {
+    "id": "9307ac4a382a9f49-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘head of government’ for Kristiansund Municipality?",
+    "query_group": "edge-6e63cd1772d406467d120a5fc0a32c06cffbf43d1b312547a78f832255b35422",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q109483",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9307ac4a382a9f49-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Kjell Neergaard as the value of the property ‘head of government’?",
+    "query_group": "edge-6e63cd1772d406467d120a5fc0a32c06cffbf43d1b312547a78f832255b35422",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q28718032",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9307ac4a382a9f49-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Kristiansund Municipality to Kjell Neergaard?",
+    "query_group": "edge-6e63cd1772d406467d120a5fc0a32c06cffbf43d1b312547a78f832255b35422",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q109483",
+      "object_iri": "http://www.wikidata.org/entity/Q28718032"
+    }
+  },
+  {
+    "id": "9307ac4a382a9f49-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «regjeringssjef» for Kristiansund?",
+    "query_group": "edge-6e63cd1772d406467d120a5fc0a32c06cffbf43d1b312547a78f832255b35422",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q109483",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9307ac4a382a9f49-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Kjell Neergaard som verdi for egenskapen «regjeringssjef»?",
+    "query_group": "edge-6e63cd1772d406467d120a5fc0a32c06cffbf43d1b312547a78f832255b35422",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q28718032",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9307ac4a382a9f49-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Kristiansund til Kjell Neergaard?",
+    "query_group": "edge-6e63cd1772d406467d120a5fc0a32c06cffbf43d1b312547a78f832255b35422",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q109483",
+      "object_iri": "http://www.wikidata.org/entity/Q28718032"
+    }
+  },
+  {
+    "id": "4dc44ba2921dc9a1-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘capital’ for Måsøy Municipality?",
+    "query_group": "edge-cbb3365ea1f3483360972b8a1c1d6b92a576250df6a09cf3e92b8ffce702a37c",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113697",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "4dc44ba2921dc9a1-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Havøysund as the value of the property ‘capital’?",
+    "query_group": "edge-cbb3365ea1f3483360972b8a1c1d6b92a576250df6a09cf3e92b8ffce702a37c",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q1456622",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "4dc44ba2921dc9a1-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Måsøy Municipality to Havøysund?",
+    "query_group": "edge-cbb3365ea1f3483360972b8a1c1d6b92a576250df6a09cf3e92b8ffce702a37c",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q113697",
+      "object_iri": "http://www.wikidata.org/entity/Q1456622"
+    }
+  },
+  {
+    "id": "4dc44ba2921dc9a1-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «hovedstad» for Måsøy?",
+    "query_group": "edge-cbb3365ea1f3483360972b8a1c1d6b92a576250df6a09cf3e92b8ffce702a37c",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113697",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "4dc44ba2921dc9a1-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Havøysund som verdi for egenskapen «hovedstad»?",
+    "query_group": "edge-cbb3365ea1f3483360972b8a1c1d6b92a576250df6a09cf3e92b8ffce702a37c",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q1456622",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "4dc44ba2921dc9a1-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Måsøy til Havøysund?",
+    "query_group": "edge-cbb3365ea1f3483360972b8a1c1d6b92a576250df6a09cf3e92b8ffce702a37c",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q113697",
+      "object_iri": "http://www.wikidata.org/entity/Q1456622"
+    }
+  },
+  {
+    "id": "dd0139e4c28f224c-forward_one_hop-en",
+    "split": "validation",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘located in the administrative territorial entity’ for GÁLDU Resource Centre for the Rights of Indigenous Peoples?",
+    "query_group": "edge-7f70a8ba21297113e659b118b494dd3b75762f216d49f4e11dbfcac617d83e5e",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q10512265",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dd0139e4c28f224c-reverse_one_hop-en",
+    "split": "validation",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Kautokeino as the value of the property ‘located in the administrative territorial entity’?",
+    "query_group": "edge-7f70a8ba21297113e659b118b494dd3b75762f216d49f4e11dbfcac617d83e5e",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q2653806",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dd0139e4c28f224c-predicate_retrieval-en",
+    "split": "validation",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects GÁLDU Resource Centre for the Rights of Indigenous Peoples to Kautokeino?",
+    "query_group": "edge-7f70a8ba21297113e659b118b494dd3b75762f216d49f4e11dbfcac617d83e5e",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q10512265",
+      "object_iri": "http://www.wikidata.org/entity/Q2653806"
+    }
+  },
+  {
+    "id": "dd0139e4c28f224c-forward_one_hop-no",
+    "split": "validation",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «administrativ enhet» for Gáldu-et Kompetansesenter for Urfolks Rettigheter?",
+    "query_group": "edge-7f70a8ba21297113e659b118b494dd3b75762f216d49f4e11dbfcac617d83e5e",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q10512265",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dd0139e4c28f224c-reverse_one_hop-no",
+    "split": "validation",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Kautokeino som verdi for egenskapen «administrativ enhet»?",
+    "query_group": "edge-7f70a8ba21297113e659b118b494dd3b75762f216d49f4e11dbfcac617d83e5e",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q2653806",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dd0139e4c28f224c-predicate_retrieval-no",
+    "split": "validation",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Gáldu-et Kompetansesenter for Urfolks Rettigheter til Kautokeino?",
+    "query_group": "edge-7f70a8ba21297113e659b118b494dd3b75762f216d49f4e11dbfcac617d83e5e",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q10512265",
+      "object_iri": "http://www.wikidata.org/entity/Q2653806"
+    }
+  },
+  {
+    "id": "ed14a51f81944579-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘twinned administrative body’ for Høyanger Municipality?",
+    "query_group": "edge-0cdafd9eff344e0a257b428236dc2b3b3a05e5e1af23c585ab26d1abdac2ee1d",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113720",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ed14a51f81944579-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Rønne as the value of the property ‘twinned administrative body’?",
+    "query_group": "edge-0cdafd9eff344e0a257b428236dc2b3b3a05e5e1af23c585ab26d1abdac2ee1d",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q690062",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ed14a51f81944579-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Høyanger Municipality to Rønne?",
+    "query_group": "edge-0cdafd9eff344e0a257b428236dc2b3b3a05e5e1af23c585ab26d1abdac2ee1d",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q113720",
+      "object_iri": "http://www.wikidata.org/entity/Q690062"
+    }
+  },
+  {
+    "id": "ed14a51f81944579-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «vennskapsorgan» for Høyanger?",
+    "query_group": "edge-0cdafd9eff344e0a257b428236dc2b3b3a05e5e1af23c585ab26d1abdac2ee1d",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113720",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ed14a51f81944579-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Rønne som verdi for egenskapen «vennskapsorgan»?",
+    "query_group": "edge-0cdafd9eff344e0a257b428236dc2b3b3a05e5e1af23c585ab26d1abdac2ee1d",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q690062",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ed14a51f81944579-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Høyanger til Rønne?",
+    "query_group": "edge-0cdafd9eff344e0a257b428236dc2b3b3a05e5e1af23c585ab26d1abdac2ee1d",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q113720",
+      "object_iri": "http://www.wikidata.org/entity/Q690062"
+    }
+  },
+  {
+    "id": "6296c6876275db72-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘twinned administrative body’ for Røros Municipality?",
+    "query_group": "edge-428a5769ac271c96500d278ab07b3b635a21350534586b1fc7ec469b296570a5",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q108999",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "6296c6876275db72-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Hamina as the value of the property ‘twinned administrative body’?",
+    "query_group": "edge-428a5769ac271c96500d278ab07b3b635a21350534586b1fc7ec469b296570a5",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q367780",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "6296c6876275db72-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Røros Municipality to Hamina?",
+    "query_group": "edge-428a5769ac271c96500d278ab07b3b635a21350534586b1fc7ec469b296570a5",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q108999",
+      "object_iri": "http://www.wikidata.org/entity/Q367780"
+    }
+  },
+  {
+    "id": "6296c6876275db72-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «vennskapsorgan» for Røros?",
+    "query_group": "edge-428a5769ac271c96500d278ab07b3b635a21350534586b1fc7ec469b296570a5",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q108999",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "6296c6876275db72-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Fredrikshamn som verdi for egenskapen «vennskapsorgan»?",
+    "query_group": "edge-428a5769ac271c96500d278ab07b3b635a21350534586b1fc7ec469b296570a5",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q367780",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "6296c6876275db72-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Røros til Fredrikshamn?",
+    "query_group": "edge-428a5769ac271c96500d278ab07b3b635a21350534586b1fc7ec469b296570a5",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q108999",
+      "object_iri": "http://www.wikidata.org/entity/Q367780"
+    }
+  },
+  {
+    "id": "82a8d11c1b4d9f4a-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘capital’ for Røros Municipality?",
+    "query_group": "edge-f0d2b52751f993e67b12d1ae479b4f86c6c1120b344811e15847ac4225b773dd",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q108999",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "82a8d11c1b4d9f4a-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Røros as the value of the property ‘capital’?",
+    "query_group": "edge-f0d2b52751f993e67b12d1ae479b4f86c6c1120b344811e15847ac4225b773dd",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q10428572",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "82a8d11c1b4d9f4a-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Røros Municipality to Røros?",
+    "query_group": "edge-f0d2b52751f993e67b12d1ae479b4f86c6c1120b344811e15847ac4225b773dd",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q108999",
+      "object_iri": "http://www.wikidata.org/entity/Q10428572"
+    }
+  },
+  {
+    "id": "82a8d11c1b4d9f4a-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «hovedstad» for Røros?",
+    "query_group": "edge-f0d2b52751f993e67b12d1ae479b4f86c6c1120b344811e15847ac4225b773dd",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q108999",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "82a8d11c1b4d9f4a-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Røros som verdi for egenskapen «hovedstad»?",
+    "query_group": "edge-f0d2b52751f993e67b12d1ae479b4f86c6c1120b344811e15847ac4225b773dd",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q10428572",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "82a8d11c1b4d9f4a-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Røros til Røros?",
+    "query_group": "edge-f0d2b52751f993e67b12d1ae479b4f86c6c1120b344811e15847ac4225b773dd",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q108999",
+      "object_iri": "http://www.wikidata.org/entity/Q10428572"
+    }
+  },
+  {
+    "id": "3cb61ac66288375d-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘capital’ for Molde Municipality?",
+    "query_group": "edge-8e71f648ae7bbc5b3218164a6bf0fa09e54bfe11f93739113b7817d3b7dac03e",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q104095",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "3cb61ac66288375d-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Molde as the value of the property ‘capital’?",
+    "query_group": "edge-8e71f648ae7bbc5b3218164a6bf0fa09e54bfe11f93739113b7817d3b7dac03e",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q10587563",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "3cb61ac66288375d-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Molde Municipality to Molde?",
+    "query_group": "edge-8e71f648ae7bbc5b3218164a6bf0fa09e54bfe11f93739113b7817d3b7dac03e",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q104095",
+      "object_iri": "http://www.wikidata.org/entity/Q10587563"
+    }
+  },
+  {
+    "id": "3cb61ac66288375d-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «hovedstad» for Molde?",
+    "query_group": "edge-8e71f648ae7bbc5b3218164a6bf0fa09e54bfe11f93739113b7817d3b7dac03e",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q104095",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "3cb61ac66288375d-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Molde som verdi for egenskapen «hovedstad»?",
+    "query_group": "edge-8e71f648ae7bbc5b3218164a6bf0fa09e54bfe11f93739113b7817d3b7dac03e",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q10587563",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "3cb61ac66288375d-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Molde til Molde?",
+    "query_group": "edge-8e71f648ae7bbc5b3218164a6bf0fa09e54bfe11f93739113b7817d3b7dac03e",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q104095",
+      "object_iri": "http://www.wikidata.org/entity/Q10587563"
+    }
+  },
+  {
+    "id": "d97b774ea41ff798-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘headquarters location’ for Finnmark arbeiderparti?",
+    "query_group": "edge-350cd96bbb597bb644c8384f225612e090c1fc46a511851825a5bac4d43f8728",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11968949",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d97b774ea41ff798-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Vadsø as the value of the property ‘headquarters location’?",
+    "query_group": "edge-350cd96bbb597bb644c8384f225612e090c1fc46a511851825a5bac4d43f8728",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q104379",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d97b774ea41ff798-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Finnmark arbeiderparti to Vadsø?",
+    "query_group": "edge-350cd96bbb597bb644c8384f225612e090c1fc46a511851825a5bac4d43f8728",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11968949",
+      "object_iri": "http://www.wikidata.org/entity/Q104379"
+    }
+  },
+  {
+    "id": "d97b774ea41ff798-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «hovedkontor» for Finnmark Arbeiderparti?",
+    "query_group": "edge-350cd96bbb597bb644c8384f225612e090c1fc46a511851825a5bac4d43f8728",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11968949",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d97b774ea41ff798-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Vadsø som verdi for egenskapen «hovedkontor»?",
+    "query_group": "edge-350cd96bbb597bb644c8384f225612e090c1fc46a511851825a5bac4d43f8728",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q104379",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d97b774ea41ff798-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Finnmark Arbeiderparti til Vadsø?",
+    "query_group": "edge-350cd96bbb597bb644c8384f225612e090c1fc46a511851825a5bac4d43f8728",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11968949",
+      "object_iri": "http://www.wikidata.org/entity/Q104379"
+    }
+  },
+  {
+    "id": "4815158b7babca1d-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘capital’ for Namsos Municipality?",
+    "query_group": "edge-25bb205cb74cfd666e4b885fec32e5453abbd66e23d11c495a1015993c1b220a",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q111039",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "4815158b7babca1d-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Namsos as the value of the property ‘capital’?",
+    "query_group": "edge-25bb205cb74cfd666e4b885fec32e5453abbd66e23d11c495a1015993c1b220a",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q6962086",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "4815158b7babca1d-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Namsos Municipality to Namsos?",
+    "query_group": "edge-25bb205cb74cfd666e4b885fec32e5453abbd66e23d11c495a1015993c1b220a",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q111039",
+      "object_iri": "http://www.wikidata.org/entity/Q6962086"
+    }
+  },
+  {
+    "id": "4815158b7babca1d-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «hovedstad» for Namsos?",
+    "query_group": "edge-25bb205cb74cfd666e4b885fec32e5453abbd66e23d11c495a1015993c1b220a",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q111039",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "4815158b7babca1d-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Namsos som verdi for egenskapen «hovedstad»?",
+    "query_group": "edge-25bb205cb74cfd666e4b885fec32e5453abbd66e23d11c495a1015993c1b220a",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q6962086",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "4815158b7babca1d-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Namsos til Namsos?",
+    "query_group": "edge-25bb205cb74cfd666e4b885fec32e5453abbd66e23d11c495a1015993c1b220a",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q111039",
+      "object_iri": "http://www.wikidata.org/entity/Q6962086"
+    }
+  },
+  {
+    "id": "d7d3c56e0b81e9da-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘head of government’ for Røros Municipality?",
+    "query_group": "edge-75e5c140df79435406ee00a567e047d2a021856074c19e5483f61dcf376b79e9",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q108999",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d7d3c56e0b81e9da-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Isak Veierud Busch as the value of the property ‘head of government’?",
+    "query_group": "edge-75e5c140df79435406ee00a567e047d2a021856074c19e5483f61dcf376b79e9",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q69464300",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d7d3c56e0b81e9da-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Røros Municipality to Isak Veierud Busch?",
+    "query_group": "edge-75e5c140df79435406ee00a567e047d2a021856074c19e5483f61dcf376b79e9",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q108999",
+      "object_iri": "http://www.wikidata.org/entity/Q69464300"
+    }
+  },
+  {
+    "id": "d7d3c56e0b81e9da-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «regjeringssjef» for Røros?",
+    "query_group": "edge-75e5c140df79435406ee00a567e047d2a021856074c19e5483f61dcf376b79e9",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q108999",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d7d3c56e0b81e9da-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Isak Veierud Busch som verdi for egenskapen «regjeringssjef»?",
+    "query_group": "edge-75e5c140df79435406ee00a567e047d2a021856074c19e5483f61dcf376b79e9",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q69464300",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d7d3c56e0b81e9da-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Røros til Isak Veierud Busch?",
+    "query_group": "edge-75e5c140df79435406ee00a567e047d2a021856074c19e5483f61dcf376b79e9",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q108999",
+      "object_iri": "http://www.wikidata.org/entity/Q69464300"
+    }
+  },
+  {
+    "id": "0075901eaa8a6029-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘head of government’ for Øvre Eiker?",
+    "query_group": "edge-6d75809eb07231ef3c4644375d51a2c040dd2a4d239942d52fec9a2fdb1defad",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q110311",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0075901eaa8a6029-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Knut Kvale as the value of the property ‘head of government’?",
+    "query_group": "edge-6d75809eb07231ef3c4644375d51a2c040dd2a4d239942d52fec9a2fdb1defad",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q95977689",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0075901eaa8a6029-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Øvre Eiker to Knut Kvale?",
+    "query_group": "edge-6d75809eb07231ef3c4644375d51a2c040dd2a4d239942d52fec9a2fdb1defad",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q110311",
+      "object_iri": "http://www.wikidata.org/entity/Q95977689"
+    }
+  },
+  {
+    "id": "0075901eaa8a6029-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «regjeringssjef» for Øvre Eiker?",
+    "query_group": "edge-6d75809eb07231ef3c4644375d51a2c040dd2a4d239942d52fec9a2fdb1defad",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q110311",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0075901eaa8a6029-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Knut Kvale som verdi for egenskapen «regjeringssjef»?",
+    "query_group": "edge-6d75809eb07231ef3c4644375d51a2c040dd2a4d239942d52fec9a2fdb1defad",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q95977689",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0075901eaa8a6029-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Øvre Eiker til Knut Kvale?",
+    "query_group": "edge-6d75809eb07231ef3c4644375d51a2c040dd2a4d239942d52fec9a2fdb1defad",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q110311",
+      "object_iri": "http://www.wikidata.org/entity/Q95977689"
+    }
+  },
+  {
+    "id": "728028e9f2be9677-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘located in the administrative territorial entity’ for IL Brodd?",
+    "query_group": "edge-a6dc4326732f3fbda6fd695991fd49561639f0fcf57863b04a442f2c08645003",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11962334",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "728028e9f2be9677-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Gloppen Municipality as the value of the property ‘located in the administrative territorial entity’?",
+    "query_group": "edge-a6dc4326732f3fbda6fd695991fd49561639f0fcf57863b04a442f2c08645003",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q383492",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "728028e9f2be9677-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects IL Brodd to Gloppen Municipality?",
+    "query_group": "edge-a6dc4326732f3fbda6fd695991fd49561639f0fcf57863b04a442f2c08645003",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11962334",
+      "object_iri": "http://www.wikidata.org/entity/Q383492"
+    }
+  },
+  {
+    "id": "728028e9f2be9677-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «administrativ enhet» for Idrettslaget Brodd?",
+    "query_group": "edge-a6dc4326732f3fbda6fd695991fd49561639f0fcf57863b04a442f2c08645003",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11962334",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "728028e9f2be9677-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Gloppen som verdi for egenskapen «administrativ enhet»?",
+    "query_group": "edge-a6dc4326732f3fbda6fd695991fd49561639f0fcf57863b04a442f2c08645003",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q383492",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "728028e9f2be9677-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Idrettslaget Brodd til Gloppen?",
+    "query_group": "edge-a6dc4326732f3fbda6fd695991fd49561639f0fcf57863b04a442f2c08645003",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11962334",
+      "object_iri": "http://www.wikidata.org/entity/Q383492"
+    }
+  },
+  {
+    "id": "fe7134876b544dc9-forward_one_hop-en",
+    "split": "test",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘head of government’ for Narvik Municipality?",
+    "query_group": "edge-a691656d0d264fb7fe3c9ba457e39fe66a1d41a051108848d33ae7d2623ba2da",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q1215658",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fe7134876b544dc9-reverse_one_hop-en",
+    "split": "test",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Rune Edvardsen as the value of the property ‘head of government’?",
+    "query_group": "edge-a691656d0d264fb7fe3c9ba457e39fe66a1d41a051108848d33ae7d2623ba2da",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q28718397",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fe7134876b544dc9-predicate_retrieval-en",
+    "split": "test",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Narvik Municipality to Rune Edvardsen?",
+    "query_group": "edge-a691656d0d264fb7fe3c9ba457e39fe66a1d41a051108848d33ae7d2623ba2da",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q1215658",
+      "object_iri": "http://www.wikidata.org/entity/Q28718397"
+    }
+  },
+  {
+    "id": "fe7134876b544dc9-forward_one_hop-no",
+    "split": "test",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «regjeringssjef» for Narvik?",
+    "query_group": "edge-a691656d0d264fb7fe3c9ba457e39fe66a1d41a051108848d33ae7d2623ba2da",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q1215658",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fe7134876b544dc9-reverse_one_hop-no",
+    "split": "test",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Rune Edvardsen som verdi for egenskapen «regjeringssjef»?",
+    "query_group": "edge-a691656d0d264fb7fe3c9ba457e39fe66a1d41a051108848d33ae7d2623ba2da",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q28718397",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P6",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "fe7134876b544dc9-predicate_retrieval-no",
+    "split": "test",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Narvik til Rune Edvardsen?",
+    "query_group": "edge-a691656d0d264fb7fe3c9ba457e39fe66a1d41a051108848d33ae7d2623ba2da",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q1215658",
+      "object_iri": "http://www.wikidata.org/entity/Q28718397"
+    }
+  },
+  {
+    "id": "f88c65494d6469fd-forward_one_hop-en",
+    "split": "validation",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘member of’ for Norsk Forening for Automatisering?",
+    "query_group": "edge-f1e3348c3f2df5ae9cc4bb7bc2d82126cbd3701bae6e952f475d517b822299f1",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11992297",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "f88c65494d6469fd-reverse_one_hop-en",
+    "split": "validation",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has International Federation of Robotics as the value of the property ‘member of’?",
+    "query_group": "edge-f1e3348c3f2df5ae9cc4bb7bc2d82126cbd3701bae6e952f475d517b822299f1",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q111548",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "f88c65494d6469fd-predicate_retrieval-en",
+    "split": "validation",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Norsk Forening for Automatisering to International Federation of Robotics?",
+    "query_group": "edge-f1e3348c3f2df5ae9cc4bb7bc2d82126cbd3701bae6e952f475d517b822299f1",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11992297",
+      "object_iri": "http://www.wikidata.org/entity/Q111548"
+    }
+  },
+  {
+    "id": "f88c65494d6469fd-forward_one_hop-no",
+    "split": "validation",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «medlem av» for Norsk Forening for Elektro og Automatisering?",
+    "query_group": "edge-f1e3348c3f2df5ae9cc4bb7bc2d82126cbd3701bae6e952f475d517b822299f1",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11992297",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "f88c65494d6469fd-reverse_one_hop-no",
+    "split": "validation",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har International Federation of Robotics som verdi for egenskapen «medlem av»?",
+    "query_group": "edge-f1e3348c3f2df5ae9cc4bb7bc2d82126cbd3701bae6e952f475d517b822299f1",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q111548",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "f88c65494d6469fd-predicate_retrieval-no",
+    "split": "validation",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Norsk Forening for Elektro og Automatisering til International Federation of Robotics?",
+    "query_group": "edge-f1e3348c3f2df5ae9cc4bb7bc2d82126cbd3701bae6e952f475d517b822299f1",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11992297",
+      "object_iri": "http://www.wikidata.org/entity/Q111548"
+    }
+  },
+  {
+    "id": "dff4ded161025c28-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘headquarters location’ for IL Brodd?",
+    "query_group": "edge-45acf88ff984c9444c26a8c079af21a96b0ec60b5a75142705a7a0675b4ac7b8",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11962334",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dff4ded161025c28-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Sandane as the value of the property ‘headquarters location’?",
+    "query_group": "edge-45acf88ff984c9444c26a8c079af21a96b0ec60b5a75142705a7a0675b4ac7b8",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q1026464",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dff4ded161025c28-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects IL Brodd to Sandane?",
+    "query_group": "edge-45acf88ff984c9444c26a8c079af21a96b0ec60b5a75142705a7a0675b4ac7b8",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11962334",
+      "object_iri": "http://www.wikidata.org/entity/Q1026464"
+    }
+  },
+  {
+    "id": "dff4ded161025c28-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «hovedkontor» for Idrettslaget Brodd?",
+    "query_group": "edge-45acf88ff984c9444c26a8c079af21a96b0ec60b5a75142705a7a0675b4ac7b8",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11962334",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dff4ded161025c28-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Sandane som verdi for egenskapen «hovedkontor»?",
+    "query_group": "edge-45acf88ff984c9444c26a8c079af21a96b0ec60b5a75142705a7a0675b4ac7b8",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q1026464",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "dff4ded161025c28-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Idrettslaget Brodd til Sandane?",
+    "query_group": "edge-45acf88ff984c9444c26a8c079af21a96b0ec60b5a75142705a7a0675b4ac7b8",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11962334",
+      "object_iri": "http://www.wikidata.org/entity/Q1026464"
+    }
+  },
+  {
+    "id": "37700b68ccbbf985-forward_one_hop-en",
+    "split": "validation",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘twinned administrative body’ for Sandefjord?",
+    "query_group": "edge-e0ca3a5b4bc3aba7ef29504c39a2d511a523c641b110e3e4f61f83f7d10cf659",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q109005",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "37700b68ccbbf985-reverse_one_hop-en",
+    "split": "validation",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Varberg Municipality as the value of the property ‘twinned administrative body’?",
+    "query_group": "edge-e0ca3a5b4bc3aba7ef29504c39a2d511a523c641b110e3e4f61f83f7d10cf659",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q179180",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "37700b68ccbbf985-predicate_retrieval-en",
+    "split": "validation",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Sandefjord to Varberg Municipality?",
+    "query_group": "edge-e0ca3a5b4bc3aba7ef29504c39a2d511a523c641b110e3e4f61f83f7d10cf659",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q109005",
+      "object_iri": "http://www.wikidata.org/entity/Q179180"
+    }
+  },
+  {
+    "id": "37700b68ccbbf985-forward_one_hop-no",
+    "split": "validation",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «vennskapsorgan» for Sandefjord?",
+    "query_group": "edge-e0ca3a5b4bc3aba7ef29504c39a2d511a523c641b110e3e4f61f83f7d10cf659",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q109005",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "37700b68ccbbf985-reverse_one_hop-no",
+    "split": "validation",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Varberg kommune som verdi for egenskapen «vennskapsorgan»?",
+    "query_group": "edge-e0ca3a5b4bc3aba7ef29504c39a2d511a523c641b110e3e4f61f83f7d10cf659",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q179180",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "37700b68ccbbf985-predicate_retrieval-no",
+    "split": "validation",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Sandefjord til Varberg kommune?",
+    "query_group": "edge-e0ca3a5b4bc3aba7ef29504c39a2d511a523c641b110e3e4f61f83f7d10cf659",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q109005",
+      "object_iri": "http://www.wikidata.org/entity/Q179180"
+    }
+  },
+  {
+    "id": "9361a2797849c145-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘member of’ for Norwegian Association of Economists?",
+    "query_group": "edge-9c2ac15c72aecdd8645f20c6b35eed9c6df3987b092951335513862a0a157dec",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11999254",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9361a2797849c145-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Federation of Norwegian Professional Associations as the value of the property ‘member of’?",
+    "query_group": "edge-9c2ac15c72aecdd8645f20c6b35eed9c6df3987b092951335513862a0a157dec",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q5440866",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9361a2797849c145-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Norwegian Association of Economists to Federation of Norwegian Professional Associations?",
+    "query_group": "edge-9c2ac15c72aecdd8645f20c6b35eed9c6df3987b092951335513862a0a157dec",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11999254",
+      "object_iri": "http://www.wikidata.org/entity/Q5440866"
+    }
+  },
+  {
+    "id": "9361a2797849c145-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «medlem av» for Samfunnsøkonomene?",
+    "query_group": "edge-9c2ac15c72aecdd8645f20c6b35eed9c6df3987b092951335513862a0a157dec",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11999254",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9361a2797849c145-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Akademikerne som verdi for egenskapen «medlem av»?",
+    "query_group": "edge-9c2ac15c72aecdd8645f20c6b35eed9c6df3987b092951335513862a0a157dec",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q5440866",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9361a2797849c145-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Samfunnsøkonomene til Akademikerne?",
+    "query_group": "edge-9c2ac15c72aecdd8645f20c6b35eed9c6df3987b092951335513862a0a157dec",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11999254",
+      "object_iri": "http://www.wikidata.org/entity/Q5440866"
+    }
+  },
+  {
+    "id": "debee1b7ee392410-forward_one_hop-en",
+    "split": "test",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘twinned administrative body’ for Øvre Eiker?",
+    "query_group": "edge-751047079f987947bd1a7716e39b70c2036714959aa9c96f2c754354a14ea090",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q110311",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "debee1b7ee392410-reverse_one_hop-en",
+    "split": "test",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Lempäälä as the value of the property ‘twinned administrative body’?",
+    "query_group": "edge-751047079f987947bd1a7716e39b70c2036714959aa9c96f2c754354a14ea090",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q838821",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "debee1b7ee392410-predicate_retrieval-en",
+    "split": "test",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Øvre Eiker to Lempäälä?",
+    "query_group": "edge-751047079f987947bd1a7716e39b70c2036714959aa9c96f2c754354a14ea090",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q110311",
+      "object_iri": "http://www.wikidata.org/entity/Q838821"
+    }
+  },
+  {
+    "id": "debee1b7ee392410-forward_one_hop-no",
+    "split": "test",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «vennskapsorgan» for Øvre Eiker?",
+    "query_group": "edge-751047079f987947bd1a7716e39b70c2036714959aa9c96f2c754354a14ea090",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q110311",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "debee1b7ee392410-reverse_one_hop-no",
+    "split": "test",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Lempäälä som verdi for egenskapen «vennskapsorgan»?",
+    "query_group": "edge-751047079f987947bd1a7716e39b70c2036714959aa9c96f2c754354a14ea090",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q838821",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "debee1b7ee392410-predicate_retrieval-no",
+    "split": "test",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Øvre Eiker til Lempäälä?",
+    "query_group": "edge-751047079f987947bd1a7716e39b70c2036714959aa9c96f2c754354a14ea090",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q110311",
+      "object_iri": "http://www.wikidata.org/entity/Q838821"
+    }
+  },
+  {
+    "id": "e47c8a0134c10330-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘headquarters location’ for Følling IL?",
+    "query_group": "edge-4c4eec9dd290038a7bb205599c36f1a00829fca3fcb860ab1225848dc5297181",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11971347",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "e47c8a0134c10330-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Følling as the value of the property ‘headquarters location’?",
+    "query_group": "edge-4c4eec9dd290038a7bb205599c36f1a00829fca3fcb860ab1225848dc5297181",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q5511719",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "e47c8a0134c10330-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Følling IL to Følling?",
+    "query_group": "edge-4c4eec9dd290038a7bb205599c36f1a00829fca3fcb860ab1225848dc5297181",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11971347",
+      "object_iri": "http://www.wikidata.org/entity/Q5511719"
+    }
+  },
+  {
+    "id": "e47c8a0134c10330-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «hovedkontor» for Følling Idrettslag?",
+    "query_group": "edge-4c4eec9dd290038a7bb205599c36f1a00829fca3fcb860ab1225848dc5297181",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11971347",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "e47c8a0134c10330-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Følling som verdi for egenskapen «hovedkontor»?",
+    "query_group": "edge-4c4eec9dd290038a7bb205599c36f1a00829fca3fcb860ab1225848dc5297181",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q5511719",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "e47c8a0134c10330-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Følling Idrettslag til Følling?",
+    "query_group": "edge-4c4eec9dd290038a7bb205599c36f1a00829fca3fcb860ab1225848dc5297181",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11971347",
+      "object_iri": "http://www.wikidata.org/entity/Q5511719"
+    }
+  },
+  {
+    "id": "52cd47235e65f225-forward_one_hop-en",
+    "split": "test",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘parent organization or unit’ for Norwegian agency for plant protection?",
+    "query_group": "edge-689253c7975625aa5dff8e103af9b8f3e0f13f4784076ae3d506a29a5e305583",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q12002706",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P749",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "52cd47235e65f225-reverse_one_hop-en",
+    "split": "test",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Ministry of Agriculture and Food as the value of the property ‘parent organization or unit’?",
+    "query_group": "edge-689253c7975625aa5dff8e103af9b8f3e0f13f4784076ae3d506a29a5e305583",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q2607906",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P749",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "52cd47235e65f225-predicate_retrieval-en",
+    "split": "test",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Norwegian agency for plant protection to Ministry of Agriculture and Food?",
+    "query_group": "edge-689253c7975625aa5dff8e103af9b8f3e0f13f4784076ae3d506a29a5e305583",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q12002706",
+      "object_iri": "http://www.wikidata.org/entity/Q2607906"
+    }
+  },
+  {
+    "id": "52cd47235e65f225-forward_one_hop-no",
+    "split": "test",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «moderorganisasjon» for Statens plantevern?",
+    "query_group": "edge-689253c7975625aa5dff8e103af9b8f3e0f13f4784076ae3d506a29a5e305583",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q12002706",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P749",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "52cd47235e65f225-reverse_one_hop-no",
+    "split": "test",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Landbruks- og matdepartementet som verdi for egenskapen «moderorganisasjon»?",
+    "query_group": "edge-689253c7975625aa5dff8e103af9b8f3e0f13f4784076ae3d506a29a5e305583",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q2607906",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P749",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "52cd47235e65f225-predicate_retrieval-no",
+    "split": "test",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Statens plantevern til Landbruks- og matdepartementet?",
+    "query_group": "edge-689253c7975625aa5dff8e103af9b8f3e0f13f4784076ae3d506a29a5e305583",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q12002706",
+      "object_iri": "http://www.wikidata.org/entity/Q2607906"
+    }
+  },
+  {
+    "id": "a29810117db49b0f-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘industry’ for Brumunddal Konfeksjonsfabrikk?",
+    "query_group": "edge-a005916ccaef1c4384fddb8fab32edcf67c7fc5288de29d87ce8d2fe813584e5",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q124848832",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P452",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "a29810117db49b0f-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has clothing industry as the value of the property ‘industry’?",
+    "query_group": "edge-a005916ccaef1c4384fddb8fab32edcf67c7fc5288de29d87ce8d2fe813584e5",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11828862",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P452",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "a29810117db49b0f-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Brumunddal Konfeksjonsfabrikk to clothing industry?",
+    "query_group": "edge-a005916ccaef1c4384fddb8fab32edcf67c7fc5288de29d87ce8d2fe813584e5",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q124848832",
+      "object_iri": "http://www.wikidata.org/entity/Q11828862"
+    }
+  },
+  {
+    "id": "a29810117db49b0f-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «bransje» for Ajak Fabrikker?",
+    "query_group": "edge-a005916ccaef1c4384fddb8fab32edcf67c7fc5288de29d87ce8d2fe813584e5",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q124848832",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P452",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "a29810117db49b0f-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har klesindustri som verdi for egenskapen «bransje»?",
+    "query_group": "edge-a005916ccaef1c4384fddb8fab32edcf67c7fc5288de29d87ce8d2fe813584e5",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11828862",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P452",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "a29810117db49b0f-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Ajak Fabrikker til klesindustri?",
+    "query_group": "edge-a005916ccaef1c4384fddb8fab32edcf67c7fc5288de29d87ce8d2fe813584e5",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q124848832",
+      "object_iri": "http://www.wikidata.org/entity/Q11828862"
+    }
+  },
+  {
+    "id": "c711652881e048d5-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘parent organization or unit’ for AFS Norway?",
+    "query_group": "edge-77478ef68827e97eeb7258e015cb097d61fe08702064bdf40e08bad4701ddd0f",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11957700",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P749",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "c711652881e048d5-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has AFS Intercultural Programs as the value of the property ‘parent organization or unit’?",
+    "query_group": "edge-77478ef68827e97eeb7258e015cb097d61fe08702064bdf40e08bad4701ddd0f",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q292201",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P749",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "c711652881e048d5-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects AFS Norway to AFS Intercultural Programs?",
+    "query_group": "edge-77478ef68827e97eeb7258e015cb097d61fe08702064bdf40e08bad4701ddd0f",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11957700",
+      "object_iri": "http://www.wikidata.org/entity/Q292201"
+    }
+  },
+  {
+    "id": "c711652881e048d5-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «moderorganisasjon» for AFS Norge?",
+    "query_group": "edge-77478ef68827e97eeb7258e015cb097d61fe08702064bdf40e08bad4701ddd0f",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11957700",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P749",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "c711652881e048d5-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har AFS Intercultural Programs som verdi for egenskapen «moderorganisasjon»?",
+    "query_group": "edge-77478ef68827e97eeb7258e015cb097d61fe08702064bdf40e08bad4701ddd0f",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q292201",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P749",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "c711652881e048d5-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter AFS Norge til AFS Intercultural Programs?",
+    "query_group": "edge-77478ef68827e97eeb7258e015cb097d61fe08702064bdf40e08bad4701ddd0f",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11957700",
+      "object_iri": "http://www.wikidata.org/entity/Q292201"
+    }
+  },
+  {
+    "id": "1d3ccac31e49cb63-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘member of’ for Nordfjord sogelag?",
+    "query_group": "edge-9745bd8ac8adbc1d1faf82951f299d0d8f05effb09674b77342d214d6a1192f7",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q12717249",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "1d3ccac31e49cb63-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Landslaget for lokalhistorie as the value of the property ‘member of’?",
+    "query_group": "edge-9745bd8ac8adbc1d1faf82951f299d0d8f05effb09674b77342d214d6a1192f7",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11983089",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "1d3ccac31e49cb63-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Nordfjord sogelag to Landslaget for lokalhistorie?",
+    "query_group": "edge-9745bd8ac8adbc1d1faf82951f299d0d8f05effb09674b77342d214d6a1192f7",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q12717249",
+      "object_iri": "http://www.wikidata.org/entity/Q11983089"
+    }
+  },
+  {
+    "id": "1d3ccac31e49cb63-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «medlem av» for NORDFJORD SOGELAG?",
+    "query_group": "edge-9745bd8ac8adbc1d1faf82951f299d0d8f05effb09674b77342d214d6a1192f7",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q12717249",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "1d3ccac31e49cb63-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Landslaget for lokalhistorie som verdi for egenskapen «medlem av»?",
+    "query_group": "edge-9745bd8ac8adbc1d1faf82951f299d0d8f05effb09674b77342d214d6a1192f7",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11983089",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "1d3ccac31e49cb63-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter NORDFJORD SOGELAG til Landslaget for lokalhistorie?",
+    "query_group": "edge-9745bd8ac8adbc1d1faf82951f299d0d8f05effb09674b77342d214d6a1192f7",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q12717249",
+      "object_iri": "http://www.wikidata.org/entity/Q11983089"
+    }
+  },
+  {
+    "id": "9bd08d47d250a509-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘located in the administrative territorial entity’ for DNT Nedre Glomma?",
+    "query_group": "edge-4e59f0d3f4805f7e10d59f3c891e596cb5cf6e74e032dd308c51f3034c60f266",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11162733",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9bd08d47d250a509-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Lower Glomma Region as the value of the property ‘located in the administrative territorial entity’?",
+    "query_group": "edge-4e59f0d3f4805f7e10d59f3c891e596cb5cf6e74e032dd308c51f3034c60f266",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q1783921",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9bd08d47d250a509-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects DNT Nedre Glomma to Lower Glomma Region?",
+    "query_group": "edge-4e59f0d3f4805f7e10d59f3c891e596cb5cf6e74e032dd308c51f3034c60f266",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11162733",
+      "object_iri": "http://www.wikidata.org/entity/Q1783921"
+    }
+  },
+  {
+    "id": "9bd08d47d250a509-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «administrativ enhet» for DNT Nedre Glomma?",
+    "query_group": "edge-4e59f0d3f4805f7e10d59f3c891e596cb5cf6e74e032dd308c51f3034c60f266",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11162733",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9bd08d47d250a509-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Nedre Glomma som verdi for egenskapen «administrativ enhet»?",
+    "query_group": "edge-4e59f0d3f4805f7e10d59f3c891e596cb5cf6e74e032dd308c51f3034c60f266",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q1783921",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9bd08d47d250a509-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter DNT Nedre Glomma til Nedre Glomma?",
+    "query_group": "edge-4e59f0d3f4805f7e10d59f3c891e596cb5cf6e74e032dd308c51f3034c60f266",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11162733",
+      "object_iri": "http://www.wikidata.org/entity/Q1783921"
+    }
+  },
+  {
+    "id": "65cd896055a433fa-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘legal form’ for Christian labour union?",
+    "query_group": "edge-e04ccae5327b8753e227b74f898dc678086104448b547e12e4998e21c41ee8ab",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q110533654",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "65cd896055a433fa-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has foreign corporation registered in Norway as the value of the property ‘legal form’?",
+    "query_group": "edge-e04ccae5327b8753e227b74f898dc678086104448b547e12e4998e21c41ee8ab",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q4571663",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "65cd896055a433fa-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Christian labour union to foreign corporation registered in Norway?",
+    "query_group": "edge-e04ccae5327b8753e227b74f898dc678086104448b547e12e4998e21c41ee8ab",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q110533654",
+      "object_iri": "http://www.wikidata.org/entity/Q4571663"
+    }
+  },
+  {
+    "id": "65cd896055a433fa-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «juridisk form» for Kristelig Fagforening?",
+    "query_group": "edge-e04ccae5327b8753e227b74f898dc678086104448b547e12e4998e21c41ee8ab",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q110533654",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "65cd896055a433fa-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har norskregistrert utenlandsk foretak som verdi for egenskapen «juridisk form»?",
+    "query_group": "edge-e04ccae5327b8753e227b74f898dc678086104448b547e12e4998e21c41ee8ab",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q4571663",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "65cd896055a433fa-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Kristelig Fagforening til norskregistrert utenlandsk foretak?",
+    "query_group": "edge-e04ccae5327b8753e227b74f898dc678086104448b547e12e4998e21c41ee8ab",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q110533654",
+      "object_iri": "http://www.wikidata.org/entity/Q4571663"
+    }
+  },
+  {
+    "id": "36502d05720826d3-forward_one_hop-en",
+    "split": "test",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘headquarters location’ for Brumunddal Konfeksjonsfabrikk?",
+    "query_group": "edge-005ff4c2a870d3bf1489dac0bba714e014c5cd02a111aa950d558c05b2d29859",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q124848832",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "36502d05720826d3-reverse_one_hop-en",
+    "split": "test",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Brumunddal as the value of the property ‘headquarters location’?",
+    "query_group": "edge-005ff4c2a870d3bf1489dac0bba714e014c5cd02a111aa950d558c05b2d29859",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q992492",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "36502d05720826d3-predicate_retrieval-en",
+    "split": "test",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Brumunddal Konfeksjonsfabrikk to Brumunddal?",
+    "query_group": "edge-005ff4c2a870d3bf1489dac0bba714e014c5cd02a111aa950d558c05b2d29859",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q124848832",
+      "object_iri": "http://www.wikidata.org/entity/Q992492"
+    }
+  },
+  {
+    "id": "36502d05720826d3-forward_one_hop-no",
+    "split": "test",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «hovedkontor» for Ajak Fabrikker?",
+    "query_group": "edge-005ff4c2a870d3bf1489dac0bba714e014c5cd02a111aa950d558c05b2d29859",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q124848832",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "36502d05720826d3-reverse_one_hop-no",
+    "split": "test",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Brumunddal som verdi for egenskapen «hovedkontor»?",
+    "query_group": "edge-005ff4c2a870d3bf1489dac0bba714e014c5cd02a111aa950d558c05b2d29859",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q992492",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "36502d05720826d3-predicate_retrieval-no",
+    "split": "test",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Ajak Fabrikker til Brumunddal?",
+    "query_group": "edge-005ff4c2a870d3bf1489dac0bba714e014c5cd02a111aa950d558c05b2d29859",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q124848832",
+      "object_iri": "http://www.wikidata.org/entity/Q992492"
+    }
+  },
+  {
+    "id": "aedd28ffc862921c-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘member of’ for Norwegian Republican Association?",
+    "query_group": "edge-bc99098b8425e517772b4b61a50033a4fa2976b4ff0a768d7990da0b78841082",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q119686470",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "aedd28ffc862921c-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Alliance of European Republican Movements as the value of the property ‘member of’?",
+    "query_group": "edge-bc99098b8425e517772b4b61a50033a4fa2976b4ff0a768d7990da0b78841082",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q4732446",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "aedd28ffc862921c-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Norwegian Republican Association to Alliance of European Republican Movements?",
+    "query_group": "edge-bc99098b8425e517772b4b61a50033a4fa2976b4ff0a768d7990da0b78841082",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q119686470",
+      "object_iri": "http://www.wikidata.org/entity/Q4732446"
+    }
+  },
+  {
+    "id": "aedd28ffc862921c-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «medlem av» for Norge som republikk?",
+    "query_group": "edge-bc99098b8425e517772b4b61a50033a4fa2976b4ff0a768d7990da0b78841082",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q119686470",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "aedd28ffc862921c-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Alliance of European Republican Movements som verdi for egenskapen «medlem av»?",
+    "query_group": "edge-bc99098b8425e517772b4b61a50033a4fa2976b4ff0a768d7990da0b78841082",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q4732446",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "aedd28ffc862921c-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Norge som republikk til Alliance of European Republican Movements?",
+    "query_group": "edge-bc99098b8425e517772b4b61a50033a4fa2976b4ff0a768d7990da0b78841082",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q119686470",
+      "object_iri": "http://www.wikidata.org/entity/Q4732446"
+    }
+  },
+  {
+    "id": "0563af6b026f12ba-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘located in the administrative territorial entity’ for Skjervøy Municipality?",
+    "query_group": "edge-caf423dce34829758a65e11a8fd30c9f31e1b0520ff4b05b035338404093c984",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q128762",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0563af6b026f12ba-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Troms as the value of the property ‘located in the administrative territorial entity’?",
+    "query_group": "edge-caf423dce34829758a65e11a8fd30c9f31e1b0520ff4b05b035338404093c984",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q50631",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0563af6b026f12ba-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Skjervøy Municipality to Troms?",
+    "query_group": "edge-caf423dce34829758a65e11a8fd30c9f31e1b0520ff4b05b035338404093c984",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q128762",
+      "object_iri": "http://www.wikidata.org/entity/Q50631"
+    }
+  },
+  {
+    "id": "0563af6b026f12ba-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «administrativ enhet» for Skjervøy?",
+    "query_group": "edge-caf423dce34829758a65e11a8fd30c9f31e1b0520ff4b05b035338404093c984",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q128762",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0563af6b026f12ba-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Troms som verdi for egenskapen «administrativ enhet»?",
+    "query_group": "edge-caf423dce34829758a65e11a8fd30c9f31e1b0520ff4b05b035338404093c984",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q50631",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0563af6b026f12ba-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Skjervøy til Troms?",
+    "query_group": "edge-caf423dce34829758a65e11a8fd30c9f31e1b0520ff4b05b035338404093c984",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q128762",
+      "object_iri": "http://www.wikidata.org/entity/Q50631"
+    }
+  },
+  {
+    "id": "5d9b8e5184e13b1c-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘legal form’ for Crayon Group Holding?",
+    "query_group": "edge-cb9575c8097d5cef768fd2d33e4d0bdf898ec9f4c4f00fbb72d7d82f7ab1d873",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11977316",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "5d9b8e5184e13b1c-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has allmennaksjeselskap as the value of the property ‘legal form’?",
+    "query_group": "edge-cb9575c8097d5cef768fd2d33e4d0bdf898ec9f4c4f00fbb72d7d82f7ab1d873",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q14942889",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "5d9b8e5184e13b1c-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Crayon Group Holding to allmennaksjeselskap?",
+    "query_group": "edge-cb9575c8097d5cef768fd2d33e4d0bdf898ec9f4c4f00fbb72d7d82f7ab1d873",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11977316",
+      "object_iri": "http://www.wikidata.org/entity/Q14942889"
+    }
+  },
+  {
+    "id": "5d9b8e5184e13b1c-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «juridisk form» for Crayon Group Holding?",
+    "query_group": "edge-cb9575c8097d5cef768fd2d33e4d0bdf898ec9f4c4f00fbb72d7d82f7ab1d873",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11977316",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "5d9b8e5184e13b1c-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har allmennaksjeselskap som verdi for egenskapen «juridisk form»?",
+    "query_group": "edge-cb9575c8097d5cef768fd2d33e4d0bdf898ec9f4c4f00fbb72d7d82f7ab1d873",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q14942889",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "5d9b8e5184e13b1c-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Crayon Group Holding til allmennaksjeselskap?",
+    "query_group": "edge-cb9575c8097d5cef768fd2d33e4d0bdf898ec9f4c4f00fbb72d7d82f7ab1d873",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q11977316",
+      "object_iri": "http://www.wikidata.org/entity/Q14942889"
+    }
+  },
+  {
+    "id": "cf71abc69f306716-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘has part(s)’ for Andøy Municipality?",
+    "query_group": "edge-d412afba4d5ae929461712435826142f6e3d464150a7cde07106cef90fd038ad",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113710",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P527",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cf71abc69f306716-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Bleiksvatnet as the value of the property ‘has part(s)’?",
+    "query_group": "edge-d412afba4d5ae929461712435826142f6e3d464150a7cde07106cef90fd038ad",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q1773574",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P527",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cf71abc69f306716-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects Andøy Municipality to Bleiksvatnet?",
+    "query_group": "edge-d412afba4d5ae929461712435826142f6e3d464150a7cde07106cef90fd038ad",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q113710",
+      "object_iri": "http://www.wikidata.org/entity/Q1773574"
+    }
+  },
+  {
+    "id": "cf71abc69f306716-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «har som del» for Andøy?",
+    "query_group": "edge-d412afba4d5ae929461712435826142f6e3d464150a7cde07106cef90fd038ad",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113710",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P527",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cf71abc69f306716-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Bleiksvatnet som verdi for egenskapen «har som del»?",
+    "query_group": "edge-d412afba4d5ae929461712435826142f6e3d464150a7cde07106cef90fd038ad",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q1773574",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P527",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cf71abc69f306716-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Andøy til Bleiksvatnet?",
+    "query_group": "edge-d412afba4d5ae929461712435826142f6e3d464150a7cde07106cef90fd038ad",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q113710",
+      "object_iri": "http://www.wikidata.org/entity/Q1773574"
+    }
+  },
+  {
+    "id": "8ba0ac3c893da4dc-forward_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Which entity is the value of the property ‘parent organization or unit’ for National Center for Multicultural Education?",
+    "query_group": "edge-7611487f743bb7bc944fa38ffec818d82c3c03778d8ee5b2ab573d913f87249b",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q12717126",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P749",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "8ba0ac3c893da4dc-reverse_one_hop-en",
+    "split": "train",
+    "language": "en",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Which entity has Norwegian Directorate for Education and Training as the value of the property ‘parent organization or unit’?",
+    "query_group": "edge-7611487f743bb7bc944fa38ffec818d82c3c03778d8ee5b2ab573d913f87249b",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q7061089",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P749",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "8ba0ac3c893da4dc-predicate_retrieval-en",
+    "split": "train",
+    "language": "en",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Which RDF property connects National Center for Multicultural Education to Norwegian Directorate for Education and Training?",
+    "query_group": "edge-7611487f743bb7bc944fa38ffec818d82c3c03778d8ee5b2ab573d913f87249b",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q12717126",
+      "object_iri": "http://www.wikidata.org/entity/Q7061089"
+    }
+  },
+  {
+    "id": "8ba0ac3c893da4dc-forward_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "forward_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet er verdien for egenskapen «moderorganisasjon» for Nasjonalt senter for flerkulturell opplæring?",
+    "query_group": "edge-7611487f743bb7bc944fa38ffec818d82c3c03778d8ee5b2ab573d913f87249b",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q12717126",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P749",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "8ba0ac3c893da4dc-reverse_one_hop-no",
+    "split": "train",
+    "language": "no",
+    "family": "reverse_one_hop",
+    "role": "entity",
+    "query": "Hvilken enhet har Utdanningsdirektoratet som verdi for egenskapen «moderorganisasjon»?",
+    "query_group": "edge-7611487f743bb7bc944fa38ffec818d82c3c03778d8ee5b2ab573d913f87249b",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q7061089",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P749",
+          "direction": "reverse"
+        }
+      ]
+    }
+  },
+  {
+    "id": "8ba0ac3c893da4dc-predicate_retrieval-no",
+    "split": "train",
+    "language": "no",
+    "family": "predicate_retrieval",
+    "role": "predicate",
+    "query": "Hvilken RDF-egenskap knytter Nasjonalt senter for flerkulturell opplæring til Utdanningsdirektoratet?",
+    "query_group": "edge-7611487f743bb7bc944fa38ffec818d82c3c03778d8ee5b2ab573d913f87249b",
+    "traversal": {
+      "kind": "endpoints",
+      "subject_iri": "http://www.wikidata.org/entity/Q12717126",
+      "object_iri": "http://www.wikidata.org/entity/Q7061089"
+    }
+  },
+  {
+    "id": "cab22461a88b63c3-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Steinkjer Municipality via ‘shares border with’ and then ‘twinned administrative body’?",
+    "query_group": "path-3567cfd7f357cce730a1eed545c6d644086d3e9ac86d058e365b331fc537c8da",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q110431",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cab22461a88b63c3-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Steinkjer via «grenser til» og deretter «vennskapsorgan»?",
+    "query_group": "path-3567cfd7f357cce730a1eed545c6d644086d3e9ac86d058e365b331fc537c8da",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q110431",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P190",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0c1ee732174e8cf0-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Norske Historiske Spel via ‘headquarters location’ and then ‘official language’?",
+    "query_group": "path-1835cc2773e803b8c38aa2a8e8e30dd527aae7d7f252db146dc027e7fa4d9e77",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q136702884",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P37",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0c1ee732174e8cf0-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Norske Historiske Spel via «hovedkontor» og deretter «offisielt språk»?",
+    "query_group": "path-1835cc2773e803b8c38aa2a8e8e30dd527aae7d7f252db146dc027e7fa4d9e77",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q136702884",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P37",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "895afcf1f65d504e-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Vadsø via ‘shares border with’ and then ‘located in the administrative territorial entity’?",
+    "query_group": "path-e05d11f402578935f7e64872c3402492d8525e6994fb5479601ab8e408f35450",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q104379",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "895afcf1f65d504e-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Vadsø via «grenser til» og deretter «administrativ enhet»?",
+    "query_group": "path-e05d11f402578935f7e64872c3402492d8525e6994fb5479601ab8e408f35450",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q104379",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d29863e9ddcb26c1-two_hop_path-en",
+    "split": "validation",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Tønsberg via ‘shares border with’ and then ‘located in the administrative territorial entity’?",
+    "query_group": "path-7f0cf5406726fe80ca1497016b6233dfe6c983618833dcc7804874f61ff13930",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q107392",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "d29863e9ddcb26c1-two_hop_path-no",
+    "split": "validation",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Tønsberg via «grenser til» og deretter «administrativ enhet»?",
+    "query_group": "path-7f0cf5406726fe80ca1497016b6233dfe6c983618833dcc7804874f61ff13930",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q107392",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "836eeb6b0d9f23ae-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Kongsberg via ‘headquarters location’ and then ‘language used’?",
+    "query_group": "path-668030ba1417107bb120dbdb0faa2ff011eed41dc244eca7f9ad08735d90ab79",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q108988",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P2936",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "836eeb6b0d9f23ae-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Kongsberg via «hovedkontor» og deretter «språk brukt»?",
+    "query_group": "path-668030ba1417107bb120dbdb0faa2ff011eed41dc244eca7f9ad08735d90ab79",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q108988",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P2936",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "4fdf8cdc3975fce6-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Horten Municipality via ‘shares border with’ and then ‘legal form’?",
+    "query_group": "path-05b1c397f9e27a5a50c22ee8833e71cbc557a3e0cd4cfe3eca7840af2c4e4389",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q109048",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "4fdf8cdc3975fce6-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Horten via «grenser til» og deretter «juridisk form»?",
+    "query_group": "path-05b1c397f9e27a5a50c22ee8833e71cbc557a3e0cd4cfe3eca7840af2c4e4389",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q109048",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "bbcfdfe061a995ef-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Nesseby Municipality via ‘shares border with’ and then ‘official language’?",
+    "query_group": "path-0a2a4add2f5662cae02422df254846e047a349df26693c424730117928dffb1c",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113662",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P37",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "bbcfdfe061a995ef-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Nesseby via «grenser til» og deretter «offisielt språk»?",
+    "query_group": "path-0a2a4add2f5662cae02422df254846e047a349df26693c424730117928dffb1c",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113662",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P37",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "08776981fd2aad4e-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Hamar Municipality via ‘shares border with’ and then ‘located in the administrative territorial entity’?",
+    "query_group": "path-a678256ba9ce95721595cceeb356fe7fa614cb944f1ea795993c801dcedab3ee",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q104400",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "08776981fd2aad4e-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Hamar via «grenser til» og deretter «administrativ enhet»?",
+    "query_group": "path-a678256ba9ce95721595cceeb356fe7fa614cb944f1ea795993c801dcedab3ee",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q104400",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "70bd331b2e961b42-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Namsos Municipality via ‘shares border with’ and then ‘located in the administrative territorial entity’?",
+    "query_group": "path-6928ddf5f266fb809c61ad457ffc0f2f6db7f8d1e1e79e4f165ee28dd370f05d",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q111039",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "70bd331b2e961b42-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Namsos via «grenser til» og deretter «administrativ enhet»?",
+    "query_group": "path-6928ddf5f266fb809c61ad457ffc0f2f6db7f8d1e1e79e4f165ee28dd370f05d",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q111039",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ec3fbcc1fe4729cd-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Halden via ‘shares border with’ and then ‘capital’?",
+    "query_group": "path-58807ed62ae22eeb02ff50b91b40cc056a8889bb3766d1a9fb2cdc83eccf1313",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q109042",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "ec3fbcc1fe4729cd-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Halden via «grenser til» og deretter «hovedstad»?",
+    "query_group": "path-58807ed62ae22eeb02ff50b91b40cc056a8889bb3766d1a9fb2cdc83eccf1313",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q109042",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0ab3ee90d34fe11a-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Hammerfest via ‘shares border with’ and then ‘country’?",
+    "query_group": "path-703a7f4a36dae0839be4f86d8be27b76a0c7b2626493115102ef6cdb007cd747",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q107351",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P17",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "0ab3ee90d34fe11a-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Hammerfest via «grenser til» og deretter «land»?",
+    "query_group": "path-703a7f4a36dae0839be4f86d8be27b76a0c7b2626493115102ef6cdb007cd747",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q107351",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P17",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "73d90fcb495c9ebe-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Fitjar Municipality via ‘shares border with’ and then ‘legal form’?",
+    "query_group": "path-10b6fb984507fadac2ceb397716894450a7418ed205fda28df410e057d78ef8a",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113491",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "73d90fcb495c9ebe-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Fitjar via «grenser til» og deretter «juridisk form»?",
+    "query_group": "path-10b6fb984507fadac2ceb397716894450a7418ed205fda28df410e057d78ef8a",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113491",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "302e9c081f2efcb4-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Trondheim municipality via ‘headquarters location’ and then ‘located in the administrative territorial entity’?",
+    "query_group": "path-9b547191c684fb7070fa517d80e8669f6d65423957eb4b6fb3ee64b0e4ee818b",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q1324436",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "302e9c081f2efcb4-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Trondheim via «hovedkontor» og deretter «administrativ enhet»?",
+    "query_group": "path-9b547191c684fb7070fa517d80e8669f6d65423957eb4b6fb3ee64b0e4ee818b",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q1324436",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "35ff5785639ba865-two_hop_path-en",
+    "split": "test",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Den Indre Sjømannsmisjon via ‘headquarters location’ and then ‘capital’?",
+    "query_group": "path-edfe758c0ff473a1720e16ce57d83caea2c7f6ffc4041384a03b242d6590b638",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11965098",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "35ff5785639ba865-two_hop_path-no",
+    "split": "test",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Den Indre Sjømannsmisjon via «hovedkontor» og deretter «hovedstad»?",
+    "query_group": "path-edfe758c0ff473a1720e16ce57d83caea2c7f6ffc4041384a03b242d6590b638",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11965098",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P159",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P36",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9ffc05d44a5d3b25-two_hop_path-en",
+    "split": "validation",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Bømlo Municipality via ‘shares border with’ and then ‘member of’?",
+    "query_group": "path-4acb04d33d46851286c9e2c170ff108b35395a4d566f72c0d5ad2b955ba5850f",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113552",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "9ffc05d44a5d3b25-two_hop_path-no",
+    "split": "validation",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Bømlo via «grenser til» og deretter «medlem av»?",
+    "query_group": "path-4acb04d33d46851286c9e2c170ff108b35395a4d566f72c0d5ad2b955ba5850f",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113552",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P463",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "84f65fd1b4b72fdc-two_hop_path-en",
+    "split": "test",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Kongsberg via ‘shares border with’ and then ‘legal form’?",
+    "query_group": "path-cfc9b40dadb5ef0eb9369a350575fd8fc57e0e34e5c4651b0f0a22d08760b804",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q108988",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "84f65fd1b4b72fdc-two_hop_path-no",
+    "split": "test",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Kongsberg via «grenser til» og deretter «juridisk form»?",
+    "query_group": "path-cfc9b40dadb5ef0eb9369a350575fd8fc57e0e34e5c4651b0f0a22d08760b804",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q108988",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P1454",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "a660b36b0d8ab068-two_hop_path-en",
+    "split": "train",
+    "language": "en",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Which entity is reached from Måsøy Municipality via ‘shares border with’ and then ‘located in the administrative territorial entity’?",
+    "query_group": "path-531d1f966cde4a149de4102d83dbe4efc413c742899234e79e310048e441c1da",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113697",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "a660b36b0d8ab068-two_hop_path-no",
+    "split": "train",
+    "language": "no",
+    "family": "two_hop_path",
+    "role": "entity",
+    "query": "Hvilken enhet nås fra Måsøy via «grenser til» og deretter «administrativ enhet»?",
+    "query_group": "path-531d1f966cde4a149de4102d83dbe4efc413c742899234e79e310048e441c1da",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q113697",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P47",
+          "direction": "forward"
+        },
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P131",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "713bd84d6b7f01d4-ambiguous_alias-en",
+    "split": "test",
+    "language": "en",
+    "family": "ambiguous_alias",
+    "role": "entity",
+    "query": "Which entity has the exact label ‘Os Municipality’?",
+    "query_group": "alias-e732bac2352b79c535e079af1c1b6a86a9f0bb6f6b8797be149e009594e21f86",
+    "traversal": {
+      "kind": "label",
+      "text": "Os Municipality"
+    }
+  },
+  {
+    "id": "713bd84d6b7f01d4-ambiguous_alias-no",
+    "split": "test",
+    "language": "no",
+    "family": "ambiguous_alias",
+    "role": "entity",
+    "query": "Hvilken enhet har den nøyaktige etiketten «Os Municipality»?",
+    "query_group": "alias-e732bac2352b79c535e079af1c1b6a86a9f0bb6f6b8797be149e009594e21f86",
+    "traversal": {
+      "kind": "label",
+      "text": "Os Municipality"
+    }
+  },
+  {
+    "id": "442524270803ad56-ambiguous_alias-en",
+    "split": "validation",
+    "language": "en",
+    "family": "ambiguous_alias",
+    "role": "entity",
+    "query": "Which entity has the exact label ‘performing arts’?",
+    "query_group": "alias-8395c7f1517e328d58f3a8e351a943befc09210c8e623311dd4d7955db7d0686",
+    "traversal": {
+      "kind": "label",
+      "text": "performing arts"
+    }
+  },
+  {
+    "id": "442524270803ad56-ambiguous_alias-no",
+    "split": "validation",
+    "language": "no",
+    "family": "ambiguous_alias",
+    "role": "entity",
+    "query": "Hvilken enhet har den nøyaktige etiketten «performing arts»?",
+    "query_group": "alias-8395c7f1517e328d58f3a8e351a943befc09210c8e623311dd4d7955db7d0686",
+    "traversal": {
+      "kind": "label",
+      "text": "performing arts"
+    }
+  },
+  {
+    "id": "678fc8eeeca6375e-ambiguous_alias-en",
+    "split": "test",
+    "language": "en",
+    "family": "ambiguous_alias",
+    "role": "entity",
+    "query": "Which entity has the exact label ‘Berlevåg’?",
+    "query_group": "alias-95aae11858fcb897619736071c5e363b6e3ba86209cbf9afda04848e683cf8dd",
+    "traversal": {
+      "kind": "label",
+      "text": "Berlevåg"
+    }
+  },
+  {
+    "id": "678fc8eeeca6375e-ambiguous_alias-no",
+    "split": "test",
+    "language": "no",
+    "family": "ambiguous_alias",
+    "role": "entity",
+    "query": "Hvilken enhet har den nøyaktige etiketten «Berlevåg»?",
+    "query_group": "alias-95aae11858fcb897619736071c5e363b6e3ba86209cbf9afda04848e683cf8dd",
+    "traversal": {
+      "kind": "label",
+      "text": "Berlevåg"
+    }
+  },
+  {
+    "id": "479346494d1e7747-ambiguous_alias-en",
+    "split": "train",
+    "language": "en",
+    "family": "ambiguous_alias",
+    "role": "entity",
+    "query": "Which entity has the exact label ‘Namsos’?",
+    "query_group": "alias-2b3c331dad7b712f4f8e81c92a2fd303650a072b8bf03560df58024974699caf",
+    "traversal": {
+      "kind": "label",
+      "text": "Namsos"
+    }
+  },
+  {
+    "id": "479346494d1e7747-ambiguous_alias-no",
+    "split": "train",
+    "language": "no",
+    "family": "ambiguous_alias",
+    "role": "entity",
+    "query": "Hvilken enhet har den nøyaktige etiketten «Namsos»?",
+    "query_group": "alias-2b3c331dad7b712f4f8e81c92a2fd303650a072b8bf03560df58024974699caf",
+    "traversal": {
+      "kind": "label",
+      "text": "Namsos"
+    }
+  },
+  {
+    "id": "6f59ec655644ac8b-unsupported_no_match-en",
+    "split": "train",
+    "language": "en",
+    "family": "unsupported_no_match",
+    "role": "entity",
+    "query": "Who operates Hjemmenes Vel?",
+    "query_group": "nomatch-00109b194c8c1f4055b715200dfa6be1566ca9c544f44fed96c630f956029135",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11992054",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P137",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "6f59ec655644ac8b-unsupported_no_match-no",
+    "split": "train",
+    "language": "no",
+    "family": "unsupported_no_match",
+    "role": "entity",
+    "query": "Hvem driver Norges Kvinne- og familieforbund?",
+    "query_group": "nomatch-00109b194c8c1f4055b715200dfa6be1566ca9c544f44fed96c630f956029135",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q11992054",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P137",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "01c78436ce7a4192-unsupported_no_match-en",
+    "split": "validation",
+    "language": "en",
+    "family": "unsupported_no_match",
+    "role": "entity",
+    "query": "Who operates Kristianstad Municipality?",
+    "query_group": "nomatch-00480e6cd48524580f221897e2aa7f54cf928f31b9aa9bd970374545cfe9738f",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q498857",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P137",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "01c78436ce7a4192-unsupported_no_match-no",
+    "split": "validation",
+    "language": "no",
+    "family": "unsupported_no_match",
+    "role": "entity",
+    "query": "Hvem driver Kristianstad kommune?",
+    "query_group": "nomatch-00480e6cd48524580f221897e2aa7f54cf928f31b9aa9bd970374545cfe9738f",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q498857",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P137",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "2019a77a7206d822-unsupported_no_match-en",
+    "split": "test",
+    "language": "en",
+    "family": "unsupported_no_match",
+    "role": "entity",
+    "query": "Who operates mayor of Skjervøy?",
+    "query_group": "nomatch-0093a6a03e5acf4e8978ae797a6c061475c9ecd3afe4e198e575723f3abdffd5",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q58007254",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P137",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "2019a77a7206d822-unsupported_no_match-no",
+    "split": "test",
+    "language": "no",
+    "family": "unsupported_no_match",
+    "role": "entity",
+    "query": "Hvem driver ordfører i Skjervøy?",
+    "query_group": "nomatch-0093a6a03e5acf4e8978ae797a6c061475c9ecd3afe4e198e575723f3abdffd5",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q58007254",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P137",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "7b78d2155001ca45-unsupported_no_match-en",
+    "split": "test",
+    "language": "en",
+    "family": "unsupported_no_match",
+    "role": "entity",
+    "query": "Who operates Ringerike?",
+    "query_group": "nomatch-011c48ec9e141ebfa19b06f31b87f1e37b4d727f487bf5b21256fec2d6543cfe",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q110848",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P137",
+          "direction": "forward"
+        }
+      ]
+    }
+  },
+  {
+    "id": "7b78d2155001ca45-unsupported_no_match-no",
+    "split": "test",
+    "language": "no",
+    "family": "unsupported_no_match",
+    "role": "entity",
+    "query": "Hvem driver Ringerike?",
+    "query_group": "nomatch-011c48ec9e141ebfa19b06f31b87f1e37b4d727f487bf5b21256fec2d6543cfe",
+    "traversal": {
+      "kind": "path",
+      "start_iri": "http://www.wikidata.org/entity/Q110848",
+      "steps": [
+        {
+          "predicate": "http://www.wikidata.org/prop/direct/P137",
+          "direction": "forward"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,274 @@
+{
+  "version": "wikidata-relational-baseline-score-v2",
+  "test_split_only": true,
+  "reference_status": "Agent-authored source-checked development evidence; not expert gold.",
+  "methods": {
+    "bm25": {
+      "test_relevant_n": 28,
+      "test_no_match_n": 4,
+      "test_ambiguous_n": 4,
+      "metrics": {
+        "n": 28,
+        "recall@1": 0.0,
+        "recall@5": 0.10714285714285714,
+        "recall@10": 0.10714285714285714,
+        "mrr@10": 0.023214285714285715,
+        "ndcg@10": 0.043013649019374156
+      },
+      "strata": {
+        "language/en": {
+          "n": 14,
+          "recall@1": 0.0,
+          "recall@5": 0.14285714285714285,
+          "recall@10": 0.14285714285714285,
+          "mrr@10": 0.03214285714285715,
+          "ndcg@10": 0.058394954664852484
+        },
+        "language/no": {
+          "n": 14,
+          "recall@1": 0.0,
+          "recall@5": 0.07142857142857142,
+          "recall@10": 0.07142857142857142,
+          "mrr@10": 0.014285714285714287,
+          "ndcg@10": 0.02763234337389583
+        },
+        "family/forward_one_hop": {
+          "n": 8,
+          "recall@1": 0.0,
+          "recall@5": 0.125,
+          "recall@10": 0.125,
+          "mrr@10": 0.03125,
+          "ndcg@10": 0.05383456975917413
+        },
+        "family/predicate_retrieval": {
+          "n": 8,
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "mrr@10": 0.0,
+          "ndcg@10": 0.0
+        },
+        "family/reverse_one_hop": {
+          "n": 8,
+          "recall@1": 0.0,
+          "recall@5": 0.25,
+          "recall@10": 0.25,
+          "mrr@10": 0.05,
+          "ndcg@10": 0.09671320180863541
+        },
+        "family/two_hop_path": {
+          "n": 4,
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "mrr@10": 0.0,
+          "ndcg@10": 0.0
+        }
+      },
+      "test_no_match_suggestions": 4,
+      "test_top10_source_witness_coverage_mean": 0.030555555555555558,
+      "all_candidates_preserve_authorized_graph_and_iri": true
+    },
+    "neighborhood_1hop": {
+      "test_relevant_n": 28,
+      "test_no_match_n": 4,
+      "test_ambiguous_n": 4,
+      "metrics": {
+        "n": 28,
+        "recall@1": 0.0,
+        "recall@5": 0.32142857142857145,
+        "recall@10": 0.39285714285714285,
+        "mrr@10": 0.11071428571428572,
+        "ndcg@10": 0.17772525393605837
+      },
+      "strata": {
+        "language/en": {
+          "n": 14,
+          "recall@1": 0.0,
+          "recall@5": 0.35714285714285715,
+          "recall@10": 0.42857142857142855,
+          "mrr@10": 0.10892857142857142,
+          "ndcg@10": 0.1843895257837897
+        },
+        "language/no": {
+          "n": 14,
+          "recall@1": 0.0,
+          "recall@5": 0.2857142857142857,
+          "recall@10": 0.35714285714285715,
+          "mrr@10": 0.1125,
+          "ndcg@10": 0.17106098208832704
+        },
+        "family/forward_one_hop": {
+          "n": 8,
+          "recall@1": 0.0,
+          "recall@5": 0.125,
+          "recall@10": 0.125,
+          "mrr@10": 0.03125,
+          "ndcg@10": 0.05383456975917413
+        },
+        "family/predicate_retrieval": {
+          "n": 8,
+          "recall@1": 0.0,
+          "recall@5": 0.75,
+          "recall@10": 1.0,
+          "mrr@10": 0.30625,
+          "ndcg@10": 0.47149061720839475
+        },
+        "family/reverse_one_hop": {
+          "n": 8,
+          "recall@1": 0.0,
+          "recall@5": 0.25,
+          "recall@10": 0.25,
+          "mrr@10": 0.05,
+          "ndcg@10": 0.09671320180863541
+        },
+        "family/two_hop_path": {
+          "n": 4,
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "mrr@10": 0.0,
+          "ndcg@10": 0.0
+        }
+      },
+      "test_no_match_suggestions": 4,
+      "test_top10_source_witness_coverage_mean": 0.052777777777777785,
+      "all_candidates_preserve_authorized_graph_and_iri": true
+    },
+    "adjacency_1hop_oracle": {
+      "test_relevant_n": 28,
+      "test_no_match_n": 4,
+      "test_ambiguous_n": 4,
+      "metrics": {
+        "n": 28,
+        "recall@1": 0.8571428571428571,
+        "recall@5": 0.8571428571428571,
+        "recall@10": 0.8571428571428571,
+        "mrr@10": 0.8571428571428571,
+        "ndcg@10": 0.8571428571428571
+      },
+      "strata": {
+        "language/en": {
+          "n": 14,
+          "recall@1": 0.8571428571428571,
+          "recall@5": 0.8571428571428571,
+          "recall@10": 0.8571428571428571,
+          "mrr@10": 0.8571428571428571,
+          "ndcg@10": 0.8571428571428571
+        },
+        "language/no": {
+          "n": 14,
+          "recall@1": 0.8571428571428571,
+          "recall@5": 0.8571428571428571,
+          "recall@10": 0.8571428571428571,
+          "mrr@10": 0.8571428571428571,
+          "ndcg@10": 0.8571428571428571
+        },
+        "family/forward_one_hop": {
+          "n": 8,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@10": 1.0
+        },
+        "family/predicate_retrieval": {
+          "n": 8,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@10": 1.0
+        },
+        "family/reverse_one_hop": {
+          "n": 8,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@10": 1.0
+        },
+        "family/two_hop_path": {
+          "n": 4,
+          "recall@1": 0.0,
+          "recall@5": 0.0,
+          "recall@10": 0.0,
+          "mrr@10": 0.0,
+          "ndcg@10": 0.0
+        }
+      },
+      "test_no_match_suggestions": 0,
+      "test_top10_source_witness_coverage_mean": 0.8888888888888888,
+      "all_candidates_preserve_authorized_graph_and_iri": true
+    },
+    "adjacency_2hop_oracle": {
+      "test_relevant_n": 28,
+      "test_no_match_n": 4,
+      "test_ambiguous_n": 4,
+      "metrics": {
+        "n": 28,
+        "recall@1": 1.0,
+        "recall@5": 1.0,
+        "recall@10": 1.0,
+        "mrr@10": 1.0,
+        "ndcg@10": 1.0
+      },
+      "strata": {
+        "language/en": {
+          "n": 14,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@10": 1.0
+        },
+        "language/no": {
+          "n": 14,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@10": 1.0
+        },
+        "family/forward_one_hop": {
+          "n": 8,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@10": 1.0
+        },
+        "family/predicate_retrieval": {
+          "n": 8,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@10": 1.0
+        },
+        "family/reverse_one_hop": {
+          "n": 8,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@10": 1.0
+        },
+        "family/two_hop_path": {
+          "n": 4,
+          "recall@1": 1.0,
+          "recall@5": 1.0,
+          "recall@10": 1.0,
+          "mrr@10": 1.0,
+          "ndcg@10": 1.0
+        }
+      },
+      "test_no_match_suggestions": 0,
+      "test_top10_source_witness_coverage_mean": 0.8888888888888888,
+      "all_candidates_preserve_authorized_graph_and_iri": true
+    }
+  },
+  "scope_note": "Oracle adjacency receives structured anchor/predicate annotations; native BM25 and QV receive only question text. Do not treat oracle lift as a matched NLP comparison.",
+  "EmbeddingGemma": "No compatible Wikidata vectors are retained. The existing issue-50 vectors are GEMET-only; no inference or weights were run.",
+  "source_witness_note": "Adjacency returns exact statement/path witnesses. BM25/QV candidate outputs are not themselves statement evidence; the metric indicates whether returned candidates carry a traversal witness in the adjacency capture."
+}

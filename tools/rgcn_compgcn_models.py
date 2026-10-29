@@ -2,13 +2,16 @@
 from __future__ import annotations
 
 import random
+import math
+import time
 
 try:
     import torch
     from torch import nn
     from torch.nn import functional as F
+    from torch_geometric.nn import RGCNConv
 except ImportError:  # Model-free export and verification do not require PyTorch.
-    torch = nn = F = None
+    torch = nn = F = RGCNConv = None
 
 
 def compose_subtract(entities, relations):
@@ -31,17 +34,27 @@ def seed_everything(seed: int) -> None:
         torch.set_num_interop_threads(1)
 
 
+def check_edge_splits(train_ids, validation_ids, test_ids, message_passing_ids) -> None:
+    """Reject query-edge overlap and any validation/test edge in encoder inputs."""
+    train, validation, test = map(set, (train_ids, validation_ids, test_ids))
+    if train & validation or train & test or validation & test:
+        raise ValueError("An RDF edge is assigned to more than one split")
+    if (validation | test) & set(message_passing_ids):
+        raise ValueError("A held-out RDF edge is present in message passing")
+
+
 def sample_negative_tails(positive_triples, known_triples, entity_count: int,
-                          count: int = 10, seed: int = 117):
+                          count: int = 10, seed: int = 117, entity_ids=None):
     """Uniform graph-local corruptions; unobserved triples are samples, not known false facts."""
     rng = random.Random(seed)
     known_by_head_relation = {}
     for head, relation, tail in known_triples:
         known_by_head_relation.setdefault((head, relation), set()).add(tail)
     sampled = []
+    candidates = list(range(entity_count)) if entity_ids is None else list(entity_ids)
     for head, relation, _ in positive_triples:
         forbidden = known_by_head_relation.get((head, relation), set())
-        pool = [tail for tail in range(entity_count) if tail not in forbidden]
+        pool = [tail for tail in candidates if tail not in forbidden]
         if len(pool) < count:
             raise ValueError("Not enough graph-local unobserved tails for negative sampling")
         sampled.append(rng.sample(pool, count))
@@ -50,26 +63,15 @@ def sample_negative_tails(positive_triples, known_triples, entity_count: int,
 
 if torch is not None:
     class RGCNLayer(nn.Module):
-        """Incoming, relation-specific message transforms over original RDF edges."""
+        """PyG R-GCN convolution with a four-basis relation decomposition."""
 
         def __init__(self, width: int, relations: int):
             super().__init__()
-            self.root = nn.Linear(width, width)
-            self.transforms = nn.Parameter(torch.empty(relations, width, width))
-            nn.init.xavier_uniform_(self.transforms)
+            self.conv = RGCNConv(width, width, relations, num_bases=min(4, relations),
+                                 aggr="mean", root_weight=True)
 
         def forward(self, entities, edge_index, edge_types):
-            source, target = edge_index
-            aggregate = torch.zeros_like(entities)
-            degree = entities.new_zeros((entities.shape[0], 1))
-            for relation in range(self.transforms.shape[0]):
-                selected = edge_types == relation
-                if selected.any():
-                    destinations = target[selected]
-                    messages = entities[source[selected]] @ self.transforms[relation]
-                    aggregate.index_add_(0, destinations, messages)
-                    degree.index_add_(0, destinations, entities.new_ones((len(destinations), 1)))
-            return F.relu(self.root(entities) + aggregate / degree.clamp_min(1))
+            return F.relu(self.conv(entities, edge_index, edge_types))
 
 
     class CompGCNLayer(nn.Module):
@@ -105,22 +107,30 @@ if torch is not None:
             query = entities[heads] + relations[relation_ids]
             candidates = entities[candidate_ids]
             if candidate_ids.ndim == 1:
-                return query @ candidates.T / self.hidden ** 0.5
-            return (query[:, None, :] * candidates).sum(-1) / self.hidden ** 0.5
+                difference = query[:, None, :] - candidates[None, :, :]
+            else:
+                difference = query[:, None, :] - candidates
+            return -difference.square().sum(-1) / self.hidden ** 0.5
 
         def score_heads(self, entities, relations, tails, relation_ids, candidate_ids):
-            tails = entities[tails]
+            query = entities[tails] - relations[relation_ids]
             candidates = entities[candidate_ids]
-            relation_vectors = relations[relation_ids]
             if candidate_ids.ndim == 1:
-                candidates = candidates[None, :, :] + relation_vectors[:, None, :]
-                return (tails[:, None, :] * candidates).sum(-1) / self.hidden ** 0.5
-            candidates = candidates + relation_vectors[:, None, :]
-            return (tails[:, None, :] * candidates).sum(-1) / self.hidden ** 0.5
+                difference = query[:, None, :] - candidates[None, :, :]
+            else:
+                difference = query[:, None, :] - candidates
+            return -difference.square().sum(-1) / self.hidden ** 0.5
 
-        def score_queries(self, entities, query_features, candidate_ids):
+        def score_queries(self, entities, relations, query_features,
+                          entity_candidate_ids=None, relation_candidate_ids=None):
             queries = F.normalize(self.query_input(query_features), dim=-1)
-            candidates = F.normalize(entities[candidate_ids], dim=-1)
+            if entity_candidate_ids is None:
+                entity_candidate_ids = torch.arange(entities.shape[0], device=entities.device)
+            if relation_candidate_ids is None:
+                relation_candidate_ids = torch.arange(relations.shape[0], device=relations.device)
+            candidates = torch.cat((entities[entity_candidate_ids],
+                                    relations[relation_candidate_ids]), dim=0)
+            candidates = F.normalize(candidates, dim=-1)
             return queries @ candidates.T
 
 
@@ -162,13 +172,12 @@ if torch is not None:
         """Equal-weight link and question retrieval losses; negatives are frozen by the caller."""
         entities, relations = model(node_features, relation_features, edge_index, edge_types)
         heads, relation_ids, tails = positive_triples.T
-        positive = (entities[heads] + relations[relation_ids]) * entities[tails]
-        positive = positive.sum(-1) / model.hidden ** 0.5
+        positive = model.score_tails(entities, relations, heads, relation_ids,
+                                     tails[:, None]).squeeze(1)
         negative = model.score_tails(entities, relations, heads, relation_ids, negative_tail_ids)
         loss = F.softplus(-positive).mean() + F.softplus(negative).mean()
         if query_features is not None:
-            scores = model.score_queries(entities, query_features,
-                                         torch.arange(entities.shape[0], device=entities.device))
+            scores = model.score_queries(entities, relations, query_features)
             rows = torch.arange(len(query_targets), device=entities.device)
             query_positive = scores[rows, query_targets]
             query_negative = scores[rows[:, None], query_negative_ids]
@@ -177,23 +186,32 @@ if torch is not None:
 
 
     def fit(model_factory, training_args, validation_mrr, *, seed: int, epochs: int = 100,
-            patience: int = 10):
+            patience: int = 10, resource_guard=None):
         """Full-batch CPU optimizer; validation controls early stop, never gradient updates."""
         seed_everything(seed)
         model = model_factory()
         optimizer = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=1e-4)
         best, best_state, stale, history = float("-inf"), None, 0, []
         for epoch in range(epochs):
+            started = time.perf_counter()
             model.train()
             optimizer.zero_grad(set_to_none=True)
             loss = training_loss(model, **training_args)
+            if not bool(torch.isfinite(loss)):
+                raise RuntimeError("Training loss became non-finite")
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             optimizer.step()
             model.eval()
             with torch.no_grad():
                 score = validation_mrr(model)
-            history.append({"epoch": epoch + 1, "loss": float(loss.detach()), "validation_mrr@10": float(score)})
+            if not math.isfinite(float(score)):
+                raise RuntimeError("Validation MRR became non-finite")
+            history.append({"epoch": epoch + 1, "loss": float(loss.detach()),
+                            "validation_mrr@10": float(score),
+                            "epoch_ms": (time.perf_counter() - started) * 1000.0})
+            if resource_guard is not None:
+                resource_guard(epoch + 1, history[-1])
             if score > best:
                 best, stale = float(score), 0
                 best_state = {name: value.detach().clone() for name, value in model.state_dict().items()}
