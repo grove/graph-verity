@@ -193,6 +193,11 @@ and feature preflight v13 SHA
 `d176e6e67c50edb2474531fd05e93e953b75fbc860c4051d0ce3d46efcaee6ed`.
 The exact CPU operation and feature provenance are recorded in
 [`embeddinggemma-features.manifest.json`](embeddinggemma-features.manifest.json).
+The pinned model repository labels its files Apache-2.0; Google’s Gemma Terms
+also list EmbeddingGemma and incorporate the prohibited-use policy. See the
+[pinned model page](https://huggingface.co/google/embeddinggemma-2/tree/914f7f89142e33e77833254d9c9b90c3cef7303b),
+[Gemma Terms](https://ai.google.dev/gemma/terms), and
+[prohibited-use policy](https://ai.google.dev/gemma/prohibited_use_policy).
 
 The feature archive SHA256 is
 `888028e174d81aed59a30b0dc8cc4a703a0cbc5153e55a1cd617488463266af8`; its
