@@ -1,0 +1,21 @@
+{
+  "model": "google/embeddinggemma-2",
+  "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+  "operation": "encode generated direction-aware RDF navigation descriptions",
+  "input_count": 168,
+  "input_sha256": "ad1d32cb4fae8fcc5130cdfe0dbd6249dd74e11eb88bf09846619aa49f8b4ef1",
+  "output": "directional_relation_features float32 [168, 768], indexed by relation_id",
+  "prefix_already_in_input": true,
+  "max_tokens": 256,
+  "batch_size": 8,
+  "device": "cpu",
+  "threads": {
+    "intra_op": 4,
+    "inter_op": 1
+  },
+  "maximum_wall_seconds": 1800,
+  "maximum_process_rss_bytes": 6442450944,
+  "minimum_available_memory_bytes": 21000000000,
+  "assets_must_be_local_and_verified": true,
+  "network_downloads": false
+}

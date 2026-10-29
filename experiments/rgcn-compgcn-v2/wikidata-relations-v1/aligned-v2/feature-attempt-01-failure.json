@@ -1,0 +1,33 @@
+{
+  "version": "rgcn-compgcn-aligned-v2-feature-attempt-receipt-v1",
+  "attempt": "feature-attempt-01",
+  "status": "failed-before-model-construction",
+  "recorded_at_utc": "2026-10-29T19:00:13.721375Z",
+  "command": "PYTHONPATH=tools /private/tmp/graph-verity-embedding-env/bin/python tools/rgcn_compgcn_aligned_run_v1.py features --manifest experiments/rgcn-compgcn-v2/wikidata-relations-v1/aligned-v2/experiment-manifest-aligned-v2.json --preflight experiments/rgcn-compgcn-v2/wikidata-relations-v1/aligned-v2/host-preflight-aligned-v2-recheck-01.json --asset-verification experiments/rgcn-compgcn-v2/wikidata-relations-v1/aligned-v2/model-assets-verification-recheck-01.json --authorization /private/tmp/graph-verity-aligned-v2-embedding-authorization-0bccf3d17ab8d0f873425e4669ad1d85ec629f1eda6c7da7e5783ca520a8e58a.json --model-dir /private/tmp/graph-verity-embeddinggemma-2-914f7f89142e33e77833254d9c9b90c3cef7303b --out experiments/rgcn-compgcn-v2/wikidata-relations-v1/aligned-v2/directional-relation-features.npz",
+  "exit_code": 1,
+  "failure": {
+    "type": "RuntimeError",
+    "message": "PyTorch cannot set inter-op threads after cpu_runtime() has already set them earlier in this same process.",
+    "cause": "embedding_runtime_identity() calls embedding_experiment.cpu_runtime(); generate_relation_features() calls it a second time.",
+    "runner_source_sha256": "5bd2b420cd114d1d4d1b1b40311d569b5a238779085789d9adb1f6773a11e9b4",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/grove/projects/graph-verity/tools/rgcn_compgcn_aligned_run_v1.py\", line 1355, in <module>\n    main()\n  File \"/Users/grove/projects/graph-verity/tools/rgcn_compgcn_aligned_run_v1.py\", line 1341, in main\n    result = generate_relation_features(args.manifest, args.preflight, args.asset_verification,\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/grove/projects/graph-verity/tools/rgcn_compgcn_aligned_run_v1.py\", line 436, in generate_relation_features\n    torch_runtime, runtime = embedding_experiment.cpu_runtime()\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/grove/projects/graph-verity/tools/embedding_experiment.py\", line 163, in cpu_runtime\n    torch.set_num_interop_threads(1)\nRuntimeError: Error: cannot set number of interop threads after parallel work has started or set_num_interop_threads called"
+  },
+  "bindings": {
+    "aligned_experiment_manifest_sha256": "a1ea7d14ba72b0c96682795004a9b243b68934dc182b1e6df0c567d7d238ac69",
+    "asset_verification_sha256": "4ef33e6a2509ff6a926fe9d745cdbcccc308197358d3abc14ad563a9cc8db214",
+    "preflight_sha256": "0bccf3d17ab8d0f873425e4669ad1d85ec629f1eda6c7da7e5783ca520a8e58a",
+    "authorization_sha256": "7886deb6e67aac69876b4e0dcf64679e09ab4ab5c3303ae59a91de626520cfbb",
+    "feature_operation_sha256": "7e7d87980369977b912c03dbfaff6d47ab8e0f21d411c02e6c47c894646c7feb"
+  },
+  "outcomes": {
+    "feature_archive_created": false,
+    "feature_manifest_created": false,
+    "model_encoder_constructed": false,
+    "model_weights_loaded": false,
+    "embedding_inference_performed": false,
+    "gnn_training_started": false,
+    "process_peak_rss_observed": false,
+    "preflight_snapshot_bytes": 21791195136
+  },
+  "retry_policy": "No retry was made. Fixing the runner changes its hash bound by the frozen preregistration; do not rerun until a versioned code/manifest update and authorization handling are established."
+}

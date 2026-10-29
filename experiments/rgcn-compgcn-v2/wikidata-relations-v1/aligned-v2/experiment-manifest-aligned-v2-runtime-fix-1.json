@@ -1,0 +1,316 @@
+{
+  "version": "rgcn-compgcn-aligned-v2-preregistration",
+  "status": "frozen-before-new-feature-inference-or-scored-training",
+  "dataset": {
+    "manifest_sha256": "8814fd107b756f2f6a38decf293b9cf918a22232901665057752a1b928cb9616",
+    "graph": "urn:graph-verity:wikidata:norway-org-v1",
+    "license": "CC0 for Wikidata structured data",
+    "stats": {
+      "entities": 2157,
+      "original_edges": 5756,
+      "directional_navigation_edges": 11512,
+      "predicates": 84,
+      "directional_relation_ids": 168,
+      "derived_reverse_edges": 5756,
+      "predicate_edge_counts": {
+        "http://www.wikidata.org/prop/direct/P101": 20,
+        "http://www.wikidata.org/prop/direct/P1037": 4,
+        "http://www.wikidata.org/prop/direct/P1056": 2,
+        "http://www.wikidata.org/prop/direct/P112": 18,
+        "http://www.wikidata.org/prop/direct/P1142": 13,
+        "http://www.wikidata.org/prop/direct/P115": 1,
+        "http://www.wikidata.org/prop/direct/P127": 29,
+        "http://www.wikidata.org/prop/direct/P131": 73,
+        "http://www.wikidata.org/prop/direct/P1313": 45,
+        "http://www.wikidata.org/prop/direct/P1343": 39,
+        "http://www.wikidata.org/prop/direct/P1365": 18,
+        "http://www.wikidata.org/prop/direct/P1366": 8,
+        "http://www.wikidata.org/prop/direct/P137": 1,
+        "http://www.wikidata.org/prop/direct/P1376": 1,
+        "http://www.wikidata.org/prop/direct/P138": 3,
+        "http://www.wikidata.org/prop/direct/P1383": 12,
+        "http://www.wikidata.org/prop/direct/P1387": 3,
+        "http://www.wikidata.org/prop/direct/P140": 1,
+        "http://www.wikidata.org/prop/direct/P1416": 3,
+        "http://www.wikidata.org/prop/direct/P1435": 1,
+        "http://www.wikidata.org/prop/direct/P1454": 674,
+        "http://www.wikidata.org/prop/direct/P1464": 32,
+        "http://www.wikidata.org/prop/direct/P1465": 17,
+        "http://www.wikidata.org/prop/direct/P150": 1,
+        "http://www.wikidata.org/prop/direct/P155": 1,
+        "http://www.wikidata.org/prop/direct/P159": 91,
+        "http://www.wikidata.org/prop/direct/P163": 1,
+        "http://www.wikidata.org/prop/direct/P166": 8,
+        "http://www.wikidata.org/prop/direct/P169": 3,
+        "http://www.wikidata.org/prop/direct/P17": 1002,
+        "http://www.wikidata.org/prop/direct/P1792": 29,
+        "http://www.wikidata.org/prop/direct/P1830": 27,
+        "http://www.wikidata.org/prop/direct/P1889": 14,
+        "http://www.wikidata.org/prop/direct/P190": 68,
+        "http://www.wikidata.org/prop/direct/P194": 4,
+        "http://www.wikidata.org/prop/direct/P199": 1,
+        "http://www.wikidata.org/prop/direct/P206": 2,
+        "http://www.wikidata.org/prop/direct/P208": 2,
+        "http://www.wikidata.org/prop/direct/P2354": 45,
+        "http://www.wikidata.org/prop/direct/P2360": 2,
+        "http://www.wikidata.org/prop/direct/P237": 11,
+        "http://www.wikidata.org/prop/direct/P2378": 1,
+        "http://www.wikidata.org/prop/direct/P2541": 3,
+        "http://www.wikidata.org/prop/direct/P276": 6,
+        "http://www.wikidata.org/prop/direct/P2813": 4,
+        "http://www.wikidata.org/prop/direct/P2936": 62,
+        "http://www.wikidata.org/prop/direct/P31": 1187,
+        "http://www.wikidata.org/prop/direct/P3320": 2,
+        "http://www.wikidata.org/prop/direct/P355": 2,
+        "http://www.wikidata.org/prop/direct/P36": 45,
+        "http://www.wikidata.org/prop/direct/P360": 1,
+        "http://www.wikidata.org/prop/direct/P361": 10,
+        "http://www.wikidata.org/prop/direct/P37": 610,
+        "http://www.wikidata.org/prop/direct/P3975": 1,
+        "http://www.wikidata.org/prop/direct/P3989": 1,
+        "http://www.wikidata.org/prop/direct/P407": 6,
+        "http://www.wikidata.org/prop/direct/P414": 2,
+        "http://www.wikidata.org/prop/direct/P418": 1,
+        "http://www.wikidata.org/prop/direct/P452": 678,
+        "http://www.wikidata.org/prop/direct/P460": 1,
+        "http://www.wikidata.org/prop/direct/P463": 26,
+        "http://www.wikidata.org/prop/direct/P47": 281,
+        "http://www.wikidata.org/prop/direct/P488": 12,
+        "http://www.wikidata.org/prop/direct/P495": 3,
+        "http://www.wikidata.org/prop/direct/P5008": 49,
+        "http://www.wikidata.org/prop/direct/P527": 45,
+        "http://www.wikidata.org/prop/direct/P5514": 2,
+        "http://www.wikidata.org/prop/direct/P6": 50,
+        "http://www.wikidata.org/prop/direct/P607": 1,
+        "http://www.wikidata.org/prop/direct/P610": 34,
+        "http://www.wikidata.org/prop/direct/P6112": 1,
+        "http://www.wikidata.org/prop/direct/P641": 28,
+        "http://www.wikidata.org/prop/direct/P706": 5,
+        "http://www.wikidata.org/prop/direct/P740": 4,
+        "http://www.wikidata.org/prop/direct/P749": 69,
+        "http://www.wikidata.org/prop/direct/P7867": 37,
+        "http://www.wikidata.org/prop/direct/P7888": 2,
+        "http://www.wikidata.org/prop/direct/P793": 41,
+        "http://www.wikidata.org/prop/direct/P807": 15,
+        "http://www.wikidata.org/prop/direct/P814": 1,
+        "http://www.wikidata.org/prop/direct/P8989": 5,
+        "http://www.wikidata.org/prop/direct/P910": 46,
+        "http://www.wikidata.org/prop/direct/P92": 45,
+        "http://www.wikidata.org/prop/direct/P921": 1
+      },
+      "top_five_predicate_edge_share": 0.7211605281445448,
+      "source_label_predicate_coverage": {
+        "en": 84,
+        "norwegian_nb_nn_no": 83
+      },
+      "source_alias_predicates": 0,
+      "source_definition_predicates": 0
+    }
+  },
+  "benchmark": {
+    "manifest_sha256": "9e3e92142297a9d08c1a29a5a4c0634b8de47073e398bf8adfddd9657d6fecc4",
+    "questions_sha256": "108c401a798cde55eac97c0a5b6d9f69cef69527c6901855769ffd069ff028b9",
+    "references_sha256": "710886b073ae7795efaa7012b9d3e45a5b3303ab1fb26ef81cfc0e7aac9b9509",
+    "splits_sha256": "f61f3d1d258a5e0960362893ddbbf8f721432824c21447cdbef157a972acbd4f",
+    "baseline_summary_sha256": "d781c38ec324e8f74f25a1478f99926d7553711223fb4d6ab2bcb2a166a205c2",
+    "baseline_cases_sha256": "7366dcf200d81b6c780960770b83d824b83d8c68a5e53a1e18f516edff307ea2"
+  },
+  "historical_v3": {
+    "run_manifest_sha256": "7d1775aada1d1687eb8f36ef2b4b4f1f54ced3f0464338d100d6a3bd60e19c9f",
+    "run_receipt_sha256": "34cb64cadbcf3084c6cd08360f2c94945fca56915c0ae97cfa0b40f11e9c440c",
+    "posthoc_summary_sha256": "efd7acd3964e40dc8e73483522a6b295db2987798a26ef3b2bf14134681c073f"
+  },
+  "model": {
+    "id": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "license": "Apache-2.0 per the pinned upstream metadata; verify exact source at inference"
+  },
+  "features": {
+    "base_archive_sha256": "888028e174d81aed59a30b0dc8cc4a703a0cbc5153e55a1cd617488463266af8",
+    "base_manifest_sha256": "6bad882398a74802a26ed0f9f9b141d5898e04e05b7d36985eea1ea2eed36788",
+    "new_relation_feature_operation_sha256": "7e7d87980369977b912c03dbfaff6d47ab8e0f21d411c02e6c47c894646c7feb",
+    "new_relation_features": "await separately authorized inference"
+  },
+  "ablations": [
+    {
+      "id": "A",
+      "name": "historical baseline",
+      "action": "reuse v3 receipt and predictions; no retraining"
+    },
+    {
+      "id": "B",
+      "name": "explicit inverse navigation edges",
+      "action": "distinct forward/reverse relation IDs; duplicate v3 predicate vectors"
+    },
+    {
+      "id": "C",
+      "name": "bilingual relation navigation text",
+      "action": "B plus encoded generated bilingual navigation descriptions"
+    },
+    {
+      "id": "D",
+      "name": "balanced and direction-contrastive training",
+      "action": "C plus per-predicate source-edge cap with both navigation directions retained, and source-backed wrong-direction negatives"
+    },
+    {
+      "id": "E",
+      "name": "explicit question-to-graph alignment",
+      "action": "D plus anchor, predicate/direction, and answer alignment losses"
+    }
+  ],
+  "fitted_variants": [
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "architectures": [
+    "rgcn",
+    "compgcn"
+  ],
+  "partitions": [
+    "transductive",
+    "unseen_entity"
+  ],
+  "seeds": [
+    117,
+    118,
+    119
+  ],
+  "fit_count": 48,
+  "fit_execution": {
+    "concurrency": 1,
+    "order": "sequential"
+  },
+  "training": {
+    "layers": 2,
+    "hidden_dimensions": 128,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "epochs": 100,
+    "patience": 10,
+    "link_negatives": 10,
+    "query_negatives": 10,
+    "relation_balanced_source_edges_per_predicate_cap": 32,
+    "device": "CPU only",
+    "threads": {
+      "intra_op": 4,
+      "inter_op": 1
+    },
+    "maximum_seconds": 21600,
+    "minimum_available_memory_bytes": 19327352832,
+    "maximum_process_tree_rss_bytes": 19327352832,
+    "early_warning_rss_bytes": 12884901888,
+    "safeguard_scope": "Observational host/process sampling; not OS-level isolation."
+  },
+  "negative_sampling": {
+    "query_candidates": "sampled ranking distractors; never RDF false-fact claims",
+    "link_prediction": "10 graph-local unobserved corruptions; filter all source-known triples to avoid false negatives",
+    "known_triple_filter_use": "sampling exclusion only; held-out edges never enter message-passing tensors",
+    "unknown_relation_truth": "open-world; not asserted absent"
+  },
+  "metrics": {
+    "primary": [
+      "Recall@10",
+      "MRR@10",
+      "nDCG@10"
+    ],
+    "secondary": [
+      "Recall@1",
+      "Recall@5",
+      "direction accuracy",
+      "anchor accuracy",
+      "source-witness coverage",
+      "no-match suggestions",
+      "source-witnessed path Recall@1/5/10"
+    ],
+    "required_views": [
+      "gold_free_end_to_end",
+      "oracle_assisted_structural",
+      "QV2_shared_pool_reranking",
+      "English",
+      "Norwegian",
+      "forward",
+      "reverse",
+      "two_hop",
+      "unseen_entity"
+    ],
+    "predicted_path_candidates": {
+      "source": "authorized graph adjacency only",
+      "top_anchor_candidates": 5,
+      "top_relation_direction_candidates": 10,
+      "maximum_hops": 2,
+      "rank_score": "anchor + relation-direction per step + endpoint score",
+      "direction_and_source_quad_preserved": true
+    },
+    "promotion_criterion_historical": "+0.10 absolute Recall@10 over the strongest matched text baseline and positive paired Recall@10 change over QV2; uncertainty is descriptive, not an added threshold",
+    "failure_conditions": [
+      "resource safeguard stop",
+      "six-hour limit",
+      "non-finite loss or validation score",
+      "integrity or leakage check failure"
+    ],
+    "test_tuning": false,
+    "references": "agent-authored and source-checked; not expert gold"
+  },
+  "input_sha256": {
+    "manifest.json": "9e3e92142297a9d08c1a29a5a4c0634b8de47073e398bf8adfddd9657d6fecc4",
+    "questions.json": "108c401a798cde55eac97c0a5b6d9f69cef69527c6901855769ffd069ff028b9",
+    "references.json": "710886b073ae7795efaa7012b9d3e45a5b3303ab1fb26ef81cfc0e7aac9b9509",
+    "splits.json": "f61f3d1d258a5e0960362893ddbbf8f721432824c21447cdbef157a972acbd4f",
+    "dataset_manifest": "8814fd107b756f2f6a38decf293b9cf918a22232901665057752a1b928cb9616",
+    "base_feature_archive": "888028e174d81aed59a30b0dc8cc4a703a0cbc5153e55a1cd617488463266af8",
+    "base_feature_manifest": "6bad882398a74802a26ed0f9f9b141d5898e04e05b7d36985eea1ea2eed36788",
+    "baseline_summary": "d781c38ec324e8f74f25a1478f99926d7553711223fb4d6ab2bcb2a166a205c2",
+    "baseline_cases": "7366dcf200d81b6c780960770b83d824b83d8c68a5e53a1e18f516edff307ea2",
+    "v3_run_receipt": "34cb64cadbcf3084c6cd08360f2c94945fca56915c0ae97cfa0b40f11e9c440c",
+    "v3_posthoc_summary": "efd7acd3964e40dc8e73483522a6b295db2987798a26ef3b2bf14134681c073f",
+    "directional_export_manifest": "27a29ff548025ddf95da069f5292cb21f1f2b1940858baa02c6a887eacdc28e7",
+    "directional_feature_inputs": "ad1d32cb4fae8fcc5130cdfe0dbd6249dd74e11eb88bf09846619aa49f8b4ef1"
+  },
+  "implementation_sha256": {
+    "tools/rgcn_compgcn_directional.py": "6c675dfe1415867044193fac23b6b321e8a41f23c9c28f15ecbc24405abc5706",
+    "tools/rgcn_compgcn_alignment.py": "d441bc222934b964e6a33ff164b97c03f3331a3c23780bd24b32bcd67df476dc",
+    "tools/rgcn_compgcn_aligned_run_v1.py": "7808631aba916d57a9f41e1ed0ea836162e4e396c4e8406b4124c8f5d15deae3",
+    "tools/rgcn_compgcn_models.py": "2751f76f2b8f9188336b3f1fa036bb64f345e99d33934381d0036547ba1654f6",
+    "tools/rgcn_compgcn_run_v2.py": "3090a4b27003b76f48c64f3fd255f82056065ca292479216381fc54e54d4448e",
+    "tools/rgcn_compgcn_v2.py": "3af3632ed18a9c6aa1e6adea338779f731ee1c2c475eddff39749b23952d8529",
+    "tools/embedding_experiment.py": "0b1dff31a5ec5b9b10ec54f4cbbe59801cc9b0eedad205fbf8a749e2f242ee99",
+    "benchmarks/embeddinggemma/manifest.json": "ee1dc53af42be51a7b532c3932734080648793830ccd6600fe4f280270ea7cce",
+    "benchmarks/embeddinggemma/upstream.json": "5c20fd1f9407a3a5752a35bd1cffaa060d2a8f48df4ccb0a3395bd3fda351c90",
+    "benchmarks/embeddinggemma/parity-inputs.json": "a87b8c1f0e55a68d243dc11b30799cd9e28487f1e6e733f92e9655955d5712bd",
+    "benchmarks/retrieval/manifest.json": "ca0fab2a9a89f36b59fce73bdd9215ac7470bc3f921fff826aea4a4b6c3f2e88",
+    "tools/embedding-requirements.txt": "3fe68da5cacf6064fc1ca266cd419ceab2600ef93ca95b9618b86c0a0d96c209",
+    "experiments/rgcn-compgcn-v2/requirements-gnn.lock": "b953fa1f10eb33ba2eae24ddd6626c64f639e74e57fcc30028b25f2023f7aa2a",
+    "experiments/rgcn-compgcn-v2/python-version.txt": "f50159fad3f4319868eb38717b91d55843c41e9803014c8de05e116a6d0bcfdc",
+    "tools/test_rgcn_compgcn_alignment.py": "b994ff798989d6130a46613ed520fc6550b56f1a6fcc708a34fa04916d78210f",
+    "tools/test_rgcn_compgcn_directional.py": "3437dab71941498d7eacca4b9032edb45b3cd341e80ccb582d471ab98bb48c8c",
+    "tools/rgcn_compgcn_aligned_run_v2.py": "4d7cbbe8a83fa71d5bf631828ec4f736a2811bf83afa7a3c9aed84ced950f334",
+    "tools/test_embedding_runtime_aligned.py": "96dd45cec2e95d966f1422df844cd261e06d0504c29ed9969aaac55e3e5f63ee"
+  },
+  "protocol_sha256": {
+    "README.md": "0d1e807d175e62d72bf436853e462526b398651efc792bba0f39a8bb5755aa83",
+    "DIAGNOSIS.md": "c01aefc00999da34c8a6b510b3faaa4e8a96a64e119bee838b0337b40ebc7783",
+    "RUNTIME-FIX-1.md": "aa2e22e1631c401c5b481dc5eeabcae0c2dfe9fa50fdb24945778c9da5eaa19b"
+  },
+  "safety": {
+    "inverse_edges_are_rdf_facts": false,
+    "predictions_are_source_evidence": false,
+    "cross_graph_scope": false,
+    "automatic_execution": false
+  },
+  "authorization": {
+    "new_embedding_inference": "separate authorization required before weights load",
+    "scored_training": "separate authorization required after final feature and run hashes"
+  },
+  "execution_revision": "aligned-v2-runtime-fix-1",
+  "parent_manifest_sha256": "a1ea7d14ba72b0c96682795004a9b243b68934dc182b1e6df0c567d7d238ac69",
+  "runtime_correction": {
+    "change": "Initialize the pinned CPU runtime once per process, cache and reuse its identity, and reject changed or conflicting thread settings.",
+    "feature_semantics_unchanged": true,
+    "model_architecture_unchanged": true,
+    "training_evaluation_semantics_unchanged": true,
+    "prior_failed_attempt": "feature-attempt-01-failure.json"
+  }
+}
