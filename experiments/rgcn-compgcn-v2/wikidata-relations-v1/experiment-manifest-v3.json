@@ -1,0 +1,110 @@
+{
+  "version": "rgcn-compgcn-v2-preregistration-v3",
+  "status": "frozen-protocol; matched EmbeddingGemma baseline absent",
+  "source": {
+    "benchmark_manifest_sha256": "9e3e92142297a9d08c1a29a5a4c0634b8de47073e398bf8adfddd9657d6fecc4",
+    "dataset_manifest_sha256": "8814fd107b756f2f6a38decf293b9cf918a22232901665057752a1b928cb9616",
+    "snapshot_sha256": "584e068d3a98342ff608be7b881950cb8a1f9c7ec91ecbb0747956384d6452eb",
+    "input_sha256": {
+      "questions.json": "108c401a798cde55eac97c0a5b6d9f69cef69527c6901855769ffd069ff028b9",
+      "references.json": "710886b073ae7795efaa7012b9d3e45a5b3303ab1fb26ef81cfc0e7aac9b9509",
+      "splits.json": "f61f3d1d258a5e0960362893ddbbf8f721432824c21447cdbef157a972acbd4f",
+      "dataset-audit.json": "16281f265ffeababad92da993f9b45bd30480ccf4d82297e1ff2f6ed69dedeab",
+      "manifest.json": "9e3e92142297a9d08c1a29a5a4c0634b8de47073e398bf8adfddd9657d6fecc4"
+    },
+    "baseline_score_dir": "experiments/rgcn-compgcn-v2/wikidata-relations-v1/baseline-score-v4",
+    "baseline_summary_sha256": "e5c0332b46b7ce5b799017f47845e2862de33bb5c1c0a89a3bcb160b3fcf87e6",
+    "baseline_cases_sha256": "93b8a85fc29e024b6671eb2ca08914d4b5173a4051c15a17cc55501dbecc9e1f",
+    "native_capture_receipt_sha256": "70c053f20ae3f422f12f2d1059089a73e84a82d7193cf05e027269576b32bae2",
+    "adjacency_capture_receipt_sha256": "93c3f2a43098c91794ec78f3c3f4553436c11df68831902adf148148e4888033"
+  },
+  "features": {
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "dimensions": 768,
+    "dtype": "float32",
+    "node_relation_prompt": "title: none | text: ",
+    "query_prompt": "task: search result | query: ",
+    "normalization": "L2",
+    "max_tokens": 256,
+    "authorization_status": "new inference still unauthorized"
+  },
+  "architectures": {
+    "shared": {
+      "layers": 2,
+      "hidden": 128,
+      "link_objective": "dot(head+relation, tail)/sqrt(128)",
+      "query_objective": "normalized projected query dot product against all entity and predicate vectors"
+    },
+    "rgcn": {
+      "implementation": "PyG RGCNConv",
+      "basis_count": 4,
+      "direction": "original subject-to-object edges only"
+    },
+    "compgcn": {
+      "composition": "subtraction phi(entity,relation)=entity-relation",
+      "relation_updates": "learned linear update at each layer",
+      "direction": "original subject-to-object edges only"
+    }
+  },
+  "training": {
+    "seeds": [
+      117,
+      118,
+      119
+    ],
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batching": "full graph and full batch",
+    "epochs": 100,
+    "early_stopping": {
+      "metric": "validation MRR@10",
+      "patience": 10
+    },
+    "link_negatives": 10,
+    "query_negatives": 10,
+    "negative_filter": "training-split positives only; unobserved triples are not known false",
+    "message_passing": "training edges only for transductive; all incident held-out entity edges removed for unseen-entity partition",
+    "partitions": [
+      "transductive",
+      "unseen_entity"
+    ],
+    "device": "CPU only",
+    "threads": {
+      "intra_op": 4,
+      "inter_op": 1
+    },
+    "resource_ceiling": {
+      "total_training_seconds": 21600,
+      "process_rss_bytes": 25769803776
+    }
+  },
+  "comparison": {
+    "primary": "+0.10 absolute Recall@10 over the stronger matched text method (BM25 or EmbeddingGemma)",
+    "structural": "positive paired Recall@10 change over native QV2 source-witnessed retrieval, which receives the same raw question text; structured adjacency is reported as an oracle ceiling, not a pass threshold",
+    "uncertainty": "paired bootstrap 95% interval on test query groups; lower bound must exceed zero",
+    "two_hop_path_reporting": "measure endpoint rank only when the retrieved candidate can be attached to the exact source-quads path; query-structure traversal is an oracle path source, not a learned path score",
+    "regressions": "report per-language, direction, depth, exact-IRI, scope, no-match and source-witness outcomes; no scope/direction/identifier safety regression",
+    "candidate_generation": "record full-pool recall before any shared-pool reranking; score all N entities and 84 predicates for query ranking"
+  },
+  "judgments": "Agent-authored, source-checked development references only; no expert gold or independent semantic claim.",
+  "limitations": [
+    "EmbeddingGemma Wikidata feature vectors have not been generated.",
+    "The test split has 28 relevant questions, including only four two-hop queries.",
+    "The deterministic adjacency result uses structured query hints and is an oracle, not a natural-language baseline.",
+    "No unseen-entity results exist until the separately frozen node-disjoint run completes."
+  ],
+  "implementation_sha256": {
+    "tools/rgcn_compgcn_v2.py": "3af3632ed18a9c6aa1e6adea338779f731ee1c2c475eddff39749b23952d8529",
+    "tools/rgcn_compgcn_models.py": "dc88f06fb3a07c1e5dbaef25cfd98bb1c618afb12bb1a3114ce68a742eeada45",
+    "tools/rgcn_compgcn_run_v2.py": "9561e5bfa28aaf4d1642add44ec4b0f698e4a100ba01eb64bd8a7bff776ae6a7",
+    "experiments/rgcn-compgcn-v2/requirements-gnn.lock": "b953fa1f10eb33ba2eae24ddd6626c64f639e74e57fcc30028b25f2023f7aa2a",
+    "experiments/rgcn-compgcn-v2/python-version.txt": "f50159fad3f4319868eb38717b91d55843c41e9803014c8de05e116a6d0bcfdc"
+  },
+  "authorization": {
+    "feature_inference": "requires approval bound to model/dataset/question hashes; local model assets only",
+    "full_training": "requires approval bound to this run-manifest hash, feature-manifest hash, and read-only preflight receipt",
+    "no_training_or_model_download_performed": true
+  }
+}

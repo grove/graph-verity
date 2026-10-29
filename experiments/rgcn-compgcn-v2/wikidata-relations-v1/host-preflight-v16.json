@@ -1,0 +1,203 @@
+{
+  "version": "rgcn-compgcn-readonly-preflight-v6",
+  "captured_at_utc": "2026-10-29T16:32:34.699404Z",
+  "hardware_profile": "Hardware:\n\n    Hardware Overview:\n\n      Model Name: MacBook Pro\n      Model Identifier: MacBookPro18,1\n      Model Number: Z14Z0002HH/A\n      Chip: Apple M1 Pro\n      Total Number of Cores: 10 (8 Performance and 2 Efficiency)\n      Memory: 32 GB\n      System Firmware Version: 20457.41.3\n      OS Loader Version: 20457.41.3\n\n",
+  "target_hardware_match": true,
+  "machine": "arm64",
+  "cpu_count": 10,
+  "ram_total_bytes": 34359738368,
+  "available_memory_snapshot_bytes": 21881257984,
+  "memory_snapshot_policy": "Point-in-time admission only; process RSS is sampled separately during training.",
+  "feature_admission_threshold_bytes": 21000000000,
+  "training_admission_threshold_bytes": 19327352832,
+  "minimum_available_memory_bytes": 19327352832,
+  "process_tree_rss_ceiling_bytes": 19327352832,
+  "process_tree_rss_warning_bytes": 12884901888,
+  "minimum_runtime_headroom_bytes": 4294967296,
+  "maximum_swapout_growth_bytes": 2147483648,
+  "critical_memory_pressure_free_percent": 5,
+  "resource_sample_interval_seconds": 5,
+  "memory_pressure_free_percent": 89,
+  "vm_stat": {
+    "page_size_bytes": 16384,
+    "swapins_pages": 0,
+    "swapouts_pages": 0
+  },
+  "swap_used_bytes": 0,
+  "swap_usage_error": null,
+  "competing_processes_recorded": [
+    {
+      "pid": 5241,
+      "name": "mediaanalysisd",
+      "rss_bytes": 462307328
+    },
+    {
+      "pid": 3640,
+      "name": "codex",
+      "rss_bytes": 315899904
+    },
+    {
+      "pid": 85064,
+      "name": "codex",
+      "rss_bytes": 287801344
+    },
+    {
+      "pid": 1266,
+      "name": "iTerm2",
+      "rss_bytes": 284016640
+    },
+    {
+      "pid": 1029,
+      "name": "photolibraryd",
+      "rss_bytes": 253132800
+    },
+    {
+      "pid": 1671,
+      "name": "photoanalysisd",
+      "rss_bytes": 236978176
+    },
+    {
+      "pid": 1780,
+      "name": "managedcorespotlightd",
+      "rss_bytes": 164380672
+    },
+    {
+      "pid": 656,
+      "name": "loginwindow",
+      "rss_bytes": 121208832
+    },
+    {
+      "pid": 1070,
+      "name": "corespotlightd",
+      "rss_bytes": 121012224
+    },
+    {
+      "pid": 54673,
+      "name": "Activity Monitor",
+      "rss_bytes": 120111104
+    },
+    {
+      "pid": 1281,
+      "name": "Finder",
+      "rss_bytes": 106250240
+    },
+    {
+      "pid": 1083,
+      "name": "spotlightknowledged.updater",
+      "rss_bytes": 76824576
+    },
+    {
+      "pid": 1777,
+      "name": "contactsd",
+      "rss_bytes": 66895872
+    },
+    {
+      "pid": 2508,
+      "name": "herdr",
+      "rss_bytes": 62717952
+    },
+    {
+      "pid": 1212,
+      "name": "amsengagementd",
+      "rss_bytes": 52920320
+    },
+    {
+      "pid": 1008,
+      "name": "sharingd",
+      "rss_bytes": 52297728
+    },
+    {
+      "pid": 1278,
+      "name": "ControlCenter",
+      "rss_bytes": 49233920
+    },
+    {
+      "pid": 1183,
+      "name": "WeatherWidget",
+      "rss_bytes": 48742400
+    },
+    {
+      "pid": 48201,
+      "name": "DockHelper",
+      "rss_bytes": 46104576
+    },
+    {
+      "pid": 1118,
+      "name": "iconservicesagent",
+      "rss_bytes": 45580288
+    }
+  ],
+  "visible_process_count": 519,
+  "inaccessible_process_count": 331,
+  "resource_metrics_valid": true,
+  "resource_snapshot_error": null,
+  "runtime_identity": {
+    "python": "3.12.14",
+    "expected_python": "3.12.14",
+    "packages": {
+      "aiohappyeyeballs": "2.7.1",
+      "aiohttp": "3.14.5",
+      "aiosignal": "1.4.0",
+      "attrs": "26.1.0",
+      "certifi": "2026.10.23",
+      "charset-normalizer": "3.5.2",
+      "filelock": "4.2.4",
+      "frozenlist": "1.8.0",
+      "fsspec": "2026.9.0",
+      "idna": "3.20",
+      "Jinja2": "3.1.6",
+      "MarkupSafe": "3.0.4",
+      "mpmath": "1.3.0",
+      "multidict": "7.2.1",
+      "networkx": "3.7",
+      "numpy": "2.5.4",
+      "propcache": "0.5.4",
+      "psutil": "7.2.2",
+      "pyparsing": "3.3.3",
+      "requests": "2.34.2",
+      "rdflib": "7.1.4",
+      "setuptools": "81.0.0",
+      "sympy": "1.14.0",
+      "torch": "2.11.0",
+      "torch-geometric": "2.7.0",
+      "tqdm": "4.70.1",
+      "typing_extensions": "4.16.0",
+      "urllib3": "2.8.0",
+      "xxhash": "4.0.2",
+      "yarl": "1.25.1"
+    },
+    "requirements_lock_sha256": "b953fa1f10eb33ba2eae24ddd6626c64f639e74e57fcc30028b25f2023f7aa2a",
+    "framework_imported": true,
+    "valid": true,
+    "failures": []
+  },
+  "frozen_inputs": {
+    "source_manifest_sha256": "d8dbbd8375d23972b8b07283da43e30b2ab8383039382b27c9ee4f17c1cac659",
+    "dataset_manifest_sha256": "8814fd107b756f2f6a38decf293b9cf918a22232901665057752a1b928cb9616",
+    "benchmark_manifest_sha256": "9e3e92142297a9d08c1a29a5a4c0634b8de47073e398bf8adfddd9657d6fecc4",
+    "questions_sha256": "108c401a798cde55eac97c0a5b6d9f69cef69527c6901855769ffd069ff028b9",
+    "feature_binding": {
+      "feature_manifest_sha256": "6bad882398a74802a26ed0f9f9b141d5898e04e05b7d36985eea1ea2eed36788",
+      "feature_file_sha256": "888028e174d81aed59a30b0dc8cc4a703a0cbc5153e55a1cd617488463266af8"
+    }
+  },
+  "frozen_inputs_valid": true,
+  "frozen_inputs_error": null,
+  "fit_execution": {
+    "count": 12,
+    "concurrency": 1,
+    "order": "sequential"
+  },
+  "feature_resource_preflight_passed": true,
+  "training_resource_preflight_passed": true,
+  "disk_free_bytes": 551189688320,
+  "execution": "Read-only preflight; no processes terminated, no resource limits changed, no weights loaded, no training run.",
+  "stop_conditions": [
+    "process-tree RSS reaches 18 GiB",
+    "memory pressure free percentage is 5% or lower",
+    "available headroom falls below 4 GiB",
+    "swapout growth reaches 2 GiB",
+    "resource sampling fails"
+  ],
+  "status": "pass"
+}

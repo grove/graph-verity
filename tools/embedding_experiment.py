@@ -13,6 +13,7 @@ import resource
 import shutil
 import subprocess
 import sys
+import threading
 import time
 import urllib.request
 
@@ -20,6 +21,9 @@ import retrieval as r
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / 'benchmarks/embeddinggemma/manifest.json'
+_CPU_RUNTIME_CONFIG = None
+_CPU_RUNTIME_IDENTITY = None
+_CPU_RUNTIME_LOCK = threading.Lock()
 
 
 def digest(path):
@@ -153,25 +157,48 @@ def load_gzip(path):
         return json.load(stream)
 
 
+def _initialize_cpu_runtime(torch, threads, interop_threads):
+    global _CPU_RUNTIME_CONFIG, _CPU_RUNTIME_IDENTITY
+    config = (int(threads), int(interop_threads))
+    with _CPU_RUNTIME_LOCK:
+        if _CPU_RUNTIME_CONFIG is not None:
+            actual = (torch.get_num_threads(), torch.get_num_interop_threads())
+            if config != _CPU_RUNTIME_CONFIG:
+                raise RuntimeError(f'PyTorch CPU runtime already initialized with {_CPU_RUNTIME_CONFIG}; requested {config}')
+            if actual != config:
+                raise RuntimeError(f'PyTorch CPU runtime changed after initialization: expected {config}, got {actual}')
+            return _CPU_RUNTIME_IDENTITY
+
+        if torch.get_num_threads() != config[0]:
+            torch.set_num_threads(config[0])
+        if torch.get_num_interop_threads() != config[1]:
+            torch.set_num_interop_threads(config[1])
+        actual = (torch.get_num_threads(), torch.get_num_interop_threads())
+        if actual != config:
+            raise RuntimeError(f'PyTorch CPU runtime configuration mismatch: expected {config}, got {actual}')
+        torch.manual_seed(38)
+        torch.use_deterministic_algorithms(True)
+        packages = {}
+        for dist in importlib.metadata.distributions():
+            record = dist.read_text('RECORD') or ''
+            packages[dist.metadata['Name']] = dict(version=dist.version,
+                record_sha256=hashlib.sha256(record.encode()).hexdigest())
+        _CPU_RUNTIME_CONFIG = config
+        _CPU_RUNTIME_IDENTITY = dict(
+            python=sys.version, platform=platform.platform(), machine=platform.machine(),
+            torch_build=torch.__config__.show(), torch_git=torch.version.git_version,
+            threads=torch.get_num_threads(), interop_threads=torch.get_num_interop_threads(),
+            packages=packages)
+        return _CPU_RUNTIME_IDENTITY
+
+
 def cpu_runtime():
     spec, _ = verify()
-    threads = str(spec['runtime']['threads'])
-    os.environ.update(OMP_NUM_THREADS=threads, OPENBLAS_NUM_THREADS=threads,
+    threads = int(spec['runtime']['threads'])
+    os.environ.update(OMP_NUM_THREADS=str(threads), OPENBLAS_NUM_THREADS=str(threads),
                       TOKENIZERS_PARALLELISM='false', HF_HUB_OFFLINE='1', TRANSFORMERS_OFFLINE='1')
     import torch
-    torch.set_num_threads(int(threads))
-    torch.set_num_interop_threads(1)
-    torch.manual_seed(38)
-    torch.use_deterministic_algorithms(True)
-    packages = {}
-    for dist in importlib.metadata.distributions():
-        record = dist.read_text('RECORD') or ''
-        packages[dist.metadata['Name']] = dict(version=dist.version,
-            record_sha256=hashlib.sha256(record.encode()).hexdigest())
-    return torch, dict(python=sys.version, platform=platform.platform(), machine=platform.machine(),
-                      torch_build=torch.__config__.show(), torch_git=torch.version.git_version,
-                      threads=torch.get_num_threads(), interop_threads=torch.get_num_interop_threads(),
-                      packages=packages)
+    return torch, _initialize_cpu_runtime(torch, threads, 1)
 
 
 def prepare(args):

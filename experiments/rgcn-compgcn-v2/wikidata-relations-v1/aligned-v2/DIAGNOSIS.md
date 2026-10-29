@@ -1,0 +1,84 @@
+# Diagnosis for the aligned v2 experiment
+
+This diagnosis is based on the v3 source, frozen split, baseline outputs, and
+saved v3 training receipt. It does not change or reinterpret the original
+scores.
+
+## What the original code does
+
+- `rgcn_compgcn_wikidata.py` exports 5,756 original subject-to-object edges
+  with 84 predicate IDs. It explicitly records that it adds no inverse or
+  inferred edges.
+- R-GCN receives those directed edges only. CompGCN receives the same edges
+  and jointly updates relation vectors. Each receives one relation ID per
+  original predicate, not separate forward and reverse IDs.
+- `score_heads()` exists and unit tests exercise its algebra, but the v3
+  training loss calls `score_tails()` only. The trained query scorer does not
+  call `score_heads()` either.
+- Entity and relation input vectors are EmbeddingGemma encodings of source
+  labels. Predicate features contain labels only; the retained export has no
+  predicate aliases or descriptions. There are English labels for 84/84
+  predicates, `nb` labels for 83/84, `nn` labels for 77/84, and `no`-tagged
+  labels for 5/84. The Norwegian benchmark uses an agent-authored map for 16
+  selected properties, not source definitions.
+- A question vector is projected by one learned linear layer and cosine-ranked
+  against all role candidates. This gives an implicit question-to-graph
+  alignment, but no explicit anchor, predicate, or direction loss. Training
+  uses one answer target plus ten uniform role negatives; it does not use the
+  source-backed direction hard negatives already stored with the benchmark.
+- Query ranking always emits candidates. There is no trained no-match or
+  confidence threshold.
+
+## Measured failure signals
+
+- The original transductive test has 8 forward, 8 reverse, 8 predicate, and 4
+  two-hop relevant questions. Mean GNN Recall@10 was 0.000 on forward questions
+  and 0.042 on reverse questions, compared with QV2's 0.125 and 0.250. Predicate
+  Recall@10 was 1.000 for both GNNs and QV2. CompGCN reached 0.167 on the four
+  two-hop cases only because one seed retrieved two; the other seeds scored 0.
+- Five predicates account for 72.1% of edges. The v3 link loss averages over
+  every training edge, so common predicates contribute proportionally more
+  updates. Its negative sampler is uniform over candidate entities.
+- In the corrected unseen-entity set, all 206 edges touching 16 held-out
+  entities were removed from message passing. R-GCN retrieved 0/42 targets in
+  every seed. CompGCN retrieved one target in one seed and none in the other
+  two. That split also removes all incident graph context, so it tests
+  text-feature generalization as well as graph generalization.
+- The held-out split and 28-question primary test are too small to identify
+  architecture effects confidently. Test references remain agent-authored.
+
+## Most likely bottlenecks and discriminating tests
+
+The strongest concrete direction gap is the training/evaluation mismatch:
+forward-only message passing and tail-only link loss, with reverse retrieval
+left to a generic query-vector ranker. Predicate features also contain no
+source definitions or aliases, and no explicit query-to-relation/direction
+supervision. The 72.1% predicate skew is a second measurable training issue.
+These observations do not establish that any one change will improve test
+quality.
+
+The aligned v2 ablations therefore isolate: (B) a distinct reverse navigation
+relation ID with source-edge provenance; (C) bilingual navigation templates
+derived from source labels and marked unreviewed; (D) predicate-balanced
+sampling of original source edges while retaining each inverse pair, plus
+source-backed wrong-direction contrastives; and (E) explicit
+question-to-anchor, question-to-predicate/direction, and answer ranking losses.
+The retained RDF snapshot has labels but no source-authored aliases or
+definitions for these predicates, and independent predicate-description review
+is unavailable. The templates state navigation mechanics without claiming
+ontology axioms. Synthetic tests cover these mechanics. Scored results require
+separately authorized EmbeddingGemma feature generation and GNN training.
+
+## Provenance limits of the proposed variants
+
+The held-out original RDF edges and their derived reverse rows are excluded
+from training message-passing tensors. The link-negative sampler consults the
+full authorized source graph only to avoid sampling known positives as
+negatives; those excluded edges never enter model inputs. Question distractors
+are ranking contrasts, not assertions that an unobserved triple is false.
+
+Gold-free path candidates are graph-witnessed walks generated after scoring
+the question's top five predicted anchors and top ten predicted
+predicate-direction pairs. Each path retains ordered source quads and direction.
+The separately labeled oracle diagnostic receives the gold anchor and path
+relation directions. Neither output is RDF evidence generated by the model.

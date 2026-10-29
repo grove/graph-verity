@@ -1,0 +1,95 @@
+{
+  "version": "rgcn-compgcn-dataset-v1",
+  "selected_candidate": "Full retained EEA GEMET 4.2.3 with original W3C SKOS vocabulary statements",
+  "source_urls": [
+    "https://www.eionet.europa.eu/gemet/4.2.3/gemet.rdf.gz",
+    "https://www.w3.org/2009/08/skos-reference/skos.rdf"
+  ],
+  "licenses": [
+    {"name": "CC BY 4.0", "source": "GEMET 4.2.3 RDF and versioned download page"},
+    {"name": "W3C Software and Document License (2023)", "source": "retained W3C license document"}
+  ],
+  "sha256": {
+    "gemet_source_gzip": "96002bb7cd1f89bccb05ee174fb834a04dd7342bdd1428f32105cd47fd6b73b6",
+    "w3c_skos_schema": "e79633b8d0564816cee8a99f5c9acf9a0e6fc7257c7209acd684ecad53a89dd6",
+    "canonical_full_nquads": "151be979b5ac8f5db2c55cc724d44988d3aca6d2d7d44e55df108b2c61371b35",
+    "retained_full_nquads_gzip": "905061da3c7f509b060946c70210e04faed34b0b689cf7e9c08cef28be2b31a0",
+    "source_importer": "144a6d04b9f242fe932519fc06c273832bd026638cf8b8c07b31e0b271675fea"
+  },
+  "boundary": {
+    "graph": "urn:graph-verity:gemet:4.2.3",
+    "graph_name_assigned_by_importer": true,
+    "source_named_graphs": "both source RDF documents are un-named; importer union is explicit",
+    "cross_graph_merges": 0,
+    "blank_nodes": 0,
+    "entailment_or_synthetic_edges": 0,
+    "preserve_original_rdf_identifiers": true
+  },
+  "statistics": {
+    "quads": 36441,
+    "graph_qualified_resources_including_predicates": 5588,
+    "concept_nodes": 5573,
+    "model_edges": 14764,
+    "model_relations": {
+      "http://www.w3.org/2004/02/skos/core#broader": 5685,
+      "http://www.w3.org/2004/02/skos/core#narrower": 5689,
+      "http://www.w3.org/2004/02/skos/core#related": 3390
+    },
+    "original_literal_languages": {"en": 10793, "no": 5297},
+    "concepts_with_original_en_or_no_pref_label": 5573,
+    "weak_components": 14,
+    "largest_weak_component": 5410,
+    "isolated_concepts": 4,
+    "maximum_relation_degree": 148,
+    "broader_narrower_reciprocal_pairs": 5681
+  },
+  "adequacy": {
+    "bounded_bilingual_taxonomy_study": "suitable, subject to exploratory human-review limits",
+    "heterogeneous_relation_learning": "not representative: three named relations and 5,681 broader/narrower reciprocal pairs",
+    "organization_or_service_questions": "not covered by this source",
+    "selection_rationale": "largest retained licensed real graph with substantial connected bilingual typed edges; no synthetic load data used"
+  },
+  "richer_mission_candidate": {
+    "source": "Wikidata Query Service, bounded Norway organization extract",
+    "license": "CC0 for structured data",
+    "license_source": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+    "access_source": "https://www.wikidata.org/wiki/Wikidata:Data_access",
+    "source_graph": "urn:graph-verity:wikidata:norway-org-v1",
+    "graph_name_assigned_by_importer": true,
+    "selection": "First 1,000 results ordered by item IRI with direct P17=Norway and direct P31=Organization; retain all direct claims from those subjects whose objects are Wikidata Q entities, plus en/no/nb/nn labels. No inverse or inferred edges.",
+    "snapshot_sha256": "584e068d3a98342ff608be7b881950cb8a1f9c7ec91ecbb0747956384d6452eb",
+    "snapshot_id": "sha256:5f27d19f8f98cb5d186decf07180aa9b179c049b5b17c8111cdee6c69be0431d",
+    "export_manifest_sha256": "8814fd107b756f2f6a38decf293b9cf918a22232901665057752a1b928cb9616",
+    "export": "experiments/rgcn-compgcn-v1/wikidata-norway-org-v1/rdf-to-gnn-v1",
+    "source_queries_and_responses": "experiments/rgcn-compgcn-v1/wikidata-norway-org-v1",
+    "statistics": {
+      "selected_organization_roots": 1000,
+      "entity_nodes": 2157,
+      "entities_with_en_or_no_labels": 2067,
+      "source_edges": 5756,
+      "predicate_types": 84,
+      "quads_including_labels": 10088,
+      "weak_components": 1,
+      "largest_weak_component": 2157,
+      "directed_two_hop_paths": 1609,
+      "directed_two_hop_reachable_pairs": 1449,
+      "english_literals": 1219,
+      "norwegian_nb_nn_no_literals": 2864,
+      "top_five_predicate_share": 0.7212,
+      "operator_P137_edges": 1
+    },
+    "assessment": {
+      "organization_entity_relationship_pilot": "better scoped than GEMET and adequate for a bounded exploratory baseline/training trial",
+      "service_operator_questions": "insufficient: only one P137 operator edge; add a service-focused selection before claiming coverage",
+      "sampling_limit": "The 1,000-root IRI-order cap is deterministic but not representative; broad generalization is not supported",
+      "label_coverage_limit": "90 of 2,157 entity nodes have no retained en/no/nb/nn label; preserve their IDs and report the feature fallback",
+      "source_provenance_limit": "Wikidata statements are community-maintained and the bounded query snapshot is time-specific; query and response hashes bind this capture"
+    },
+    "training_authorized_or_executed": false
+  },
+  "reproduction": {
+    "command": ".venv/bin/python tools/rgcn_compgcn.py export --out PATH",
+    "verification": ".venv/bin/python tools/rgcn_compgcn.py verify --export PATH",
+    "historical_input_is_read_only": "reports/issue-50-real-rdf-hybrid/full-source-attempt.nq.gz"
+  }
+}

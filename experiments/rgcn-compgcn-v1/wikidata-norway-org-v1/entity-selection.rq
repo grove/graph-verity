@@ -1,0 +1,13 @@
+PREFIX bd: <http://www.bigdata.com/rdf#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+SELECT ?item ?itemLabel WHERE {
+  ?item wdt:P17 wd:Q20 ;
+        wdt:P31 wd:Q43229 .
+  SERVICE wikibase:label {
+    bd:serviceParam wikibase:language "no,en" .
+  }
+}
+ORDER BY ?item
+LIMIT 1000
