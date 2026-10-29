@@ -1,0 +1,20 @@
+{
+  "version": "rgcn-compgcn-public-cases-v1",
+  "source": "benchmarks/hybrid/cases.json",
+  "source_sha256": "8fcaaa16c7c991f3ed52ea5b93fd7fc569bfb01291a6ca383d19f22a91efa906",
+  "questions_sha256": "34fd6d1baffc58a2e8f7492c97a063cecd838e43ce2fda7c6768ce0ef0f36f8e",
+  "references_sha256": "1ab1792d83ed2ed4b59f44a6b4b16ffba06416e0fac0a9acaf70dbaa425d73be",
+  "counts": {
+    "total": 122,
+    "split": {
+      "development": 40,
+      "evaluation": 82
+    },
+    "language": {
+      "en": 60,
+      "no": 62
+    }
+  },
+  "status": "public_exposed_regression_only; no independent human judgments; not a sealed holdout",
+  "capture_boundary": "BM25/neighborhood capture reads questions.json only; score reads references.json after capture"
+}

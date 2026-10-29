@@ -1,0 +1,179 @@
+{
+  "version": "rgcn-compgcn-cpu-trial-v1",
+  "status": "protocol drafted; mission-level dataset/query freeze and owner approval still required",
+  "question": "Do R-GCN or CompGCN improve bilingual question-to-graph retrieval over text-only and source-witnessed neighborhoods?",
+  "dataset": {
+    "source": "Wikidata Query Service bounded Norway organization extract",
+    "graph": "urn:graph-verity:wikidata:norway-org-v1",
+    "snapshot_sha256": "584e068d3a98342ff608be7b881950cb8a1f9c7ec91ecbb0747956384d6452eb",
+    "snapshot_id": "sha256:5f27d19f8f98cb5d186decf07180aa9b179c049b5b17c8111cdee6c69be0431d",
+    "export_manifest": "experiments/rgcn-compgcn-v1/wikidata-norway-org-v1/rdf-to-gnn-v1/manifest.json",
+    "export_manifest_sha256": "8814fd107b756f2f6a38decf293b9cf918a22232901665057752a1b928cb9616",
+    "source_responses": "experiments/rgcn-compgcn-v1/wikidata-norway-org-v1",
+    "licenses": [
+      "CC0"
+    ],
+    "entities": 2157,
+    "selected_organization_roots": 1000,
+    "typed_directed_edges": 5756,
+    "predicate_count": 84,
+    "directed_two_hop_reachable_pairs": 1449,
+    "bilingual_label_coverage": "2067/2157 entities have en/no/nb/nn labels; 90 use identifier-only feature fallback",
+    "scope_assessment": "Bounded organization-entity pilot; deterministic IRI-order selection is not representative and service-operator coverage is inadequate (one P137 edge).",
+    "original_graph_and_iris_preserved": true
+  },
+  "features": {
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "provenance": "Reuse benchmarks/embeddinggemma/manifest.json and tools/embedding_experiment.py",
+    "node_text": "Original Wikidata rdfs:label literals in en/no/nb/nn; preserve language and graph-qualified IRI; use identifier-only fallback for 90 unlabeled entity nodes",
+    "relation_text": "Original Wikidata property labels for each direct-claim predicate; language tags retained",
+    "dimensions": 768,
+    "dtype": "float32",
+    "max_tokens": 256,
+    "query_prefix": "task: search result | query: ",
+    "document_prefix": "title: none | text: ",
+    "normalization": "L2",
+    "new_model_asset_downloaded": false
+  },
+  "baseline_case_set": {
+    "questions": "experiments/rgcn-compgcn-v1/cases-v1/questions.json",
+    "questions_sha256": "34fd6d1baffc58a2e8f7492c97a063cecd838e43ce2fda7c6768ce0ef0f36f8e",
+    "references": "experiments/rgcn-compgcn-v1/cases-v1/references.json",
+    "references_sha256": "1ab1792d83ed2ed4b59f44a6b4b16ffba06416e0fac0a9acaf70dbaa425d73be",
+    "origin": "Existing public #50 case set; machine-authored and source-audited, not human relevance gold",
+    "counts": {
+      "total": 122,
+      "development": 40,
+      "evaluation": 82,
+      "en": 60,
+      "no": 62
+    },
+    "scope_limit": "Existing public #50 questions and references are GEMET-only; no two-hop cases; not the final Wikidata GNN test set",
+    "source_graph": "urn:graph-verity:gemet:4.2.3"
+  },
+  "measured_stage_one_baseline": {
+    "capture": "experiments/rgcn-compgcn-v1/baseline-capture-v2/capture.json",
+    "capture_sha256": "0226037c6647e408d7886f7cd336b93526811cb616b0711d7737c10de93ed3e7",
+    "score_summary": "experiments/rgcn-compgcn-v1/baseline-score-v2/summary.json",
+    "score_summary_sha256": "36acfdbd06e3143908ac14d2c7fc9b9d23af31f9f82d3c196d2e6064c5b52fbc",
+    "evaluation_relevant_n": 70,
+    "bm25_recall_at_10": 0.5714285714285714,
+    "neighborhood_recall_at_10": 0.6142857142857143,
+    "paired_neighborhood_minus_bm25_recall_at_10": 0.04285714285714286,
+    "judgment_limit": "Public, exposed AI-authored references; not independent human gold and not a two-hop benchmark",
+    "snapshot_sha256": "151be979b5ac8f5db2c55cc724d44988d3aca6d2d7d44e55df108b2c61371b35",
+    "scope_limit": "Measured on GEMET, not on this selected Wikidata snapshot; do not compare as if matched."
+  },
+  "models": {
+    "shared": {
+      "hidden_dimension": 128,
+      "layers": 2,
+      "query_projection": "linear 768-to-128; trained on training questions only",
+      "retrieval_score": "dot product between normalized projected question and graph-aware entity candidate",
+      "link_score": "dot((entity_head + relation_embedding), entity_tail) / sqrt(128)",
+      "message_direction": "Aggregate only original RDF subject-to-object edges; no inverse triples",
+      "directional_link_scoring": "score_tails for original subject-to-object retrieval and score_heads for original object-to-subject retrieval; both use the same predicate IRI, and neither adds an inverse RDF triple"
+    },
+    "rgcn": {
+      "message_passing": "one relation-specific 128x128 transform per original predicate plus self transform"
+    },
+    "compgcn": {
+      "composition": "subtraction, phi(entity, relation) = entity - relation",
+      "message_passing": "shared transform after entity-relation composition; update relation embeddings each layer"
+    }
+  },
+  "training": {
+    "seeds": [
+      117,
+      118,
+      119
+    ],
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batching": "full batch",
+    "max_epochs": 100,
+    "early_stopping": "validation MRR@10; patience 10; restore best validation state",
+    "negative_sampling": "10 graph-local corrupted tails per observed training edge; filter known true triples; same negatives for both models",
+    "loss": "equal-weight logistic link prediction and question-to-entity retrieval",
+    "message_passing_partition": "training edges only; validation/test edges excluded from all encoder inputs",
+    "unseen_entity_analysis": "separate run with all incident training edges removed for held-out entities; original labels remain available",
+    "execution": "CPU only; no GPU, Metal or automatic download"
+  },
+  "comparison": {
+    "methods": [
+      "existing BM25",
+      "pinned EmbeddingGemma 2",
+      "source-witnessed one/two-hop",
+      "R-GCN",
+      "CompGCN"
+    ],
+    "candidate_pool": "same graph-qualified concept universe for entity ranking; predicate and path candidates are scored in separate role-specific tasks",
+    "candidate_generation_and_reranking": "log candidate recall before scoring; report GNN full-pool recall separately from any shared-pool reranking",
+    "prediction_semantics": "Every GNN score is a hypothesis. A candidate ID must remain graph-qualified; only original RDF statements can support a displayed relationship; unsupported predicted links remain labeled unsupported and never become executable operations.",
+    "metrics": [
+      "Recall@1",
+      "Recall@5",
+      "Recall@10",
+      "MRR@10",
+      "nDCG@10",
+      "exact IRI",
+      "direction accuracy",
+      "source-witness coverage",
+      "no-match suggestions"
+    ],
+    "strata": [
+      "en",
+      "no",
+      "forward",
+      "reverse",
+      "one-hop",
+      "two-hop",
+      "transductive",
+      "unseen entity"
+    ],
+    "primary_proposed_criterion": "CompGCN gains at least 10 absolute percentage points Recall@10 over the strongest text-only baseline, paired on the same cases.",
+    "structural_value_criterion": "CompGCN must also have positive paired Recall@10 lift over deterministic source-neighborhood retrieval; report confidence interval and candidate recall.",
+    "safety_regressions": "No source-unsupported triple presentation, no graph-scope crossing, no silent direction reversal, and no regression in exact-IRI preservation or no-match false suggestions.",
+    "resource_ceiling": {
+      "host": "Apple M1 Pro, 32 GiB RAM",
+      "device": "CPU only, 4 intra-op threads, 1 inter-op thread",
+      "max_training_wall_hours_total": 6,
+      "max_process_rss_bytes": 25769803776,
+      "max_epochs_per_seed_model": 100,
+      "stop_on": [
+        "preflight resource failure",
+        "non-finite loss or scores",
+        "split/source hash drift",
+        "candidate leakage"
+      ]
+    }
+  },
+  "authorization": {
+    "training_executed": false,
+    "model_inference_executed": false,
+    "asset_downloaded": false,
+    "requires_owner_approval_for": [
+      "new EmbeddingGemma inference/features",
+      "R-GCN/CompGCN training",
+      "full comparison run"
+    ],
+    "approval_must_bind": [
+      "prepared-run.json SHA256",
+      "final query/reference/split SHA256",
+      "export manifest SHA256",
+      "host/resource preflight receipt",
+      "Wikidata export manifest SHA256: 8814fd107b756f2f6a38decf293b9cf918a22232901665057752a1b928cb9616"
+    ],
+    "not_ready_reasons": [
+      "no matched BM25/neighborhood baseline has been captured on this Wikidata snapshot",
+      "current #50 cases and references are GEMET-only and lack two-hop questions",
+      "Wikidata extract has only one P137 operator edge; service-focused coverage is incomplete",
+      "current references are AI-authored and exposed",
+      "no final grouped query/triple split freeze",
+      "M1 Pro resource preflight not run",
+      "no end-to-end feature tensor and GNN CLI run was executed because pinned PyTorch is absent from this environment"
+    ]
+  }
+}
