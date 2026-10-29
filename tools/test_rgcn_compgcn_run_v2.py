@@ -20,7 +20,7 @@ class FeatureLoaderTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             run.feature_tests_only(Path(directory))
 
-    def test_feature_preflight_is_21_gib_and_training_remains_24_gib(self):
+    def test_feature_preflight_is_21_gb_and_training_remains_24_gib(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "preflight.json"
             available = run.FEATURE_MIN_AVAILABLE + 100 * 1024**2
@@ -42,14 +42,14 @@ class FeatureLoaderTests(unittest.TestCase):
             receipt["available_memory_snapshot_bytes"] = run.FEATURE_MIN_AVAILABLE - 1
             receipt["feature_resource_preflight_passed"] = False
             path.write_text(json.dumps(receipt))
-            with self.assertRaisesRegex(ValueError, "21 GiB"):
+            with self.assertRaisesRegex(ValueError, "21 GB"):
                 run.require_passing_preflight(path)
 
             receipt["available_memory_snapshot_bytes"] = available
             receipt["feature_resource_preflight_passed"] = True
             receipt["captured_at_utc"] = (datetime.now(timezone.utc) - timedelta(minutes=31)).isoformat()
             path.write_text(json.dumps(receipt))
-            with self.assertRaisesRegex(ValueError, "21 GiB"):
+            with self.assertRaisesRegex(ValueError, "21 GB"):
                 run.require_passing_preflight(path)
 
 

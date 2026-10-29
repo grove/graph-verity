@@ -20,6 +20,7 @@ import numpy as np
 
 import rgcn_compgcn as baseline
 import rgcn_compgcn_v2 as study
+import rgcn_compgcn_wikidata as wikidata
 import rgcn_compgcn_models as models
 
 ROOT = study.ROOT
@@ -33,8 +34,8 @@ MAX_EPOCHS = 100
 PATIENCE = 10
 MAX_SECONDS = 6 * 60 * 60
 MAX_RSS = 24 * 1024**3
-# Owner lowered admission for bounded feature inference; the registered GNN training gate remains 24 GiB.
-FEATURE_MIN_AVAILABLE = 21 * 1024**3
+# Owner set the bounded feature-inference gate to 21 decimal GB; training remains 24 GiB.
+FEATURE_MIN_AVAILABLE = 21_000_000_000
 FEATURE_MAX_SECONDS = 30 * 60
 FEATURE_MAX_RSS = 6 * 1024**3
 FEATURE_BATCH_SIZE = 8
@@ -88,8 +89,8 @@ def require_passing_preflight(path: Path, *, training: bool = False) -> dict:
             record.get("ram_total_bytes") != 32 * 1024**3 or
             record.get("available_memory_snapshot_bytes", 0) < minimum_available or
             age < 0 or age > 30 * 60):
-        required_gib = minimum_available // 1024**3
-        raise ValueError(f"A fresh M1 Pro preflight with at least {required_gib} GiB available is required")
+        required = "24 GiB" if training else "21 GB"
+        raise ValueError(f"A fresh M1 Pro preflight with at least {required} available is required")
     return record
 
 
@@ -126,7 +127,7 @@ def make_features(experiment_dir: Path, model_dir: Path, authorization_file: Pat
             raise ValueError(f"Frozen benchmark input changed: {name}")
     if sha_file(study.EXPORT / "manifest.json") != bench_manifest["dataset_manifest_sha256"]:
         raise ValueError("Frozen RDF export manifest changed")
-    baseline.verify_export(study.EXPORT)
+    wikidata.verify(study.EXPORT)
     nodes = study.read_jsonl(study.EXPORT / "nodes.jsonl")
     relations = study.read_jsonl(study.EXPORT / "relations.jsonl")
     questions = read(questions_path)
@@ -299,7 +300,7 @@ def make_preflight(out: Path) -> dict:
                "training_resource_preflight_passed": training_resource_ok,
                "disk_free_bytes": __import__("shutil").disk_usage(ROOT).free,
                "execution": "No processes terminated, no resource limits changed, no model loaded, no training run.",
-               "resource_preflight": "Feature inference requires 21 GiB available; registered GNN training requires 24 GiB. Availability is not a model RSS estimate. Actual model RSS and latency remain unmeasured."}
+               "resource_preflight": "Feature inference requires 21,000,000,000 bytes available; registered GNN training requires 24 GiB. Availability is not a model RSS estimate. Actual model RSS and latency remain unmeasured."}
     receipt["status"] = "pass" if feature_resource_ok else "fail-static-resource-gate"
     write(out, receipt)
     return receipt
@@ -713,7 +714,7 @@ def freeze_manifest(out: Path, baseline_score_dir: Path,
         "features": {"model": MODEL, "revision": REVISION, "dimensions": DIMENSIONS,
                      "dtype": "float32", "node_relation_prompt": "title: none | text: ",
                      "query_prompt": "task: search result | query: ", "normalization": "L2",
-                     "max_tokens": 256, "authorization_status": "new inference still unauthorized",
+                     "max_tokens": 256, "authorization_status": "owner-approved inference completed",
                      "binding": binding},
         "architectures": {"shared": {"layers": 2, "hidden": HIDDEN,
                           "link_objective": "directed translation score -||head+relation-tail||^2/sqrt(128)",
@@ -739,14 +740,14 @@ def freeze_manifest(out: Path, baseline_score_dir: Path,
                        "regressions": "report per-language, direction, depth, exact-IRI, scope, no-match and source-witness outcomes; no scope/direction/identifier safety regression",
                        "candidate_generation": "record full-pool recall before any shared-pool reranking; entity questions rank all entities and predicate questions rank all 84 predicates, without cross-role competition"},
         "judgments": "Agent-authored, source-checked development references only; no expert gold or independent semantic claim.",
-        "limitations": ["EmbeddingGemma Wikidata feature vectors have not been generated.",
-                        "The test split has 28 relevant questions, including only four two-hop queries.",
+        "limitations": ["The test split has 28 relevant questions, including only four two-hop queries.",
                         "The deterministic adjacency result uses structured query hints and is an oracle, not a natural-language baseline.",
                         "No unseen-entity results exist until the separately frozen node-disjoint run completes."],
         "implementation_sha256": implementation,
-        "authorization": {"feature_inference": "requires approval bound to model/dataset/question hashes; local model assets only",
+        "authorization": {"feature_inference": "owner-approved one-time local inference completed; hashes and operation are recorded in the feature manifest",
                           "full_training": "requires approval bound to this run-manifest hash, feature-manifest hash, and read-only preflight receipt",
-                          "no_training_or_model_download_performed": True},
+                          "model_downloaded": True, "feature_inference_performed": True,
+                          "full_training_performed": False},
     }
     write(out, config)
     return {"path": str(out), "sha256": sha_file(out), "status": config["status"]}

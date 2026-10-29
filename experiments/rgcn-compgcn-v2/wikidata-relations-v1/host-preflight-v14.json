@@ -1,0 +1,20 @@
+{
+  "version": "rgcn-compgcn-readonly-preflight-v5",
+  "captured_at_utc": "2026-10-29T15:24:00.486739Z",
+  "hardware_profile": "Hardware:\n\n    Hardware Overview:\n\n      Model Name: MacBook Pro\n      Model Identifier: MacBookPro18,1\n      Model Number: Z14Z0002HH/A\n      Chip: Apple M1 Pro\n      Total Number of Cores: 10 (8 Performance and 2 Efficiency)\n      Memory: 32 GB\n      System Firmware Version: 20457.41.3\n      OS Loader Version: 20457.41.3\n\n",
+  "target_hardware_match": true,
+  "machine": "arm64",
+  "cpu_count": 10,
+  "ram_total_bytes": 34359738368,
+  "available_memory_snapshot_bytes": 21855436800,
+  "memory_snapshot_policy": "Informational only; not used to infer model memory or training RSS.",
+  "feature_admission_threshold_bytes": 21000000000,
+  "training_admission_threshold_bytes": 25769803776,
+  "available_memory_exceeds_registered_rss_ceiling": false,
+  "feature_resource_preflight_passed": true,
+  "training_resource_preflight_passed": false,
+  "disk_free_bytes": 548864000000,
+  "execution": "No processes terminated, no resource limits changed, no model loaded, no training run.",
+  "resource_preflight": "Feature inference requires 21,000,000,000 bytes available; registered GNN training requires 24 GiB. Availability is not a model RSS estimate. Actual model RSS and latency remain unmeasured.",
+  "status": "pass"
+}
