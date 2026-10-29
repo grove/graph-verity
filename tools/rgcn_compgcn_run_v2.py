@@ -33,6 +33,8 @@ MAX_EPOCHS = 100
 PATIENCE = 10
 MAX_SECONDS = 6 * 60 * 60
 MAX_RSS = 24 * 1024**3
+# Owner lowered admission for bounded feature inference; the registered GNN training gate remains 24 GiB.
+FEATURE_MIN_AVAILABLE = 21 * 1024**3
 FEATURE_MAX_SECONDS = 30 * 60
 FEATURE_MAX_RSS = 6 * 1024**3
 FEATURE_BATCH_SIZE = 8
@@ -70,23 +72,24 @@ def approval(path: Path, field: str, expected: dict) -> dict:
     return record
 
 
-def require_passing_preflight(path: Path) -> dict:
+def require_passing_preflight(path: Path, *, training: bool = False) -> dict:
     record = read(path)
     try:
         captured = datetime.fromisoformat(str(record.get("captured_at_utc", "")).replace("Z", "+00:00"))
         age = (datetime.now(timezone.utc) - captured).total_seconds()
     except (TypeError, ValueError):
         age = float("inf")
+    minimum_available = MAX_RSS if training else FEATURE_MIN_AVAILABLE
+    passed_field = "training_resource_preflight_passed" if training else "feature_resource_preflight_passed"
     if (record.get("target_hardware_match") is not True or
-            record.get("version") != "rgcn-compgcn-readonly-preflight-v3" or
-            record.get("status") != "pass" or
-            record.get("resource_preflight_passed") is not True or
-            record.get("available_memory_exceeds_registered_rss_ceiling") is not True or
+            record.get("version") != "rgcn-compgcn-readonly-preflight-v5" or
+            record.get("status") != "pass" or record.get(passed_field) is not True or
             record.get("machine") != "arm64" or
             record.get("ram_total_bytes") != 32 * 1024**3 or
-            record.get("available_memory_snapshot_bytes", 0) < MAX_RSS or
+            record.get("available_memory_snapshot_bytes", 0) < minimum_available or
             age < 0 or age > 30 * 60):
-        raise ValueError("A fresh M1 Pro preflight with at least 24 GiB available is required")
+        required_gib = minimum_available // 1024**3
+        raise ValueError(f"A fresh M1 Pro preflight with at least {required_gib} GiB available is required")
     return record
 
 
@@ -133,7 +136,9 @@ def make_features(experiment_dir: Path, model_dir: Path, authorization_file: Pat
                  "text_inputs": text_inputs, "maximum_tokens_per_input": 256,
                  "maximum_total_tokens": text_inputs * 256, "batch_size": FEATURE_BATCH_SIZE,
                  "dimensions": DIMENSIONS, "maximum_wall_seconds": FEATURE_MAX_SECONDS,
-                 "maximum_process_rss_bytes": FEATURE_MAX_RSS, "edge_or_reference_features": False}
+                 "maximum_process_rss_bytes": FEATURE_MAX_RSS,
+                 "minimum_available_memory_bytes": FEATURE_MIN_AVAILABLE,
+                 "edge_or_reference_features": False}
     expected = {"model": MODEL, "revision": REVISION,
                 "dataset_manifest_sha256": bench_manifest["dataset_manifest_sha256"],
                 "benchmark_manifest_sha256": sha_file(experiment_dir / "manifest.json"),
@@ -279,19 +284,23 @@ def make_preflight(out: Path) -> dict:
     profile = result.stdout
     expected = all(value in profile for value in ("MacBookPro18,1", "Apple M1 Pro", "Memory: 32 GB"))
     memory = psutil.virtual_memory()
-    resource_ok = expected and memory.available >= MAX_RSS
-    receipt = {"version": "rgcn-compgcn-readonly-preflight-v3", "captured_at_utc":
+    feature_resource_ok = expected and memory.available >= FEATURE_MIN_AVAILABLE
+    training_resource_ok = expected and memory.available >= MAX_RSS
+    receipt = {"version": "rgcn-compgcn-readonly-preflight-v5", "captured_at_utc":
                datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"), "hardware_profile": profile,
                "target_hardware_match": expected, "machine": platform.machine(),
                "cpu_count": psutil.cpu_count(logical=True), "ram_total_bytes": memory.total,
                "available_memory_snapshot_bytes": memory.available,
                "memory_snapshot_policy": "Informational only; not used to infer model memory or training RSS.",
-               "available_memory_exceeds_registered_rss_ceiling": memory.available >= MAX_RSS,
-               "resource_preflight_passed": resource_ok,
+               "feature_admission_threshold_bytes": FEATURE_MIN_AVAILABLE,
+               "training_admission_threshold_bytes": MAX_RSS,
+               "available_memory_exceeds_registered_rss_ceiling": training_resource_ok,
+               "feature_resource_preflight_passed": feature_resource_ok,
+               "training_resource_preflight_passed": training_resource_ok,
                "disk_free_bytes": __import__("shutil").disk_usage(ROOT).free,
                "execution": "No processes terminated, no resource limits changed, no model loaded, no training run.",
-               "resource_preflight": "Requires at least 24 GiB currently available; this does not estimate model RSS. Actual model RSS and latency remain unmeasured."}
-    receipt["status"] = "pass" if resource_ok else "fail-static-resource-gate"
+               "resource_preflight": "Feature inference requires 21 GiB available; registered GNN training requires 24 GiB. Availability is not a model RSS estimate. Actual model RSS and latency remain unmeasured."}
+    receipt["status"] = "pass" if feature_resource_ok else "fail-static-resource-gate"
     write(out, receipt)
     return receipt
 
@@ -505,7 +514,7 @@ def run_training(experiment_dir: Path, run_manifest_path: Path, feature_file: Pa
     feature_manifest, arrays = validate_features(feature_file, feature_manifest_path, experiment_dir)
     if run_manifest["features"].get("binding") != feature_binding(feature_manifest_path):
         raise ValueError("Final experiment freeze must bind these exact feature and manifest hashes")
-    require_passing_preflight(preflight_path)
+    require_passing_preflight(preflight_path, training=True)
     expected = {"experiment_manifest_sha256": sha_file(run_manifest_path),
                 "feature_manifest_sha256": sha_file(feature_manifest_path),
                 "preflight_sha256": sha_file(preflight_path)}

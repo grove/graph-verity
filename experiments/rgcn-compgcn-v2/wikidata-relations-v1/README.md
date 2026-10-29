@@ -189,13 +189,18 @@ must also be reported. R-GCN/CompGCN will use three seeds on transductive and
 unseen-entity partitions. The current freeze is in
 [`experiment-manifest-v7.json`](experiment-manifest-v7.json).
 
-The latest read-only M1 Pro preflight is
-[`host-preflight-v7.json`](host-preflight-v7.json). It matched MacBookPro18,1 / Apple
-M1 Pro / 32 GiB, but sampled only 22,722,543,616 bytes available (21.16 GiB),
-3,047,260,160 bytes below the registered 24 GiB gate. This is an availability
-snapshot, not a model-memory estimate; actual model RSS, latency, training cost
-and model size remain unmeasured. No processes were stopped and no limit was
-changed. Earlier v3 through v6 receipts remain preserved.
+The owner subsequently changed the **feature-inference admission threshold** to
+21 GiB. The registered GNN training admission threshold and process-RSS ceiling
+remain 24 GiB. Preflight v7 is retained as the last 24 GiB measurement; a new
+receipt records both gates separately. The fresh
+[`host-preflight-v9.json`](host-preflight-v9.json) passes the feature gate with
+22,849,486,848 bytes available (21.28 GiB), 300,908,544 bytes over its threshold.
+Its training gate still fails by 2,920,316,928 bytes; receipt SHA-256 is
+`74d9118a37d9133dd14facf0bb0f3041679f75e964afaf9fb323ff70f03a715e`. This is
+an availability snapshot, not a model-memory estimate; actual model RSS,
+latency, training cost and model size remain unmeasured. No processes were
+stopped or resource limits changed. Earlier v3 through v8 receipts remain
+preserved.
 
 ## Authorization boundary and next action
 
@@ -230,20 +235,23 @@ operation object must equal:
   "dimensions": 768,
   "maximum_wall_seconds": 1800,
   "maximum_process_rss_bytes": 6442450944,
+  "minimum_available_memory_bytes": 22548578304,
   "edge_or_reference_features": false
 }
 ```
 
 This covers all 2,157 entity labels, 84 predicate labels and 236 questions. It
 emits 768-dimensional normalized vectors (7,609,344 uncompressed float32 bytes)
-without using edges or relevance references. The 6 GiB inference cap is separate
-from the unchanged 24 GiB preflight admission gate. Preflight receipts must be
-at most 30 minutes old.
+without using edges or relevance references. The 6 GiB inference cap and 21 GiB
+feature admission threshold are specific to feature generation. GNN training
+still requires 24 GiB available and retains its 24 GiB process-RSS ceiling.
+Preflight receipts must be at most 30 minutes old.
 The training authorization must contain
 `status: "approved"`, `authorize_full_training: true`, and exact
 `experiment_manifest_sha256`, `feature_manifest_sha256` and `preflight_sha256`
-values. These are separate approvals; the currently failing memory preflight
-and missing matched EmbeddingGemma baseline prevent training now.
+values. These are separate approvals; feature inference still needs its owner
+authorization, and the 24 GiB training gate and matched text baseline are still
+missing for GNN training.
 
 The pinned checkpoint is `google/embeddinggemma-2` at revision
 `914f7f89142e33e77833254d9c9b90c3cef7303b`. The pinned upstream manifest lists
@@ -263,15 +271,12 @@ The isolated feature environment was prepared at
 the existing training environment remains separate. Model weights are not
 downloaded.
 
-After the owner has freed enough RAM, capture a fresh preflight. It must pass
-before either model download or inference:
+The v9 feature preflight passes. After receiving the exact owner authorization,
+download and inference can proceed; GNN training still requires a fresh receipt
+that passes its separate 24 GiB gate.
 
 ```sh
-/private/tmp/graph-verity-rgcn-env/bin/python tools/rgcn_compgcn_run_v2.py preflight \
-  --out experiments/rgcn-compgcn-v2/wikidata-relations-v1/host-preflight-passing.json
-```
-
-Bind that receipt's hash into the authorization. After owner approval, download
+Bind v9's receipt hash into the authorization. After owner approval, download
 and hash-check the checkpoint with the existing pinned downloader:
 
 ```sh
@@ -287,7 +292,7 @@ owner authorization file:
   --experiment-dir experiments/rgcn-compgcn-v2/wikidata-relations-v1 \
   --model-dir /private/tmp/graph-verity-embeddinggemma-2-914f7f89142e33e77833254d9c9b90c3cef7303b \
   --owner-authorization /approved/embedding-inference-authorization.json \
-  --preflight experiments/rgcn-compgcn-v2/wikidata-relations-v1/host-preflight-passing.json \
+  --preflight experiments/rgcn-compgcn-v2/wikidata-relations-v1/host-preflight-v9.json \
   --out experiments/rgcn-compgcn-v2/wikidata-relations-v1/embeddinggemma-features.npz
 ```
 

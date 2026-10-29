@@ -20,30 +20,36 @@ class FeatureLoaderTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             run.feature_tests_only(Path(directory))
 
-    def test_preflight_must_be_fresh_and_meet_registered_memory_gate(self):
+    def test_feature_preflight_is_21_gib_and_training_remains_24_gib(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "preflight.json"
-            receipt = {"version": "rgcn-compgcn-readonly-preflight-v3",
+            available = run.FEATURE_MIN_AVAILABLE + 100 * 1024**2
+            receipt = {"version": "rgcn-compgcn-readonly-preflight-v5",
                        "captured_at_utc": datetime.now(timezone.utc).isoformat(),
                        "target_hardware_match": True, "machine": "arm64",
                        "ram_total_bytes": 32 * 1024**3,
-                       "available_memory_snapshot_bytes": run.MAX_RSS,
-                       "available_memory_exceeds_registered_rss_ceiling": True,
-                       "resource_preflight_passed": True, "status": "pass"}
+                       "available_memory_snapshot_bytes": available,
+                       "feature_admission_threshold_bytes": run.FEATURE_MIN_AVAILABLE,
+                       "training_admission_threshold_bytes": run.MAX_RSS,
+                       "available_memory_exceeds_registered_rss_ceiling": False,
+                       "training_resource_preflight_passed": False,
+                       "feature_resource_preflight_passed": True, "status": "pass"}
             path.write_text(json.dumps(receipt))
             self.assertEqual(run.require_passing_preflight(path), receipt)
-
-            receipt["available_memory_snapshot_bytes"] = run.MAX_RSS - 1
-            receipt["resource_preflight_passed"] = False
-            path.write_text(json.dumps(receipt))
             with self.assertRaisesRegex(ValueError, "24 GiB"):
+                run.require_passing_preflight(path, training=True)
+
+            receipt["available_memory_snapshot_bytes"] = run.FEATURE_MIN_AVAILABLE - 1
+            receipt["feature_resource_preflight_passed"] = False
+            path.write_text(json.dumps(receipt))
+            with self.assertRaisesRegex(ValueError, "21 GiB"):
                 run.require_passing_preflight(path)
 
-            receipt["available_memory_snapshot_bytes"] = run.MAX_RSS
-            receipt["resource_preflight_passed"] = True
+            receipt["available_memory_snapshot_bytes"] = available
+            receipt["feature_resource_preflight_passed"] = True
             receipt["captured_at_utc"] = (datetime.now(timezone.utc) - timedelta(minutes=31)).isoformat()
             path.write_text(json.dumps(receipt))
-            with self.assertRaisesRegex(ValueError, "24 GiB"):
+            with self.assertRaisesRegex(ValueError, "21 GiB"):
                 run.require_passing_preflight(path)
 
 
