@@ -223,15 +223,15 @@ The complete model, evaluation, export and revised-resource suite passed all
 PYTHONPATH=tools /private/tmp/graph-verity-rgcn-env/bin/python -m unittest discover -s tools -p 'test_rgcn_compgcn*.py' -v
 ```
 
-### Separate full-training approval required
+### Pre-launch authorization record (superseded by run v3 completion)
 
-The 18 GiB budget change did not itself authorize training. The owner's prior
-approval named v15, which was older than the runner's 30-minute freshness limit
-when launch was attempted; it was not used. No GNN fits have run. A new one-time
-approval must set `status` to `approved`, `authorize_full_training` to `true`,
-and bind the current v3 run-manifest SHA, feature-manifest SHA, and v16
-preflight SHA. Do not reuse either the old v15 approval or EmbeddingGemma
-inference authorization.
+This section preserves the pre-launch state. The 18 GiB budget change did not
+itself authorize training. The owner's earlier approval named v15, which was
+older than the runner's 30-minute freshness limit when launch was attempted;
+it was not used. At that point no GNN fits had run. A later, separate owner
+approval was bound to the v3 manifest, feature-manifest, and fresh v16
+preflight hashes below. The old v15 approval and EmbeddingGemma inference
+authorization were not reused.
 
 The run command for the refreshed authorization is:
 
@@ -246,6 +246,16 @@ The run command for the refreshed authorization is:
   --out experiments/rgcn-compgcn-v2/wikidata-relations-v1/training-run-v3
 ```
 
-The authorization path is a placeholder, not a created approval file. The run
-will refuse stale/mismatched hashes or a failed resource gate. Predictions
-remain hypotheses and never RDF evidence or executable graph operations.
+The path in this historical command was a placeholder. The completed run used
+the actual one-time authorization record outside the repository. The runner
+validated its bound hashes and resource gate. Predictions remain hypotheses,
+never RDF evidence or executable graph operations.
+
+### Completed owner-authorized run v3
+
+The exact 12-fit CPU comparison completed on 2026-10-29. All checkpoints,
+training histories, predictions, raw ranks, resource logs, and the run receipt
+are preserved in [`training-run-v3`](training-run-v3/). The measured results,
+acceptance decision, and corrected 42-question unseen-entity aggregation are
+in [`training-run-v3/RESULTS.md`](training-run-v3/RESULTS.md) and
+[`training-run-v3/posthoc-summary-v1.json`](training-run-v3/posthoc-summary-v1.json).
