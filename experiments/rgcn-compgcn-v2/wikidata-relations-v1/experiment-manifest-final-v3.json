@@ -1,0 +1,151 @@
+{
+  "version": "rgcn-compgcn-v2-resource-revision-v1",
+  "status": "frozen-protocol; scored GNN run requires separate owner authorization",
+  "source": {
+    "benchmark_manifest_sha256": "9e3e92142297a9d08c1a29a5a4c0634b8de47073e398bf8adfddd9657d6fecc4",
+    "dataset_manifest_sha256": "8814fd107b756f2f6a38decf293b9cf918a22232901665057752a1b928cb9616",
+    "snapshot_sha256": "584e068d3a98342ff608be7b881950cb8a1f9c7ec91ecbb0747956384d6452eb",
+    "input_sha256": {
+      "questions.json": "108c401a798cde55eac97c0a5b6d9f69cef69527c6901855769ffd069ff028b9",
+      "references.json": "710886b073ae7795efaa7012b9d3e45a5b3303ab1fb26ef81cfc0e7aac9b9509",
+      "splits.json": "f61f3d1d258a5e0960362893ddbbf8f721432824c21447cdbef157a972acbd4f",
+      "dataset-audit.json": "16281f265ffeababad92da993f9b45bd30480ccf4d82297e1ff2f6ed69dedeab",
+      "manifest.json": "9e3e92142297a9d08c1a29a5a4c0634b8de47073e398bf8adfddd9657d6fecc4"
+    },
+    "baseline_score_dir": "experiments/rgcn-compgcn-v2/wikidata-relations-v1/baseline-score-v5",
+    "baseline_summary_sha256": "d781c38ec324e8f74f25a1478f99926d7553711223fb4d6ab2bcb2a166a205c2",
+    "baseline_cases_sha256": "7366dcf200d81b6c780960770b83d824b83d8c68a5e53a1e18f516edff307ea2",
+    "native_capture_receipt_sha256": "70c053f20ae3f422f12f2d1059089a73e84a82d7193cf05e027269576b32bae2",
+    "adjacency_capture_receipt_sha256": "93c3f2a43098c91794ec78f3c3f4553436c11df68831902adf148148e4888033"
+  },
+  "features": {
+    "model": "google/embeddinggemma-2",
+    "revision": "914f7f89142e33e77833254d9c9b90c3cef7303b",
+    "dimensions": 768,
+    "dtype": "float32",
+    "node_relation_prompt": "title: none | text: ",
+    "query_prompt": "task: search result | query: ",
+    "normalization": "L2",
+    "max_tokens": 256,
+    "authorization_status": "owner-approved inference completed",
+    "binding": {
+      "feature_manifest_sha256": "6bad882398a74802a26ed0f9f9b141d5898e04e05b7d36985eea1ea2eed36788",
+      "feature_file_sha256": "888028e174d81aed59a30b0dc8cc4a703a0cbc5153e55a1cd617488463266af8"
+    }
+  },
+  "architectures": {
+    "shared": {
+      "layers": 2,
+      "hidden": 128,
+      "link_objective": "directed translation score -||head+relation-tail||^2/sqrt(128)",
+      "query_objective": "normalized projected query dot product against all entity and predicate vectors"
+    },
+    "rgcn": {
+      "implementation": "PyG RGCNConv",
+      "basis_count": 4,
+      "direction": "original subject-to-object edges only"
+    },
+    "compgcn": {
+      "composition": "subtraction phi(entity,relation)=entity-relation",
+      "relation_updates": "learned linear update at each layer",
+      "direction": "original subject-to-object edges only"
+    }
+  },
+  "training": {
+    "seeds": [
+      117,
+      118,
+      119
+    ],
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batching": "full graph and full batch",
+    "epochs": 100,
+    "early_stopping": {
+      "metric": "validation MRR@10",
+      "patience": 10
+    },
+    "link_negatives": 10,
+    "query_negatives": 10,
+    "negative_filter": "training-split positives only; unobserved triples are not known false",
+    "message_passing": "training edges only for transductive; all incident held-out entity edges removed for unseen-entity partition",
+    "partitions": [
+      "transductive",
+      "unseen_entity"
+    ],
+    "device": "CPU only",
+    "threads": {
+      "intra_op": 4,
+      "inter_op": 1
+    },
+    "resource_ceiling": {
+      "total_training_seconds": 21600,
+      "minimum_available_memory_bytes": 19327352832,
+      "process_tree_rss_bytes": 19327352832,
+      "early_warning_process_tree_rss_bytes": 12884901888,
+      "minimum_available_headroom_bytes": 4294967296,
+      "maximum_swapout_growth_bytes": 2147483648,
+      "critical_memory_pressure_free_percent": 5,
+      "sample_interval_seconds": 5
+    },
+    "fit_execution": {
+      "count": 12,
+      "concurrency": 1,
+      "order": "sequential"
+    }
+  },
+  "comparison": {
+    "primary": "+0.10 absolute Recall@10 over the stronger matched text method (BM25 or EmbeddingGemma)",
+    "structural": "positive paired Recall@10 change over native QV2 source-witnessed retrieval, which receives the same raw question text; structured adjacency is reported as an oracle ceiling, not a pass threshold",
+    "uncertainty": "paired bootstrap 95% interval on test query groups; lower bound must exceed zero",
+    "two_hop_path_reporting": "measure endpoint rank only when the retrieved candidate can be attached to the exact source-quads path; query-structure traversal is an oracle path source, not a learned path score",
+    "regressions": "report per-language, direction, depth, exact-IRI, scope, no-match and source-witness outcomes; no scope/direction/identifier safety regression",
+    "candidate_generation": "record full-pool recall before any shared-pool reranking; entity questions rank all entities and predicate questions rank all 84 predicates, without cross-role competition"
+  },
+  "judgments": "Agent-authored, source-checked development references only; no expert gold or independent semantic claim.",
+  "limitations": [
+    "The test split has 28 relevant questions, including only four two-hop queries.",
+    "The deterministic adjacency result uses structured query hints and is an oracle, not a natural-language baseline.",
+    "No unseen-entity results exist until the separately frozen node-disjoint run completes."
+  ],
+  "implementation_sha256": {
+    "tools/rgcn_compgcn_v2.py": "3af3632ed18a9c6aa1e6adea338779f731ee1c2c475eddff39749b23952d8529",
+    "tools/rgcn_compgcn_models.py": "2751f76f2b8f9188336b3f1fa036bb64f345e99d33934381d0036547ba1654f6",
+    "tools/rgcn_compgcn_run_v2.py": "3090a4b27003b76f48c64f3fd255f82056065ca292479216381fc54e54d4448e",
+    "tools/rgcn_compgcn.py": "c1f5cb901e67cffbb3a2ba9a2659ab6876b34096c8fc5ce2087c046c5883e029",
+    "tools/rgcn_compgcn_wikidata.py": "4f1841a452973af43365e57d674ee88edc37b61cc9d966d02cedd93749580e93",
+    "tools/embedding_experiment.py": "07503cd9a12fa7636c5074f8ee2fa5d35c689a76d071cd10d0b0be8839abad4d",
+    "tools/retrieval.py": "88d120e1eda1ac31995897022c32c5c208c00cfb0acaf32f1c2c9056732d0709",
+    "tools/embedding-requirements.txt": "3fe68da5cacf6064fc1ca266cd419ceab2600ef93ca95b9618b86c0a0d96c209",
+    "benchmarks/embeddinggemma/manifest.json": "ee1dc53af42be51a7b532c3932734080648793830ccd6600fe4f280270ea7cce",
+    "benchmarks/embeddinggemma/upstream.json": "5c20fd1f9407a3a5752a35bd1cffaa060d2a8f48df4ccb0a3395bd3fda351c90",
+    "benchmarks/embeddinggemma/parity-inputs.json": "a87b8c1f0e55a68d243dc11b30799cd9e28487f1e6e733f92e9655955d5712bd",
+    "benchmarks/retrieval/manifest.json": "ca0fab2a9a89f36b59fce73bdd9215ac7470bc3f921fff826aea4a4b6c3f2e88",
+    "experiments/rgcn-compgcn-v2/requirements-gnn.lock": "b953fa1f10eb33ba2eae24ddd6626c64f639e74e57fcc30028b25f2023f7aa2a",
+    "experiments/rgcn-compgcn-v2/python-version.txt": "f50159fad3f4319868eb38717b91d55843c41e9803014c8de05e116a6d0bcfdc"
+  },
+  "authorization": {
+    "feature_inference": "owner-approved one-time local inference completed; hashes and operation are recorded in the feature manifest",
+    "full_training": "requires approval bound to this run-manifest hash, feature-manifest hash, and read-only preflight receipt",
+    "model_downloaded": true,
+    "feature_inference_performed": true,
+    "full_training_performed": false,
+    "resource_revision": "Owner-approved 18 GiB budget; full training still requires separate approval bound to this manifest, features and passing preflight."
+  },
+  "resource_revision": {
+    "reason": "Owner-approved resource-budget reduction from 24 GiB to 18 GiB; dataset, models, hyperparameters, seeds and acceptance criteria are unchanged.",
+    "source_manifest_sha256": "d8dbbd8375d23972b8b07283da43e30b2ab8383039382b27c9ee4f17c1cac659",
+    "preflight_path": "experiments/rgcn-compgcn-v2/wikidata-relations-v1/host-preflight-v16.json",
+    "preflight_sha256": "d78727b460b4a8d097d44672372badf2241a612d32897d9a18becee1d273ce9b",
+    "minimum_available_memory_bytes": 19327352832,
+    "maximum_process_tree_rss_bytes": 19327352832,
+    "early_warning_process_tree_rss_bytes": 12884901888,
+    "minimum_available_headroom_bytes": 4294967296,
+    "maximum_swapout_growth_bytes": 2147483648,
+    "critical_memory_pressure_free_percent": 5,
+    "sample_interval_seconds": 5,
+    "fit_execution": "12 fits execute sequentially; concurrency is 1",
+    "safeguard_scope": "Observational sampling; not OS-level memory isolation."
+  }
+}

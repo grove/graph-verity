@@ -167,7 +167,9 @@ the owner's explicit resource-budget decision, the new manifest is
 `211fe014c303d757529fbc420b16efa40e67c652407004f7a961879317016add`. It binds
 the unchanged features and baseline to passing preflight v15. The revision
 changes only the resource protocol; data, models, splits, seeds, hyperparameters
-and evaluation criteria are unchanged.
+and evaluation criteria are unchanged. That v2 manifest was bound to preflight v15;
+its approval window expired before launch, and no training was started. The
+current re-admission uses the same protocol with a fresh snapshot below.
 
 Admission requires 18 GiB available RAM (`19,327,352,832` bytes). The run has
 an 18 GiB maximum sampled process-tree RSS and a 12 GiB early-warning mark.
@@ -192,12 +194,27 @@ pinned Python/PyTorch/PyG environment, Wikidata export, benchmark, baseline,
 feature archive and feature manifest hashes all verified. The receipt records
 12 sequential fits. No processes or resource limits were changed.
 
+Fresh preflight
+[`host-preflight-v16.json`](host-preflight-v16.json) passed at 2026-10-29
+16:32:34 UTC, SHA256
+`d78727b460b4a8d097d44672372badf2241a612d32897d9a18becee1d273ce9b`. It reports
+21,881,257,984 bytes available, 89% memory free, zero swap in use, and zero
+`vm_stat` swap counters. 519 processes were visible and 331 were inaccessible;
+the 20 largest visible competitors are retained. The frozen inputs and pinned
+runtime verified again. The available-memory margin over admission is
+2,553,905,152 bytes.
+
+The current manifest is
+[`experiment-manifest-final-v3.json`](experiment-manifest-final-v3.json), SHA256
+`7d1775aada1d1687eb8f36ef2b4b4f1f54ced3f0464338d100d6a3bd60e19c9f`. It binds
+preflight v16 and the same feature hashes. The v2 manifest and v15 receipt stay
+preserved as historical evidence; the previous authorization was not reused.
+
 The final feature manifest SHA256 is
 `6bad882398a74802a26ed0f9f9b141d5898e04e05b7d36985eea1ea2eed36788`; the
 feature archive SHA256 is
 `888028e174d81aed59a30b0dc8cc4a703a0cbc5153e55a1cd617488463266af8`. The exact
-preflight SHA256 is recorded in `host-preflight-v15.json` and is bound in the
-new run manifest.
+preflight v16 SHA256 above is bound in the current run manifest.
 
 The complete model, evaluation, export and revised-resource suite passed all
 29 tests in the pinned environment:
@@ -208,24 +225,25 @@ PYTHONPATH=tools /private/tmp/graph-verity-rgcn-env/bin/python -m unittest disco
 
 ### Separate full-training approval required
 
-The revised preflight and manifest are ready, but the owner's 18 GiB budget
-change did not authorize full training. No GNN fits have run. The exact one-time
+The 18 GiB budget change did not itself authorize training. The owner's prior
+approval named v15, which was older than the runner's 30-minute freshness limit
+when launch was attempted; it was not used. No GNN fits have run. A new one-time
 approval must set `status` to `approved`, `authorize_full_training` to `true`,
-and bind the revised run-manifest SHA, feature-manifest SHA, and fresh preflight
-SHA printed in the receipt. Do not reuse the separate EmbeddingGemma inference
-authorization.
+and bind the current v3 run-manifest SHA, feature-manifest SHA, and v16
+preflight SHA. Do not reuse either the old v15 approval or EmbeddingGemma
+inference authorization.
 
-The approved run command is:
+The run command for the refreshed authorization is:
 
 ```sh
 /private/tmp/graph-verity-rgcn-env/bin/python tools/rgcn_compgcn_run_v2.py train \
   --experiment-dir experiments/rgcn-compgcn-v2/wikidata-relations-v1 \
-  --run-manifest experiments/rgcn-compgcn-v2/wikidata-relations-v1/experiment-manifest-final-v2.json \
+  --run-manifest experiments/rgcn-compgcn-v2/wikidata-relations-v1/experiment-manifest-final-v3.json \
   --features experiments/rgcn-compgcn-v2/wikidata-relations-v1/embeddinggemma-features.npz \
   --feature-manifest experiments/rgcn-compgcn-v2/wikidata-relations-v1/embeddinggemma-features.manifest.json \
-  --preflight experiments/rgcn-compgcn-v2/wikidata-relations-v1/host-preflight-v15.json \
-  --owner-authorization /approved/full-training-authorization-v2.json \
-  --out experiments/rgcn-compgcn-v2/wikidata-relations-v1/training-run-v2
+  --preflight experiments/rgcn-compgcn-v2/wikidata-relations-v1/host-preflight-v16.json \
+  --owner-authorization /approved/full-training-authorization-v3.json \
+  --out experiments/rgcn-compgcn-v2/wikidata-relations-v1/training-run-v3
 ```
 
 The authorization path is a placeholder, not a created approval file. The run
