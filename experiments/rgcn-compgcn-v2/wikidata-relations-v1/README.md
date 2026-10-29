@@ -190,12 +190,12 @@ unseen-entity partitions. The current freeze is in
 [`experiment-manifest-v7.json`](experiment-manifest-v7.json).
 
 The latest read-only M1 Pro preflight is
-[`host-preflight-v6.json`](host-preflight-v6.json). It matched MacBookPro18,1 / Apple
-M1 Pro / 32 GiB, but sampled only 24,080,285,696 bytes available (22.43 GiB),
-1,689,518,080 bytes below the registered 24 GiB gate. This is an availability
+[`host-preflight-v7.json`](host-preflight-v7.json). It matched MacBookPro18,1 / Apple
+M1 Pro / 32 GiB, but sampled only 22,722,543,616 bytes available (21.16 GiB),
+3,047,260,160 bytes below the registered 24 GiB gate. This is an availability
 snapshot, not a model-memory estimate; actual model RSS, latency, training cost
 and model size remain unmeasured. No processes were stopped and no limit was
-changed. Earlier v3 through v5 receipts remain preserved.
+changed. Earlier v3 through v6 receipts remain preserved.
 
 ## Authorization boundary and next action
 
