@@ -3,17 +3,21 @@
 from __future__ import annotations
 
 import argparse
+import atexit
 from collections import defaultdict
 from datetime import datetime, timezone
 import hashlib
+import importlib.metadata
 import json
 import math
 import os
 from pathlib import Path
 import random
+import re
 import resource
 import subprocess
 import sys
+import threading
 import time
 
 import numpy as np
@@ -33,12 +37,20 @@ SEEDS = (117, 118, 119)
 MAX_EPOCHS = 100
 PATIENCE = 10
 MAX_SECONDS = 6 * 60 * 60
-MAX_RSS = 24 * 1024**3
-# Owner set the bounded feature-inference gate to 21 decimal GB; training remains 24 GiB.
+MAX_RSS = 18 * 1024**3
+RSS_WARNING = 12 * 1024**3
+MIN_HEADROOM = 4 * 1024**3
+MAX_SWAPOUT_GROWTH = 2 * 1024**3
+CRITICAL_FREE_PERCENT = 5
+RESOURCE_SAMPLE_SECONDS = 5
+# Feature inference and GNN training use separately registered admission gates.
 FEATURE_MIN_AVAILABLE = 21_000_000_000
 FEATURE_MAX_SECONDS = 30 * 60
 FEATURE_MAX_RSS = 6 * 1024**3
 FEATURE_BATCH_SIZE = 8
+RESOURCE_PREFLIGHT_VERSION = "rgcn-compgcn-readonly-preflight-v6"
+RESOURCE_MANIFEST_VERSION = "rgcn-compgcn-v2-resource-revision-v1"
+PREVIOUS_FINAL_MANIFEST_SHA256 = "d8dbbd8375d23972b8b07283da43e30b2ab8383039382b27c9ee4f17c1cac659"
 
 
 def sha(data: bytes) -> str:
@@ -82,16 +94,237 @@ def require_passing_preflight(path: Path, *, training: bool = False) -> dict:
         age = float("inf")
     minimum_available = MAX_RSS if training else FEATURE_MIN_AVAILABLE
     passed_field = "training_resource_preflight_passed" if training else "feature_resource_preflight_passed"
+    version_ok = (record.get("version") == RESOURCE_PREFLIGHT_VERSION if training else
+                  record.get("version") in {"rgcn-compgcn-readonly-preflight-v5", RESOURCE_PREFLIGHT_VERSION})
+    resource_limits_ok = (not training or all(record.get(key) == value for key, value in {
+        "training_admission_threshold_bytes": MAX_RSS,
+        "process_tree_rss_ceiling_bytes": MAX_RSS,
+        "process_tree_rss_warning_bytes": RSS_WARNING,
+        "minimum_runtime_headroom_bytes": MIN_HEADROOM,
+        "maximum_swapout_growth_bytes": MAX_SWAPOUT_GROWTH,
+        "critical_memory_pressure_free_percent": CRITICAL_FREE_PERCENT,
+        "resource_sample_interval_seconds": RESOURCE_SAMPLE_SECONDS}.items()))
+    training_metrics_ok = (not training or (
+        record.get("resource_metrics_valid") is True and
+        isinstance(record.get("memory_pressure_free_percent"), int) and
+        record["memory_pressure_free_percent"] > CRITICAL_FREE_PERCENT and
+        isinstance(record.get("vm_stat"), dict) and
+        record["vm_stat"].get("page_size_bytes", 0) > 0 and
+        record["vm_stat"].get("swapouts_pages") is not None and
+        record.get("runtime_identity", {}).get("valid") is True and
+        record.get("frozen_inputs_valid") is True and
+        record.get("fit_execution") == {"count": 12, "concurrency": 1, "order": "sequential"}))
     if (record.get("target_hardware_match") is not True or
-            record.get("version") != "rgcn-compgcn-readonly-preflight-v5" or
+            not version_ok or
             record.get("status") != "pass" or record.get(passed_field) is not True or
             record.get("machine") != "arm64" or
             record.get("ram_total_bytes") != 32 * 1024**3 or
             record.get("available_memory_snapshot_bytes", 0) < minimum_available or
+            not training_metrics_ok or not resource_limits_ok or
             age < 0 or age > 30 * 60):
-        required = "24 GiB" if training else "21 GB"
+        required = "18 GiB" if training else "21 GB"
         raise ValueError(f"A fresh M1 Pro preflight with at least {required} available is required")
     return record
+
+
+def memory_pressure_free_percent() -> int:
+    result = subprocess.run(["memory_pressure", "-Q"], capture_output=True, text=True, timeout=5)
+    match = re.search(r"System-wide memory free percentage:\s*(\d+)%", result.stdout)
+    if result.returncode or match is None:
+        raise RuntimeError("Could not read macOS memory pressure")
+    return int(match.group(1))
+
+
+def vm_stat_snapshot() -> dict:
+    result = subprocess.run(["vm_stat"], capture_output=True, text=True, timeout=5)
+    page_size = re.search(r"page size of (\d+) bytes", result.stdout)
+    swapins = re.search(r"Swapins:\s*([\d,]+)", result.stdout)
+    swapouts = re.search(r"Swapouts:\s*([\d,]+)", result.stdout)
+    if result.returncode or not (page_size and swapins and swapouts):
+        raise RuntimeError("Could not read macOS swap counters")
+    return {"page_size_bytes": int(page_size.group(1)),
+            "swapins_pages": int(swapins.group(1).replace(",", "")),
+            "swapouts_pages": int(swapouts.group(1).replace(",", ""))}
+
+
+def runtime_identity() -> dict:
+    import platform
+    lock_path = ROOT / "experiments/rgcn-compgcn-v2/requirements-gnn.lock"
+    expected = {}
+    for line in lock_path.read_text().splitlines():
+        match = re.fullmatch(r"([A-Za-z0-9_.-]+)==([^;]+)", line.strip())
+        if match:
+            expected[match.group(1)] = match.group(2)
+    actual, failures = {}, []
+    for package, wanted in expected.items():
+        try:
+            actual[package] = importlib.metadata.version(package)
+            if actual[package] != wanted:
+                failures.append(f"{package} expected {wanted}, got {actual[package]}")
+        except importlib.metadata.PackageNotFoundError:
+            failures.append(f"{package} is not installed")
+    python = platform.python_version()
+    expected_python = (ROOT / "experiments/rgcn-compgcn-v2/python-version.txt").read_text().strip()
+    if python != expected_python:
+        failures.append(f"Python expected {expected_python}, got {python}")
+    try:
+        import torch
+        import torch_geometric
+        from torch_geometric.nn import RGCNConv  # noqa: F401
+        framework_imported = torch.__version__.split("+", 1)[0] == expected.get("torch") and bool(torch_geometric.__version__)
+    except ImportError as error:
+        framework_imported = False
+        failures.append(f"PyTorch/PyG import failed: {error}")
+    if not framework_imported and not any(item.startswith("PyTorch/PyG import failed") for item in failures):
+        failures.append("PyTorch/PyG runtime identity mismatch")
+    return {"python": python, "expected_python": expected_python,
+            "packages": actual, "requirements_lock_sha256": sha_file(lock_path),
+            "framework_imported": framework_imported, "valid": not failures,
+            "failures": failures}
+
+
+def host_resource_snapshot(*, process=None, include_processes: bool = False) -> dict:
+    import psutil
+    root = process or psutil.Process()
+    tree = [root]
+    try:
+        tree.extend(root.children(recursive=True))
+    except (psutil.NoSuchProcess, psutil.AccessDenied):
+        pass
+    tree_rows = []
+    for item in tree:
+        try:
+            tree_rows.append({"pid": item.pid, "name": item.name(), "rss_bytes": item.memory_info().rss})
+        except (psutil.NoSuchProcess, psutil.AccessDenied):
+            continue
+    memory = psutil.virtual_memory()
+    vmstat = vm_stat_snapshot()
+    try:
+        swap_used = psutil.swap_memory().used
+        swap_error = None
+    except OSError as error:
+        swap_used = None
+        swap_error = str(error)
+    sample = {"captured_at_utc": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+              "available_memory_bytes": memory.available,
+              "memory_pressure_free_percent": memory_pressure_free_percent(),
+              "process_tree_rss_bytes": sum(row["rss_bytes"] for row in tree_rows),
+              "process_tree": tree_rows, "vm_stat": vmstat,
+              "swap_used_bytes": swap_used, "swap_usage_error": swap_error}
+    if include_processes:
+        visible, inaccessible = [], 0
+        tree_pids = {row["pid"] for row in tree_rows}
+        for item in psutil.process_iter(["pid", "name"]):
+            try:
+                if item.info["pid"] in tree_pids:
+                    continue
+                visible.append({"pid": item.info["pid"], "name": item.info["name"],
+                                "rss_bytes": item.memory_info().rss})
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                inaccessible += 1
+        visible.sort(key=lambda row: row["rss_bytes"], reverse=True)
+        sample["visible_process_count"] = len(visible)
+        sample["inaccessible_process_count"] = inaccessible
+        sample["largest_visible_processes"] = visible[:20]
+    return sample
+
+
+def resource_stop_reason(sample: dict, baseline_vm_stat: dict) -> str | None:
+    if sample.get("elapsed_training_seconds", 0) >= MAX_SECONDS:
+        return "six-hour total training budget reached"
+    if sample.get("process_tree_rss_bytes") is None:
+        return "process-tree RSS could not be sampled"
+    if sample["process_tree_rss_bytes"] >= MAX_RSS:
+        return "18 GiB process-tree RSS ceiling reached"
+    if sample.get("memory_pressure_free_percent") is None:
+        return "memory pressure could not be sampled"
+    if sample["memory_pressure_free_percent"] <= CRITICAL_FREE_PERCENT:
+        return "macOS memory pressure is critical"
+    if sample.get("available_memory_bytes", 0) < MIN_HEADROOM:
+        return "host available-memory headroom fell below 4 GiB"
+    current = sample.get("vm_stat", {})
+    if current.get("page_size_bytes") != baseline_vm_stat.get("page_size_bytes"):
+        return "vm_stat page size changed during the run"
+    delta_pages = current.get("swapouts_pages", -1) - baseline_vm_stat.get("swapouts_pages", -1)
+    if delta_pages < 0:
+        return "vm_stat swap counter reset during the run"
+    if delta_pages * current["page_size_bytes"] >= MAX_SWAPOUT_GROWTH:
+        return "swapout growth reached 2 GiB during the run"
+    return None
+
+
+class ResourceMonitor:
+    def __init__(self, directory: Path, baseline_vm_stat: dict):
+        self.directory = directory
+        self.baseline_vm_stat = baseline_vm_stat
+        self.samples_path = directory / "resource-monitor.jsonl"
+        self.summary_path = directory / "resource-monitor-summary.json"
+        self._samples = self.samples_path.open("x")
+        self._stop = threading.Event()
+        self._thread = None
+        self.stop_reason = None
+        self.sample_count = 0
+        self.peak_rss_bytes = 0
+        self.warning_samples = 0
+        self._closed = False
+        self.started_at = time.perf_counter()
+
+    def _record(self) -> None:
+        try:
+            import psutil
+            sample = host_resource_snapshot(process=psutil.Process())
+            sample["elapsed_training_seconds"] = time.perf_counter() - self.started_at
+            sample["swapout_growth_bytes"] = (
+                sample["vm_stat"]["swapouts_pages"] - self.baseline_vm_stat["swapouts_pages"]
+            ) * self.baseline_vm_stat["page_size_bytes"]
+            sample["early_warning"] = sample["process_tree_rss_bytes"] >= RSS_WARNING
+            reason = resource_stop_reason(sample, self.baseline_vm_stat)
+            self.peak_rss_bytes = max(self.peak_rss_bytes, sample["process_tree_rss_bytes"])
+            self.warning_samples += int(sample["early_warning"])
+            self.sample_count += 1
+        except Exception as error:
+            sample = {"captured_at_utc": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+                      "sample_error": f"{type(error).__name__}: {error}"}
+            reason = "resource safeguard sampling failed"
+        self._samples.write(json.dumps(sample, ensure_ascii=False) + "\n")
+        self._samples.flush()
+        if reason:
+            self.stop_reason = reason
+            self._stop.set()
+
+    def start(self) -> None:
+        self._record()
+        if not self.stop_reason:
+            self._thread = threading.Thread(target=self._run, name="rgcn-resource-monitor", daemon=True)
+            self._thread.start()
+
+    def _run(self) -> None:
+        while not self._stop.wait(RESOURCE_SAMPLE_SECONDS):
+            self._record()
+
+    def check(self) -> None:
+        if self.stop_reason:
+            raise RuntimeError(f"Training stopped by resource safeguards: {self.stop_reason}")
+
+    def close(self) -> None:
+        if self._closed:
+            return
+        self._stop.set()
+        if self._thread:
+            self._thread.join(timeout=RESOURCE_SAMPLE_SECONDS + 1)
+        self._samples.close()
+        write(self.summary_path, {"sample_count": self.sample_count,
+              "peak_process_tree_rss_bytes": self.peak_rss_bytes,
+              "early_warning_samples": self.warning_samples,
+              "stop_reason": self.stop_reason,
+              "elapsed_training_seconds": time.perf_counter() - self.started_at,
+              "sample_interval_seconds": RESOURCE_SAMPLE_SECONDS,
+              "limits": {"warning_process_tree_rss_bytes": RSS_WARNING,
+                         "maximum_process_tree_rss_bytes": MAX_RSS,
+                         "minimum_available_headroom_bytes": MIN_HEADROOM,
+                         "critical_memory_pressure_free_percent": CRITICAL_FREE_PERCENT,
+                         "maximum_swapout_growth_bytes": MAX_SWAPOUT_GROWTH}})
+        self._closed = True
 
 
 def text_for_node(node: dict) -> str:
@@ -273,7 +506,47 @@ def feature_tests_only(path: Path) -> None:
             raise ValueError("Synthetic feature manifest did not bind its vector file")
 
 
-def make_preflight(out: Path) -> dict:
+def verify_frozen_inputs(source_manifest_path: Path, feature_file: Path,
+                         feature_manifest_path: Path) -> dict:
+    if sha_file(source_manifest_path) != PREVIOUS_FINAL_MANIFEST_SHA256:
+        raise ValueError("Historical final manifest identity changed")
+    source = read(source_manifest_path)
+    for name, expected in source["source"]["input_sha256"].items():
+        if sha_file(EXP / name) != expected:
+            raise ValueError(f"Frozen benchmark input changed: {name}")
+    bench = read(EXP / "manifest.json")
+    if (bench["dataset_manifest_sha256"] != source["source"]["dataset_manifest_sha256"] or
+            sha_file(study.EXPORT / "manifest.json") != bench["dataset_manifest_sha256"]):
+        raise ValueError("Frozen RDF dataset identity changed")
+    wikidata.verify(study.EXPORT)
+    baseline_dir = ROOT / source["source"]["baseline_score_dir"]
+    if (sha_file(baseline_dir / "summary.json") != source["source"]["baseline_summary_sha256"] or
+            sha_file(baseline_dir / "cases.jsonl") != source["source"]["baseline_cases_sha256"]):
+        raise ValueError("Matched baseline scores changed")
+    validate_features(feature_file, feature_manifest_path, EXP)
+    binding = feature_binding(feature_manifest_path)
+    if binding != source["features"].get("binding"):
+        raise ValueError("Frozen feature hashes changed")
+    return {"source_manifest_sha256": sha_file(source_manifest_path),
+            "dataset_manifest_sha256": bench["dataset_manifest_sha256"],
+            "benchmark_manifest_sha256": sha_file(EXP / "manifest.json"),
+            "questions_sha256": sha_file(EXP / "questions.json"),
+            "feature_binding": binding}
+
+
+def implementation_hashes() -> dict:
+    paths = ("tools/rgcn_compgcn_v2.py", "tools/rgcn_compgcn_models.py", "tools/rgcn_compgcn_run_v2.py",
+             "tools/rgcn_compgcn.py", "tools/rgcn_compgcn_wikidata.py", "tools/embedding_experiment.py",
+             "tools/retrieval.py", "tools/embedding-requirements.txt", "benchmarks/embeddinggemma/manifest.json",
+             "benchmarks/embeddinggemma/upstream.json", "benchmarks/embeddinggemma/parity-inputs.json",
+             "benchmarks/retrieval/manifest.json", "experiments/rgcn-compgcn-v2/requirements-gnn.lock",
+             "experiments/rgcn-compgcn-v2/python-version.txt")
+    return {name: sha_file(ROOT / name) for name in paths}
+
+
+def make_preflight(out: Path, source_manifest_path: Path = EXP / "experiment-manifest-final.json",
+                   feature_file: Path = EXP / "embeddinggemma-features.npz",
+                   feature_manifest_path: Path = EXP / "embeddinggemma-features.manifest.json") -> dict:
     if out.exists():
         raise ValueError("Preflight receipt exists; choose a fresh path")
     result = subprocess.run(["system_profiler", "-detailLevel", "mini", "SPHardwareDataType"],
@@ -285,25 +558,109 @@ def make_preflight(out: Path) -> dict:
     profile = result.stdout
     expected = all(value in profile for value in ("MacBookPro18,1", "Apple M1 Pro", "Memory: 32 GB"))
     memory = psutil.virtual_memory()
+    try:
+        observed = host_resource_snapshot(include_processes=True)
+        resource_metrics_valid = True
+        snapshot_error = None
+    except Exception as error:
+        observed = {}
+        resource_metrics_valid = False
+        snapshot_error = f"{type(error).__name__}: {error}"
+    runtime = runtime_identity()
+    try:
+        frozen = verify_frozen_inputs(source_manifest_path, feature_file, feature_manifest_path)
+        frozen_valid = True
+        frozen_error = None
+    except Exception as error:
+        frozen = {}
+        frozen_valid = False
+        frozen_error = f"{type(error).__name__}: {error}"
+    pressure_free = observed.get("memory_pressure_free_percent")
+    pressure_ok = isinstance(pressure_free, int) and pressure_free > CRITICAL_FREE_PERCENT
     feature_resource_ok = expected and memory.available >= FEATURE_MIN_AVAILABLE
-    training_resource_ok = expected and memory.available >= MAX_RSS
-    receipt = {"version": "rgcn-compgcn-readonly-preflight-v5", "captured_at_utc":
-               datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"), "hardware_profile": profile,
-               "target_hardware_match": expected, "machine": platform.machine(),
-               "cpu_count": psutil.cpu_count(logical=True), "ram_total_bytes": memory.total,
-               "available_memory_snapshot_bytes": memory.available,
-               "memory_snapshot_policy": "Informational only; not used to infer model memory or training RSS.",
+    training_resource_ok = (expected and memory.available >= MAX_RSS and pressure_ok and
+                            resource_metrics_valid and runtime["valid"] and frozen_valid)
+    receipt = {"version": RESOURCE_PREFLIGHT_VERSION,
+               "captured_at_utc": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+               "hardware_profile": profile, "target_hardware_match": expected,
+               "machine": platform.machine(), "cpu_count": psutil.cpu_count(logical=True),
+               "ram_total_bytes": memory.total, "available_memory_snapshot_bytes": memory.available,
+               "memory_snapshot_policy": "Point-in-time admission only; process RSS is sampled separately during training.",
                "feature_admission_threshold_bytes": FEATURE_MIN_AVAILABLE,
                "training_admission_threshold_bytes": MAX_RSS,
-               "available_memory_exceeds_registered_rss_ceiling": training_resource_ok,
+               "minimum_available_memory_bytes": MAX_RSS,
+               "process_tree_rss_ceiling_bytes": MAX_RSS,
+               "process_tree_rss_warning_bytes": RSS_WARNING,
+               "minimum_runtime_headroom_bytes": MIN_HEADROOM,
+               "maximum_swapout_growth_bytes": MAX_SWAPOUT_GROWTH,
+               "critical_memory_pressure_free_percent": CRITICAL_FREE_PERCENT,
+               "resource_sample_interval_seconds": RESOURCE_SAMPLE_SECONDS,
+               "memory_pressure_free_percent": pressure_free,
+               "vm_stat": observed.get("vm_stat"),
+               "swap_used_bytes": observed.get("swap_used_bytes"),
+               "swap_usage_error": observed.get("swap_usage_error"),
+               "competing_processes_recorded": observed.get("largest_visible_processes", []),
+               "visible_process_count": observed.get("visible_process_count"),
+               "inaccessible_process_count": observed.get("inaccessible_process_count"),
+               "resource_metrics_valid": resource_metrics_valid,
+               "resource_snapshot_error": snapshot_error,
+               "runtime_identity": runtime, "frozen_inputs": frozen,
+               "frozen_inputs_valid": frozen_valid, "frozen_inputs_error": frozen_error,
+               "fit_execution": {"count": 12, "concurrency": 1, "order": "sequential"},
                "feature_resource_preflight_passed": feature_resource_ok,
                "training_resource_preflight_passed": training_resource_ok,
                "disk_free_bytes": __import__("shutil").disk_usage(ROOT).free,
-               "execution": "No processes terminated, no resource limits changed, no model loaded, no training run.",
-               "resource_preflight": "Feature inference requires 21,000,000,000 bytes available; registered GNN training requires 24 GiB. Availability is not a model RSS estimate. Actual model RSS and latency remain unmeasured."}
-    receipt["status"] = "pass" if feature_resource_ok else "fail-static-resource-gate"
+               "execution": "Read-only preflight; no processes terminated, no resource limits changed, no weights loaded, no training run.",
+               "stop_conditions": ["process-tree RSS reaches 18 GiB", "memory pressure free percentage is 5% or lower",
+                                   "available headroom falls below 4 GiB", "swapout growth reaches 2 GiB",
+                                   "resource sampling fails"]}
+    receipt["status"] = "pass" if training_resource_ok else "fail-resource-or-integrity-gate"
     write(out, receipt)
     return receipt
+
+
+def revise_resource_manifest(source_manifest_path: Path, preflight_path: Path, out: Path) -> dict:
+    if out.exists():
+        raise ValueError("Resource-revision manifest exists; choose a fresh path")
+    source_hash = sha_file(source_manifest_path)
+    if source_hash != PREVIOUS_FINAL_MANIFEST_SHA256:
+        raise ValueError("Resource revision must start from the preserved final manifest")
+    preflight = require_passing_preflight(preflight_path, training=True)
+    if preflight["frozen_inputs"].get("source_manifest_sha256") != source_hash:
+        raise ValueError("Preflight does not bind the historical final manifest")
+    config = json.loads(json.dumps(read(source_manifest_path)))
+    if preflight["frozen_inputs"].get("feature_binding") != config["features"].get("binding"):
+        raise ValueError("Preflight does not bind the frozen EmbeddingGemma features")
+    config["version"] = RESOURCE_MANIFEST_VERSION
+    config["resource_revision"] = {
+        "reason": "Owner-approved resource-budget reduction from 24 GiB to 18 GiB; dataset, models, hyperparameters, seeds and acceptance criteria are unchanged.",
+        "source_manifest_sha256": source_hash,
+        "preflight_path": str(preflight_path.resolve().relative_to(ROOT.resolve())),
+        "preflight_sha256": sha_file(preflight_path),
+        "minimum_available_memory_bytes": MAX_RSS,
+        "maximum_process_tree_rss_bytes": MAX_RSS,
+        "early_warning_process_tree_rss_bytes": RSS_WARNING,
+        "minimum_available_headroom_bytes": MIN_HEADROOM,
+        "maximum_swapout_growth_bytes": MAX_SWAPOUT_GROWTH,
+        "critical_memory_pressure_free_percent": CRITICAL_FREE_PERCENT,
+        "sample_interval_seconds": RESOURCE_SAMPLE_SECONDS,
+        "fit_execution": "12 fits execute sequentially; concurrency is 1",
+        "safeguard_scope": "Observational sampling; not OS-level memory isolation."}
+    config["training"]["resource_ceiling"] = {
+        "total_training_seconds": MAX_SECONDS,
+        "minimum_available_memory_bytes": MAX_RSS,
+        "process_tree_rss_bytes": MAX_RSS,
+        "early_warning_process_tree_rss_bytes": RSS_WARNING,
+        "minimum_available_headroom_bytes": MIN_HEADROOM,
+        "maximum_swapout_growth_bytes": MAX_SWAPOUT_GROWTH,
+        "critical_memory_pressure_free_percent": CRITICAL_FREE_PERCENT,
+        "sample_interval_seconds": RESOURCE_SAMPLE_SECONDS}
+    config["training"]["fit_execution"] = {"count": 12, "concurrency": 1, "order": "sequential"}
+    config["implementation_sha256"] = implementation_hashes()
+    config["authorization"]["resource_revision"] = "Owner-approved 18 GiB budget; full training still requires separate approval bound to this manifest, features and passing preflight."
+    config["authorization"]["full_training_performed"] = False
+    write(out, config)
+    return {"path": str(out), "sha256": sha_file(out), "status": config["status"]}
 
 
 def candidate_universe(nodes: list[dict], relations: list[dict]):
@@ -504,6 +861,29 @@ def run_training(experiment_dir: Path, run_manifest_path: Path, feature_file: Pa
                  feature_manifest_path: Path, preflight_path: Path,
                  authorization_file: Path, out: Path) -> dict:
     run_manifest = read(run_manifest_path)
+    if run_manifest.get("version") != RESOURCE_MANIFEST_VERSION:
+        raise ValueError("Training requires the separately versioned 18 GiB resource manifest")
+    expected_limits = {"total_training_seconds": MAX_SECONDS,
+                       "minimum_available_memory_bytes": MAX_RSS,
+                       "process_tree_rss_bytes": MAX_RSS,
+                       "early_warning_process_tree_rss_bytes": RSS_WARNING,
+                       "minimum_available_headroom_bytes": MIN_HEADROOM,
+                       "maximum_swapout_growth_bytes": MAX_SWAPOUT_GROWTH,
+                       "critical_memory_pressure_free_percent": CRITICAL_FREE_PERCENT,
+                       "sample_interval_seconds": RESOURCE_SAMPLE_SECONDS}
+    expected_revision = {"minimum_available_memory_bytes": MAX_RSS,
+                         "maximum_process_tree_rss_bytes": MAX_RSS,
+                         "early_warning_process_tree_rss_bytes": RSS_WARNING,
+                         "minimum_available_headroom_bytes": MIN_HEADROOM,
+                         "maximum_swapout_growth_bytes": MAX_SWAPOUT_GROWTH,
+                         "critical_memory_pressure_free_percent": CRITICAL_FREE_PERCENT,
+                         "sample_interval_seconds": RESOURCE_SAMPLE_SECONDS}
+    if (run_manifest["training"].get("resource_ceiling") != expected_limits or
+            run_manifest["training"].get("fit_execution") !=
+            {"count": 12, "concurrency": 1, "order": "sequential"} or
+            any(run_manifest.get("resource_revision", {}).get(key) != value
+                for key, value in expected_revision.items())):
+        raise ValueError("Revised manifest resource controls or sequential fit plan changed")
     baseline_dir = ROOT / run_manifest["source"]["baseline_score_dir"]
     if sha_file(baseline_dir / "summary.json") != run_manifest["source"]["baseline_summary_sha256"] or \
        sha_file(baseline_dir / "cases.jsonl") != run_manifest["source"]["baseline_cases_sha256"]:
@@ -515,7 +895,14 @@ def run_training(experiment_dir: Path, run_manifest_path: Path, feature_file: Pa
     feature_manifest, arrays = validate_features(feature_file, feature_manifest_path, experiment_dir)
     if run_manifest["features"].get("binding") != feature_binding(feature_manifest_path):
         raise ValueError("Final experiment freeze must bind these exact feature and manifest hashes")
-    require_passing_preflight(preflight_path, training=True)
+    preflight = require_passing_preflight(preflight_path, training=True)
+    resource_revision = run_manifest.get("resource_revision", {})
+    if (resource_revision.get("preflight_sha256") != sha_file(preflight_path) or
+            resource_revision.get("source_manifest_sha256") != preflight["frozen_inputs"].get("source_manifest_sha256") or
+            preflight["frozen_inputs"].get("feature_binding") != feature_binding(feature_manifest_path)):
+        raise ValueError("Resource-revision manifest is not bound to this preflight and feature set")
+    if not runtime_identity()["valid"]:
+        raise ValueError("Pinned Python/PyTorch/PyG runtime identity no longer matches")
     expected = {"experiment_manifest_sha256": sha_file(run_manifest_path),
                 "feature_manifest_sha256": sha_file(feature_manifest_path),
                 "preflight_sha256": sha_file(preflight_path)}
@@ -533,9 +920,13 @@ def run_training(experiment_dir: Path, run_manifest_path: Path, feature_file: Pa
     torch.set_num_threads(4)
     if torch.get_num_interop_threads() != 1:
         torch.set_num_interop_threads(1)
-    process = psutil.Process()
-    max_rss = process_peak_rss_bytes()
     total_started = time.perf_counter()
+    out.mkdir(parents=True)
+    monitor = ResourceMonitor(out, preflight["vm_stat"])
+    monitor.start()
+    atexit.register(monitor.close)
+    monitor.check()
+    max_rss = monitor.peak_rss_bytes
     nodes = study.read_jsonl(study.EXPORT / "nodes.jsonl")
     relations = study.read_jsonl(study.EXPORT / "relations.jsonl")
     edges = study.read_jsonl(study.EXPORT / "edges.jsonl")
@@ -578,7 +969,6 @@ def run_training(experiment_dir: Path, run_manifest_path: Path, feature_file: Pa
             "unseen_nodes": set(split["unseen_entity_generalization"]["unseen_entity_iris"]),
         },
     }
-    out.mkdir(parents=True)
     results = []
     for partition_name, partition in partitions.items():
         train_edges = [edge_by_id[key] for key in partition["edges"]]
@@ -637,20 +1027,23 @@ def run_training(experiment_dir: Path, run_manifest_path: Path, feature_file: Pa
                 run_dir.mkdir(parents=True)
                 def guard(epoch, row):
                     nonlocal max_rss
-                    max_rss = max(max_rss, process.memory_info().rss, process_peak_rss_bytes())
+                    monitor.check()
+                    max_rss = max(max_rss, monitor.peak_rss_bytes)
                     if time.perf_counter() - total_started > MAX_SECONDS:
                         raise RuntimeError("Six-hour total training budget exceeded")
-                    if max_rss > MAX_RSS:
-                        raise RuntimeError("24 GiB process RSS ceiling exceeded")
                 factory = lambda: encoder(DIMENSIONS, DIMENSIONS, HIDDEN, len(relations), layers=2)
                 model, history = models.fit(factory, training_args, validation_mrr,
                                             seed=seed, epochs=MAX_EPOCHS, patience=PATIENCE,
                                             resource_guard=guard)
+                monitor.check()
                 predictions, rank_rows, timings = evaluate_model(
                     model, node_features, relation_features, edge_index, edge_types, test_ids,
                     questions, references, arrays["query_features"], candidate_ids, graph,
                     support, twohop_paths, torch)
-                max_rss = max(max_rss, process.memory_info().rss, process_peak_rss_bytes())
+                monitor.check()
+                if time.perf_counter() - total_started > MAX_SECONDS:
+                    raise RuntimeError("Six-hour total training budget exceeded")
+                max_rss = max(max_rss, monitor.peak_rss_bytes)
                 torch.save(model.state_dict(), run_dir / "checkpoint.pt")
                 (run_dir / "predictions.jsonl").write_text("".join(
                     json.dumps(row, ensure_ascii=False) + "\n" for row in predictions))
@@ -659,7 +1052,7 @@ def run_training(experiment_dir: Path, run_manifest_path: Path, feature_file: Pa
                 record = {"partition": partition_name, "model": model_name, "seed": seed,
                           "history": history, "timings": timings,
                           "checkpoint_bytes": (run_dir / "checkpoint.pt").stat().st_size,
-                          "max_process_rss_bytes": max_rss,
+                          "max_process_tree_rss_bytes": max_rss,
                           "training_wall_ms": sum(row["epoch_ms"] for row in history["history"]),
                           "test_summary": summarize(rank_rows),
                           "comparison": compare_to_baselines(rank_rows, baseline_cases, baseline_summary),
@@ -668,10 +1061,13 @@ def run_training(experiment_dir: Path, run_manifest_path: Path, feature_file: Pa
                                            if split_name in {"train", "validation", "test"}}}
                 write(run_dir / "training.json", record)
                 results.append(record)
+    monitor.close()
+    atexit.unregister(monitor.close)
     receipt = {"version": "rgcn-compgcn-v2-run-receipt", "run_manifest_sha256": sha_file(run_manifest_path),
                "feature_manifest_sha256": sha_file(feature_manifest_path),
                "preflight_sha256": sha_file(preflight_path), "training_seconds": time.perf_counter() - total_started,
-               "max_process_rss_bytes": max_rss, "torch_version": torch.__version__,
+               "max_process_tree_rss_bytes": monitor.peak_rss_bytes,
+               "resource_monitor_summary": read(monitor.summary_path), "torch_version": torch.__version__,
                "torch_geometric_version": pyg_version, "torch_threads": torch.get_num_threads(),
                "torch_interop_threads": torch.get_num_interop_threads(), "device": "cpu",
                "results": results, "authorized_training_executed": True,
@@ -762,6 +1158,14 @@ def main():
     freeze.add_argument("--feature-manifest", type=Path)
     preflight = sub.add_parser("preflight")
     preflight.add_argument("--out", type=Path, required=True)
+    preflight.add_argument("--source-manifest", type=Path, default=EXP / "experiment-manifest-final.json")
+    preflight.add_argument("--features", type=Path, default=EXP / "embeddinggemma-features.npz")
+    preflight.add_argument("--feature-manifest", type=Path,
+                           default=EXP / "embeddinggemma-features.manifest.json")
+    revise = sub.add_parser("revise-resources", help="Create the owner-approved 18 GiB protocol revision")
+    revise.add_argument("--source-manifest", type=Path, default=EXP / "experiment-manifest-final.json")
+    revise.add_argument("--preflight", type=Path, required=True)
+    revise.add_argument("--out", type=Path, required=True)
     feature = sub.add_parser("features")
     feature.add_argument("--experiment-dir", type=Path, default=EXP)
     feature.add_argument("--model-dir", type=Path, required=True)
@@ -770,7 +1174,7 @@ def main():
     feature.add_argument("--out", type=Path, required=True)
     train = sub.add_parser("train")
     train.add_argument("--experiment-dir", type=Path, default=EXP)
-    train.add_argument("--run-manifest", type=Path, default=EXP / "experiment-manifest.json")
+    train.add_argument("--run-manifest", type=Path, default=EXP / "experiment-manifest-final-v2.json")
     train.add_argument("--features", type=Path, required=True)
     train.add_argument("--feature-manifest", type=Path, required=True)
     train.add_argument("--preflight", type=Path, required=True)
@@ -781,7 +1185,9 @@ def main():
         if args.command == "freeze":
             result = freeze_manifest(args.out, args.baseline_score, args.feature_manifest)
         elif args.command == "preflight":
-            result = make_preflight(args.out)
+            result = make_preflight(args.out, args.source_manifest, args.features, args.feature_manifest)
+        elif args.command == "revise-resources":
+            result = revise_resource_manifest(args.source_manifest, args.preflight, args.out)
         elif args.command == "features":
             result = make_features(args.experiment_dir, args.model_dir, args.owner_authorization,
                                    args.preflight, args.out)

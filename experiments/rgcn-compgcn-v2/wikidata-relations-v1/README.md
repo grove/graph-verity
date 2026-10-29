@@ -140,119 +140,94 @@ python tools/rgcn_compgcn_v2.py score \
 
 ## Models and frozen comparison
 
-The isolated environment pins Python 3.12.14, PyTorch 2.11.0 and PyTorch
-Geometric 2.7.0. R-GCN uses PyG `RGCNConv` with four relation bases over the
-original directed subject-to-object edges. CompGCN composes incoming entity and
-relation states by subtraction, `phi(e,r)=e-r`, and learns relation updates at
-each layer. Both use the same 768-dimensional EmbeddingGemma initial node,
-relation and question vectors, two 128-dimensional layers, 10 link negatives
-and 10 query negatives, and a combined link/query objective. Link scoring uses
-the directed translation distance `-||head + relation - tail||² / sqrt(128)`;
-the fixture verifies swapping subject/object changes the score. The graph
-message passing is CPU-only; no inferred reverse RDF edges are added. These
-models differ architecturally: R-GCN has basis-decomposed predicate weights
-while CompGCN composes and updates relation states.
+The isolated training environment is pinned to Python 3.12.14, PyTorch 2.11.0,
+and PyTorch Geometric 2.7.0. R-GCN uses PyG `RGCNConv` with four relation
+bases over original directed subject-to-object edges. CompGCN uses subtraction
+composition `phi(e,r)=e-r` and jointly updates relation states at each layer.
+Both use the same 768-dimensional EmbeddingGemma features, two 128-dimensional
+layers, ten link negatives, ten query negatives, and the same link/query loss.
+No inferred reverse RDF edges are added. Training and validation use the frozen
+transductive and unseen-entity partitions; the test set remains untouched.
 
-The synthetic fixture suite verifies genuine forward passes, output shapes,
-directed head/tail scoring, loss/backward gradients, a test-only optimizer step,
-checkpoint reload, deterministic seeds and split guards. No research graph
-training was run. Results must report candidate generation before any shared
-candidate reranking; at evaluation the frozen query head ranks all graph-local
-entities and predicates. Link prediction is an auxiliary objective, not the
-primary acceptance metric.
+The acceptance criteria are unchanged: +0.10 absolute Recall@10 above the
+strongest matched text baseline and positive paired Recall@10 change over QV2,
+with the query-group bootstrap 95% lower bound above zero. Report English and
+Norwegian, forward/reverse, two-hop path, no-match, exact IRI, scope and
+source-witness results. The structured adjacency oracle is an upper bound, not
+a natural-language comparator. References remain agent-authored development
+evidence; only 28 relevant test questions are available.
 
-The preregistration records the dataset/code/input hashes, seeds 117/118/119,
-AdamW at 0.001, max 100 epochs, patience 10, CPU with 4 intra-op / 1 inter-op
-thread, six-hour total ceiling and 24 GiB process-RSS ceiling. It requires at
-least +0.10 absolute Recall@10 over the stronger matched text method and a
-positive paired improvement over native QV2;
-the paired query-group bootstrap 95% interval must have a positive lower bound.
-Direction, language, graph scope, exact IRI, no-match and witness regressions
-must also be reported. R-GCN/CompGCN will use three seeds on transductive and
-unseen-entity partitions. The original preregistration is in
-[`experiment-manifest-v7.json`](experiment-manifest-v7.json); the completed
-feature baseline is bound in the final manifest below.
+### Versioned resource revision
 
-The owner set feature-inference admission to 21,000,000,000 bytes; the GNN
-training admission threshold and process-RSS ceiling remain 24 GiB. All
-intermediate preflight receipts v3 through v14 are preserved. The latest
-training-gate result is v14 below; a memory-availability snapshot does not
-estimate model RSS.
-
-## Current feature and training status
-
-Owner-approved EmbeddingGemma inference completed on the M1 Pro using
-`google/embeddinggemma-2` revision
-`914f7f89142e33e77833254d9c9b90c3cef7303b`. The authorization record used was
-`/private/tmp/graph-verity-embedding-inference-authorization-v1.json`; it is
-local and is not committed. It binds dataset manifest SHA
-`8814fd107b756f2f6a38decf293b9cf918a22232901665057752a1b928cb9616`, benchmark
-manifest SHA `9e3e92142297a9d08c1a29a5a4c0634b8de47073e398bf8adfddd9657d6fecc4`,
-questions SHA `108c401a798cde55eac97c0a5b6d9f69cef69527c6901855769ffd069ff028b9`,
-and feature preflight v13 SHA
-`d176e6e67c50edb2474531fd05e93e953b75fbc860c4051d0ce3d46efcaee6ed`.
-The exact CPU operation and feature provenance are recorded in
-[`embeddinggemma-features.manifest.json`](embeddinggemma-features.manifest.json).
-The pinned model repository labels its files Apache-2.0; Google’s Gemma Terms
-also list EmbeddingGemma and incorporate the prohibited-use policy. See the
-[pinned model page](https://huggingface.co/google/embeddinggemma-2/tree/914f7f89142e33e77833254d9c9b90c3cef7303b),
-[Gemma Terms](https://ai.google.dev/gemma/terms), and
-[prohibited-use policy](https://ai.google.dev/gemma/prohibited_use_policy).
-
-The feature archive SHA256 is
-`888028e174d81aed59a30b0dc8cc4a703a0cbc5153e55a1cd617488463266af8`; its
-manifest SHA256 is
-`6bad882398a74802a26ed0f9f9b141d5898e04e05b7d36985eea1ea2eed36788`. It
-contains normalized 768-dimensional vectors for 2,157 entities, 84 predicates,
-and 236 questions, using label text and question text only. Model load took
-10.2 seconds, feature inference 66.7 seconds, and measured peak process RSS was
-2,335,916,032 bytes. No RDF edges, references, or answer identifiers were
-used as features.
-
-The final frozen experiment is
+The prior frozen manifest remains intact at
 [`experiment-manifest-final.json`](experiment-manifest-final.json), SHA256
-`d8dbbd8375d23972b8b07283da43e30b2ab8383039382b27c9ee4f17c1cac659`. It binds
-`baseline-score-v5`, the feature hashes above, fixed seeds 117/118/119, two
-128-dimensional layers, AdamW at 0.001, at most 100 epochs with patience 10,
-and 12 total fits (two architectures by two partitions by three seeds). The
-acceptance target remains +0.10 absolute Recall@10 over the strongest matched
-text method and positive paired Recall@10 improvement over QV2, with a positive
-query-group bootstrap lower bound and no unacceptable direction, scope, exact
-identifier, no-match, or resource regressions. With current test scores, the
-strongest text method is EmbeddingGemma at 0.286 R@10; QV2 is 0.393.
+`d8dbbd8375d23972b8b07283da43e30b2ab8383039382b27c9ee4f17c1cac659`. Following
+the owner's explicit resource-budget decision, the new manifest is
+[`experiment-manifest-final-v2.json`](experiment-manifest-final-v2.json), SHA256
+`211fe014c303d757529fbc420b16efa40e67c652407004f7a961879317016add`. It binds
+the unchanged features and baseline to passing preflight v15. The revision
+changes only the resource protocol; data, models, splits, seeds, hyperparameters
+and evaluation criteria are unchanged.
 
-The required fresh training preflight is
-[`host-preflight-v14.json`](host-preflight-v14.json), captured on the Apple M1
-Pro at 2026-10-29 15:24 UTC. It reports 21,855,436,800 bytes available, below
-the registered 24 GiB threshold (25,769,803,776 bytes) by 3,914,366,976 bytes.
-The feature gate passes; the training gate fails. This availability snapshot is
-not an estimate of model RSS. No competing process was terminated and no
-resource limit was changed. Do not start training until a fresh read-only
-receipt passes the 24 GiB gate and a separate owner authorization binds that
-receipt, this final manifest, and the feature manifest.
+Admission requires 18 GiB available RAM (`19,327,352,832` bytes). The run has
+an 18 GiB maximum sampled process-tree RSS and a 12 GiB early-warning mark.
+Samples are taken every five seconds. The runner stops at an 18 GiB process-tree
+RSS sample, at 5% or lower system-wide memory-free percentage, below 4 GiB
+available headroom, after 2 GiB of additional `vm_stat` swapouts, or if resource
+sampling fails. It also retains the six-hour total limit. These are observational
+safeguards; they do not provide OS-level memory isolation. The 12 fits execute
+sequentially with CPU-only PyTorch, four intra-op threads and one inter-op
+thread.
 
-The matched model, benchmark, and export suite passed all 27 tests with the
-pinned environment:
+Fresh read-only preflight
+[`host-preflight-v15.json`](host-preflight-v15.json) passed on the Apple M1 Pro
+at 2026-10-29 15:46 UTC, SHA256
+`3d62ef962fad14f41e6683f97fc06ab882255726bca56a56aa69dd2fe76bdb37`. It
+recorded 22,961,192,960 bytes available, 89%
+system-wide memory free, zero swap in use, and zero baseline `vm_stat` swap-in
+and swap-out pages. The 18 GiB admission threshold was exceeded by
+3,633,840,128 bytes. It recorded the 20 largest visible competing processes;
+520 processes were visible and 331 were inaccessible to the sampler. The
+pinned Python/PyTorch/PyG environment, Wikidata export, benchmark, baseline,
+feature archive and feature manifest hashes all verified. The receipt records
+12 sequential fits. No processes or resource limits were changed.
+
+The final feature manifest SHA256 is
+`6bad882398a74802a26ed0f9f9b141d5898e04e05b7d36985eea1ea2eed36788`; the
+feature archive SHA256 is
+`888028e174d81aed59a30b0dc8cc4a703a0cbc5153e55a1cd617488463266af8`. The exact
+preflight SHA256 is recorded in `host-preflight-v15.json` and is bound in the
+new run manifest.
+
+The complete model, evaluation, export and revised-resource suite passed all
+29 tests in the pinned environment:
 
 ```sh
 PYTHONPATH=tools /private/tmp/graph-verity-rgcn-env/bin/python -m unittest discover -s tools -p 'test_rgcn_compgcn*.py' -v
 ```
 
-No GNN training or scored GNN evaluation has been run. After memory is
-available and separate training approval is provided, the prepared command is:
+### Separate full-training approval required
+
+The revised preflight and manifest are ready, but the owner's 18 GiB budget
+change did not authorize full training. No GNN fits have run. The exact one-time
+approval must set `status` to `approved`, `authorize_full_training` to `true`,
+and bind the revised run-manifest SHA, feature-manifest SHA, and fresh preflight
+SHA printed in the receipt. Do not reuse the separate EmbeddingGemma inference
+authorization.
+
+The approved run command is:
 
 ```sh
-python tools/rgcn_compgcn_run_v2.py train \
+/private/tmp/graph-verity-rgcn-env/bin/python tools/rgcn_compgcn_run_v2.py train \
   --experiment-dir experiments/rgcn-compgcn-v2/wikidata-relations-v1 \
-  --run-manifest experiments/rgcn-compgcn-v2/wikidata-relations-v1/experiment-manifest-final.json \
+  --run-manifest experiments/rgcn-compgcn-v2/wikidata-relations-v1/experiment-manifest-final-v2.json \
   --features experiments/rgcn-compgcn-v2/wikidata-relations-v1/embeddinggemma-features.npz \
   --feature-manifest experiments/rgcn-compgcn-v2/wikidata-relations-v1/embeddinggemma-features.manifest.json \
-  --preflight experiments/rgcn-compgcn-v2/wikidata-relations-v1/host-preflight-passing.json \
-  --owner-authorization /approved/full-training-authorization.json \
-  --out experiments/rgcn-compgcn-v2/wikidata-relations-v1/training-run-v1
+  --preflight experiments/rgcn-compgcn-v2/wikidata-relations-v1/host-preflight-v15.json \
+  --owner-authorization /approved/full-training-authorization-v2.json \
+  --out experiments/rgcn-compgcn-v2/wikidata-relations-v1/training-run-v2
 ```
 
-The authorization path above is a placeholder, not an approval file. Use the
-actual owner-approved, single-use authorization after the exact final hashes
-and a passing preflight are known. GNN outputs remain candidate scores, never
-RDF evidence, and cannot trigger graph execution.
+The authorization path is a placeholder, not a created approval file. The run
+will refuse stale/mismatched hashes or a failed resource gate. Predictions
+remain hypotheses and never RDF evidence or executable graph operations.
