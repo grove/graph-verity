@@ -189,13 +189,13 @@ must also be reported. R-GCN/CompGCN will use three seeds on transductive and
 unseen-entity partitions. The current freeze is in
 [`experiment-manifest-v7.json`](experiment-manifest-v7.json).
 
-The latest read-only M1 Pro preflight in
-[`host-preflight-v3.json`](host-preflight-v3.json) matched MacBookPro18,1 / Apple
-M1 Pro / 32 GiB, but sampled only 11,905,040,384 bytes available (about 11.1
-GiB), below the registered 24 GiB gate. This is an availability snapshot, not a model-memory
-estimate; actual model RSS, latency, training cost and model size remain
-unmeasured. The six-hour run must wait for a passing read-only preflight. No
-processes were stopped and no limit was changed.
+The latest read-only M1 Pro preflight is
+[`host-preflight-v6.json`](host-preflight-v6.json). It matched MacBookPro18,1 / Apple
+M1 Pro / 32 GiB, but sampled only 24,080,285,696 bytes available (22.43 GiB),
+1,689,518,080 bytes below the registered 24 GiB gate. This is an availability
+snapshot, not a model-memory estimate; actual model RSS, latency, training cost
+and model size remain unmeasured. No processes were stopped and no limit was
+changed. Earlier v3 through v5 receipts remain preserved.
 
 ## Authorization boundary and next action
 
@@ -212,20 +212,82 @@ preflight receipt.
 
 The feature authorization JSON must contain `status: "approved"`,
 `allow_embeddinggemma_inference: true`, and the exact `model`, `revision`,
-`dataset_manifest_sha256`, `benchmark_manifest_sha256` and `questions_sha256`
-values registered in the freeze. The training authorization must contain
+`dataset_manifest_sha256`, `benchmark_manifest_sha256`, `questions_sha256`,
+`preflight_sha256` and `feature_operation` values. For this snapshot, the
+operation object must equal:
+
+```json
+{
+  "device": "cpu",
+  "threads": {"intra_op": 4, "inter_op": 1},
+  "entities": 2157,
+  "predicates": 84,
+  "queries": 236,
+  "text_inputs": 2477,
+  "maximum_tokens_per_input": 256,
+  "maximum_total_tokens": 634112,
+  "batch_size": 8,
+  "dimensions": 768,
+  "maximum_wall_seconds": 1800,
+  "maximum_process_rss_bytes": 6442450944,
+  "edge_or_reference_features": false
+}
+```
+
+This covers all 2,157 entity labels, 84 predicate labels and 236 questions. It
+emits 768-dimensional normalized vectors (7,609,344 uncompressed float32 bytes)
+without using edges or relevance references. The 6 GiB inference cap is separate
+from the unchanged 24 GiB preflight admission gate. Preflight receipts must be
+at most 30 minutes old.
+The training authorization must contain
 `status: "approved"`, `authorize_full_training: true`, and exact
 `experiment_manifest_sha256`, `feature_manifest_sha256` and `preflight_sha256`
 values. These are separate approvals; the currently failing memory preflight
 and missing matched EmbeddingGemma baseline prevent training now.
 
-After authorization, the feature command is:
+The pinned checkpoint is `google/embeddinggemma-2` at revision
+`914f7f89142e33e77833254d9c9b90c3cef7303b`. The pinned upstream manifest lists
+14 required files totaling 1,525,808,822 bytes. No model files are currently
+present in the cache or previous experiment directory. The Hugging Face model
+card labels it Apache-2.0 and links the Gemma 4 license; Google’s Gemma terms
+page also lists EmbeddingGemma and incorporates the prohibited-use policy. See
+the [pinned model card](https://huggingface.co/google/embeddinggemma-2/tree/914f7f89142e33e77833254d9c9b90c3cef7303b),
+[Gemma terms](https://ai.google.dev/gemma/terms), and
+[prohibited-use policy](https://ai.google.dev/gemma/prohibited_use_policy).
+No legal acceptance or model-download approval is recorded here.
+
+The isolated feature environment was prepared at
+`/private/tmp/graph-verity-embedding-env` using Python 3.12.14,
+`tools/embedding-requirements.txt`, and `rdflib==7.1.4`. It verified PyTorch
+2.14.1, Transformers 5.20.1, Sentence Transformers 6.1.0 and Tokenizers 0.23.3;
+the existing training environment remains separate. Model weights are not
+downloaded.
+
+After the owner has freed enough RAM, capture a fresh preflight. It must pass
+before either model download or inference:
 
 ```sh
-python tools/rgcn_compgcn_run_v2.py features \
+/private/tmp/graph-verity-rgcn-env/bin/python tools/rgcn_compgcn_run_v2.py preflight \
+  --out experiments/rgcn-compgcn-v2/wikidata-relations-v1/host-preflight-passing.json
+```
+
+Bind that receipt's hash into the authorization. After owner approval, download
+and hash-check the checkpoint with the existing pinned downloader:
+
+```sh
+/private/tmp/graph-verity-embedding-env/bin/python tools/embedding_experiment.py download \
+  --out /private/tmp/graph-verity-embeddinggemma-2-914f7f89142e33e77833254d9c9b90c3cef7303b
+```
+
+Then run the authorized feature command with the actual passing receipt and
+owner authorization file:
+
+```sh
+/private/tmp/graph-verity-embedding-env/bin/python tools/rgcn_compgcn_run_v2.py features \
   --experiment-dir experiments/rgcn-compgcn-v2/wikidata-relations-v1 \
-  --model-dir /approved/local/EmbeddingGemma-300M \
+  --model-dir /private/tmp/graph-verity-embeddinggemma-2-914f7f89142e33e77833254d9c9b90c3cef7303b \
   --owner-authorization /approved/embedding-inference-authorization.json \
+  --preflight experiments/rgcn-compgcn-v2/wikidata-relations-v1/host-preflight-passing.json \
   --out experiments/rgcn-compgcn-v2/wikidata-relations-v1/embeddinggemma-features.npz
 ```
 

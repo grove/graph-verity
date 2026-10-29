@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from collections import defaultdict
+from datetime import datetime, timezone
 import hashlib
 import json
 import math
@@ -32,6 +33,9 @@ MAX_EPOCHS = 100
 PATIENCE = 10
 MAX_SECONDS = 6 * 60 * 60
 MAX_RSS = 24 * 1024**3
+FEATURE_MAX_SECONDS = 30 * 60
+FEATURE_MAX_RSS = 6 * 1024**3
+FEATURE_BATCH_SIZE = 8
 
 
 def sha(data: bytes) -> str:
@@ -66,6 +70,26 @@ def approval(path: Path, field: str, expected: dict) -> dict:
     return record
 
 
+def require_passing_preflight(path: Path) -> dict:
+    record = read(path)
+    try:
+        captured = datetime.fromisoformat(str(record.get("captured_at_utc", "")).replace("Z", "+00:00"))
+        age = (datetime.now(timezone.utc) - captured).total_seconds()
+    except (TypeError, ValueError):
+        age = float("inf")
+    if (record.get("target_hardware_match") is not True or
+            record.get("version") != "rgcn-compgcn-readonly-preflight-v3" or
+            record.get("status") != "pass" or
+            record.get("resource_preflight_passed") is not True or
+            record.get("available_memory_exceeds_registered_rss_ceiling") is not True or
+            record.get("machine") != "arm64" or
+            record.get("ram_total_bytes") != 32 * 1024**3 or
+            record.get("available_memory_snapshot_bytes", 0) < MAX_RSS or
+            age < 0 or age > 30 * 60):
+        raise ValueError("A fresh M1 Pro preflight with at least 24 GiB available is required")
+    return record
+
+
 def text_for_node(node: dict) -> str:
     values = [f"{lang}: {value}" for lang, labels in sorted(node["labels"].items())
               for value in labels]
@@ -78,19 +102,43 @@ def text_for_relation(relation: dict) -> str:
     return "; ".join(values) if values else relation["iri"]
 
 
-def encode_batches(encoder, texts: list[str], batch_size: int = 8) -> np.ndarray:
-    chunks = [encoder.encode(texts[i:i + batch_size]).cpu().numpy() for i in range(0, len(texts), batch_size)]
+def encode_batches(encoder, texts: list[str], batch_size: int = FEATURE_BATCH_SIZE,
+                   guard=None) -> np.ndarray:
+    chunks = []
+    for i in range(0, len(texts), batch_size):
+        chunks.append(encoder.encode(texts[i:i + batch_size]).cpu().numpy())
+        if guard:
+            guard()
     return np.concatenate(chunks).astype(np.float32, copy=False)
 
 
 def make_features(experiment_dir: Path, model_dir: Path, authorization_file: Path,
-                  out: Path) -> dict:
+                  preflight_path: Path, out: Path) -> dict:
+    require_passing_preflight(preflight_path)
     questions_path = experiment_dir / "questions.json"
     bench_manifest = read(experiment_dir / "manifest.json")
+    frozen = read(experiment_dir / "experiment-manifest-v7.json")
+    for name, expected_hash in frozen["source"]["input_sha256"].items():
+        if sha_file(experiment_dir / name) != expected_hash:
+            raise ValueError(f"Frozen benchmark input changed: {name}")
+    if sha_file(study.EXPORT / "manifest.json") != bench_manifest["dataset_manifest_sha256"]:
+        raise ValueError("Frozen RDF export manifest changed")
+    baseline.verify_export(study.EXPORT)
+    nodes = study.read_jsonl(study.EXPORT / "nodes.jsonl")
+    relations = study.read_jsonl(study.EXPORT / "relations.jsonl")
+    questions = read(questions_path)
+    text_inputs = len(nodes) + len(relations) + len(questions)
+    operation = {"device": "cpu", "threads": {"intra_op": 4, "inter_op": 1},
+                 "entities": len(nodes), "predicates": len(relations), "queries": len(questions),
+                 "text_inputs": text_inputs, "maximum_tokens_per_input": 256,
+                 "maximum_total_tokens": text_inputs * 256, "batch_size": FEATURE_BATCH_SIZE,
+                 "dimensions": DIMENSIONS, "maximum_wall_seconds": FEATURE_MAX_SECONDS,
+                 "maximum_process_rss_bytes": FEATURE_MAX_RSS, "edge_or_reference_features": False}
     expected = {"model": MODEL, "revision": REVISION,
                 "dataset_manifest_sha256": bench_manifest["dataset_manifest_sha256"],
                 "benchmark_manifest_sha256": sha_file(experiment_dir / "manifest.json"),
-                "questions_sha256": sha_file(questions_path)}
+                "questions_sha256": sha_file(questions_path),
+                "preflight_sha256": sha_file(preflight_path), "feature_operation": operation}
     approval(authorization_file, "allow_embeddinggemma_inference", expected)
     manifest_path = out.with_suffix(".manifest.json")
     if out.exists() or manifest_path.exists():
@@ -104,18 +152,21 @@ def make_features(experiment_dir: Path, model_dir: Path, authorization_file: Pat
     if not assets["valid"]:
         raise ValueError("Model assets must already exist locally and match the pinned upstream hashes")
     torch, runtime = embedding_experiment.cpu_runtime()
+    started = time.perf_counter()
     encoder = embedding_experiment.Encoder(model_dir, torch, spec)
-    nodes = study.read_jsonl(study.EXPORT / "nodes.jsonl")
-    relations = study.read_jsonl(study.EXPORT / "relations.jsonl")
-    questions = read(questions_path)
+    def guard():
+        if time.perf_counter() - started > FEATURE_MAX_SECONDS:
+            raise RuntimeError("30-minute EmbeddingGemma feature budget exceeded")
+        if process_peak_rss_bytes() > FEATURE_MAX_RSS:
+            raise RuntimeError("6 GiB EmbeddingGemma process RSS budget exceeded")
+    guard()
     node_texts = ["title: none | text: " + text_for_node(node) for node in nodes]
     relation_texts = ["title: none | text: " + text_for_relation(relation) for relation in relations]
     query_texts = ["task: search result | query: " + row["query"] for row in questions]
-    inference_started = time.perf_counter()
-    node_features = encode_batches(encoder, node_texts)
-    relation_features = encode_batches(encoder, relation_texts)
-    query_features = encode_batches(encoder, query_texts)
-    inference_ms = (time.perf_counter() - inference_started) * 1000
+    node_features = encode_batches(encoder, node_texts, guard=guard)
+    relation_features = encode_batches(encoder, relation_texts, guard=guard)
+    query_features = encode_batches(encoder, query_texts, guard=guard)
+    inference_ms = (time.perf_counter() - started) * 1000
     out.parent.mkdir(parents=True, exist_ok=True)
     with out.open("xb") as stream:
         np.savez_compressed(stream, node_features=node_features, relation_features=relation_features,
@@ -135,8 +186,10 @@ def make_features(experiment_dir: Path, model_dir: Path, authorization_file: Pat
                            "relation_features": list(relation_features.shape),
                            "query_features": list(query_features.shape)},
                 "queries_sha256": sha_file(questions_path), "assets_sha256": assets["sha256"],
+                "preflight_sha256": expected["preflight_sha256"], "feature_operation": operation,
                 "runtime": runtime, "model_load_ms": encoder.load_ms,
-                "inference_ms": inference_ms, "inference_performed": True}
+                "inference_ms": inference_ms, "max_process_rss_bytes": process_peak_rss_bytes(),
+                "inference_performed": True}
     write(manifest_path, manifest)
     return manifest
 
@@ -227,7 +280,8 @@ def make_preflight(out: Path) -> dict:
     expected = all(value in profile for value in ("MacBookPro18,1", "Apple M1 Pro", "Memory: 32 GB"))
     memory = psutil.virtual_memory()
     resource_ok = expected and memory.available >= MAX_RSS
-    receipt = {"version": "rgcn-compgcn-readonly-preflight-v2", "hardware_profile": profile,
+    receipt = {"version": "rgcn-compgcn-readonly-preflight-v3", "captured_at_utc":
+               datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"), "hardware_profile": profile,
                "target_hardware_match": expected, "machine": platform.machine(),
                "cpu_count": psutil.cpu_count(logical=True), "ram_total_bytes": memory.total,
                "available_memory_snapshot_bytes": memory.available,
@@ -236,7 +290,7 @@ def make_preflight(out: Path) -> dict:
                "resource_preflight_passed": resource_ok,
                "disk_free_bytes": __import__("shutil").disk_usage(ROOT).free,
                "execution": "No processes terminated, no resource limits changed, no model loaded, no training run.",
-               "training_resource_preflight": "Requires at least 24 GiB currently available; this does not estimate model RSS. Actual model RSS and latency remain unmeasured."}
+               "resource_preflight": "Requires at least 24 GiB currently available; this does not estimate model RSS. Actual model RSS and latency remain unmeasured."}
     receipt["status"] = "pass" if resource_ok else "fail-static-resource-gate"
     write(out, receipt)
     return receipt
@@ -451,9 +505,7 @@ def run_training(experiment_dir: Path, run_manifest_path: Path, feature_file: Pa
     feature_manifest, arrays = validate_features(feature_file, feature_manifest_path, experiment_dir)
     if run_manifest["features"].get("binding") != feature_binding(feature_manifest_path):
         raise ValueError("Final experiment freeze must bind these exact feature and manifest hashes")
-    preflight = read(preflight_path)
-    if preflight.get("target_hardware_match") is not True or preflight.get("resource_preflight_passed") is not True:
-        raise ValueError("Read-only preflight must match the M1 Pro and have at least 24 GiB currently available")
+    require_passing_preflight(preflight_path)
     expected = {"experiment_manifest_sha256": sha_file(run_manifest_path),
                 "feature_manifest_sha256": sha_file(feature_manifest_path),
                 "preflight_sha256": sha_file(preflight_path)}
@@ -704,6 +756,7 @@ def main():
     feature.add_argument("--experiment-dir", type=Path, default=EXP)
     feature.add_argument("--model-dir", type=Path, required=True)
     feature.add_argument("--owner-authorization", type=Path, required=True)
+    feature.add_argument("--preflight", type=Path, required=True)
     feature.add_argument("--out", type=Path, required=True)
     train = sub.add_parser("train")
     train.add_argument("--experiment-dir", type=Path, default=EXP)
@@ -720,7 +773,8 @@ def main():
         elif args.command == "preflight":
             result = make_preflight(args.out)
         elif args.command == "features":
-            result = make_features(args.experiment_dir, args.model_dir, args.owner_authorization, args.out)
+            result = make_features(args.experiment_dir, args.model_dir, args.owner_authorization,
+                                   args.preflight, args.out)
         else:
             result = run_training(args.experiment_dir, args.run_manifest, args.features,
                                   args.feature_manifest, args.preflight,
